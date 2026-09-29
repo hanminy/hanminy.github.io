@@ -1,0 +1,56 @@
+{
+  "owner": "hanminy",
+  "overrides": {
+    "field-robot-dashboard": {
+      "title": "필드로봇 연구 대시보드",
+      "description": "자율굴착과 필드로봇 논문을 한눈에. 기관·기술별로 연구를 찾고 상세 요약과 그림을 살펴봅니다.",
+      "category": "연구 자료",
+      "label": "FIELD ROBOTICS",
+      "featured": true,
+      "order": 1
+    },
+    "marktl-blog": {
+      "title": "MarkTL · 연구와 기록",
+      "description": "Obsidian에서 정리한 논문, 영상, 연구 노트를 웹에서 읽는 공개 아카이브입니다.",
+      "url": "https://hanminy.github.io/marktl-blog/marktl/",
+      "category": "연구 자료",
+      "label": "NOTES & ARTICLES",
+      "featured": true,
+      "order": 2
+    },
+    "icra2026-viewer": {
+      "title": "ICRA 2026 논문 뷰어",
+      "description": "ICRA 2026의 관심 논문과 추천 연구를 모아, 분야별 목록과 상세 내용을 탐색합니다.",
+      "category": "연구 자료",
+      "label": "CONFERENCE PAPERS",
+      "featured": true,
+      "order": 3
+    },
+    "hr35-common-testbench-guide": {
+      "title": "HR35 공통 시험장 가이드",
+      "description": "굴착기 제어와 디지털 트윈 시험 환경의 구성, 기능, 사용법을 소개합니다.",
+      "category": "개발·실험",
+      "label": "ENGINEERING",
+      "order": 4
+    },
+    "bohol-trip-2026": {
+      "title": "보홀 여행 2026",
+      "description": "보홀 가족여행을 위한 일정과 여행 정보를 모아 둔 페이지입니다.",
+      "category": "일상",
+      "label": "TRAVEL NOTES",
+      "order": 6
+    }
+  },
+  "extra_sites": [
+    {
+      "id": "kmm-study",
+      "title": "굴착기 동적 모델·제어 스터디",
+      "description": "KMM/KIMM 굴착기 동적 모델과 제어를 살펴보는 인터랙티브 스터디 가이드입니다.",
+      "url": "https://hanminy.github.io/marktl-blog/kmm/",
+      "category": "개발·실험",
+      "label": "INTERACTIVE STUDY",
+      "order": 5
+    }
+  ],
+  "exclude": []
+}
