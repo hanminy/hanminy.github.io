@@ -43,6 +43,15 @@
   },
   "extra_sites": [
     {
+      "id": "hr35-ui-guide",
+      "title": "HR35 관제 화면 사용법",
+      "description": "10월 2일판 관제 화면의 스캔, 작업 설정, 정지 방법을 쉽게 설명합니다. 현재 자동 스캔은 점검 중입니다.",
+      "url": "https://hanminy.github.io/assets/hr35-ui-guide/",
+      "category": "개발·실험",
+      "label": "UI GUIDE",
+      "order": 5.5
+    },
+    {
       "id": "kmm-study",
       "title": "굴착기 동적 모델·제어 스터디",
       "description": "KMM/KIMM 굴착기 동적 모델과 제어를 살펴보는 인터랙티브 스터디 가이드입니다.",
