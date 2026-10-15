@@ -59,6 +59,15 @@
       "category": "개발·실험",
       "label": "INTERACTIVE STUDY",
       "order": 5
+    },
+    {
+      "id": "fes2026-physical-ai",
+      "title": "FES 2026 피지컬 AI 자료실",
+      "description": "FES 2026 특별강연 준비 자료입니다. 국내 전문가 10인의 발언, 피지컬 AI 시각 조사 123개 항목, 강연 슬라이드 초안을 모았습니다.",
+      "url": "https://hanminy.github.io/assets/fes2026-physical-ai/",
+      "category": "연구 자료",
+      "label": "PHYSICAL AI",
+      "order": 3.5
     }
   ],
   "exclude": []
