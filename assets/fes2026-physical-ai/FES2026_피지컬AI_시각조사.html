@@ -1,0 +1,672 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>피지컬 AI 시각 조사 — 누구나 하는 얘기 바깥에서</title>
+<style>
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css');
+:root{--bg:#ffffff;--card:#f8f9fa;--text:#1e293b;--h1:#0f172a;--muted:#64748b;--accent:#2563eb;--strong:#1e40af;--line:#e2e8f0;--acc:#2563eb}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:'Pretendard Variable',Pretendard,-apple-system,'Segoe UI',sans-serif;font-size:16px;line-height:1.7;word-break:keep-all;overflow-wrap:anywhere}
+.wrap{max-width:1040px;margin:0 auto;padding:40px 20px 80px}
+header.top{margin-bottom:28px}
+.kicker{font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:700}
+h1{color:var(--h1);font-size:2rem;line-height:1.3;margin:.3em 0 .4em;font-weight:800}
+.metaline{color:var(--muted);font-size:.92rem}
+.metaline b{color:var(--text);font-weight:600}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 0}
+.chip{display:inline-block;padding:5px 11px;border-radius:999px;font-size:.82rem;font-weight:600;text-decoration:none;color:#fff;opacity:.92}
+.chip:hover{opacity:1}
+nav.toc{background:var(--card);border-radius:12px;padding:16px 22px;margin:22px 0 30px;border-left:4px solid var(--accent);box-shadow:0 1px 3px rgba(0,0,0,.08)}
+nav.toc .meta-label{font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:700;margin-bottom:6px}
+nav.toc ol{margin:0;padding-left:1.3em;columns:2;column-gap:28px}
+nav.toc li{break-inside:avoid;margin:2px 0;font-size:.95rem}
+nav.toc a{color:var(--text);text-decoration:none}
+nav.toc a:hover{color:var(--accent);text-decoration:underline}
+section.card,article.item{background:var(--card);border-radius:12px;padding:22px 26px;margin:0 0 22px;border-left:4px solid var(--acc);box-shadow:0 1px 3px rgba(0,0,0,.08)}
+article.item{padding:18px 22px}
+section.card>h2:first-child,article.item>h3:first-child{margin-top:0}
+h2{color:var(--h1);font-size:1.38rem;margin:1.4em 0 .6em;font-weight:800;line-height:1.35}
+h3{color:var(--h1);font-size:1.12rem;margin:1.3em 0 .5em;font-weight:700;line-height:1.4}
+h2 .num,h3 .num{color:var(--acc);margin-right:.35em}
+p{margin:.6em 0}
+strong{color:var(--strong);font-weight:700}
+a{color:var(--accent)}
+a.ref{display:inline-block;font-size:.74rem;font-weight:700;color:#475569;background:#fff;border:1px solid var(--line);border-radius:5px;padding:0 5px;margin:0 1px;text-decoration:none;vertical-align:middle;line-height:1.5}
+a.ref:hover{border-color:var(--accent);color:var(--accent)}
+a.wl{font-weight:600}
+ul,ol{padding-left:1.4em;margin:.5em 0}
+li{margin:.3em 0}
+li>ul{margin:.2em 0}
+blockquote{margin:1em 0;padding:12px 18px;background:#eff6ff;border-left:4px solid var(--accent);border-radius:0 10px 10px 0;color:#1e3a8a}
+blockquote p{margin:.45em 0}
+hr{border:0;border-top:1px solid var(--line);margin:28px 0}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.88em;background:#eef2f7;padding:1px 6px;border-radius:5px;color:#334155}
+.tbl{overflow-x:auto;margin:1em 0;border-radius:10px;border:1px solid var(--line);background:#fff}
+table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.55}
+th{background:#eef2f7;color:#0f172a;text-align:left;padding:10px 12px;border-bottom:2px solid #cbd5e1;font-weight:700;white-space:nowrap}
+td{padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:0}
+tbody tr:hover td{background:#f8fafc}
+td:first-child{white-space:nowrap;color:var(--muted);font-weight:600}
+.arrow{color:var(--acc);font-weight:700}
+.backbar{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:.9rem;margin-bottom:14px;flex-wrap:wrap}
+.backbar a{text-decoration:none;font-weight:600}
+.lanenav{display:flex;flex-wrap:wrap;gap:6px}
+.lanenav a{font-size:.78rem;padding:3px 9px;border-radius:999px;color:#fff;text-decoration:none;font-weight:600;opacity:.85}
+.lanenav a.on{opacity:1;outline:2px solid #0f172a;outline-offset:1px}
+footer{color:var(--muted);font-size:.85rem;margin-top:40px;border-top:1px solid var(--line);padding-top:14px}
+@media (max-width:700px){.wrap{padding:24px 16px 60px}h1{font-size:1.5rem}nav.toc ol{columns:1}section.card,article.item{padding:16px 16px}td:first-child{white-space:normal}}
+@media print{body{font-size:12.5px}.wrap{max-width:100%;padding:0}section.card,article.item{box-shadow:none;break-inside:avoid;background:#fff;border:1px solid var(--line);border-left:4px solid var(--acc)}nav.toc{display:none}.backbar{display:none}a{color:inherit;text-decoration:none}a.ref{border-color:#cbd5e1}}
+</style>
+
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+<div class="kicker">FES 2026 특별강연 — 피지컬 AI 시각 조사 (새로운 시각·반론 카탈로그)</div>
+<h1>피지컬 AI 시각 조사 — 누구나 하는 얘기 바깥에서</h1>
+<div class="metaline"><b>FES 2026 특별강연 준비 · 조사일 2026-10-15 · 발표 2026-10-29</b> · 6개 출처 영역 123항목 종합 · 본문의 <code>L2-6</code> 배지는 원자료 해당 항목으로 이동</div>
+<div class="chips"><a class="chip" style="background:#2563eb" href="시각조사_원자료/L1_글로벌_컨퍼런스.html">L1 · 글로벌 컨퍼런스·포럼 키노트</a><a class="chip" style="background:#7c3aed" href="시각조사_원자료/L2_에세이_리포트.html">L2 · 블로그·에세이·리포트</a><a class="chip" style="background:#db2777" href="시각조사_원자료/L3_유튜브_팟캐스트_X.html">L3 · 유튜브·팟캐스트·X</a><a class="chip" style="background:#0f766e" href="시각조사_원자료/L4_국내.html">L4 · 국내 포럼·언론·국책연</a><a class="chip" style="background:#ea580c" href="시각조사_원자료/L5_에너지_교차점.html">L5 · 에너지 × 피지컬 AI 교차점</a><a class="chip" style="background:#b91c1c" href="시각조사_원자료/L6_비판_반론.html">L6 · 비판·반론·단위경제·역사</a></div>
+</header>
+<nav class="toc"><div class="meta-label">목차</div><ol><li><a href="#sec-1">0. 세 줄 결론</a></li><li><a href="#sec-2">1. 한눈에 보기 — 가장 참신한 시각 14</a></li><li><a href="#sec-3">2. 2026년 공통 담론 — 피하거나 한 줄로 지나갈 것</a></li><li><a href="#sec-4">3. 새로운 시각 카탈로그</a></li><li><a href="#sec-5">4. 발표 메시지 재점검 — A1~A6, B1~B9</a></li><li><a href="#sec-6">5. 발표용 한 줄 — 비유·인용·숫자</a></li><li><a href="#sec-7">6. 슬라이드 반영 제안 (설계 v2 S번호 기준 — 반영 여부는 사용자 결정)</a></li><li><a href="#sec-8">7. Q&amp;A 예상 질문 (Lane 6 정리 + 보완)</a></li><li><a href="#sec-9">8. 미확인·주의 (발표 인용 전 확인)</a></li><li><a href="#sec-10">9. 원자료 (영역별 전체 항목·URL·인용·검색어)</a></li></ol></nav><blockquote>
+<p><strong>목적</strong> — 발표 메시지를 확정하기 전에, 세계와 국내에서 피지컬 AI를 어떻게 말하고 있는지 훑어 "누구나 하는 이야기"를 걸러내고 <strong>새로운 시각·반직관적 주장·독특한 비유·날카로운 반론</strong>만 추렸다. 이 노트는 발표자가 자기 메시지(A1~A6, B1~B9)를 어디서 날카롭게 하고, 어디서 선점하고, 어디서 수정해야 하는지 판단하는 재료다.</p>
+<p><strong>범위·방법</strong> — 2025-10 ~ 2026-10 우선. 6개 출처 영역을 병렬 조사(글로벌 컨퍼런스·에세이/리포트·유튜브/팟캐스트/X·국내·에너지 교차점·비판/경제학). WebSearch 약 200회 + 원문 직접 확인 약 300개 URL. 영역별 원자료(항목 123개, 출처 URL·인용·신뢰도 포함)는 §9 참조. 본문의 <code>[L2-6]</code>은 원자료 L2(에세이) 6번 항목을 뜻한다.</p>
+<p><strong>신뢰도 표기</strong> — 원자료의 <code>원문 확인 / 2차 보도 / 회사 주장 / 미확인</code>을 그대로 따른다. 발표에 숫자를 쓸 때는 §8 "미확인·주의"를 먼저 볼 것.</p>
+</blockquote>
+<hr>
+<section class="card" style="--acc:#2563eb"><h2 id="sec-1">0. 세 줄 결론</h2>
+<ol>
+<li><strong>에너지 × 피지컬 AI 교차점은 세계적으로도 빈칸이다.</strong> IEA의 Energy and AI 보고서(2025·2026)에 로봇 항목이 없고, 로봇 논문 5만 편 중 지속가능성 언급은 2% 미만, 중국 정책도 '휴머노이드 1만 대'와 'AI+에너지 51개 시나리오'가 서로를 언급하지 않는다. "Joule per Task" 지표를 제안한 문헌도 없다. <strong>발표자의 영토(B3·B8·B2)가 실제로 비어 있음</strong>이 확인됐다.</li>
+<li><strong>A3("현장을 가진 자가 이긴다")는 가장 많이 흔들린다.</strong> 데이터는 마닐라에서 월 $300에 사올 수 있고, 글러브·에고센트릭 데이터는 로봇 없이도 만들어지며, 99% 성공률을 내는 제약된 현장은 더 이상 새 것을 가르치지 않는다. "긁어올 수 없다 <span class="arrow">→</span> 사올 수는 있다 <span class="arrow">→</span> <strong>사올 수 없는 것은 우리 현장의 분포(염해·바람·진흙)와 힘·접촉 데이터</strong>"로 3단 정교화가 필요하다.</li>
+<li><strong>2026년 담론은 '하이프 <span class="arrow">→</span> 검증' 국면이고, 지표가 바뀌고 있다.</strong> 성공률 대신 개입률·가동률·MTBI(평균 개입 간격)·9의 행진. 발표자는 여기에 <strong>동작당 에너지(B8)</strong> 를 얹어 "지표를 제안하는 쪽"에 설 수 있다.</li>
+</ol>
+<hr>
+</section><section class="card" style="--acc:#0f766e"><h2 id="sec-2">1. 한눈에 보기 — 가장 참신한 시각 14</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>시각 (한 줄)</th>
+<th>누가 · 어디 · 언제</th>
+<th>발표 연결</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>"로봇은 수요 인질, 데이터센터는 부유한 수요 관광객"</strong> — 로봇 충전은 배전망에서 데이터센터보다 어려운 부하이자, 500대 시설 = 1MWh 중앙관리 배터리 = 가장 예측 가능한 수요반응 자원</td>
+<td>Mothusi Pahl · T&amp;D World · 2026-03 <a class="ref" href="시각조사_원자료/L2_에세이_리포트.html#item-6" title="L2 · 블로그·에세이·리포트 · 6번 항목">L2-6</a><a class="ref" href="시각조사_원자료/L5_에너지_교차점.html#item-4" title="L5 · 에너지 × 피지컬 AI 교차점 · 4번 항목">L5-4</a></td>
+<td>B2·B7·B9</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>로봇 전력은 공식 통계의 사각지대</strong> — 산업로봇 500만 대가 이미 78TWh(글로벌 데이터센터의 20~25%), 2035년 363TWh. "전력 제약이 로봇 도입의 브레이크". IEA 보고서엔 로봇 항목 없음</td>
+<td>Wood Mackenzie · 2026-08 <a class="ref" href="시각조사_원자료/L5_에너지_교차점.html#item-1" title="L5 · 에너지 × 피지컬 AI 교차점 · 1번 항목">L5-1</a><a class="ref" href="시각조사_원자료/L1_글로벌_컨퍼런스.html#item-6" title="L1 · 글로벌 컨퍼런스·포럼 키노트 · 6번 항목">L1-6</a></td>
+<td>B7·B8</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>휴머노이드의 첫 대량 B2B 고객은 전력회사</strong> — 중국 국가전망 2026년 로봇 8,500대(활선 휴머노이드 500대), 인건비 30만 vs 로봇 100만 위안, 회수 2~3년. 간쑤 활선로봇은 26개 성에 보급</td>
+<td>Jiemian · 2026 / China Daily · 2026-01 <a class="ref" href="시각조사_원자료/L5_에너지_교차점.html#item-7" title="L5 · 에너지 × 피지컬 AI 교차점 · 7번 항목">L5-7</a><a class="ref" href="시각조사_원자료/L5_에너지_교차점.html#item-8" title="L5 · 에너지 × 피지컬 AI 교차점 · 8번 항목">L5-8</a></td>
+<td>B9·B1</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>"기술의 최대 병목은 소프트웨어가 아니라 물리 세계"</strong> — AI는 칩, 칩은 광물, 데이터센터는 그리드가 못 주는 전력. 중장비·광산·발전 = "테크 스택의 보이지 않는 층"</td>
+<td>Joe Creed(Caterpillar CEO) · CES 2026 키노트 <a class="ref" href="시각조사_원자료/L1_글로벌_컨퍼런스.html#item-3" title="L1 · 글로벌 컨퍼런스·포럼 키노트 · 3번 항목">L1-3</a></td>
+<td>A4·A5·B4</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>"10만 년 vs 1년"</strong> — VLM 학습 데이터는 사람이 10만 년 읽을 양, 최대 로봇 데이터셋은 1년치. 유튜브 35,000년치는 3D로 들어올릴 수 없고, 격차는 데이터가 아니라 <strong>현장 ROI 로봇 + 고전 공학</strong>이 메운다</td>
+<td>Ken Goldberg · Science Robotics 2025-08 · ICRA 2026 플레너리 <a class="ref" href="시각조사_원자료/L3_유튜브_팟캐스트_X.html#item-7" title="L3 · 유튜브·팟캐스트·X · 7번 항목">L3-7</a><a class="ref" href="시각조사_원자료/L1_글로벌_컨퍼런스.html#item-1" title="L1 · 글로벌 컨퍼런스·포럼 키노트 · 1번 항목">L1-1</a></td>
+<td>A3·A5</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>'배치 데이터 플라이휠'은 화물 숭배</strong> — 99%를 내는 제약된 현장은 다음 문제를 안 가르친다. 가치는 현장의 양이 아니라 <strong>신규성의 속도</strong>. "학습 데이터의 90%는 소음"</td>
+<td>Chris Paxton · Kyle Vedder(PI) · Saman Farid · 2026-06~07 <a class="ref" href="시각조사_원자료/L2_에세이_리포트.html#item-4" title="L2 · 블로그·에세이·리포트 · 4번 항목">L2-4</a></td>
+<td>A3 정교화 <span class="arrow">→</span> A4</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>"로봇은 서로 다른 실제 장소의 수로 일반화한다 — 지리가 처음으로 중요해진다"</strong> — 104개 장소에서 학습한 모델 = 시험장 안에서 학습한 모델. 베이징은 매년 1,000개 시나리오를 무료 배급</td>
+<td>Bill Nussey · RoboGeorgia 2026-08 <a class="ref" href="시각조사_원자료/L2_에세이_리포트.html#item-18" title="L2 · 블로그·에세이·리포트 · 18번 항목">L2-18</a> / 北京机域 · WRC 2026 <a class="ref" href="시각조사_원자료/L1_글로벌_컨퍼런스.html#item-19" title="L1 · 글로벌 컨퍼런스·포럼 키노트 · 19번 항목">L1-19</a></td>
+<td>B6·A3</td>
+</tr>
+<tr>
+<td>8</td>
+<td><strong>사람 80W vs 휴머노이드 400~1,200W</strong> — 가정 로봇은 97%의 시간 서 있고 그동안 배터리 절반을 '사람 감시'에 쓴다. 2.5kWh 상한과 이족 고유의 음의 피드백. 기관별 전력 가정은 <strong>6배 차이</strong>(연 586kWh vs 3,650kWh) <span class="arrow">→</span> 지표가 없다</td>
+<td>Agro(2026-05) · technologies.org(2026-08) <a class="ref" href="시각조사_원자료/L3_유튜브_팟캐스트_X.html#item-14" title="L3 · 유튜브·팟캐스트·X · 14번 항목">L3-14</a> / WoodMac vs RethinkX <a class="ref" href="시각조사_원자료/L5_에너지_교차점.html#item-2" title="L5 · 에너지 × 피지컬 AI 교차점 · 2번 항목">L5-2</a></td>
+<td><strong>B8 선점</strong></td>
+</tr>
+<tr>
+<td>9</td>
+<td><strong>데이터 노동의 지리학</strong> — 마닐라 '파일럿' 1명이 도쿄 편의점 로봇 50대를 감시, 4% 실패를 VR로 수습, 월 $250~315. 그 개입 데이터는 Physical Intelligence로. Waymo 3,000대엔 원격요원 70명</td>
+<td>Rest of World 2025-10 <a class="ref" href="시각조사_원자료/L2_에세이_리포트.html#item-2" title="L2 · 블로그·에세이·리포트 · 2번 항목">L2-2</a><a class="ref" href="시각조사_원자료/L6_비판_반론.html#item-10" title="L6 · 비판·반론·단위경제·역사 · 10번 항목">L6-10</a> / Waymo 2026-02 <a class="ref" href="시각조사_원자료/L6_비판_반론.html#item-9" title="L6 · 비판·반론·단위경제·역사 · 9번 항목">L6-9</a></td>
+<td>A3·B2 흔듦 <span class="arrow">→</span> 지역 원격운영센터</td>
+</tr>
+<tr>
+<td>10</td>
+<td><strong>지표가 바뀐다</strong> — "90%는 99.9%에 가까운 게 아니다, 오류율 50배"(인내선), "새벽 2시 문제", MTBI·"두 번째 발주서", 개입률이 수익성 결정, 9의 행진</td>
+<td>Nomagic · Jabil · Zukerman · Brooks · Karpathy · 2025~26 <a class="ref" href="시각조사_원자료/L2_에세이_리포트.html#item-5" title="L2 · 블로그·에세이·리포트 · 5번 항목">L2-5</a><a class="ref" href="시각조사_원자료/L2_에세이_리포트.html#item-12" title="L2 · 블로그·에세이·리포트 · 12번 항목">L2-12</a><a class="ref" href="시각조사_원자료/L1_글로벌_컨퍼런스.html#item-10" title="L1 · 글로벌 컨퍼런스·포럼 키노트 · 10번 항목">L1-10</a></td>
+<td>A2·A6·KPI</td>
+</tr>
+<tr>
+<td>11</td>
+<td><strong>양산해도 비용이 안 떨어지는 부품</strong> — 정밀 감속기는 지수곡선이 아니라 학습곡선. 관절 $930<span class="arrow">→</span>$240까지 73%의 거리. 일본은 완성기 84대로도 관절(하모닉 80~90%)로 싸운다. "소프트웨어는 소프트웨어 속도, 하드웨어 인증은 야금 속도"</td>
+<td>36Kr·XenoSpectrum·科技日报 2026 <a class="ref" href="시각조사_원자료/L2_에세이_리포트.html#item-10" title="L2 · 블로그·에세이·리포트 · 10번 항목">L2-10</a> / Daily H.E.A.T. 2026-04 <a class="ref" href="시각조사_원자료/L3_유튜브_팟캐스트_X.html#item-15" title="L3 · 유튜브·팟캐스트·X · 15번 항목">L3-15</a></td>
+<td>A5·B4</td>
+</tr>
+<tr>
+<td>12</td>
+<td><strong>"로봇이 만연한 사회는 에너지적으로 지속 가능한가"</strong> — ICRA 2026 플레너리가 던진 질문. 환경에서 에너지를 '수확'하는 로봇. 로봇 연구는 이 질문을 거의 안 한다(논문 5만 편 중 2%)</td>
+<td>Barbara Mazzolai · ICRA 2026 <a class="ref" href="시각조사_원자료/L1_글로벌_컨퍼런스.html#item-2" title="L1 · 글로벌 컨퍼런스·포럼 키노트 · 2번 항목">L1-2</a> / Hugging Face · arXiv 2026-04 <a class="ref" href="시각조사_원자료/L5_에너지_교차점.html#item-20" title="L5 · 에너지 × 피지컬 AI 교차점 · 20번 항목">L5-20</a></td>
+<td>B8·발표 존재 이유</td>
+</tr>
+<tr>
+<td>13</td>
+<td><strong>코마츠가 B3를 선언했다</strong> — 자율트럭 1,000대 커미셔닝 다음 문장에서 "트롤리선에 연결된 상태로 자율주행하는 전력불문 전동 트럭, 업계 최초"</td>
+<td>Komatsu 뉴스룸 · 2026-04 <a class="ref" href="시각조사_원자료/L5_에너지_교차점.html#item-13" title="L5 · 에너지 × 피지컬 AI 교차점 · 13번 항목">L5-13</a></td>
+<td><strong>B3 선점</strong></td>
+</tr>
+<tr>
+<td>14</td>
+<td><strong>"지능의 70%는 소뇌"</strong> — 사람 뉴런 860억 중 690억이 소뇌. 지금까지 AI가 한 건 30%. 생성형 AI는 1초에 10번, 안전한 로봇은 1,000번. "엔드투엔드와 무조건 많은 데이터"는 답이 아닐 수 있다</td>
+<td>김정 KAIST 교수 · 디지털타임스 2026 <a class="ref" href="시각조사_원자료/L4_국내.html#item-4" title="L4 · 국내 포럼·언론·국책연 · 4번 항목">L4-4</a></td>
+<td>A1·A2</td>
+</tr>
+</tbody>
+</table></div>
+<hr>
+</section><section class="card" style="--acc:#7c3aed"><h2 id="sec-3">2. 2026년 공통 담론 — 피하거나 한 줄로 지나갈 것</h2>
+<p>여섯 영역이 공통으로 "누구나 한다"고 판정한 이야기. 발표에서는 서두 한 줄로 처리하거나, 뒤집는 대상으로만 쓴다.</p>
+<p><strong>글로벌</strong></p>
+<ol>
+<li>"피지컬 AI의 ChatGPT 모먼트가 왔다/곧 온다" (젠슨 황 CES 2026) — Bessemer는 "GPT-2.5", Brooks·Ackerman은 "아직", Wang Xingxing은 "2~3년 또는 5~10년"</li>
+<li>"AI가 디지털에서 물리 세계로" / "모든 산업 기업은 로봇 기업이 된다" — 모든 보고서의 첫 문장</li>
+<li>휴머노이드 수조 달러·10억 대 — 골드만 전망치가 2.5년에 3.6배 뛴 것 자체가 비판 대상</li>
+<li>"데이터 부족이 병목" <span class="arrow">→</span> "시뮬레이션·합성데이터·월드모델로 해결"</li>
+<li>"VLA가 핵심" vs "세계모델이 답" 논쟁 — LeCun은 VLA를 "실패 중"이라 공개 선언</li>
+<li>"중국이 양산에서 앞선다" (2025년 휴머노이드의 86~97% 중국산)</li>
+<li>"노동력 부족·고령화 해결"</li>
+<li>"AI 데이터센터 전력 급증" — 오후 연사(김정호·Liang Min) 영역</li>
+<li>"손·촉각이 병목·하드웨어 르네상스" — 2025년 하반기부터 급속 상식화. <strong>손을 말할 때는 한 단계 더 들어가야 한다</strong>(§3.1의 '다섯 손가락이 되면 카메라가 가려진다')</li>
+<li>"데모에서 배치로" / "데모는 텔레옵" / "휴머노이드 거품 경계" — 리얼리티 체크 기사도 이미 상식</li>
+</ol>
+<p><strong>국내 추가</strong></p>
+<ul>
+<li>"한국은 제조강국·로봇밀도 1위라 유리하다" / "미국은 두뇌, 중국은 양산, 한국은 현장" 삼분법 / "3년 골든타임, 2030년 세계 1강" / "휴머노이드는 피지컬 AI의 정점" / "엔비디아 동맹은 기회" / "규제 샌드박스·칸막이 해소·특별법" 촉구 / "암묵지 데이터화"</li>
+</ul>
+<hr>
+</section><section class="card" style="--acc:#ea580c"><h2 id="sec-4">3. 새로운 시각 카탈로그</h2>
+<h3>3.1 지능은 어디에 있는가 — 뇌·몸·진화 (A1·A2)</h3>
+<p><strong>양 진영이 같은 진단을 한다.</strong> "몸이 병목"은 LLM 진영(Hassabis·LeCun·Karpathy·Fei-Fei Li)과 로봇 진영(Brooks·Finn·Goldberg·김정)이 공유한다. A1은 안전하지만 그 자체로는 차별성이 낮다. 차별화는 <strong>"어떤 몸인가"</strong> 와 <strong>"몸의 지능이란 무엇인가"</strong> 에서 나온다.</p>
+<ul>
+<li><strong>"우리는 동물이 아니라 유령을 소환하고 있다"</strong> — 진화가 몸에 구워 넣은 선탑재(innate priors)가 없는 지능. 문제는 몸의 부재가 아니라 진화적 선탑재의 부재 · Karpathy, Dwarkesh 2025-10 (2차) <a class="ref" href="시각조사_원자료/L3_유튜브_팟캐스트_X.html#item-2" title="L3 · 유튜브·팟캐스트·X · 2번 항목">L3-2</a></li>
+<li><strong>"뇌는 준비됐는데 몸이 뒤처진다" / "안드로이드 플레이"</strong> — 몸은 교체 가능한 단말, 지능은 OS · Hassabis, Davos·WIRED 2025-11~2026-01 (2차) <a class="ref" href="시각조사_원자료/L1_글로벌_컨퍼런스.html#item-18" title="L1 · 글로벌 컨퍼런스·포럼 키노트 · 18번 항목">L1-18</a><a class="ref" href="시각조사_원자료/L3_유튜브_팟캐스트_X.html#item-16" title="L3 · 유튜브·팟캐스트·X · 16번 항목">L3-16</a>. <strong>A1의 정반대 가설이기도 하다</strong> <span class="arrow">→</span> "안드로이드 모델이 맞다면 한국은 단말 제조국이 된다, 그래서 몸의 지능을 우리가 가져야 한다"는 논증에 쓸 수 있음</li>
+<li><strong>"몸은 만들었는데 혼이 공중에 떠 있다"</strong> — 하드웨어 1위 기업 CEO가 "하드웨어는 끝났다", VLA는 "어리석은 구조", 로봇은 "마지막 몇 cm·mm에서 실패", "사람보다 효율이 낮다", ChatGPT 모먼트 = "낯선 장면 80%에서 과업 80%" · Wang Xingxing, WRC 2025·2026 (2차) <a class="ref" href="시각조사_원자료/L3_유튜브_팟캐스트_X.html#item-5" title="L3 · 유튜브·팟캐스트·X · 5번 항목">L3-5</a><a class="ref" href="시각조사_원자료/L1_글로벌_컨퍼런스.html#item-7" title="L1 · 글로벌 컨퍼런스·포럼 키노트 · 7번 항목">L1-7</a></li>
+<li><strong>"4세 아이가 시각으로 본 데이터 = 최대 LLM의 텍스트 전부"</strong>, "AI의 큰 비밀: 계층적 계획을 아무도 못 한다", 17세는 20시간에 운전을 배우는데 업계는 수백만 시간으로도 L5에 못 갔다 · LeCun 2025-09~2026-10 (2차) <a class="ref" href="시각조사_원자료/L2_에세이_리포트.html#item-15" title="L2 · 블로그·에세이·리포트 · 15번 항목">L2-15</a><a class="ref" href="시각조사_원자료/L1_글로벌_컨퍼런스.html#item-11" title="L1 · 글로벌 컨퍼런스·포럼 키노트 · 11번 항목">L1-11</a><a class="ref" href="시각조사_원자료/L3_유튜브_팟캐스트_X.html#item-6" title="L3 · 유튜브·팟캐스트·X · 6번 항목">L3-6</a></li>
+<li><strong>"어둠 속의 문장가(wordsmiths in the dark)"</strong> — 진화에서 공간 지능이 먼저, 언어는 훨씬 뒤 · Fei-Fei Li, HumanX 2026 <a class="ref" href="시각조사_원자료/L1_글로벌_컨퍼런스.html#item-12" title="L1 · 글로벌 컨퍼런스·포럼 키노트 · 12번 항목">L1-12</a></li>
+<li><strong>촉각 17,000개 수용기, 촉각 데이터에는 '전처리 전통'이 없다</strong> — 데이터 양이 아니라 모달리티가 빠졌다. 로봇 크기 1.5배면 낙하 에너지 3.4배 <span class="arrow">→</span> "보행 휴머노이드와 3m 거리". "배치 가능한 손재주는 2036년 이후에도 형편없을 것". 15년 뒤 '휴머노이드'는 바퀴를 달고도 그 이름으로 팔린다 · Rodney Brooks 2025-09·2026-01 (원문) <a class="ref" href="시각조사_원자료/L2_에세이_리포트.html#item-1" title="L2 · 블로그·에세이·리포트 · 1번 항목">L2-1</a><a class="ref" href="시각조사_원자료/L3_유튜브_팟캐스트_X.html#item-3" title="L3 · 유튜브·팟캐스트·X · 3번 항목">L3-3</a><a class="ref" href="시각조사_원자료/L6_비판_반론.html#item-1" title="L6 · 비판·반론·단위경제·역사 · 1번 항목">L6-1</a></li>
+<li><strong>"저수준 운동 제어가 고수준 추론보다 어렵다"</strong> — 박사급 추론을 하는 모델이 컵을 못 잡는 이유 · Chelsea Finn 2025 (2차) <a class="ref" href="시각조사_원자료/L3_유튜브_팟캐스트_X.html#item-11" title="L3 · 유튜브·팟캐스트·X · 11번 항목">L3-11</a></li>
+<li><strong>7B에서 상전이, 1B 모델은 '골화'</strong> — 로봇 스케일링은 LLM과 같은 법칙이되 활성화 문턱이 높다(모라벡 역설의 정량판). 하루 6.85년치 경험 흡수 · Generalist GEN-0 2025-11 (원문) <a class="ref" href="시각조사_원자료/L2_에세이_리포트.html#item-13" title="L2 · 블로그·에세이·리포트 · 13번 항목">L2-13</a></li>
+<li><strong>뇌는 공짜로 온다</strong> — 로봇을 위해 노력하지 않았는데 범용 스케일링의 배당으로 사족로봇 과제가 181분<span class="arrow">→</span>9.5분(Anthropic Project Fetch). 차별화 지점은 더욱 몸·현장·손으로 · Import AI 466, 2026-07 (원문) <a class="ref" href="시각조사_원자료/L2_에세이_리포트.html#item-14" title="L2 · 블로그·에세이·리포트 · 14번 항목">L2-14</a></li>
+<li><strong>"다음 토큰 예측에서 다음 물리 상태 예측으로"</strong> — 월드모델 네 노선 모두 물리 법칙에 못 닿았고, 로봇 벤치마크 순위는 믿을 수 없다 · BAAI 2026-06 (2차) <a class="ref" href="시각조사_원자료/L1_글로벌_컨퍼런스.html#item-8" title="L1 · 글로벌 컨퍼런스·포럼 키노트 · 8번 항목">L1-8</a></li>
+<li><strong>다섯 손가락이 되면 카메라가 가려져 촉각이 필수가 된다</strong> — 두 손가락은 카메라로 변형을 보면 되지만 다섯 손가락은 접촉을 가린다(관측 가능성 문제). 힘줄 vs 직접구동 설계 철학 대립 · Paxton IROS 2026, Humanoids Daily 2026-08 (원문) <a class="ref" href="시각조사_원자료/L2_에세이_리포트.html#item-11" title="L2 · 블로그·에세이·리포트 · 11번 항목">L2-11</a></li>
+<li><strong>'물리적 지능'(집고 옮기기) vs '손재주 지능'(삽입·체결·힘 피드백) 2단계</strong> · CSET 2026-02 (원문) <a class="ref" href="시각조사_원자료/L2_에세이_리포트.html#item-20" title="L2 · 블로그·에세이·리포트 · 20번 항목">L2-20</a></li>
+<li><strong>"지능의 70%는 소뇌", 10Hz vs 1,000Hz, 물 찬 텀블러와 빈 텀블러</strong> · 김정 KAIST 2026 (원문) <a class="ref" href="시각조사_원자료/L4_국내.html#item-4" title="L4 · 국내 포럼·언론·국책연 · 4번 항목">L4-4</a></li>
+<li><strong>"실패의 3분의 2는 마지막 1cm에서"</strong> — 로봇은 물건을 못 찾아 실패하는 게 아니라 찾은 다음 마지막 1cm에서 실패한다. 자동화 비용 중 로봇 본체는 25~40%, 티칭·통합이 50~70% · 박종훈 뉴로메카 2026-10 (원문) <a class="ref" href="시각조사_원자료/L4_국내.html#item-11" title="L4 · 국내 포럼·언론·국책연 · 11번 항목">L4-11</a></li>
+</ul>
+<p><span class="arrow">→</span> <strong>시사</strong>: A1을 "유령에게 몸을 입히는 일"로 압축하고, "몸의 지능 = 촉각·힘·운동 제어(소뇌 70%)"로 구체화. A2는 "마지막 1미터 <span class="arrow">→</span> 마지막 1cm <span class="arrow">→</span> 마지막 몇 개의 9"로 수치화. '휴머노이드'와 '피지컬 AI'를 명확히 분리.</p>
+<h3>3.2 데이터의 경제학 — 긁어올 수 없다, 그러나 (A3)</h3>
+<ul>
+<li><strong>10만 년 vs 1년, 유튜브 35,000년치는 3D로 못 들어올린다</strong> — 격차는 GOFE(Good Old-Fashioned Engineering)+에이전틱 코딩(Code-as-Policy)+현장 ROI 로봇이 메운다. Ambi는 4년간 1억 개 패키지로 22년치 데이터 · Goldberg 2025-08·ICRA 2026 (원문) <a class="ref" href="시각조사_원자료/L3_유튜브_팟캐스트_X.html#item-7" title="L3 · 유튜브·팟캐스트·X · 7번 항목">L3-7</a><a class="ref" href="시각조사_원자료/L1_글로벌_컨퍼런스.html#item-1" title="L1 · 글로벌 컨퍼런스·포럼 키노트 · 1번 항목">L1-1</a></li>
+<li><strong>"실로봇 데이터는 인간 연료, 화석연료보다 나쁘다"</strong> — 시뮬레이션은 '원자력'. 5천 년간 손노동 생산성 정체 · Jim Fan, Sequoia 2025-05 (원문 정리본) <a class="ref" href="시각조사_원자료/L3_유튜브_팟캐스트_X.html#item-4" title="L3 · 유튜브·팟캐스트·X · 4번 항목">L3-4</a><a class="ref" href="시각조사_원자료/L2_에세이_리포트.html#item-16" title="L2 · 블로그·에세이·리포트 · 16번 항목">L2-16</a></li>
+<li><strong>조작은 자율주행보다 어렵지만 플라이휠은 더 쉽게 돈다</strong> — 실수를 교정하며 배울 수 있는 안전 마진. 데이터는 '모으는 것'이 아니라 '유용성 임계점을 넘기면 저절로 생기는 것' · Sergey Levine 2025-09 (2차) <a class="ref" href="시각조사_원자료/L3_유튜브_팟캐스트_X.html#item-1" title="L3 · 유튜브·팟캐스트·X · 1번 항목">L3-1</a></li>
+<li><strong>"영상만 보면 되면 나는 덩크슛을 해야 한다" / "넘어지는 로봇은 서버에 접속할 수 없다"</strong> — 관찰≠행동, 엣지 추론은 물리 법칙이 결정 · Pathak·Gupta(Skild) 2026-04 (2차) <a class="ref" href="시각조사_원자료/L3_유튜브_팟캐스트_X.html#item-9" title="L3 · 유튜브·팟캐스트·X · 9번 항목">L3-9</a></li>
+<li><strong>배치 플라이휠은 화물 숭배 — 가치는 신규성의 속도</strong> · Paxton·Vedder 2026 (원문) <a class="ref" href="시각조사_원자료/L2_에세이_리포트.html#item-4" title="L2 · 블로그·에세이·리포트 · 4번 항목">L2-4</a></li>
+<li><strong>환경·객체 다양성 &gt; 데모 수</strong> — 환경당 데모 수가 임계를 넘으면 추가 효과 미미. "수집자 4명이 한 오후에" 모은 데이터로 신규 환경 ~90% · Lin 외(칭화) arXiv 2026-06 (원문) <a class="ref" href="시각조사_원자료/L6_비판_반론.html#item-6" title="L6 · 비판·반론·단위경제·역사 · 6번 항목">L6-6</a></li>
+<li><strong>"지리가 처음으로 중요해진다"</strong> — 로봇은 서로 다른 실제 장소의 수로 일반화. "하적장은 아주 조금만 가상화할 수 있다" · Nussey 2026-08 (원문) <a class="ref" href="시각조사_원자료/L2_에세이_리포트.html#item-18" title="L2 · 블로그·에세이·리포트 · 18번 항목">L2-18</a></li>
+<li><strong>텔레옵은 땜질이 아니라 사업모델</strong> — "자율이라 명시하지 않은 데모는 텔레옵으로 간주", 운영자:로봇 비율이 손익계산서, 5G 산업 수요의 실체 · Lunar Ventures·ABI·Robot Report 2025-12~2026-02 (원문) <a class="ref" href="시각조사_원자료/L2_에세이_리포트.html#item-3" title="L2 · 블로그·에세이·리포트 · 3번 항목">L2-3</a></li>
+<li><strong>"2026년에 이 제품을 사는 건 그 사회계약에 동의한 것"</strong> — 1X NEO는 고객 집에서 돌아가는 데이터 수집 계약 · Børnich, WSJ 2025-10 (2차) <a class="ref" href="시각조사_원자료/L3_유튜브_팟캐스트_X.html#item-13" title="L3 · 유튜브·팟캐스트·X · 13번 항목">L3-13</a></li>
+<li><strong>마닐라 파일럿, 시급 $1.5 데이터 노동, 로봇 데이터 0으로 학습(Sunday ACT-1), XDOF·Mecka 데이터 노동시장</strong> — 긁어올 수 없지만 국경 너머에서 제조된다 · Rest of World·36Kr·TechCrunch 2025~26 (원문) <a class="ref" href="시각조사_원자료/L2_에세이_리포트.html#item-2" title="L2 · 블로그·에세이·리포트 · 2번 항목">L2-2</a><a class="ref" href="시각조사_원자료/L6_비판_반론.html#item-6" title="L6 · 비판·반론·단위경제·역사 · 6번 항목">L6-6</a></li>
+<li><strong>"기계 안에서 로컬로 도는 AI = 운영자의 데이터 주권"</strong> — 유럽 산업계는 피지컬 AI를 '어디서 추론하느냐'로 정의 · Beckhoff, Hannover Messe 2026-04 (원문) <a class="ref" href="시각조사_원자료/L1_글로벌_컨퍼런스.html#item-14" title="L1 · 글로벌 컨퍼런스·포럼 키노트 · 14번 항목">L1-14</a></li>
+<li><strong>중국은 시나리오를 배급한다</strong> — 北京机域 12km², 매년 1,000개 응용 시나리오 무료 시범 · 2026-08 (원문) <a class="ref" href="시각조사_원자료/L1_글로벌_컨퍼런스.html#item-19" title="L1 · 글로벌 컨퍼런스·포럼 키노트 · 19번 항목">L1-19</a></li>
+<li><strong>"로봇 100~1,000대를 깔아도 AI는 고도화되지 않는다"</strong> — 실증이 사업 안에 갇힘. 행동 데이터 표준 6요소(작업·동작·대상·공간·시간·<strong>사건</strong>) — 이벤트가 빠지면 '실패에서 배우지 못하는 AI'. 통신 목표는 '5ms보다 매번 일정한 20ms' · 김욱 IITP·손병희·이종식 KT 2026 (원문) <a class="ref" href="시각조사_원자료/L4_국내.html#item-5" title="L4 · 국내 포럼·언론·국책연 · 5번 항목">L4-5</a></li>
+<li><strong>"한국 로봇기업 100개가 하루 1만 시간씩 쌓아도 따라잡기 버겁다"</strong> — AgiBot은 센터 1곳에서 하루 1만 시간, 전국 10곳 · 이코노믹리뷰 2026-06 (원문) <a class="ref" href="시각조사_원자료/L4_국내.html#item-3" title="L4 · 국내 포럼·언론·국책연 · 3번 항목">L4-3</a></li>
+<li><strong>"엔비디아는 제조 데이터가 없어서 한국과 협력한다"</strong> — 현장 데이터는 협상력. GR00T 레퍼런스 공급망(젯슨·유니트리·샤파)에 한국 부재 · 조준희 KOSA 외 2026-06~07 (원문) <a class="ref" href="시각조사_원자료/L4_국내.html#item-12" title="L4 · 국내 포럼·언론·국책연 · 12번 항목">L4-12</a></li>
+<li><strong>긁어올 수 없는 데이터는 노동자의 몸에서 나온다</strong> — 특별법의 얼굴·음성 원본 무동의 수집 특례 논란, "숙련은 재고처럼 쌓아둘 수 없다", 데이터 제공자가 해고되는 구조에서는 데이터가 안 나온다 · 미디어오늘·서용석·오준호(기본소득당) 2026 (원문) <a class="ref" href="시각조사_원자료/L4_국내.html#item-8" title="L4 · 국내 포럼·언론·국책연 · 8번 항목">L4-8</a><a class="ref" href="시각조사_원자료/L4_국내.html#item-10" title="L4 · 국내 포럼·언론·국책연 · 10번 항목">L4-10</a></li>
+</ul>
+<p><span class="arrow">→</span> <strong>시사</strong>: A3를 3단으로 — "① 긁어올 수 없다(Bessemer·Goldberg) <span class="arrow">→</span> ② 사올 수는 있다(마닐라·글러브) <span class="arrow">→</span> ③ 사올 수 없는 것은 <strong>우리 현장의 분포</strong>(염해·바람·진흙·한국형 설비)와 <strong>힘·접촉·실패 데이터</strong>". "현장"을 "다양한·비정형 현장"으로 바꾸면 A4와 하나로 묶인다. 데이터 거버넌스(동의·보상·주권)는 "지속 가능한 생태계"의 조건.</p>
+<h3>3.3 신뢰성·지표·시간 — 하이프에서 검증으로 (A2·A6)</h3>
+<ul>
+<li><strong>"9의 행진" — 자릿수마다 같은 양의 일, 데모는 첫 번째 9. "비트는 원자보다 백만 배 쉽다"</strong> · Karpathy 2025-10 (원문) <a class="ref" href="시각조사_원자료/L1_글로벌_컨퍼런스.html#item-10" title="L1 · 글로벌 컨퍼런스·포럼 키노트 · 10번 항목">L1-10</a></li>
+<li><strong>99.9%의 인내선 — "90%는 99.9%에 가까운 게 아니다, 오류율 50배". 디지털 실패는 프롬프트를 고치고, 물리 실패는 로봇을 치운다. 승자의 소리는 "지루한 침묵"</strong> · Nomagic 2026 (원문) <a class="ref" href="시각조사_원자료/L2_에세이_리포트.html#item-5" title="L2 · 블로그·에세이·리포트 · 5번 항목">L2-5</a></li>
+<li><strong>"새벽 2시 문제" — 80%는 쉽고 99.9%는 지수적으로 어렵다. 휴머노이드가 매력적인 진짜 이유는 감가상각이 여러 해에 걸친다는 것</strong> · Thomas Brown(Jabil) 2026 (원문) <a class="ref" href="시각조사_원자료/L2_에세이_리포트.html#item-5" title="L2 · 블로그·에세이·리포트 · 5번 항목">L2-5</a></li>
+<li><strong>MTBI(평균 개입 간격)가 가장 중요하지만 가장 안 공개되는 지표. "진짜 시험은 두 번째 발주서"</strong> · Zukerman, Robot Report 2026-10 (원문) <a class="ref" href="시각조사_원자료/L2_에세이_리포트.html#item-12" title="L2 · 블로그·에세이·리포트 · 12번 항목">L2-12</a></li>
+<li><strong>"핵심 지표는 개입률 — 그것이 수익성을 결정한다"</strong>; 기술의 네 시간 척도(연구 10~20년·하이프·확산 20년+·경제 재편 50년) · Brooks 2026 (원문) <a class="ref" href="시각조사_원자료/L1_글로벌_컨퍼런스.html#item-9" title="L1 · 글로벌 컨퍼런스·포럼 키노트 · 9번 항목">L1-9</a></li>
+<li><strong>"휴머노이드는 마라톤 5km 지점"</strong> · DLR·VDMA "Humanoid Robotics 2040" 2026-04 (원문) <a class="ref" href="시각조사_원자료/L1_글로벌_컨퍼런스.html#item-15" title="L1 · 글로벌 컨퍼런스·포럼 키노트 · 15번 항목">L1-15</a></li>
+<li><strong>"로봇은 달리는 법을 배웠다. 아무도 멈추는 법을 가르치지 않았다"</strong> — 100m 8.86초와 허리 꺾임이 같은 대회에 · 세계휴머노이드로봇게임 2026-08 (원문/기록은 2차) <a class="ref" href="시각조사_원자료/L1_글로벌_컨퍼런스.html#item-17" title="L1 · 글로벌 컨퍼런스·포럼 키노트 · 17번 항목">L1-17</a></li>
+<li><strong>"과업의 99%는 여전히 자동화되지 않았다"</strong> — 로봇 공급사가 키노트 제목으로. 보스턴다이내믹스 "아틀라스는 먼저 고객 가치를 증명해야" · Automate 2026-06 (원문) <a class="ref" href="시각조사_원자료/L1_글로벌_컨퍼런스.html#item-20" title="L1 · 글로벌 컨퍼런스·포럼 키노트 · 20번 항목">L1-20</a></li>
+<li><strong>단위경제의 민낯</strong> — Figure×BMW '함대'의 실체는 로봇 1대·비생산시간·10개월 1,250시간, 첫 고장은 AI가 아니라 전완부 <strong>열</strong>. Agility 상장 서류는 매출 비공개·연 $1억 현금소진. IFR 2026: 2025년 풀사이즈 휴머노이드 약 7,000대, "강한 비즈니스 케이스 부재" · Fortune·GeekWire·IFR (원문) <a class="ref" href="시각조사_원자료/L6_비판_반론.html#item-4" title="L6 · 비판·반론·단위경제·역사 · 4번 항목">L6-4</a><a class="ref" href="시각조사_원자료/L6_비판_반론.html#item-5" title="L6 · 비판·반론·단위경제·역사 · 5번 항목">L6-5</a></li>
+<li><strong>중국 정부가 거품을 경고한다</strong> — NDRC "기술경로·비즈니스모델·응용 모두 미성숙", '상업 주문'의 절반 이상이 PR·데이터 수집용, 1만 대 배치 의무 vs 개념검증 통과 기업 0 · Bloomberg·Caixin·36Kr 2025-11~2026-06 (원문) <a class="ref" href="시각조사_원자료/L6_비판_반론.html#item-8" title="L6 · 비판·반론·단위경제·역사 · 8번 항목">L6-8</a></li>
+<li><strong>VLA의 '능력 환상'</strong> — 분포가 바뀌면 GPT-5·π0·Magma 모두 파국적 저하. 교란을 하나씩 통과해도 동시에 가하면 실패. 실외 현장은 복합 교란의 극단 · MultiNet·LIBERO-X·Colosseum 2025-12~2026-09 (초록) <a class="ref" href="시각조사_원자료/L6_비판_반론.html#item-7" title="L6 · 비판·반론·단위경제·역사 · 7번 항목">L6-7</a></li>
+<li><strong>생산성 역설의 귀환</strong> — 경영진 6,000명 중 약 90% "지난 3년 AI는 고용·생산성에 영향 없음" · NBER 2026 (원문) <a class="ref" href="시각조사_원자료/L6_비판_반론.html#item-12" title="L6 · 비판·반론·단위경제·역사 · 12번 항목">L6-12</a></li>
+<li><strong>"로봇 거품은 없다, 돈이 모자란다"</strong> — 5년간 $3천만+ 조달 소프트웨어 745개 vs 로봇 42개. 첫 $500억 IPO는 방산 로봇 · Bessemer 2026-04 (원문) <a class="ref" href="시각조사_원자료/L2_에세이_리포트.html#item-19" title="L2 · 블로그·에세이·리포트 · 19번 항목">L2-19</a></li>
+</ul>
+<p><span class="arrow">→</span> <strong>시사</strong>: 낙관파(Bessemer·NVIDIA)와 회의파(Brooks·LeCun)가 <strong>같은 사실</strong>에 동의한다 — 차이는 시간 선호뿐 <a class="ref" href="시각조사_원자료/L6_비판_반론.html#item-19" title="L6 · 비판·반론·단위경제·역사 · 19번 항목">L6-19</a>. 발표자는 "검증 가능한 숫자만 쓰는 중립 연구자"로 포지셔닝. KPI 제안: 가동률·개입률·사고율 + 동작당 에너지. A6는 "동작마다 비용, <strong>그리고 동작마다 열</strong>".</p>
+<h3>3.4 몸의 공학과 공급망 (A5·B4)</h3>
+<ul>
+<li><strong>정밀 감속기는 학습곡선</strong> — 반도체는 계단식 하락이지만 기어면 연삭·측정·조립은 축소되지 않는다. 손의 '불가능 삼각형'(성능·비용·신뢰성), 촉각센서 100만 회 열화(양산 기준 500만 회), "전시장에선 되고 생산라인에선 멈춘다(展厅好用、产线失灵)". 2025년 생산 2만 대 중 실가동 약 10%, "'원년'이 세 번 왔다" · 36Kr·澎湃·科技日报·XenoSpectrum 2026 (원문) <a class="ref" href="시각조사_원자료/L2_에세이_리포트.html#item-10" title="L2 · 블로그·에세이·리포트 · 10번 항목">L2-10</a></li>
+<li><strong>"뇌는 다운로드되지만 몸은 주조된다"</strong> — BOM의 50%+가 액추에이터, Unitree G1 $16,000 vs 서구 동급 $48,000~80,000, 차이는 거의 전부 액추에이터 스택 · Daily H.E.A.T. 2026-04 (2차) <a class="ref" href="시각조사_원자료/L3_유튜브_팟캐스트_X.html#item-15" title="L3 · 유튜브·팟캐스트·X · 15번 항목">L3-15</a></li>
+<li><strong>갑각류화(carcinization)</strong> — 서로 다른 계통이 게로 수렴하듯 로봇도 과업·지형·맥락으로 다양화. Atlas 이동비용 ~3.3 vs 사람 ~0.2(15배), 바퀴 대비 최대 300배. 보스턴다이내믹스 매출은 바퀴(Stretch)와 네발(Spot)에서. "utility trumps anatomy" · Lux Capital 2025-07 (원문) <a class="ref" href="시각조사_원자료/L2_에세이_리포트.html#item-12" title="L2 · 블로그·에세이·리포트 · 12번 항목">L2-12</a></li>
+<li><strong>"다섯 손가락이 첫 희생양, 다음은 다리"</strong>; 로봇을 고칠까 시설을 고칠까(그린필드=전용 형태, 브라운필드=사람 호환) · Heater(A3)·Zukerman 2025~26 (원문) <a class="ref" href="시각조사_원자료/L2_에세이_리포트.html#item-12" title="L2 · 블로그·에세이·리포트 · 12번 항목">L2-12</a></li>
+<li><strong>"자동차에 다리가 없듯 가정 로봇에도"</strong> — 비상정지 시 2족은 아래 있는 것(환자 포함) 위로 무너진다 · Henry Evans·Hello Robot, IEEE Spectrum 2026-05 (원문) <a class="ref" href="시각조사_원자료/L6_비판_반론.html#item-14" title="L6 · 비판·반론·단위경제·역사 · 14번 항목">L6-14</a></li>
+<li><strong>휴머노이드 서밋 안에서도 바퀴형 전환</strong> — Sanctuary는 유압 손을 가지고도 평행 그리퍼로 99.5% · Humanoids Summit Tokyo 2026-05 (현장 리포트) <a class="ref" href="시각조사_원자료/L1_글로벌_컨퍼런스.html#item-16" title="L1 · 글로벌 컨퍼런스·포럼 키노트 · 16번 항목">L1-16</a></li>
+<li><strong>한국판 폼팩터 회의론</strong> — 레이버트 "네 발 로봇도 두 발만큼 휴머노이드적", 황보제민 "양팔·양손 안 쓰는 곳에서 휴머노이드는 비효율 플랫폼", 오준호 "두 다리·양팔·손가락 5개가 꼭 투입되어야 하는가는 별개", 서형주 "수십 년 공학적 최적화의 결과물을 왜 사람 모양으로". <strong>휴머노이드 수요는 '공장을 다시 짓지 않으려는 레거시 비용'에서 나온다</strong>(샤오미 다크팩토리 vs 사람 위주 한국 공장) · 서울신문·아이티데일리·로봇신문·이코노미스트 2026 (원문) <a class="ref" href="시각조사_원자료/L4_국내.html#item-7" title="L4 · 국내 포럼·언론·국책연 · 7번 항목">L4-7</a></li>
+<li><strong>"다음 원자재 전장은 휴머노이드"</strong> — 대당 희토류 1~2kg, 구리 4~8kg, 배터리 금속 4~8kg. 2050년 연 4억 대면 구리 240만 톤 · CRU 2025-10 (원문) <a class="ref" href="시각조사_원자료/L5_에너지_교차점.html#item-18" title="L5 · 에너지 × 피지컬 AI 교차점 · 18번 항목">L5-18</a></li>
+<li><strong>2025-04 중국 7종 희토류 수출통제로 Optimus 차질</strong> — "모터·기어박스·액추에이터… 기존 공급망이 없다. 1만 종 부품은 가장 느리고 운 없는 부품 속도로 움직인다" · Musk, Tesla 실적발표 2025-04 (원문) <a class="ref" href="시각조사_원자료/L6_비판_반론.html#item-17" title="L6 · 비판·반론·단위경제·역사 · 17번 항목">L6-17</a>. K-Scale 폐업 자평 "미국은 공급망 능력을 잃었다" <a class="ref" href="시각조사_원자료/L6_비판_반론.html#item-8" title="L6 · 비판·반론·단위경제·역사 · 8번 항목">L6-8</a></li>
+<li><strong>Unitree Go1 1,919대 사전설치 원격접속 터널(MIT·CMU 포함), G1은 300초마다 텔레메트리 전송</strong> — 최저가 공급자가 곧 데이터 수신자 · CyberInsider·arXiv 2025 (원문) <a class="ref" href="시각조사_원자료/L6_비판_반론.html#item-16" title="L6 · 비판·반론·단위경제·역사 · 16번 항목">L6-16</a></li>
+<li><strong>"로봇 열어보면 일본산"</strong> — 하모닉 73%·나브테스코 60%, 한국 부품 국산화율 40%대. "승부는 단품이 아니라 시스템 설계". 성정민(맥킨지) "탈중국이 아닌 용중국(用中國)" · 머니투데이·파이낸셜뉴스 2026 (원문) <a class="ref" href="시각조사_원자료/L4_국내.html#item-18" title="L4 · 국내 포럼·언론·국책연 · 18번 항목">L4-18</a></li>
+<li><strong>"똑같은 액추에이터가 중국산 50만 원, 국산 200만 원"</strong>, 로봇기업 82%가 R&amp;D 실적 0, "정부는 연구비 주는 사람이 아니라 <strong>첫 고객</strong>이어야" · 매경·지디넷 2026 (원문) <a class="ref" href="시각조사_원자료/L4_국내.html#item-13" title="L4 · 국내 포럼·언론·국책연 · 13번 항목">L4-13</a></li>
+<li><strong>에너지 투자자의 로봇 성적표</strong> — 센서 A, 인식 A, 근육 B+, 판단 D, 손 D. "로봇은 모든 비용곡선을 공짜로 얻었는데도 부족하다" · Nussey 2026-08 (원문) <a class="ref" href="시각조사_원자료/L2_에세이_리포트.html#item-18" title="L2 · 블로그·에세이·리포트 · 18번 항목">L2-18</a></li>
+<li><strong>"한국·싱가포르의 로봇밀도 1위는 정부 지시가 아니라 경제 논리"</strong>, 일본·독일의 '숨은 거인'이 초크포인트 · CSET 2026-02 (원문) <a class="ref" href="시각조사_원자료/L2_에세이_리포트.html#item-20" title="L2 · 블로그·에세이·리포트 · 20번 항목">L2-20</a></li>
+</ul>
+<p><span class="arrow">→</span> <strong>시사</strong>: A5의 곱셈에 "기계 정밀 공급망(감속기·자석·전력반도체)" 항목을 명시. B4는 "같은 공급망 = <strong>같은 급소</strong>"를 수용하고 <span class="arrow">→</span> 공급망 정책을 로봇·에너지 통합으로, 회수(B5)를 희토류·리튬 국내 순환의 입구로, 에너지 현장 로봇에 펌웨어 감사·데이터 주권 요건을 — 반론을 정책 논거로 전환.</p>
+<h3>3.5 로봇의 전기 — Energy for Physical AI (B7·B8·B2)</h3>
+<ul>
+<li><strong>산업로봇 500만 대 = 78TWh = 글로벌 데이터센터의 20~25%</strong>, 2035년 363TWh(프랑스 원전 373TWh). 로봇은 "전력 인프라에 대한 두 번째의, 거의 모델링되지 않은 수요". 휴머노이드는 2035년에도 6TWh(1.7%), G1 1대 연 전기료 $82 · Wood Mackenzie 2026-08 (원문) <a class="ref" href="시각조사_원자료/L5_에너지_교차점.html#item-1" title="L5 · 에너지 × 피지컬 AI 교차점 · 1번 항목">L5-1</a><a class="ref" href="시각조사_원자료/L5_에너지_교차점.html#item-2" title="L5 · 에너지 × 피지컬 AI 교차점 · 2번 항목">L5-2</a></li>
+<li><strong>IEA Energy and AI(2025-04)·Key Questions(2026-04)에 로봇 항목 없음</strong> — 직접 확인 <a class="ref" href="시각조사_원자료/L5_에너지_교차점.html#sec-b" title="L5 · 에너지 × 피지컬 AI 교차점 · (b) 절">L5-(b)</a></li>
+<li><strong>수요 인질 vs 수요 관광객</strong> — 창고 로봇 가동 0.5~3kW·충전 1~7kW, 휴머노이드 50% 대체 시 27TWh(미국 EV의 3.5배), 송전 변압기 리드타임 128주. 반전: "500대 시설 = 최대 1MWh 중앙관리 배터리 <span class="arrow">→</span> 수요반응·보조서비스 자원". "로봇 충전을 계획에 넣는 첫 유틸리티의 관할구역이 다음 세대 자동화 물류의 입지가 된다" · Pahl, T&amp;D World 2026-03 (원문) <a class="ref" href="시각조사_원자료/L2_에세이_리포트.html#item-6" title="L2 · 블로그·에세이·리포트 · 6번 항목">L2-6</a><a class="ref" href="시각조사_원자료/L5_에너지_교차점.html#item-4" title="L5 · 에너지 × 피지컬 AI 교차점 · 4번 항목">L5-4</a></li>
+<li><strong>로봇은 '이동형 ESS' — R2G(Robot-to-Grid), 가상관성·주파수 조정</strong> — 호남을 "남는 전기를 버리는 지역이 아니라 가장 똑똑하게 쓰는 지역"으로 · 남도일보 에코칼럼 2026 (원문, 필자·일자 미확인) <a class="ref" href="시각조사_원자료/L4_국내.html#item-1" title="L4 · 국내 포럼·언론·국책연 · 1번 항목">L4-1</a>. <strong>주의</strong>: 로봇 배터리는 0.85~2.3kWh로 작아 과장 위험 <span class="arrow">→</span> "방향"으로만</li>
+<li><strong>휴머노이드 10억 대 = 세계 전력 11~12%, 그러나 자기강화 루프</strong> — "로봇이 자기를 먹이는 태양광·풍력·배터리를 제조·설치·유지하고, 싸진 청정전력이 로봇 노동을 더 싸게 만든다" · RethinkX 2026-06 (원문, 낙관 편향 기관) <a class="ref" href="시각조사_원자료/L2_에세이_리포트.html#item-8" title="L2 · 블로그·에세이·리포트 · 8번 항목">L2-8</a><a class="ref" href="시각조사_원자료/L5_에너지_교차점.html#item-3" title="L5 · 에너지 × 피지컬 AI 교차점 · 3번 항목">L5-3</a></li>
+<li><strong>기관 간 전력 가정 6배 차이</strong>(WoodMac 연 586kWh vs RethinkX 연 3,650kWh) <span class="arrow">→</span> <strong>동작당 에너지 지표가 없다는 증거</strong> <a class="ref" href="시각조사_원자료/L5_에너지_교차점.html#item-2" title="L5 · 에너지 × 피지컬 AI 교차점 · 2번 항목">L5-2</a></li>
+<li><strong>97% 정지, 감시 전력 47%, 2.5kWh 상한, 이족의 음의 피드백</strong> — "로봇은 거의 움직이지 않으면서 환경을 '보는' 데 배터리의 절반을 태운다". 지능이 수렴하면 경쟁우위는 팩 아키텍처·열설계·교체 기구로 · Agro·technologies.org 2026 (2차) <a class="ref" href="시각조사_원자료/L3_유튜브_팟캐스트_X.html#item-14" title="L3 · 유튜브·팟캐스트·X · 14번 항목">L3-14</a></li>
+<li><strong>모터 효율 80%가 감속기를 거치면 40%</strong> — "전기 사용량이 경쟁력 지표가 된다" · Robeco 2026-06 (원문) <a class="ref" href="시각조사_원자료/L5_에너지_교차점.html#item-5" title="L5 · 에너지 × 피지컬 AI 교차점 · 5번 항목">L5-5</a></li>
+<li><strong>Figure 03 발바닥 2kW 무선충전, Walker S2 3분 자율 교체·"작업 우선순위에 따라 교체/충전 자율 선택"</strong> — 로봇은 이미 '언제 충전할지 스스로 결정하는 부하' <span class="arrow">→</span> B2는 양산 로봇 기능 위에 올라탄다 · Figure·UBTech 2025 (회사 주장) <a class="ref" href="시각조사_원자료/L5_에너지_교차점.html#item-6" title="L5 · 에너지 × 피지컬 AI 교차점 · 6번 항목">L5-6</a></li>
+<li><strong>"켤 전기가 없다"</strong> — 수백 대 동시 급속충전이 공장 피크를 만든다(모상우 POSTECH). "배터리 무게의 역설"은 고정 전력설비가 없는 건설·농업·재난 현장에서 더 뼈아프다. CES 2026 참관자들이 공통으로 꼽은 것은 동작이 아니라 "가동 시간·충전 방식·전력 소모" · 더비즈·경향 2026 (원문) <a class="ref" href="시각조사_원자료/L4_국내.html#item-2" title="L4 · 국내 포럼·언론·국책연 · 2번 항목">L4-2</a></li>
+<li><strong>AI 에이전트 질의 1건 348Wh, 생성형 단순 질의의 136.5배</strong> — 지능이 행동으로 갈수록 에너지 청구서가 커진다 · KAIST 유민수, HPCA 2026 (원문) <a class="ref" href="시각조사_원자료/L4_국내.html#item-2" title="L4 · 국내 포럼·언론·국책연 · 2번 항목">L4-2</a></li>
+<li><strong>로봇 1대마다 전용 GPU 파이프라인</strong> — 텍스트 모델은 수천 요청을 배치하지만 로봇 추론은 배치 불가 · Bessemer 2026 (원문) <a class="ref" href="시각조사_원자료/L2_에세이_리포트.html#item-13" title="L2 · 블로그·에세이·리포트 · 13번 항목">L2-13</a></li>
+<li><strong>"로봇이 만연한 사회는 에너지적으로 지속 가능한가" — 환경(공기 습도 변화 등)에서 에너지를 수확하는 생물학적 절약 로봇</strong> · Mazzolai ICRA 2026 플레너리 / Rus "에너지 효율 모델이 피지컬 지능의 전제" (원문) <a class="ref" href="시각조사_원자료/L1_글로벌_컨퍼런스.html#item-2" title="L1 · 글로벌 컨퍼런스·포럼 키노트 · 2번 항목">L1-2</a></li>
+<li><strong>"곧 켤 수 있는 것보다 많은 칩을 만들게 된다" — 제약은 자본이 아니라 전력·질량</strong> · Musk, Davos 2026-01 (원문/일부 2차) <a class="ref" href="시각조사_원자료/L1_글로벌_컨퍼런스.html#item-5" title="L1 · 글로벌 컨퍼런스·포럼 키노트 · 5번 항목">L1-5</a>. <strong>5층 케이크의 맨 아래는 에너지, "전기기술자·배관공 임금이 거의 두 배"</strong> · Jensen Huang, Davos 2026 (원문) <a class="ref" href="시각조사_원자료/L1_글로벌_컨퍼런스.html#item-4" title="L1 · 글로벌 컨퍼런스·포럼 키노트 · 4번 항목">L1-4</a></li>
+<li><strong>IMF '일반화된 제번스 역설'</strong> — 효율이 오르면 총소비가 늘었고, 2025년 AI 붐은 가스터빈 부족과 석탄 회귀를 불렀다 · IMF WP/26/157 2026-07 (원문) <a class="ref" href="시각조사_원자료/L5_에너지_교차점.html#item-21" title="L5 · 에너지 × 피지컬 AI 교차점 · 21번 항목">L5-21</a></li>
+<li><strong>로봇 자체의 폐기물</strong> — AI 인프라 전자폐기물 2030년 연 250만 톤(UNU, 로봇 미포함), 휴머노이드 수명종료 폐기물이 ES&amp;T에 등장(제목만 확인) <a class="ref" href="시각조사_원자료/L6_비판_반론.html#item-18" title="L6 · 비판·반론·단위경제·역사 · 18번 항목">L6-18</a></li>
+<li><strong>동작당 에너지의 학술적 싹</strong> — 로봇 코드 성능을 전력 프로파일로 평가(SDU 2025-08), 액추에이터 효율·열 지속성 점수(HLAS 2025-11). "Joule per Task" 명명 문헌은 없음 · (초록) <a class="ref" href="시각조사_원자료/L5_에너지_교차점.html#item-22" title="L5 · 에너지 × 피지컬 AI 교차점 · 22번 항목">L5-22</a></li>
+</ul>
+<p><span class="arrow">→</span> <strong>시사</strong>: B7 "분산형 수요"를 "<strong>배전망의 모델링되지 않은 부하 + 중앙관리 배터리</strong>"로 구체화. B2는 R2G·충전 자율 선택·오프그리드 야간 트랙터(Monarch)로 물리적 형태를 얻음. <strong>B8은 가장 큰 기회</strong> — "토큰당 전력은 측정되는데 동작당 에너지는 기관마다 6배씩 다르다. 지표를 만드는 쪽이 룰을 만든다". 리바운드·폐기물 질문에는 B8로 먼저 답한다.</p>
+<h3>3.6 에너지 전환의 손 — Physical AI for Energy (B1·B3·B5·B9)</h3>
+<ul>
+<li><strong>국가전망 2026년 로봇 8,500대·68억 위안</strong> — 사족 점검 5,000대, 활선 휴머노이드 500대, 양팔 3,000대. 점검 인력 연 30만 vs 로봇 100만 위안, 회수 2~3년, 고위험 노출 90% 감소. 2027년 핵심 지역 보급 80%+ · Jiemian 2026 (원문; 기사 내 "$9.4B"는 환산 오류, 약 $1B) <a class="ref" href="시각조사_원자료/L5_에너지_교차점.html#item-7" title="L5 · 에너지 × 피지컬 AI 교차점 · 7번 항목">L5-7</a></li>
+<li><strong>간쑤 활선로봇 — 접지링 60분<span class="arrow">→</span>25분, 26개 성·시 전력회사 배치</strong> · China Daily 2026-01 (원문) <a class="ref" href="시각조사_원자료/L5_에너지_교차점.html#item-8" title="L5 · 에너지 × 피지컬 AI 교차점 · 8번 항목">L5-8</a></li>
+<li><strong>드론 가선 — Infravision 3,000마일 설치·백로그 5만 마일, "미국에서 한 분기에 전년 총량보다 많이 설치", "세계는 발전 문제가 아니라 송전 문제". 호주 Transgrid HumeLink 500kV 공식 채택</strong> · 2026-03~04 (원문, 회사 주장 포함) <a class="ref" href="시각조사_원자료/L5_에너지_교차점.html#item-12" title="L5 · 에너지 × 피지컬 AI 교차점 · 12번 항목">L5-12</a></li>
+<li><strong>"10주에 1GW를 설치하겠다"</strong> — Terabase 현장 공장 2분 사이클·라인당 주 20MW. DOE 250만 달러 종자 <span class="arrow">→</span> 시리즈C 1.3억 달러 · pv magazine 2026-04 (원문) <a class="ref" href="시각조사_원자료/L5_에너지_교차점.html#item-10" title="L5 · 에너지 × 피지컬 AI 교차점 · 10번 항목">L5-10</a></li>
+<li><strong>"태양광 성장의 한계는 사람 수"</strong> — Rosendin 2인 크루가 8시간에 모듈 350~400장(수동 3~4인 대비 3배), 발상은 전기 노동자의 신체 부담 경감에서 · 2025 (원문) <a class="ref" href="시각조사_원자료/L5_에너지_교차점.html#item-11" title="L5 · 에너지 × 피지컬 AI 교차점 · 11번 항목">L5-11</a></li>
+<li><strong>"비싼 건 블레이드가 아니라 배"</strong> — 해상풍력 블레이드 보수 27분/하루 8장(Ørsted·Clobotics, Horns Rev 2), 선박·인력이 점검비의 80~90% · 2026-05~09 (회사 주장/2차) <a class="ref" href="시각조사_원자료/L5_에너지_교차점.html#item-14" title="L5 · 에너지 × 피지컬 AI 교차점 · 14번 항목">L5-14</a></li>
+<li><strong>일본 GX×로봇의 실체는 해양 드론</strong> — 해상풍력 O&amp;M을 우선 적용처로, 세계 점유 30% 목표 · DeepWind 2026-07 (2차 분석) <a class="ref" href="시각조사_원자료/L5_에너지_교차점.html#item-15" title="L5 · 에너지 × 피지컬 AI 교차점 · 15번 항목">L5-15</a></li>
+<li><strong>코마츠 — 자율트럭 1,000대 커미셔닝 + "트롤리선 연결 상태로 자율주행하는 전력불문 전동 트럭, 업계 최초"</strong> · 2026-04 (원문) <a class="ref" href="시각조사_원자료/L5_에너지_교차점.html#item-13" title="L5 · 에너지 × 피지컬 AI 교차점 · 13번 항목">L5-13</a>; He Xiaopeng "자율주행의 성공은 로봇 성공의 전야, 휴머노이드 난도는 자동차의 수십 배" <a class="ref" href="시각조사_원자료/L3_유튜브_팟캐스트_X.html#item-19" title="L3 · 유튜브·팟캐스트·X · 19번 항목">L3-19</a></li>
+<li><strong>"로봇이 데이터센터를 짓는다"</strong> — 소프트뱅크 Roze AI($1,000억 IPO 목표), 디월트 천공로봇 9만 개 구멍·10배 속도 · TechCrunch·DCF 2026 (원문) <a class="ref" href="시각조사_원자료/L5_에너지_교차점.html#item-16" title="L5 · 에너지 × 피지컬 AI 교차점 · 16번 항목">L5-16</a></li>
+<li><strong>설치의 손 = 해체의 손</strong> — 원플래닛 비전 로봇 재활용 공장 연 600만 장(2027 초), EU SOPHIA·PHOTORAMA · pv magazine 2025-12 (원문, 계획 단계) <a class="ref" href="시각조사_원자료/L5_에너지_교차점.html#item-17" title="L5 · 에너지 × 피지컬 AI 교차점 · 17번 항목">L5-17</a></li>
+<li><strong>"노동이 공짜라면 무엇을 하겠는가"</strong> — 로봇의 진짜 시장은 대체가 아니라 <strong>지금 아무도 하지 않는 일</strong>(예방정비·수리·회수). 노동의 제번스 패러독스 · Paxton 2026-07 (원문) <a class="ref" href="시각조사_원자료/L2_에세이_리포트.html#item-9" title="L2 · 블로그·에세이·리포트 · 9번 항목">L2-9</a></li>
+<li><strong>값싼 자율실험실</strong> — BRINE 오픈소스 액체핸들러로 전해질 230조성 20시간 · RSC 2026 (2차) <a class="ref" href="시각조사_원자료/L5_에너지_교차점.html#item-19" title="L5 · 에너지 × 피지컬 AI 교차점 · 19번 항목">L5-19</a>; Hassabis "재료과학 자동화 실험실 10배 가속" <a class="ref" href="시각조사_원자료/L1_글로벌_컨퍼런스.html#item-18" title="L1 · 글로벌 컨퍼런스·포럼 키노트 · 18번 항목">L1-18</a></li>
+<li><strong>광산 자율화 15년의 교훈</strong> — Caterpillar CTO "어려운 것은 자율 기술이 아니라 <strong>현장 작업흐름에 통합</strong>하는 것". 118,000명 재교육에 5년간 $1억. 160만 연결 자산·16PB · TechCrunch 2026-08 (원문) <a class="ref" href="시각조사_원자료/L6_비판_반론.html#item-20" title="L6 · 비판·반론·단위경제·역사 · 20번 항목">L6-20</a></li>
+<li><strong>중국 정책의 두 갈래 — 교차점은 빈칸</strong> — 공신부 '휴머노이드 1만 대 실전훈련'에 에너지 시나리오 없음, 국가에너지국 'AI+에너지 51개 시나리오'에 로봇 없음. 현장은 국가전망 조달이 끌고 간다 · 2026-05~06 (원문 요약문) <a class="ref" href="시각조사_원자료/L5_에너지_교차점.html#item-9" title="L5 · 에너지 × 피지컬 AI 교차점 · 9번 항목">L5-9</a></li>
+<li><strong>후쿠시마 로봇테스트필드</strong> — 원전 사고 지역을 로봇 실증 특구+재생에너지·수소 거점으로 재설계(무인항공기·수중수상·인프라점검·개발기반 4구역) · F-REI (원문; 면적·개장연도 미확인) <a class="ref" href="시각조사_원자료/L5_에너지_교차점.html#item-24" title="L5 · 에너지 × 피지컬 AI 교차점 · 24번 항목">L5-24</a></li>
+<li><strong>조선소 스마트화의 역설</strong> — "인간을 100% 대체하는 완전 자동화란 성립하지 않는다". AI 용접로봇은 초보 외국인의 손을 0.1mm 보정하는 '숙련 상향평준화'. 자석발 사족보행이 수직 철판·천장을 이동해 용접(디든로보틱스) · 뉴스웍스·벤처스퀘어 2026 (원문) <a class="ref" href="시각조사_원자료/L4_국내.html#item-19" title="L4 · 국내 포럼·언론·국책연 · 19번 항목">L4-19</a></li>
+<li><strong>Monarch 전기 트랙터 — 38.5kW 태양광 캐노피로 100% 오프그리드, 낮에 배터리 카트 충전·밤에 작업</strong> — "전기를 옮기지 않고 배터리 카트를 옮긴다" · 2023 (2차) <a class="ref" href="시각조사_원자료/L5_에너지_교차점.html#item-23" title="L5 · 에너지 × 피지컬 AI 교차점 · 23번 항목">L5-23</a></li>
+</ul>
+<p><span class="arrow">→</span> <strong>시사</strong>: B1에 시공사·스타트업 당사자 언어("사람 수가 성장 한계")와 새 단위("GW/주")를. B9는 실체를 얻었다(드론 가선 + 활선 로봇 + 국가전망 조달). B3는 OEM 공식 문서가 있다. B5는 "설치의 손 = 해체의 손". <strong>한국 한전 활선로봇·송전 로봇 현황은 모든 영역에서 미확인</strong> <span class="arrow">→</span> 발표 전 확인 필요(한전 전력연구원 패널 연계).</p>
+<h3>3.7 한국의 특수 논점 (B6·지역·노동·거버넌스)</h3>
+<ul>
+<li><strong>전북 1조 프로젝트의 흔들리는 조건</strong> — "2030년 완료를 맞추려면 2026년 10월 안에 실증센터 착공". 전주·완주 행정 분절, 새만금 신항 갈등 전례, 포항제철 모델 대비. 이후 7,368억 '협업지능 피지컬 AI SW플랫폼' 선정(2026-09-16), 현대차 새만금 9조(100MW 데이터센터·200MW 수전해·GW급 태양광) · 전북일보·머니투데이 2026 (원문) <a class="ref" href="시각조사_원자료/L4_국내.html#item-14" title="L4 · 국내 포럼·언론·국책연 · 14번 항목">L4-14</a></li>
+<li><strong>피지컬 AI 노출도의 지역 역설</strong> — 생성형·에이전틱 AI 일자리 증가의 81~88%는 수도권, <strong>피지컬 AI 고노출은 경북·전남·충북·울산 순이고 그 취업자는 장기 감소</strong> <span class="arrow">→</span> 호남이 '만드는 쪽'이 못 되면 '대체되는 쪽' · 한국은행 BOK 이슈노트 2026-09 (원문) <a class="ref" href="시각조사_원자료/L4_국내.html#item-15" title="L4 · 국내 포럼·언론·국책연 · 15번 항목">L4-15</a></li>
+<li><strong>메가프로젝트의 숨은 전제</strong> — 45.7GW 추가 부하·345kV 2,800km, 그리드 건설 6~10년(최악 20년), "베스트 오브 베스트" 가정. "성장이 시작되기 전에 전기·물·땅을 누구에게 먼저 주는가". "피지컬 AI는 반도체의 끼워팔기"라는 시각(검색 요약) · 이코노믹리뷰·소셜코리아·슬로우뉴스 2026 (원문/일부 요약) <a class="ref" href="시각조사_원자료/L4_국내.html#item-16" title="L4 · 국내 포럼·언론·국책연 · 16번 항목">L4-16</a></li>
+<li><strong>'1위'의 기준은 능력치가 아니라 확산력</strong> — "미국은 공장이 없고 중국은 지정학에 막힌다", "AI 종속 = 전기를 통째로 다른 나라에 맡긴 것"(하정우). "휴머노이드 경쟁 참여보다 산업 특화 표준 선점"(황지호 KISTEP) · 2025-12~2026-04 (원문) <a class="ref" href="시각조사_원자료/L4_국내.html#item-17" title="L4 · 국내 포럼·언론·국책연 · 17번 항목">L4-17</a></li>
+<li><strong>"세계 최초의 휴머노이드 파업"</strong> — 현대차 부분파업 5,000대·2,000억 원. 아틀라스 $13만·2년 회수·연 유지비 1,400만 원 vs 생산직 연봉 1.3억(노조 소식지). 비용이 2·3차 협력사 단가로 전가될 위험(조준모). 경총: 애로 1위 "노조·근로자 반대 27.4%" · WSJ 전재·데일리안 2026 (원문/2차) <a class="ref" href="시각조사_원자료/L4_국내.html#item-9" title="L4 · 국내 포럼·언론·국책연 · 9번 항목">L4-9</a></li>
+<li><strong>특별법의 역설</strong> — 진흥법이 포지티브 규제가 될 위험(안전기준 없는데 성능인증·보험 의무). 동시에 얼굴·음성 <strong>원본</strong> 무동의 수집 특례 논란 · 디지털데일리·미디어오늘 2026-07~08 (원문) <a class="ref" href="시각조사_원자료/L4_국내.html#item-8" title="L4 · 국내 포럼·언론·국책연 · 8번 항목">L4-8</a></li>
+<li><strong>책임·보험·표준 공백</strong> — 송도 배달로봇 사고(관제원 오인 원격 횡단), 산업용 로봇 사망 연 2.7명(전부 끼임), ISO 10218은 휴머노이드에 "맞지 않는 옷". <strong>대구는 이동식 협동로봇 KS B 7327을 먼저 만들어 국제표준 발언권을 얻었다</strong> · 더비즈·경향·영남일보 2026 (원문) <a class="ref" href="시각조사_원자료/L4_국내.html#item-20" title="L4 · 국내 포럼·언론·국책연 · 20번 항목">L4-20</a></li>
+<li><strong>"Social AI 없는 Physical AI는 아직 완성된 지능로봇이 아니다"</strong> — 파지 성공률 95%·사고 0건 로봇이 요양병원에서 철수한 이유: 감독·통합·교육·사고책임·신뢰의 5대 비용. '휴머노이드의 사회적 기대 부채' · 박성기(로아이젠, 前 KIST) 로봇신문 연재 2026-09~10 (원문) <a class="ref" href="시각조사_원자료/L4_국내.html#item-6" title="L4 · 국내 포럼·언론·국책연 · 6번 항목">L4-6</a></li>
+<li><strong>"숙련은 재고처럼 쌓아둘 수 없다"</strong>, 노동영향평가제 제안, 숙련 데이터 사전 협의권 · 서용석 KAIST·양경수 2026 (원문) <a class="ref" href="시각조사_원자료/L4_국내.html#item-10" title="L4 · 국내 포럼·언론·국책연 · 10번 항목">L4-10</a></li>
+<li><strong>'몸값'의 역전</strong> — 지식노동 가치 급락·육체 숙련 가치 상승. 온수온돌 기능사반 정원 15명에 3일 만에 32명(80~90년대생) · 전자신문·부산일보 2026 (원문) <a class="ref" href="시각조사_원자료/L4_국내.html#item-11" title="L4 · 국내 포럼·언론·국책연 · 11번 항목">L4-11</a></li>
+<li><strong>'쓰는 나라<span class="arrow">→</span>만드는 나라'의 함정</strong> — 2,509개사 중 81.8% R&amp;D 실적 0, 과기부 피지컬 AI 예산은 AI 예산의 4.9%(2027년 4,622억), 범부처 3.1조. 육군 상비병력 45만<span class="arrow">→</span>2040년 35만 <span class="arrow">→</span> 국방·치안·재난 공공수요로 양산 유도 · 매경·뉴시안·지디넷 2026 (원문) <a class="ref" href="시각조사_원자료/L4_국내.html#item-13" title="L4 · 국내 포럼·언론·국책연 · 13번 항목">L4-13</a></li>
+</ul>
+<p><span class="arrow">→</span> <strong>시사</strong>: B6 "새만금 실증특구"를 <strong>재정의</strong> — 기술 시연장이 아니라 ① 표준·시험법·보험 데이터(안전 사례 공장, 대구 선례) ② 데이터 주권·펌웨어 감사 ③ 지역 원격운영센터(마닐라가 아니라 전북에서 감독) ④ 첫 고객 구조(공공조달·한전·발전공기업 사양) ⑤ 전환 훈련·지역 운영 인력을 만드는 장소. 비교 좌표는 베이징 機域·후쿠시마 RTF. 한은 데이터로 "호남이 만드는 쪽이 돼야 하는 이유"를 세운다.</p>
+<h3>3.8 사회·노동·역사의 교훈 (반론 대비)</h3>
+<ul>
+<li><strong>자율주행 20년</strong> — DARPA 2004 <span class="arrow">→</span> Waymo 상업화 20년·업계 $1,000억. "'대부분 시나리오'와 '모든 시나리오' 사이는 간극이 아니라 절벽". Waymo 3,000대·원격요원 70명(일부 필리핀)·문 닫아주는 긱앱 Honk. Everyday Robots 해산 — "수십 년 연구에도 가정에서 정복한 것은 청소기 하나" · (원문) <a class="ref" href="시각조사_원자료/L6_비판_반론.html#item-9" title="L6 · 비판·반론·단위경제·역사 · 9번 항목">L6-9</a></li>
+<li><strong>일본 돌봄로봇 20년</strong> — $3억 투자, 2019년 시설 도입률 약 10%. "돌봄로봇 자체가 돌봄을 필요로 했다". 단 최신 계량 연구는 고용 +26%(전부 비정규)·이직 감소 <span class="arrow">→</span> <strong>"로봇은 사람을 빼지 않고 일의 묶음을 다시 짠다"</strong> · Wright·Eggleston 2023~2026 (원문) <a class="ref" href="시각조사_원자료/L6_비판_반론.html#item-11" title="L6 · 비판·반론·단위경제·역사 · 11번 항목">L6-11</a></li>
+<li><strong>로봇과 임금의 메타분석 3편</strong> — 평균 효과 미미, 단 미국·제조·중간기술에 부정적, 출판 편향은 '부정적' 쪽. 최적 로봇세 1~3.7% · 2025 (초록) <a class="ref" href="시각조사_원자료/L6_비판_반론.html#item-13" title="L6 · 비판·반론·단위경제·역사 · 13번 항목">L6-13</a></li>
+<li><strong>안전 표준의 공백</strong> — ISO 13482 개정안은 "한계값·시험법·집행 수단이 없다", 안전은 기계 속성이 아니라 관계 속성(이재성 ETRI) · IEEE Spectrum 2026-05 (원문) <a class="ref" href="시각조사_원자료/L6_비판_반론.html#item-15" title="L6 · 비판·반론·단위경제·역사 · 15번 항목">L6-15</a></li>
+<li><strong>데모는 텔레옵</strong> — Optimus 낙상 때 'VR 헤드셋 벗는 동작', 모건스탠리 "텔레옵에 의존" · 2025-12 (2차) <a class="ref" href="시각조사_원자료/L6_비판_반론.html#item-3" title="L6 · 비판·반론·단위경제·역사 · 3번 항목">L6-3</a>. 방어 한 줄: "데모 영상을 보실 때 조작자가 어디 있는지 물으시라"</li>
+<li><strong>사회 수용</strong> — 레이버트 "한 세대가 걸릴 수도", 쇼핑몰 전시로 공포에 대응; 일본은 '파트너' 언어 고수 · <a class="ref" href="시각조사_원자료/L3_유튜브_팟캐스트_X.html#item-17" title="L3 · 유튜브·팟캐스트·X · 17번 항목">L3-17</a><a class="ref" href="시각조사_원자료/L1_글로벌_컨퍼런스.html#item-16" title="L1 · 글로벌 컨퍼런스·포럼 키노트 · 16번 항목">L1-16</a></li>
+<li><strong>"위험은 사라지지 않고 이동한다"</strong> — 작업자를 현장에서 빼내도 감시·탈숙련·고립·임금 하방 압력은 남는다(Mark Graham). 자동화와 오프쇼어링이 처음으로 같은 일자리에 동시 작용 · Singularity Hub 2026-06 (원문) <a class="ref" href="시각조사_원자료/L6_비판_반론.html#item-10" title="L6 · 비판·반론·단위경제·역사 · 10번 항목">L6-10</a></li>
+</ul>
+<hr>
+</section><section class="card" style="--acc:#db2777"><h2 id="sec-5">4. 발표 메시지 재점검 — A1~A6, B1~B9</h2>
+<blockquote>
+<p>형식: <strong>보강</strong>(이번 조사에서 얻은 근거) · <strong>흔듦</strong>(반론) · <strong>제안</strong>(정교화) · <strong>비고</strong>(선점 여부)</p>
+</blockquote>
+<p><strong>A1 · 지능의 병목은 뇌가 아니라 몸</strong></p>
+<ul>
+<li>보강: Hassabis "뇌는 됐고 몸이 뒤처진다", LeCun, Fei-Fei Li "어둠 속의 문장가", Karpathy "유령", Brooks 촉각, Finn, GEN-0 상전이, 김정 "소뇌 70%", Import AI "뇌는 배당으로 온다"</li>
+<li>흔듦: Wang Xingxing "몸은 끝났다, 문제는 혼", Hassabis "안드로이드 플레이"(몸은 단말)</li>
+<li>제안: "몸" ≠ "사람 몸". 몸의 지능 = 촉각·힘·운동 제어로 구체화. 한 줄 비유 "유령에게 몸을 입히는 일" / "안드로이드 모델이 맞다면 한국은 단말 제조국 — 그래서 몸의 지능을 우리가"</li>
+<li>비고: 세계 최상위 양 진영이 공유 <span class="arrow">→</span> 권위는 확보, 차별성은 '어떤 몸'에서</li>
+</ul>
+<p><strong>A2 · AI의 마지막 1미터</strong></p>
+<ul>
+<li>보강: Karpathy 9의 행진, Nomagic 99.9% 인내선(오류율 50배), Wang "마지막 몇 cm·mm", 박종훈 "실패의 2/3는 마지막 1cm", 휴머노이드 게임 "멈추는 법", VLA 능력 환상, 박성기 "마지막 1미터는 사회적 거리이기도"</li>
+<li>흔듦: 없음 — <strong>가장 강하게 지지됨</strong></li>
+<li>제안: "1미터 <span class="arrow">→</span> 1cm <span class="arrow">→</span> 마지막 몇 개의 9"로 수치화. 티칭·통합 비용 50~70% 근거 추가</li>
+</ul>
+<p><strong>A3 · 행동 데이터는 긁어올 수 없다 — 현장을 가진 자가 이긴다</strong></p>
+<ul>
+<li>보강: Goldberg 10만 년, Fan 인간 연료, Bessemer "브로커에게 살 수 없다", Levine 임계점, Pathak 덩크, Caterpillar 16PB, 조준희 "엔비디아는 제조 데이터가 없다"</li>
+<li>흔듦: Paxton 플라이휠 화물숭배 · 마닐라 월 $300 데이터 노동 · 글러브·에고센트릭(로봇·현장 없이) · Brooks 힘 없는 텔레옵 · Lin "다양성 &gt; 양" · 특별법 원본 수집 논란(데이터는 노동자의 몸)</li>
+<li>제안: <strong>3단 정교화</strong> — "긁어올 수 없다 <span class="arrow">→</span> 사올 수는 있다 <span class="arrow">→</span> 사올 수 없는 것은 우리 현장의 분포(염해·바람·진흙·한국형 설비)와 힘·접촉·실패 데이터". "현장"을 "다양한 비정형 현장"으로 <span class="arrow">→</span> A4와 결합. 행동 데이터 6요소(사건 포함) 문법 언급. 데이터 동의·보상이 '지속 가능한 생태계'의 조건</li>
+<li>비고: <strong>가장 많이 흔들림 — 반드시 수정</strong></li>
+</ul>
+<p><strong>A4 · 공장 밖이 진짜 전장이다</strong></p>
+<ul>
+<li>보강: Caterpillar CEO "물리 세계가 병목", Automate "99%는 아직", Lux 갑각류화·Heater "다음은 다리"·Henry Evans·국내 폼팩터 회의론(형태는 과업이 결정), Skild 배치 순서(공장은 출발점), 조선소 야드</li>
+<li>흔듦: VLA는 실외 복합 교란에서 가장 약함 · 광산 15년 "병목은 작업흐름·조직" · 일본 돌봄 "로봇이 추가 노동을 만든다" · Brooks "극장과 가장 먼 환경"</li>
+<li>제안: "공장 밖 승부 = <strong>데이터 + 작업흐름 재설계 + 재교육</strong>" 3항. "형태가 가장 자유로운 전장"(굴착기·사족·자석발·바퀴). "그래서 공장 밖은 모델이 아니라 현장 분포를 가진 자가 이긴다"로 A3와 결합</li>
+</ul>
+<p><strong>A5 · 덧셈에서 곱셈으로</strong></p>
+<ul>
+<li>보강: 젠슨 5층 케이크(에너지가 1층), Bessemer 745 vs 42, CSET 초크포인트, 감속기 학습곡선, a16z Machine Age("공급망·전력·인프라 한계")</li>
+<li>흔듦: 생산성 역설(90%가 "영향 없음") · 단위경제(한 항이 0에 가까움: 1,250시간·매출 비공개) · 중국 소모전 · 로봇기업 82% R&amp;D 0</li>
+<li>제안: 곱셈에 "기계 정밀 공급망"과 "노사 신뢰" 항목. 효과는 현장 재설계 후 지연(J커브). KPI는 생산성 통계가 아니라 가동률·개입률·사고율</li>
+</ul>
+<p><strong>A6 · 디지털은 한계비용 0, 물리는 동작마다 비용</strong></p>
+<ul>
+<li>보강: Karpathy "비트는 원자보다 백만 배 쉽다", Brooks 네 시간 척도, Nomagic "프롬프트 고치기 vs 로봇 치우기", Bessemer 대당 GPU, Figure 전완부 열 고장, Fan "Physical API", Jang "물리 현실의 read/write 인터페이스"</li>
+<li>흔듦: 없음</li>
+<li>제안: "동작마다 비용, <strong>그리고 동작마다 열</strong>". "로봇은 물리 세계의 read/write API" 비유</li>
+</ul>
+<p><strong>B1 · 에너지 전환은 설치 노동의 문제 — 로봇은 에너지 전환의 손</strong></p>
+<ul>
+<li>보강: Terabase "GW/10주", Rosendin 2인 크루, Charge "사람 수가 한계", 젠슨 "전기기술자 임금 2배", RethinkX 자기강화, Paxton "노동이 공짜라면"(예방정비·회수), 국가전망 조달</li>
+<li>흔듦: 일을 옮기면 노동도 해외로(마닐라) · "로봇은 노동을 줄이지 않고 바꾼다"(일본)</li>
+<li>제안: 설치에서 운영·예방정비·회수까지 확장. "일의 묶음 재편" 언어. 조선소 "숙련 상향평준화" 유비</li>
+</ul>
+<p><strong>B2 · 전기를 옮기지 말고 일을 옮겨라</strong></p>
+<ul>
+<li>보강: Pahl "500대 = 1MWh 수요반응 자원", 남도일보 R2G·가상관성, Walker S2 충전/교체 자율 선택, Monarch 야간 작업, AGV 에너지 스케줄링(2026)</li>
+<li>흔듦: 원격 감독 노동은 어디에 생기는가 · 로봇 배터리는 작다(0.85~2.3kWh) — 과장 주의</li>
+<li>제안: "지역 원격운영센터"를 B6 설계에. R2G는 "방향"으로 인용</li>
+<li>비고: 기존 담론 거의 없음 <span class="arrow">→</span> <strong>선점 가능</strong>, 사례는 초기</li>
+</ul>
+<p><strong>B3 · 자율화와 전동화는 쌍둥이</strong></p>
+<ul>
+<li>보강: Komatsu 공식(트롤리 전동 자율 트럭), He Xiaopeng(자율주행은 로봇의 전야), Robeco(전기 사용 = 경쟁력)</li>
+<li>흔듦: IMF 제번스 리바운드</li>
+<li>제안: 효율 개선 뒤에 "그래서 동작당 에너지(B8)를 세어야 한다"로 연결</li>
+<li>비고: 직접 다룬 에세이 전무 <span class="arrow">→</span> <strong>선점 가능</strong>. 자율 플릿 연료 절감 %는 1차 자료 없음(저품질 2차만) <span class="arrow">→</span> 인용 비권고</li>
+</ul>
+<p><strong>B4 · 같은 자석, 같은 배터리 — 한 공급망을 나눠 쓴다</strong></p>
+<ul>
+<li>보강: CRU(희토류 1~2kg·구리 4~8kg·2050 구리 240만 톤), 감속기 학습곡선, 희토류 수출통제·Optimus, Caterpillar "칩은 광물", 일본 "로봇 열어보면 일본산"</li>
+<li>흔듦: 같은 공급망 = 같은 급소 · Unitree 백도어 · "100% 국산화는 욕심"(김정)</li>
+<li>제안: "같은 공급망 <span class="arrow">→</span> 공급망 정책을 로봇·에너지 통합으로. 회수(B5)가 국내 순환의 입구. 에너지 현장 로봇에 펌웨어 감사·데이터 주권 요건". 톤은 '용중국(用中國)'</li>
+</ul>
+<p><strong>B5 · 재생에너지의 '끝'을 책임지는 로봇</strong></p>
+<ul>
+<li>보강: 원플래닛 연 600만 장, EU SOPHIA·PHOTORAMA, Paxton 수리·회수의 경제성 복원</li>
+<li>흔듦: 로봇 자체의 폐배터리·희토류·전자폐기물(ES&amp;T·UNU)</li>
+<li>제안: "설치의 손 = 해체의 손(같은 비전·그리퍼)". "회수 로봇의 폐배터리는 누가 회수하나" <span class="arrow">→</span> B8로 답</li>
+<li>비고: 국내 담론 미발견 <span class="arrow">→</span> 선점 가능</li>
+</ul>
+<p><strong>B6 · 새만금 = 에너지 로봇 학습장</strong></p>
+<ul>
+<li>보강: Nussey "지리가 중요", 베이징 1,000 시나리오, 후쿠시마 RTF, 안전표준 공백(사례 공장), Beckhoff 데이터 주권, 대구 KS 선례, Raibert 시민 접점, 한은 지역 역설, "정부는 첫 고객이어야"</li>
+<li>흔듦: 전북 착공 데드라인·행정 분절, 중국 교차점 정책도 빈칸(= 선례 없음)</li>
+<li>제안: <strong>재정의</strong> — 기술 시연장이 아니라 표준·시험법·보험 데이터 + 데이터 주권·펌웨어 감사 + 지역 원격운영센터 + 첫 고객 구조 + 전환 훈련을 만드는 장소. "특구의 성패는 로봇이 아니라 행정의 속도"</li>
+<li>비고: <strong>가장 강한 정책 메시지</strong>. 패널(도지사·장관·새만금청)과 직결</li>
+</ul>
+<p><strong>B7 · 로봇이 지역 전기의 소비자가 된다</strong></p>
+<ul>
+<li>보강: Wood Mackenzie 78<span class="arrow">→</span>363TWh, Pahl 수요 인질, "전력이 있는 관할구역이 로봇 산업의 입지", 엣지 추론(Pathak), 대당 GPU(Bessemer), 모상우 공장 피크</li>
+<li>흔듦: 로봇 자체 에너지·폐기물, 피지컬 AI 고노출 지역의 고용 감소(한은)</li>
+<li>제안: "모델링되지 않은 배전 부하"로 구체화. "지역 전기 + 지역 로봇 + 지역 일자리"로 묶기. "다음 데이터센터는 공장 바닥에 있다"</li>
+</ul>
+<p><strong>B8 · 토큰당 전력 다음은 동작당 에너지(Joule per Task)</strong></p>
+<ul>
+<li>보강: 6배 편차, 사람 80W vs 400~1,200W, 감시 전력 47%, 2.5kWh 상한, Robeco 감속기 40%, Lux 이동비용 3.3 vs 0.2, Mazzolai 플레너리, SDU·HLAS 측정틀, KAIST 348Wh/질의, G1 연 $82</li>
+<li>흔듦: 없음</li>
+<li>제안: "Joule per Task"를 명명하고 코드(전력 프로파일)와 액추에이터(효율 점수) 양쪽 측정틀을 묶기. 리바운드(제번스)·폐기물 질문의 답. "지표를 만드는 쪽이 룰을 만든다"</li>
+<li>비고: 문헌 없음 <span class="arrow">→</span> <strong>가장 큰 선점 기회</strong>. "인간 근육이 로봇 액추에이터보다 3.3배 효율적" 수치는 미확인 <span class="arrow">→</span> 인용 금지</li>
+</ul>
+<p><strong>B9 · 전력망의 손 — 송전망 병목을 로봇으로</strong></p>
+<ul>
+<li>보강: 국가전망 8,500대·활선 500대, 간쑤 26개 성, Infravision 드론 가선·Transgrid, Musk "켤 수 없는 칩", 국내 그리드 6~20년</li>
+<li>흔듦: 없음</li>
+<li>제안: 실체 = 드론 가선 + 활선 로봇 + 전력회사 조달. <strong>한전 활선·송전 로봇 현황 미확인 <span class="arrow">→</span> 발표 전 확인 필수</strong>(한전 전력연구원 패널 연계)</li>
+</ul>
+<hr>
+</section><section class="card" style="--acc:#0891b2"><h2 id="sec-6">5. 발표용 한 줄 — 비유·인용·숫자</h2>
+<p>출처를 반드시 함께 표기할 것. 2차 보도는 "~로 전해진다" 톤으로.</p>
+<p><strong>비유·인용</strong></p>
+<ul>
+<li>"기술의 최대 병목은 소프트웨어가 아니라 물리 세계다" — Joe Creed(Caterpillar CEO), CES 2026</li>
+<li>"로봇은 수요 인질, 데이터센터는 부유한 수요 관광객" — Mothusi Pahl, T&amp;D World 2026-03</li>
+<li>"우리는 동물을 만드는 게 아니라 유령을 소환하고 있다" — Andrej Karpathy, 2025-10 (2차)</li>
+<li>"몸은 만들었는데 혼이 공중에 떠 있다" — Wang Xingxing(Unitree) 발언 요약, 36Kr 2025-08 (2차)</li>
+<li>"어둠 속의 문장가" — Fei-Fei Li, HumanX 2026</li>
+<li>"비트는 원자보다 백만 배 쉽다" / "9의 행진" — Karpathy, 2025-10</li>
+<li>"90%는 99.9%에 가까운 게 아니다. 오류율 50배다" — Nomagic, 2026</li>
+<li>"유튜브를 봐도 덩크는 못 한다" — Abhinav Gupta(Skild), 2026-04 (2차)</li>
+<li>"넘어지는 로봇은 서버에 접속할 수 없다" — Deepak Pathak(Skild), 2026-04 (2차)</li>
+<li>"로봇은 달리는 법을 배웠다. 아무도 멈추는 법을 가르치지 않았다" — Open Magazine, 세계휴머노이드로봇게임 2026-08</li>
+<li>"소프트웨어는 소프트웨어 속도로, 하드웨어 인증은 야금 속도로" — Daily H.E.A.T., 2026-04</li>
+<li>"실로봇 데이터는 인간 연료다. 화석연료보다 나쁘다" — Jim Fan(NVIDIA), 2025-05</li>
+<li>"로봇이 만연한 사회는 에너지적으로 지속 가능한가" — Barbara Mazzolai, ICRA 2026 플레너리</li>
+<li>"세상은 발전 문제가 아니라 송전 문제를 갖고 있다" — Infravision</li>
+<li>"비싼 건 블레이드가 아니라 배다" — 해상풍력 O&amp;M 업계(NEXI·Bubble Robotics), 2026</li>
+<li>"노동이 공짜라면 무엇을 하겠는가" — Chris Paxton, 2026-07</li>
+<li>"지리가 처음으로 중요해진다" — Bill Nussey, RoboGeorgia 2026</li>
+<li>"로봇은 사람을 빼지 않고 일의 묶음을 다시 짠다" — Eggleston 외 연구의 함의, 2026</li>
+<li>"위험은 사라지지 않고 이동한다" — Mark Graham(옥스퍼드), 2026-06</li>
+<li>"지능의 70%는 소뇌다" — 김정 KAIST, 2026</li>
+<li>"실패의 3분의 2는 마지막 1cm에서 일어난다" — 박종훈 뉴로메카, 2026-10</li>
+<li>"숙련은 재고처럼 쌓아둘 수 없다" — 서용석 KAIST, 2026-02</li>
+<li>"AI 종속은 전기를 통째로 다른 나라에 맡긴 것과 같다" — 하정우, 2025-12</li>
+<li>"휴머노이드는 마라톤 5km 지점" — Alin Albu-Schäffer(DLR), 2026-04</li>
+</ul>
+<p><strong>숫자(슬라이드당 3개 원칙 유지)</strong></p>
+<ul>
+<li>10만 년 vs 1년 (Goldberg) · 78TWh <span class="arrow">→</span> 363TWh, 데이터센터의 1/5~1/4 (Wood Mackenzie) · 500대 = 1MWh (Pahl) · 사람 80W vs 로봇 400~1,200W (2차) · 전력 가정 6배 편차 · 국가전망 8,500대·회수 2~3년 · 27분/하루 8장 · GW/10주 · 1,250시간(Figure×BMW) · 745 vs 42(Bessemer) · 로봇 논문 2% · 690억/860억 뉴런 · 10Hz vs 1,000Hz · 피지컬 AI 일자리 증가 81~88% 수도권(한은)</li>
+</ul>
+<hr>
+</section><section class="card" style="--acc:#b91c1c"><h2 id="sec-7">6. 슬라이드 반영 제안 (설계 v2 S번호 기준 — 반영 여부는 사용자 결정)</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>슬라이드</th>
+<th>제안</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S2 훅</td>
+<td>한 줄 후보: Caterpillar "병목은 물리 세계" 또는 Karpathy "유령"</td>
+<td><a class="ref" href="시각조사_원자료/L1_글로벌_컨퍼런스.html#item-3" title="L1 · 글로벌 컨퍼런스·포럼 키노트 · 3번 항목">L1-3</a><a class="ref" href="시각조사_원자료/L3_유튜브_팟캐스트_X.html#item-2" title="L3 · 유튜브·팟캐스트·X · 2번 항목">L3-2</a></td>
+</tr>
+<tr>
+<td>S3 공장 밖</td>
+<td>"과업의 99%는 아직"(Automate 2026) + "형태가 가장 자유로운 전장"(갑각류화) + 승부 3항(데이터·작업흐름·재교육)</td>
+<td><a class="ref" href="시각조사_원자료/L1_글로벌_컨퍼런스.html#item-20" title="L1 · 글로벌 컨퍼런스·포럼 키노트 · 20번 항목">L1-20</a><a class="ref" href="시각조사_원자료/L2_에세이_리포트.html#item-12" title="L2 · 블로그·에세이·리포트 · 12번 항목">L2-12</a><a class="ref" href="시각조사_원자료/L6_비판_반론.html#item-20" title="L6 · 비판·반론·단위경제·역사 · 20번 항목">L6-20</a></td>
+</tr>
+<tr>
+<td>S4 곱셈</td>
+<td>젠슨 5층 케이크(1층 = 에너지) 인용. 곱셈 항에 '정밀 공급망' 추가</td>
+<td><a class="ref" href="시각조사_원자료/L1_글로벌_컨퍼런스.html#item-4" title="L1 · 글로벌 컨퍼런스·포럼 키노트 · 4번 항목">L1-4</a><a class="ref" href="시각조사_원자료/L2_에세이_리포트.html#item-10" title="L2 · 블로그·에세이·리포트 · 10번 항목">L2-10</a></td>
+</tr>
+<tr>
+<td>S5 두뇌</td>
+<td>균형 한 줄: LeCun "VLA는 실패 중" / "뇌는 범용 스케일링의 배당으로 온다"</td>
+<td><a class="ref" href="시각조사_원자료/L2_에세이_리포트.html#item-15" title="L2 · 블로그·에세이·리포트 · 15번 항목">L2-15</a><a class="ref" href="시각조사_원자료/L2_에세이_리포트.html#item-14" title="L2 · 블로그·에세이·리포트 · 14번 항목">L2-14</a></td>
+</tr>
+<tr>
+<td>S6 몸</td>
+<td>IFR 7,000대·"강한 비즈니스 케이스 부재" + "1만 대 의무 vs PoC 통과 0" 한 줄로 균형. Brooks "미래 휴머노이드는 바퀴"</td>
+<td><a class="ref" href="시각조사_원자료/L6_비판_반론.html#item-5" title="L6 · 비판·반론·단위경제·역사 · 5번 항목">L6-5</a><a class="ref" href="시각조사_원자료/L6_비판_반론.html#item-8" title="L6 · 비판·반론·단위경제·역사 · 8번 항목">L6-8</a><a class="ref" href="시각조사_원자료/L2_에세이_리포트.html#item-1" title="L2 · 블로그·에세이·리포트 · 1번 항목">L2-1</a></td>
+</tr>
+<tr>
+<td>S7 현장</td>
+<td>Terabase "GW/10주", Rosendin 2인 크루, Komatsu 트롤리 전동 자율</td>
+<td><a class="ref" href="시각조사_원자료/L5_에너지_교차점.html#item-10" title="L5 · 에너지 × 피지컬 AI 교차점 · 10번 항목">L5-10</a><a class="ref" href="시각조사_원자료/L5_에너지_교차점.html#item-11" title="L5 · 에너지 × 피지컬 AI 교차점 · 11번 항목">L5-11</a><a class="ref" href="시각조사_원자료/L5_에너지_교차점.html#item-13" title="L5 · 에너지 × 피지컬 AI 교차점 · 13번 항목">L5-13</a></td>
+</tr>
+<tr>
+<td>S8 데이터</td>
+<td><strong>A3 3단 정교화 반영</strong> — "10만 년 vs 1년", "다양성이 양을 이김", "사올 수 없는 것은 우리 현장의 분포". 베이징 1,000 시나리오 대비</td>
+<td><a class="ref" href="시각조사_원자료/L3_유튜브_팟캐스트_X.html#item-7" title="L3 · 유튜브·팟캐스트·X · 7번 항목">L3-7</a><a class="ref" href="시각조사_원자료/L6_비판_반론.html#item-6" title="L6 · 비판·반론·단위경제·역사 · 6번 항목">L6-6</a><a class="ref" href="시각조사_원자료/L1_글로벌_컨퍼런스.html#item-19" title="L1 · 글로벌 컨퍼런스·포럼 키노트 · 19번 항목">L1-19</a></td>
+</tr>
+<tr>
+<td>S10 몸을 우리 손으로</td>
+<td>김정 "소뇌 70%·1,000Hz" / "액추에이터 50만 vs 200만 원" 현실</td>
+<td><a class="ref" href="시각조사_원자료/L4_국내.html#item-4" title="L4 · 국내 포럼·언론·국책연 · 4번 항목">L4-4</a><a class="ref" href="시각조사_원자료/L4_국내.html#item-13" title="L4 · 국내 포럼·언론·국책연 · 13번 항목">L4-13</a></td>
+</tr>
+<tr>
+<td>S11 필드로봇①</td>
+<td>"넘어지는 로봇은 서버에 접속 못한다" — 엣지 추론·현장 전력</td>
+<td><a class="ref" href="시각조사_원자료/L3_유튜브_팟캐스트_X.html#item-9" title="L3 · 유튜브·팟캐스트·X · 9번 항목">L3-9</a></td>
+</tr>
+<tr>
+<td>S14 전환</td>
+<td>"IEA 보고서에 로봇 항목이 없다" 한 줄</td>
+<td><a class="ref" href="시각조사_원자료/L5_에너지_교차점.html#sec-b" title="L5 · 에너지 × 피지컬 AI 교차점 · (b) 절">L5-(b)</a></td>
+</tr>
+<tr>
+<td>S15 분산형</td>
+<td>Pahl "수요 인질 vs 관광객" + "500대 = 1MWh" + 남도일보 R2G(방향으로). WoodMac "78TWh = 데이터센터의 1/5"</td>
+<td><a class="ref" href="시각조사_원자료/L2_에세이_리포트.html#item-6" title="L2 · 블로그·에세이·리포트 · 6번 항목">L2-6</a><a class="ref" href="시각조사_원자료/L4_국내.html#item-1" title="L4 · 국내 포럼·언론·국책연 · 1번 항목">L4-1</a><a class="ref" href="시각조사_원자료/L5_에너지_교차점.html#item-1" title="L5 · 에너지 × 피지컬 AI 교차점 · 1번 항목">L5-1</a></td>
+</tr>
+<tr>
+<td>S16 세 층</td>
+<td>6배 편차 · 사람 80W vs 400~1,200W · 감속기에서 절반 손실 · 모상우 "공장 피크"</td>
+<td><a class="ref" href="시각조사_원자료/L5_에너지_교차점.html#item-2" title="L5 · 에너지 × 피지컬 AI 교차점 · 2번 항목">L5-2</a><a class="ref" href="시각조사_원자료/L3_유튜브_팟캐스트_X.html#item-14" title="L3 · 유튜브·팟캐스트·X · 14번 항목">L3-14</a><a class="ref" href="시각조사_원자료/L5_에너지_교차점.html#item-5" title="L5 · 에너지 × 피지컬 AI 교차점 · 5번 항목">L5-5</a><a class="ref" href="시각조사_원자료/L4_국내.html#item-2" title="L4 · 국내 포럼·언론·국책연 · 2번 항목">L4-2</a></td>
+</tr>
+<tr>
+<td>S17 가치사슬</td>
+<td>발견: BRINE·Hassabis 실험실 / 건설: Terabase·드론 가선 / 운영: 국가전망 8,500·Clobotics 27분 / 회수: 원플래닛 600만 장</td>
+<td><a class="ref" href="시각조사_원자료/L5_에너지_교차점.html#item-19" title="L5 · 에너지 × 피지컬 AI 교차점 · 19번 항목">L5-19</a><a class="ref" href="시각조사_원자료/L5_에너지_교차점.html#item-12" title="L5 · 에너지 × 피지컬 AI 교차점 · 12번 항목">L5-12</a><a class="ref" href="시각조사_원자료/L5_에너지_교차점.html#item-7" title="L5 · 에너지 × 피지컬 AI 교차점 · 7번 항목">L5-7</a><a class="ref" href="시각조사_원자료/L5_에너지_교차점.html#item-14" title="L5 · 에너지 × 피지컬 AI 교차점 · 14번 항목">L5-14</a><a class="ref" href="시각조사_원자료/L5_에너지_교차점.html#item-17" title="L5 · 에너지 × 피지컬 AI 교차점 · 17번 항목">L5-17</a></td>
+</tr>
+<tr>
+<td>S18 현장 장면</td>
+<td>활선 휴머노이드·드론 가선 컷 후보 (이미지 요청목록 B등급에 추가 검토)</td>
+<td><a class="ref" href="시각조사_원자료/L5_에너지_교차점.html#item-7" title="L5 · 에너지 × 피지컬 AI 교차점 · 7번 항목">L5-7</a><a class="ref" href="시각조사_원자료/L5_에너지_교차점.html#item-12" title="L5 · 에너지 × 피지컬 AI 교차점 · 12번 항목">L5-12</a></td>
+</tr>
+<tr>
+<td>S19 선순환</td>
+<td>RethinkX 자기강화 루프 인용(출처 성격 명시) + 각주 "제번스는 로봇에게도 — 그래서 동작당 에너지"</td>
+<td><a class="ref" href="시각조사_원자료/L5_에너지_교차점.html#item-3" title="L5 · 에너지 × 피지컬 AI 교차점 · 3번 항목">L5-3</a><a class="ref" href="시각조사_원자료/L5_에너지_교차점.html#item-21" title="L5 · 에너지 × 피지컬 AI 교차점 · 21번 항목">L5-21</a></td>
+</tr>
+<tr>
+<td>S20 새만금</td>
+<td>비교: 베이징 機域·후쿠시마 RTF·대구 KS. <strong>실증특구 재정의 5항</strong>. 한은 "호남은 만드는 쪽이 돼야"</td>
+<td><a class="ref" href="시각조사_원자료/L1_글로벌_컨퍼런스.html#item-19" title="L1 · 글로벌 컨퍼런스·포럼 키노트 · 19번 항목">L1-19</a><a class="ref" href="시각조사_원자료/L5_에너지_교차점.html#item-24" title="L5 · 에너지 × 피지컬 AI 교차점 · 24번 항목">L5-24</a><a class="ref" href="시각조사_원자료/L4_국내.html#item-20" title="L4 · 국내 포럼·언론·국책연 · 20번 항목">L4-20</a><a class="ref" href="시각조사_원자료/L4_국내.html#item-15" title="L4 · 국내 포럼·언론·국책연 · 15번 항목">L4-15</a></td>
+</tr>
+<tr>
+<td>S21 마무리</td>
+<td>"로봇 논문 98%는 에너지를 묻지 않는다 — 그래서 이 자리" 또는 Mazzolai 질문</td>
+<td><a class="ref" href="시각조사_원자료/L5_에너지_교차점.html#item-20" title="L5 · 에너지 × 피지컬 AI 교차점 · 20번 항목">L5-20</a><a class="ref" href="시각조사_원자료/L1_글로벌_컨퍼런스.html#item-2" title="L1 · 글로벌 컨퍼런스·포럼 키노트 · 2번 항목">L1-2</a></td>
+</tr>
+</tbody>
+</table></div>
+<hr>
+</section><section class="card" style="--acc:#4d7c0f"><h2 id="sec-8">7. Q&amp;A 예상 질문 (Lane 6 정리 + 보완)</h2>
+<ol>
+<li><strong>"휴머노이드 데모 상당수가 텔레옵인데 피지컬 AI 전환의 실체는?"</strong> <span class="arrow">→</span> 데모와 가동시간을 분리. "저는 가동시간과 개입률을 봅니다 — Figure×BMW 1,250시간, Agility 65,000시간, Waymo 3,000대에 원격요원 70명. 현실은 '사람 없음'이 아니라 '사람의 위치 이동'이고, 그 위치를 지역에 두는 설계가 새만금 제안입니다"</li>
+<li><strong>"자율주행은 20년·1,000억 달러였다. 필드 자율화 타임라인은 왜 다른가?"</strong> <span class="arrow">→</span> 다르지 않다고 인정. 단 실외 작업 현장은 사람 밀도가 낮고 속도가 느려 안전 인증이 먼저 가능(광산 선례), 비용 비교 대상이 운전자 임금이 아니라 설치 공기·사고·송전 지연 비용</li>
+<li><strong>"일본은 20년·3억 달러에도 돌봄로봇 10%였다. 한국은 무엇이 다른가?"</strong> <span class="arrow">→</span> '대체'를 말하지 않기. "로봇은 일의 묶음을 다시 짠다. 일본 데이터도 고용은 늘고 이직은 줄었다. 제 주장은 결원을 채우는 것이고, 그 자리는 통계로 이미 비어 있다"</li>
+<li><strong>"데이터는 마닐라에서 월 300달러에 사올 수 있다. 현장이 왜 모트인가?"</strong> <span class="arrow">→</span> A3 3단 답변. "양은 사올 수 있다. 사올 수 없는 것은 우리 현장의 분포와 힘·접촉 데이터다. 다양성이 양을 이긴다는 것이 2026년 데이터 스케일링의 결론"</li>
+<li><strong>"같은 공급망은 같은 급소 아닌가? 백도어는?"</strong> <span class="arrow">→</span> 인정하고 전환. "그래서 공급망 정책을 로봇·에너지 하나로 짜야 하고, 회수 로봇은 국내 순환의 입구다. 에너지 인프라 로봇은 펌웨어 감사와 데이터 주권을 실증특구 조건으로"</li>
+<li><strong>"로봇을 지역 전기의 소비자로 만들자는데, 로봇 자체의 에너지·폐기물은?"</strong> <span class="arrow">→</span> B8 동작당 에너지가 그 답의 지표. 수명종료 설계를 과제로 명시</li>
+<li><strong>"피지컬 AI가 호남 일자리를 먼저 깎는다는 한은 데이터는?"</strong> <span class="arrow">→</span> 인정. "그래서 호남은 쓰는 쪽이 아니라 만드는 쪽이 돼야 하고, 원격운영·표준·실증이 그 일자리다"</li>
+</ol>
+<hr>
+</section><section class="card" style="--acc:#9333ea"><h2 id="sec-9">8. 미확인·주의 (발표 인용 전 확인)</h2>
+<p><strong>숫자 오류·인용 금지</strong></p>
+<ul>
+<li>Jiemian 기사의 "$9.4 billion"은 환산 오류 <span class="arrow">→</span> 68억 위안 ≈ 약 $1B(Wood Mackenzie는 "$1 billion")</li>
+<li>liveinthefuture.org(AI 생성 매체, 가상 바이라인 명시)의 "검증 시간당 $224,906", "Unitree 순이익 -52%" 등 <strong>인용 금지</strong>. 그중 Figure 1,250시간·Agility 65,000시간만 heise·GeekWire로 교차 확인됨</li>
+<li>"인간 근육이 로봇 액추에이터보다 3.3배 효율적" — 검색 요약에만 있고 논문 본문 미확인 <span class="arrow">→</span> 인용 금지</li>
+<li>"휴머노이드 1대당 NdPr 1.3kg" 류 — 2차 블로그 출처 미확인</li>
+<li>코마츠·캐터필러 자율 플릿 연료 절감 % — 1차 자료 없음(저품질 2차만)</li>
+<li>RethinkX·Bessemer·회사 보도자료 수치는 출처 성격(낙관 싱크탱크·투자사·회사 주장) 명시</li>
+</ul>
+<p><strong>2차 보도만 확인된 핵심 발언</strong>(발표에서 "~로 전해진다" 톤)</p>
+<ul>
+<li>Karpathy·Levine Dwarkesh 회차(원문 도메인 차단), LeCun 일부, Wang Xingxing(매체 번역), Hassabis Davos, Ted Xiao 인용(Sartor), 에너지 산술 블로그(Agro·technologies.org·Steel for Fuel), 国盛证券의 BAAI 포럼 요약, Tiangong 8.86초, 하정우 발언은 시사IN 녹취(원문)</li>
+</ul>
+<p><strong>미확인 사실</strong></p>
+<ul>
+<li>후쿠시마 RTF 면적·개장연도·FH2R 인접 여부 / ISO 25785-1 진행 상태 / Gartner 2026 하이프 사이클 위치 / 중국 NEA 51개 시나리오 전체 목록 / ES&amp;T 휴머노이드 폐기물 논문 수치 / 일부 국내 칼럼 필자·게재일(남도일보 에코칼럼, 경향 2026-01-25·07-07, 소셜코리아)</li>
+</ul>
+<p><strong>조사 못 한 것(검색 예산 소진)</strong></p>
+<ul>
+<li>X 스레드 원문(Jim Fan·Ted Xiao·Chris Paxton 등) / IROS 2026·Humanoids Summit Seoul 2026 실제 발언 / 日経Robotics 2026-07 "일본 피지컬 AI 9가지 오해"(유료) / WEF "Hand dexterity remains a barrier"(2026-06, 저자 Junho Cho — <strong>한국 저자, 직접 확인 권장</strong>) / Masayoshi Son·Altman 발언 / 국내 유튜브(안될공학·티타임즈·언더스탠딩) 특정 회차 / <strong>한전 활선·송전 로봇 2026 현황(B9 핵심 공백)</strong> / 국내 폐패널 회수 로봇 담론(B5)</li>
+</ul>
+<hr>
+</section><section class="card" style="--acc:#64748b"><h2 id="sec-10">9. 원자료 (영역별 전체 항목·URL·인용·검색어)</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>영역</th>
+<th>파일</th>
+<th>항목 수</th>
+<th>특징</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>L1 글로벌 컨퍼런스·포럼 키노트</td>
+<td><a class="wl" href="시각조사_원자료/L1_글로벌_컨퍼런스.html">L1 글로벌 컨퍼런스</a></td>
+<td>20 + 메모 6</td>
+<td>ICRA·CES·Davos·GTC·WRC·Hannover·Automate 등. 검색 47회</td>
+</tr>
+<tr>
+<td>L2 블로그·에세이·리포트</td>
+<td><a class="wl" href="시각조사_원자료/L2_에세이_리포트.html">L2 에세이 리포트</a></td>
+<td>20</td>
+<td>Brooks·Paxton·Lux·Bessemer·CSET·T&amp;D World·WoodMac. 대부분 원문 확인</td>
+</tr>
+<tr>
+<td>L3 유튜브·팟캐스트·X</td>
+<td><a class="wl" href="시각조사_원자료/L3_유튜브_팟캐스트_X.html">L3 유튜브 팟캐스트 X</a></td>
+<td>19</td>
+<td>Dwarkesh·Sequoia·NVIDIA 팟캐스트·중국 CEO 발언. X 원문은 미착수</td>
+</tr>
+<tr>
+<td>L4 국내 포럼·언론·국책연</td>
+<td><a class="wl" href="시각조사_원자료/L4_국내.html">L4 국내</a></td>
+<td>20</td>
+<td>네이버 뉴스 직접 조회 55회, 원문 80건 정독</td>
+</tr>
+<tr>
+<td>L5 에너지 × 피지컬 AI 교차점</td>
+<td><a class="wl" href="시각조사_원자료/L5_에너지_교차점.html">L5 에너지 교차점</a></td>
+<td>24</td>
+<td>IEA 사각지대 확인, 국가전망·드론 가선·Terabase·Komatsu·IMF</td>
+</tr>
+<tr>
+<td>L6 비판·반론·단위경제·역사</td>
+<td><a class="wl" href="시각조사_원자료/L6_비판_반론.html">L6 비판 반론</a></td>
+<td>20 + 메시지별 지지/흔듦 표 + Q&amp;A</td>
+<td>단위경제 민낯·데이터 노동·자율주행·일본 돌봄·안전표준</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>원문 텍스트 사본(약 150건)은 세션 scratchpad에만 있었고 보존하지 않았다. 각 항목의 URL이 참조다. 조사일 2026-10-15, 발표 2026-10-29.</p>
+</blockquote></section>
+<footer>원문: Obsidian 볼트 <code>04_achievements/세미나/FES2026/</code> · 변환 2026-10-15 · 신뢰도 표기(원문 확인/2차 보도/회사 주장/미확인)는 원자료를 따름</footer>
+</div>
+</body>
+</html>

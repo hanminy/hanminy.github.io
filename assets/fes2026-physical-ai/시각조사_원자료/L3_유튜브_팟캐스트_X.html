@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>피지컬 AI 참신 시각 조사 — Lane 3: 유튜브·팟캐스트·X·테크 트렌드 채널</title>
+<style>
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css');
+:root{--bg:#ffffff;--card:#f8f9fa;--text:#1e293b;--h1:#0f172a;--muted:#64748b;--accent:#2563eb;--strong:#1e40af;--line:#e2e8f0;--acc:#2563eb}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:'Pretendard Variable',Pretendard,-apple-system,'Segoe UI',sans-serif;font-size:16px;line-height:1.7;word-break:keep-all;overflow-wrap:anywhere}
+.wrap{max-width:1040px;margin:0 auto;padding:40px 20px 80px}
+header.top{margin-bottom:28px}
+.kicker{font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:700}
+h1{color:var(--h1);font-size:2rem;line-height:1.3;margin:.3em 0 .4em;font-weight:800}
+.metaline{color:var(--muted);font-size:.92rem}
+.metaline b{color:var(--text);font-weight:600}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 0}
+.chip{display:inline-block;padding:5px 11px;border-radius:999px;font-size:.82rem;font-weight:600;text-decoration:none;color:#fff;opacity:.92}
+.chip:hover{opacity:1}
+nav.toc{background:var(--card);border-radius:12px;padding:16px 22px;margin:22px 0 30px;border-left:4px solid var(--accent);box-shadow:0 1px 3px rgba(0,0,0,.08)}
+nav.toc .meta-label{font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:700;margin-bottom:6px}
+nav.toc ol{margin:0;padding-left:1.3em;columns:2;column-gap:28px}
+nav.toc li{break-inside:avoid;margin:2px 0;font-size:.95rem}
+nav.toc a{color:var(--text);text-decoration:none}
+nav.toc a:hover{color:var(--accent);text-decoration:underline}
+section.card,article.item{background:var(--card);border-radius:12px;padding:22px 26px;margin:0 0 22px;border-left:4px solid var(--acc);box-shadow:0 1px 3px rgba(0,0,0,.08)}
+article.item{padding:18px 22px}
+section.card>h2:first-child,article.item>h3:first-child{margin-top:0}
+h2{color:var(--h1);font-size:1.38rem;margin:1.4em 0 .6em;font-weight:800;line-height:1.35}
+h3{color:var(--h1);font-size:1.12rem;margin:1.3em 0 .5em;font-weight:700;line-height:1.4}
+h2 .num,h3 .num{color:var(--acc);margin-right:.35em}
+p{margin:.6em 0}
+strong{color:var(--strong);font-weight:700}
+a{color:var(--accent)}
+a.ref{display:inline-block;font-size:.74rem;font-weight:700;color:#475569;background:#fff;border:1px solid var(--line);border-radius:5px;padding:0 5px;margin:0 1px;text-decoration:none;vertical-align:middle;line-height:1.5}
+a.ref:hover{border-color:var(--accent);color:var(--accent)}
+a.wl{font-weight:600}
+ul,ol{padding-left:1.4em;margin:.5em 0}
+li{margin:.3em 0}
+li>ul{margin:.2em 0}
+blockquote{margin:1em 0;padding:12px 18px;background:#eff6ff;border-left:4px solid var(--accent);border-radius:0 10px 10px 0;color:#1e3a8a}
+blockquote p{margin:.45em 0}
+hr{border:0;border-top:1px solid var(--line);margin:28px 0}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.88em;background:#eef2f7;padding:1px 6px;border-radius:5px;color:#334155}
+.tbl{overflow-x:auto;margin:1em 0;border-radius:10px;border:1px solid var(--line);background:#fff}
+table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.55}
+th{background:#eef2f7;color:#0f172a;text-align:left;padding:10px 12px;border-bottom:2px solid #cbd5e1;font-weight:700;white-space:nowrap}
+td{padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:0}
+tbody tr:hover td{background:#f8fafc}
+td:first-child{white-space:nowrap;color:var(--muted);font-weight:600}
+.arrow{color:var(--acc);font-weight:700}
+.backbar{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:.9rem;margin-bottom:14px;flex-wrap:wrap}
+.backbar a{text-decoration:none;font-weight:600}
+.lanenav{display:flex;flex-wrap:wrap;gap:6px}
+.lanenav a{font-size:.78rem;padding:3px 9px;border-radius:999px;color:#fff;text-decoration:none;font-weight:600;opacity:.85}
+.lanenav a.on{opacity:1;outline:2px solid #0f172a;outline-offset:1px}
+footer{color:var(--muted);font-size:.85rem;margin-top:40px;border-top:1px solid var(--line);padding-top:14px}
+@media (max-width:700px){.wrap{padding:24px 16px 60px}h1{font-size:1.5rem}nav.toc ol{columns:1}section.card,article.item{padding:16px 16px}td:first-child{white-space:normal}}
+@media print{body{font-size:12.5px}.wrap{max-width:100%;padding:0}section.card,article.item{box-shadow:none;break-inside:avoid;background:#fff;border:1px solid var(--line);border-left:4px solid var(--acc)}nav.toc{display:none}.backbar{display:none}a{color:inherit;text-decoration:none}a.ref{border-color:#cbd5e1}}
+</style>
+<style>:root{--accent:#db2777;--acc:#db2777}</style>
+</head>
+<body>
+<div class="wrap">
+<div class="backbar"><a href="../FES2026_피지컬AI_시각조사.html">← 종합 노트로</a><div class="lanenav"><a class="" style="background:#2563eb" href="L1_글로벌_컨퍼런스.html">L1</a><a class="" style="background:#7c3aed" href="L2_에세이_리포트.html">L2</a><a class="on" style="background:#db2777" href="L3_유튜브_팟캐스트_X.html">L3</a><a class="" style="background:#0f766e" href="L4_국내.html">L4</a><a class="" style="background:#ea580c" href="L5_에너지_교차점.html">L5</a><a class="" style="background:#b91c1c" href="L6_비판_반론.html">L6</a></div></div>
+<header class="top">
+<div class="kicker">원자료 L3</div>
+<h1>피지컬 AI 참신 시각 조사 — Lane 3: 유튜브·팟캐스트·X·테크 트렌드 채널</h1>
+<div class="metaline"><b>L3 · 유튜브·팟캐스트·X</b> · 조사일 2026-10-15 · 항목 번호는 종합 노트의 <code>L3-N</code> 참조와 일치</div>
+
+</header>
+<ul>
+<li>조사일: 2026-10-15 · 대상 기간: 2025-10 ~ 2026-10 우선(맥락상 중요한 2025-05 이후 포함)</li>
+<li>용도: FES 2026 특별강연(2026-10-29) "피지컬 AI와 산업 대전환의 미래" 메시지 정렬용</li>
+<li>범례: <strong>A1~B9</strong> = 발표자 기존 메시지(겹치면 '보강'), <strong>신규</strong> = 발표자 프레임에 없는 시각</li>
+<li>신뢰도: <code>원문 확인</code>(에세이·논문·공식 쇼노트 직접 열람) / <code>2차 보도</code>(인터뷰 기사·요약 트랜스크립트 사이트) / <code>미확인</code></li>
+<li>제약 메모: 세션 WebSearch 예산(200회, 팀 공용)이 중반에 소진되었고, dwarkesh.com·podscripts·glasp 등 1차 트랜스크립트 도메인이 네트워크 정책으로 차단되어 Dwarkesh 회차 2건은 2차 요약으로 확인함</li>
+</ul>
+<hr>
+<h2>참신 시각 항목 (19개)</h2>
+<article class="item"><h3 id="item-1"><span class="num">1.</span> 조작(manipulation)은 자율주행보다 어렵지만, 플라이휠을 돌리기는 더 쉽다 — 범위를 좁혀 먼저 배치하고 실패를 교정하며 배우는 구조</h3>
+<ul>
+<li><strong>출처</strong>: Sergey Levine(UC Berkeley·Physical Intelligence 공동창업) · Dwarkesh Podcast "Fully autonomous robots are much closer than you think" · 2025-09-12 · https://www.dwarkesh.com/p/sergey-levine (원문 차단) / 2차 요약: https://stationlm.com/analysis/328d3b41-9b1e-491b-99f7-ddf7f24a1360 , https://www.antoinebuteau.com/lessons-from-sergey-levine/</li>
+<li><strong>요지</strong>: "In some ways, robotic manipulation is a much, much harder problem. But in other ways, it's a problem space where it's easier to get rolling to start that flywheel with a more limited scope."(조작은 훨씬 어렵지만, 범위를 좁혀 플라이휠을 먼저 돌리기는 더 쉬운 문제 공간) — 자율주행은 한 번의 실수가 치명적이라 배치 전 완성이 필요한데, 탁상 조작은 실수를 교정하며 배울 수 있음. 배치된 로봇의 경험 데이터가 "웹에서 긁어올 수 있는 어떤 것도 압도(dwarf)"하는 데이터셋이 되고, 데이터 수집 비용이 경제적 사용의 부산물로 전환되는 순간 지수 곡선 진입. 가정용 범용 로봇 타임라인은 "single digit thing… five is a good median"(한 자리 수, 중앙값 5년). 모라벡 역설 인용: "The easy things are hard and the hard things are easy."</li>
+<li><strong>왜 참신한가</strong>: 통념은 "자율주행도 못 끝냈는데 휴머노이드가 되겠나"인데, Levine은 오히려 자율주행이 '최악의 첫 문제'였고 조작은 안전 마진이 커서 더 빨리 스케일된다고 역전시킴. 데이터를 '모으는 것'이 아니라 '유용성의 임계점을 넘기면 저절로 생기는 것'으로 재정의</li>
+<li><strong>발표 연결</strong>: A3 보강(행동 데이터는 긁어올 수 없다 <span class="arrow">→</span> 그래서 "배치가 곧 수집"), A2(마지막 1미터 = 실수 교정이 가능한 공간), A6 · 활용: "데이터는 긁어오는 게 아니라 일하면서 흘러나온다"는 전환 문장에 Levine의 '임계점' 논리를 근거로 붙이기</li>
+<li><strong>신뢰도</strong>: 2차 보도(요약 트랜스크립트 2곳에서 인용 일치)</li>
+</ul>
+</article><article class="item"><h3 id="item-2"><span class="num">2.</span> "우리는 동물을 만드는 게 아니라 유령을 소환하고 있다" — 진화가 몸에 구워 넣은 지식이 없는 지능</h3>
+<ul>
+<li><strong>출처</strong>: Andrej Karpathy(前 Tesla AI 디렉터·OpenAI 공동창업) · Dwarkesh Podcast "AGI is still a decade away" · 2025-10-17 · https://www.dwarkesh.com/p/andrej-karpathy (원문 차단) / 인용 확인: https://simonwillison.net/2025/Oct/18/agi-is-still-a-decade-away/</li>
+<li><strong>요지</strong>: "We're building ghosts or spirits… we're not doing training by evolution. We're doing training by imitation of humans."(우리는 유령을 만들고 있다. 진화로 훈련하지 않고 인간 모방으로 훈련한다) "We're not building animals… we're starting off at a different point… it's possible to make them a bit more animal-like over time."(동물을 만드는 게 아니라 다른 출발점에서 시작했고, 시간이 지나면 조금씩 동물에 가까워질 수 있다) 동물은 태어나자마자 걷고 잡는 '몸의 지식'을 진화가 하드웨어에 선탑재해 주지만, 현재 AI는 인터넷 텍스트를 모방해 태어난 '몸 없는 유령'이라는 프레임</li>
+<li><strong>왜 참신한가</strong>: "AI가 몸을 얻으면 된다"는 통념에 대해, 문제는 몸의 부재가 아니라 '진화적 선탑재(innate priors)의 부재'라고 짚음. 즉 로봇 파운데이션 모델은 LLM의 연장이 아니라 진화를 공학으로 대체하는 별개 과제</li>
+<li><strong>발표 연결</strong>: A1 보강(지능의 병목은 뇌가 아니라 몸 <span class="arrow">→</span> "몸에 구워진 지식")· 활용: A1을 "유령에게 몸을 입히는 일"이라는 한 줄 비유로 압축 가능</li>
+<li><strong>신뢰도</strong>: 2차 보도(Simon Willison이 인터뷰 원문 인용; 로봇 부분 직접 언급은 미확인)</li>
+</ul>
+</article><article class="item"><h3 id="item-3"><span class="num">3.</span> 영상만으로는 손재주를 배울 수 없다 — 촉각 데이터에는 '전통'이 없고, 큰 휴머노이드는 물리학적으로 사람 곁에 있을 수 없다</h3>
+<ul>
+<li><strong>출처</strong>: Rodney Brooks(iRobot·Rethink 창업, MIT) · 에세이 "Why Today's Humanoids Won't Learn Dexterity" 2025-09-26 · https://rodneybrooks.com/why-todays-humanoids-wont-learn-dexterity/ ; "Predictions Scorecard 2026-01-01" · https://rodneybrooks.com/predictions-scorecard-2026-january-01/</li>
+<li><strong>요지</strong>: 사람 손에는 약 17,000개 기계수용체(지문 능선 간격까지 감지)가 있는데 Tesla·Figure는 '사람 영상'만으로 손재주를 가르치려 함. "We do not have such a tradition for touch data. Touch for us, for now, is only the instantaneous touch we perceive first hand."(촉각 데이터에는 축적 전통이 없다) 음성·이미지·LLM 성공도 사실은 사람이 설계한 "case-specific very carefully engineered front-ends" 위에서 났다는 점을 상기. 보행 안전: 크기 1.5배면 운동에너지 (1.5)³=3.375배 — "my advice to people is to not come closer than 3 meters to a full size walking robot." 2026-01 스코어카드 신규 예측: "Deployable dexterity will remain pathetic compared to human hands beyond 2036. Without new types of mechanical systems walking humanoids will remain too unsafe to be in close proximity to real humans." 15년 뒤 '휴머노이드'는 바퀴·비인간형 그리퍼·센서를 갖고도 그 이름으로 팔릴 것. 휴머노이드 기업들의 '있을 수 없는 주장' 12개 목록(예: 2030년 미국 가정 10% 보급 = 역사상 어떤 기술보다 "multiple orders of magnitude faster")</li>
+<li><strong>왜 참신한가</strong>: "데이터 부족"이라는 흔한 말을 '어떤 모달리티의 데이터가 애초에 존재하지 않는가'로 구체화. 안전 논의를 윤리가 아닌 질량의 3제곱 스케일링 산술로 치환</li>
+<li><strong>발표 연결</strong>: A3 강력 보강(긁어올 수 없는 데이터의 정체 = 촉각·힘), A1(몸의 센서가 병목), B8(에너지가 안전 문제로 전환) · 활용: "유튜브 35,000년치 영상에도 손끝의 힘은 없다"는 한 장</li>
+<li><strong>신뢰도</strong>: 원문 확인(에세이·스코어카드 직접 열람)</li>
+</ul>
+</article><article class="item"><h3 id="item-4"><span class="num">4.</span> 실로봇 데이터는 '인간 연료(human fuel)'로 화석연료보다 나쁘다 — 시뮬레이션은 '원자력', 휴머노이드 보행 제어기는 150만 파라미터면 충분</h3>
+<ul>
+<li><strong>출처</strong>: Jim Fan(NVIDIA GEAR 공동리드) · Sequoia AI Ascent 2025 기조강연 "The Physical Turing Test" · 2025-05-13 · 공식 요약: https://inferencebysequoia.substack.com/p/the-physical-turing-test-jim-fan ; X 원문 보도: https://officechai.com/ai/physical-turing-test-jim-fan-nvidia/</li>
+<li><strong>요지</strong>: "The real robot data is the human fuel. It's worse than fossil fuel. You're burning human fuel."(실로봇 데이터는 사람을 태우는 연료, 화석연료보다 나쁘다) — 로봇 1대당 하루 24시간 상한, 사람 텔레오퍼레이터의 피로가 병목. 시뮬레이션을 '원자력'으로 대비. 시뮬레이션 1.0(디지털 트윈·수작업 환경) <span class="arrow">→</span> 1.5(생성+물리 하이브리드) <span class="arrow">→</span> 2.0(비디오 확산 모델의 '멀티버스 시뮬레이션'). 휴머노이드 전신 보행 제어는 1.5M 파라미터로 충분하다는 수치. 'Physical API': 소프트웨어가 비트를 다루듯 원자를 다루는 API, "Michelin-star chefs providing dinner-as-a-service" 같은 물리 서비스 경제. "the way we make dinner and do a lot of hand labor are still more or less the same from the Egyptian times."(저녁 식사 만들기와 손노동은 이집트 시대와 거의 같다)</li>
+<li><strong>왜 참신한가</strong>: "시뮬레이션으로 해결"은 흔하지만, 실로봇 데이터를 '에너지원'으로 비유해 지속가능성 문제로 재프레임한 것과 "휴머노이드 지능의 대부분은 아주 작은 모델에 들어간다"는 반직관 수치가 새로움. 인류의 손노동 생산성이 수천 년간 정체였다는 장기 시계</li>
+<li><strong>발표 연결</strong>: A3(보강, 단 발표자 입장과 긴장: Fan은 시뮬이 답), A6(한계비용 논의에 'Physical API' 비유), 신규(손노동 5,000년 정체) · 활용: "디지털은 한계비용 0"의 대비 축으로 "원자를 다루는 API"를 소개</li>
+<li><strong>신뢰도</strong>: 2차 보도(Sequoia 공식 글이 강연 인용 수록; 'digital cousins' 표현은 이번 소스에서 미확인)</li>
+</ul>
+</article><article class="item"><h3 id="item-5"><span class="num">5.</span> "몸은 만들었는데 혼이 공중에 떠 있다" — 하드웨어는 충분하고 VLA는 '어리석은 구조', 데이터에 너무 집착한다는 하드웨어 1위 기업 CEO의 역설</h3>
+<ul>
+<li><strong>출처</strong>: 王兴兴(Wang Xingxing, Unitree 창업자) · 2025 세계로봇대회(WRC) 기조강연 2025-08-09, 상하이 CIIE 포럼 2025-11, WRC 2026-08-20 · 2차 보도: https://eu.36kr.com/en/p/3419066900876928 , https://eu.36kr.com/en/p/3422481169881216 , https://www.implicator.ai/unitree-founder-says-humanoid-robots-chatgpt-moment-is-up-to-10-years-away/ , https://news.10jqka.com.cn/20260820/c679123563.shtml , (2024 인터뷰) https://m.sohu.com/a/860635531_116132/</li>
+<li><strong>요지</strong>: WRC 2025: "AI models are completely inadequate"(AI 모델은 완전히 부족), VLA는 "a bit of a foolish architecture"(좀 어리석은 구조) — "relies too much on data quality but has insufficient adaptability". "people pay too much attention to basic data"(사람들이 기초 데이터에 너무 집착) — 문제는 모델 구조의 미통일. 대안으로 비디오 생성 모델이 더 빨리 수렴할 것. 요약: "We have built the body, but the soul is still floating in mid-air."(몸은 만들었지만 혼은 아직 공중에 떠 있다) — 지자(Jijia Vision) CEO 황관은 "too amateurish"라고 공개 반박. 2025-11 '구현지능의 ChatGPT 모먼트' 정의: "80%의 낯선 장면에서 자연어 지시를 받아 80%의 과제를 완수". 2026-08 WRC: 기계가 "can plan broad movements but fail at the last few centimeters or millimeters"(큰 동작은 계획하나 마지막 몇 cm·mm에서 실패), 새 과제마다 재훈련 필요, 타임라인을 2~3년(가속 시)/5~10년(둔화 시)로 후퇴. 2024년 인터뷰: "체력 일에 왜 꼭 사람이어야 하나(干嘛一定要人)", 하드웨어는 "센서 입력<span class="arrow">→</span>모델<span class="arrow">→</span>관절 출력, 그게 전부"</li>
+<li><strong>왜 참신한가</strong>: 하드웨어로 세계 1위인 회사가 "하드웨어는 끝났다, 문제는 뇌"라고 말하고, 업계 합의(VLA·데이터 스케일링)를 정면 비판. 발표자의 A1("병목은 몸")과 정확히 반대 축이어서 변증 소재로 가치가 큼</li>
+<li><strong>발표 연결</strong>: A2 직접 보강("마지막 1미터" <span class="arrow">→</span> Unitree의 "마지막 몇 센티미터·밀리미터"), A1 대립항(몸 vs 혼) · 활용: "하드웨어 1위가 '몸은 끝났다'고 할 때, 우리는 현장의 몸이 아직 시작도 안 됐다고 말해야 한다" — 공장 안 휴머노이드와 공장 밖 필드로봇의 병목이 다르다는 논증(A4)으로 연결</li>
+<li><strong>신뢰도</strong>: 2차 보도(36kr·implicator·10jqka 복수 매체 일치; 직접 인용 어구는 매체 번역)</li>
+</ul>
+</article><article class="item"><h3 id="item-6"><span class="num">6.</span> "업계의 큰 비밀: 누구도 로봇을 범용으로 쓸 만큼 똑똑하게 만들 줄 모른다" — 4세 아이가 본 시각 데이터 = 최대 LLM 텍스트 전체, 그래서 VLA는 막다른 길</h3>
+<ul>
+<li><strong>출처</strong>: Yann LeCun(Meta 수석과학자<span class="arrow">→</span>AMI Labs 창업) · MIT Generative AI Impact Consortium 워크숍 2025-10, 2026-05 인터뷰, AMI Labs 출범 2026-01-29 · 2차 보도: https://www.humanoidsdaily.com/news/meta-ai-chief-yann-lecun-claims-humanoid-firms-lack-path-to-general-ai , https://hyper.ai/en/stories/1f4a4b4133dec66568c5cd458defef8a , https://www.humanoidsdaily.com/tags/yann-lecun , https://www.digit.in/features/general/yann-lecun-warns-of-a-robotics-bubble-why-humanoid-ai-isnt-ready-yet.html</li>
+<li><strong>요지</strong>: 휴머노이드 기업들은 "have no idea how to make those robots smart enough to be generally useful"(범용으로 유용할 만큼 똑똑하게 만들 방법을 모른다) — 이것이 업계의 "big secret". "A four-year-old has seen as much data through vision as the biggest LLMs trained on all the publicly available text."(4세 아이는 공개 텍스트 전부로 훈련한 최대 LLM만큼의 데이터를 시각으로 봤다) 2026-05: 휴머노이드 데모의 막대한 데이터 요구량이 "the VLA approach is a dead end"임을 증명. 대안은 V-JEPA 계열 세계모델 — 62시간 영상 학습 후 RL 없이 zero-shot 과제 수행, 2026-03 LeWorldModel은 단일 GPU 학습·기존 대비 50배 빠른 계획. "This will be the decade of robots"지만 "No one will use the LLMs we have today." 안전은 목표함수 제약으로: "You can't make a robot that knocks someone down to get coffee if the goal function includes a rule: don't move if someone is in the way."</li>
+<li><strong>왜 참신한가</strong>: 로봇 낙관론자가 동시에 현 주류(LLM<span class="arrow">→</span>VLA) 전면 부정. '데이터 부족'을 양이 아니라 대역폭(텍스트 vs 시각)의 문제로 바꿈</li>
+<li><strong>발표 연결</strong>: A3 보강이자 긴장(행동 데이터는 못 긁어오지만, 관찰 데이터로 세계모델을 만들면 행동 데이터 필요량이 급감한다는 반론), 신규 · 활용: "데이터가 없다"가 아니라 "어떤 데이터가 얼마나 필요한지에 대한 합의가 없다"는 뉘앙스로 메시지 정밀화</li>
+<li><strong>신뢰도</strong>: 2차 보도(Humanoids Daily·hyper.ai 복수 일치)</li>
+</ul>
+</article><article class="item"><h3 id="item-7"><span class="num">7.</span> 로봇 데이터 격차는 '10만 년' — 최대 데이터셋은 1년치, 유튜브 35,000년치는 3D로 들어 올릴 수 없고, 격차를 메우는 것은 '좋은 옛날식 공학(GOFE)'</h3>
+<ul>
+<li><strong>출처</strong>: Ken Goldberg(UC Berkeley·Ambi Robotics) · Science Robotics 사설 2025-08-27 + 순회 강연 NYU 2025-09-19 / UPenn 2025-11-04 / Columbia · PDF: https://autolab.berkeley.edu/assets/publications/media/GOFE-Can-Close-the-100000-Year-Robot-Data-Gap-Science-Robotics-Aug-2025-scirobotics.aea7390.pdf ; 강연: https://robotics.engineering.nyu.edu/event/ken-goldberg-talk/ , https://events.seas.upenn.edu/event/cis-seminar-good-old-fashioned-engineering-can-close-the-100000-year-data-gap-in-robotics/</li>
+<li><strong>요지</strong>: 토큰<span class="arrow">→</span>시간 환산으로 VLM 학습 데이터는 "on the order of 100,000 years"(사람이 읽고 보는 데 10만 년). 반면 "the largest such dataset reported so far is on the order of 1 year of data" — 현 속도면 범용 로봇은 "available in …100,000 years". 시뮬레이션은 "notoriously unreliable for robot manipulation"(접촉·미세 변형·마찰), "YouTube includes about 35,000 years of videos. However, accurately 'lifting' a video image back into three dimensions… is a grand challenge… not expected to be solved in the foreseeable future." 네 번째 길: GOFE(Kalman 필터·역기구학·모션플래닝 = 200년 수학·물리) + 모델프리 결합으로 상업 배치 <span class="arrow">→</span> Waymo·Ambi처럼 데이터 플라이휠. Ambi는 4년간 1억 개 패키지 분류로 22년치 실데이터 축적. "I'm not sure that the public (or investors) are willing to wait very long."</li>
+<li><strong>왜 참신한가</strong>: '데이터 부족'을 10만 년이라는 단일 숫자로 못 박고, 비터 레슨(Sutton)에 동의하면서도 "그 전까지는 공학이 AI를 부트스트랩한다"는 하이브리드를 주장. 영상 데이터 낙관론을 컴퓨터 비전 미해결 문제로 차단</li>
+<li><strong>발표 연결</strong>: A3 수치 보강, A5(곱셈: 공학×AI), A4(비정형 현장은 GOFE 없이 배치 불가) · 활용: "10만 년 vs 1년" 한 장 + "그 격차를 메우는 건 데이터가 아니라 일하는 로봇"</li>
+<li><strong>신뢰도</strong>: 원문 확인(Science Robotics PDF 직접 열람)</li>
+</ul>
+</article><article class="item"><h3 id="item-8"><span class="num">8.</span> "오늘의 알고리즘을 동결하고 돈과 컴퓨트만 쏟아도 로봇은 안 풀린다" — 성능 2배에 데이터 24배·모델 56배·컴퓨트 736배, 그리고 추론 지연이 스케일링을 막는다</h3>
+<ul>
+<li><strong>출처</strong>: Ted Xiao(前 Google DeepMind 로보틱스, Gemini Robotics 테크리드) 발언 인용 · Sebastian Sartor "Scaling laws in robotics" 2025-07-05 · https://sebastiansartor.substack.com/p/scaling-laws-in-robotics</li>
+<li><strong>요지</strong>: "If we froze today's algorithms and just scaled compute and money, it wouldn't be enough to solve robotics."(오늘의 알고리즘을 동결하고 컴퓨트와 돈만 늘려도 로봇은 풀리지 않는다 — Ted Xiao) π0는 약 1만 시간 데모, LLM(Qwen-2.5)은 12억 시간 텍스트 — "a 100,000-fold difference". 현 추정으로 성능 2배에 데이터 24배·모델 56배·컴퓨트 736배 필요. "A dataset of a million demonstrations from one task is less valuable than a dataset of 100,000 demonstrations spanning 100 tasks."(단일 과제 100만 데모 &lt; 100과제 10만 데모) 일부 논문은 "inference latency" 때문에 더 못 키운다고 보고 — 클라우드 AI엔 없는 물리 제약</li>
+<li><strong>왜 참신한가</strong>: 로봇에 '비터 레슨'이 그대로 적용된다는 통념을 당사자(VLA 개척자)가 부정. 스케일링 비용이 비선형이고, 로봇은 '응답 시간'이라는 물리 한계가 모델 크기에 상한을 둠</li>
+<li><strong>발표 연결</strong>: A6 보강(물리는 동작마다 비용 <span class="arrow">→</span> 추론도 밀리초마다 비용), A3(다양성이 양을 이김 <span class="arrow">→</span> 비정형 현장이 데이터로서 가치), 신규 · 활용: "로봇의 스케일링 법칙은 LLM보다 100배 비싸다" 수치 슬라이드</li>
+<li><strong>신뢰도</strong>: 2차 보도(Sartor 글의 인용; Xiao 원 발언 출처 미확인)</li>
+</ul>
+</article><article class="item"><h3 id="item-9"><span class="num">9.</span> "영상만 봐서 배울 수 있다면 나는 덩크슛을 할 수 있어야 한다" — 관찰은 행동이 아니고, 넘어지는 로봇은 서버에 접속할 수 없다</h3>
+<ul>
+<li><strong>출처</strong>: Deepak Pathak·Abhinav Gupta(Skild AI 공동창업, CMU) · NVIDIA AI Podcast "One Brain, Any Robot" · 2026-04-22 · 요약 트랜스크립트: https://www.teahose.com/podcast/NVIDIA%20AI%20Podcast/Deepak%20Pathak%20%26%20Abhinav%20Gupta%20%28Skild%20AI%29%20%E2%80%94%20One%20Brain%2C%20Any%20Robot ; Bloomberg(2026-01-14, $1.4B 라운드): https://www.bloomberg.com/news/videos/2026-01-14/startup-building-robot-brain-raises-1-4-billion-video</li>
+<li><strong>요지</strong>: Gupta: "Just watching videos is not sufficient. If it was, I could dunk a basketball."(영상 시청으로 충분하다면 나는 덩크를 할 수 있어야 한다) — 페더러 경기를 봐도 페더러처럼 칠 수 없음. Pathak: "Robotics is a data problem. There is no internet of robot data."; "A robot can't connect to a server if falling; it must react immediately."(넘어지는 로봇은 서버에 접속할 수 없다 <span class="arrow">→</span> 엣지 추론 필수) 전통 로보틱스는 정밀 프로그래밍으로 80~90%까지 갔지만 코너케이스 '90%의 벽'에 막힘. "Any robot, any task, one brain"(옴니바디드) — 휴머노이드·4족·공장 팔이 같은 뇌를 동시에 쓰면 데이터 다양성 극대화. 배치 순서: 공장(반구조 데이터 플라이휠) <span class="arrow">→</span> 창고 <span class="arrow">→</span> 병원·호텔 <span class="arrow">→</span> 가정. 전문가 모델이 공유 뇌로 데이터를 되먹이는 '스페셜리스트<span class="arrow">→</span>제너럴리스트' 루프는 인간에겐 없는 이점</li>
+<li><strong>왜 참신한가</strong>: "인터넷 영상으로 배운다"는 데이터 피라미드 낙관론에 대한 가장 직관적 반박(덩크). 로봇 지능의 위치(엣지)를 물리 법칙(낙하 시간)으로 결정</li>
+<li><strong>발표 연결</strong>: A3 강력 보강(관찰≠행동), A4(공장은 출발점일 뿐이라는 Skild의 순서 vs 발표자의 '공장 밖이 전장'), B7(엣지 추론 = 로봇은 현장 전기의 소비자) · 활용: "유튜브를 봐도 덩크는 못 한다" 한 줄 + 엣지 추론 전력을 B7·B8에 연결</li>
+<li><strong>신뢰도</strong>: 2차 보도(요약 트랜스크립트 사이트; 인용은 요약자 정리)</li>
+</ul>
+</article><article class="item"><h3 id="item-10"><span class="num">10.</span> "물리 세계는 '기술(describe)'하기보다 '시뮬레이션'하기가 훨씬 어렵다" — 모든 상업적 압력은 특화를 향하고, 범용성은 그 압력에 저항하는 선택</h3>
+<ul>
+<li><strong>출처</strong>: Karol Hausman(Physical Intelligence CEO) · The Generalist 팟캐스트 "Why Robots Still Struggle With Simple Tasks" · 2026-03-17 · https://www.generalist.com/p/karol-hausman-physical-intelligence</li>
+<li><strong>요지</strong>: 로봇의 핵심 난제는 기계 설계가 아니라 지능 — 물리 환경은 "far harder to simulate than it is to describe"(기술하기보다 시뮬레이션하기가 훨씬 어렵다). 언어모델은 '기술'만 하면 되지만 로봇은 '예측·행동'해야 함. 로봇은 언어모델보다 "far higher reliability" 요구(실패가 물리적 결과). PI는 "every commercial pressure pushing you toward specialization"(특화로 미는 모든 상업적 압력)에 저항하며 연구 주도 범용성을 우선. 실배치가 "a powerful data flywheel"</li>
+<li><strong>왜 참신한가</strong>: 시뮬레이션 낙관론의 급소를 '언어 vs 물리'의 비대칭으로 설명. 범용 로봇은 시장이 원해서가 아니라 시장에 역행해서 만드는 것이라는 고백</li>
+<li><strong>발표 연결</strong>: A3·A6 보강 · 활용: "말로 설명하는 세상(LLM)과 손으로 바꾸는 세상(로봇)의 비대칭" 도입 문장</li>
+<li><strong>신뢰도</strong>: 2차 보도(쇼노트·요약)</li>
+</ul>
+</article><article class="item"><h3 id="item-11"><span class="num">11.</span> "저수준 운동 제어가 고수준 추론보다 어렵다" — 인상적 AI 성능은 평범한 물리 과제의 신뢰성을 전혀 보증하지 않는다</h3>
+<ul>
+<li><strong>출처</strong>: Chelsea Finn(Stanford·Physical Intelligence 공동창업) · No Priors 2025-03-20, YC AI Startup School 2025-06-17, YC 팟캐스트 2025-07-22 · 트랜스크립트: https://podscripts.co/podcasts/no-priors-artificial-intelligence-technology-startups/the-robotics-revolution-with-physical-intelligences-cofounder-chelsea-finn (차단) / 발언 정리: https://www.antoinebuteau.com/lessons-from-chelsea-finn/</li>
+<li><strong>요지</strong>: "low-level motor control can be harder than high-level reasoning"(저수준 운동 제어가 고수준 추론보다 어려울 수 있다); "actions effortless for people can be difficult for robots", "impressive AI performance does not imply reliable execution of ordinary physical tasks". π0는 이산 토큰이 아니라 연속 모터 명령을 충분히 빠르게 내도록 설계. 데이터는 양보다 장소 다양성(DROID: 13개 기관 공통 휴대 장비로 수집). 촉각 관측만으로 물체 재배치 학습 가능. 가정용은 "long-term ambition", 직장 과제 투입 전 최우선 개선은 reliability</li>
+<li><strong>왜 참신한가</strong>: 범용 AI의 '지능'이 높아질수록 로봇도 따라온다는 암묵 가정을 부정 — 추론과 운동 제어는 다른 축</li>
+<li><strong>발표 연결</strong>: A1 보강(모라벡 역설의 현장 버전), A2 · 활용: "박사 수준 추론을 하는 모델이 컵을 못 잡는 이유"</li>
+<li><strong>신뢰도</strong>: 2차 보도(발언 모음 사이트; 원 트랜스크립트 접속 불가)</li>
+</ul>
+</article><article class="item"><h3 id="item-12"><span class="num">12.</span> "모든 길은 로보틱스로 통한다" — 소프트웨어 에이전트도 결국 로봇 소프트웨어처럼 되고, 느린 로봇 팔은 기어비 뒤에 위험한 에너지를 숨긴다</h3>
+<ul>
+<li><strong>출처</strong>: Eric Jang(1X Technologies AI VP) · 블로그·강연 모음(2021~2026) + 1X World Model(1XWM) 발표 2026-01 · https://www.antoinebuteau.com/lessons-from-eric-jang/ ; 1XWM: https://johnkoetsier.com/1x-launches-humanoid-robot-world-model-lab-you-cant-fine-tune-your-way-to-agi/ (차단)</li>
+<li><strong>요지</strong>: "All Roads Lead to Robotics" — 소프트웨어 에이전트와 물리 로봇은 데이터 인프라·평가·불확실성 처리라는 같은 공학 문제로 수렴하므로, 탈신체 AI와 로봇이 비슷한 시기에 범용성에 도달한다는 주장. 휴머노이드는 "read/write interface to physical reality"(물리 현실에 대한 읽기/쓰기 인터페이스). 병목을 "from code to data"로 이동. 안전: "Slow robot limbs hide dangerous energy through gearing; visible speed alone is not a safety measure."(느린 팔이 기어비로 위험한 에너지를 숨긴다 — 보이는 속도는 안전 척도가 아니다) 1XWM(2026-01): 텍스트+초기 이미지로 미래 영상을 생성한 뒤 행동을 역추론, 웹 영상 + 소량 로봇 데이터로 학습. 랩 출범 슬로건 "You can't fine-tune your way to AGI"</li>
+<li><strong>왜 참신한가</strong>: "디지털에서 물리로"의 역방향 — 디지털 에이전트가 로봇화된다. 안전을 속도가 아닌 전달 에너지로 보는 시각은 Brooks의 질량³ 논리와 짝을 이룸</li>
+<li><strong>발표 연결</strong>: A2(인터페이스 비유), A3, B8(에너지 = 안전 변수) · 활용: "로봇은 물리 세계의 read/write API" 비유를 A6과 결합</li>
+<li><strong>신뢰도</strong>: 2차 보도(발언 모음; 1XWM 보도는 복수 매체 요지 일치, 슬로건 인용은 제목만 확인 <span class="arrow">→</span> 부분 미확인)</li>
+</ul>
+</article><article class="item"><h3 id="item-13"><span class="num">13.</span> "2026년에 이 제품을 사는 건 그 사회계약에 동의한 것" — 가정용 휴머노이드는 '제품'이 아니라 고객 집에서 돌아가는 데이터 수집 계약</h3>
+<ul>
+<li><strong>출처</strong>: Bernt Børnich(1X CEO) · WSJ 인터뷰 2025-10-28, Hard Fork(NYT) NEO 회차 2025-10/11, All-In 팟캐스트 2026-08-06 · 2차 보도: https://gigazine.net/gsc_news/en/20251029-1x-technologies-neo-home-robot , https://www.aol.com/entertainment/future-robot-companion-might-actually-134700528.html , https://www.xataka.com/robotica-e-ia/estoy-absolutamente-seguro-que-estamos-a-decada-despegue-definitivo-humanoides-bern-bornich-ceo-1x</li>
+<li><strong>요지</strong>: WSJ: "in 2026, if you buy this product, it is because you're okay with that social contract. If we don't have your data, we can't make the product better."(2026년에 이 제품을 사는 사람은 그 사회계약에 동의한 것. 데이터가 없으면 제품을 개선할 수 없다) NEO($20,000 또는 월 $499)는 초기엔 VR 원격조작자가 가사를 수행 — 조작자를 '가사도우미 고용'에 비유(심사·모니터링). 1X 데이터 피라미드의 꼭대기는 '사람의 개입(intervention)' 데이터, 바닥은 인터넷 인간 활동 영상. All-In 2026-08: "I'm absolutely certain we're less than a decade away from the definitive takeoff… my current bet would be 3 years."; 미래상은 "robots constructing robots, data centers, chip factories, mining and refinement… truly a self-sufficient labor system."</li>
+<li><strong>왜 참신한가</strong>: 텔레오퍼레이션을 숨기지 않고 '사회계약'으로 명시 — 소비자가 데이터 노동의 공급자가 되는 비즈니스 모델을 공개 선언. Brooks(항목 3)는 같은 현상을 "숨겨진 사람 개입"으로 비판 <span class="arrow">→</span> 두 시각의 대비가 발표에 유용</li>
+<li><strong>발표 연결</strong>: A3 보강(행동 데이터는 긁어올 수 없어서, 고객 집에서 '계약'으로 생산), B4(로봇이 광산·정제까지 — 공급망 자기순환) · 활용: "데이터는 긁어오는 게 아니라 계약으로 만든다"는 역설 소개 뒤, 산업현장은 그 계약이 더 자연스럽다(A4)로 연결</li>
+<li><strong>신뢰도</strong>: 2차 보도(WSJ 인용은 복수 매체 일치; '가사도우미' 비유는 매체 패러프레이즈 가능성)</li>
+</ul>
+</article><article class="item"><h3 id="item-14"><span class="num">14.</span> 가정용 로봇은 97%의 시간을 서 있고, 서 있는 동안 배터리의 절반을 '사람 감시'에 쓴다 — 2.5kWh 상한과 이족 고유의 음의 피드백</h3>
+<ul>
+<li><strong>출처</strong>: (a) Leandro Agro "The Cost of Watching Humans" 2026-05-28 · https://leeander.substack.com/p/the-cost-of-watching-humans ; (b) technologies.org "The humanoid robot bottleneck is the battery: why two kilowatt-hours caps the whole industry" 2026-08-04 · https://technologies.org/the-humanoid-robot-bottleneck-is-the-battery-why-two-kilowatt-hours-caps-the-whole-industry/ ; (c) Steel for Fuel "Some fun robot math" · https://steelforfuel.substack.com/p/some-fun-robot-math (차단, 검색 요약만)</li>
+<li><strong>요지</strong>: (a) 가정 로봇은 운용 시간의 97%를 정지 상태로 보내며 2~3%만 움직임; 정적 과제 중 안전 감지(시각 기반 근접 감지)가 에너지의 최대 47% — "The robot burns up to half its battery watching the environment while barely moving."(로봇은 거의 움직이지 않으면서 환경을 '보는' 데 배터리의 절반을 태운다) 수십억 연산의 결론은 결국 이진 질문 "is somebody too close?" <span class="arrow">→</span> 정전용량 센서(15ms)로 바꾸면 수 자릿수 절감. "We will build it by removing work from the brain." (b) 업계 표준 배터리 2.5kWh 미만(Unitree H1 0.864kWh, Optimus Gen2 ~2.3kWh), 셀 밀도 실용 상한 280~300Wh/kg, 동적 작업 약 2시간. 온보드 VLA 추론은 "a continuous parasitic load". 배터리를 더 넣으면 몸통 질량↑ <span class="arrow">→</span> 고관절·무릎 토크↑ <span class="arrow">→</span> m당 소비↑로 이득이 상쇄되는 이족 고유의 음의 피드백. 결론: 지능이 수렴하면 경쟁우위는 소프트웨어에서 "pack architecture, thermal design, swap mechanics and battery management"로 이동. (c) 검색 요약: 사람은 약 1.1W/kg·70kg ≈ 80W 연속, 휴머노이드는 400~1,200W</li>
+<li><strong>왜 참신한가</strong>: '에너지 문제'를 액추에이터가 아니라 인지·안전 아키텍처의 문제로 뒤집음(뇌에서 일을 빼내야 한다). 이족 형태가 에너지에서 구조적으로 불리하다는 것을 피드백 루프로 설명</li>
+<li><strong>발표 연결</strong>: B8 직접 보강(Joule per Task — 사람 80W vs 로봇 400~1,200W, 정지 시 감시 전력), B7(로봇 = 지역 전기 소비자), B3(전동화·자율화 쌍둥이의 급소는 배터리) · 활용: "동작당 줄(J)"에 "감시당 줄"을 추가 — 필드로봇은 바퀴·궤도·외부전원으로 이 피드백을 끊을 수 있다는 A4 논거</li>
+<li><strong>신뢰도</strong>: 2차 보도(블로그·뉴스레터 분석글; (c)는 검색 요약만 확인)</li>
+</ul>
+</article><article class="item"><h3 id="item-15"><span class="num">15.</span> "소프트웨어는 소프트웨어 속도로, 하드웨어 인증은 야금(metallurgy) 속도로 움직인다" — 휴머노이드 BOM의 절반 이상이 액추에이터이고 미국은 그 공급망이 없다</h3>
+<ul>
+<li><strong>출처</strong>: Daily H.E.A.T. 뉴스레터 "The robot has a body problem" · 2026-04-24 · https://theheatformula.beehiiv.com/p/the-robot-has-a-body-problem ; 보조: McKinsey "China's humanoid robot edge"(2026) https://www.mckinsey.com/featured-insights/charts/chinas-humanoid-robot-edge</li>
+<li><strong>요지</strong>: 미국은 뇌(소프트웨어), 중국은 몸(제조). 병목은 컴퓨트가 아니라 액추에이터 — BOM의 50% 이상(전동계 36%·센서 30%·모터 13.5%), Atlas는 자재비 60% 이상. "In most humanoid designs, actuators and transmissions are the cost center—commonly the majority of the bill of materials." Unitree G1 약 $16,000 vs 서구 동급 $48,000~80,000, 차이는 거의 전부 액추에이터 스택. 중국은 Leaderdrive(스트레인웨이브 감속기)·난징 KGM(롤러스크류) 등 플러그앤플레이 모듈, 서구 OEM은 사내 커스텀 통합. "The software side moves at software speed; hardware qualification moves at metallurgy speed." — 15년 이상의 정밀제조 노하우는 자본으로 압축 불가</li>
+<li><strong>왜 참신한가</strong>: "중국이 양산에서 앞선다"는 흔한 말을 '시간의 속도가 다른 두 영역'으로 구조화. 투자자 관심이 뇌에만 몰려 몸의 병목을 못 본다는 지적</li>
+<li><strong>발표 연결</strong>: B4 보강(자석·배터리·전력반도체에 '감속기·롤러스크류' 추가), A5(곱셈: 소프트웨어 속도 × 야금 속도) · 활용: "뇌는 다운로드되지만 몸은 주조된다" 한 줄</li>
+<li><strong>신뢰도</strong>: 2차 보도(뉴스레터; 수치는 업계 보고서 인용)</li>
+</ul>
+</article><article class="item"><h3 id="item-16"><span class="num">16.</span> "안드로이드 플레이" — 몸은 교체 가능한 껍데기이고 지능은 OS라는 플랫폼 관점</h3>
+<ul>
+<li><strong>출처</strong>: Demis Hassabis(Google DeepMind CEO) · WIRED 인터뷰 2025-11-20, Davos/Bloomberg 2026-01-20 · 2차 보도: https://the-decoder.com/?p=29211 , https://www.semafor.com/article/11/23/2025/deepmind-deepens-push-into-robotics , https://www.bloomberg.com/news/videos/2026-01-20/robotics-nearing-physical-ai-breakthrough-deepmind-ceo-video</li>
+<li><strong>요지</strong>: "You can sort of think of it as a bit like an Android play."(안드로이드 전략으로 보면 된다) "We want to build an AI system, a Gemini base, that can work almost out-of-the-box across any body configuration. Obviously humanoids, but non-humanoids too."(어떤 몸 구성에도 거의 그대로 작동하는 Gemini 기반을 만들고 싶다) 로봇은 "on the cusp of a kind of breakthrough moment in physical intelligence", "in the next couple of years". DeepMind는 하드웨어를 만들지 않고 Apptronik 등과 제휴, Boston Dynamics 前 CTO 영입</li>
+<li><strong>왜 참신한가</strong>: 몸을 플랫폼의 '단말'로 보는 소프트웨어 중심주의의 가장 명확한 표현 — 발표자 A1(병목은 몸)의 정반대 가설이라서 '세상의 두 진영'을 보여주는 데 유용</li>
+<li><strong>발표 연결</strong>: A1 대립항, A5 · 활용: "안드로이드 모델이 맞다면 한국은 단말(몸) 제조국이 된다 — 그래서 몸의 지능(필드 자율화)을 우리가 가져야 한다"는 전략 논증</li>
+<li><strong>신뢰도</strong>: 2차 보도(WIRED 인용 복수 매체 일치)</li>
+</ul>
+</article><article class="item"><h3 id="item-17"><span class="num">17.</span> "사람 같게 만드는 건 형태가 아니라 지능·지각·세계 이해" — 보스턴다이내믹스 창업자가 쇼핑몰에 로봇을 전시한 이유</h3>
+<ul>
+<li><strong>출처</strong>: Marc Raibert(Boston Dynamics 창업자·RAI Institute 소장) · CambridgeSide 몰 팝업 전시 인터뷰 2025-07-29, 한국 2025 Future-Tech Forum 2025-11 · https://getcoai.com/news/boston-dynamics-founder-opens-mall-robotics-exhibit-to-combat-ai-fears/ , https://www.tech42.co.kr/?p=111227 (차단) , https://www.digitimes.com/news/a20251125PD231.html (유료)</li>
+<li><strong>요지</strong>: "What really makes a thing human-like is its intelligence, its perception, its ability to understand the world around it."(사람 같게 만드는 것은 지능·지각·세계 이해) "It'll be in factories first, I don't think it'll be in homes for a while." 할리우드 공포상에 대해 "Hollywood has a narrow take on it. We've never had anybody go running out because they were afraid of it." — 주 1,000명 이상이 Spot·Atlas와 직접 상호작용. RAI 연구: GPS 없이 장애물을 점프하는 자율 더트바이크, 사람을 보고 배우는 "Watch, Understand, Do". 한국 포럼(2차 보도 제목): "로봇이 인간의 작업을 보고 따라하는 시대 올 것". Raibert의 지속 프레임: 운동지능(athletic) × 인지지능(cognitive)의 결합</li>
+<li><strong>왜 참신한가</strong>: 휴머노이드 논쟁을 형태에서 떼어내고, 사회 수용(공포)을 기술 과제와 동급으로 다루며 직접 전시로 대응한 점</li>
+<li><strong>발표 연결</strong>: A1 보강(운동지능 = 몸의 지능이라는 Raibert 용어), 신규(사회 수용·공포는 데이터만큼 중요한 배치 조건) · 활용: 새만금 실증특구(B6)를 '시민이 로봇을 만나는 장소'로도 설계하자는 제안의 근거</li>
+<li><strong>신뢰도</strong>: 2차 보도(미국 기사 직접 인용; 한국 포럼 발언은 제목만 확인 <span class="arrow">→</span> 부분 미확인)</li>
+</ul>
+</article><article class="item"><h3 id="item-18"><span class="num">18.</span> "세계의 규칙을 컴퓨터 안에 복제하면 재생 가능한 데이터 엔진이 된다" — 디지털 트윈은 설치가 아니라 배치 후에도 계속 현실을 '섭취'하는 과정</h3>
+<ul>
+<li><strong>출처</strong>: Rev Lebaredian(NVIDIA Omniverse·시뮬레이션 VP) · RadianceFields 인터뷰(GTC 2025 현장) 2025-04-14 · https://radiancefields.com/interview-with-rev-lebaredian-simulation-robotics-and-the-future-of-imaging</li>
+<li><strong>요지</strong>: "The intelligence we create is entirely dependent on data… we can't afford to be bottlenecked by how much real-world data we can collect." "If you can replicate the rules of the world inside a computer, you've created a renewable data engine."(세계의 규칙을 컴퓨터에 복제하면 재생 가능한 데이터 엔진) 반직관: "Even after deployment, these systems will need to continually ingest the real world to operate effectively." — 공장은 조건이 바뀌므로 디지털 표현을 반복 갱신. 본인이 꼽는 최대 미해결 문제: "automatic construction of a fully rich 3D representation of the world from raw sensor data" — NeRF 류는 "more like images"이고 시뮬레이션 가능한 장면이 아님</li>
+<li><strong>왜 참신한가</strong>: 시뮬레이션 낙관론의 당사자가 "현실<span class="arrow">→</span>3D 자동 복원"이 미해결이라고 인정(Goldberg 항목 7과 수렴). 디지털 트윈을 정적 자산이 아닌 '지속 섭취' 프로세스로 재정의</li>
+<li><strong>발표 연결</strong>: A4(비정형 실외는 3D 자동 복원이 가장 어려운 곳 <span class="arrow">→</span> 시뮬이 가장 약한 전장), B6(실증특구 = 현실을 계속 섭취하는 장소) · 활용: "시뮬레이션 2.0도 결국 현장을 먹어야 산다"</li>
+<li><strong>신뢰도</strong>: 2차 보도(인터뷰 전문 기사 — 사실상 1차 발언 텍스트)</li>
+</ul>
+</article><article class="item"><h3 id="item-19"><span class="num">19.</span> "휴머노이드 개발 난도는 자동차의 수십 배, 자율주행의 성공은 로봇 성공의 전야" — 모든 자동차 회사가 로봇 회사가 될 수는 없다</h3>
+<ul>
+<li><strong>출처</strong>: 何小鹏(He Xiaopeng, XPeng 회장) · 2026 전국 양회 기간 매일경제신문 등 인터뷰 · 2026-03-10 · https://www.ithome.com/0/927/533.htm ; 보조: https://www.yicai.com/news/103223315.html</li>
+<li><strong>요지</strong>: "AI正在从改变数字世界走向改变规模更为庞大的现实物理世界"(AI가 디지털 세계를 바꾸는 단계에서 훨씬 큰 현실 물리 세계를 바꾸는 단계로). "人形机器人的研发难度实际上是汽车的数十倍"(휴머노이드 R&amp;D 난도는 실제로 자동차의 수십 배). "自动驾驶的成功是机器人成功的前夜"(자율주행의 성공은 로봇 성공의 전야). "大模型将成为'物理AI世界的操作系统'". "并非所有车企都能顺利转型为人形机器人研发企业" — 하드웨어 자체개발·소프트웨어 자체개발·크로스도메인 융합 능력이 있어야 전환 가능. L4는 1~3년 내 가속. XPeng 계획: 2026 Q4 양산 <span class="arrow">→</span> 2027 Q1 매장 안내 <span class="arrow">→</span> 2027 Q2 해외 <span class="arrow">→</span> 2028 가정</li>
+<li><strong>왜 참신한가</strong>: 자동차<span class="arrow">→</span>로봇 전환을 당연시하는 중국 EV 업계 안에서 "수십 배 어렵고, 모두가 전환할 수는 없다"는 선별론. 자율주행을 로봇의 '전야'로 보는 단계론</li>
+<li><strong>발표 연결</strong>: B3 보강(자율화·전동화 쌍둥이 — 자동차 공급망이 로봇 공급망), A5(곱셈 = 하드웨어×소프트웨어×융합) · 활용: 한국 자동차·건설기계 산업이 '전야'를 어디서 맞을지(공장 밖 필드)로 연결</li>
+<li><strong>신뢰도</strong>: 2차 보도(IT之家 인용; 복수 중국 매체 일치)</li>
+</ul>
+<hr>
+</article><h2>보조 수집(공통 담론에 가깝거나 참신성 낮음 — 참고용)</h2>
+<ul>
+<li>Brett Adcock(Figure): "The home is like single-digit years away"(Around the Prompt, 2025-07) · Figure 8시간 자율 교대 데모(2026-05) · "5시간 자율 가사 성공 기업이 세계 최대 기업이 된다"는 발언은 2차 요약만 있어 <strong>미확인</strong> · https://oodaloop.com/briefs/technology/figure-ai-founder-brett-adcock-says-there-will-soon-be-as-many-humanoid-robots-as-humans</li>
+<li>Elon Musk: "~80% of Tesla's value will be Optimus"(X, 2025-09), "there is no meaningful limit to the size of the economy"(2025 Q1 실적콜) · https://www.fool.com/investing/2025/09/11/teslas-optimus-ai-bet-is-the-robot-future-worth-80</li>
+<li>Jensen Huang: "the ChatGPT moment for physical AI is here"(CES 2026), "Every industrial company will become a robotics company"(GTC 2026) · https://247wallst.com/investing/2026/08/15/the-4-words-from-jensen-huang-that-could-redefine-nvidias-total-addressable-market/</li>
+<li>Peggy Johnson(Agility, 2024-06): RaaS "several $1,000 a month", "walking before backflipping", "wheels cannot actually go everywhere humans can go" · https://www.playground.vc/playground-blogs/qa8-peggy-johnson-ceo-of-agility-robotics-on-robots-as-a-service-how-ai-is-changing-robotic-skill-sets-and-why-agility-is-walking-before-backflipping</li>
+<li>Fei-Fei Li(World Labs, a16z 2026-07-28): SceniX 인수, "training robots may require a fundamentally different approach than training language models", real-to-sim-to-real · 페이지에 트랜스크립트 없어 직접 인용 <strong>미확인</strong> · https://a16z.com/podcast/fei-fei-li-on-spatial-intelligence-and-robotics/</li>
+</ul>
+<hr>
+<h2 id="sec-a"><span class="num">(a)</span> 2026년 공통 담론 톱 10 (누구나 하는 이야기 — 발표에서 피하거나 한 줄로 지나갈 것)</h2>
+<ol>
+<li>"피지컬 AI의 ChatGPT 모먼트가 왔다/온다" — Jensen(CES 2026), Wang(1~10년), Hassabis("next couple of years")</li>
+<li>"모든 산업 기업은 로봇 기업이 된다" / "디지털 세계에서 물리 세계로" — Jensen, 何小鹏</li>
+<li>"로봇의 안드로이드/OS" 플랫폼론 — Hassabis, 何小鹏("物理AI OS"), Skild("one brain")</li>
+<li>데이터 플라이휠·배치 우선·"인터넷에 로봇 데이터는 없다" — Levine, Goldberg, Pathak, Hausman, Agility</li>
+<li>데이터 피라미드(웹 영상 <span class="arrow">→</span> 시뮬레이션 <span class="arrow">→</span> 텔레옵 <span class="arrow">→</span> 실로봇) — Jim Fan, 1X, Skild</li>
+<li>VLA vs 세계모델 논쟁 — LeCun·Wang·1X(세계모델) vs PI·DeepMind·XPeng(VLA+RL)</li>
+<li>텔레오퍼레이션은 과도기, 가정용은 "single-digit years" — 1X, Figure, Levine(5년), Raibert("factories first")</li>
+<li>휴머노이드 거품·과대광고 자인 — Brooks(12개 비현실 주장), LeCun("big secret"), WSJ 인용</li>
+<li>중국 하드웨어·액추에이터 공급망 장악, Unitree·AgiBot 2026 출하 80% — 36kr, McKinsey, TrendForce</li>
+<li>"Optimus가 테슬라 가치의 80%", "경제 규모에 한계 없음" 류 거대 밸류에이션 — Musk, Adcock</li>
+</ol>
+<h2 id="sec-b"><span class="num">(b)</span> 못 찾은 것 / 확인 못한 것</h2>
+<ul>
+<li>Dwarkesh Podcast 원문 트랜스크립트(Levine 2025-09, Karpathy 2025-10, Sutskever 2025-11) — dwarkesh.com 도메인 차단, 2차 요약 의존. Sutskever 회차의 물리세계·로봇 발언은 요약에 없음</li>
+<li>Fei-Fei Li a16z 2026-07 회차 직접 인용 — 페이지에 영상만 있음</li>
+<li>Jack Clark(Import AI)의 로보틱스 관련 '참신한' 발언 — 정책·타임라인 일반론만 확인</li>
+<li>Asianometry 로봇 공급망 영상 — 검색에 미노출(대신 Daily H.E.A.T. 뉴스레터로 대체)</li>
+<li>雷军(Lei Jun) 휴머노이드 발언 — 검색 결과 없음</li>
+<li>Hard Fork NEO 회차의 정확한 날짜·호스트 체험 인용 — podwise 로그인 벽</li>
+<li>X 스레드 원문(Jim Fan 2026, Ted Xiao, Chris Paxton 등 로보틱스 연구자 바이럴 스레드) — WebSearch 세션 예산(200회, 팀 공용) 소진으로 착수 못함. Jim Fan 'Physical Turing Test' X 포스트(2025-05)만 2차 확인</li>
+<li>Jim Fan의 "digital cousins" 표현 — 이번 소스에서 미확인</li>
+<li>Lex Fridman 2025~2026 로봇 회차 — 최근 로봇 회차 없음(Raibert 회차는 2024-02)</li>
+<li>The Robot Brains Podcast — 2023 Season 3 이후 비활성</li>
+<li>No Priors 2025-10 이후 로봇 회차 — 미확인</li>
+<li>Latent Space 로봇 회차(Memories AI 2026-03-18, Cortex AI 2026-03-19) — 내용 미확인</li>
+<li>Two Minute Papers·AI Explained·bycloud·Yannic Kilcher의 '독특한 분석' 회차 — 미착수</li>
+<li>Ilya Sutskever·Yann LeCun 외 "몸이 지능의 전제"라는 철학적 주장(MLST 등) — 학술 논문만 노출, 팟캐스트 회차 미확인</li>
+</ul>
+<h2 id="sec-c"><span class="num">(c)</span> 검색어 목록 (WebSearch, 이번 세션 사용분)</h2>
+<ol>
+<li>Dwarkesh Patel Sergey Levine robotics interview transcript 2025</li>
+<li>Rodney Brooks humanoid robots essay 2025 "why today's humanoids won't learn dexterity"</li>
+<li>Jim Fan "physical Turing test" talk 2025 NVIDIA GEAR transcript</li>
+<li>Karol Hausman Physical Intelligence podcast interview 2025 robot foundation model</li>
+<li>Marc Raibert interview 2025 Boston Dynamics AI Institute "athletic intelligence" humanoid podcast</li>
+<li>Wang Xingxing Unitree humanoid interview 2025 remarks data "no need" controversial</li>
+<li>Yann LeCun robotics world model interview 2025 2026 "humanoid" skeptical</li>
+<li>Fei-Fei Li spatial intelligence interview podcast 2025 2026 robots "World Labs"</li>
+<li>Lex Fridman podcast robotics humanoid 2025 2026 episode transcript</li>
+<li>No Priors podcast robotics episode 2025 2026 humanoid foundation model founder</li>
+<li>Rev Lebaredian NVIDIA Omniverse interview 2025 2026 physical AI "digital twin" podcast remarks</li>
+<li>Deepak Pathak Skild AI interview 2025 2026 "omni-bodied" robot brain podcast</li>
+<li>Ilya Sutskever physical world robots remarks 2025 2026 interview Dwarkesh</li>
+<li>Demis Hassabis robotics remarks 2025 2026 interview "Gemini Robotics" humanoid podcast</li>
+<li>Brett Adcock Figure interview 2025 2026 podcast remarks humanoid "Helix" counterintuitive "home" transcript</li>
+<li>Bernt Børnich 1X NEO interview 2025 2026 podcast "teleoperation" home robot remarks</li>
+<li>Asianometry humanoid robot supply chain video 2025 2026 actuators China analysis</li>
+<li>Chelsea Finn interview podcast 2025 2026 Physical Intelligence robot learning remarks transcript</li>
+<li>Pieter Abbeel Robot Brains podcast 2025 2026 season episode humanoid guest key takeaways</li>
+<li>Ken Goldberg "100,000 years" data gap robotics "good old fashioned engineering" 2025 talk</li>
+<li>Hard Fork podcast humanoid robots episode 2025 2026 Kevin Roose Casey Newton robot</li>
+<li>Elon Musk Optimus remarks 2025 2026 "Optimus" unusual quote earnings call "80% of value" robots economy</li>
+<li>Jensen Huang physical AI remarks 2026 GTC keynote "robots" unique quote "three computers" OR "the next trillion" interview</li>
+<li>何小鹏 OR 雷军 人形机器人 发言 2025 2026 "泡沫" OR "十年" 观点</li>
+<li>Ted Xiao robotics thread X 2025 2026 viral "robotics" lessons scaling "bitter lesson" roboticist</li>
+<li>Eric Jang 1X blog 2025 2026 "all roads lead to robots" OR "world model" OR "humanoid" essay post</li>
+<li>Andrej Karpathy Dwarkesh October 2025 robots humanoid remarks "Optimus" "decade of agents" physical world transcript</li>
+<li>humanoid robot energy consumption watts vs human "100 watts" efficiency comparison battery podcast OR thread 2025 2026</li>
+<li>Latent Space podcast robotics episode 2025 2026 embodied AI guest transcript</li>
+<li>Rodney Brooks predictions scorecard January 2026 humanoid robots self-driving</li>
+<li>Bernt Børnich All-In podcast 1X "robots building robots" three years remarks 2026</li>
+<li>Machine Learning Street Talk embodiment robotics episode 2025 2026 "embodied" intelligence argument</li>
+<li>Marc Raibert 2025 Korea Future-Tech Forum humanoid remarks "Spot" "Atlas" AI Institute quotes</li>
+<li>稚晖君 OR 王兴兴 人形机器人 观点 2026 "不需要" OR "误区" OR "反对" 采访</li>
+<li>Peggy Johnson Agility Robotics interview 2025 2026 Digit "humanoid" remarks why legs warehouse podcast</li>
+<li>Jack Clark Import AI robotics 2025 2026 "robots" remark embodied "physical" world newsletter podcast
+37~46. (예산 소진으로 미실행) Jim Fan X post 2026 / Chris Paxton humanoid skeptic thread / Boston Dynamics Playter·Saunders 2026 / Sam Altman robotics 2026 / Hard Fork NEO transcript / Fei-Fei Li SceniX quotes / Sergey Levine "sporks of AGI" / roboticist X thread form factor debate / Deepak Pathak omni-bodied quotes / Hassabis WIRED "Android"</li>
+</ol>
+<h2>WebFetch로 원문·2차 기사 확인한 URL (성공분)</h2>
+<ul>
+<li>rodneybrooks.com 에세이·스코어카드, autolab.berkeley.edu Goldberg PDF, inferencebysequoia.substack.com(Jim Fan), officechai.com(Jim Fan X), eu.36kr.com(Wang 2025), implicator.ai(Wang 2026), news.10jqka.com.cn(Wang 2026), m.sohu.com(Wang 2024), humanoidsdaily.com(LeCun 2건), hyper.ai(LeCun MIT), generalist.com(Hausman), teahose.com(Pathak·Gupta), antoinebuteau.com(Levine·Finn·Jang), stationlm.com(Levine), simonwillison.net(Karpathy), the-decoder.com·semafor.com(Hassabis), getcoai.com(Raibert), radiancefields.com(Lebaredian), xataka.com(Børnich All-In), gigazine.net(Børnich WSJ), sebastiansartor.substack.com(Xiao), technologies.org·leeander.substack.com(에너지), theheatformula.beehiiv.com(액추에이터), ithome.com(何小鹏), playground.vc(Agility), oodaloop.com(Adcock)</li>
+</ul>
+<footer>원문: Obsidian 볼트 <code>04_achievements/세미나/FES2026/</code> · 변환 2026-10-15 · 신뢰도 표기(원문 확인/2차 보도/회사 주장/미확인)는 원자료를 따름</footer>
+</div>
+</body>
+</html>

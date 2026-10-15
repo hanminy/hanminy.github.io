@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>FES 2026 특별강연 1 — 피지컬 AI와 산업 대전환의 미래 (슬라이드 v1)</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+@font-face{font-family:'Freesentation';font-weight:400;font-display:block;src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-4Regular.woff2') format('woff2');}
+@font-face{font-family:'Freesentation';font-weight:500;font-display:block;src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-5Medium.woff2') format('woff2');}
+@font-face{font-family:'Freesentation';font-weight:600;font-display:block;src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-6SemiBold.woff2') format('woff2');}
+@font-face{font-family:'Freesentation';font-weight:700;font-display:block;src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-7Bold.woff2') format('woff2');}
+@font-face{font-family:'Freesentation';font-weight:800;font-display:block;src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-8ExtraBold.woff2') format('woff2');}
+
+:root{
+  --navy-bar:#253149; --navy-deep:#0D204A; --accent:#FFFF6C; --accent-soft:#FFFF99;
+  --ink:#1A1A1A; --ink-sub:#595959; --gray-line:#D9DDE3; --gray-fill:#F2F2F2; --gray-label:#7B7B7B; --gray-label2:#A6A6A6;
+  --red-tag:#E8352E;
+}
+/* 장 팔레트 — design.md §3.2 */
+.ch1{--deep:#3461A2;--main:#3D52AD;--alt:#5895DE;--mid:#455A9B;--tint:#E8EEF8;--bd:rgba(88,149,222,.45)}
+.ch2{--deep:#6A1B3E;--main:#A44E5C;--alt:#824F83;--mid:#B2577A;--tint:#F4E8E8;--bd:rgba(164,78,92,.42)}
+.ch3{--deep:#2E624F;--main:#3EAE83;--alt:#1F7A73;--mid:#3C887B;--tint:#EAF6F5;--bd:rgba(49,161,126,.45)}
+.ch4{--deep:#3F6630;--main:#54833D;--alt:#A3A141;--mid:#75944E;--tint:#F2F5EB;--bd:rgba(84,131,61,.42)}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{margin:0;background:#4a4a4a;font-family:'Freesentation','Pretendard','Malgun Gothic',sans-serif;
+  -webkit-font-smoothing:antialiased;letter-spacing:-.2px;color:var(--ink)}
+.slide{position:relative;width:960px;height:540px;background:#fff;overflow:hidden;margin:18px auto;color:var(--ink)}
+
+/* 사이드바 */
+.sidebar{position:absolute;left:0;top:0;width:104px;height:540px;color:#fff;
+  background:radial-gradient(120px 180px at 78% 18%,rgba(255,255,255,.16),transparent 70%),
+             radial-gradient(150px 220px at 8% 84%,rgba(0,0,0,.20),transparent 72%),
+             linear-gradient(168deg,var(--mid) 0%,var(--main) 36%,var(--deep) 100%)}
+.sidebar .cnum{position:absolute;top:22px;left:12px;font-size:20px;font-weight:600;color:rgba(255,255,255,.62);line-height:1}
+.sidebar .cname{position:absolute;top:46px;left:12px;right:10px;font-size:23px;font-weight:700;line-height:1.16;letter-spacing:-.8px}
+.sidebar .rule{position:absolute;top:122px;left:12px;width:24px;height:1px;background:rgba(255,255,255,.55)}
+.sidebar .cq{position:absolute;top:136px;left:12px;right:11px;font-size:12.5px;font-weight:500;line-height:1.26;color:rgba(255,255,255,.92)}
+
+/* 머리말·제목·로고 */
+.crumb{position:absolute;left:123px;top:13px;font-size:9px;font-weight:500;color:var(--ink-sub)}
+.title{position:absolute;left:123px;top:27px;right:230px;font-size:25px;font-weight:700;letter-spacing:-1px;line-height:1.2;white-space:nowrap}
+.title .sub{font-weight:600}
+.logos{position:absolute;right:22px;top:24px;height:28px;display:flex;align-items:center;gap:11px}
+.logos .lg{display:flex;align-items:center;gap:4px}
+.logos .mark{width:22px;height:22px;border-radius:50%;flex:0 0 auto;position:relative;background:conic-gradient(from 210deg,#1B48B5 0 50%,#E8352E 50% 100%)}
+.logos .mark::after{content:"";position:absolute;inset:7px;border-radius:50%;background:#fff;opacity:.18}
+.logos .mark3{width:22px;height:22px;border-radius:5px;background:#1F6E43;color:#fff;font-weight:800;font-size:13px;display:grid;place-items:center;flex:0 0 auto}
+.logos .t1{font-size:8.6px;font-weight:700;letter-spacing:-.5px;white-space:nowrap;line-height:1.15}
+.logos .t2{font-size:5.4px;font-weight:400;color:#666;white-space:nowrap;line-height:1.15}
+
+/* 키메시지 바 */
+.keybar{position:absolute;left:104px;right:0;top:73px;height:43px;background:var(--navy-bar);
+  background-image:radial-gradient(420px 60px at 12% 130%,rgba(93,140,214,.22),transparent 70%),
+                   radial-gradient(360px 55px at 88% -30%,rgba(93,140,214,.18),transparent 70%);
+  display:flex;align-items:center;justify-content:center;padding:0 16px;color:#fff;font-size:21px;font-weight:700;letter-spacing:-.7px;white-space:nowrap}
+.keybar em{color:var(--accent);font-style:normal}
+.keybar.sm{font-size:18.5px}
+.keybar.xs{font-size:17px}
+
+/* 콘텐츠 */
+.content{position:absolute;left:139.5px;top:137px;width:782.5px;height:373px;display:flex;flex-direction:column}
+.content.c2{top:130px;height:380px}
+.pno{position:absolute;right:12px;bottom:10px;font-size:9px;color:var(--gray-label)}
+.note{position:absolute;left:0;bottom:2px;font-size:8.5px;font-weight:400;color:var(--ink-sub);line-height:1.3}
+.closer{position:absolute;left:0;right:0;bottom:0;height:52px;background:var(--navy-deep);display:flex;align-items:center;justify-content:center;
+  color:#fff;font-size:20px;font-weight:700;letter-spacing:-.6px}
+.closer em{color:var(--accent-soft);font-style:normal}
+
+/* 공통 컴포넌트 */
+.row{display:flex;gap:20px;align-items:flex-start}
+.col{display:flex;flex-direction:column;gap:8px}
+.lead{display:flex;align-items:center;gap:7px;font-size:15px;font-weight:700;line-height:1.25}
+.chk{width:16px;height:16px;border-radius:4px;background:var(--main);flex:0 0 auto;position:relative;margin-top:1px}
+.chk::after{content:"";position:absolute;left:5px;top:2.5px;width:4.5px;height:8px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(42deg)}
+.cap{font-size:11.5px;font-weight:600;color:#333;text-align:center;margin-top:5px;line-height:1.3}
+.cap b{color:var(--deep)}
+.cap .en{font-weight:400;color:#666;font-size:10.5px}
+.tag{display:inline-block;font-size:10.5px;font-weight:700;color:#fff;background:var(--main);border-radius:4px;padding:2px 7px;line-height:1.2}
+.tag.g{background:var(--gray-label)}
+.vb{display:inline-block;font-size:8.5px;font-weight:700;color:#7A5A00;background:#FFF3B0;border:1px solid #E8D27A;border-radius:3px;padding:0 4px;vertical-align:middle;margin-left:3px;letter-spacing:0}
+.stat{background:var(--tint);border:1px solid var(--bd);border-radius:8px;padding:8px 10px;text-align:center}
+.stat .n{font-size:25px;font-weight:800;color:var(--deep);line-height:1.05;letter-spacing:-1px}
+.stat .l{font-size:10.5px;font-weight:500;color:#444;margin-top:4px;line-height:1.25}
+.card{background:#fff;border:1px solid var(--bd);border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,.06);overflow:hidden;display:flex;flex-direction:column}
+.card>header{height:33px;flex:0 0 33px;display:flex;align-items:center;justify-content:center;gap:8px;background:var(--main);color:#fff;font-size:16px;font-weight:700;letter-spacing:-.5px}
+.card>header.g{background:var(--gray-label)}
+.card .body{flex:1;padding:9px 11px 10px;display:flex;flex-direction:column;gap:6px}
+.card .sub{background:var(--tint);text-align:center;font-size:13px;font-weight:700;padding:6px 8px;color:var(--deep);line-height:1.25}
+.ul{display:flex;flex-direction:column;gap:5px}
+.ul li{list-style:none;position:relative;padding-left:11px;font-size:13px;font-weight:500;line-height:1.33}
+.ul li::before{content:"•";position:absolute;left:0;top:-.5px;color:var(--main);font-weight:700}
+.ul li b{font-weight:700}
+.ul li .dash{display:block;padding-left:2px;font-size:11.5px;font-weight:400;color:#4A4A4A;margin-top:1px}
+.ul li .dash::before{content:"- "}
+.lrow{display:grid;grid-template-columns:62px 1fr;align-items:center;border:1px solid var(--gray-line);border-radius:4px;overflow:hidden;min-height:38px;background:#fff}
+.lrow>.k{align-self:stretch;background:var(--deep);color:#fff;font-size:12.5px;font-weight:700;display:grid;place-items:center;text-align:center;line-height:1.15;padding:2px}
+.lrow>.k.g{background:var(--gray-label)}
+.lrow>.v{display:block;align-self:center;padding:5px 10px;font-size:13px;font-weight:500;line-height:1.3}
+.lrow>.v b{font-weight:700}
+.steps{display:flex;align-items:stretch;gap:0}
+.step{flex:1;border:1px solid var(--bd);border-radius:8px;background:#fff;padding:8px 6px;text-align:center;display:flex;flex-direction:column;justify-content:center;gap:2px}
+.step .y{font-size:10px;font-weight:600;color:#777}
+.step .t{font-size:14px;font-weight:700;line-height:1.2}
+.step .d{font-size:10.5px;font-weight:500;color:#555;line-height:1.25}
+.step.now{background:var(--main);border-color:var(--main);color:#fff}
+.step.now .y,.step.now .d{color:rgba(255,255,255,.85)}
+.sarr{flex:0 0 22px;display:grid;place-items:center;color:var(--main);font-size:15px;font-weight:800}
+.quote{border-left:3px solid var(--main);padding:4px 10px;font-size:12.5px;font-weight:500;color:#333;line-height:1.4;background:var(--tint);border-radius:0 6px 6px 0}
+.quote b{font-weight:700;color:var(--deep)}
+.quote .src{display:block;font-size:9.5px;color:#777;margin-top:2px;font-weight:400}
+.dim{font-size:10px;color:#888;font-weight:500}
+
+/* S6 국가별 행 */
+.crow{display:grid;grid-template-columns:78px 1fr 138px;gap:12px;align-items:center;border:1px solid var(--gray-line);border-radius:8px;padding:6px 10px 6px 6px;background:#fff}
+.crow .k{height:92px;border-radius:6px;background:var(--gray-label);color:#fff;font-size:15px;font-weight:800;display:grid;place-items:center;text-align:center;line-height:1.2}
+.crow.now .k{background:var(--main)}.crow.now{border-color:var(--bd);background:var(--tint)}
+.crow .v{font-size:14px;font-weight:700;line-height:1.35;position:relative}.crow .v span{font-size:12px;font-weight:500;color:#444}
+.crow .st{display:flex;align-items:center;gap:6px;margin-top:6px}.crow .st .n{font-size:18px;font-weight:800;color:var(--deep);background:#FFF3B0;border:1px solid #E8D27A;border-radius:5px;padding:0 8px}.crow .st .l{font-size:10.5px;color:#666;font-weight:500}
+/* S13 디지털트윈 3단 */
+.dtb{width:150px;height:150px;border:1px solid var(--bd);border-radius:10px;background:#fff;display:flex;flex-direction:column;overflow:hidden}.dtb .h{height:36px;background:var(--gray-label);color:#fff;font-size:14px;font-weight:700;display:grid;place-items:center}.dtb .b{flex:1;display:grid;place-items:center;text-align:center;font-size:12px;font-weight:600;line-height:1.4;padding:6px}.dtb .b span{display:block;font-size:10.5px;font-weight:400;color:#666;margin-top:3px}.dtb.now .h{background:var(--main)}.dta{width:40px;text-align:center;font-size:24px;font-weight:800;color:var(--main)}
+
+/* 미디어 플레이스홀더 — design.md §5.8 */
+.ph{position:relative;border:1.5px dashed var(--main);border-radius:6px;background:var(--tint);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;overflow:hidden;text-align:center;flex:0 0 auto}
+.ph::before{content:"";position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(45deg,transparent 0 9px,rgba(0,0,0,.028) 9px 18px)}
+.ph>*{position:relative}
+.ph .id{font-size:9.5px;font-weight:700;color:#fff;background:var(--main);border-radius:3px;padding:1px 6px;letter-spacing:.2px}
+.ph .desc{font-size:10.5px;font-weight:600;color:var(--deep);line-height:1.34;padding:0 7px}
+.ph .size{font-size:8.6px;font-weight:400;color:#7A8A85}
+.ph.sm .desc{font-size:9.6px;line-height:1.3}.ph.sm .id{font-size:8.8px;padding:.5px 5px}.ph.sm .size{font-size:8px}
+.ph.vid{border-color:#C0392B;background:#FDF2F0}.ph.vid .id{background:#C0392B}.ph.vid .desc{color:#8E2A1E}.ph.vid .id::before{content:"▶ "}
+.ph.dark{border-color:rgba(255,255,255,.72);background:rgba(255,255,255,.12)}
+.ph.dark::before{background:repeating-linear-gradient(45deg,transparent 0 9px,rgba(255,255,255,.055) 9px 18px)}
+.ph.dark .id{background:rgba(255,255,255,.92);color:#1B2440}.ph.dark .desc{color:#fff}.ph.dark .size{color:rgba(255,255,255,.8)}
+.ph.gray{border-color:var(--gray-label);background:var(--gray-fill)}.ph.gray .id{background:var(--gray-label)}.ph.gray .desc{color:#555}
+
+/* ── 표지 (A형) ── */
+.cover .edge{position:absolute;left:0;top:0;width:573px;height:540px;clip-path:ellipse(475px 665px at 0% 50%);
+  background:linear-gradient(158deg,#5BE0B0 0%,#2E9BE8 32%,#2C5CC4 64%,#F0C84A 100%);z-index:0}
+.cover .art{position:absolute;left:0;top:0;width:568px;height:540px;overflow:hidden;clip-path:ellipse(470px 660px at 0% 50%);
+  background:linear-gradient(155deg,#0F2E3E 0%,#14456B 34%,#1D5A6E 58%,#0C1F3A 100%)}
+.cover .art::before{content:"";position:absolute;inset:0;background:radial-gradient(180px 220px at 70% 25%,rgba(91,224,176,.35),transparent 70%),radial-gradient(260px 300px at 20% 85%,rgba(0,0,0,.35),transparent 70%)}
+.bgin{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;display:block}
+.cover .head{position:absolute;right:38px;top:26px;font-size:11.5px;font-weight:500;color:#3A3A3A;text-align:right;line-height:1.5}
+.cover .pill{position:absolute;left:520px;top:150px;background:var(--navy-bar);color:#fff;border-radius:999px;padding:7px 20px;font-size:14px;font-weight:600;letter-spacing:-.4px}
+.cover h1{position:absolute;left:520px;top:196px;font-size:42px;font-weight:800;line-height:1.16;letter-spacing:-2.2px;color:#1B2440}
+.cover h1 .l2{display:block;font-size:22px;font-weight:600;letter-spacing:-.8px;color:#2B3A63;margin-top:10px;line-height:1.3}
+.cover .meta{position:absolute;left:522px;top:378px;font-size:12.5px;font-weight:500;color:#3A3A3A;line-height:1.65}
+.cover .meta b{font-weight:700;color:#1B2440}
+.cover .clogos{position:absolute;left:520px;top:470px;display:flex;align-items:center;gap:14px}
+.cover .ph{position:absolute;left:52px;top:112px;z-index:2}
+
+/* ── 마무리 (G형) ── */
+.fin h2{position:absolute;left:96px;top:58px;font-size:36px;font-weight:800;letter-spacing:-1.8px;line-height:1.22;color:#1B2440}
+.fin .subt{position:absolute;left:98px;top:154px;right:96px;font-size:14px;font-weight:500;color:#3A3A3A;line-height:1.5}
+.fin .loop{position:absolute;left:468px;top:196px}
+.fin .three{position:absolute;left:96px;top:208px;width:350px;display:flex;flex-direction:column;gap:9px}
+.fin .k3{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--gray-line);border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.05);padding:8px 11px}
+.fin .k3 .n{width:26px;height:26px;border-radius:50%;color:#fff;display:grid;place-items:center;font-size:12.5px;font-weight:800;flex:0 0 auto}
+.fin .k3:nth-child(1) .n{background:#A44E5C}.fin .k3:nth-child(2) .n{background:#3EAE83}.fin .k3:nth-child(3) .n{background:#54833D}
+.fin .k3 .b{font-size:12.5px;font-weight:500;line-height:1.4}
+.fin .k3 .b b{font-weight:700}
+.fin .baton{position:absolute;left:96px;right:96px;top:410px;border-left:3px solid #54833D;background:#F2F5EB;padding:7px 12px;border-radius:0 6px 6px 0;font-size:12.5px;font-weight:500;color:#333;line-height:1.45}
+.fin .baton b{font-weight:700;color:#3F6630}
+.fin .thanks{position:absolute;left:96px;bottom:34px;font-size:28px;font-weight:800;letter-spacing:-1.4px;color:#1B2440}
+.fin .contact{position:absolute;left:96px;bottom:16px;font-size:10.5px;font-weight:500;color:#5A5A5A}
+.fin .clogos{position:absolute;right:38px;bottom:22px;top:auto}
+
+/* 발표 모드: F 키 → 전체화면 단일 슬라이드, ←/→ 이동, Esc 종료 */
+body.present{background:#000;overflow:hidden}
+body.present .slide{display:none}
+body.present .slide.on{display:block;position:fixed;left:50%;top:50%;margin:0;transform:translate(-50%,-50%) scale(var(--fit,1));transform-origin:center center}
+
+@media print{
+  @page{size:960px 540px;margin:0}
+  html,body{background:#fff}
+  .slide{margin:0;box-shadow:none;page-break-after:always;break-after:page}
+  .slide:last-child{page-break-after:auto;break-after:auto}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ S01 표지 ══ -->
+<section class="slide cover">
+  <div class="edge"></div><div class="art"><svg class="bgin" viewBox="0 0 568 540" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="cvArc" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#9BF0C9" stop-opacity=".92"/><stop offset=".55" stop-color="#8FD2FF" stop-opacity=".5"/><stop offset="1" stop-color="#FFF6A8" stop-opacity=".14"/></linearGradient><linearGradient id="cvSect" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#5BE0B0" stop-opacity=".18"/><stop offset="1" stop-color="#5BE0B0" stop-opacity="0"/></linearGradient><linearGradient id="cvWave" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity=".02"/><stop offset=".5" stop-color="#fff" stop-opacity=".16"/><stop offset="1" stop-color="#fff" stop-opacity=".02"/></linearGradient><radialGradient id="sph" cx="34%" cy="27%" r="74%"><stop offset="0" stop-color="#D9FFEF"/><stop offset=".32" stop-color="#4FCC9A"/><stop offset=".72" stop-color="#1E6B52"/><stop offset="1" stop-color="#0B2E22"/></radialGradient><radialGradient id="glow" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#7FFFD0" stop-opacity=".35"/><stop offset="1" stop-color="#7FFFD0" stop-opacity="0"/></radialGradient></defs><path d="M 26 588 L 61 89 A 500 500 0 0 1 521 518 Z" fill="url(#cvSect)"/><polyline points="-20,296.2 -12,297.7 -4,299.2 4,300.8 12,302.3 20,303.8 28,305.2 36,306.6 44,307.9 52,309.1 60,310.2 68,311.2 76,312.0 84,312.7 92,313.3 100,313.7 108,313.9 116,314.0 124,313.9 132,313.6 140,313.2 148,312.6 156,311.9 164,311.0 172,310.0 180,308.9 188,307.7 196,306.4 204,305.0 212,303.5 220,302.0 228,300.5 236,299.0 244,297.5 252,296.0 260,294.6 268,293.2 276,291.9 284,290.7 292,289.6 300,288.7 308,287.8 316,287.2 324,286.6 332,286.3 340,286.0 348,286.0 356,286.1 364,286.4 372,286.9 380,287.5 388,288.2 396,289.1 404,290.1 412,291.3 420,292.5 428,293.8 436,295.2 444,296.7 452,298.2 460,299.7 468,301.2 476,302.7 484,304.2 492,305.6 500,307.0 508,308.3 516,309.5 524,310.5 532,311.5 540,312.3 548,312.9 556,313.4 564,313.8 572,314.0 580,314.0 588,313.8 596,313.5" fill="none" stroke="url(#cvWave)" stroke-width="1.3" opacity="0.9"/><polyline points="-20,384.0 -12,385.4 -4,386.6 4,387.7 12,388.5 20,389.2 28,389.7 36,389.9 44,390.0 52,389.8 60,389.5 68,388.9 76,388.1 84,387.1 92,386.0 100,384.7 108,383.2 116,381.6 124,379.9 132,378.1 140,376.2 148,374.3 156,372.3 164,370.4 172,368.4 180,366.5 188,364.7 196,363.0 204,361.3 212,359.8 220,358.4 228,357.2 236,356.2 244,355.4 252,354.7 260,354.3 268,354.0 276,354.0 284,354.2 292,354.6 300,355.2 308,356.0 316,357.0 324,358.2 332,359.6 340,361.0 348,362.7 356,364.4 364,366.2 372,368.1 380,370.0 388,372.0 396,373.9 404,375.9 412,377.8 420,379.6 428,381.3 436,382.9 444,384.4 452,385.8 460,386.9 468,387.9 476,388.8 484,389.4 492,389.8 500,390.0 508,390.0 516,389.7 524,389.3 532,388.7 540,387.8 548,386.8 556,385.6 564,384.2 572,382.7 580,381.1 588,379.3 596,377.5" fill="none" stroke="url(#cvWave)" stroke-width="1.3" opacity="0.75"/><polyline points="-20,246.9 -12,246.6 -4,246.2 4,245.7 12,245.1 20,244.4 28,243.6 36,242.7 44,241.7 52,240.6 60,239.5 68,238.4 76,237.2 84,236.0 92,234.8 100,233.6 108,232.4 116,231.3 124,230.3 132,229.3 140,228.4 148,227.6 156,226.9 164,226.2 172,225.7 180,225.4 188,225.1 196,225.0 204,225.0 212,225.2 220,225.4 228,225.8 236,226.3 244,227.0 252,227.7 260,228.6 268,229.5 276,230.5 284,231.5 292,232.7 300,233.8 308,235.0 316,236.2 324,237.4 332,238.6 340,239.7 348,240.8 356,241.9 364,242.8 372,243.7 380,244.5 388,245.2 396,245.8 404,246.3 412,246.7 420,246.9 428,247.0 436,247.0 444,246.8 452,246.5 460,246.1 468,245.6 476,244.9 484,244.2 492,243.3 500,242.4 508,241.4 516,240.3 524,239.2 532,238.0 540,236.8 548,235.6 556,234.4 564,233.2 572,232.1 580,231.0 588,230.0 596,229.0" fill="none" stroke="url(#cvWave)" stroke-width="1.3" opacity="0.55"/><path d="M 25.9 422.1 A 168 168 0 0 1 187.9 584.1" fill="none" stroke="url(#cvArc)" stroke-width="2.00" opacity="1.00"/><path d="M 28.7 342.2 A 248 248 0 0 1 267.8 581.3" fill="none" stroke="url(#cvArc)" stroke-width="1.78" opacity="0.86"/><path d="M 31.5 260.2 A 330 330 0 0 1 349.8 578.5" fill="none" stroke="url(#cvArc)" stroke-width="1.56" opacity="0.72"/><path d="M 34.4 176.3 A 414 414 0 0 1 433.7 575.6" fill="none" stroke="url(#cvArc)" stroke-width="1.34" opacity="0.58"/><path d="M 37.4 90.3 A 500 500 0 0 1 519.7 572.6" fill="none" stroke="url(#cvArc)" stroke-width="1.12" opacity="0.44"/><line x1="358" y1="207" x2="289" y2="153" stroke="#A8F0D4" stroke-width=".7" opacity=".16"/><line x1="358" y1="207" x2="233" y2="249" stroke="#A8F0D4" stroke-width=".7" opacity=".16"/><line x1="358" y1="207" x2="197" y2="165" stroke="#A8F0D4" stroke-width=".7" opacity=".16"/><line x1="358" y1="207" x2="300" y2="300" stroke="#A8F0D4" stroke-width=".7" opacity=".16"/><line x1="358" y1="207" x2="250" y2="340" stroke="#A8F0D4" stroke-width=".7" opacity=".16"/><line x1="289" y1="153" x2="233" y2="249" stroke="#A8F0D4" stroke-width=".7" opacity=".16"/><line x1="289" y1="153" x2="187" y2="81" stroke="#A8F0D4" stroke-width=".7" opacity=".16"/><line x1="289" y1="153" x2="175" y2="104" stroke="#A8F0D4" stroke-width=".7" opacity=".16"/><line x1="289" y1="153" x2="204" y2="105" stroke="#A8F0D4" stroke-width=".7" opacity=".16"/><line x1="289" y1="153" x2="197" y2="165" stroke="#A8F0D4" stroke-width=".7" opacity=".16"/><line x1="289" y1="153" x2="149" y2="66" stroke="#A8F0D4" stroke-width=".7" opacity=".16"/><line x1="289" y1="153" x2="300" y2="300" stroke="#A8F0D4" stroke-width=".7" opacity=".16"/><line x1="233" y1="249" x2="187" y2="81" stroke="#A8F0D4" stroke-width=".7" opacity=".16"/><line x1="233" y1="249" x2="175" y2="104" stroke="#A8F0D4" stroke-width=".7" opacity=".16"/><line x1="233" y1="249" x2="204" y2="105" stroke="#A8F0D4" stroke-width=".7" opacity=".16"/><line x1="233" y1="249" x2="197" y2="165" stroke="#A8F0D4" stroke-width=".7" opacity=".16"/><line x1="233" y1="249" x2="300" y2="300" stroke="#A8F0D4" stroke-width=".7" opacity=".16"/><line x1="233" y1="249" x2="250" y2="340" stroke="#A8F0D4" stroke-width=".7" opacity=".16"/><line x1="187" y1="81" x2="107" y2="116" stroke="#A8F0D4" stroke-width=".7" opacity=".16"/><line x1="187" y1="81" x2="197" y2="165" stroke="#A8F0D4" stroke-width=".7" opacity=".16"/><line x1="204" y1="105" x2="107" y2="116" stroke="#A8F0D4" stroke-width=".7" opacity=".16"/><line x1="107" y1="116" x2="197" y2="165" stroke="#A8F0D4" stroke-width=".7" opacity=".16"/><line x1="197" y1="165" x2="149" y2="66" stroke="#A8F0D4" stroke-width=".7" opacity=".16"/><line x1="197" y1="165" x2="300" y2="300" stroke="#A8F0D4" stroke-width=".7" opacity=".16"/><circle cx="358" cy="207" r="2.1" fill="#CFFFEB" opacity=".42"/><circle cx="289" cy="153" r="2.1" fill="#CFFFEB" opacity=".42"/><circle cx="233" cy="249" r="2.1" fill="#CFFFEB" opacity=".42"/><circle cx="187" cy="81" r="2.1" fill="#CFFFEB" opacity=".42"/><circle cx="175" cy="104" r="2.1" fill="#CFFFEB" opacity=".42"/><circle cx="204" cy="105" r="2.1" fill="#CFFFEB" opacity=".42"/><circle cx="107" cy="116" r="2.1" fill="#CFFFEB" opacity=".42"/><circle cx="197" cy="165" r="2.1" fill="#CFFFEB" opacity=".42"/><circle cx="149" cy="66" r="2.1" fill="#CFFFEB" opacity=".42"/><circle cx="300" cy="300" r="2.1" fill="#CFFFEB" opacity=".42"/><circle cx="250" cy="340" r="2.1" fill="#CFFFEB" opacity=".42"/><circle cx="152.1" cy="502.1" r="2.22" fill="#DFFFF1" opacity="0.79"/><circle cx="421.9" cy="426.0" r="1.58" fill="#8FF0C8" opacity="0.70"/><circle cx="176.2" cy="206.5" r="1.68" fill="#8FF0C8" opacity="0.36"/><circle cx="119.8" cy="470.1" r="2.00" fill="#DFFFF1" opacity="0.68"/><circle cx="335.6" cy="472.8" r="2.30" fill="#DFFFF1" opacity="0.58"/><circle cx="142.8" cy="476.3" r="1.16" fill="#8FF0C8" opacity="0.38"/><circle cx="43.2" cy="264.7" r="1.84" fill="#8FF0C8" opacity="0.50"/><circle cx="342.4" cy="305.5" r="2.09" fill="#DFFFF1" opacity="0.53"/><circle cx="266.0" cy="244.4" r="1.54" fill="#8FF0C8" opacity="0.76"/><circle cx="326.2" cy="336.1" r="1.93" fill="#DFFFF1" opacity="0.75"/><circle cx="167.5" cy="512.4" r="1.39" fill="#8FF0C8" opacity="0.38"/><circle cx="239.0" cy="467.9" r="1.78" fill="#8FF0C8" opacity="0.69"/><circle cx="266.3" cy="376.0" r="1.77" fill="#8FF0C8" opacity="0.47"/><circle cx="155.9" cy="195.7" r="2.03" fill="#DFFFF1" opacity="0.31"/><circle cx="221.0" cy="459.9" r="1.66" fill="#8FF0C8" opacity="0.55"/><circle cx="375.9" cy="386.0" r="1.45" fill="#8FF0C8" opacity="0.72"/><circle cx="413.1" cy="445.9" r="1.59" fill="#8FF0C8" opacity="0.80"/><circle cx="77.3" cy="273.3" r="1.80" fill="#8FF0C8" opacity="0.73"/><circle cx="244.1" cy="323.3" r="2.24" fill="#DFFFF1" opacity="0.83"/><circle cx="436.6" cy="500.5" r="1.29" fill="#8FF0C8" opacity="0.41"/><circle cx="121.0" cy="193.4" r="2.17" fill="#DFFFF1" opacity="0.35"/><circle cx="81.8" cy="199.1" r="1.97" fill="#DFFFF1" opacity="0.44"/><circle cx="163.3" cy="523.7" r="2.23" fill="#DFFFF1" opacity="0.67"/><circle cx="279.8" cy="379.5" r="1.93" fill="#DFFFF1" opacity="0.82"/><circle cx="383.9" cy="379.4" r="2.20" fill="#DFFFF1" opacity="0.60"/><circle cx="402.3" cy="491.7" r="1.51" fill="#8FF0C8" opacity="0.35"/><circle cx="100.3" cy="279.1" r="1.99" fill="#DFFFF1" opacity="0.51"/><circle cx="115.4" cy="452.2" r="0.82" fill="#8FF0C8" opacity="0.76"/><circle cx="45.3" cy="241.0" r="1.46" fill="#8FF0C8" opacity="0.68"/><circle cx="218.9" cy="236.8" r="0.89" fill="#8FF0C8" opacity="0.82"/><circle cx="178.0" cy="390.9" r="1.24" fill="#8FF0C8" opacity="0.63"/><circle cx="151.5" cy="471.5" r="0.75" fill="#8FF0C8" opacity="0.66"/><circle cx="266.8" cy="512.1" r="1.42" fill="#8FF0C8" opacity="0.72"/><circle cx="190.1" cy="405.2" r="1.79" fill="#8FF0C8" opacity="0.31"/><circle cx="220.3" cy="462.6" r="1.00" fill="#8FF0C8" opacity="0.45"/><circle cx="147.9" cy="190.0" r="0.98" fill="#8FF0C8" opacity="0.56"/><circle cx="199.7" cy="224.3" r="0.98" fill="#8FF0C8" opacity="0.59"/><circle cx="417.2" cy="436.9" r="2.01" fill="#DFFFF1" opacity="0.77"/><circle cx="30.9" cy="331.2" r="0.85" fill="#8FF0C8" opacity="0.55"/><circle cx="323.5" cy="499.3" r="1.77" fill="#8FF0C8" opacity="0.83"/><circle cx="344.0" cy="491.6" r="1.26" fill="#8FF0C8" opacity="0.68"/><circle cx="214.6" cy="419.0" r="1.61" fill="#8FF0C8" opacity="0.42"/><circle cx="277.0" cy="368.8" r="1.77" fill="#8FF0C8" opacity="0.37"/><circle cx="83.9" cy="258.2" r="0.80" fill="#8FF0C8" opacity="0.50"/><circle cx="230.8" cy="449.2" r="0.87" fill="#8FF0C8" opacity="0.47"/><circle cx="87.3" cy="438.2" r="0.80" fill="#8FF0C8" opacity="0.53"/><circle cx="222.3" cy="319.8" r="0.72" fill="#8FF0C8" opacity="0.35"/><circle cx="145.9" cy="481.1" r="2.28" fill="#DFFFF1" opacity="0.77"/><circle cx="328.3" cy="462.3" r="1.67" fill="#8FF0C8" opacity="0.66"/><circle cx="80.2" cy="425.7" r="1.44" fill="#8FF0C8" opacity="0.84"/><circle cx="161.9" cy="507.0" r="2.08" fill="#DFFFF1" opacity="0.67"/><circle cx="185.7" cy="324.1" r="1.88" fill="#8FF0C8" opacity="0.54"/><circle cx="98.8" cy="425.9" r="1.23" fill="#8FF0C8" opacity="0.70"/><circle cx="148.8" cy="486.4" r="0.73" fill="#8FF0C8" opacity="0.83"/><circle cx="214.2" cy="421.8" r="1.85" fill="#8FF0C8" opacity="0.36"/><circle cx="110.2" cy="444.2" r="1.74" fill="#8FF0C8" opacity="0.66"/><circle cx="124.6" cy="454.5" r="0.90" fill="#8FF0C8" opacity="0.53"/><circle cx="164.8" cy="201.5" r="0.90" fill="#8FF0C8" opacity="0.60"/><circle cx="432.0" cy="492.5" r="1.96" fill="#DFFFF1" opacity="0.43"/><circle cx="88.1" cy="438.3" r="1.20" fill="#8FF0C8" opacity="0.82"/><circle cx="189.9" cy="536.5" r="1.58" fill="#8FF0C8" opacity="0.66"/><circle cx="312.3" cy="450.1" r="0.79" fill="#8FF0C8" opacity="0.76"/><circle cx="190.5" cy="397.5" r="2.25" fill="#DFFFF1" opacity="0.67"/><circle cx="174.3" cy="373.9" r="2.26" fill="#DFFFF1" opacity="0.82"/><circle cx="201.1" cy="433.5" r="1.14" fill="#8FF0C8" opacity="0.77"/><circle cx="259.6" cy="375.0" r="1.46" fill="#8FF0C8" opacity="0.73"/><circle cx="123.8" cy="266.3" r="1.70" fill="#8FF0C8" opacity="0.38"/><circle cx="194.9" cy="533.7" r="1.82" fill="#8FF0C8" opacity="0.74"/><circle cx="58.3" cy="350.1" r="1.30" fill="#8FF0C8" opacity="0.70"/><circle cx="261.6" cy="538.2" r="1.55" fill="#8FF0C8" opacity="0.77"/><circle cx="270.1" cy="380.9" r="2.23" fill="#DFFFF1" opacity="0.51"/><circle cx="80.7" cy="345.3" r="1.32" fill="#8FF0C8" opacity="0.60"/><circle cx="51.5" cy="262.4" r="1.65" fill="#8FF0C8" opacity="0.73"/><circle cx="131.3" cy="361.6" r="0.91" fill="#8FF0C8" opacity="0.51"/><circle cx="407.9" cy="424.4" r="1.94" fill="#DFFFF1" opacity="0.78"/><circle cx="237.5" cy="477.5" r="0.75" fill="#8FF0C8" opacity="0.47"/><circle cx="203.0" cy="408.6" r="2.11" fill="#DFFFF1" opacity="0.65"/><circle cx="195.8" cy="535.3" r="0.80" fill="#8FF0C8" opacity="0.47"/><circle cx="66.0" cy="351.9" r="1.22" fill="#8FF0C8" opacity="0.36"/><circle cx="111.8" cy="454.1" r="1.69" fill="#8FF0C8" opacity="0.66"/><circle cx="260.0" cy="379.0" r="1.10" fill="#8FF0C8" opacity="0.50"/><circle cx="428.2" cy="511.3" r="1.25" fill="#8FF0C8" opacity="0.34"/><circle cx="91.4" cy="431.8" r="1.76" fill="#8FF0C8" opacity="0.39"/><circle cx="300.1" cy="305.2" r="1.23" fill="#8FF0C8" opacity="0.80"/><circle cx="404.1" cy="448.2" r="1.05" fill="#8FF0C8" opacity="0.68"/><circle cx="323.8" cy="453.1" r="1.26" fill="#8FF0C8" opacity="0.76"/><circle cx="336.9" cy="320.2" r="1.88" fill="#8FF0C8" opacity="0.54"/><circle cx="343.2" cy="486.2" r="1.21" fill="#8FF0C8" opacity="0.76"/><circle cx="191.5" cy="214.2" r="1.23" fill="#8FF0C8" opacity="0.38"/><circle cx="94.3" cy="426.9" r="1.62" fill="#8FF0C8" opacity="0.65"/><circle cx="385.6" cy="367.1" r="1.24" fill="#8FF0C8" opacity="0.67"/><circle cx="427.3" cy="505.8" r="2.06" fill="#DFFFF1" opacity="0.82"/><circle cx="49.0" cy="355.4" r="1.34" fill="#8FF0C8" opacity="0.40"/><circle cx="273.3" cy="369.4" r="1.10" fill="#8FF0C8" opacity="0.48"/><circle cx="424.7" cy="470.2" r="1.47" fill="#8FF0C8" opacity="0.31"/><circle cx="212.7" cy="457.3" r="1.76" fill="#8FF0C8" opacity="0.82"/><circle cx="237.8" cy="334.0" r="1.14" fill="#8FF0C8" opacity="0.65"/><circle cx="146.7" cy="478.6" r="1.00" fill="#8FF0C8" opacity="0.72"/><circle cx="233.8" cy="428.4" r="0.97" fill="#8FF0C8" opacity="0.47"/><circle cx="329.9" cy="320.3" r="0.87" fill="#8FF0C8" opacity="0.45"/><circle cx="60.1" cy="191.2" r="1.58" fill="#8FF0C8" opacity="0.58"/><circle cx="245.2" cy="445.2" r="1.25" fill="#8FF0C8" opacity="0.49"/><circle cx="184.2" cy="211.5" r="2.11" fill="#DFFFF1" opacity="0.76"/><circle cx="131.2" cy="468.1" r="1.29" fill="#8FF0C8" opacity="0.76"/><circle cx="151.5" cy="201.4" r="1.14" fill="#8FF0C8" opacity="0.76"/><circle cx="406.4" cy="452.8" r="2.08" fill="#DFFFF1" opacity="0.70"/><circle cx="164.1" cy="477.6" r="1.48" fill="#8FF0C8" opacity="0.66"/><circle cx="111.9" cy="293.4" r="2.28" fill="#DFFFF1" opacity="0.77"/><circle cx="340.0" cy="365.6" r="2.18" fill="#DFFFF1" opacity="0.84"/><circle cx="133.9" cy="474.8" r="1.54" fill="#8FF0C8" opacity="0.58"/><circle cx="325.4" cy="461.4" r="1.85" fill="#8FF0C8" opacity="0.38"/><circle cx="254.1" cy="369.7" r="1.86" fill="#8FF0C8" opacity="0.40"/><circle cx="250.2" cy="473.8" r="0.91" fill="#8FF0C8" opacity="0.75"/><circle cx="94.9" cy="433.2" r="1.18" fill="#8FF0C8" opacity="0.75"/><circle cx="115.7" cy="379.8" r="1.56" fill="#8FF0C8" opacity="0.50"/><circle cx="401.7" cy="412.9" r="1.79" fill="#8FF0C8" opacity="0.53"/><circle cx="437.7" cy="506.1" r="2.23" fill="#DFFFF1" opacity="0.47"/><circle cx="305.9" cy="419.2" r="1.35" fill="#8FF0C8" opacity="0.80"/><circle cx="236.8" cy="474.9" r="0.76" fill="#8FF0C8" opacity="0.30"/><circle cx="157.3" cy="512.8" r="2.01" fill="#DFFFF1" opacity="0.48"/><circle cx="69.4" cy="415.0" r="1.01" fill="#8FF0C8" opacity="0.75"/><circle cx="412.3" cy="467.9" r="1.09" fill="#8FF0C8" opacity="0.66"/><circle cx="159.0" cy="205.5" r="0.95" fill="#8FF0C8" opacity="0.85"/><circle cx="241.5" cy="242.4" r="1.03" fill="#8FF0C8" opacity="0.47"/><circle cx="418.7" cy="523.6" r="1.59" fill="#8FF0C8" opacity="0.56"/><circle cx="57.1" cy="345.1" r="1.84" fill="#8FF0C8" opacity="0.64"/><circle cx="69.3" cy="351.5" r="1.03" fill="#8FF0C8" opacity="0.54"/><circle cx="384.6" cy="348.2" r="2.16" fill="#DFFFF1" opacity="0.73"/><circle cx="320.9" cy="443.8" r="1.34" fill="#8FF0C8" opacity="0.56"/><circle cx="311.3" cy="277.7" r="0.92" fill="#8FF0C8" opacity="0.74"/><circle cx="62.7" cy="187.4" r="1.82" fill="#8FF0C8" opacity="0.61"/><circle cx="171.6" cy="538.9" r="1.54" fill="#8FF0C8" opacity="0.59"/><circle cx="180.1" cy="532.8" r="1.17" fill="#8FF0C8" opacity="0.34"/><circle cx="161.5" cy="468.7" r="1.32" fill="#8FF0C8" opacity="0.66"/><circle cx="359.9" cy="338.7" r="1.57" fill="#8FF0C8" opacity="0.38"/><circle cx="76.2" cy="262.0" r="1.56" fill="#8FF0C8" opacity="0.44"/><circle cx="175.0" cy="517.4" r="0.81" fill="#8FF0C8" opacity="0.63"/><circle cx="103.4" cy="446.4" r="0.95" fill="#8FF0C8" opacity="0.83"/><circle cx="131.9" cy="388.6" r="2.13" fill="#DFFFF1" opacity="0.68"/><circle cx="216.6" cy="224.2" r="0.77" fill="#8FF0C8" opacity="0.44"/><circle cx="186.7" cy="382.9" r="1.93" fill="#DFFFF1" opacity="0.62"/><circle cx="427.8" cy="528.5" r="1.32" fill="#8FF0C8" opacity="0.32"/><circle cx="403.8" cy="434.2" r="1.17" fill="#8FF0C8" opacity="0.77"/><circle cx="315.1" cy="444.6" r="0.74" fill="#8FF0C8" opacity="0.63"/><circle cx="139.3" cy="494.3" r="1.59" fill="#8FF0C8" opacity="0.55"/><circle cx="171.3" cy="532.9" r="1.99" fill="#DFFFF1" opacity="0.53"/><circle cx="172.5" cy="519.4" r="0.97" fill="#8FF0C8" opacity="0.45"/><circle cx="72.7" cy="261.3" r="0.97" fill="#8FF0C8" opacity="0.80"/><circle cx="235.7" cy="474.7" r="0.89" fill="#8FF0C8" opacity="0.55"/><circle cx="102.3" cy="457.7" r="2.11" fill="#DFFFF1" opacity="0.83"/><circle cx="434.0" cy="520.4" r="2.23" fill="#DFFFF1" opacity="0.80"/><circle cx="219.5" cy="458.6" r="2.25" fill="#DFFFF1" opacity="0.33"/><circle cx="75.7" cy="429.8" r="1.16" fill="#8FF0C8" opacity="0.66"/><circle cx="430.1" cy="515.3" r="0.81" fill="#8FF0C8" opacity="0.69"/><circle cx="194.9" cy="429.1" r="1.49" fill="#8FF0C8" opacity="0.33"/><circle cx="138.1" cy="285.3" r="1.33" fill="#8FF0C8" opacity="0.35"/><circle cx="49.2" cy="415.6" r="1.78" fill="#8FF0C8" opacity="0.40"/><circle cx="87.9" cy="350.6" r="1.02" fill="#8FF0C8" opacity="0.72"/><circle cx="134.8" cy="194.7" r="0.85" fill="#8FF0C8" opacity="0.49"/><circle cx="414" cy="256" r="46" fill="url(#glow)"/><circle cx="414" cy="256" r="23" fill="url(#sph)"/><ellipse cx="405" cy="246" rx="8.6" ry="5.8" fill="#fff" opacity=".52" transform="rotate(-28 405 246)"/><path d="M 396 268 A 23 23 0 0 0 430 271" fill="none" stroke="#9FFFD9" stroke-width="1.6" opacity=".45"/></svg></div>
+  <div class="ph dark" style="width:270px;height:360px;"><span class="id">S01-IMG-1</span><span class="desc"><b>태양광 단지 위를 움직이는 자율 중장비</b><br>어두운 톤 · 세로 구도 · 주피사체 중앙<br>(배경 전체를 채우는 컷)</span><span class="size">3:4 · 270×360</span></div>
+  <div class="head">Future Energy Solutions 2026<br>2026. 10. 29 (목) · 전북대학교 국제컨벤션센터</div>
+  <div class="pill">FES 2026 특별강연 1 · Special Address</div>
+  <h1>피지컬 AI와<br>산업 대전환의 미래<span class="l2">지속 가능한 AI 기반 생태계 구축</span></h1>
+  <div class="meta"><b>이한민</b> 실장 · 한국기계연구원 가상공학연구본부<br>Dr. Hanmin LEE · Korea Institute of Machinery &amp; Materials</div>
+  <div class="clogos logos" style="position:absolute;right:auto;top:auto">
+    <div class="lg"><div class="mark"></div><div><div class="t1">한국기계연구원</div><div class="t2">Korea Institute of Machinery &amp; Materials</div></div></div>
+    <div class="lg"><div class="mark3">F</div><div><div class="t1">FES 2026</div><div class="t2">Future Energy Solutions</div></div></div>
+  </div>
+  <div class="pno">1</div>
+</section>
+<!-- ══ S02 ══ -->
+<section class="slide ch1">
+  <aside class="sidebar"><div class="cnum">01</div><div class="cname">피지컬 AI</div><div class="rule"></div><div class="cq">AI가 몸을<br>얻으면?</div></aside>
+  <div class="crumb">Ⅰ. 피지컬 AI 메시지</div>
+  <h1 class="title">1. 피지컬 AI<span class="sep"> _ </span><span class="sub">AI가 화면 밖으로</span></h1>
+  <div class="logos">
+    <div class="lg"><div class="mark"></div><div><div class="t1">한국기계연구원</div><div class="t2">Korea Institute of Machinery &amp; Materials</div></div></div>
+    <div class="lg"><div class="mark3">F</div><div><div class="t1">FES 2026</div><div class="t2">Future Energy Solutions</div></div></div>
+  </div>
+  <div class="keybar sm"><span>AI가 화면 밖으로 나오면 가장 먼저 하는 일 — <em>몸 만들기</em>, 곧 <em>기계와의 만남</em></span></div>
+  <div class="content ">
+
+    <div class="row" style="align-items:center;justify-content:center;gap:0;margin-top:6px">
+      <div class="col" style="align-items:center">
+        <div class="ph gray" style="width:300px;height:225px;"><span class="id">S02-IMG-1</span><span class="desc"><b>생성형 AI 화면</b> — 채팅창 · 생성 이미지<br>(모니터 안의 AI)</span><span class="size">4:3 · 300×225</span></div>
+        <div class="cap"><span class="tag g">지난 3년</span>&nbsp; 글을 쓰고 그림을 그리는 AI — <b>화면 안</b></div>
+      </div>
+      <div style="width:150px;display:flex;flex-direction:column;align-items:center;gap:4px">
+        <div style="font-size:40px;font-weight:800;color:var(--main);line-height:1">→</div>
+        <div style="font-size:14px;font-weight:800;color:var(--deep);text-align:center;line-height:1.2">몸을 얻은 AI</div>
+        <div style="font-size:10.5px;color:#555;text-align:center;font-weight:500">Physical AI</div>
+      </div>
+      <div class="col" style="align-items:center">
+        <div class="ph " style="width:300px;height:225px;"><span class="id">S02-IMG-2</span><span class="desc"><b>현장의 로봇 · 기계</b> — 흙을 파고, 물건을 옮기고,<br>설비를 고치는 장면 (자율굴착기 또는 휴머노이드)</span><span class="size">4:3 · 300×225</span></div>
+        <div class="cap"><span class="tag">지금부터</span>&nbsp; 흙을 파고 · 물건을 옮기고 · 설비를 고치는 AI — <b>현장</b></div>
+      </div>
+    </div>
+    <div class="quote" style="margin-top:14px">“AI가 컴퓨터 밖으로 걸어 나온다면 가장 먼저 무엇을 할까? <b>몸을 만들어야 한다. 몸을 만들려면 기계를 만나야 한다.</b>”
+      <span class="src">— 류석현 한국기계연구원장, 2026 글로벌 기계기술포럼 (2026. 9. 16)</span></div>
+
+  
+  </div>
+  
+  <div class="pno">2</div>
+</section>
+<!-- ══ S03 ══ -->
+<section class="slide ch1">
+  <aside class="sidebar"><div class="cnum">01</div><div class="cname">피지컬 AI</div><div class="rule"></div><div class="cq">AI가 몸을<br>얻으면?</div></aside>
+  <div class="crumb">Ⅰ. 피지컬 AI 메시지</div>
+  <h1 class="title">2. 진짜 무대<span class="sep"> _ </span><span class="sub">공장 밖이 전장</span></h1>
+  <div class="logos">
+    <div class="lg"><div class="mark"></div><div><div class="t1">한국기계연구원</div><div class="t2">Korea Institute of Machinery &amp; Materials</div></div></div>
+    <div class="lg"><div class="mark3">F</div><div><div class="t1">FES 2026</div><div class="t2">Future Energy Solutions</div></div></div>
+  </div>
+  <div class="keybar sm"><span>휴머노이드 열풍은 실내 중심 — 국가 기반시설과 에너지 설비는 <em>공장 밖</em>에 존재</span></div>
+  <div class="content ">
+
+    <div class="row" style="gap:24px;margin-top:2px">
+      <div class="col" style="width:238px;gap:6px">
+        <div class="lrow"><div class="k g">실내<br>정형</div><div class="v">공장 · 물류창고 · 가정 — 정돈된 바닥, 고정된 지도, 일정한 조명</div></div>
+        <div class="ph gray" style="width:238px;height:178px;"><span class="id">S03-IMG-1</span><span class="desc"><b>실내 정형 환경</b> — 물류창고 또는 공장 라인의 로봇<br>(회색 톤 대비용)</span><span class="size">4:3 · 238×178</span></div>
+        <div class="cap" style="color:#666">휴머노이드 · 협동로봇의 주 무대</div>
+      </div>
+      <div class="col" style="width:520px;gap:6px">
+        <div class="lrow"><div class="k">실외<br>비정형</div><div class="v"><b>건설 · 농업 · 항만 · 에너지 설비</b> — 비, 무른 땅, 매일 바뀌는 지도, 흙먼지와 역광</div></div>
+        <div class="row" style="gap:10px">
+          <div class="ph " style="width:330px;height:220px;"><span class="id">S03-IMG-2</span><span class="desc"><b>필드 현장 대표 컷</b> — 태양광 단지 또는 풍력 단지 건설 현장에서 작업 중인 중장비·로봇 (넓은 하늘, 비정형 지면)</span><span class="size">3:2 · 330×220</span></div>
+          <div class="col" style="flex:1;gap:7px;justify-content:center;height:220px">
+            <div class="stat"><div class="n">공장 밖</div><div class="l">태양광 · 풍력 · 송전망 · 수소 설비 —<br>오늘 이 포럼의 주제 전부</div></div>
+            <div class="quote" style="font-size:11.5px">그곳에서 일하는 로봇 — <b>필드로봇</b>이 발표자의 연구 영역</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <div class="note">※ 국가 기반시설·에너지 설비의 대부분은 비정형 실외 환경 — 실내용 로봇 기술이 그대로 통하지 않는 영역</div>
+  </div>
+  
+  <div class="pno">3</div>
+</section>
+<!-- ══ S04 ══ -->
+<section class="slide ch1">
+  <aside class="sidebar"><div class="cnum">01</div><div class="cname">피지컬 AI</div><div class="rule"></div><div class="cq">AI가 몸을<br>얻으면?</div></aside>
+  <div class="crumb">Ⅰ. 피지컬 AI 메시지</div>
+  <h1 class="title">3. 경쟁력 공식<span class="sep"> _ </span><span class="sub">덧셈에서 곱셈으로</span></h1>
+  <div class="logos">
+    <div class="lg"><div class="mark"></div><div><div class="t1">한국기계연구원</div><div class="t2">Korea Institute of Machinery &amp; Materials</div></div></div>
+    <div class="lg"><div class="mark3">F</div><div><div class="t1">FES 2026</div><div class="t2">Future Energy Solutions</div></div></div>
+  </div>
+  <div class="keybar "><span>산업 경쟁력은 이제 곱셈 — <em>하나가 0이면 전체가 0</em></span></div>
+  <div class="content ">
+
+    <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1;gap:22px">
+      <div style="display:flex;align-items:center;gap:14px;font-size:30px;font-weight:800;color:#1B2440;letter-spacing:-1.2px">
+        <span class="fx">기술</span><span class="op">×</span><span class="fx">AI</span><span class="op">×</span><span class="fx">데이터</span><span class="op">×</span>
+        <span class="fx hot">에너지</span><span class="op">×</span><span class="fx">공급망</span><span class="op">×</span><span class="fx">안보</span>
+      </div>
+      <div class="row" style="width:700px;gap:20px">
+        <div class="card" style="flex:1"><header class="g">덧셈의 시대</header><div class="body" style="align-items:center;text-align:center">
+          <div style="font-size:13.5px;font-weight:600;color:#555;line-height:1.45">한 항목이 약해도<br>다른 강점으로 <b>보완 가능</b></div></div></div>
+        <div class="card" style="flex:1"><header>곱셈의 시대</header><div class="body" style="align-items:center;text-align:center">
+          <div style="font-size:13.5px;font-weight:600;line-height:1.45">에너지가 0이면<br><b style="color:var(--deep)">피지컬 AI도 0</b> — 보완 불가</div></div></div>
+      </div>
+      <div class="quote" style="width:700px">오늘 발표가 끝까지 붙드는 항 — <b>에너지</b>. 피지컬 AI 경쟁력의 곱셈항 안에 에너지가 들어 있다는 사실이 Ⅳ부의 출발점
+        <span class="src">— “제조 가치사슬이 예전엔 덧셈이었다면 지금은 곱셈” 류석현 원장 표현 차용</span></div>
+    </div>
+    <style>.fx{padding:4px 12px;border-radius:8px;background:#F2F2F2}.fx.hot{background:var(--main);color:#fff;box-shadow:0 0 0 4px rgba(61,82,173,.18)}.op{color:#9AA3B5;font-size:26px}</style>
+
+  
+  </div>
+  
+  <div class="pno">4</div>
+</section>
+<!-- ══ S05 ══ -->
+<section class="slide ch3">
+  <aside class="sidebar"><div class="cnum">02</div><div class="cname">세계 연구<br>현황</div><div class="rule"></div><div class="cq">두뇌 · 몸 · 현장,<br>어디까지 왔나?</div></aside>
+  <div class="crumb">Ⅱ. 세계 연구 현황</div>
+  <h1 class="title">4. 두뇌<span class="sep"> _ </span><span class="sub">프로그래밍이 아니라 학습</span></h1>
+  <div class="logos">
+    <div class="lg"><div class="mark"></div><div><div class="t1">한국기계연구원</div><div class="t2">Korea Institute of Machinery &amp; Materials</div></div></div>
+    <div class="lg"><div class="mark3">F</div><div><div class="t1">FES 2026</div><div class="t2">Future Energy Solutions</div></div></div>
+  </div>
+  <div class="keybar sm"><span>보고 · 이해하고 · 행동하는 하나의 모델 — <em>로봇 파운데이션 모델(VLA)</em>의 등장</span></div>
+  <div class="content ">
+
+    <div class="steps">
+      <div class="step"><div class="y">2016</div><div class="t">예측 AI</div><div class="d">알파고 — 판단</div></div><div class="sarr">▶</div>
+      <div class="step"><div class="y">2022</div><div class="t">생성 AI</div><div class="d">ChatGPT — 글 · 그림</div></div><div class="sarr">▶</div>
+      <div class="step"><div class="y">2025</div><div class="t">에이전트 AI</div><div class="d">도구를 쓰는 AI</div></div><div class="sarr">▶</div>
+      <div class="step now"><div class="y">지금</div><div class="t">피지컬 AI</div><div class="d">몸으로 일하는 AI</div></div>
+    </div>
+    <div class="row" style="margin-top:16px;gap:24px">
+      <div class="card" style="width:400px"><header>VLA — Vision · Language · Action</header>
+        <div class="body" style="padding:12px">
+          <div style="display:flex;align-items:center;gap:8px;justify-content:center">
+            <div class="vla">👁 보고<br><span>카메라 · 센서</span></div><div class="vla">💬 이해하고<br><span>언어 지시</span></div>
+            <div style="font-size:20px;font-weight:800;color:var(--main)">→</div><div class="vla now">🦾 행동<br><span>모터 명령</span></div>
+          </div>
+          <div style="font-size:12px;font-weight:500;color:#444;text-align:center;margin-top:8px;line-height:1.4">세 가지를 <b>하나의 모델</b>이 처리 — 작업마다 따로 프로그래밍하던 시대의 종언</div>
+        </div></div>
+      <div class="col" style="flex:1;gap:6px">
+        <div class="lead"><span class="chk"></span>주요 플레이어 — 2026년 한 해에 전원 세대 교체</div>
+        <ul class="ul" style="font-size:12.5px">
+          <li><b>Google DeepMind</b> — Gemini Robotics 2 <span class="dim">’26.7</span></li>
+          <li><b>Physical Intelligence</b> — π0.7 <span class="dim">’26.4</span> · <b>NVIDIA</b> — GR00T N1.7 · Cosmos <span class="dim">’26.4</span></li>
+          <li><b>Figure</b> — Helix 2.5 <span class="dim">’26.9</span></li>
+          <li><b>국내 · 투모로 로보틱스</b> — HABILIS Brain 0 <span class="dim">’26.10</span></li>
+        </ul>
+        <div class="quote" style="font-size:11.5px">“기계가 사람처럼 일하려면 <b>사람처럼 배워야</b> 한다.” — LLM에 비유하면 로봇 AI는 아직 초기 단계, 지금이 진입 시점<span class="src">— 장병탁 서울대 교수 (2026 글로벌 기계기술포럼)</span></div>
+      </div>
+    </div>
+    <style>.vla{background:var(--tint);border:1px solid var(--bd);border-radius:8px;padding:8px 10px;font-size:13px;font-weight:700;text-align:center;line-height:1.3;color:var(--deep)}.vla span{display:block;font-size:10px;font-weight:500;color:#666}.vla.now{background:var(--main);color:#fff;border-color:var(--main)}.vla.now span{color:rgba(255,255,255,.85)}</style>
+
+  
+  </div>
+  
+  <div class="pno">5</div>
+</section>
+<!-- ══ S06 ══ -->
+<section class="slide ch3">
+  <aside class="sidebar"><div class="cnum">02</div><div class="cname">세계 연구<br>현황</div><div class="rule"></div><div class="cq">두뇌 · 몸 · 현장,<br>어디까지 왔나?</div></aside>
+  <div class="crumb">Ⅱ. 세계 연구 현황</div>
+  <h1 class="title">5. 몸<span class="sep"> _ </span><span class="sub">휴머노이드 양산 경쟁</span></h1>
+  <div class="logos">
+    <div class="lg"><div class="mark"></div><div><div class="t1">한국기계연구원</div><div class="t2">Korea Institute of Machinery &amp; Materials</div></div></div>
+    <div class="lg"><div class="mark3">F</div><div><div class="t1">FES 2026</div><div class="t2">Future Energy Solutions</div></div></div>
+  </div>
+  <div class="keybar sm"><span>경쟁의 축은 데모에서 <em>양산</em>으로 — 몸을 가장 많이, 가장 싸게 만드는 나라가 선도</span></div>
+  <div class="content ">
+
+    <div class="col" style="gap:9px">
+      <div class="crow">
+        <div class="k">🇺🇸 미국</div>
+        <div class="v"><b>Figure · Tesla Optimus · Boston Dynamics Atlas</b><br><span>AI 모델 + 자체 공장 투입으로 데모 → 양산 전환 선언</span><div class="st"><span class="n">350대+</span><span class="l">Figure 03 누적 생산, 시간당 1대 (’26.4) · Optimus 양산 실적 미공개</span></div></div>
+        <div class="ph sm" style="width:138px;height:92px;"><span class="id">S06-IMG-1</span><span class="desc">미국 휴머노이드 대표 1컷<br>(출처 표기)</span><span class="size">3:2 · 138×92</span></div>
+      </div>
+      <div class="crow">
+        <div class="k">🇨🇳 중국</div>
+        <div class="v"><b>Unitree · UBTech · AgiBot</b><br><span>저가 · 대량 출하로 속도 우위 — 부품 공급망 내재화</span><div class="st"><span class="n">8,400 · 5,900대</span><span class="l">AgiBot · Unitree 2026 상반기 출하 (SAG·IDC)</span></div></div>
+        <div class="ph sm" style="width:138px;height:92px;"><span class="id">S06-IMG-2</span><span class="desc">중국 휴머노이드 대표 1컷<br>(출처 표기)</span><span class="size">3:2 · 138×92</span></div>
+      </div>
+      <div class="crow now">
+        <div class="k">🇰🇷 한국</div>
+        <div class="v"><b>K-휴머노이드 연합 · KIMM 카이로스</b><br><span>세계 최상위 로봇밀도 + 제조 현장 — “이미 프리-피지컬 AI 국가”</span><div class="st"><span class="n">1조 원</span><span class="l">K-휴머노이드 연합(’25.4 출범, 50여 곳) 2030년까지 민관 투자</span></div></div>
+        <div class="ph sm" style="width:138px;height:92px;"><span class="id">S06-IMG-3</span><span class="desc">KIMM 휴머노이드 카이로스<br>정면 또는 작업 장면</span><span class="size">3:2 · 138×92</span></div>
+      </div>
+    </div>
+
+  <div class="note">※ 2026 상반기 글로벌 휴머노이드 출하 약 2.5만 대(IDC, 전년比 +432%) · 중국 비중 78%(IDC)~97%(SAG) — 기관별 집계 차이 · 출처: IDC·SAG·Figure AI·산업통상부</div>
+  </div>
+  
+  <div class="pno">6</div>
+</section>
+<!-- ══ S07 ══ -->
+<section class="slide ch3">
+  <aside class="sidebar"><div class="cnum">02</div><div class="cname">세계 연구<br>현황</div><div class="rule"></div><div class="cq">두뇌 · 몸 · 현장,<br>어디까지 왔나?</div></aside>
+  <div class="crumb">Ⅱ. 세계 연구 현황</div>
+  <h1 class="title">6. 현장<span class="sep"> _ </span><span class="sub">공장 밖의 자율화</span></h1>
+  <div class="logos">
+    <div class="lg"><div class="mark"></div><div><div class="t1">한국기계연구원</div><div class="t2">Korea Institute of Machinery &amp; Materials</div></div></div>
+    <div class="lg"><div class="mark3">F</div><div><div class="t1">FES 2026</div><div class="t2">Future Energy Solutions</div></div></div>
+  </div>
+  <div class="keybar sm"><span>건설 · 에너지 설치 · 농업 — 에너지 설비 현장은 이미 <em>피지컬 AI의 시장</em></span></div>
+  <div class="content ">
+
+    <div class="row" style="gap:18px">
+      <div class="col" style="width:372px;gap:4px">
+        <div class="ph " style="width:372px;height:248px;"><span class="id">S07-IMG-1</span><span class="desc"><b>태양광 설치 로봇</b> — 패널 모듈을 집어 올려 거치하는 장면 (AES Maximo 등, 출처 표기)</span><span class="size">3:2 · 372×248</span></div>
+        <div class="cap"><b>에너지 설치</b> — AES Maximo, 1GW 프로젝트에서 <b>100MW 설치</b> 완료 · 속도 2배 (’26.4)</div>
+      </div>
+      <div class="col" style="flex:1;gap:8px">
+        <div class="row" style="gap:10px;align-items:center">
+          <div class="ph sm" style="width:170px;height:113px;"><span class="id">S07-IMG-2</span><span class="desc">자율 건설기계<br>(Built Robotics 파일드라이버 등)</span><span class="size">3:2 · 170×113</span></div>
+          <div class="col" style="flex:1;gap:3px"><div class="tag">건설</div><div style="font-size:12px;font-weight:600;line-height:1.35">자율 파일링 <b>1일 300개</b> — 기존 3배<br><span style="font-weight:400;color:#555">Built Robotics · Komatsu–AIM 자율 도저·굴착기 미국 현장 상용 (’26.7)</span></div></div>
+        </div>
+        <div class="row" style="gap:10px;align-items:center">
+          <div class="ph sm" style="width:170px;height:113px;"><span class="id">S07-IMG-3</span><span class="desc">자율 농기계<br>(John Deere 등)</span><span class="size">3:2 · 170×113</span></div>
+          <div class="col" style="flex:1;gap:3px"><div class="tag">농업</div><div style="font-size:12px;font-weight:600;line-height:1.35">자율 트랙터 <b>25.5만 에이커</b> 24시간 운영<br><span style="font-weight:400;color:#555">John Deere · U.S. Sugar (’26.5)</span></div></div>
+        </div>
+        <div class="quote" style="font-size:11.5px;margin-top:2px">공통점 — <b>사람이 하기엔 반복적이고 위험하며 넓은</b> 작업. 에너지 설비 현장이 그 전형</div>
+      </div>
+    </div>
+
+  <div class="note">※ 출처: The Robot Report(’26.4), pv magazine, Komatsu 뉴스룸(’26.7), Future Farming(’26.5) · 타 기관 사진은 출처 표기 필수</div>
+  </div>
+  
+  <div class="pno">7</div>
+</section>
+<!-- ══ S08 ══ -->
+<section class="slide ch3">
+  <aside class="sidebar"><div class="cnum">02</div><div class="cname">세계 연구<br>현황</div><div class="rule"></div><div class="cq">두뇌 · 몸 · 현장,<br>어디까지 왔나?</div></aside>
+  <div class="crumb">Ⅱ. 세계 연구 현황</div>
+  <h1 class="title">7. 승부처<span class="sep"> _ </span><span class="sub">데이터는 현장에</span></h1>
+  <div class="logos">
+    <div class="lg"><div class="mark"></div><div><div class="t1">한국기계연구원</div><div class="t2">Korea Institute of Machinery &amp; Materials</div></div></div>
+    <div class="lg"><div class="mark3">F</div><div><div class="t1">FES 2026</div><div class="t2">Future Energy Solutions</div></div></div>
+  </div>
+  <div class="keybar "><span>로봇의 데이터는 인터넷에 없음 — <em>현장을 가진 나라</em>가 승자</span></div>
+  <div class="content ">
+
+    <div class="row" style="gap:28px;align-items:center">
+      <svg viewBox="0 0 360 330" width="360" height="330" style="display:block"><defs><marker id="m8" markerWidth="14" markerHeight="14" refX="10" refY="7" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L12,7 L0,14 z" fill="#3EAE83"/></marker></defs><path d="M 219.0 71.6 A 104 104 0 0 1 276.4 129.0" fill="none" stroke="#3EAE83" stroke-width="4" stroke-linecap="round" marker-end="url(#m8)"/><path d="M 276.4 207.0 A 104 104 0 0 1 219.0 264.4" fill="none" stroke="#3EAE83" stroke-width="4" stroke-linecap="round" marker-end="url(#m8)"/><path d="M 141.0 264.4 A 104 104 0 0 1 83.6 207.0" fill="none" stroke="#3EAE83" stroke-width="4" stroke-linecap="round" marker-end="url(#m8)"/><path d="M 83.6 129.0 A 104 104 0 0 1 141.0 71.6" fill="none" stroke="#3EAE83" stroke-width="4" stroke-linecap="round" marker-end="url(#m8)"/><rect x="130.0" y="45.0" width="100" height="38" rx="8" fill="#fff" stroke="#3EAE83" stroke-width="1.5"/><text x="180.0" y="69.0" text-anchor="middle" fill="#2E624F" font-size="14" font-weight="700">로봇 투입</text><rect x="234.0" y="149.0" width="100" height="38" rx="8" fill="#fff" stroke="#3EAE83" stroke-width="1.5"/><text x="284.0" y="173.0" text-anchor="middle" fill="#2E624F" font-size="14" font-weight="700">현장 작업</text><rect x="130.0" y="253.0" width="100" height="38" rx="8" fill="#fff" stroke="#3EAE83" stroke-width="1.5"/><text x="180.0" y="277.0" text-anchor="middle" fill="#2E624F" font-size="14" font-weight="700">데이터 축적</text><rect x="26.0" y="149.0" width="100" height="38" rx="8" fill="#fff" stroke="#3EAE83" stroke-width="1.5"/><text x="76.0" y="173.0" text-anchor="middle" fill="#2E624F" font-size="14" font-weight="700">더 좋은 모델</text><text x="180" y="162" text-anchor="middle" fill="#2E624F" font-size="15" font-weight="800">데이터</text><text x="180" y="180" text-anchor="middle" fill="#2E624F" font-size="15" font-weight="800">플라이휠</text><text x="180" y="198" text-anchor="middle" fill="#6B7F78" font-size="9.5" font-weight="600">더 많은 로봇 → 더 많은 데이터</text></svg>
+      <div class="col" style="flex:1;gap:10px">
+        <div class="lrow"><div class="k g">LLM</div><div class="v">인터넷의 글을 <b>긁어서</b> 학습 — 데이터가 이미 존재</div></div>
+        <div class="lrow"><div class="k">로봇</div><div class="v">행동 데이터는 <b>물리적으로 생산</b>해야 함 — 로봇이 현장에서 일해야 생김</div></div>
+        <div class="stat" style="margin-top:4px"><div class="n">세계 1위 · 1,066대</div><div class="l">한국 제조업 로봇밀도, 근로자 1만 명당 — 세계 평균 152대의 7배 (IFR World Robotics 2026)</div></div>
+        <div class="quote" style="font-size:11.5px">“대한민국은 이미 <b>프리(pre)-피지컬 AI 시대</b>에 들어와 있다.” — 류석현 원장<br>“한국의 제조 현장이 <b>세계 최고의 학습장</b>이 될 수 있다.” — 장병탁 교수</div>
+      </div>
+    </div>
+
+  
+  </div>
+  
+  <div class="pno">8</div>
+</section>
+<!-- ══ S09 ══ -->
+<section class="slide ch2">
+  <aside class="sidebar"><div class="cnum">03</div><div class="cname">한국 ·<br>KIMM</div><div class="rule"></div><div class="cq">우리는 무엇을<br>만들고 있나?</div></aside>
+  <div class="crumb">Ⅲ. 한국 · KIMM · 필드로봇</div>
+  <h1 class="title">8. KIMM 로봇 40년<span class="sep"> _ </span><span class="sub">기계에서 지능으로</span></h1>
+  <div class="logos">
+    <div class="lg"><div class="mark"></div><div><div class="t1">한국기계연구원</div><div class="t2">Korea Institute of Machinery &amp; Materials</div></div></div>
+    <div class="lg"><div class="mark3">F</div><div><div class="t1">FES 2026</div><div class="t2">Future Energy Solutions</div></div></div>
+  </div>
+  <div class="keybar sm"><span>1986 국내 최초 산업로봇에서 2026 휴머노이드 <em>카이로스</em>까지 — <em>로봇 1.0 → 3.0</em></span></div>
+  <div class="content ">
+
+    <div class="row" style="gap:22px">
+      <div class="col" style="width:540px;gap:12px">
+        <div class="steps">
+          <div class="step"><div class="y">1986 · 로봇 1.0</div><div class="t">국내 최초 6축 산업로봇</div><div class="d">기계가 정해진 동작을 반복</div></div><div class="sarr">▶</div>
+          <div class="step"><div class="y">2010년대 · 로봇 2.0</div><div class="t">양팔 협동로봇 AMIRO</div><div class="d">사람 곁에서 함께 작업</div></div><div class="sarr">▶</div>
+          <div class="step now"><div class="y">2026 · 로봇 3.0</div><div class="t">휴머노이드 카이로스</div><div class="d">스스로 배우는 몸 (v0.7)</div></div>
+        </div>
+        <div class="card"><header>카이로스 로드맵</header>
+          <div class="body" style="padding:8px 10px">
+            <div class="steps" style="gap:0">
+              <div class="step" style="padding:6px"><div class="y">2027. 4</div><div class="t" style="font-size:13px">1단계 · 기본 운동성</div></div><div class="sarr">▶</div>
+              <div class="step" style="padding:6px"><div class="y">2030. 4</div><div class="t" style="font-size:13px">2단계 · 고감각 조작</div><div class="d">자동차 조립 · 가사 실증</div></div><div class="sarr">▶</div>
+              <div class="step" style="padding:6px"><div class="y">2035</div><div class="t" style="font-size:13px">산업 현장 투입</div></div>
+            </div>
+          </div></div>
+        <div class="row" style="gap:8px;justify-content:center"><span class="tag">휴머노이드</span><span class="tag">필드로봇</span><span class="tag">의료로봇</span><span style="font-size:12px;font-weight:600;color:#555;align-self:center">— KIMM 로봇 3축</span></div>
+      </div>
+      <div class="col" style="flex:1;align-items:center;gap:4px">
+        <div class="ph " style="width:210px;height:280px;"><span class="id">S09-IMG-1</span><span class="desc"><b>휴머노이드 카이로스</b> 전신 세로 컷<br>(첨단로봇연구센터 협조)</span><span class="size">3:4 · 210×280</span></div>
+        <div class="cap">카이로스 KAIROS — KIMM 휴머노이드</div>
+      </div>
+    </div>
+
+  
+  </div>
+  
+  <div class="pno">9</div>
+</section>
+<!-- ══ S10 ══ -->
+<section class="slide ch2">
+  <aside class="sidebar"><div class="cnum">03</div><div class="cname">한국 ·<br>KIMM</div><div class="rule"></div><div class="cq">우리는 무엇을<br>만들고 있나?</div></aside>
+  <div class="crumb">Ⅲ. 한국 · KIMM · 필드로봇</div>
+  <h1 class="title">9. 핵심 부품<span class="sep"> _ </span><span class="sub">로봇의 몸, 우리 손으로</span></h1>
+  <div class="logos">
+    <div class="lg"><div class="mark"></div><div><div class="t1">한국기계연구원</div><div class="t2">Korea Institute of Machinery &amp; Materials</div></div></div>
+    <div class="lg"><div class="mark3">F</div><div><div class="t1">FES 2026</div><div class="t2">Future Energy Solutions</div></div></div>
+  </div>
+  <div class="keybar sm"><span>구동기 = 휴머노이드 하드웨어 가격의 <em>약 60%</em> — 부품 자립이 곧 <em>공급망 자립</em></span></div>
+  <div class="content ">
+
+    <div class="row" style="gap:22px">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px 12px;width:500px">
+        <div><div class="ph sm" style="width:244px;height:150px;"><span class="id">S10-IMG-1</span><span class="desc"><b>구동기 5종</b> 자체 설계 — 분해 또는 나열 컷</span><span class="size">8:5 · 244×150</span></div><div class="cap">구동기 5종 자체 설계</div></div>
+        <div><div class="ph sm" style="width:244px;height:150px;"><span class="id">S10-IMG-2</span><span class="desc"><b>로봇 핸드</b> — 물체를 쥔 장면</span><span class="size">8:5 · 244×150</span></div><div class="cap">로봇 핸드</div></div>
+        <div><div class="ph sm" style="width:244px;height:150px;"><span class="id">S10-IMG-3</span><span class="desc"><b>촉각 피부</b> — 센서 표면 클로즈업</span><span class="size">8:5 · 244×150</span></div><div class="cap">촉각 피부 <span class="en">— KIMM 차별점</span></div></div>
+        <div><div class="ph sm" style="width:244px;height:150px;"><span class="id">S10-IMG-4</span><span class="desc"><b>데이터 팩토리</b> — 휴머노이드 다수가 학습 데이터를 모으는 공간</span><span class="size">8:5 · 244×150</span></div><div class="cap">데이터 팩토리 — 휴머노이드 25대</div></div>
+      </div>
+      <div class="col" style="flex:1;gap:10px;justify-content:center">
+        <div class="stat"><div class="n">≈ 60%</div><div class="l">휴머노이드 하드웨어 가격 중<br>구동기 비중 (KIMM 발표)</div></div>
+        <div class="quote" style="font-size:11.5px">몸을 만드는 나라만이 피지컬 AI의 <b>원가와 공급망</b>을 통제 — 기계연구원이 구동기 · 핸드 · 피부를 직접 만드는 이유</div>
+        <div class="quote" style="font-size:11.5px;border-left-color:#54833D;background:#F2F5EB">복선 — 이 구동기 안의 <b>모터와 자석</b>, 로봇의 <b>배터리</b>는 Ⅳ부에서 에너지와 다시 만남</div>
+      </div>
+    </div>
+
+  
+  </div>
+  
+  <div class="pno">10</div>
+</section>
+<!-- ══ S11 ══ -->
+<section class="slide ch2">
+  <aside class="sidebar"><div class="cnum">03</div><div class="cname">한국 ·<br>KIMM</div><div class="rule"></div><div class="cq">우리는 무엇을<br>만들고 있나?</div></aside>
+  <div class="crumb">Ⅲ. 한국 · KIMM · 필드로봇</div>
+  <h1 class="title">10. 필드로봇 ①<span class="sep"> _ </span><span class="sub">운전석이 빈 굴착기</span></h1>
+  <div class="logos">
+    <div class="lg"><div class="mark"></div><div><div class="t1">한국기계연구원</div><div class="t2">Korea Institute of Machinery &amp; Materials</div></div></div>
+    <div class="lg"><div class="mark3">F</div><div><div class="t1">FES 2026</div><div class="t2">Future Energy Solutions</div></div></div>
+  </div>
+  <div class="keybar sm"><span>운전석이 빈 30톤 굴착기가 <em>스스로 땅을 파는</em> 기술 — 대전 테스트필드 실증</span></div>
+  <div class="content ">
+
+    <div class="row" style="gap:20px">
+      <div class="col" style="gap:4px">
+        <div class="ph vid" style="width:520px;height:292px;"><span class="id">S11-VID-1</span><span class="desc"><b>자율굴착기 데모 영상 15~20초</b> — 운전석이 빈 굴착기가 굴착 → 선회 → 적재하는 연속 동작 (대전 테스트필드, 무음 루프)</span><span class="size">16:9 · 520×292</span></div>
+        <div class="cap">KIMM AI 자율굴착기 — 발표자 연구실 (산업기계DX연구실)</div>
+      </div>
+      <div class="col" style="flex:1;gap:7px">
+        <div class="lrow"><div class="k">① 인지</div><div class="v">LiDAR · 스테레오 · GNSS-RTK → 3D 점군</div></div>
+        <div class="lrow"><div class="k">② 지도</div><div class="v">지형 그리드맵 생성</div></div>
+        <div class="lrow"><div class="k">③ 계획</div><div class="v">굴착 · 적재 · 평탄화 순서를<br><b>AI가 스스로 학습</b></div></div>
+        <div class="lrow"><div class="k">④ 제어</div><div class="v">디지털트윈 사전학습<br>→ 실기 자율 제어</div></div>
+        <div class="stat" style="margin-top:2px"><div class="n">±5cm</div><div class="l">다중 크레인 협업 거더 이송 정밀도</div></div>
+      </div>
+    </div>
+
+  <div class="note">※ 왜 이 연구인가 — 현장 인력 고령화 · 위험 작업 · 인력 부족: 사람이 떠나는 현장을 기계가 지키는 일</div>
+  </div>
+  
+  <div class="pno">11</div>
+</section>
+<!-- ══ S12 ══ -->
+<section class="slide ch2">
+  <aside class="sidebar"><div class="cnum">03</div><div class="cname">한국 ·<br>KIMM</div><div class="rule"></div><div class="cq">우리는 무엇을<br>만들고 있나?</div></aside>
+  <div class="crumb">Ⅲ. 한국 · KIMM · 필드로봇</div>
+  <h1 class="title">11. 필드로봇 ②<span class="sep"> _ </span><span class="sub">비 · 먼지 · 진흙 속에서도</span></h1>
+  <div class="logos">
+    <div class="lg"><div class="mark"></div><div><div class="t1">한국기계연구원</div><div class="t2">Korea Institute of Machinery &amp; Materials</div></div></div>
+    <div class="lg"><div class="mark3">F</div><div><div class="t1">FES 2026</div><div class="t2">Future Energy Solutions</div></div></div>
+  </div>
+  <div class="keybar "><span>현장 로봇의 조건 — <em>날씨와 지형을 이겨내는 눈</em>, 스스로 아는 고장</span></div>
+  <div class="content ">
+
+    <div class="row" style="gap:18px">
+      <div class="col" style="gap:8px">
+        <div class="row" style="gap:8px;align-items:flex-end">
+          <div><div class="ph sm gray" style="width:200px;height:150px;"><span class="id">S12-IMG-1</span><span class="desc"><b>악천후 노이즈 제거 전</b><br>눈 · 비 · 먼지 점군</span><span class="size">4:3 · 200×150</span></div><div class="cap" style="color:#666">전 — 눈 · 비 · 먼지 노이즈</div></div>
+          <div style="font-size:22px;font-weight:800;color:var(--main);padding-bottom:70px">→</div>
+          <div><div class="ph sm" style="width:200px;height:150px;"><span class="id">S12-IMG-2</span><span class="desc"><b>제거 후</b> — 깨끗한 점군</span><span class="size">4:3 · 200×150</span></div><div class="cap">후 — AI 노이즈 제거</div></div>
+        </div>
+        <div class="row" style="gap:10px;align-items:center;margin-top:4px">
+          <div class="ph sm" style="width:180px;height:120px;"><span class="id">S12-IMG-3</span><span class="desc"><b>UAV–UGV 협동</b> — 드론과 무인지상차량이 함께 보이는 현장 컷</span><span class="size">3:2 · 180×120</span></div>
+          <div class="col" style="flex:1;gap:5px"><div class="tag">그 밖의 필드로봇</div>
+            <ul class="ul" style="font-size:12px"><li>UAV–UGV 공중–지상 협동 (항우연 공동)</li><li>사과 과수원 병해충 예찰 로봇</li><li>수색 무인이동체 · 오프로드 자율주행 요소기술</li></ul></div>
+        </div>
+      </div>
+      <div class="col" style="flex:1;gap:9px;justify-content:center">
+        <div class="stat"><div class="n">&gt; 85%</div><div class="l">악천후 노이즈 제거율<br>(KITTI-C 검증)</div></div>
+        <div class="stat"><div class="n">&lt; 6 ms</div><div class="l">엣지 연산 시간 (Jetson)</div></div>
+        <div class="stat"><div class="n">&gt; 90%</div><div class="l">AI 고장진단 검출률 · 기존 기계 레트로핏</div></div>
+      </div>
+    </div>
+
+  
+  </div>
+  
+  <div class="pno">12</div>
+</section>
+<!-- ══ S13 ══ -->
+<section class="slide ch2">
+  <aside class="sidebar"><div class="cnum">03</div><div class="cname">한국 ·<br>KIMM</div><div class="rule"></div><div class="cq">우리는 무엇을<br>만들고 있나?</div></aside>
+  <div class="crumb">Ⅲ. 한국 · KIMM · 필드로봇</div>
+  <h1 class="title">12. 디지털트윈<span class="sep"> _ </span><span class="sub">현실과 AI를 잇는 다리</span></h1>
+  <div class="logos">
+    <div class="lg"><div class="mark"></div><div><div class="t1">한국기계연구원</div><div class="t2">Korea Institute of Machinery &amp; Materials</div></div></div>
+    <div class="lg"><div class="mark3">F</div><div><div class="t1">FES 2026</div><div class="t2">Future Energy Solutions</div></div></div>
+  </div>
+  <div class="keybar sm"><span>가상에서 먼저 배우고 현장으로 — 디지털트윈 = 현장 데이터와 AI를 잇는 <em>인프라</em></span></div>
+  <div class="content ">
+
+    <div class="row" style="gap:0;align-items:center;justify-content:center;margin-top:4px">
+      <div class="dtb"><div class="h">현실 설비</div><div class="b">굴착기 · 공정 라인 · 공작기계<br><span>센서 데이터</span></div></div>
+      <div class="dta">⇄</div>
+      <div class="col" style="align-items:center;gap:4px">
+        <div class="ph sm" style="width:300px;height:169px;"><span class="id">S13-IMG-1</span><span class="desc"><b>이차전지 롤투롤 공정 디지털트윈</b> 화면 캡처 (또는 Vortex 굴착기 시뮬레이션)</span><span class="size">16:9 · 300×169</span></div>
+        <div class="cap">디지털트윈</div>
+      </div>
+      <div class="dta">⇄</div>
+      <div class="dtb now"><div class="h">AI 에이전트</div><div class="b">시뮬레이션 사전학습<br><span>최적 제어 · 예지보전</span></div></div>
+    </div>
+    <div class="row" style="gap:16px;margin-top:16px">
+      <div class="lrow" style="flex:1"><div class="k">등록</div><div class="v">이차전지 롤투롤 공정 DT — <b>Digital Twin Consortium 유저케이스 등록</b> · 공작기계 DT 등록 예정</div></div>
+      <div class="lrow" style="flex:1"><div class="k">학습</div><div class="v">자율굴착기 작업 순서를 <b>Vortex + ROS2 디지털트윈</b>에서 먼저 학습 후 실기 적용</div></div>
+    </div>
+    <div class="quote" style="margin-top:12px">현장 데이터 → 디지털트윈 → AI → 현장 — 이 다리가 Ⅳ부 에너지 가치사슬의 <b>‘발견 · 제조’ 단계</b>(자율실험실 · AI 팩토리)를 떠받치는 기반</div>
+
+  
+  </div>
+  
+  <div class="pno">13</div>
+</section>
+<!-- ══ S14 ══ -->
+<section class="slide ch4">
+  <aside class="sidebar"><div class="cnum">04</div><div class="cname">에너지 ×<br>피지컬 AI</div><div class="rule"></div><div class="cq">두 전환은<br>어떻게 만나나?</div></aside>
+  <div class="crumb">Ⅳ. 에너지 × 피지컬 AI</div>
+  <h1 class="title">13. 전환<span class="sep"> _ </span><span class="sub">두 개의 화살표</span></h1>
+  <div class="logos">
+    <div class="lg"><div class="mark"></div><div><div class="t1">한국기계연구원</div><div class="t2">Korea Institute of Machinery &amp; Materials</div></div></div>
+    <div class="lg"><div class="mark3">F</div><div><div class="t1">FES 2026</div><div class="t2">Future Energy Solutions</div></div></div>
+  </div>
+  <div class="keybar sm"><span>피지컬 AI와 에너지 사이의 두 개의 화살표 — 곱셈의 <em>‘에너지’ 항</em>으로 복귀</span></div>
+  <div class="content ">
+
+    <div style="margin-top:6px"><svg viewBox="0 0 782 330" width="782" height="330" style="display:block"><defs><marker id="m14t" markerWidth="18" markerHeight="18" refX="13" refY="8" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L16,8 L0,16 z" fill="#54833D"/></marker><marker id="m14b" markerWidth="18" markerHeight="18" refX="13" refY="8" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L16,8 L0,16 z" fill="#C9CED6"/></marker><radialGradient id="g14e" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#9FD27F"/><stop offset=".45" stop-color="#54833D"/><stop offset="1" stop-color="#2F4A22"/></radialGradient><radialGradient id="g14p" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#5E7BB3"/><stop offset=".45" stop-color="#253149"/><stop offset="1" stop-color="#0D1526"/></radialGradient></defs><path d="M 216 103 C 300 12, 482 12, 566 103" fill="none" stroke="#54833D" stroke-width="6" stroke-linecap="round" marker-end="url(#m14t)"/><path d="M 566 227 C 482 318, 300 318, 216 227" fill="none" stroke="#C9CED6" stroke-width="3" stroke-linecap="round" opacity="0.9" marker-end="url(#m14b)" stroke-dasharray="8 7"/><circle cx="150" cy="165" r="86" fill="url(#g14e)"/><circle cx="632" cy="165" r="86" fill="url(#g14p)"/><text x="150" y="163" text-anchor="middle" fill="#fff" font-size="24" font-weight="700" letter-spacing="-1">에너지</text><text x="150" y="187" text-anchor="middle" fill="#E6F2D8" font-size="11" font-weight="500">재생에너지 · 분산에너지</text><text x="632" y="163" text-anchor="middle" fill="#fff" font-size="24" font-weight="700" letter-spacing="-1">피지컬 AI</text><text x="632" y="187" text-anchor="middle" fill="#D7DEEE" font-size="11" font-weight="500">로봇 · 자율기계 · AI 팩토리</text><text x="391.0" y="88" text-anchor="middle" fill="#54833D" font-size="15" font-weight="800">① Energy for Physical AI</text><text x="391.0" y="106" text-anchor="middle" fill="#333" font-size="12.5" font-weight="600">피지컬 AI는 에너지를 필요로 함 — 그것도 로봇이 일하는 바로 그 자리에서</text><text x="391.0" y="248" text-anchor="middle" fill="#8A9099" font-size="15" font-weight="800">② Physical AI for Energy</text><text x="391.0" y="266" text-anchor="middle" fill="#8A9099" font-size="12.5" font-weight="600">피지컬 AI가 에너지를 만듦 — 발견 · 제조 · 건설 · 운영 · 회수</text><text x="391.0" y="170" text-anchor="middle" fill="#B8BEC7" font-size="13" font-weight="700">↑ 먼저 위쪽 화살표부터</text></svg></div>
+
+  <div class="note">※ 3장(곱셈)에서 남겨 둔 ‘에너지’ 항 — 먼저 위쪽 화살표(에너지 → 피지컬 AI)부터</div>
+  </div>
+  
+  <div class="pno">14</div>
+</section>
+<!-- ══ S15 ══ -->
+<section class="slide ch4">
+  <aside class="sidebar"><div class="cnum">04</div><div class="cname">에너지 ×<br>피지컬 AI</div><div class="rule"></div><div class="cq">두 전환은<br>어떻게 만나나?</div></aside>
+  <div class="crumb">Ⅳ. 에너지 × 피지컬 AI</div>
+  <h1 class="title">14. 방향 ①<span class="sep"> _ </span><span class="sub">피지컬 AI의 전기는 분산형</span></h1>
+  <div class="logos">
+    <div class="lg"><div class="mark"></div><div><div class="t1">한국기계연구원</div><div class="t2">Korea Institute of Machinery &amp; Materials</div></div></div>
+    <div class="lg"><div class="mark3">F</div><div><div class="t1">FES 2026</div><div class="t2">Future Energy Solutions</div></div></div>
+  </div>
+  <div class="keybar sm"><span>데이터센터는 전기를 <em>한곳에</em> 모으고, 피지컬 AI는 <em>전기가 있는 곳</em>에서 노동</span></div>
+  <div class="content ">
+
+    <div class="row" style="gap:38px;justify-content:center">
+      <div class="col" style="gap:5px"><svg viewBox="0 0 372 212" width="372" height="212" style="display:block"><rect x="0" y="0" width="372" height="212" rx="10" fill="#F2F2F2" stroke="#D9DDE3"/><defs><radialGradient id="dcg" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#7B7B7B" stop-opacity=".45"/><stop offset="1" stop-color="#7B7B7B" stop-opacity="0"/></radialGradient></defs><circle cx="186.0" cy="100.0" r="70" fill="url(#dcg)"/><circle cx="186.0" cy="100.0" r="26" fill="#7B7B7B"/><text x="186.0" y="156.0" text-anchor="middle" fill="#595959" font-size="13" font-weight="700">AI 데이터센터 — 한곳에 집중</text><text x="186.0" y="174.0" text-anchor="middle" fill="#8A8A8A" font-size="10.5" font-weight="500">수백 MW ~ GW급 · 송전선 끝에서 소비</text></svg><div class="cap" style="color:#666"><span class="tag g">집중형</span>&nbsp; AI 데이터센터 — 오후 세션(김정호 · Liang Min)에서 상세</div></div>
+      <div class="col" style="gap:5px"><svg viewBox="0 0 372 212" width="372" height="212" style="display:block"><rect x="0" y="0" width="372" height="212" rx="10" fill="#F2F5EB" stroke="rgba(84,131,61,.42)"/><circle cx="73.9" cy="59.4" r="2.7" fill="#54833D" opacity="0.53"/><circle cx="74.8" cy="59.7" r="3.0" fill="#54833D" opacity="0.79"/><circle cx="71.5" cy="76.3" r="2.7" fill="#54833D" opacity="0.59"/><circle cx="68.4" cy="72.9" r="2.9" fill="#54833D" opacity="0.89"/><circle cx="75.4" cy="47.8" r="3.1" fill="#54833D" opacity="0.71"/><circle cx="73.3" cy="79.7" r="2.2" fill="#54833D" opacity="0.49"/><circle cx="47.4" cy="53.3" r="2.4" fill="#54833D" opacity="0.92"/><circle cx="53.8" cy="45.5" r="3.0" fill="#54833D" opacity="0.95"/><circle cx="84.2" cy="61.2" r="1.7" fill="#54833D" opacity="0.92"/><circle cx="54.9" cy="33.3" r="1.9" fill="#54833D" opacity="0.70"/><circle cx="79.0" cy="54.6" r="1.6" fill="#54833D" opacity="0.47"/><circle cx="21.1" cy="66.7" r="2.4" fill="#54833D" opacity="0.65"/><circle cx="53.7" cy="59.9" r="3.1" fill="#54833D" opacity="0.63"/><circle cx="72.1" cy="75.5" r="2.9" fill="#54833D" opacity="0.61"/><circle cx="89.5" cy="50.8" r="2.2" fill="#54833D" opacity="0.49"/><circle cx="108.8" cy="42.4" r="2.3" fill="#54833D" opacity="0.51"/><circle cx="44.8" cy="60.8" r="2.9" fill="#54833D" opacity="0.91"/><circle cx="68.8" cy="45.2" r="1.5" fill="#54833D" opacity="0.90"/><circle cx="84.3" cy="56.4" r="2.3" fill="#54833D" opacity="0.69"/><circle cx="77.6" cy="59.2" r="1.5" fill="#54833D" opacity="0.87"/><circle cx="43.8" cy="51.5" r="2.8" fill="#54833D" opacity="0.75"/><circle cx="62.9" cy="47.1" r="1.6" fill="#54833D" opacity="0.45"/><circle cx="51.2" cy="82.6" r="2.1" fill="#54833D" opacity="0.62"/><circle cx="40.1" cy="40.9" r="2.5" fill="#54833D" opacity="0.61"/><circle cx="90.3" cy="30.9" r="3.0" fill="#54833D" opacity="0.90"/><circle cx="108.5" cy="62.5" r="2.0" fill="#54833D" opacity="0.64"/><circle cx="55.6" cy="58.9" r="1.8" fill="#54833D" opacity="0.94"/><circle cx="42.0" cy="94.7" r="2.6" fill="#54833D" opacity="0.61"/><circle cx="55.2" cy="82.3" r="2.7" fill="#54833D" opacity="0.62"/><circle cx="84.9" cy="64.0" r="2.9" fill="#54833D" opacity="0.81"/><circle cx="108.4" cy="81.5" r="2.4" fill="#54833D" opacity="0.62"/><circle cx="80.7" cy="54.2" r="1.6" fill="#54833D" opacity="0.62"/><circle cx="297.5" cy="27.4" r="2.3" fill="#54833D" opacity="0.90"/><circle cx="264.0" cy="69.6" r="1.4" fill="#54833D" opacity="0.84"/><circle cx="321.2" cy="71.8" r="2.9" fill="#54833D" opacity="0.78"/><circle cx="271.1" cy="39.2" r="2.8" fill="#54833D" opacity="0.63"/><circle cx="303.4" cy="72.8" r="2.3" fill="#54833D" opacity="0.51"/><circle cx="271.4" cy="46.2" r="1.7" fill="#54833D" opacity="0.80"/><circle cx="304.2" cy="33.9" r="3.0" fill="#54833D" opacity="0.94"/><circle cx="286.0" cy="34.3" r="1.9" fill="#54833D" opacity="0.51"/><circle cx="286.2" cy="115.4" r="1.5" fill="#54833D" opacity="0.91"/><circle cx="285.2" cy="20.2" r="1.6" fill="#54833D" opacity="0.77"/><circle cx="310.9" cy="76.0" r="2.8" fill="#54833D" opacity="0.81"/><circle cx="247.3" cy="41.8" r="1.8" fill="#54833D" opacity="0.53"/><circle cx="305.8" cy="45.4" r="2.2" fill="#54833D" opacity="0.66"/><circle cx="318.0" cy="37.9" r="2.4" fill="#54833D" opacity="0.70"/><circle cx="270.8" cy="52.7" r="2.2" fill="#54833D" opacity="0.75"/><circle cx="275.2" cy="57.8" r="3.1" fill="#54833D" opacity="0.94"/><circle cx="301.2" cy="93.7" r="1.4" fill="#54833D" opacity="0.62"/><circle cx="312.7" cy="43.5" r="2.6" fill="#54833D" opacity="0.95"/><circle cx="278.0" cy="37.1" r="1.5" fill="#54833D" opacity="0.68"/><circle cx="255.3" cy="57.1" r="2.1" fill="#54833D" opacity="0.85"/><circle cx="269.4" cy="64.3" r="2.8" fill="#54833D" opacity="0.53"/><circle cx="327.2" cy="44.3" r="2.3" fill="#54833D" opacity="0.94"/><circle cx="271.6" cy="40.6" r="1.8" fill="#54833D" opacity="0.56"/><circle cx="302.0" cy="28.7" r="2.6" fill="#54833D" opacity="0.80"/><circle cx="290.5" cy="35.5" r="3.0" fill="#54833D" opacity="0.67"/><circle cx="323.4" cy="82.3" r="3.0" fill="#54833D" opacity="0.51"/><circle cx="329.8" cy="31.8" r="1.9" fill="#54833D" opacity="0.74"/><circle cx="313.2" cy="45.1" r="2.6" fill="#54833D" opacity="0.57"/><circle cx="337.7" cy="85.6" r="3.2" fill="#54833D" opacity="0.78"/><circle cx="306.9" cy="32.6" r="2.2" fill="#54833D" opacity="0.76"/><circle cx="315.8" cy="24.3" r="2.2" fill="#54833D" opacity="0.76"/><circle cx="261.2" cy="68.8" r="3.0" fill="#54833D" opacity="0.84"/><circle cx="288.9" cy="65.9" r="3.2" fill="#54833D" opacity="0.64"/><circle cx="294.0" cy="43.0" r="1.6" fill="#54833D" opacity="0.56"/><circle cx="101.3" cy="138.5" r="2.6" fill="#54833D" opacity="0.49"/><circle cx="95.4" cy="123.9" r="1.9" fill="#54833D" opacity="0.57"/><circle cx="109.8" cy="171.0" r="1.7" fill="#54833D" opacity="0.57"/><circle cx="130.5" cy="110.2" r="1.7" fill="#54833D" opacity="0.71"/><circle cx="75.6" cy="113.1" r="2.4" fill="#54833D" opacity="0.72"/><circle cx="116.2" cy="118.6" r="2.7" fill="#54833D" opacity="0.76"/><circle cx="112.9" cy="145.1" r="2.8" fill="#54833D" opacity="0.56"/><circle cx="94.3" cy="164.3" r="2.3" fill="#54833D" opacity="0.75"/><circle cx="90.6" cy="141.9" r="2.0" fill="#54833D" opacity="0.78"/><circle cx="133.1" cy="142.6" r="1.4" fill="#54833D" opacity="0.88"/><circle cx="147.8" cy="127.5" r="2.5" fill="#54833D" opacity="0.66"/><circle cx="163.7" cy="166.2" r="2.2" fill="#54833D" opacity="0.51"/><circle cx="104.5" cy="146.2" r="2.1" fill="#54833D" opacity="0.75"/><circle cx="118.0" cy="133.9" r="1.8" fill="#54833D" opacity="0.62"/><circle cx="114.9" cy="142.9" r="1.7" fill="#54833D" opacity="0.62"/><circle cx="161.5" cy="138.9" r="3.1" fill="#54833D" opacity="0.47"/><circle cx="95.4" cy="149.9" r="2.5" fill="#54833D" opacity="0.85"/><circle cx="70.5" cy="153.1" r="2.6" fill="#54833D" opacity="0.70"/><circle cx="95.2" cy="158.5" r="2.7" fill="#54833D" opacity="0.94"/><circle cx="167.8" cy="141.8" r="2.9" fill="#54833D" opacity="0.78"/><circle cx="96.8" cy="150.3" r="2.8" fill="#54833D" opacity="0.54"/><circle cx="156.5" cy="135.0" r="1.9" fill="#54833D" opacity="0.90"/><circle cx="111.8" cy="117.1" r="1.6" fill="#54833D" opacity="0.59"/><circle cx="111.1" cy="169.5" r="2.8" fill="#54833D" opacity="0.65"/><circle cx="85.4" cy="131.4" r="2.1" fill="#54833D" opacity="0.91"/><circle cx="89.1" cy="124.2" r="2.7" fill="#54833D" opacity="0.76"/><circle cx="121.3" cy="147.0" r="2.1" fill="#54833D" opacity="0.54"/><circle cx="133.1" cy="167.5" r="2.2" fill="#54833D" opacity="0.52"/><circle cx="70.2" cy="153.2" r="1.6" fill="#54833D" opacity="0.77"/><circle cx="83.5" cy="121.4" r="3.2" fill="#54833D" opacity="0.89"/><circle cx="102.4" cy="155.3" r="2.0" fill="#54833D" opacity="0.53"/><circle cx="125.0" cy="136.3" r="2.4" fill="#54833D" opacity="0.81"/><circle cx="161.0" cy="155.6" r="2.6" fill="#54833D" opacity="0.75"/><circle cx="259.7" cy="151.5" r="2.6" fill="#54833D" opacity="0.67"/><circle cx="203.1" cy="122.2" r="2.6" fill="#54833D" opacity="0.87"/><circle cx="243.5" cy="145.0" r="1.9" fill="#54833D" opacity="0.90"/><circle cx="250.8" cy="149.2" r="1.5" fill="#54833D" opacity="0.95"/><circle cx="252.6" cy="146.9" r="2.0" fill="#54833D" opacity="0.47"/><circle cx="245.1" cy="112.7" r="2.2" fill="#54833D" opacity="0.81"/><circle cx="296.1" cy="143.6" r="2.6" fill="#54833D" opacity="0.83"/><circle cx="290.1" cy="174.6" r="3.2" fill="#54833D" opacity="0.69"/><circle cx="236.7" cy="159.7" r="2.7" fill="#54833D" opacity="0.68"/><circle cx="188.1" cy="128.0" r="2.7" fill="#54833D" opacity="0.64"/><circle cx="288.6" cy="122.9" r="1.4" fill="#54833D" opacity="0.70"/><circle cx="243.0" cy="154.6" r="2.1" fill="#54833D" opacity="0.87"/><circle cx="235.0" cy="131.4" r="1.5" fill="#54833D" opacity="0.53"/><circle cx="227.0" cy="155.9" r="2.3" fill="#54833D" opacity="0.66"/><circle cx="228.0" cy="137.3" r="3.1" fill="#54833D" opacity="0.56"/><circle cx="224.1" cy="159.4" r="2.9" fill="#54833D" opacity="0.65"/><circle cx="236.8" cy="129.7" r="1.4" fill="#54833D" opacity="0.93"/><circle cx="290.1" cy="152.6" r="1.5" fill="#54833D" opacity="0.60"/><circle cx="194.6" cy="136.3" r="2.8" fill="#54833D" opacity="0.60"/><circle cx="293.4" cy="141.5" r="2.7" fill="#54833D" opacity="0.92"/><circle cx="275.9" cy="159.9" r="2.5" fill="#54833D" opacity="0.89"/><circle cx="275.6" cy="114.8" r="2.9" fill="#54833D" opacity="0.49"/><circle cx="285.3" cy="138.0" r="3.0" fill="#54833D" opacity="0.53"/><circle cx="196.0" cy="136.1" r="3.1" fill="#54833D" opacity="0.76"/><circle cx="254.4" cy="137.6" r="1.6" fill="#54833D" opacity="0.58"/><circle cx="278.9" cy="119.8" r="2.2" fill="#54833D" opacity="0.91"/><circle cx="235.5" cy="139.0" r="3.1" fill="#54833D" opacity="0.82"/><circle cx="295.3" cy="138.9" r="2.3" fill="#54833D" opacity="0.90"/><circle cx="252.2" cy="141.6" r="1.9" fill="#54833D" opacity="0.93"/><circle cx="287.2" cy="155.9" r="2.4" fill="#54833D" opacity="0.52"/><circle cx="260.6" cy="167.7" r="2.1" fill="#54833D" opacity="0.89"/><circle cx="282.3" cy="147.4" r="2.9" fill="#54833D" opacity="0.57"/><circle cx="244.2" cy="163.3" r="1.7" fill="#54833D" opacity="0.77"/><circle cx="210.2" cy="82.6" r="1.7" fill="#54833D" opacity="0.89"/><circle cx="238.0" cy="101.6" r="2.2" fill="#54833D" opacity="0.85"/><circle cx="143.3" cy="122.0" r="2.6" fill="#54833D" opacity="0.75"/><circle cx="220.7" cy="100.6" r="1.8" fill="#54833D" opacity="0.81"/><circle cx="182.2" cy="101.8" r="1.7" fill="#54833D" opacity="0.58"/><circle cx="204.9" cy="100.3" r="2.4" fill="#54833D" opacity="0.88"/><circle cx="194.1" cy="73.2" r="3.1" fill="#54833D" opacity="0.63"/><circle cx="160.7" cy="100.0" r="2.5" fill="#54833D" opacity="0.70"/><circle cx="181.0" cy="79.8" r="1.8" fill="#54833D" opacity="0.62"/><circle cx="171.6" cy="95.1" r="2.4" fill="#54833D" opacity="0.49"/><circle cx="164.5" cy="99.2" r="2.5" fill="#54833D" opacity="0.52"/><circle cx="173.8" cy="73.4" r="3.1" fill="#54833D" opacity="0.52"/><circle cx="153.1" cy="108.3" r="3.1" fill="#54833D" opacity="0.86"/><circle cx="211.5" cy="77.7" r="1.8" fill="#54833D" opacity="0.58"/><circle cx="164.8" cy="70.0" r="2.2" fill="#54833D" opacity="0.55"/><circle cx="206.3" cy="78.7" r="1.8" fill="#54833D" opacity="0.87"/><circle cx="196.4" cy="63.5" r="2.8" fill="#54833D" opacity="0.76"/><circle cx="171.3" cy="77.6" r="1.7" fill="#54833D" opacity="0.92"/><circle cx="225.0" cy="109.3" r="2.0" fill="#54833D" opacity="0.82"/><circle cx="226.5" cy="71.2" r="1.4" fill="#54833D" opacity="0.89"/><circle cx="192.4" cy="104.1" r="3.2" fill="#54833D" opacity="0.87"/><circle cx="217.2" cy="119.6" r="1.9" fill="#54833D" opacity="0.76"/><circle cx="194.0" cy="83.7" r="1.7" fill="#54833D" opacity="0.51"/><circle cx="225.2" cy="120.5" r="1.5" fill="#54833D" opacity="0.61"/><circle cx="193.1" cy="86.9" r="2.2" fill="#54833D" opacity="0.87"/><circle cx="231.6" cy="72.9" r="1.5" fill="#54833D" opacity="0.47"/><circle cx="188.4" cy="70.1" r="2.3" fill="#54833D" opacity="0.79"/><circle cx="197.1" cy="76.3" r="3.1" fill="#54833D" opacity="0.60"/><circle cx="197.2" cy="84.8" r="1.5" fill="#54833D" opacity="0.75"/><circle cx="189.7" cy="64.4" r="1.5" fill="#54833D" opacity="0.92"/><circle cx="239.8" cy="71.9" r="2.7" fill="#54833D" opacity="0.45"/><circle cx="174.3" cy="94.1" r="1.8" fill="#54833D" opacity="0.69"/><circle cx="212.8" cy="69.5" r="3.2" fill="#54833D" opacity="0.63"/><circle cx="229.0" cy="107.7" r="3.0" fill="#54833D" opacity="0.70"/><text x="70" y="64" text-anchor="middle" fill="#2F4A22" font-size="11" font-weight="700" paint-order="stroke" stroke="#F2F5EB" stroke-width="4">공장</text><text x="300" y="54" text-anchor="middle" fill="#2F4A22" font-size="11" font-weight="700" paint-order="stroke" stroke="#F2F5EB" stroke-width="4">항만</text><text x="110" y="154" text-anchor="middle" fill="#2F4A22" font-size="11" font-weight="700" paint-order="stroke" stroke="#F2F5EB" stroke-width="4">농장</text><text x="250" y="144" text-anchor="middle" fill="#2F4A22" font-size="11" font-weight="700" paint-order="stroke" stroke="#F2F5EB" stroke-width="4">건설 현장</text><text x="190" y="94" text-anchor="middle" fill="#2F4A22" font-size="11" font-weight="700" paint-order="stroke" stroke="#F2F5EB" stroke-width="4">에너지 설비</text><text x="186.0" y="200" text-anchor="middle" fill="#3F6630" font-size="13" font-weight="700">로봇 · 자율기계 — 일하는 그 자리에 분산</text></svg><div class="cap"><span class="tag">분산형</span>&nbsp; 피지컬 AI — 송전선 끝이 아니라 <b>일하는 그 자리</b>에서 전기를 원함</div></div>
+    </div>
+    <div class="row" style="gap:14px;margin-top:14px">
+      <div class="lrow" style="flex:1"><div class="k">같은 점</div><div class="v">둘 다 <b>무탄소 전력</b>이 전제 — 화석연료로 채우면 전환의 의미 상실</div></div>
+      <div class="lrow" style="flex:1.25"><div class="k">다른 점</div><div class="v">분산형 수요의 해법 = <b>분산에너지 · 지산지소</b> — 이 포럼의 주제와 정확히 일치</div></div>
+    </div>
+
+  <div class="note">※ 전남·광주 재생에너지 출력제어량 2023년 260MWh → 2025년 39,527MWh(지자체 추정) — 남는 전기를 그 자리에서 쓰는 분산형 수요가 필요한 이유</div>
+  </div>
+  
+  <div class="pno">15</div>
+</section>
+<!-- ══ S16 ══ -->
+<section class="slide ch4">
+  <aside class="sidebar"><div class="cnum">04</div><div class="cname">에너지 ×<br>피지컬 AI</div><div class="rule"></div><div class="cq">두 전환은<br>어떻게 만나나?</div></aside>
+  <div class="crumb">Ⅳ. 에너지 × 피지컬 AI</div>
+  <h1 class="title">15. 방향 ①<span class="sep"> _ </span><span class="sub">전기를 쓰는 세 곳</span></h1>
+  <div class="logos">
+    <div class="lg"><div class="mark"></div><div><div class="t1">한국기계연구원</div><div class="t2">Korea Institute of Machinery &amp; Materials</div></div></div>
+    <div class="lg"><div class="mark3">F</div><div><div class="t1">FES 2026</div><div class="t2">Future Energy Solutions</div></div></div>
+  </div>
+  <div class="keybar sm"><span>두뇌 · 몸 · 현장 — 다음 성능 지표는 <em>토큰당 전력</em>이 아니라 <em>작업당 에너지</em></span></div>
+  <div class="content ">
+
+    <div class="row" style="gap:22px">
+      <div class="col" style="width:520px;gap:10px">
+        <div class="lrow" style="min-height:92px;grid-template-columns:110px 1fr"><div class="k" style="font-size:16px">🧠 두뇌</div><div class="v" style="display:flex;flex-direction:column;align-items:flex-start;gap:3px"><b>로봇 AI 학습 · 시뮬레이션 · 데이터 팩토리</b><span style="font-size:11.5px;color:#555">파운데이션 모델 학습과 디지털트윈 연산 — 데이터센터와 겹치는 유일한 층</span></div></div>
+        <div class="lrow" style="min-height:92px;grid-template-columns:110px 1fr;border-color:var(--bd);box-shadow:0 0 0 2px var(--tint)"><div class="k" style="font-size:16px">🦾 몸</div><div class="v" style="display:flex;flex-direction:column;align-items:flex-start;gap:3px"><b>배터리 · 구동기 · 감속기 효율</b><span style="font-size:11.5px;color:#555">휴머노이드 연속 작업 <b>2~4시간</b>(Unitree G1 약 2h · Atlas 4h, 공식 스펙) — 구동기 효율이 AI 성능만큼 중요</span></div></div>
+        <div class="lrow" style="min-height:92px;grid-template-columns:110px 1fr"><div class="k" style="font-size:16px">🏗 현장</div><div class="v" style="display:flex;flex-direction:column;align-items:flex-start;gap:3px"><b>로봇 · 전동 중장비 · 농기계 충전 인프라</b><span style="font-size:11.5px;color:#555">전동화된 기계 수천 대의 충전 — 현장 옆 분산 전원 없이는 성립 불가</span></div></div>
+      </div>
+      <div class="col" style="flex:1;gap:10px;justify-content:center">
+        <div class="stat"><div class="n">≈ 100 W</div><div class="l">사람의 몸 — 이 전력으로 하루 노동</div></div>
+        <div class="stat"><div class="n">2~4 h</div><div class="l">휴머노이드 배터리 1회 작업 시간 — 다음 KPI는<br><b>작업당 에너지 (Joule per Task)</b></div></div>
+        <div class="quote" style="font-size:11.5px">디지털 AI는 복사 비용 ≈ 0, 피지컬 AI는 <b>모든 동작이 에너지와 안전을 소모</b> — 경제학 자체가 다름</div>
+      </div>
+    </div>
+
+  
+  </div>
+  
+  <div class="pno">16</div>
+</section>
+<!-- ══ S17 ══ -->
+<section class="slide ch4">
+  <aside class="sidebar"><div class="cnum">04</div><div class="cname">에너지 ×<br>피지컬 AI</div><div class="rule"></div><div class="cq">두 전환은<br>어떻게 만나나?</div></aside>
+  <div class="crumb">Ⅳ. 에너지 × 피지컬 AI</div>
+  <h1 class="title">16. 방향 ②<span class="sep"> _ </span><span class="sub">피지컬 AI가 에너지를 생산</span></h1>
+  <div class="logos">
+    <div class="lg"><div class="mark"></div><div><div class="t1">한국기계연구원</div><div class="t2">Korea Institute of Machinery &amp; Materials</div></div></div>
+    <div class="lg"><div class="mark3">F</div><div><div class="t1">FES 2026</div><div class="t2">Future Energy Solutions</div></div></div>
+  </div>
+  <div class="keybar sm"><span>에너지의 <em>발견부터 회수까지</em> — 다섯 단계 모두 사람 손이 많이 가는 물리 노동</span></div>
+  <div class="content ">
+
+    <div class="chain">
+      <div class="cs"><div class="h">발견</div><div class="r">자율실험실<br><span>Self-Driving Lab</span></div><div class="e">태양전지 · 배터리 소재 탐색 — A-Lab 17일 무인 합성 58타깃</div></div>
+      <div class="cs"><div class="h">제조</div><div class="r">AI 팩토리</div><div class="e">배터리 · 태양전지 · 수전해 스택 생산</div></div>
+      <div class="cs now"><div class="h">건설</div><div class="r">필드로봇<br><span>KIMM 영역</span></div><div class="e">단지 부지조성 · 파일 · 모듈 설치 · 송전탑</div></div>
+      <div class="cs"><div class="h">운영</div><div class="r">점검 · 정비 로봇</div><div class="e">해상풍력 · 수상태양광 · 원전 · 수소설비 — 블레이드 로봇 점검 수백 건(Aerones)</div></div>
+      <div class="cs"><div class="h">회수</div><div class="r">해체 · 재활용 로봇</div><div class="e">폐패널 · 폐배터리 — 국내 폐패널 2032년 9,632톤 (’25年比 3.8배)</div></div>
+    </div>
+    <div class="row" style="gap:14px;margin-top:14px">
+      <div class="lrow" style="flex:1"><div class="k">공통<br>문제</div><div class="v"><b>고령화 · 위험 · 대규모 반복</b> — 기술보다 ‘깔 사람 · 지킬 사람 · 거둘 사람’이 병목</div></div>
+      <div class="lrow" style="flex:1"><div class="k">건설은<br>하나</div><div class="v">발표자의 영역은 다섯 중 하나 — 피지컬 AI는 에너지 산업 <b>전 주기</b>에 걸쳐 일함</div></div>
+    </div>
+    <div class="quote" style="margin-top:12px">에너지 전환은 기술의 문제이기도 하지만, 결국 <b>누군가 만들고 · 깔고 · 지키고 · 거둬야 하는 일</b></div>
+    <div class="note" style="position:static;margin-top:6px">※ 출처: Nature(A-Lab, 2026 정정판 기준) · ENGIE Innovation(Aerones) · 국회입법조사처 2026 국감 이슈분석(폐패널)</div>
+    <style>.chain{display:flex;gap:10px}.cs{flex:1;border:1px solid var(--bd);border-radius:8px;background:#fff;overflow:hidden;display:flex;flex-direction:column;text-align:center}.cs .h{height:34px;background:var(--mid);color:#fff;font-size:16px;font-weight:800;display:grid;place-items:center}.cs .r{background:var(--tint);font-size:13px;font-weight:700;color:var(--deep);padding:7px 4px;line-height:1.25;min-height:50px;display:grid;place-items:center}.cs .r span{display:block;font-size:9.5px;font-weight:500;color:#666}.cs .e{font-size:11px;font-weight:500;color:#444;padding:7px 6px 8px;line-height:1.35;flex:1}.cs.now{box-shadow:0 0 0 2.5px var(--main)}.cs.now .h{background:var(--main)}</style>
+
+  
+  </div>
+  
+  <div class="pno">17</div>
+</section>
+<!-- ══ S18 ══ -->
+<section class="slide ch4">
+  <aside class="sidebar"><div class="cnum">04</div><div class="cname">에너지 ×<br>피지컬 AI</div><div class="rule"></div><div class="cq">두 전환은<br>어떻게 만나나?</div></aside>
+  <div class="crumb">Ⅳ. 에너지 × 피지컬 AI</div>
+  <h1 class="title">17. 방향 ②<span class="sep"> _ </span><span class="sub">사람이 가기 어려운 현장</span></h1>
+  <div class="logos">
+    <div class="lg"><div class="mark"></div><div><div class="t1">한국기계연구원</div><div class="t2">Korea Institute of Machinery &amp; Materials</div></div></div>
+    <div class="lg"><div class="mark3">F</div><div><div class="t1">FES 2026</div><div class="t2">Future Energy Solutions</div></div></div>
+  </div>
+  <div class="keybar sm"><span>해상풍력 · 수상태양광 · 원전 · 수소설비 — <em>로봇이 먼저 가는</em> 에너지 현장</span></div>
+  <div class="content ">
+
+    <div class="row" style="gap:16px">
+      <div class="col" style="gap:4px">
+        <div class="ph " style="width:360px;height:240px;"><span class="id">S18-IMG-1</span><span class="desc"><b>해상풍력 또는 수상태양광 점검</b> — 드론 + 로봇이 설비를 점검하는 장면 (BladeBUG · Aerones 등, 출처 표기)</span><span class="size">3:2 · 360×240</span></div>
+        <div class="cap"><b>운영</b> — 풍력 블레이드 로봇 O&amp;M: Aerones, ENGIE 현장 <b>수백 건</b> · 로프 작업 대비 4배 속도(회사 주장)</div>
+      </div>
+      <div class="col" style="gap:6px;width:190px">
+        <div class="ph sm" style="width:190px;height:127px;"><span class="id">S18-IMG-2</span><span class="desc"><b>원전 · 수소설비</b> 위험구역 점검 로봇</span><span class="size">3:2 · 190×127</span></div>
+        <div class="cap" style="margin-top:0"><b>운영</b> — 위험구역 정비</div>
+        <div class="ph sm" style="width:190px;height:127px;"><span class="id">S18-IMG-3</span><span class="desc"><b>태양광 단지 부지조성</b> — 자율굴착기 (10장 영상 정지컷 재활용)</span><span class="size">3:2 · 190×127</span></div>
+        <div class="cap" style="margin-top:0"><b>건설</b> — 부지조성</div>
+      </div>
+      <div class="col" style="flex:1;gap:7px">
+        <div class="tag" style="align-self:flex-start">KIMM 필드로봇 기술 → 에너지 현장</div>
+        <div class="lrow" style="grid-template-columns:66px 1fr"><div class="k">강건 인지</div><div class="v" style="font-size:12px">옥외 설비 무인 점검의 신뢰성</div></div>
+        <div class="lrow" style="grid-template-columns:66px 1fr"><div class="k">UAV–UGV</div><div class="v" style="font-size:12px">광역 단지 감시 · 점검</div></div>
+        <div class="lrow" style="grid-template-columns:66px 1fr"><div class="k">자율<br>중장비</div><div class="v" style="font-size:12px">부지조성 · 송전탑 기초 시공</div></div>
+        <div class="lrow" style="grid-template-columns:66px 1fr"><div class="k">고장진단</div><div class="v" style="font-size:12px">예지보전 — 설비 수명 연장</div></div>
+      </div>
+    </div>
+
+  <div class="note">※ 원장 발표의 필드로봇 적용 분야(원전 점검 등)와 연결 — 사람이 가기 어려운 곳에 로봇이 먼저</div>
+  </div>
+  
+  <div class="pno">18</div>
+</section>
+<!-- ══ S19 ══ -->
+<section class="slide ch4">
+  <aside class="sidebar"><div class="cnum">04</div><div class="cname">에너지 ×<br>피지컬 AI</div><div class="rule"></div><div class="cq">두 전환은<br>어떻게 만나나?</div></aside>
+  <div class="crumb">Ⅳ. 에너지 × 피지컬 AI</div>
+  <h1 class="title">18. 선순환<span class="sep"> _ </span><span class="sub">함께 자라는 두 전환</span></h1>
+  <div class="logos">
+    <div class="lg"><div class="mark"></div><div><div class="t1">한국기계연구원</div><div class="t2">Korea Institute of Machinery &amp; Materials</div></div></div>
+    <div class="lg"><div class="mark3">F</div><div><div class="t1">FES 2026</div><div class="t2">Future Energy Solutions</div></div></div>
+  </div>
+  <div class="keybar "><span><em>재생에너지가 피지컬 AI를 움직이고</em>, <em>피지컬 AI가 재생에너지를 늘림</em></span></div>
+  <div class="content ">
+
+    <div style="margin-top:-2px"><svg viewBox="0 0 782 318" width="782" height="318" style="display:block"><defs><marker id="m19t" markerWidth="18" markerHeight="18" refX="13" refY="8" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L16,8 L0,16 z" fill="#54833D"/></marker><marker id="m19b" markerWidth="18" markerHeight="18" refX="13" refY="8" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L16,8 L0,16 z" fill="#253149"/></marker><radialGradient id="g19e" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#9FD27F"/><stop offset=".45" stop-color="#54833D"/><stop offset="1" stop-color="#2F4A22"/></radialGradient><radialGradient id="g19p" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#5E7BB3"/><stop offset=".45" stop-color="#253149"/><stop offset="1" stop-color="#0D1526"/></radialGradient></defs><path d="M 216 103 C 300 12, 482 12, 566 103" fill="none" stroke="#54833D" stroke-width="6" stroke-linecap="round" marker-end="url(#m19t)"/><path d="M 566 227 C 482 306, 300 306, 216 227" fill="none" stroke="#253149" stroke-width="6" stroke-linecap="round" opacity="1" marker-end="url(#m19b)" /><circle cx="150" cy="165" r="86" fill="url(#g19e)"/><circle cx="632" cy="165" r="86" fill="url(#g19p)"/><text x="150" y="163" text-anchor="middle" fill="#fff" font-size="24" font-weight="700" letter-spacing="-1">에너지</text><text x="150" y="187" text-anchor="middle" fill="#E6F2D8" font-size="11" font-weight="500">재생에너지 · 분산에너지</text><text x="632" y="163" text-anchor="middle" fill="#fff" font-size="24" font-weight="700" letter-spacing="-1">피지컬 AI</text><text x="632" y="187" text-anchor="middle" fill="#D7DEEE" font-size="11" font-weight="500">로봇 · 자율기계 · AI 팩토리</text><text x="391.0" y="88" text-anchor="middle" fill="#54833D" font-size="15" font-weight="800">① Energy for Physical AI</text><text x="391.0" y="106" text-anchor="middle" fill="#333" font-size="12.5" font-weight="600">피지컬 AI는 에너지를 필요로 함 — 그것도 로봇이 일하는 바로 그 자리에서</text><text x="391.0" y="236" text-anchor="middle" fill="#253149" font-size="15" font-weight="800">② Physical AI for Energy</text><text x="391.0" y="254" text-anchor="middle" fill="#333" font-size="12.5" font-weight="600">피지컬 AI가 에너지를 만듦 — 발견 · 제조 · 건설 · 운영 · 회수</text><circle cx="391.0" cy="165" r="46" fill="#fff" stroke="#D9DDE3"/><text x="391.0" y="161" text-anchor="middle" fill="#253149" font-size="17" font-weight="800">선순환</text><text x="391.0" y="179" text-anchor="middle" fill="#54833D" font-size="9.5" font-weight="700">VIRTUOUS CYCLE</text></svg></div>
+
+  
+  </div>
+  <div class="closer"><span>에너지 없이 피지컬 AI 없고, 피지컬 AI 없이 에너지 전환 없음 — <em>둘은 함께 성장</em></span></div>
+  <div class="pno">19</div>
+</section>
+<!-- ══ S20 ══ -->
+<section class="slide ch4">
+  <aside class="sidebar"><div class="cnum">04</div><div class="cname">에너지 ×<br>피지컬 AI</div><div class="rule"></div><div class="cq">두 전환은<br>어떻게 만나나?</div></aside>
+  <div class="crumb">Ⅳ. 에너지 × 피지컬 AI</div>
+  <h1 class="title">19. 새만금<span class="sep"> _ </span><span class="sub">고리를 한 땅에서 닫을 곳</span></h1>
+  <div class="logos">
+    <div class="lg"><div class="mark"></div><div><div class="t1">한국기계연구원</div><div class="t2">Korea Institute of Machinery &amp; Materials</div></div></div>
+    <div class="lg"><div class="mark3">F</div><div><div class="t1">FES 2026</div><div class="t2">Future Energy Solutions</div></div></div>
+  </div>
+  <div class="keybar xs"><span>재생에너지 + RE100 산단 + 피지컬 AI 실증 — <em>새만금</em>에서 선순환 고리를 <em>최초로 완성</em></span></div>
+  <div class="content ">
+
+    <div class="row" style="gap:22px">
+      <div class="col" style="gap:4px">
+        <div class="ph " style="width:360px;height:270px;"><span class="id">S20-IMG-1</span><span class="desc"><b>새만금 조감도 · 지도</b> — 태양광 · 풍력 단지와 RE100 산단 위치가 보이는 컷 (새만금개발청 공개자료) + 순환 고리 오버레이</span><span class="size">4:3 · 360×270</span></div>
+        <div class="cap">재생에너지 생산 · 저장 · 활용이 한 땅에서 — <b>지산지소</b></div>
+      </div>
+      <div class="col" style="flex:1;gap:9px">
+        <div class="stat"><div class="n">10 GW</div><div class="l">새만금 재생에너지 3단계 계획(2030·35·40) — 수상태양광 2.1GW · 육상 0.9GW · RE100 선도산단 TF 가동(’26.9)</div></div>
+        <div class="card"><header>제안 ① 피지컬 AI 실증 시범지역</header><div class="body"><div style="font-size:12.5px;font-weight:500;line-height:1.4">피지컬 AI 특별법(’26.6 발의, 9월 과방위 상정)의 <b>실증 시범지역 · 규제특례</b> 취지에 새만금을 — RE100 + 피지컬 AI 실증특구</div></div></div>
+        <div class="card"><header>제안 ② 에너지 현장을 로봇의 학습장으로</header><div class="body"><div style="font-size:12.5px;font-weight:500;line-height:1.4">태양광 · 수상태양광 · 매립지 · 산단 = <b>에너지 현장 데이터 팩토리</b> — 로봇은 현장에서 배움</div></div></div>
+      </div>
+    </div>
+
+  <div class="note">※ 정부 피지컬 AI 예산 2025년 426억 → 2027년(안) 4,622억 원 — 실증 수요가 급증하는 시점에 ‘현장’을 가진 새만금 · 출처: 새만금개발청(’26.7), 국회 국감자료(’26.10)</div>
+  </div>
+  
+  <div class="pno">20</div>
+</section>
+<!-- ══ S21 마무리 ══ -->
+<section class="slide fin">
+  <h2>피지컬 AI와 에너지,<br>함께 진화</h2>
+  <div class="subt">AI는 몸을 얻어 현장으로 — 그 몸은 현장에서 에너지를 필요로 하고, 동시에 에너지를 만드는 현장에서 노동</div>
+  <div class="three">
+    <div class="k3"><div class="n">1</div><div class="b"><b>몸을 만드는 일</b> — 구동기 · 핸드 · 촉각 피부, 휴머노이드 카이로스</div></div>
+    <div class="k3"><div class="n">2</div><div class="b"><b>현장으로 내보내는 일</b> — 필드로봇 · 자율 중장비 · 디지털트윈</div></div>
+    <div class="k3"><div class="n">3</div><div class="b"><b>고리를 닫는 곳</b> — 새만금 AI-RE100-피지컬 AI 플랫폼</div></div>
+  </div>
+  <div class="loop"><svg viewBox="0 0 782 330" width="390" height="165" style="display:block"><defs><marker id="m21t" markerWidth="18" markerHeight="18" refX="13" refY="8" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L16,8 L0,16 z" fill="#54833D"/></marker><marker id="m21b" markerWidth="18" markerHeight="18" refX="13" refY="8" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L16,8 L0,16 z" fill="#253149"/></marker><radialGradient id="g21e" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#9FD27F"/><stop offset=".45" stop-color="#54833D"/><stop offset="1" stop-color="#2F4A22"/></radialGradient><radialGradient id="g21p" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#5E7BB3"/><stop offset=".45" stop-color="#253149"/><stop offset="1" stop-color="#0D1526"/></radialGradient></defs><path d="M 216 103 C 300 12, 482 12, 566 103" fill="none" stroke="#54833D" stroke-width="6" stroke-linecap="round" marker-end="url(#m21t)"/><path d="M 566 227 C 482 318, 300 318, 216 227" fill="none" stroke="#253149" stroke-width="6" stroke-linecap="round" opacity="1" marker-end="url(#m21b)" /><circle cx="150" cy="165" r="86" fill="url(#g21e)"/><circle cx="632" cy="165" r="86" fill="url(#g21p)"/><text x="150" y="163" text-anchor="middle" fill="#fff" font-size="24" font-weight="700" letter-spacing="-1">에너지</text><text x="150" y="187" text-anchor="middle" fill="#E6F2D8" font-size="11" font-weight="500">재생에너지 · 분산에너지</text><text x="632" y="163" text-anchor="middle" fill="#fff" font-size="24" font-weight="700" letter-spacing="-1">피지컬 AI</text><text x="632" y="187" text-anchor="middle" fill="#D7DEEE" font-size="11" font-weight="500">로봇 · 자율기계 · AI 팩토리</text><circle cx="391.0" cy="165" r="60" fill="#fff" stroke="#D9DDE3"/><text x="391.0" y="161" text-anchor="middle" fill="#253149" font-size="24" font-weight="800">선순환</text><text x="391.0" y="185" text-anchor="middle" fill="#54833D" font-size="12" font-weight="700">VIRTUOUS CYCLE</text></svg></div>
+  <div class="baton">이어서 <b>황철주 회장님(주성엔지니어링)</b>께서 그 에너지를 만드는 <b>태양광 기술의 미래</b>를 — 더 좋은 패널은 다음 분이, 저는 그것을 누가 깔고 지킬지를 말씀드렸습니다</div>
+  <div class="thanks">감사합니다</div>
+  <div class="contact">이한민 · 한국기계연구원 가상공학연구본부 산업기계DX연구실 · hanmin@kimm.re.kr</div>
+  <div class="clogos logos">
+    <div class="lg"><div class="mark"></div><div><div class="t1">한국기계연구원</div><div class="t2">Korea Institute of Machinery &amp; Materials</div></div></div>
+    <div class="lg"><div class="mark3">F</div><div><div class="t1">FES 2026</div><div class="t2">Future Energy Solutions</div></div></div>
+  </div>
+  <div class="pno">21</div>
+</section>
+<script>
+(()=>{const slides=[...document.querySelectorAll('.slide')];let i=0,on=false;
+function fit(){const s=Math.min(innerWidth/960,innerHeight/540);document.documentElement.style.setProperty('--fit',s)}
+function show(){slides.forEach((el,k)=>el.classList.toggle('on',k===i))}
+addEventListener('keydown',e=>{
+  if(e.key==='f'||e.key==='F'){on=!on;document.body.classList.toggle('present',on);fit();show();return}
+  if(!on)return;
+  if(['ArrowRight','PageDown',' '].includes(e.key)){i=Math.min(slides.length-1,i+1);show();e.preventDefault()}
+  if(['ArrowLeft','PageUp'].includes(e.key)){i=Math.max(0,i-1);show();e.preventDefault()}
+  if(e.key==='Escape'){on=false;document.body.classList.remove('present')}
+});
+addEventListener('resize',fit);})();
+</script>
+</body>
+</html>

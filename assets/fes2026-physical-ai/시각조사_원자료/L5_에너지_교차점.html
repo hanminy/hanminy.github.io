@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lane 5 — 에너지 × 피지컬 AI 교차점 리서치 (FES 2026 특별강연 보강용)</title>
+<style>
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css');
+:root{--bg:#ffffff;--card:#f8f9fa;--text:#1e293b;--h1:#0f172a;--muted:#64748b;--accent:#2563eb;--strong:#1e40af;--line:#e2e8f0;--acc:#2563eb}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:'Pretendard Variable',Pretendard,-apple-system,'Segoe UI',sans-serif;font-size:16px;line-height:1.7;word-break:keep-all;overflow-wrap:anywhere}
+.wrap{max-width:1040px;margin:0 auto;padding:40px 20px 80px}
+header.top{margin-bottom:28px}
+.kicker{font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:700}
+h1{color:var(--h1);font-size:2rem;line-height:1.3;margin:.3em 0 .4em;font-weight:800}
+.metaline{color:var(--muted);font-size:.92rem}
+.metaline b{color:var(--text);font-weight:600}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 0}
+.chip{display:inline-block;padding:5px 11px;border-radius:999px;font-size:.82rem;font-weight:600;text-decoration:none;color:#fff;opacity:.92}
+.chip:hover{opacity:1}
+nav.toc{background:var(--card);border-radius:12px;padding:16px 22px;margin:22px 0 30px;border-left:4px solid var(--accent);box-shadow:0 1px 3px rgba(0,0,0,.08)}
+nav.toc .meta-label{font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:700;margin-bottom:6px}
+nav.toc ol{margin:0;padding-left:1.3em;columns:2;column-gap:28px}
+nav.toc li{break-inside:avoid;margin:2px 0;font-size:.95rem}
+nav.toc a{color:var(--text);text-decoration:none}
+nav.toc a:hover{color:var(--accent);text-decoration:underline}
+section.card,article.item{background:var(--card);border-radius:12px;padding:22px 26px;margin:0 0 22px;border-left:4px solid var(--acc);box-shadow:0 1px 3px rgba(0,0,0,.08)}
+article.item{padding:18px 22px}
+section.card>h2:first-child,article.item>h3:first-child{margin-top:0}
+h2{color:var(--h1);font-size:1.38rem;margin:1.4em 0 .6em;font-weight:800;line-height:1.35}
+h3{color:var(--h1);font-size:1.12rem;margin:1.3em 0 .5em;font-weight:700;line-height:1.4}
+h2 .num,h3 .num{color:var(--acc);margin-right:.35em}
+p{margin:.6em 0}
+strong{color:var(--strong);font-weight:700}
+a{color:var(--accent)}
+a.ref{display:inline-block;font-size:.74rem;font-weight:700;color:#475569;background:#fff;border:1px solid var(--line);border-radius:5px;padding:0 5px;margin:0 1px;text-decoration:none;vertical-align:middle;line-height:1.5}
+a.ref:hover{border-color:var(--accent);color:var(--accent)}
+a.wl{font-weight:600}
+ul,ol{padding-left:1.4em;margin:.5em 0}
+li{margin:.3em 0}
+li>ul{margin:.2em 0}
+blockquote{margin:1em 0;padding:12px 18px;background:#eff6ff;border-left:4px solid var(--accent);border-radius:0 10px 10px 0;color:#1e3a8a}
+blockquote p{margin:.45em 0}
+hr{border:0;border-top:1px solid var(--line);margin:28px 0}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.88em;background:#eef2f7;padding:1px 6px;border-radius:5px;color:#334155}
+.tbl{overflow-x:auto;margin:1em 0;border-radius:10px;border:1px solid var(--line);background:#fff}
+table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.55}
+th{background:#eef2f7;color:#0f172a;text-align:left;padding:10px 12px;border-bottom:2px solid #cbd5e1;font-weight:700;white-space:nowrap}
+td{padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:0}
+tbody tr:hover td{background:#f8fafc}
+td:first-child{white-space:nowrap;color:var(--muted);font-weight:600}
+.arrow{color:var(--acc);font-weight:700}
+.backbar{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:.9rem;margin-bottom:14px;flex-wrap:wrap}
+.backbar a{text-decoration:none;font-weight:600}
+.lanenav{display:flex;flex-wrap:wrap;gap:6px}
+.lanenav a{font-size:.78rem;padding:3px 9px;border-radius:999px;color:#fff;text-decoration:none;font-weight:600;opacity:.85}
+.lanenav a.on{opacity:1;outline:2px solid #0f172a;outline-offset:1px}
+footer{color:var(--muted);font-size:.85rem;margin-top:40px;border-top:1px solid var(--line);padding-top:14px}
+@media (max-width:700px){.wrap{padding:24px 16px 60px}h1{font-size:1.5rem}nav.toc ol{columns:1}section.card,article.item{padding:16px 16px}td:first-child{white-space:normal}}
+@media print{body{font-size:12.5px}.wrap{max-width:100%;padding:0}section.card,article.item{box-shadow:none;break-inside:avoid;background:#fff;border:1px solid var(--line);border-left:4px solid var(--acc)}nav.toc{display:none}.backbar{display:none}a{color:inherit;text-decoration:none}a.ref{border-color:#cbd5e1}}
+</style>
+<style>:root{--accent:#ea580c;--acc:#ea580c}</style>
+</head>
+<body>
+<div class="wrap">
+<div class="backbar"><a href="../FES2026_피지컬AI_시각조사.html">← 종합 노트로</a><div class="lanenav"><a class="" style="background:#2563eb" href="L1_글로벌_컨퍼런스.html">L1</a><a class="" style="background:#7c3aed" href="L2_에세이_리포트.html">L2</a><a class="" style="background:#db2777" href="L3_유튜브_팟캐스트_X.html">L3</a><a class="" style="background:#0f766e" href="L4_국내.html">L4</a><a class="on" style="background:#ea580c" href="L5_에너지_교차점.html">L5</a><a class="" style="background:#b91c1c" href="L6_비판_반론.html">L6</a></div></div>
+<header class="top">
+<div class="kicker">원자료 L5</div>
+<h1>Lane 5 — 에너지 × 피지컬 AI 교차점 리서치 (FES 2026 특별강연 보강용)</h1>
+<div class="metaline"><b>L5 · 에너지 × 피지컬 AI 교차점</b> · 조사일 2026-10-15 · 항목 번호는 종합 노트의 <code>L5-N</code> 참조와 일치</div>
+
+</header>
+<ul>
+<li>작성일: 2026-10-15</li>
+<li>범위: 2025년 ~ 2026년 10월 우선. 영문 위주, 중국어·일본어 보조</li>
+<li>표기 규칙: <strong>원문 확인</strong> = 해당 URL 본문을 직접 읽고 수치·인용을 대조 / <strong>2차 보도</strong> = 다른 매체가 전한 내용 / <strong>회사 주장</strong> = 기업 발표 수치 / <strong>미확인</strong> = 검색 요약·배경지식 수준</li>
+<li>도구 제약 메모: 팀 전체 WebSearch 세션 예산(200회)이 중반에 소진되어, 이후에는 curl 기반 DuckDuckGo(캡차로 중단)·arXiv API(429)·WebFetch 원문 읽기로 대체. 그래서 "검색 요약만 보고 쓴" 항목은 없고, 모든 수치는 원문 또는 2차 보도 URL과 대조했으며 대조 못 한 것은 미확인으로 표시</li>
+</ul>
+<hr>
+<h2>A. 전력·에너지 수요 — "로봇의 전기"</h2>
+<article class="item"><h3 id="item-1"><span class="num">1.</span> 로봇 전력 363TWh 전망 — 산업로봇은 이미 글로벌 데이터센터 전력의 20~25%를 소비</h3>
+<ul>
+<li><strong>출처</strong>: Robert Liew(Director, Integrated Energy Research) · Wood Mackenzie 보도자료 "Embodied AI: How Robotics Are Accelerating Global Power Demand" · 2026-08-11 · https://www.woodmac.com/press-releases/wood-mackenzie-forecasts-global-robotics-power-demand-to-reach-363-twh-by-2035-approaching-frances-entire-nuclear-output/ (2차: https://roboticsandautomationnews.com/2026/08/12/robots-could-consume-as-much-electricity-as-35-million-us-homes-by-2035/104073/)</li>
+<li><strong>요지</strong>: 2025년 가동 중인 산업로봇 500만 대가 연 78TWh를 소비하며, 이는 "글로벌 데이터센터 수요의 20~25%에 해당". 2035년 산업로봇 1,600만 대(CAGR 12%) + 휴머노이드 1,000만 대 이상(CAGR 90%+)으로 합산 363TWh — 프랑스 원전 발전량(373TWh, 2025)에 근접. 중국이 산업로봇 설치의 70%+, 휴머노이드 배치의 90%(2025). 핵심 인용: "Power constraints are becoming a real brake on robotic adoption"(전력 제약이 로봇 도입의 실질적 브레이크가 되고 있다).</li>
+<li><strong>왜 참신한가</strong>: 전력 수요 논의가 데이터센터에만 쏠린 상황에서, 로봇을 독립된 전력 수요 카테고리로 처음 정량화한 메이저 컨설팅 보고서. IEA의 'Energy and AI'(2025.4)와 'Key Questions on Energy and AI'(2026.4)에는 로봇 항목이 전혀 없음(본 리서치에서 직접 확인). 즉 '피지컬 AI의 전력'은 공식 통계의 사각지대</li>
+<li><strong>발표 연결</strong>: 신규 + B7·B8. 오후 연사의 "데이터센터 945TWh(IEA 2030 전망)"에 대비해 "로봇은 이미 그 1/5을 쓰고, 2035년에 363TWh — 다음 데이터센터는 공장 바닥에 있다"로 클라이맥스 진입</li>
+<li><strong>신뢰도</strong>: 원문 확인(보도자료 기준; 보고서 본문 미열람)</li>
+</ul>
+</article><article class="item"><h3 id="item-2"><span class="num">2.</span> 휴머노이드 1대의 전기료는 연 82달러 — 전력 문제의 주범은 팔다리가 아니라 공장 로봇</h3>
+<ul>
+<li><strong>출처</strong>: 같은 Wood Mackenzie 보도자료(2026-08-11) 및 2차 보도(Robotics &amp; Automation News 2026-08-12)</li>
+<li><strong>요지</strong>: 휴머노이드는 2035년에도 연 6TWh(전체 로봇 전력의 1.7%). 1일 8시간 가동, 글로벌 평균 산업 요금 $0.14/kWh 기준 연 전기료 $82(역산 시 연 약 586kWh, 평균 약 200W). 휴머노이드 평균 가격은 2020~2025년 93% 하락해 $58,000, Unitree G1은 $16,000(2026). 반면 RethinkX(항목 3)는 1대당 10kWh/일(연 3,650kWh)을 가정 — 두 기관의 가정이 6배 차이</li>
+<li><strong>왜 참신한가</strong>: "휴머노이드 100만 대가 전력망을 흔든다"는 통념과 반대로, 전력 관점에서 휴머노이드는 아직 가벼운 부하. 그리고 전망치가 6배 벌어지는 이유는 '동작당 에너지'를 측정하는 표준 지표가 없기 때문 — 이것이 B8의 존재 이유</li>
+<li><strong>발표 연결</strong>: B8. "토큰당 전력은 측정되는데, 동작당 에너지는 기관마다 6배씩 다르다 — 지표를 만드는 쪽이 룰을 만든다"</li>
+<li><strong>신뢰도</strong>: 원문 확인(수치), 역산은 본 리서치 계산</li>
+</ul>
+</article><article class="item"><h3 id="item-3"><span class="num">3.</span> "로봇이 자기 전원을 짓는다" — 로봇 10억 대 = 3,600TWh, 그러나 태양광·배터리와 자기강화 루프</h3>
+<ul>
+<li><strong>출처</strong>: RethinkX(싱크탱크) FAQ "How much electricity would a billion robots require and where does it come from" · 2026-06-23 · https://www.rethinkx.com/faq-and-mythbusting/how-much-electricity-would-a-billion-robots-require-and-where-does-it-come-from</li>
+<li><strong>요지</strong>: 휴머노이드 1대 10kWh/일 가정. 1억 대 = 연 약 400TWh(미국 전력의 약 10%), 10억 대 = 3,600~3,700TWh. 전원은 SWB(태양광·풍력·배터리): "Humanoid robots will help manufacture, install, and maintain the solar panels, wind turbines, and batteries that power them, while the falling cost of clean electricity makes robot labor cheaper still"(휴머노이드는 자신에게 전력을 공급하는 태양광·풍력·배터리를 제조·설치·유지보수하고, 싼 청정전력은 로봇 노동을 더 싸게 만든다). "Energy is therefore best understood as an enabling investment that must be built out in parallel with the robot fleet"(에너지는 로봇 플릿과 병행 구축해야 하는 선행 투자)</li>
+<li><strong>왜 참신한가</strong>: 로봇 전력을 '부담'이 아니라 '로봇이 스스로 해결하는 순환'으로 뒤집는 프레임. 연사의 B1(로봇은 에너지 전환의 손)과 B7(로봇은 전기의 소비자)을 하나의 루프로 묶어줌</li>
+<li><strong>발표 연결</strong>: B1·B4·B7 보강 + 신규(자기강화 루프 도식). "손이 전기를 만들고, 전기가 손을 싸게 만든다"</li>
+<li><strong>신뢰도</strong>: 원문 확인(싱크탱크 주장, 가정 기반)</li>
+</ul>
+</article><article class="item"><h3 id="item-4"><span class="num">4.</span> "로봇 충전: 아무도 모델링하지 않는 배전 부하" — 500대 시설은 1MWh의 관리형 배터리</h3>
+<ul>
+<li><strong>출처</strong>: Mothusi Pahl · T&amp;D World(미국 송배전 전문지) 기고 "Robot Charging: The Distribution Load Nobody's Modeling" · 2026-03-17 · https://www.tdworld.com/distributed-energy-resources/demand-side-management/article/55364203/robot-charging-the-distribution-load-nobodys-modeling</li>
+<li><strong>요지</strong>: 창고 로봇 1대는 가동 중 0.5~3kW, 충전 시 1~7kW. 아마존은 100만 대 이상 배치, 북미 창고는 2030년 연 50만 대씩 추가. 제조·물류 노동의 50%를 휴머노이드가 대체하면 충전 전력 27TWh — "more than 3.5 times the electricity of all U.S. electric vehicles on the road today"(현재 미국 전체 EV의 3.5배). 패턴은 "60분 작업 후 5분 충전"으로 피크가 아닌 베이스 부하. 핵심: "A 500-robot facility would likely have up to 1 MWh of centrally managed battery capacity"(500대 시설은 최대 1MWh의 중앙 관리 배터리 용량을 가진다) <span class="arrow">→</span> 승용 EV와 달리 예측 가능한 수요반응 자원. 유틸리티 IRP(통합자원계획)에 '창고·제조 자동화' 부하 카테고리가 없는 것이 사각지대</li>
+<li><strong>왜 참신한가</strong>: 로봇 플릿을 '부하'가 아니라 '중앙 관리되는 분산 배터리(=수요반응 자원)'로 보는 시각을 전력업계 매체가 명시. 연사의 "V2G처럼 R2G" 발상에 대한 업계 측 근거</li>
+<li><strong>발표 연결</strong>: B2(출력제어 시간대 로봇 충전·작업 스케줄링) 핵심 근거, B7(로봇=지역 배전망의 신규 소비자), B9. "전남 출력제어 39,527MWh를 로봇 창고 수만 개 분의 배터리가 받아낸다"</li>
+<li><strong>신뢰도</strong>: 원문 확인(업계 전문가 기고; 27TWh는 저자 추정)</li>
+</ul>
+</article><article class="item"><h3 id="item-5"><span class="num">5.</span> "전기 사용량이 경쟁력 지표가 된다" — 로봇 모터 효율 80%가 감속기를 거치면 40%</h3>
+<ul>
+<li><strong>출처</strong>: Sanaa Hakim, Shang-Hung Chung · Robeco "Physical AI and the new energy calculus in manufacturing" · 2026-06-25 · https://www.robeco.com/en-uk/insights/2026/06/physical-ai-and-the-new-energy-calculus-in-manufacturing</li>
+<li><strong>요지</strong>: "As manufacturing electrifies and automation becomes more AI-driven, electricity use is emerging as a core point of competitiveness"(제조가 전기화되고 자동화가 AI 주도가 되면서 전기 사용이 경쟁력의 핵심이 되고 있다). 전기모터는 단독 80% 효율이지만 감속기·전동장치를 포함하면 약 40%. 디지털트윈 연동으로 픽앤플레이스 에너지 74.8% 절감 사례. 피지컬 AI의 산업 에너지 절감 15~75%. 휴머노이드 가동 2~4시간/충전, 차세대 액추에이터 효율 90% 이상·토크밀도 3~5배. 산업은 최종 에너지의 약 40%, 전기화율은 약 20%</li>
+<li><strong>왜 참신한가</strong>: 로봇의 에너지를 '총량'이 아니라 '동작 1회의 손실 구조(감속기에서 절반이 사라진다)'로 쪼갠 점. Joule per Task를 줄이는 공학적 지렛대가 어디인지 보여줌</li>
+<li><strong>발표 연결</strong>: B8·A6. "디지털은 한계비용 0, 물리는 동작마다 비용 — 그 비용의 절반은 기어박스에서 열로 사라진다"</li>
+<li><strong>신뢰도</strong>: 원문 확인(투자사 인사이트; 74.8%는 인용 사례)</li>
+</ul>
+</article><article class="item"><h3 id="item-6"><span class="num">6.</span> 배터리는 휴머노이드 원가의 1~3%인데 가동시간을 지배 — 발로 충전하는 Figure 03, 3분 교체하는 Walker S2</h3>
+<ul>
+<li><strong>출처</strong>: ① Figure AI "Introducing Figure 03" · 2025-10-09 · https://www.figure.ai/news/introducing-figure-03 ② CnEVPost(UBTech Walker S2) · 2025-07-17 · https://cnevpost.com/2025/07/17/ubtech-humanoid-robot-autonomous-battery-swap/ ③ RobotiChina "Humanoid Robot Battery &amp; Power Supply BOM" · 2026-09-21 · https://www.robotichina.com/humanoid-robot-battery-power-bom.html</li>
+<li><strong>요지</strong>: Figure 03은 발바닥 코일로 2kW 무선충전 — "capable of near-continuous operation as long as it can step onto a charging mat"(충전 매트에 올라설 수만 있으면 거의 연속 가동). UBTech Walker S2는 3분 자율 핫스왑, 듀얼 배터리 밸런싱, 그리고 "autonomously select between battery swap or charging based on task priority, thereby achieving dynamic energy management"(작업 우선순위에 따라 교체와 충전을 스스로 선택하는 동적 에너지 관리). 배터리 팩 용량은 Unitree H1 0.864kWh(&lt;4h 정지), H2 0.972kWh(~3h), Optimus Gen2 2.3kWh(~2h 동적) — "The pack is roughly 1–3% of total cost — a small share, but it dominates runtime and weight"</li>
+<li><strong>왜 참신한가</strong>: 로봇이 '언제 충전할지 스스로 결정하는 부하'가 되었다는 하드웨어적 사실. 출력제어 시간대에 맞춰 충전·작업을 옮기는 B2는 소프트웨어만의 꿈이 아니라 양산 로봇의 기본 기능 위에 올라탈 수 있음</li>
+<li><strong>발표 연결</strong>: B2(스케줄링 가능한 부하의 전제), B8(배터리 1~3% 원가가 가동시간을 결정 <span class="arrow">→</span> 동작당 에너지가 설계 지표)</li>
+<li><strong>신뢰도</strong>: Figure·UBTech는 원문 확인(회사 주장); BOM 비율·용량표는 2차(업계 블로그). Walker S2 2025년 11월 양산 개시·FY2025 1,079대 인도는 미확인</li>
+</ul>
+<hr>
+</article><h2>B. 에너지 설치·건설·O&amp;M 로봇 — "에너지 전환의 손"</h2>
+<article class="item"><h3 id="item-7"><span class="num">7.</span> 국가전망(State Grid) 2026년 로봇 8,500대·68억 위안 조달 — 휴머노이드 500대의 첫 대량 B2B 고객은 전력회사</h3>
+<ul>
+<li><strong>출처</strong>: LI Jiaqi · Jiemian News(界面新闻) 단독 "China's power grids gear up for large-scale robot rollout" · 2026(월 미표기; Wood Mackenzie가 2026년 커밋으로 인용) · https://en.jiemian.com/article/14315717.html</li>
+<li><strong>요지</strong>: 사족 점검로봇 5,000대(15억 위안: 변전소·송전선·산악), 활선작업 휴머노이드 500대(25억 위안: 배전망 활선작업·UHV), 양팔 로봇 3,000대(18억 위안: 설비 취급·고장 대응). 장비 58억 + R&amp;D·훈련 10억. 변전소 10만 개, 600개 이상 시나리오, 2026~2030 전력망 투자 4조 위안. 핵심 지역 로봇 보급률 2026년 30% <span class="arrow">→</span> 2027년 80%+. 경제성: 점검 인력 연 30만 위안 vs 로봇 100만 위안, 대당 연 50~80만 위안 절감, 회수 2~3년. "robots could reduce exposure to high-risk work by more than 90%", 점검 효율 5배, 고장 대응 60% 단축. 공급사: Unitree, Agibot, UBTECH, Fourier + Yijiahe 등. 남방전망 등 합치면 2026년 전력 부문 구신지능 투자 100억 위안 상회</li>
+<li><strong>왜 참신한가</strong>: 휴머노이드의 첫 대규모 산업 고객이 자동차 공장이 아니라 전력회사라는 점. 그리고 조달 논리가 '안전'이 아니라 '인건비 30만 vs 로봇 100만, 회수 2~3년'이라는 회계 언어</li>
+<li><strong>발표 연결</strong>: B1·B9 보강 + 신규. "에너지 전환의 손을 가장 먼저 대량 구매한 곳은 전력망 회사다"</li>
+<li><strong>신뢰도</strong>: 원문 확인. 단, 기사 내 "$9.4 billion" 환산은 오류(68억 위안 ≈ $0.94B; Wood Mackenzie는 "$1 billion"으로 인용) — 발표에서는 위안 또는 약 10억 달러로 표기할 것</li>
+</ul>
+</article><article class="item"><h3 id="item-8"><span class="num">8.</span> 간쑤 활선작업 로봇 — 접지링 설치 60분<span class="arrow">→</span>25분, 26개 성·시 전력회사 배치</h3>
+<ul>
+<li><strong>출처</strong>: China Daily(간쑤) "Live-line work robot debuts in Tianshui, Gansu" · 2026-01-19(현장 2026-01-13) · https://subsites.chinadaily.com.cn/gansu/2026-01/19/c_1155797.htm</li>
+<li><strong>요지</strong>: 원격 조종으로 활선 상태에서 절연 피복 제거·접지링 설치. 접지링 1세트 25분(전통 60분, 50%+ 단축), 밀리미터급 반복 정밀도. "This technology has already been deployed across 26 provincial and municipal power companies in China". 운영자: 고위험·고강도 노동의 페인포인트 해결</li>
+<li><strong>왜 참신한가</strong>: 활선로봇이 시범이 아니라 26개 성급 전력회사에 보급된 '일상 장비' 단계. 한국은 2026년 실증 단계(미확인) — 격차의 크기를 보여주는 수치</li>
+<li><strong>발표 연결</strong>: B9 보강(송전망 병목을 로봇으로). 국가전망 조달(항목 7)과 묶어 "중국은 전력망을 로봇으로 운영하는 단계로 진입"</li>
+<li><strong>신뢰도</strong>: 원문 확인(국영 매체)</li>
+</ul>
+</article><article class="item"><h3 id="item-9"><span class="num">9.</span> 중국 정책의 두 갈래 — 공신부 '휴머노이드 1만 대 실전훈련'엔 에너지 시나리오가 없고, 국가에너지국 'AI+에너지 51개 시나리오'엔 로봇이 없다</h3>
+<ul>
+<li><strong>출처</strong>: ① 中国新闻网 "工信部·国资委 2026 휴머노이드·구신지능 실전훈련 특별행동" · 2026-06-10 · https://www.chinanews.com.cn/gn/2026/06-10/10637689.shtml ② 中国政府网 "国家能源局发布51个'人工智能+'能源高价值场景" · 2026-05-26 · https://www.gov.cn/lianbo/202605/content_7070297.htm ③ NDRC·NEA·MIIT·NDA 《关于促进人工智能与能源双向赋能的行动方案》(FAO 보관 PDF) https://faolex.fao.org/docs/pdf/chn243373.pdf</li>
+<li><strong>요지</strong>: ①은 2026년 말까지 "万台级规模落地能力"(만 대급 배치 능력), "百个以上高价值应用场景"(100개 이상 고가치 시나리오)를 목표로 하되 대상은 "生产制造、检测分析、维修维护、仓储物流、餐饮零售、医疗康养、安全生产、应急救援、防灾减灾" — 에너지·전력망 명시 없음. ②는 '전력망 계획안 지능 생성·평가' 등 51개 시나리오와 《中国"人工智能+"能源发展报告2026》를 발표했으나 요약문 기준 8대 분류(전력망 운영, 신에너지 예측·시장, 가상발전소·차량-그리드 등)가 소프트웨어 중심이고 로봇·순찰·활선 언급 없음. ③은 'AI와 에너지의 양방향 역량강화(双向赋能)' 프레임</li>
+<li><strong>왜 참신한가</strong>: 중앙 정책 문서 어디에도 '에너지×로봇'이 교차 항목으로 없는데, 현장은 국가전망 조달(항목 7)이 끌고 간다. 즉 이 교차점은 정책의 빈칸이고, 한국도 정책 문서보다 한전·발전공기업의 조달 사양이 실질 레버라는 시사점</li>
+<li><strong>발표 연결</strong>: 신규 + B6·B9. "중국도 아직 교차점 정책은 비어 있다 — 새만금을 그 빈칸을 먼저 채우는 실증특구로"</li>
+<li><strong>신뢰도</strong>: ①② 원문 확인(요약문 범위; 51개 전체 목록은 미열람), ③ 제목·발행처만 확인</li>
+</ul>
+</article><article class="item"><h3 id="item-10"><span class="num">10.</span> 테라베이스 "10주에 1GW를 설치하겟다" — 현장 공장 사이클 2분, 라인당 주 20MW</h3>
+<ul>
+<li><strong>출처</strong>: pv magazine USA "Terabase Energy invests in automation and engineering to streamline solar construction" · 2026-04-02 · https://pv-magazine-usa.com/2026/04/02/terabase-energy-invests-in-automation-and-engineering-to-streamline-solar-construction/ ; DOE SETO 성공사례 "Putting Solar Energy Installation on Autopilot" · 2023-05-30 · https://www.energy.gov/node/4829920</li>
+<li><strong>요지</strong>: Matt Campbell(CEO): "My goal is to install a gigawatt in 10 weeks", "We need to build it 10 times faster for half the cost". Terafab V2는 유닛당 2분 사이클, 연속 가동 시 라인당 주 20MW, 1세대 대비 2배. V1으로 미국 상업 프로젝트 40MW 설치. 현장 배치형 공장 3기 <span class="arrow">→</span> 2027년 2분기 10기. 시리즈C 1.3억 달러(소프트뱅크 주도). 출발점은 DOE 태양광기술실 인큐베이터 100만 달러(2019)+150만 달러(2020) <span class="arrow">→</span> 2022년 400MW 사이트에서 10MW 실증(설치시간 50% 단축) <span class="arrow">→</span> 4,400만 달러 후속 투자</li>
+<li><strong>왜 참신한가</strong>: 설치 속도를 "GW per 10 weeks"라는 새 단위로 말하는 경영자. 그리고 250만 달러의 공공 R&amp;D 종자가 산업을 만든 궤적 — 연구원 연사에게 유리한 서사</li>
+<li><strong>발표 연결</strong>: B1 보강(AES Maximo·Built Robotics와 병치). "설치 노동이 병목이면, 단위는 MW/인이 아니라 GW/주가 된다"</li>
+<li><strong>신뢰도</strong>: 원문 확인(회사 주장 목표치 포함)</li>
+</ul>
+</article><article class="item"><h3 id="item-11"><span class="num">11.</span> 로젠딘·찰지로보틱스 — "태양광 성장의 한계는 사람 수", 2인 크루가 8시간에 모듈 350~400장</h3>
+<ul>
+<li><strong>출처</strong>: ① Rosendin 보도자료 "Rosendin to Demonstrate Robotic Solar Installers at Texas Job Site" · 2025-04-07 · https://www.rosendin.com/news-updates/rosendin-to-demonstrate-robotic-solar-installers-at-texas-job-site/ ② MIT News "Charge Robotics makes solar projects cheaper and faster with portable factories" · 2025-03-12 · https://news.mit.edu/2025/charge-robotics-makes-solar-projects-cheaper-faster-portable-factories-0312</li>
+<li><strong>요지</strong>: 로젠딘(미국 최대 종업원 소유 전기공사사)+ULC Technologies 로봇: 8시간 교대에 모듈 350~400장, 크루 2인(수동 3~4인), 수동 대비 3배, GPS·KMZ로 2mm 정밀, 100lb 패널. David Lincoln(SVP): "addressing the construction industry's decades-long workforce shortage"(수십 년 된 건설 인력 부족 대응), 발상은 2019년 전기 노동자의 신체 부담 경감에서 출발. 찰지로보틱스 Banks Hunter: "We are hitting the limits of solar growth because these companies don't have enough people"(사람이 없어서 태양광 성장이 한계에 부딜친다). 2024년 미국 신규 발전설비의 81%가 태양광, 2,200만 달러 조달, 40ft·800lb 베이를 현장 조립</li>
+<li><strong>왜 참신한가</strong>: 건설업계 당사자(전기공사사)가 로봇을 '전기공 보조·부상 방지' 도구로 정의. 로봇 회사가 아닌 시공사의 언어라는 점</li>
+<li><strong>발표 연결</strong>: B1 보강. "에너지 전환은 설치 노동의 문제"에 시공사·스타트업 양쪽 당사자 발언 확보</li>
+<li><strong>신뢰도</strong>: 원문 확인(회사 주장 수치)</li>
+</ul>
+</article><article class="item"><h3 id="item-12"><span class="num">12.</span> 송전망 병목을 드론 가선으로 — 인프라비전 3,000마일 설치·백로그 5만 마일, "세계는 발전 문제가 아니라 송전 문제"</h3>
+<ul>
+<li><strong>출처</strong>: ① Highways Today "Rewiring the Grid at Speed with Drone Powered Transmission Construction" · 2026-03-25 · https://highways.today/2026/03/25/drone-transmission-construction/ ② Infravision 공식 사이트 https://www.infravisioninc.com/ ③ PropTech Connect(시리즈B) · 2025-11-05 · https://proptechconnect.com/infravision-raises-91m-to-scale-drone-powered-power-line-construction/ ④ Transgrid HumeLink 팩트시트 "Use of helicopters and drones for transmission tower aerial stringing" · 2026-04 · https://www.transgrid.com.au/media/ejxnj1ma/humelink-aerial-stringing-fact-sheet-april-2026.pdf</li>
+<li><strong>요지</strong>: 인프라비전 TX 시스템(드론+지상 장비로 송전선 가선): 3,000마일 이상 설치, 60개 이상 프로젝트, 4개국; 백로그 5만 마일 초과; "more miles were installed in the United States in a single quarter than in the entirety of the previous year"; "The world doesn't have a power generation problem; it has a transmission problem"; "build and repair transmission lines in days, not weeks". 시리즈B 9,100만 달러(GIC 주도, Hitachi Ventures·EIP 참여), 고객 BC Hydro·Powerlink·Entergy·PG&amp;E. 호주 Transgrid HumeLink(500kV 365km)는 2026년 4월부터 헬기·드론 가선 — 지상 불도저 가선 대비 "shorter time spent on each property… fewer project staff", 1개 구간 1~2일</li>
+<li><strong>왜 참신한가</strong>: 송전 병목 해법으로 '허가·투자'만 거론되는데, 가선 공정 자체의 로봇화가 미국에서 이미 분기당 전년 총량을 넘는 속도로 주류화. 송전사업자(Transgrid)가 공식 팩트시트로 드론 가선을 채택</li>
+<li><strong>발표 연결</strong>: B9 핵심 보강. "송전망 병목을 로봇으로"의 실체 = 드론 가선 + 활선로봇(항목 7·8)</li>
+<li><strong>신뢰도</strong>: 원문 확인(회사 주장 수치), Transgrid는 사업자 공식 문서</li>
+</ul>
+</article><article class="item"><h3 id="item-13"><span class="num">13.</span> 코마츠 자율트럭 1,000대 — "트롤리선에 연결된 상태로 자율주행하는 전력불문(power-agnostic) 전동 트럭, 업계 최초"</h3>
+<ul>
+<li><strong>출처</strong>: Komatsu 뉴스룸 "Komatsu becomes first OEM to commission 1,000 ultra-class autonomous haul trucks" · 2026-04-21 · https://www.komatsu.com/en-us/newsroom/2026/komatsu-becomes-first-oem-to-commission-1000-ultra-class-autonomous-haul-trucks</li>
+<li><strong>요지</strong>: 2008년 FrontRunner 상용화 이후 울트라클래스 자율트럭 1,000대 커미셔닝, 고객 누적 115억 톤 운반. 930E-5AT(290t) 중심. "This milestone builds on Komatsu's recent achievement of autonomously operating a power agnostic electric drive truck while connected to a dynamic trolley line, an industry first"(동적 트롤리선에 연결된 전력불문 전동 트럭의 자율운행은 업계 최초). 자율화가 "customers' decarbonization and sustainability objectives"를 지원</li>
+<li><strong>왜 참신한가</strong>: OEM 공식 문서가 자율화 마일스톤의 다음 문장에서 곧바로 전동화(트롤리·전력불문 구동)를 연결 — '자율화와 전동화는 쌍둥이'를 업계 1위가 사실상 선언</li>
+<li><strong>발표 연결</strong>: B3 핵심 보강. 자율 도저 미국 상용('26.7)과 함께 "자율이 먼저 가고 전기가 따라붙는" 구조의 증거</li>
+<li><strong>신뢰도</strong>: 원문 확인(회사 발표). 자율 플릿 연료 11~15% 절감 수치는 저품질 2차 매체(skillings.net)만 확인되어 미인용 권고</li>
+</ul>
+</article><article class="item"><h3 id="item-14"><span class="num">14.</span> 해상풍력 블레이드 보수 27분 — "비싼 건 블레이드가 아니라 배", 선박·인력이 점검비의 80~90%</h3>
+<ul>
+<li><strong>출처</strong>: ① Clobotics 뉴스 "Clobotics Sets New Offshore Leading Edge Repair Records with Sparrow Robot" · 2026-05 · https://clobotics.com/news ② NEXI Fund 분석 "Offshore Wind's 27-Minute Blade Repair Changes the O&amp;M Math" · 2026-09-10 · https://nexi.fund/offshore-wind-robotic-maintenance-2026/</li>
+<li><strong>요지</strong>: Ørsted·Clobotics Wind Services가 덴마크 Horns Rev 2에서 "27 minutes per blade and up to 8 blades in one day"(블레이드당 27분, 하루 최대 8장) 리딩에지 보수 기록. NEXI는 수동 대비 비용 50~75% 절감(2차), Bubble Robotics 발언 "vessels and crews account for 80–90% of inspection cost and can run up to $100,000 a day"(선박·인력이 점검비의 80~90%, 하루 최대 10만 달러), 2026-04 프리시드 500만 달러. Aerones는 35개국 25,000기·75,000블레이드 서비스(회사 주장)</li>
+<li><strong>왜 참신한가</strong>: 육상과 달리 해상 O&amp;M에서 로봇의 가치는 '사람 대체'가 아니라 '선박·기상 창(weather window) 대체'. 비용 구조를 뒤집는 프레임 — 로봇이 작업 시간을 줄이면 배가 하루에 8기를 돈다</li>
+<li><strong>발표 연결</strong>: 신규 + B1. 새만금·서남해 해상풍력 O&amp;M의 로봇화 논거로 "배 값을 줄이는 로봇"</li>
+<li><strong>신뢰도</strong>: 27분·8장은 원문 확인(회사 주장); 비용 비율·Aerones 수치는 2차</li>
+</ul>
+</article><article class="item"><h3 id="item-15"><span class="num">15.</span> 일본 GX×로봇의 실체는 '해양 드론 산업정책' — 해상풍력 O&amp;M을 우선 적용처로, 세계 점유 30% 목표</h3>
+<ul>
+<li><strong>출처</strong>: DeepWind(일본 해상풍력 분석 매체) "Offshore Wind O&amp;M and Marine Drones: Japan's OPEX Test" · 2026-07-23(갱신 2026-10-07) · https://deepwind.jp/en/technology-innovations/offshore-wind-om-marine-drones-en/</li>
+<li><strong>요지</strong>: 일본의 2026년 민관 투자 로드맵이 해상풍력 유지보수를 해양 드론의 우선 응용으로 명시. 세계 시장 "$4-5 billion today and projected to top $10 billion by around 2030", 일본 목표 점유 30%. 일본 해상풍력 OPEX 연 약 ¥27,600/kW. 단서: "O&amp;M is only part of lifecycle cost, and automation reaches only part of O&amp;M". 경고: 2026년 7월 중국 해양로봇 스타트업(Seahi Robotics)이 약 ¥240억 조달 — "winning on technology while losing on manufacturing scale" 리스크</li>
+<li><strong>왜 참신한가</strong>: 일본이 GX와 로봇을 잇는 통로를 '휴머노이드'가 아니라 '무인 선박·수중 드론'으로 잡았다는 점, 그리고 중국 자본 속도에 대한 경계가 공식 담론에 들어온 점</li>
+<li><strong>발표 연결</strong>: 신규. 한국 해상풍력(새만금 포함) O&amp;M 로봇·무인선 산업화의 비교 좌표. "일본은 바다 로봇으로 GX를 한다"</li>
+<li><strong>신뢰도</strong>: 원문 확인(2차 분석 매체; 로드맵 원문 미열람)</li>
+</ul>
+</article><article class="item"><h3 id="item-16"><span class="num">16.</span> 로봇이 데이터센터를 짓는다 — 소프트뱅크 Roze AI(1,000억 달러 IPO 목표)와 디월트 천공로봇 9만 개 구멍</h3>
+<ul>
+<li><strong>출처</strong>: ① TechCrunch(Lucas Ropek) "SoftBank is creating a robotics company that builds data centers — and already eyeing a $100B IPO" · 2026-04-29(FT 최초 보도) · https://techcrunch.com/2026/04/29/softbank-is-creating-a-robotics-company-that-builds-data-centers-and-already-eyeing-a-100b-ipo/ ② Data Center Frontier(David Chernicoff) "How Robotics Is Re-Engineering Data Center Construction and Operations" · 2026-01-26 · https://www.datacenterfrontier.com/hyperscale/article/55352697/how-robotics-is-re-engineering-data-center-construction-and-operations</li>
+<li><strong>요지</strong>: 소프트뱅크 신설 Roze AI는 "deploying autonomous robots to help build server farms", 2026년 하반기 1,000억 달러 밸류에이션 IPO 희망(FT·WSJ). 디월트+August Robotics 하향 천공 로봇: 데이터센터 바닥에 90,000개 이상 구멍, 정밀도 99.97%, 기존 대비 최대 10배, 10개 프로젝트에서 약 80주 공기 단축, 2026년 중반 상용화. Bill Beck(Stanley Black &amp; Decker): "Speed of construction is critical". 미국 건설인력 부족 약 439,000명(2025년 말, 2차)</li>
+<li><strong>왜 참신한가</strong>: "AI가 전력을 먹는다"의 거울상 — AI 인프라(데이터센터·발전·송전)를 짓는 손이 로봇. 디지털 AI의 성장 한계가 물리적 건설 노동이고, 그 노동을 피지컬 AI가 채운다는 역방향 서사</li>
+<li><strong>발표 연결</strong>: 신규(A6·B1 확장). 오후 '데이터센터 전력' 세션을 받아 "그 데이터센터를 누가 짓는가"로 전환하는 브릿지</li>
+<li><strong>신뢰도</strong>: 원문 확인(Roze는 보도 단계, 제품 미출시)</li>
+</ul>
+<hr>
+</article><h2>C. 순환경제·공급망·자율실험실</h2>
+<article class="item"><h3 id="item-17"><span class="num">17.</span> 폐패널 재활용의 로봇화 — 원플래닛 연 600만 장 비전 로봇 공장(2027 초), "사람은 분류가 아니라 운영·품질을 본다"</h3>
+<ul>
+<li><strong>출처</strong>: Phoebe Skok · pv magazine USA "The role of robotics in boosting U.S. solar recycling capacity" · 2025-12-08 · https://pv-magazine-usa.com/2025/12/08/the-role-of-robotics-in-boosting-u-s-solar-recycling-capacity/ ; EU SOPHIA(CORDIS 101182162) https://cordis.europa.eu/project/id/101182162 ; EU PHOTORAMA(CORDIS 958223)</li>
+<li><strong>요지</strong>: 미국 설치 모듈 4억 장, 2020년대 말 폐패널 면적 미식축구장 3,000개분. 원플래닛 River City(플로리다) 공장은 연 200만 장에서 600만 장으로, 48C 세액공제 1,500만 달러, 2027년 초 가동. 비전 가이드 로봇으로 디프레이밍·절단·유리/알루미늄/정션박스/셀 분리. "Panel disassembly and material sorting processes currently in use are slow and labor-intensive and can create unnecessary safety risks"; "Labor will focus on system operation, maintenance and quality control, not manual sorting". EU는 SOPHIA(AI 상태진단+해체 로봇 프로토타입), PHOTORAMA(2차 원료 95% 이상 회수) 추진</li>
+<li><strong>왜 참신한가</strong>: 재활용을 '규제·비용 문제'가 아니라 '설치 로봇의 역공정(설치의 손이 해체의 손)'으로 보는 연결. 국내 2032년 9,632톤 대비 미국은 공장 1곳이 연 600만 장</li>
+<li><strong>발표 연결</strong>: B5 보강. "설치 로봇과 해체 로봇은 같은 비전·그리퍼 기술 — 설치가 끝나는 날 해체 산업이 시작된다"</li>
+<li><strong>신뢰도</strong>: 원문 확인(원플래닛은 계획 단계, 회사 주장); EU 과제는 요약 수준(2차)</li>
+</ul>
+</article><article class="item"><h3 id="item-18"><span class="num">18.</span> "다음 원자재 전장은 휴머노이드" — 대당 희토류 1~2kg·구리 4~8kg, 2050년 연 4억 대면 구리 240만 톤</h3>
+<ul>
+<li><strong>출처</strong>: Frank Nikolic · CRU Group "The next commodity battleground: humanoid robots" · 2025-10-16 · https://www.crugroup.com/en/communities/thought-leadership/2025/the-next-commodity-battleground-humanoid-robots/ ; IDTechEx(Dr Shababa Selim) "Emerging Materials Opportunities and Trends in the Humanoid Market" · 2026-06-02 · https://www.offgridenergyindependence.com/articles/34801/emerging-materials-opportunities-and-trends-in-the-humanoid-market</li>
+<li><strong>요지</strong>: 휴머노이드 1대: 알루미늄 17~25kg, 구리 4~8kg, 배터리 금속(Li·Ni·Co) 4~8kg, 희토류 1~2kg(모터 자석). 중간 시나리오 2050년 연 4억 대 생산 시 알루미늄 약 1,000만 t, 구리 240만 t, 배터리 금속 160만 t — "representing significant percentages of current (and anticipated) global production". "China controls &gt;70% of battery metals processing and battery cell production". 인간 환경에 맞춰야 해서 "limiting opportunities for radical material substitution". IDTechEx: 향후 10년 휴머노이드 판매 CAGR 47%, NdFeB 공급망 중국 집중</li>
+<li><strong>왜 참신한가</strong>: 원자재 리서치 기관이 휴머노이드를 EV·풍력과 같은 광물 수요 주체로 올려놓음. 피지컬 AI와 에너지 전환이 '같은 자석·같은 구리'를 두고 경쟁한다는 B4의 정량 근거</li>
+<li><strong>발표 연결</strong>: B4 핵심 보강. "풍력 터빈 1기의 영구자석과 휴머노이드 1,000대의 자석은 같은 광산에서 나온다"(비교 수치는 추가 확인 필요)</li>
+<li><strong>신뢰도</strong>: 원문 확인(CRU 시나리오 가정)</li>
+</ul>
+</article><article class="item"><h3 id="item-19"><span class="num">19.</span> 값싼 자율실험실의 민주화 — BRINE, 오픈소스 액체핸들러로 전해질 230조성을 20시간에</h3>
+<ul>
+<li><strong>출처</strong>: RSC Digital Discovery 2026 "BRINE (Bayesian Robotic Investigator of Novel Electrolytes)" · https://pubs.rsc.org/en/content/articlehtml/2026/dd/d6dd00269b ; nanoGe MATSUS Spring 2026 "Accelerating Sustainable Electrolyte Design: A Self-Driving Approach to High-Entropy Formulations" https://www.nanoge.org/proceedings/MATSUSSpring26/693b25b0ddf494172270289e</li>
+<li><strong>요지</strong>: BRINE은 오픈소스 액체 핸들링 로봇+포텐시오스탯+자체 전극으로 전해질을 자율 혼합·측정하는 저비용 자율실험실. 개념검증에서 약 230개 고유 조성을 20시간 미만에 시험, 이온전도도 최대 32.13 S/m. 같은 시기 고엔트로피 전해질 SDL(MD 스크리닝+자율 고처리 조성·특성), 수계 배터리 SDL(베이지안 최적화+자동 코인셀 조립으로 쿨롱효율 95% 이상 조성 신속 식별) 발표</li>
+<li><strong>왜 참신한가</strong>: A-Lab(17일 58타깃) 이후의 흐름은 '더 큰 실험실'이 아니라 '대학 실험실도 살 수 있는 자율실험실'. 에너지 소재 탐색 속도가 소수 거대 랩의 독점에서 풀린다는 신호</li>
+<li><strong>발표 연결</strong>: 신규/보강(자율실험실 섹션). "실험실의 손도 로봇 — 그리고 그 손이 싸졌다"</li>
+<li><strong>신뢰도</strong>: 2차(검색 요약; RSC 원문은 Cloudflare 차단으로 미열람, nanoGe 초록 로드 실패)</li>
+</ul>
+<hr>
+</article><h2>D. 비판적 시각·지표·커뮤니티</h2>
+<article class="item"><h3 id="item-20"><span class="num">20.</span> 로봇 논문 5만 편 중 지속가능성 언급 2% 미만 — 허깅페이스 연구진의 '지속가능성 격차' 보고</h3>
+<ul>
+<li><strong>출처</strong>: Antun Skuric, Leandro von Werra, Thomas Wolf(Hugging Face) · arXiv 2604.07921 "The Sustainability Gap in Robotics: A Large-Scale Survey of Sustainability Awareness in 50,000 Research Articles" · 2026-04-09 · https://arxiv.org/abs/2604.07921</li>
+<li><strong>요지</strong>: 2015년~2026년 초 arXiv cs.RO 약 5만 편 분석. "mentions of sustainability-related impacts are typically below 2%, explicit SDG references stay below 0.1%, and the proportion of sustainability-motivated papers remains below 5%". "sustainability is not yet a standard part of research framing"(지속가능성은 아직 로봇 연구의 표준 프레임이 아니다). 연구자·학회·기관을 위한 행동 제안</li>
+<li><strong>왜 참신한가</strong>: 로봇 커뮤니티 스스로(그것도 AI 플랫폼 기업 연구진이) '우리는 에너지·지속가능성을 거의 생각하지 않는다'고 정량 고백. 연사의 교차점이 왜 비어 있는지에 대한 메타 근거</li>
+<li><strong>발표 연결</strong>: 신규(도입 또는 결론). "로봇 논문 98%는 에너지를 묻지 않는다 — 그래서 이 자리가 필요하다". MIT 중심 "A Roadmap for Climate-Relevant Robotics Research"(Papalia, Dawson 외, arXiv 2507.11623, 2025-07-15)가 에너지 시스템·건설·환경 모니터링을 고영향 영역으로 지목한 것과 짝</li>
+<li><strong>신뢰도</strong>: 원문 확인(초록)</li>
+</ul>
+</article><article class="item"><h3 id="item-21"><span class="num">21.</span> IMF '일반화된 제번스 역설' — 효율이 오르면 총소비가 늘었고, 2025년 AI 붐은 가스터빈 부족과 석탄 회귀를 불렀다</h3>
+<ul>
+<li><strong>출처</strong>: William Oman, Etienne Espagne, Jean-Baptiste Fressoz · IMF Working Paper WP/26/157 "The Generalized Jevons Paradox and the Future of Energy" · 2026-07 · https://www.imf.org/-/media/files/publications/wp/2026/english/wpiea2026157-source-pdf.pdf</li>
+<li><strong>요지</strong>: 역사적으로 "a strong positive correlation between efficiency in resource use and total resource use at a global scale". "a declining share of fossil fuels in primary energy consumption can coexist with rising total fossil consumption, and thus rising global emissions – as observed since 2012". 본문: "in 2025, rapid growth in artificial intelligence induced sharp growth in data centers. Combined with growing power demand from electrification across transportation, manufacturing and households, this led to strong growth in gas demand, a shortage in gas turbines, and a switch to coal for power generation in many countries". 로봇·자동화 언급은 없음(본문 검색 0건)</li>
+<li><strong>왜 참신한가</strong>: 자율화+전동화의 효율 개선(B3)이 총 에너지·자원 소비를 늘릴 수 있다는 반론을 IMF 문서로 제시 가능. 로봇이 '에너지 전환의 손'이면서 동시에 '리바운드의 손'일 수 있다는 정직한 한 장</li>
+<li><strong>발표 연결</strong>: 비판적 시각(신규). B3·B7 뒤에 "다만 제번스는 로봇에게도 적용된다 — 그래서 동작당 에너지(B8)를 세어야 한다"로 B8의 당위로 연결</li>
+<li><strong>신뢰도</strong>: 원문 확인(PDF 전문)</li>
+</ul>
+</article><article class="item"><h3 id="item-22"><span class="num">22.</span> '동작당 에너지' 지표의 학술적 싹 — 로봇 코드 성능을 CPU가 아닌 전력 프로파일로 평가(SDU), 액추에이터 효율을 점수화(HLAS)</h3>
+<ul>
+<li><strong>출처</strong>: ① Juan Heredia 외(남덴마크대) · arXiv 2508.06295 "Evaluating Robot Program Performance with Power Consumption Driven Metrics in Lightweight Industrial Robots" · 2025-08-08 · https://arxiv.org/abs/2508.06295 ② MD-Nazmus Sunbeam · arXiv 2511.06796 "Human-Level Actuation for Humanoids" · 2025-11-10 · https://arxiv.org/abs/2511.06796</li>
+<li><strong>요지</strong>: ①은 로봇 프로그램을 "from an embodiment perspective by analyzing the robot's electrical power profile"로 평가 — 에너지 활용 계수(energy utilization coefficient), 에너지 변환 지표, 신뢰도 계수를 정의하고 UR5e 머신텐딩 4개 프로그램을 비교. "linking code performance to its physical manifestation through power consumption patterns". ②는 '인간 수준 액추에이션'을 측정 가능하게 만드는 HLAS 점수에 효율(efficiency)과 열 지속성(thermal sustainability)을 포함, "gearing ratio versus bandwidth and efficiency" 트레이드오프를 드러냄</li>
+<li><strong>왜 참신한가</strong>: "Joule per Task"라는 이름의 지표를 제안한 문헌은 없지만(미발견), 소프트웨어 성능=전력 프로파일, 하드웨어 성능=효율 점수라는 두 갈래가 2025년에 각각 등장. 연사가 이름을 붙이고 묶으면 선점 가능</li>
+<li><strong>발표 연결</strong>: B8 보강. "토큰당 전력 다음은 동작당 에너지 — 코드와 액추에이터 양쪽에서 측정 틀이 막 생기고 있다"</li>
+<li><strong>신뢰도</strong>: 원문 확인(초록). "인간 근육이 로봇 액추에이터보다 평균 3.3배 효율적"이라는 수치는 검색 요약에만 있고 두 논문 HTML에서 확인 못 함 <span class="arrow">→</span> 미확인, 인용 비권고</li>
+</ul>
+</article><article class="item"><h3 id="item-23"><span class="num">23.</span> 태양광과 함께 일하는 로봇 — PV 창고의 AGV 스케줄링 최적화(2026)와 오프그리드 태양광으로 밤에 일하는 전기 트랙터</h3>
+<ul>
+<li><strong>출처</strong>: ① Cosimo Iurlaro, Muhammad Muzammal Islam, Massimo La Scala · "Energy-Aware Optimal Task Scheduling of AGV Robots in Renewable-Powered Warehouses" · Springer Proceedings in Mathematics &amp; Statistics(Industrial Engineering and Operations Management—II) · 2026 · https://link.springer.com/chapter/10.1007/978-3-032-19167-0_52 ② Charged EVs / pv magazine USA "Paired Power and Monarch Tractor bring off-grid solar charging to California vineyard" · 2023-09 · https://chargedevs.com/newswire/paired-power-and-monarch-tractor-bring-off-grid-solar-charging-to-california-vineyard/</li>
+<li><strong>요지</strong>: ①은 태양광 설비를 갖춘 자동화 창고에서 AGV 플릿의 에너지 비용 최소화를 위한 작업 스케줄링·에너지 관리 통합 문제를 다룸(검색 스니펫 기준). ②는 Kaerskov 와이너리에서 Monarch MK-V 전기 트랙터를 38.5kW(535W×72장) 태양광 캐노피+DC 급속충전으로 100% 오프그리드 운용 — 낮에는 교체형 배터리 카트를 충전하고 밤에 트랙터가 작업, 연 54tCO2e 절감, 향후 관개 펌프 피크·정전 시 방전 연계 계획</li>
+<li><strong>왜 참신한가</strong>: '일을 태양으로 옮기는' B2가 학술 최적화 문제(2026)와 농장 하드웨어(배터리 카트)로 이미 구현되고 있음. 특히 트랙터 사례는 "전기를 옮기지 않고 배터리 카트를 옮긴다"는 B2의 물리적 형태</li>
+<li><strong>발표 연결</strong>: B2 보강(농업·물류 두 축)</li>
+<li><strong>신뢰도</strong>: ① Crossref 메타데이터 확인·초록 미열람(2차), ② 2차 보도(2023, 회사 주장)</li>
+</ul>
+</article><article class="item"><h3 id="item-24"><span class="num">24.</span> 재난 지역을 로봇 실증장으로 — 후쿠시마 로봇테스트필드(F-REI 운영, 4개 구역)</h3>
+<ul>
+<li><strong>출처</strong>: 福島ロボットテストフィールド 공식 사이트(운영: 公益財団法人 福島イノベーション・コースト構想推進機構) · https://rtf.f-rei.go.jp/</li>
+<li><strong>요지</strong>: 소재 南相馬市原町区萱浜(복구공업단지 내), 浪江 분소. 4개 구역: 無人航空機エリア(무인항공기), 水中・水上ロボットエリア(수중·수상 로봇), インフラ点検・災害対応エリア(인프라 점검·재난 대응), 開発基盤エリア(개발 기반). 입주 연구실 모집 중. 福島イノベーション・コースト構想(후쿠시마 이노베이션 코스트 구상) 산하</li>
+<li><strong>왜 참신한가</strong>: 원전 사고 지역이 '로봇 실증 특구+재생에너지·수소 거점'으로 재설계된 국가 선례. 새만금(에너지 로봇 학습장·실증특구) 제안의 직접적 비교 모델</li>
+<li><strong>발표 연결</strong>: B6 핵심 보강. "후쿠시마는 재난을 로봇 테스트필드로 바꿨다 — 새만금은 간척지를 에너지 로봇 학습장으로"</li>
+<li><strong>신뢰도</strong>: 운영주체·구역 구성은 원문 확인. 면적(약 50ha), 전면 개장 연도(2020), 인접 浪江의 FH2R(10MW급 수전해 수소 연구 필드)는 배경지식 수준 <span class="arrow">→</span> 미확인, 인용 전 재확인 필요</li>
+</ul>
+<hr>
+</article><h2 id="sec-a"><span class="num">(a)</span> 이 교차점에서 "누구나 하는 이야기" 톱 5</h2>
+<ol>
+<li><strong>AI 데이터센터 전력 급증</strong>(IEA: 2024년 415TWh <span class="arrow">→</span> 2030년 945TWh) — 로봇이 아니라 서버 이야기이며 오후 다른 연사 영역. 대비 수치로만 활용</li>
+<li><strong>AI로 전력망·재생에너지 예측 최적화</strong>(수요예측, 가상발전소, 급전 최적화) — 중국 NEA 51개 시나리오도 대부분 여기. 소프트웨어 AI만의 이야기</li>
+<li><strong>휴머노이드가 공장 노동을 대체한다</strong>(BMW·Figure, Tesla Optimus, UBTech BYD/폭스콘 배치) — 에너지 연결 없이 노동 대체 서사로만 소비</li>
+<li><strong>드론으로 태양광·풍력을 점검한다</strong>(열화상 드론, 블레이드 촬영) — 10년째 반복되는 '점검' 수준 응용. 차별화는 '보수·설치·가선'(항목 12·14)에 있음</li>
+<li><strong>"로봇이 위험한 일을 대신한다"·"태양광 패널 청소 로봇"·"폐패널 재활용이 필요하다" 안전·당위 서사</strong> — 수치 없이 반복되는 상투구</li>
+</ol>
+<h2 id="sec-b"><span class="num">(b)</span> 못 찾은 것 · 공백</h2>
+<ul>
+<li><strong>IEA의 로봇 전력 항목</strong>: 'Energy and AI'(2025-04-10)와 'Key Questions on Energy and AI'(2026-04) 모두 로봇·휴머노이드·피지컬 AI 언급 없음(랜딩·챕터 페이지 직접 확인). 로봇 전력 전망은 Wood Mackenzie(2026-08), RethinkX(2026-06), T&amp;D World 기고(2026-03), Polar Capital(원문 410 삭제·"10억 대면 한국 전체 발전량" 주장은 미확인)만 존재. 기관 간 대당 가정 편차 약 6배(연 586kWh vs 3,650kWh)</li>
+<li><strong>"Joule per Task"/"energy per task" 지표를 명시적으로 제안한 문헌</strong>: 없음. 최근접은 SDU 전력 프로파일 지표(2025-08), HLAS 효율 인자(2025-11), 보행 J/m·W/kg 지표. <span class="arrow">→</span> B8은 여전히 연사의 선점 가능 영토</li>
+<li><strong>피지컬 AI 학습 컴퓨트의 전력·탄소</strong>(RFM/GR00T 학습 GPU시간): 공개 수치 미발견</li>
+<li><strong>휴머노이드 LCA·내재탄소 정량 연구</strong>: 미발견. 기후로봇 로드맵(2025)도 "현재 규모에선 미미" 수준(2차)</li>
+<li><strong>중국 NEA 51개 시나리오 전체 목록</strong>(로봇·순찰 포함 여부): 요약문만 확인</li>
+<li><strong>자율 중장비 연료·전력 절감률의 1차 데이터</strong>: Komatsu·Caterpillar 공식 % 없음(skillings.net 등 저품질 2차만 존재)</li>
+<li><strong>수소 설비 점검 로봇 2026 사례, 한전 활선로봇 2026 실증, 일본 전력사(도쿄전력 등) 활선로봇</strong>: 검색 차단으로 미확인(한국은 lane4 담당)</li>
+<li><strong>섬·오지 마이크로그리드에서의 로봇 운영 사례, "에너지 생산지에 로봇 산업을 둔다"는 입지론(파워쇼어링×로봇)</strong>: 미발견</li>
+<li><strong>ORNL 배터리 해체 로봇 "100 vs 12"</strong>: Ames Lab 2021 기사 원문에 해당 수치 없음 <span class="arrow">→</span> 미확인</li>
+<li><strong>Rope Robotics·Aerones 2026 신규 수치</strong>: 미확인(Aerones 25,000기는 2차)</li>
+<li>도구 제약: WebSearch 세션 예산 소진(팀 공유 200회) <span class="arrow">→</span> curl 기반 DDG(캡차 차단), Bing(쿼리 미반영), arXiv API(429)로 후반 검색 제한</li>
+</ul>
+<h2 id="sec-c"><span class="num">(c)</span> 검색어 목록 (실행 순)</h2>
+<p>WebSearch(6): humanoid robots electricity demand forecast "million humanoids" power consumption TWh 2026 / "energy per task" OR "joules per task" robot efficiency metric humanoid 2026 / IEA "Energy and AI" 2026 robots physical AI electricity / robots as flexible load grid curtailment scheduling robot fleet charging demand response 2026 / solar installation robot 2026 new startup Charge Robotics Terabase Rosendin AES Maximo competitor / self-driving lab battery materials discovery 2026 autonomous laboratory results electrolyte / wind turbine blade repair robot 2026 Aerones BladeBUG Rope Robotics offshore / live-line working robot power transmission 2026 State Grid China humanoid / solar panel recycling robot disassembly 2026 / battery pack disassembly robot EV recycling 2026 / autonomous mining haul truck fuel savings autonomy electrification Komatsu Caterpillar / robots building data centers construction automation 2026 / electric autonomous tractor solar charging farm microgrid Monarch / 中国 "新能源" 机器人 政策 2026 具身智能 电力 / humanoid robot embodied carbon lifecycle assessment rare earth 2026
+DDG(curl, 성공): UBTech Walker S2 autonomous battery swap / Tesla Optimus battery kWh runtime power consumption / SoftBank Roze AI robots build data centers / humanoid energy inefficiency Jevons rebound / transmission line construction robot 2026 drone stringing / nuclear decommissioning robot 2026 Sellafield Fukushima / offshore wind robot O&amp;M 2026 USV / DOE ARPA-E robotics energy 2026 / 国家能源局 "人工智能+" 能源 机器人 2026 / Rosendin Sarcos Built Robotics solar 2026 / robots demand response electricity price scheduling warehouse AMR fleet charging / Rosendin autonomous solar installation robot 2026
+DDG(차단·무결과): robots solar curtailment "work follows the sun" / self-driving lab 2026 A-Lab Polybot Acceleration Consortium / robot foundation model training GPU hours energy / Sarcos solar 2026 / 東京電力 送電 ロボット 2026 / hydrogen electrolyzer inspection robot 2026 / IEA workforce shortage electricians 2026 / 한전 활선로봇 2026 / 带电作业机器人 国家电网 2026 / "Energy-Aware Optimal Task Scheduling of AGV Robots" / "energy per task" humanoid benchmark / powershoring Arbache / renewable energy robotics test bed / Komatsu Caterpillar Volvo CE autonomy electrification statement / Clobotics SPARROW 27 minutes / Polar Capital humanoid power South Korea / Fukushima Robot Test Field FH2R
+arXiv API(429로 실패): "energy per task" robot / humanoid "energy consumption" battery / "self-driving laboratory" battery electrolyte
+원문 확인(WebFetch/curl, 성공): woodmac.com, robeco.com, rethinkx.com, en.jiemian.com, tdworld.com, figure.ai, cnevpost.com, robotichina.com, techcrunch.com, datacenterfrontier.com, pv-magazine-usa.com(2건), energy.gov, rosendin.com, news.mit.edu, highways.today, infravisioninc.com, proptechconnect.com, transgrid.com.au(PDF), komatsu.com, clobotics.com, nexi.fund, deepwind.jp, chinanews.com.cn, gov.cn, subsites.chinadaily.com.cn, crugroup.com, offgridenergyindependence.com, imf.org(PDF), arxiv.org(4건), api.crossref.org, rtf.f-rei.go.jp, iea.org(2건), gruppotim.it, ameslab.gov</p>
+<footer>원문: Obsidian 볼트 <code>04_achievements/세미나/FES2026/</code> · 변환 2026-10-15 · 신뢰도 표기(원문 확인/2차 보도/회사 주장/미확인)는 원자료를 따름</footer>
+</div>
+</body>
+</html>
