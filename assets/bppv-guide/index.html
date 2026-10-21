@@ -1,0 +1,680 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>이석증 완전 가이드</title>
+<meta name="description" content="이석증(양성 돌발성 두위 현훈, BPPV)의 원리, 증상, 진단, 치료, 재발 예방, 위험 신호를 움직이는 그림과 인터랙티브로 쉽게 정리했습니다.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='22' fill='none' stroke='%232f7d8c' stroke-width='7'/%3E%3Ccircle cx='32' cy='54' r='6' fill='%23e08a3c'/%3E%3C/svg%3E">
+<style>
+:root{
+  --bg:#f7f5f0; --surface:#ffffff; --surface2:#efece4; --ink:#1d2326; --muted:#5a6266;
+  --line:#d9d4c8; --accent:#2f7d8c; --accent-soft:#d6ebee; --crystal:#e08a3c; --crystal-soft:#fbe5cf;
+  --danger:#c23b30; --danger-soft:#f8dcd8; --ok:#2e7d4f; --ok-soft:#d9efe1;
+  --fluid:#9fd0d8; --bone:#ebe3d3; --shadow:0 2px 14px rgba(0,0,0,.06);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#141819; --surface:#1d2224; --surface2:#262c2e; --ink:#eef1f1; --muted:#a6b0b3;
+    --line:#364043; --accent:#5fb6c4; --accent-soft:#1f3a3f; --crystal:#f0a35c; --crystal-soft:#3e2c1c;
+    --danger:#ef6b5f; --danger-soft:#43211e; --ok:#5cc489; --ok-soft:#1c3727;
+    --fluid:#2f5b62; --bone:#3a3a33; --shadow:0 2px 14px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141819; --surface:#1d2224; --surface2:#262c2e; --ink:#eef1f1; --muted:#a6b0b3;
+  --line:#364043; --accent:#5fb6c4; --accent-soft:#1f3a3f; --crystal:#f0a35c; --crystal-soft:#3e2c1c;
+  --danger:#ef6b5f; --danger-soft:#43211e; --ok:#5cc489; --ok-soft:#1c3727;
+  --fluid:#2f5b62; --bone:#3a3a33; --shadow:0 2px 14px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif;
+  font-size:19px;line-height:1.75;word-break:keep-all;overflow-wrap:break-word}
+a{color:var(--accent)}
+.wrap{max-width:900px;margin:0 auto;padding:0 16px}
+nav.toc{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+nav.toc .wrap{display:flex;gap:6px;overflow-x:auto;padding-top:10px;padding-bottom:10px;scrollbar-width:none}
+nav.toc a{flex:0 0 auto;text-decoration:none;color:var(--muted);font-size:16px;padding:6px 12px;border-radius:999px}
+nav.toc a.on{background:var(--accent-soft);color:var(--accent);font-weight:700}
+#themeBtn{flex:0 0 auto;margin-left:auto;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;font-size:16px;padding:4px 12px;cursor:pointer}
+header.hero{padding:48px 0 24px;text-align:center}
+.hero h1{font-size:44px;line-height:1.25;margin:16px 0 8px}
+.hero .sub{font-size:20px;color:var(--muted);margin:0}
+.hero svg{width:100%;max-width:520px;height:auto}
+section{padding:40px 0;border-top:1px solid var(--line)}
+h2{font-size:32px;line-height:1.3;margin:0 0 8px}
+h2 .num{color:var(--accent);margin-right:8px}
+h3{font-size:23px;margin:28px 0 8px}
+.lead{font-size:20px;color:var(--muted);margin-top:0}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:var(--shadow);margin:18px 0}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px}
+.stat b{display:block;font-size:34px;line-height:1.2;color:var(--accent)}
+.stat span{font-size:17px;color:var(--muted)}
+.note{font-size:16px;color:var(--muted)}
+.callout{border-radius:14px;padding:16px 18px;margin:16px 0;background:var(--accent-soft)}
+.callout.warn{background:var(--danger-soft)}
+.callout.good{background:var(--ok-soft)}
+button.btn{font:inherit;font-size:17px;border:0;border-radius:12px;padding:10px 18px;background:var(--accent);color:#fff;cursor:pointer}
+button.btn.ghost{background:var(--surface2);color:var(--ink)}
+button.btn:disabled{opacity:.45;cursor:default}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+svg text{font-family:inherit}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
+.reveal.in{opacity:1;transform:none}
+table{width:100%;border-collapse:collapse;font-size:17px}
+th,td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--muted);font-weight:600}
+.tablewrap{overflow-x:auto}
+details{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:4px 18px;margin:10px 0}
+summary{cursor:pointer;font-weight:700;padding:12px 0;font-size:19px}
+input[type=range]{width:100%;accent-color:var(--accent);height:32px}
+.check label{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--line);cursor:pointer}
+.check input{width:24px;height:24px;margin-top:4px;flex:0 0 auto;accent-color:var(--accent)}
+.result{border-radius:14px;padding:16px 18px;margin-top:16px;font-weight:600}
+.tag{display:inline-block;font-size:14px;padding:2px 10px;border-radius:999px;background:var(--surface2);color:var(--muted);margin-right:6px}
+footer{padding:40px 0 60px;border-top:1px solid var(--line);font-size:16px;color:var(--muted)}
+footer ol{padding-left:20px}
+/* crystals */
+.cr{fill:var(--crystal)}
+@keyframes tumble{0%{transform:translate(0,0) rotate(0)}100%{transform:translate(var(--dx),var(--dy)) rotate(360deg)}}
+/* hero spin */
+@keyframes spinRoom{0%,100%{transform:rotate(0)}50%{transform:rotate(-6deg)}}
+/* eyes */
+.eye-white{fill:#fff;stroke:var(--ink);stroke-width:2}
+.iris{fill:var(--accent)}
+.pupil{fill:#111}
+@keyframes nysUp{0%{transform:translateY(0)}85%{transform:translateY(7px)}100%{transform:translateY(0)}}
+@keyframes nysTor{0%{transform:rotate(0)}85%{transform:rotate(-16deg)}100%{transform:rotate(0)}}
+@keyframes nysL{0%{transform:translateX(0)}85%{transform:translateX(9px)}100%{transform:translateX(0)}}
+@keyframes nysR{0%{transform:translateX(0)}85%{transform:translateX(-9px)}100%{transform:translateX(0)}}
+.n-up{animation:nysUp .9s infinite ease-in}
+.n-tor{animation:nysTor .9s infinite ease-in}
+.n-l{animation:nysL .8s infinite ease-in}
+.n-r{animation:nysR .8s infinite ease-in}
+@keyframes barGrow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.bar{transform-origin:left center}
+.in .bar{animation:barGrow 1.4s cubic-bezier(.2,.8,.2,1) both}
+@keyframes vbarGrow{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+.vbar{transform-box:fill-box;transform-origin:bottom}
+.in .vbar{animation:vbarGrow 1.3s cubic-bezier(.2,.8,.2,1) both}
+@media (max-width:600px){
+  body{font-size:18px}
+  .hero h1{font-size:34px}
+  h2{font-size:27px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<nav class="toc" aria-label="목차"><div class="wrap">
+  <a href="#what">이석증이란</a><a href="#ear">귀 속 구조</a><a href="#why">왜 어지럽나</a><a href="#symptom">증상</a>
+  <a href="#cause">원인</a><a href="#type">종류</a><a href="#dx">진단</a><a href="#tx">치료</a>
+  <a href="#danger">위험 신호</a><a href="#prevent">재발·예방</a><a href="#faq">자주 묻는 질문</a>
+  <button id="themeBtn" type="button" aria-label="화면 밝기 전환">◐</button>
+</div></nav>
+
+<header class="hero wrap">
+  <svg viewBox="0 0 520 300" role="img" aria-label="귀 속 반고리관 안에서 작은 돌가루가 굴러다니는 그림">
+    <g style="transform-origin:260px 150px;animation:spinRoom 6s ease-in-out infinite">
+      <ellipse cx="260" cy="170" rx="70" ry="44" fill="var(--fluid)" stroke="var(--accent)" stroke-width="4"/>
+      <path d="M200 160 C120 150 110 40 200 40 C260 40 270 110 245 135" fill="none" stroke="var(--accent)" stroke-width="16" stroke-linecap="round"/>
+      <path d="M200 160 C120 150 110 40 200 40 C260 40 270 110 245 135" fill="none" stroke="var(--fluid)" stroke-width="9" stroke-linecap="round"/>
+      <path d="M320 165 C420 170 430 60 340 55 C290 52 280 110 300 140" fill="none" stroke="var(--accent)" stroke-width="16" stroke-linecap="round"/>
+      <path d="M320 165 C420 170 430 60 340 55 C290 52 280 110 300 140" fill="none" stroke="var(--fluid)" stroke-width="9" stroke-linecap="round"/>
+      <path d="M230 205 C200 280 330 290 300 205" fill="none" stroke="var(--accent)" stroke-width="16" stroke-linecap="round"/>
+      <path d="M230 205 C200 280 330 290 300 205" fill="none" stroke="var(--fluid)" stroke-width="9" stroke-linecap="round"/>
+    </g>
+    <g id="heroCrystals"></g>
+  </svg>
+  <h1>이석증 완전 가이드</h1>
+  <p class="sub">양성 돌발성 두위 현훈 (BPPV) — 귀 속 작은 돌이 길을 잃었을 때</p>
+</header>
+
+<main class="wrap">
+
+<!-- 1 -->
+<section id="what" class="reveal">
+  <h2><span class="num">01</span>이석증이란?</h2>
+  <p class="lead">고개를 돌리거나 눕고 일어날 때, 세상이 몇 초 동안 빙글빙글 도는 병입니다.</p>
+  <p>귀 안쪽(내이)에는 몸의 균형을 느끼는 기관이 있고, 그 안에 탄산칼슘으로 된 아주 작은 돌가루, <b>이석</b>이 붙어 있습니다. 이 이석이 떨어져 나와 회전을 느끼는 관(반고리관)으로 흘러 들어가면, 머리를 움직일 때마다 뇌에 "돌고 있다"는 거짓 신호가 갑니다. 이것이 이석증입니다.</p>
+  <p>정식 이름은 <b>양성 돌발성 두위 현훈</b>(Benign Paroxysmal Positional Vertigo, BPPV)입니다. 이름의 뜻을 풀면 병의 성격이 그대로 보입니다.</p>
+  <div class="grid">
+    <div class="stat"><b>양성</b><span>생명을 위협하지 않는다</span></div>
+    <div class="stat"><b>돌발성</b><span>갑자기 짧게 찾아온다</span></div>
+    <div class="stat"><b>두위</b><span>머리 위치가 바뀔 때 생긴다</span></div>
+    <div class="stat"><b>현훈</b><span>빙글빙글 도는 어지럼</span></div>
+  </div>
+  <h3>숫자로 보는 이석증</h3>
+  <div class="grid">
+    <div class="stat"><b>1위</b><span>회전성 어지럼의 가장 흔한 원인</span></div>
+    <div class="stat"><b>1분 미만</b><span>한 번의 어지럼이 지속되는 시간</span></div>
+    <div class="stat"><b>약 2.4배</b><span>여성 환자가 남성보다 많음 (국내 건강보험 자료)</span></div>
+    <div class="stat"><b>90% 이상</b><span>적절한 치료로 호전</span></div>
+  </div>
+  <p class="note">국내 이석증 진료 인원은 2014년 약 30만 명에서 2018년 약 37만 명으로 늘었고, 환자의 75%는 두 번 이내 방문으로 치료를 마쳤습니다 (국민건강보험 일산병원 분석).</p>
+</section>
+
+<!-- 2 -->
+<section id="ear" class="reveal">
+  <h2><span class="num">02</span>귀 속 균형 기관 탐험</h2>
+  <p class="lead">그림의 각 부분을 눌러 보세요. 아래 버튼을 누르면 이석이 떨어져 나가는 모습을 볼 수 있습니다.</p>
+  <div class="card">
+    <svg id="earSvg" viewBox="0 0 600 420" role="img" aria-label="내이 전정기관 구조도: 세 개의 반고리관, 난형낭, 이석">
+      <!-- canals -->
+      <g class="part" data-k="ant" style="cursor:pointer">
+        <path d="M250 200 C170 190 150 50 260 45 C350 42 345 140 300 175" fill="none" stroke="var(--accent)" stroke-width="26" stroke-linecap="round"/>
+        <path d="M250 200 C170 190 150 50 260 45 C350 42 345 140 300 175" fill="none" stroke="var(--fluid)" stroke-width="15" stroke-linecap="round"/>
+        <text x="185" y="40" font-size="18" fill="var(--ink)">전반고리관</text>
+      </g>
+      <g class="part" data-k="lat" style="cursor:pointer">
+        <path d="M360 220 C480 225 500 120 410 110 C360 105 350 160 345 190" fill="none" stroke="var(--accent)" stroke-width="26" stroke-linecap="round"/>
+        <path d="M360 220 C480 225 500 120 410 110 C360 105 350 160 345 190" fill="none" stroke="var(--fluid)" stroke-width="15" stroke-linecap="round"/>
+        <text x="455" y="100" font-size="18" fill="var(--ink)">수평반고리관</text>
+      </g>
+      <g class="part" data-k="post" style="cursor:pointer">
+        <path id="postPath" d="M275 262 C220 330 220 405 300 405 C380 405 380 320 330 262" fill="none" stroke="var(--accent)" stroke-width="26" stroke-linecap="round"/>
+        <path d="M275 262 C220 330 220 405 300 405 C380 405 380 320 330 262" fill="none" stroke="var(--fluid)" stroke-width="15" stroke-linecap="round"/>
+        <text x="370" y="390" font-size="18" fill="var(--ink)">후반고리관</text>
+      </g>
+      <!-- ampulla bulge -->
+      <g class="part" data-k="amp" style="cursor:pointer">
+        <circle cx="262" cy="282" r="19" fill="var(--fluid)" stroke="var(--accent)" stroke-width="4"/>
+        <path d="M250 290 Q262 265 274 290" fill="var(--surface)" stroke="var(--ink)" stroke-width="2"/>
+        <text x="150" y="300" font-size="17" fill="var(--ink)">팽대부</text>
+      </g>
+      <!-- utricle -->
+      <g class="part" data-k="utr" style="cursor:pointer">
+        <ellipse cx="300" cy="225" rx="78" ry="48" fill="var(--fluid)" stroke="var(--accent)" stroke-width="4"/>
+        <rect x="248" y="212" width="104" height="12" rx="6" fill="var(--bone)"/>
+        <text x="270" y="262" font-size="17" fill="var(--ink)">난형낭</text>
+      </g>
+      <g id="otoLayer" class="part" data-k="oto" style="cursor:pointer"></g>
+      <!-- nerve -->
+      <g class="part" data-k="nerve" style="cursor:pointer">
+        <path d="M370 245 C430 270 480 300 560 300" fill="none" stroke="#c9a94a" stroke-width="10" stroke-linecap="round"/>
+        <text x="470" y="330" font-size="17" fill="var(--ink)">전정신경 → 뇌</text>
+      </g>
+    </svg>
+    <div id="earInfo" class="callout" aria-live="polite"><b>난형낭</b>을 눌러 보세요. 각 부위의 역할이 여기에 나타납니다.</div>
+    <div class="row"><button class="btn" id="dropBtn" type="button">이석 떨어뜨리기</button><button class="btn ghost" id="resetEar" type="button">처음으로</button></div>
+  </div>
+</section>
+
+<!-- 3 -->
+<section id="why" class="reveal">
+  <h2><span class="num">03</span>왜 빙글빙글 돌까? — 직접 기울여 보기</h2>
+  <p class="lead">슬라이더로 머리를 뒤로 눕혀 보세요. 관 안의 이석이 중력을 따라 굴러가고, 그 흐름이 감지기를 밀어 어지럼과 눈 떨림을 만듭니다.</p>
+  <div class="card">
+    <svg id="simSvg" viewBox="0 0 640 330" role="img" aria-label="머리 기울기에 따라 반고리관 속 이석이 움직이는 시뮬레이션">
+      <!-- head side view -->
+      <g id="simHead" style="transform-origin:150px 190px">
+        <ellipse cx="150" cy="150" rx="70" ry="82" fill="var(--surface2)" stroke="var(--ink)" stroke-width="3"/>
+        <circle cx="200" cy="130" r="6" fill="var(--ink)"/>
+        <path d="M218 160 l14 8 l-14 6" fill="none" stroke="var(--ink)" stroke-width="3"/>
+        <ellipse cx="135" cy="160" rx="12" ry="18" fill="none" stroke="var(--ink)" stroke-width="3"/>
+        <rect x="128" y="226" width="44" height="40" rx="10" fill="var(--surface2)" stroke="var(--ink)" stroke-width="3"/>
+      </g>
+      <line x1="40" y1="300" x2="270" y2="300" stroke="var(--line)" stroke-width="3"/>
+      <text x="40" y="324" font-size="15" fill="var(--muted)">↓ 중력</text>
+      <!-- canal zoom -->
+      <g transform="translate(410,160)">
+        <g id="canalRot">
+          <circle r="100" fill="none" stroke="var(--accent)" stroke-width="34"/>
+          <circle r="100" fill="none" stroke="var(--fluid)" stroke-width="22"/>
+          <!-- utricle opening at top -->
+          <rect x="-30" y="-140" width="60" height="40" rx="12" fill="var(--fluid)" stroke="var(--accent)" stroke-width="4"/>
+          <text x="-22" y="-148" font-size="14" fill="var(--muted)">난형낭</text>
+          <!-- cupula near ampulla (angle 200deg) -->
+          <g transform="rotate(30)"><g transform="translate(100,0)"><rect id="cupula" x="-14" y="-4" width="28" height="8" rx="4" fill="var(--ink)" style="transform-origin:0 0"/></g></g>
+          <g id="simCr"></g>
+        </g>
+        <text x="-60" y="155" font-size="15" fill="var(--muted)">후반고리관 확대</text>
+      </g>
+    </svg>
+    <label for="tilt" style="font-weight:700">머리 각도: <span id="tiltVal">0°</span> <span id="tiltName" class="tag">바로 앉음</span></label>
+    <input id="tilt" type="range" min="0" max="120" value="0" step="1">
+    <div class="row" style="justify-content:space-between">
+      <div class="row" style="gap:16px">
+        <svg width="140" height="60" viewBox="0 0 140 60" aria-label="눈 떨림 표시">
+          <g transform="translate(35,30)"><ellipse rx="28" ry="18" class="eye-white"/><g id="eyeL"><circle r="11" class="iris"/><circle r="5" class="pupil"/><rect x="-1.5" y="-11" width="3" height="6" fill="#fff"/></g></g>
+          <g transform="translate(105,30)"><ellipse rx="28" ry="18" class="eye-white"/><g id="eyeR"><circle r="11" class="iris"/><circle r="5" class="pupil"/><rect x="-1.5" y="-11" width="3" height="6" fill="#fff"/></g></g>
+        </svg>
+        <div><div style="font-size:16px;color:var(--muted)">어지럼 정도</div>
+          <svg width="180" height="18"><rect width="180" height="18" rx="9" fill="var(--surface2)"/><rect id="vmeter" width="0" height="18" rx="9" fill="var(--danger)"/></svg></div>
+      </div>
+      <label style="font-size:16px"><input type="checkbox" id="hasCr" checked style="width:20px;height:20px;accent-color:var(--accent)"> 관 속에 이석 있음</label>
+    </div>
+    <div id="simMsg" class="callout" aria-live="polite">앉아 있을 때는 이석이 관의 가장 낮은 곳에 가만히 있습니다. 어지럽지 않습니다.</div>
+    <p class="note">특징을 눈여겨보세요. ① 머리를 움직인 뒤 1~2초쯤 <b>늦게</b> 시작하고 ② 이석이 멈추면 1분 안에 <b>사라지며</b> ③ 이석 체크를 끄면 같은 동작에도 어지럽지 않습니다. 실제 이석증의 특징(잠복기·짧은 지속·체위 의존)과 같습니다. 그림은 이해를 돕기 위한 단순 모형입니다.</p>
+  </div>
+</section>
+
+<!-- 4 -->
+<section id="symptom" class="reveal">
+  <h2><span class="num">04</span>증상</h2>
+  <p class="lead">핵심은 "자세를 바꿀 때 시작되고, 가만히 있으면 1분 안에 멎는 회전성 어지럼"입니다.</p>
+  <div class="grid" id="trig"></div>
+  <h3>어지럼은 얼마나 오래 가나 — 다른 병과 비교</h3>
+  <div class="card">
+    <svg viewBox="0 0 620 250" width="100%" role="img" aria-label="어지럼 지속시간 비교 막대: 이석증 1분 미만, 메니에르병 20분~12시간, 전정신경염 수일, 뇌졸중 지속">
+      <g font-size="16" fill="var(--ink)">
+        <text x="0" y="40">이석증</text><text x="0" y="95">메니에르병</text><text x="0" y="150">전정신경염</text><text x="0" y="205">뇌졸중 등 중추성</text>
+      </g>
+      <g transform="translate(150,0)">
+        <rect class="bar" x="0" y="24" width="40" height="24" rx="6" fill="var(--crystal)"/>
+        <text x="48" y="42" font-size="15" fill="var(--muted)">수 초 ~ 1분 미만</text>
+        <rect class="bar" style="animation-delay:.2s" x="0" y="79" width="200" height="24" rx="6" fill="var(--accent)"/>
+        <text x="208" y="97" font-size="15" fill="var(--muted)">20분 ~ 12시간</text>
+        <rect class="bar" style="animation-delay:.4s" x="0" y="134" width="320" height="24" rx="6" fill="var(--accent)"/>
+        <text x="328" y="152" font-size="15" fill="var(--muted)">수일 계속</text>
+        <rect class="bar" style="animation-delay:.6s" x="0" y="189" width="420" height="24" rx="6" fill="var(--danger)"/>
+        <text x="300" y="240" font-size="15" fill="var(--muted)">계속됨 + 신경 증상</text>
+      </g>
+    </svg>
+    <p class="note">시간 축은 비교를 위해 늘였다 줄였습니다(로그 눈금 느낌). 이석증은 증상이 며칠~몇 주 반복되어도 <b>한 번의 발작</b>은 1분 미만인 것이 특징입니다.</p>
+  </div>
+  <h3>함께 올 수 있는 증상</h3>
+  <ul>
+    <li>메스꺼움, 구토 — 많은 환자에게 동반됩니다.</li>
+    <li>발작 사이의 가벼운 어질함, 떠 있는 느낌, 불안정감</li>
+    <li>치료 후에도 며칠~몇 주 남는 <b>잔여 어지럼</b> — 이석이 제자리로 간 뒤에도 뇌가 적응하는 시간이 필요합니다.</li>
+  </ul>
+  <div class="callout"><b>이석증에서 보통 없는 것:</b> 청력 저하, 귀울림, 귀 먹먹함, 말이 어눌함, 팔다리 힘 빠짐, 물체가 둘로 보임, 심한 두통. 이런 증상이 같이 있다면 다른 병을 의심해야 합니다 (<a href="#danger">위험 신호</a> 참고).</div>
+</section>
+
+<!-- 5 -->
+<section id="cause" class="reveal">
+  <h2><span class="num">05</span>원인과 위험 요인</h2>
+  <p class="lead">대부분은 뚜렷한 원인 없이 생깁니다(특발성). 다만 아래 요인이 위험을 높입니다.</p>
+  <div class="grid">
+    <div class="stat"><b style="font-size:24px">나이</b><span>40~50대 이후 크게 늘어납니다. 나이가 들며 이석이 붙어 있는 막이 약해지는 퇴행성 변화가 원인으로 꼽힙니다.</span></div>
+    <div class="stat"><b style="font-size:24px">머리 외상</b><span>넘어지거나 부딪힌 뒤 생길 수 있습니다. 국내 다기관 연구에서 약 15%가 외상·내이 질환 후 이차적으로 발생했습니다.</span></div>
+    <div class="stat"><b style="font-size:24px">여성</b><span>여성 환자가 더 많습니다. 칼슘 대사, 골밀도와의 연관이 거론됩니다.</span></div>
+    <div class="stat"><b style="font-size:24px">골다공증·비타민 D 부족</b><span>이석의 주성분이 탄산칼슘이어서 골감소증, 비타민 D 결핍과의 관련이 보고되었습니다.</span></div>
+    <div class="stat"><b style="font-size:24px">다른 귀 질환</b><span>전정신경염, 메니에르병, 돌발성 난청, 귀 수술 뒤에 생길 수 있습니다.</span></div>
+    <div class="stat"><b style="font-size:24px">오래 누워 지냄</b><span>수술·입원 등으로 한 자세로 오래 누워 있으면 생기기 쉽습니다. 자는 쪽 귀에 잘 생긴다는 보고도 있습니다.</span></div>
+  </div>
+</section>
+
+<!-- 6 -->
+<section id="type" class="reveal">
+  <h2><span class="num">06</span>이석증의 종류</h2>
+  <p class="lead">어느 관에 들어갔는지, 이석이 떠다니는지 붙어 있는지에 따라 나뉘고, 치료법도 달라집니다.</p>
+  <div class="grid">
+    <div class="card" style="margin:0"><span class="tag">가장 흔함</span><h3 style="margin-top:8px">후반고리관</h3><p>후반고리관이 가장 아래쪽에 있어 이석이 가장 잘 들어갑니다. 눕거나 일어날 때, 고개를 젖힐 때 어지럽습니다.</p></div>
+    <div class="card" style="margin:0"><span class="tag">두 번째</span><h3 style="margin-top:8px">수평(외측)반고리관</h3><p>누운 채 좌우로 돌아누울 때 어지럼이 심합니다. 후반고리관형보다 어지럼과 구역이 더 강한 경우가 많습니다.</p></div>
+    <div class="card" style="margin:0"><span class="tag">드묾</span><h3 style="margin-top:8px">전반고리관</h3><p>위쪽에 있어 이석이 들어가기 어렵습니다. 드물기 때문에 중추성 원인과 꼭 구별해야 합니다.</p></div>
+  </div>
+  <h3>떠다니나, 붙어 있나</h3>
+  <div class="card">
+    <svg viewBox="0 0 600 170" width="100%" role="img" aria-label="관결석증은 이석이 관 속에 떠다니고, 팽대부결석증은 감지기에 붙어 있음">
+      <g transform="translate(150,85)">
+        <circle r="60" fill="none" stroke="var(--accent)" stroke-width="22"/><circle r="60" fill="none" stroke="var(--fluid)" stroke-width="13"/>
+        <rect x="-8" y="52" width="16" height="16" rx="3" fill="var(--ink)"/>
+        <g style="animation:spinCr 4s linear infinite;transform-origin:0 0"><circle cx="60" cy="0" r="5" class="cr"/><circle cx="55" cy="-14" r="4" class="cr"/><circle cx="58" cy="12" r="4" class="cr"/></g>
+      </g>
+      <g transform="translate(450,85)">
+        <circle r="60" fill="none" stroke="var(--accent)" stroke-width="22"/><circle r="60" fill="none" stroke="var(--fluid)" stroke-width="13"/>
+        <g style="transform-origin:0 60px;animation:sway 2.4s ease-in-out infinite"><rect x="-8" y="52" width="16" height="16" rx="3" fill="var(--ink)"/><circle cx="-3" cy="54" r="4" class="cr"/><circle cx="4" cy="57" r="4" class="cr"/></g>
+      </g>
+    </svg>
+    <style>@keyframes spinCr{to{transform:rotate(360deg)}}@keyframes sway{0%,100%{transform:rotate(-14deg)}50%{transform:rotate(14deg)}}</style>
+    <div class="grid">
+      <div><b>관결석증 (canalithiasis)</b><br>이석이 관 속 액체에 떠다닙니다. 대부분이 이 형태이며, 어지럼은 1분 안에 멎습니다.</div>
+      <div><b>팽대부결석증 (cupulolithiasis)</b><br>이석이 감지기(팽대부릉정)에 붙어 무겁게 만듭니다. 그 자세를 유지하는 동안 어지럼이 오래 지속될 수 있습니다.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 7 -->
+<section id="dx" class="reveal">
+  <h2><span class="num">07</span>진단 — 눈이 말해 줍니다</h2>
+  <p class="lead">이석증 진단의 열쇠는 <b>자세를 바꿨을 때 나타나는 눈 떨림(안진)</b>입니다. 피검사나 MRI가 아니라 진찰로 진단합니다.</p>
+  <h3>딕스-홀파이크 검사 (Dix-Hallpike)</h3>
+  <div class="card">
+    <svg id="dhSvg" viewBox="0 0 600 220" width="100%" role="img" aria-label="딕스-홀파이크 검사 동작 애니메이션: 앉은 자세에서 고개를 45도 돌리고 뒤로 빠르게 눕혀 머리를 침대 아래로 약간 떨굼">
+      <rect x="40" y="150" width="420" height="22" rx="6" fill="var(--surface2)" stroke="var(--line)"/>
+      <g id="dhBody">
+        <g id="dhTorso" style="transform-origin:300px 150px;transition:transform 1.2s ease">
+          <rect x="285" y="60" width="30" height="90" rx="14" fill="var(--accent)"/>
+          <g id="dhHeadG" style="transform-origin:300px 58px;transition:transform 1.2s ease">
+            <circle cx="300" cy="35" r="24" fill="var(--surface)" stroke="var(--ink)" stroke-width="3"/>
+            <circle id="dhNose" cx="318" cy="32" r="4" fill="var(--ink)" style="transition:cx .8s"/>
+          </g>
+        </g>
+        <rect x="300" y="140" width="110" height="20" rx="10" fill="var(--accent)" opacity=".7"/>
+      </g>
+      <text id="dhCap" x="20" y="210" font-size="17" fill="var(--ink)">① 침대에 다리를 펴고 앉습니다</text>
+    </svg>
+    <div class="row"><button class="btn" id="dhPlay" type="button">동작 재생</button></div>
+    <p class="note">고개를 검사할 쪽으로 45° 돌린 뒤 빠르게 뒤로 눕혀 머리를 침대 끝 아래로 약 20° 떨어뜨립니다. 후반고리관 이석증이면 몇 초 뒤 어지럼과 함께 특징적인 눈 떨림이 나타납니다. 반대쪽도 검사합니다.</p>
+  </div>
+  <h3>누운 채 돌리기 검사 (Supine roll test)</h3>
+  <p>바로 누운 상태에서 고개를 좌우로 90° 돌립니다. 수평반고리관 이석증을 찾는 검사입니다. 딕스-홀파이크에서 수평 방향 눈 떨림이 보이거나 아무것도 보이지 않을 때 시행합니다.</p>
+  <h3>눈 떨림 모양 갤러리</h3>
+  <div class="grid" id="nysGrid"></div>
+  <div class="callout good"><b>검사가 더 필요 없는 경우가 많습니다.</b> 미국 이비인후과학회 진료지침(2017)은 진단 기준에 맞는 이석증 환자에게 다른 이상 징후가 없다면 CT·MRI 같은 영상검사나 정밀 전정기능검사를 하지 말라고 권고합니다.</div>
+</section>
+
+<!-- 8 -->
+<section id="tx" class="reveal">
+  <h2><span class="num">08</span>치료 — 돌을 제자리로</h2>
+  <p class="lead">가장 효과적인 치료는 머리를 정해진 순서로 돌려 이석을 다시 난형낭으로 굴려 보내는 <b>이석치환술(이석정복술)</b>입니다.</p>
+  <h3>에플리 이석치환술 따라가 보기 <span class="tag">오른쪽 후반고리관 기준</span></h3>
+  <div class="card">
+    <svg id="epSvg" viewBox="0 0 620 300" width="100%" role="img" aria-label="에플리 이석치환술 단계별 애니메이션: 머리 자세와 반고리관 속 이석 위치">
+      <!-- person top-left -->
+      <g id="epPerson" transform="translate(150,150)">
+        <rect x="-110" y="70" width="230" height="18" rx="6" fill="var(--surface2)" stroke="var(--line)"/>
+        <g id="epFig" style="transition:transform 1.4s ease;transform-origin:0 70px">
+          <rect x="-15" y="-20" width="30" height="90" rx="14" fill="var(--accent)"/>
+          <g id="epHead" style="transition:transform 1.4s ease;transform-origin:0 -22px">
+            <circle cx="0" cy="-46" r="24" fill="var(--surface)" stroke="var(--ink)" stroke-width="3"/>
+            <path id="epFace" d="M-10 -52 l4 0 M6 -52 l4 0 M-6 -38 q6 5 12 0" stroke="var(--ink)" stroke-width="3" fill="none"/>
+          </g>
+        </g>
+      </g>
+      <text x="40" y="285" font-size="15" fill="var(--muted)">자세</text>
+      <!-- canal -->
+      <g transform="translate(470,150)">
+        <g id="epCanal" style="transition:transform 1.4s ease">
+          <circle r="95" fill="none" stroke="var(--accent)" stroke-width="32"/>
+          <circle r="95" fill="none" stroke="var(--fluid)" stroke-width="20"/>
+          <ellipse cx="0" cy="-125" rx="44" ry="26" fill="var(--fluid)" stroke="var(--accent)" stroke-width="4"/>
+          <text x="-24" y="-158" font-size="14" fill="var(--muted)">난형낭</text>
+          <g id="epCr"><circle r="7" class="cr"/><circle cx="9" cy="5" r="5" class="cr"/><circle cx="-7" cy="6" r="5" class="cr"/></g>
+        </g>
+        <text x="-70" y="140" font-size="15" fill="var(--muted)">후반고리관 속 이석 (개념도)</text>
+      </g>
+    </svg>
+    <div id="epStepTxt" class="callout" aria-live="polite" style="min-height:96px"></div>
+    <div class="row">
+      <button class="btn ghost" id="epPrev" type="button">◀ 이전</button>
+      <button class="btn" id="epNext" type="button">다음 ▶</button>
+      <button class="btn ghost" id="epAuto" type="button">자동 재생</button>
+      <span id="epTimer" class="tag" style="font-size:16px"></span>
+    </div>
+    <div id="epDots" class="row" style="margin-top:10px"></div>
+  </div>
+  <div class="callout warn"><b>혼자 따라 하기 전에:</b> 어느 쪽, 어느 관인지에 따라 방향과 방법이 정반대가 됩니다. 잘못된 방향으로 하면 효과가 없거나 다른 관으로 옮겨갈 수 있습니다. 반드시 이비인후과·신경과 전문의에게 진단받고, 집에서 해도 되는지와 방법을 지도받은 뒤에 하세요. 목·허리 질환이 있으면 특히 주의가 필요합니다.</div>
+
+  <h3>종류별 치료법 한눈에</h3>
+  <div class="tablewrap card">
+    <table>
+      <tr><th>종류</th><th>대표 치료</th><th>원리</th></tr>
+      <tr><td>후반고리관</td><td>에플리법, 세몽법</td><td>머리를 단계적으로 돌리거나(에플리) 옆으로 빠르게 넘겨(세몽) 이석을 난형낭으로 보냄</td></tr>
+      <tr><td>수평반고리관 — 향지성</td><td>바비큐 회전법(Lempert), 구포니법</td><td>누운 채 몸을 90°씩 굴리거나, 옆으로 빠르게 눕힌 뒤 고개를 돌림</td></tr>
+      <tr><td>수평반고리관 — 배지성</td><td>구포니법(반대 방향), 머리 흔들기 후 치환</td><td>붙어 있는 이석을 떼어 향지성으로 바꾼 뒤 치환</td></tr>
+      <tr><td>전반고리관</td><td>깊은 머리 떨굼법 (Yacovino) 등</td><td>머리를 깊이 숙였다 젖혀 이석을 이동</td></tr>
+    </table>
+  </div>
+
+  <h3>지침이 말하는 치료 원칙 <span class="tag">미국 이비인후과학회 2017</span></h3>
+  <div class="grid">
+    <div class="stat"><b style="font-size:22px;color:var(--ok)">✔ 이석치환술</b><span>후반고리관 이석증은 이석치환술로 치료하도록 권고</span></div>
+    <div class="stat"><b style="font-size:22px;color:var(--ok)">✔ 자세 제한 불필요</b><span>시술 뒤 "똑바로 앉아서 자기" 같은 자세 제한은 하지 않도록 강하게 권고</span></div>
+    <div class="stat"><b style="font-size:22px;color:var(--ok)">✔ 관찰도 가능</b><span>자연히 좋아지는 경우가 많아 경과 관찰도 선택지</span></div>
+    <div class="stat"><b style="font-size:22px;color:var(--ok)">✔ 전정 재활운동</b><span>혼자 또는 치료사와 함께 하는 균형 재활도 선택지</span></div>
+    <div class="stat"><b style="font-size:22px;color:var(--danger)">✘ 어지럼약 상시 복용</b><span>항히스타민제·신경안정제 등 전정억제제를 일상적으로 쓰지 않도록 권고 (심한 구역에 단기 사용은 가능)</span></div>
+    <div class="stat"><b style="font-size:22px;color:var(--accent)">↻ 1개월 내 재평가</b><span>치료·관찰 뒤 한 달 안에 다시 확인하고, 계속되면 다른 원인 평가</span></div>
+  </div>
+  <p class="note">아주 드물게 치환술을 여러 번 해도 낫지 않는 난치성 후반고리관 이석증에는 후반고리관 폐쇄술 같은 수술이 고려되기도 합니다.</p>
+</section>
+
+<!-- 9 -->
+<section id="danger" class="reveal">
+  <h2><span class="num">09</span>이석증이 아닐 수도 있다 — 위험 신호</h2>
+  <p class="lead">어지럼의 대부분은 귀 문제지만, 일부는 뇌졸중처럼 급한 병입니다. 해당하는 항목을 골라 보세요.</p>
+  <div class="card check" id="flagBox">
+    <label><input type="checkbox" data-f="red"> 말이 어눌하거나, 얼굴·팔다리 한쪽에 힘이 빠지거나 감각이 이상하다</label>
+    <label><input type="checkbox" data-f="red"> 물체가 둘로 보인다, 시야 일부가 안 보인다</label>
+    <label><input type="checkbox" data-f="red"> 혼자 서거나 걷지 못할 만큼 비틀거린다</label>
+    <label><input type="checkbox" data-f="red"> 갑자기 생긴 아주 심한 두통, 목 통증이 함께 있다</label>
+    <label><input type="checkbox" data-f="red"> 자세와 상관없이 어지럼이 몇 시간 이상 계속된다</label>
+    <label><input type="checkbox" data-f="red"> 한쪽 귀가 갑자기 안 들리거나 심하게 먹먹하다</label>
+    <label><input type="checkbox" data-f="red"> 의식이 흐려졌거나 쓰러졌다, 가슴 통증·두근거림이 있다</label>
+    <label><input type="checkbox" data-f="b"> 눕거나 일어날 때, 돌아누울 때 어지럽다</label>
+    <label><input type="checkbox" data-f="b"> 한 번의 어지럼은 1분 안에 멎는다</label>
+    <label><input type="checkbox" data-f="b"> 가만히 있으면 괜찮다</label>
+    <div id="flagRes" class="result" style="background:var(--surface2)">항목을 선택하면 안내가 여기에 표시됩니다.</div>
+    <p class="note" style="margin-bottom:0">이 체크는 참고용이며 진단이 아닙니다. 판단이 어렵거나 불안하면 진료를 받으세요.</p>
+  </div>
+  <h3>헷갈리기 쉬운 다른 어지럼 질환</h3>
+  <div class="tablewrap card">
+    <table>
+      <tr><th>질환</th><th>특징</th></tr>
+      <tr><td>전정신경염</td><td>감기 뒤 등에 갑자기 시작해 며칠 계속되는 심한 회전성 어지럼. 청력은 정상.</td></tr>
+      <tr><td>메니에르병</td><td>20분~수 시간의 어지럼 발작 + 한쪽 귀 먹먹함·귀울림·청력 변동.</td></tr>
+      <tr><td>전정편두통</td><td>두통 병력, 빛·소리 과민. 수분~수일. 자세에 따라 유발되기도 해 이석증과 헷갈림.</td></tr>
+      <tr><td>기립성 저혈압</td><td>일어설 때만 핑 도는 느낌(회전보다 아찔함). 누울 때나 돌아누울 때는 괜찮음.</td></tr>
+      <tr><td>중추성 체위성 어지럼</td><td>소뇌 등 뇌 병변. 안진 모양이 전형적이지 않고, 치환술에 반응하지 않으며 다른 신경 증상이 동반될 수 있음.</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- 10 -->
+<section id="prevent" class="reveal">
+  <h2><span class="num">10</span>재발과 예방</h2>
+  <p class="lead">이석증은 잘 낫지만, 잘 재발합니다. 치료 후 1년에 약 15% 안팎, 장기적으로는 절반 가까이 다시 겪는다는 보고가 있습니다.</p>
+  <h3>비타민 D·칼슘 보충 연구 <span class="tag">Neurology, 2020 · 국내 다기관 무작위 임상시험</span></h3>
+  <div class="card">
+    <svg viewBox="0 0 600 260" width="100%" role="img" aria-label="재발률 비교 막대: 관찰군 46.7%, 비타민 D 보충군 37.8%">
+      <line x1="60" y1="210" x2="560" y2="210" stroke="var(--line)" stroke-width="2"/>
+      <rect class="vbar" x="140" y="47" width="110" height="163" rx="8" fill="var(--muted)"/>
+      <rect class="vbar" style="animation-delay:.3s" x="360" y="78" width="110" height="132" rx="8" fill="var(--accent)"/>
+      <text x="160" y="36" font-size="22" font-weight="700" fill="var(--ink)">46.7%</text>
+      <text x="380" y="67" font-size="22" font-weight="700" fill="var(--ink)">37.8%</text>
+      <text x="155" y="238" font-size="17" fill="var(--ink)">관찰만 함</text>
+      <text x="355" y="238" font-size="17" fill="var(--ink)">비타민 D+칼슘</text>
+    </svg>
+    <p>1년 동안의 재발 비율입니다. 혈중 비타민 D가 낮은 환자에게 비타민 D 400IU와 탄산칼슘 500mg을 하루 두 번, 1년간 복용하게 했더니 재발이 줄었고, 특히 비타민 D가 20ng/mL 미만으로 낮았던 사람에게 효과가 컸습니다.</p>
+    <p class="note">모든 환자에게 보충제를 권하는 연구가 아닙니다. 혈액검사로 결핍을 확인하고, 신장결석·고칼슘혈증 등은 의사와 상의해 결정하세요.</p>
+  </div>
+  <h3>생활 속 예방과 안전</h3>
+  <div class="grid">
+    <div class="stat"><b style="font-size:22px">🦴 뼈 건강</b><span>골다공증 검사와 관리, 비타민 D 결핍 확인</span></div>
+    <div class="stat"><b style="font-size:22px">🚶 꾸준한 운동</b><span>규칙적 운동은 혈액순환과 골밀도에 도움이 되고, 균형 감각 유지에도 좋습니다</span></div>
+    <div class="stat"><b style="font-size:22px">🛏 천천히 일어나기</b><span>재발 경험이 있다면 기상 시 잠시 앉았다 일어나기, 급히 고개 젖히기 줄이기</span></div>
+    <div class="stat"><b style="font-size:22px">🛡 머리 보호</b><span>넘어지거나 부딪히지 않도록. 외상은 중요한 원인입니다</span></div>
+    <div class="stat"><b style="font-size:22px">⚠ 낙상 주의</b><span>특히 고령자는 어지럼 중 넘어져 골절될 수 있습니다. 밤에 화장실 갈 때 조명, 손잡이</span></div>
+    <div class="stat"><b style="font-size:22px">📝 증상 기록</b><span>언제, 어떤 자세에서, 몇 초 동안 — 다음 진료 때 진단에 큰 도움</span></div>
+  </div>
+  <p class="note">"고개를 젖히지 말라", "한쪽으로만 자라" 같은 생활 제한은 재발 예방 효과가 확실히 증명되지는 않았습니다. 불편하지 않은 범위에서 일상을 유지하는 것이 좋습니다.</p>
+</section>
+
+<!-- 11 -->
+<section id="faq" class="reveal">
+  <h2><span class="num">11</span>자주 묻는 질문</h2>
+  <details><summary>귀에 돌이 있다니, 돌이 커지거나 위험해지나요?</summary><p>이석은 원래 누구에게나 있는 정상 구조물입니다. 아주 작은 결정이고, 제자리에서 벗어났을 뿐입니다. 관 속에 들어간 이석은 시간이 지나면 녹거나 흡수되기도 해서, 치료하지 않아도 저절로 좋아지는 경우가 많습니다.</p></details>
+  <details><summary>병원에 가면 무엇을 하나요? 오래 걸리나요?</summary><p>문진과 자세 변화 검사(딕스-홀파이크, 누운 채 돌리기)로 진단하고, 이석증이 확인되면 그 자리에서 이석치환술을 하는 경우가 많습니다. 한두 번의 치료로 좋아지는 사람이 대부분이며, 효과가 부족하면 몇 차례 반복합니다.</p></details>
+  <details><summary>치료 후 계속 어질어질해요. 실패한 건가요?</summary><p>치환에 성공해도 며칠~몇 주간 붕 뜬 느낌이 남을 수 있습니다(잔여 어지럼). 자세를 바꿀 때의 빙글빙글 도는 어지럼이 다시 생기면 재진료를 받으세요. 지침은 한 달 안에 재평가할 것을 권합니다.</p></details>
+  <details><summary>시술 후 똑바로 앉아서 자야 하나요?</summary><p>과거에는 그렇게 안내하기도 했지만, 현재 미국 진료지침은 후반고리관 이석증 치환술 뒤 자세 제한을 하지 않도록 강하게 권고합니다. 담당 의사가 따로 안내하면 그에 따르세요.</p></details>
+  <details><summary>어지럼약을 먹으면 낫나요?</summary><p>약은 이석을 제자리로 보내지 못합니다. 심한 메스꺼움·구토가 있을 때 짧게 쓰는 보조 수단이며, 오래 먹으면 뇌의 적응을 늦추고 졸림·낙상 위험을 높일 수 있습니다.</p></details>
+  <details><summary>운전해도 되나요?</summary><p>어지럼 발작이 있는 동안에는 고개를 돌리거나 젖힐 때 갑자기 어지러울 수 있으므로 운전을 피하는 것이 안전합니다. 치료로 증상이 없어진 뒤 다시 시작하세요.</p></details>
+  <details><summary>아이도 걸리나요?</summary><p>드뭅니다. 어린이의 반복 어지럼은 소아 양성 돌발성 어지럼(편두통 관련) 등 다른 원인이 더 흔하므로 소아과·이비인후과 진료가 필요합니다.</p></details>
+  <details><summary>어느 과로 가야 하나요?</summary><p>이비인후과(특히 어지럼 클리닉)나 신경과에서 진료합니다. 위험 신호가 하나라도 있으면 지체 없이 응급실로 가세요.</p></details>
+</section>
+
+</main>
+
+<footer><div class="wrap">
+  <p><b>알림</b> — 이 페이지는 일반적인 건강 정보를 쉽게 정리한 것이며 의료인의 진단과 치료를 대신하지 않습니다. 그림과 시뮬레이션은 원리를 보여 주는 단순화된 모형입니다.</p>
+  <p><b>참고 자료</b></p>
+  <ol>
+    <li>Bhattacharyya N, et al. Clinical Practice Guideline: Benign Paroxysmal Positional Vertigo (Update). Otolaryngol Head Neck Surg. 2017. <a href="https://pubmed.ncbi.nlm.nih.gov/28248609/">PubMed</a> · <a href="https://www.entnet.org/content/bppv-experts-update-best-practices-diagnosis-and-treatment">AAO-HNS 요약</a></li>
+    <li>Jeong SH, et al. Prevention of benign paroxysmal positional vertigo with vitamin D supplementation: A randomized trial. Neurology. 2020. <a href="https://pubmed.ncbi.nlm.nih.gov/32759193/">PubMed</a> · <a href="https://www.neurologylive.com/clinical-focus/vitamin-d-and-calcium-supplementation-reduces-recurrences-of-vertigo">NeurologyLive 요약</a></li>
+    <li>국민건강보험 일산병원 이석증 진료 현황 분석 (데일리팜 보도). <a href="https://m.dailypharm.com/user/news/67854">기사</a></li>
+    <li>"1년 내 30% 재발하는 이 병" 이석증 관련 보도 (대한평형의학회 다기관 연구 인용), 2026.2. <a href="https://v.daum.net/v/20260211190147480">기사</a></li>
+    <li>국민건강보험공단 일산병원 이석증 보도자료 소개 (시대). <a href="https://www.sidae.com/article/2014021417228020307">기사</a></li>
+  </ol>
+  <p>정리: 2026년 10월</p>
+</div></footer>
+
+<script>
+(function(){
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const NS='http://www.w3.org/2000/svg';
+const $=s=>document.querySelector(s);
+function el(tag,attrs,parent){const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);if(parent)parent.appendChild(e);return e;}
+
+/* theme toggle */
+$('#themeBtn').onclick=()=>{
+  const r=document.documentElement;const dark=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+  r.dataset.theme=dark?'light':'dark';try{localStorage.setItem('bppvTheme',r.dataset.theme)}catch(e){}
+};
+try{const t=localStorage.getItem('bppvTheme');if(t)document.documentElement.dataset.theme=t}catch(e){}
+
+/* reveal + toc highlight */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(s=>io.observe(s));
+const links=[...document.querySelectorAll('nav.toc a')];
+const io2=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id));const on=links.find(a=>a.classList.contains('on'));if(on)on.scrollIntoView({block:'nearest',inline:'center',behavior:'smooth'});}}),{rootMargin:'-45% 0px -50% 0px'});
+document.querySelectorAll('main section').forEach(s=>io2.observe(s));
+
+/* hero crystals: drift around bottom canal */
+const hc=$('#heroCrystals');const heroCr=[];
+for(let i=0;i<9;i++){heroCr.push({c:el('circle',{r:3+Math.random()*3,class:'cr'},hc),p:Math.random()*Math.PI*2,s:.004+Math.random()*.006});}
+function heroLoop(){heroCr.forEach(o=>{o.p+=o.s;const a=Math.PI*0.15+ (Math.sin(o.p)*0.5+0.5)*Math.PI*0.7;o.c.setAttribute('cx',265+Math.cos(a)*38);o.c.setAttribute('cy',230+Math.sin(a)*42);});if(!reduce)requestAnimationFrame(heroLoop);}
+heroLoop();
+
+/* ear explorer */
+const info={
+ utr:'<b>난형낭</b> — 머리가 기울어지거나 앞뒤로 움직이는 것을 느끼는 주머니입니다. 바닥의 막 위에 이석이 얹혀 있어, 머리가 기울면 이석의 무게가 털 세포를 눌러 방향을 알려 줍니다.',
+ oto:'<b>이석 (otoconia)</b> — 탄산칼슘으로 된 아주 작은 결정입니다. 원래 난형낭 막 위에 붙어 있어야 하는데, 떨어져 나와 반고리관으로 들어가면 이석증이 됩니다.',
+ ant:'<b>전반고리관</b> — 고개를 끄덕이는 방향의 회전을 느낍니다. 가장 위쪽에 있어 이석이 잘 들어가지 않습니다.',
+ lat:'<b>수평(외측)반고리관</b> — 고개를 좌우로 도리도리하는 회전을 느낍니다. 이석증의 두 번째로 흔한 자리입니다.',
+ post:'<b>후반고리관</b> — 가장 아래쪽에 있어서, 누워 있을 때 떨어진 이석이 가장 쉽게 굴러 들어가는 곳입니다. 이석증의 대부분이 여기서 생깁니다.',
+ amp:'<b>팽대부와 팽대부릉정</b> — 반고리관 끝의 부푼 부분에 젤리 같은 감지기(팽대부릉정)가 있습니다. 관 속 액체가 흐르면 이 감지기가 휘면서 "회전 중"이라는 신호를 만듭니다.',
+ nerve:'<b>전정신경</b> — 균형 기관의 신호를 뇌로 전달합니다. 뇌는 이 신호와 눈, 몸의 감각을 합쳐 균형을 잡습니다.'
+};
+document.querySelectorAll('#earSvg .part').forEach(g=>g.addEventListener('click',e=>{e.stopPropagation();$('#earInfo').innerHTML=info[g.dataset.k];}));
+const ol=$('#otoLayer');let otos=[];
+function placeOtos(){ol.innerHTML='';otos=[];for(let i=0;i<14;i++){const x=252+i*7.2,y=207-(i%3)*4;otos.push({c:el('circle',{cx:x,cy:y,r:4,class:'cr'},ol),x,y});}}
+placeOtos();
+const postP=$('#postPath');
+$('#dropBtn').onclick=()=>{
+  const L=postP.getTotalLength();const movers=otos.slice(0,5);const t0=performance.now();
+  $('#earInfo').innerHTML='<b>이석이 떨어져 나갑니다.</b> 떨어진 조각들이 가장 낮은 곳에 있는 후반고리관으로 굴러 들어갑니다. 이제 머리를 움직일 때마다 이 조각들이 관 속을 굴러다니며 거짓 회전 신호를 만듭니다.';
+  function step(t){const k=Math.min(1,(t-t0)/2600);movers.forEach((m,i)=>{const kk=Math.max(0,Math.min(1,k*1.3-i*0.06));
+    let x,y;if(kk<0.25){const a=kk/0.25;x=m.x+(275-m.x)*a;y=m.y+(262-m.y)*a;}else{const pt=postP.getPointAtLength(L*(0.05+(kk-0.25)/0.75*0.42)+i*4);x=pt.x;y=pt.y;}
+    m.c.setAttribute('cx',x);m.c.setAttribute('cy',y);});if(k<1&&!reduce)requestAnimationFrame(step);else if(reduce){movers.forEach((m,i)=>{const pt=postP.getPointAtLength(L*0.47+i*4);m.c.setAttribute('cx',pt.x);m.c.setAttribute('cy',pt.y);});}}
+  requestAnimationFrame(step);
+};
+$('#resetEar').onclick=()=>{placeOtos();$('#earInfo').innerHTML='<b>난형낭</b>을 눌러 보세요. 각 부위의 역할이 여기에 나타납니다.';};
+
+/* tilt simulator */
+const simCrG=$('#simCr');const sc=[];for(let i=0;i<5;i++)sc.push(el('circle',{r:i?5:7,class:'cr'},simCrG));
+let crAng=90,crVel=0,cupula=0,vert=0,latency=0;const R=100;
+// canal ring: angle in canal frame (deg, 0=right, 90=down). Utricle opening at -90 (top), ampulla/cupula at 210 (=-150).
+// gravity in canal frame = 90 - headTilt*k (head pitched back rotates canal)
+const tilt=$('#tilt');let tiltDeg=0;
+function names(d){return d<15?'바로 앉음':d<60?'뒤로 기대는 중':d<100?'누움':'머리를 침대 아래로 떨굼';}
+tilt.oninput=()=>{tiltDeg=+tilt.value;$('#tiltVal').textContent=tiltDeg+'°';$('#tiltName').textContent=names(tiltDeg);};
+const eyeL=$('#eyeL'),eyeR=$('#eyeR');let nysPhase=0;
+let last=performance.now();
+function sim(t){const dt=Math.min(.05,(t-last)/1000);last=t;
+  $('#simHead').style.transform=`rotate(${-tiltDeg}deg)`;
+  const canalRot=-tiltDeg*0.9; $('#canalRot').setAttribute('transform',`rotate(${canalRot})`);
+  const has=$('#hasCr').checked; simCrG.style.display=has?'':'none';
+  // target: lowest point of ring in world -> canal frame angle = 90 - canalRot
+  let target=90-canalRot; // deg
+  // restrict travel: crystals can't pass the utricle opening (-90 +-25) going back
+  let diff=((target-crAng+540)%360)-180;
+  // spring toward target with drag; simple: move at limited speed with latency
+  if(Math.abs(diff)>2){latency+=dt;}else latency=0;
+  const ready=latency>0.9; // ~1s 잠복기
+  const acc=ready?diff*6:0; crVel+=acc*dt; crVel*=Math.pow(0.12,dt); crAng+=crVel*dt;
+  const speed=has?Math.abs(crVel):0;
+  cupula+= (Math.min(1,speed/60)*(crVel>0?1:-1) - cupula)*Math.min(1,dt*4);
+  if(!has)cupula*=0.9;
+  vert+= (Math.min(1,speed/45)-vert)*Math.min(1,dt*(speed>vert*45?3:0.8));
+  $('#cupula').style.transform=`rotate(${cupula*40}deg)`;
+  sc.forEach((c,i)=>{const a=(crAng+(i-2)*4)*Math.PI/180;const r=R+(i%2?4:-4);c.setAttribute('cx',Math.cos(a)*r);c.setAttribute('cy',Math.sin(a)*r);});
+  $('#vmeter').setAttribute('width',Math.round(180*vert));
+  nysPhase+=dt*(1+vert*1.5);const ph=nysPhase%1; const saw=ph<.85?ph/.85:(1-(ph-.85)/.15);
+  const amp=vert; const tr=`rotate(${-saw*18*amp}) translate(0,${saw*6*amp})`;
+  eyeL.setAttribute('transform',tr);eyeR.setAttribute('transform',tr);
+  const msg=$('#simMsg');
+  if(!has) msg.innerHTML='이석이 없으면 머리를 움직여도 액체가 금방 따라와 멈추므로 거짓 신호가 생기지 않습니다. <b>어지럽지 않습니다.</b>';
+  else if(vert>0.25) msg.innerHTML='<b>빙글빙글!</b> 굴러가는 이석이 액체를 끌고 가 감지기를 휘게 합니다. 뇌는 "돌고 있다"고 착각하고, 눈이 위쪽으로 튀며 돌아가는 떨림(회선성 상향 안진)이 생깁니다.';
+  else if(latency>0&&!ready) msg.innerHTML='머리를 움직였습니다… 이석이 움직이기 시작하기까지 <b>잠깐의 지연</b>이 있습니다.';
+  else if(tiltDeg>60) msg.innerHTML='이석이 새 자리에 멈췄습니다. 액체 흐름이 멎자 감지기가 제자리로 돌아오고 <b>어지럼이 가라앉습니다.</b> 이제 다시 앉아 보세요 — 반대 방향으로 또 어지러울 수 있습니다.';
+  else msg.innerHTML='앉아 있을 때는 이석이 관의 가장 낮은 곳에 가만히 있습니다. 어지럽지 않습니다.';
+  requestAnimationFrame(sim);}
+requestAnimationFrame(sim);
+
+/* triggers */
+const trig=[['🛏','아침에 일어날 때','누워 있다 상체를 일으키는 순간'],['🔄','돌아누울 때','잠자리에서 옆으로 몸을 돌릴 때'],['⬆','위를 올려다볼 때','높은 선반의 물건을 꺼낼 때'],['💇','고개를 젖힐 때','미용실 샴푸, 치과 의자, 안약 넣기'],['⬇','고개를 숙일 때','신발끈 묶기, 바닥의 물건 줍기']];
+trig.forEach(([i,a,b],n)=>{const d=document.createElement('div');d.className='stat';d.innerHTML=`<b style="font-size:40px;display:inline-block;animation:${reduce?'none':'bob 2.4s ease-in-out '+(n*.3)+'s infinite'}">${i}</b><b style="font-size:21px;color:var(--ink)">${a}</b><span>${b}</span>`;$('#trig').appendChild(d);});
+const st=document.createElement('style');st.textContent='@keyframes bob{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-6px) rotate(-8deg)}}';document.head.appendChild(st);
+
+/* nystagmus gallery */
+const nys=[['후반고리관','회선성 + 위로 튐','n-tor','n-up','딕스-홀파이크에서 아래쪽 귀 방향으로 돌며 위로 튀는 떨림. 수 초 늦게 시작해 1분 안에 멎음'],
+ ['수평반고리관 · 향지성','땅 쪽으로 튐','n-l',null,'돌아누운 쪽(땅 쪽)으로 튀는 수평 떨림. 이석이 떠다니는 형태가 많음'],
+ ['수평반고리관 · 배지성','하늘 쪽으로 튐','n-r',null,'반대(하늘 쪽)로 튀는 수평 떨림. 이석이 감지기에 붙었거나 관의 다른 쪽에 있음'],
+ ['중추성 의심','순수 아래로 튐 등','n-up',null,'자세 검사에서 방향이 이상하거나 오래 계속되면 뇌 원인을 의심']];
+nys.forEach(([t,s,a1,a2,d],i)=>{const c=document.createElement('div');c.className='stat';
+ c.innerHTML=`<svg viewBox="0 0 140 60" width="140" height="60" aria-hidden="true">${[35,105].map(x=>`<g transform="translate(${x},30)"><ellipse rx="28" ry="18" class="eye-white"/><g class="${a1}" ${i===3?'style="animation-direction:reverse"':''}><g class="${a2||''}"><circle r="11" class="iris"/><circle r="5" class="pupil"/><rect x="-1.5" y="-11" width="3" height="6" fill="#fff"/></g></g></g>`).join('')}</svg><b style="font-size:20px;color:var(--ink)">${t}</b><span><b>${s}</b> — ${d}</span>`;
+ $('#nysGrid').appendChild(c);});
+
+/* Dix-Hallpike animation */
+const dhSteps=[['① 침대에 다리를 펴고 앉습니다',0,0,318],['② 고개를 검사할 쪽으로 45° 돌립니다',0,0,306],['③ 빠르게 뒤로 눕혀 머리를 침대 끝 아래로 약 20° 떨굽니다',-100,-20,306],['④ 30초 이상 눈 떨림과 어지럼을 관찰합니다',-100,-20,306],['⑤ 천천히 일어나 앉습니다',0,0,318]];
+let dhBusy=false;
+$('#dhPlay').onclick=()=>{if(dhBusy)return;dhBusy=true;let i=0;
+ (function go(){const [cap,tor,hd,nx]=dhSteps[i];$('#dhCap').textContent=cap;$('#dhTorso').style.transform=`rotate(${tor}deg)`;$('#dhHeadG').style.transform=`rotate(${hd}deg)`;$('#dhNose').setAttribute('cx',nx);
+  i++;if(i<dhSteps.length)setTimeout(go,reduce?600:2000);else dhBusy=false;})();};
+
+/* Epley */
+// angle for crystal on ring (deg, canal frame; 90=bottom, -90=top/utricle), person torso angle, head yaw, canal display rotation
+const ep=[
+ {t:'준비',d:'침대에 앉아 고개를 <b>오른쪽으로 45°</b> 돌립니다. 이석은 후반고리관의 가장 낮은 곳(감지기 근처)에 모여 있습니다.',cr:130,body:0,head:45,rot:0,hold:0},
+ {t:'1단계 · 뒤로 눕기',d:'고개를 돌린 채로 빠르게 뒤로 눕고, 머리를 침대 끝 아래로 약 20° 떨굽니다. 이석이 감지기에서 멀어지며 굴러가 어지럼이 생길 수 있습니다. <b>어지럼이 멎을 때까지 (약 30초~1분)</b> 기다립니다.',cr:30,body:-100,head:45,rot:-60,hold:30},
+ {t:'2단계 · 고개를 반대로',d:'머리를 젖힌 채로 고개를 <b>왼쪽으로 90°</b> 돌립니다. 이석이 관의 꼭대기 쪽으로 더 이동합니다. 30초~1분 유지합니다.',cr:-20,body:-100,head:-45,rot:-110,hold:30},
+ {t:'3단계 · 옆으로 돌아눕기',d:'몸 전체를 왼쪽으로 돌려 옆으로 눕고, 얼굴이 바닥을 비스듬히 보게 합니다(고개가 다시 90° 더 돌아감). 이석이 공통각을 지나 난형낭 입구에 다다릅니다. 30초~1분 유지합니다.',cr:-70,body:-80,head:-135,rot:-170,hold:30},
+ {t:'4단계 · 일어나 앉기',d:'고개 방향을 유지한 채 천천히 일어나 앉습니다. 이석이 <b>난형낭으로 돌아갔습니다.</b> 앉은 뒤 잠깐 어지러울 수 있으니 바로 일어서지 마세요.',cr:-125,body:0,head:-45,rot:0,hold:0}
+];
+let epI=0,epAuto=null,epTimerI=null;const epCr=$('#epCr');let epCurAng=130;
+function crPos(a){const r=a<-100?125:95; const rad=a*Math.PI/180;return a<-100?[0,-125+Math.sin(performance.now()/400)*2]:[Math.cos(rad)*r,Math.sin(rad)*r];}
+function animCr(to){const from=epCurAng;const t0=performance.now();const D=reduce?1:1400;
+ (function f(t){const k=Math.min(1,(t-t0)/D);const e=k<.5?2*k*k:1-Math.pow(-2*k+2,2)/2;const a=from+(to-from)*e;epCurAng=a;
+  let x,y;if(a<-100){const kk=Math.min(1,(-100-a)/25);x=Math.cos(-100*Math.PI/180)*95*(1-kk);y=Math.sin(-100*Math.PI/180)*95*(1-kk)+(-125)*kk;}else{x=Math.cos(a*Math.PI/180)*95;y=Math.sin(a*Math.PI/180)*95;}
+  epCr.setAttribute('transform',`translate(${x},${y})`);if(k<1)requestAnimationFrame(f);})(performance.now());}
+function epShow(){const s=ep[epI];
+ $('#epStepTxt').innerHTML=`<b>${s.t}</b><br>${s.d}`;
+ $('#epFig').style.transform=`rotate(${s.body}deg)`;
+ $('#epHead').style.transform=`scaleX(${Math.cos(s.head*Math.PI/180)>=0?1:-1}) rotate(${s.head/6}deg)`;
+ $('#epFace').setAttribute('d',Math.abs(s.head)>100?'M-10 -40 l20 0':'M-10 -52 l4 0 M6 -52 l4 0 M-6 -38 q6 5 12 0');
+ $("#epCanal").style.transform="none";
+ animCr(s.cr);
+ $('#epPrev').disabled=epI===0;$('#epNext').disabled=epI===ep.length-1;
+ [...$('#epDots').children].forEach((d,i)=>d.style.background=i===epI?'var(--accent)':'var(--surface2)');
+ clearInterval(epTimerI);const tm=$('#epTimer');
+ if(s.hold){let left=s.hold;tm.textContent=`유지 ${left}초`;epTimerI=setInterval(()=>{left--;tm.textContent=left>0?`유지 ${left}초`:'다음 단계로';if(left<=0)clearInterval(epTimerI);},1000);}else tm.textContent='';
+}
+ep.forEach((s,i)=>{const b=document.createElement('button');b.type='button';b.className='btn ghost';b.style.padding='6px 12px';b.textContent=i===0?'준비':i;b.onclick=()=>{stopAuto();epI=i;epShow();};$('#epDots').appendChild(b);});
+function stopAuto(){clearInterval(epAuto);epAuto=null;$('#epAuto').textContent='자동 재생';}
+$('#epNext').onclick=()=>{stopAuto();if(epI<ep.length-1){epI++;epShow();}};
+$('#epPrev').onclick=()=>{stopAuto();if(epI>0){epI--;epShow();}};
+$('#epAuto').onclick=()=>{if(epAuto){stopAuto();return;}epI=0;epShow();$('#epAuto').textContent='멈춤';
+ epAuto=setInterval(()=>{if(epI<ep.length-1){epI++;epShow();}else stopAuto();},3600);};
+epShow();
+
+/* red flags */
+const box=$('#flagBox');box.addEventListener('change',()=>{
+ const red=box.querySelectorAll('input[data-f=red]:checked').length;const b=box.querySelectorAll('input[data-f=b]:checked').length;const r=$('#flagRes');
+ if(red){r.style.background='var(--danger-soft)';r.innerHTML='🚨 <b>위험 신호가 있습니다.</b> 뇌졸중 등 응급 질환일 수 있습니다. 지체하지 말고 <b>119</b>에 연락하거나 가까운 응급실로 가세요. 증상이 시작된 시각을 기억해 두세요.';}
+ else if(b>=2){r.style.background='var(--ok-soft)';r.innerHTML='이석증의 전형적인 모습과 비슷합니다. <b>이비인후과나 신경과</b>에서 자세 변화 검사를 받아 보세요. 대부분 한두 번의 치료로 좋아집니다. 진료 전까지 낙상에 주의하세요.';}
+ else if(b===1){r.style.background='var(--surface2)';r.innerHTML='일부 특징이 맞습니다. 어지럼의 지속 시간과 유발 자세를 기록해 진료 때 알려 주세요.';}
+ else{r.style.background='var(--surface2)';r.innerHTML='항목을 선택하면 안내가 여기에 표시됩니다.';}
+});
+})();
+</script>
+</body>
+</html>
