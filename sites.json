@@ -68,6 +68,15 @@
       "category": "연구 자료",
       "label": "PHYSICAL AI",
       "order": 3.5
+    },
+    {
+      "id": "bppv-guide",
+      "title": "이석증 완전 가이드",
+      "description": "이석증의 원리, 증상, 진단, 치료, 위험 신호, 재발 예방을 움직이는 그림과 인터랙티브로 쉽게 정리했습니다.",
+      "url": "https://hanminy.github.io/assets/bppv-guide/",
+      "category": "건강",
+      "label": "HEALTH GUIDE",
+      "order": 7
     }
   ],
   "exclude": []
