@@ -77,6 +77,15 @@
       "category": "건강",
       "label": "HEALTH GUIDE",
       "order": 7
+    },
+    {
+      "id": "inner-ear-imu",
+      "title": "귀 속의 IMU",
+      "description": "귀 속 전정기관과 MEMS 가속도계·자이로를 비교하는 Vox 스타일 모션그래픽. 닮은 점, 다른 점, 이석증을 센서 고장으로 풀어 봅니다.",
+      "url": "https://hanminy.github.io/assets/inner-ear-imu/",
+      "category": "건강",
+      "label": "MOTION GRAPHIC",
+      "order": 7.5
     }
   ],
   "exclude": []
