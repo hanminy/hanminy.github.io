@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>귀 속의 IMU</title>
+<meta name="description" content="귀 속 전정기관과 MEMS 가속도계·자이로스코프를 비교하는 Vox 스타일 모션그래픽. 닮은 점, 다른 점, 그리고 이석증을 센서 고장으로 풀어 봅니다.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23ffd60a'/%3E%3Ccircle cx='32' cy='32' r='16' fill='none' stroke='%231b1b1b' stroke-width='6'/%3E%3C/svg%3E">
+<style>
+:root{--bg:#f4eee1;--ink:#1b1b1b;--muted:#5d5a52;--card:#fffaf0;--line:#d8cfbd;--yel:#ffd60a}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#161514;--ink:#f2efe8;--muted:#b3ada1;--card:#22201d;--line:#3a3631}}
+:root[data-theme="dark"]{--bg:#161514;--ink:#f2efe8;--muted:#b3ada1;--card:#22201d;--line:#3a3631}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif;font-size:19px;line-height:1.7;word-break:keep-all}
+.wrap{max-width:1120px;margin:0 auto;padding:16px}
+header h1{font-size:34px;line-height:1.3;margin:8px 0 2px}
+header p{color:var(--muted);margin:0 0 14px}
+.stage{position:relative;border-radius:14px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,.18);background:#f4eee1}
+canvas{display:block;width:100%;aspect-ratio:16/9}
+#bigPlay{position:absolute;inset:0;margin:auto;width:110px;height:110px;border-radius:50%;border:4px solid #1b1b1b;background:var(--yel);color:#1b1b1b;font-size:40px;cursor:pointer;box-shadow:7px 7px 0 rgba(0,0,0,.25)}
+.cap{min-height:3.8em;font-size:22px;font-weight:600;padding:14px 2px 8px}
+.bar{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+button.c{font:inherit;font-size:17px;border:2px solid var(--ink);background:var(--card);color:var(--ink);border-radius:10px;padding:6px 14px;cursor:pointer}
+#prog{flex:1;min-width:160px;height:32px;accent-color:#e4572e}
+.time{font-variant-numeric:tabular-nums;color:var(--muted);font-size:16px}
+.chap{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.chap button{font:inherit;font-size:16px;border:2px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:4px 12px;cursor:pointer}
+.chap button.on{background:var(--yel);color:#1b1b1b;border-color:#1b1b1b}
+.more{margin-top:28px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:17px}
+.more a{color:inherit}
+.stage:fullscreen{display:flex;align-items:center;background:#000}
+.stage:fullscreen canvas{max-height:100vh;width:auto;margin:auto}
+@media (max-width:600px){header h1{font-size:28px}.cap{font-size:18px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>귀 속의 IMU</h1>
+  <p>전정기관 vs MEMS 가속도계·자이로 — 닮은 점, 다른 점, 그리고 이석증</p>
+</header>
+<div class="stage" id="stage">
+  <canvas id="cv" role="img" aria-label="귀 속 전정기관과 MEMS 관성 센서를 비교하는 모션그래픽"></canvas>
+  <button id="bigPlay" type="button" aria-label="재생">▶</button>
+</div>
+<div class="cap" id="cap" aria-live="polite">재생 버튼을 눌러 시작하세요.</div>
+<div class="bar">
+  <button class="c" id="play" type="button">▶ 재생</button>
+  <input type="range" id="prog" min="0" max="1000" value="0" aria-label="재생 위치">
+  <span class="time" id="time">0:00 / 0:00</span>
+  <button class="c" id="fs" type="button">전체화면</button>
+</div>
+<div class="chap" id="chap"></div>
+<div class="more">
+  함께 보기: <a href="../bppv-guide/">이석증 완전 가이드</a><br>
+  그림은 원리를 보여 주는 단순화된 모형이며, 그래프의 시간 축은 보기 좋게 줄였습니다.
+</div>
+</div>
+
+<script>
+(function(){
+const cv=document.getElementById('cv'),ctx=cv.getContext('2d');
+const W=1280,H=720;
+const FAM='-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif';
+const F=(s,w=700)=>`${w} ${s}px ${FAM}`;
+const INK='#1b1b1b',INK2='#4a463f',PAPER='#f4eee1',PAPER2='#fbf7ee',YEL='#ffd60a',RED='#e4572e',TEAL='#2a9d8f',TEAL2='#8fd3c7',BLUE='#3d5a80',ORANGE='#f4a261',CR='#f08a24',BONE='#efe2c8',SKIN='#f2c9a5',FLUID='#a8dadc',GRAY='#9aa5ad';
+const PI=Math.PI;
+const clamp=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const seg=(t,a,b)=>clamp((t-a)/(b-a));
+const eo=x=>1-Math.pow(1-clamp(x),3);
+const eio=x=>{x=clamp(x);return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;};
+const sm=x=>{x=clamp(x);return x*x*(3-2*x);};
+const back=x=>{x=clamp(x);const c=1.7;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2);};
+let BOIL=0;
+function jit(seed,a=1.2){const v=Math.sin(seed*127.1+BOIL*311.7)*43758.5453;return((v-Math.floor(v))*2-1)*a;}
+
+/* ---------- drawing helpers ---------- */
+function rr(x,y,w,h,r){ctx.beginPath();if(ctx.roundRect)ctx.roundRect(x,y,w,h,r);else ctx.rect(x,y,w,h);}
+function card(x,y,w,h,fill,o={}){const r=o.r??10,sh=o.sh??7;ctx.save();ctx.fillStyle='rgba(0,0,0,.17)';rr(x+sh,y+sh,w,h,r);ctx.fill();ctx.fillStyle=fill;rr(x,y,w,h,r);ctx.fill();if(o.stroke!==false){ctx.lineWidth=3;ctx.strokeStyle=INK;ctx.stroke();}ctx.restore();}
+function text(s,x,y,size,o={}){ctx.font=F(size,o.weight||700);ctx.fillStyle=o.color||INK;ctx.textAlign=o.align||'left';ctx.textBaseline='alphabetic';ctx.fillText(s,x,y);}
+function fade(a,fn){if(a<=0)return;ctx.save();ctx.globalAlpha*=clamp(a);fn();ctx.restore();}
+function hl(x,y,w,h,p,color=YEL){if(p<=0)return;ctx.save();ctx.fillStyle=color;const ww=w*clamp(p);ctx.beginPath();ctx.moveTo(x,y+jit(1,2));ctx.lineTo(x+ww,y+jit(2,2));ctx.lineTo(x+ww+jit(3,3),y+h);ctx.lineTo(x+jit(4,2),y+h+jit(5,2));ctx.closePath();ctx.fill();ctx.restore();}
+function hlText(s,x,y,size,p,o={}){ctx.font=F(size,o.weight||800);const w=ctx.measureText(s).width;if(o.align==='center')x-=w/2;hl(x-10,y-size*.8,w+20,size*1.05,p,o.hcol||YEL);fade(clamp(p*3),()=>text(s,x,y,size,{color:o.color,weight:o.weight||800}));}
+function arrow(x1,y1,x2,y2,p=1,o={}){if(p<=0)return;const color=o.color||INK,w=o.w||4,head=o.head||14;const xe=x1+(x2-x1)*p,ye=y1+(y2-y1)*p;ctx.save();ctx.strokeStyle=color;ctx.fillStyle=color;ctx.lineWidth=w;ctx.lineCap='round';const mx=(x1+xe)/2+jit(13,2),my=(y1+ye)/2+jit(14,2);ctx.beginPath();ctx.moveTo(x1,y1);ctx.quadraticCurveTo(mx,my,xe,ye);ctx.stroke();const a=Math.atan2(ye-my,xe-mx);ctx.beginPath();ctx.moveTo(xe+Math.cos(a)*4,ye+Math.sin(a)*4);ctx.lineTo(xe-head*Math.cos(a-.45),ye-head*Math.sin(a-.45));ctx.lineTo(xe-head*Math.cos(a+.45),ye-head*Math.sin(a+.45));ctx.closePath();ctx.fill();ctx.restore();}
+function tag(s,x,y,size,p,o={}){if(p<=0)return;ctx.save();ctx.font=F(size,800);const w=ctx.measureText(s).width+size*1.2,h=size*1.75;const sc=back(p);ctx.translate(x+jit(21,1),y+jit(22,1));ctx.scale(sc,sc);card(-w/2,-h/2,w,h,o.fill||'#fff',{r:8,sh:5});text(s,0,size*.36,size,{color:o.color||INK,align:'center',weight:800});ctx.restore();}
+function stamp(s,x,y,p,color=RED){if(p<=0)return;ctx.save();ctx.translate(x,y);ctx.rotate(-.12);const sc=1+(1-eo(p))*.8;ctx.scale(sc,sc);ctx.globalAlpha*=clamp(p*1.6);ctx.font=F(34,900);const w=ctx.measureText(s).width+40;ctx.strokeStyle=color;ctx.lineWidth=5;ctx.strokeRect(-w/2,-31,w,62);ctx.lineWidth=2;ctx.strokeRect(-w/2+6,-25,w-12,50);text(s,0,12,34,{color,align:'center',weight:900});ctx.restore();}
+function tube(path,o={}){const w=o.w||24;ctx.save();ctx.lineCap='round';ctx.lineJoin='round';ctx.lineWidth=w;ctx.strokeStyle=INK;ctx.stroke(path);ctx.lineWidth=w-9;ctx.strokeStyle=o.fill||BONE;ctx.stroke(path);ctx.restore();}
+function spring(x1,y,x2,n=8,a=12){ctx.beginPath();ctx.moveTo(x1,y);for(let k=1;k<n;k++)ctx.lineTo(x1+(x2-x1)*k/n,y+(k%2?-a:a));ctx.lineTo(x2,y);ctx.stroke();}
+function speed(x,y,w,h,off,alpha=.3){ctx.save();rr(x,y,w,h,10);ctx.clip();ctx.strokeStyle=`rgba(27,27,27,${alpha})`;ctx.lineWidth=3;ctx.lineCap='round';const span=w+200;for(let i=0;i<9;i++){const yy=y+30+i*(h-60)/8,len=40+(i*37)%70;const xx=(((i*197-off)%span)+span)%span+x-100;ctx.beginPath();ctx.moveTo(xx,yy);ctx.lineTo(xx+len,yy);ctx.stroke();}ctx.restore();}
+function graph(x,y,w,h,o){card(x,y,w,h,'#fffaf0',{r:8,sh:5});const t0=o.t0||0,t1=o.t1,ymin=o.ymin,ymax=o.ymax;const X=tt=>x+16+(tt-t0)/(t1-t0)*(w-32),Y=v=>y+h-14-(clamp(v,ymin,ymax)-ymin)/(ymax-ymin)*(h-44);ctx.save();ctx.strokeStyle='#cfc6b3';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(x+12,Y(0));ctx.lineTo(x+w-12,Y(0));ctx.stroke();const te=Math.min(o.tNow,t1);(o.series||[]).forEach(s=>{ctx.save();ctx.strokeStyle=s.color;ctx.lineWidth=s.w||4;ctx.lineJoin='round';if(s.dash)ctx.setLineDash(s.dash);ctx.beginPath();let first=true;const st=(t1-t0)/360;for(let tt=t0;tt<=te+1e-9;tt+=st){const px=X(tt),py=Y(s.f(tt));first?ctx.moveTo(px,py):ctx.lineTo(px,py);first=false;}ctx.stroke();ctx.restore();});ctx.restore();if(o.label)text(o.label,x+18,y+28,18,{color:INK2});let lx=x+w-18;(o.legend||[]).slice().reverse().forEach(l=>{ctx.font=F(16,700);const tw=ctx.measureText(l.name).width;text(l.name,lx,y+27,16,{color:INK2,align:'right'});ctx.save();ctx.strokeStyle=l.color;ctx.lineWidth=4;if(l.dash)ctx.setLineDash(l.dash);ctx.beginPath();ctx.moveTo(lx-tw-34,y+21);ctx.lineTo(lx-tw-8,y+21);ctx.stroke();ctx.restore();lx-=tw+52;});return{X,Y};}
+
+/* characters & icons */
+const HEAD=new Path2D('M -70 -95 C -20 -135 70 -120 90 -60 C 100 -35 98 -20 102 -8 L 122 22 C 126 30 118 34 108 34 L 104 52 C 104 62 98 66 88 66 L 70 66 L 66 100 L -40 100 L -40 70 C -90 50 -115 -40 -70 -95 Z');
+function head(x,y,s,o={}){ctx.save();ctx.translate(x,y);ctx.rotate(o.rot||0);ctx.scale(s,s);ctx.save();ctx.translate(7,7);ctx.fillStyle='rgba(0,0,0,.17)';ctx.fill(HEAD);ctx.restore();ctx.fillStyle=o.fill||SKIN;ctx.fill(HEAD);ctx.lineWidth=4/s*1.3;ctx.strokeStyle=INK;ctx.stroke(HEAD);ctx.fillStyle='#3b2f2a';ctx.beginPath();ctx.moveTo(-70,-95);ctx.bezierCurveTo(-20,-135,70,-120,88,-64);ctx.bezierCurveTo(40,-90,-10,-70,-40,-40);ctx.bezierCurveTo(-60,-20,-80,-10,-88,10);ctx.bezierCurveTo(-104,-30,-95,-70,-70,-95);ctx.fill();ctx.beginPath();ctx.arc(62,-30,6,0,7);ctx.fillStyle=INK;ctx.fill();ctx.beginPath();ctx.ellipse(-5,-5,16,24,0,0,7);ctx.fillStyle=SKIN;ctx.fill();ctx.lineWidth=4/s*1.3;ctx.stroke();ctx.restore();}
+function headTop(x,y,r,rot){ctx.save();ctx.translate(x,y);ctx.rotate(rot);ctx.fillStyle='rgba(0,0,0,.17)';ctx.beginPath();ctx.arc(5,5,r,0,7);ctx.fill();ctx.lineWidth=4;ctx.strokeStyle=INK;ctx.fillStyle=SKIN;ctx.beginPath();ctx.ellipse(-r,0,r*.17,r*.32,0,0,7);ctx.fill();ctx.stroke();ctx.beginPath();ctx.ellipse(r,0,r*.17,r*.32,0,0,7);ctx.fill();ctx.stroke();ctx.beginPath();ctx.moveTo(-r*.24,-r*.9);ctx.lineTo(0,-r*1.28);ctx.lineTo(r*.24,-r*.9);ctx.closePath();ctx.fill();ctx.stroke();ctx.beginPath();ctx.arc(0,0,r,0,7);ctx.fill();ctx.stroke();ctx.fillStyle='#3b2f2a';ctx.beginPath();ctx.arc(0,0,r-2,.05*PI,.95*PI);ctx.closePath();ctx.fill();ctx.restore();}
+function faceFront(x,y,r,o={}){const sh=o.shift||0,pu=o.pupil||0;ctx.save();ctx.translate(x,y);ctx.rotate(o.rot||0);ctx.fillStyle='rgba(0,0,0,.17)';ctx.beginPath();ctx.arc(6,6,r,0,7);ctx.fill();ctx.fillStyle=SKIN;ctx.beginPath();ctx.arc(0,0,r,0,7);ctx.fill();ctx.lineWidth=4;ctx.strokeStyle=INK;ctx.stroke();ctx.save();ctx.beginPath();ctx.arc(0,0,r-2,0,7);ctx.clip();ctx.fillStyle='#3b2f2a';ctx.fillRect(-r,-r,2*r,r*.55);ctx.restore();[-1,1].forEach(sd=>{const ex=sd*r*.36+sh,ey=-r*.08;ctx.fillStyle='#fff';ctx.beginPath();ctx.ellipse(ex,ey,r*.2,r*.14,0,0,7);ctx.fill();ctx.lineWidth=3;ctx.stroke();ctx.fillStyle=INK;ctx.beginPath();ctx.arc(ex+pu,ey-r*.03+(o.pupY||0),r*.08,0,7);ctx.fill();});ctx.beginPath();ctx.moveTo(sh,-r*.02);ctx.lineTo(sh+r*.08,r*.22);ctx.lineTo(sh-r*.04,r*.24);ctx.lineWidth=3;ctx.stroke();ctx.beginPath();ctx.arc(sh,r*.38,r*.2,.15*PI,.85*PI);ctx.stroke();ctx.restore();}
+function chipIcon(x,y,s=1){ctx.save();ctx.translate(x,y);ctx.scale(s,s);ctx.fillStyle='rgba(0,0,0,.17)';ctx.fillRect(-22,-22,52,52);ctx.strokeStyle=INK;ctx.lineWidth=4;for(let k=-1;k<=1;k++){ctx.beginPath();ctx.moveTo(-34,k*12);ctx.lineTo(34,k*12);ctx.stroke();ctx.beginPath();ctx.moveTo(k*12,-34);ctx.lineTo(k*12,34);ctx.stroke();}ctx.fillStyle=INK;ctx.fillRect(-26,-26,52,52);ctx.fillStyle=YEL;ctx.fillRect(-12,-12,24,24);ctx.restore();}
+function eyeIcon(x,y){ctx.save();ctx.translate(x,y);ctx.fillStyle='#fff';ctx.strokeStyle=INK;ctx.lineWidth=4;ctx.beginPath();ctx.moveTo(-34,0);ctx.quadraticCurveTo(0,-34,34,0);ctx.quadraticCurveTo(0,34,-34,0);ctx.fill();ctx.stroke();ctx.fillStyle=BLUE;ctx.beginPath();ctx.arc(0,0,12,0,7);ctx.fill();ctx.fillStyle=INK;ctx.beginPath();ctx.arc(0,0,5,0,7);ctx.fill();ctx.restore();}
+function earIcon(x,y){ctx.save();ctx.translate(x,y);ctx.fillStyle=SKIN;ctx.strokeStyle=INK;ctx.lineWidth=4;ctx.beginPath();ctx.moveTo(-6,30);ctx.bezierCurveTo(-30,24,-28,-34,4,-34);ctx.bezierCurveTo(30,-34,30,0,12,10);ctx.bezierCurveTo(4,16,8,30,-6,30);ctx.fill();ctx.stroke();ctx.beginPath();ctx.arc(2,-6,10,PI*.9,PI*2.2);ctx.stroke();ctx.restore();}
+function jointIcon(x,y){ctx.save();ctx.translate(x,y);ctx.strokeStyle=INK;ctx.lineCap='round';ctx.lineWidth=14;ctx.beginPath();ctx.moveTo(-28,-28);ctx.lineTo(0,0);ctx.lineTo(-6,32);ctx.stroke();ctx.lineWidth=8;ctx.strokeStyle=BONE;ctx.stroke();ctx.fillStyle=RED;ctx.beginPath();ctx.arc(0,0,10,0,7);ctx.fill();ctx.lineWidth=3;ctx.strokeStyle=INK;ctx.stroke();ctx.restore();}
+function camIcon(x,y){ctx.save();ctx.translate(x,y);card(-32,-20,64,42,'#cfd6db',{r:6,sh:4});ctx.fillStyle=INK;ctx.beginPath();ctx.arc(0,1,13,0,7);ctx.fill();ctx.fillStyle=BLUE;ctx.beginPath();ctx.arc(0,1,7,0,7);ctx.fill();ctx.fillStyle=INK;ctx.fillRect(-14,-28,16,8);ctx.restore();}
+function gearIcon(x,y,rot=0){ctx.save();ctx.translate(x,y);ctx.rotate(rot);ctx.fillStyle=GRAY;ctx.strokeStyle=INK;ctx.lineWidth=3;ctx.beginPath();for(let k=0;k<16;k++){const a=k/16*2*PI,r=k%2?22:30;ctx.lineTo(Math.cos(a)*r,Math.sin(a)*r);}ctx.closePath();ctx.fill();ctx.stroke();ctx.fillStyle=PAPER;ctx.beginPath();ctx.arc(0,0,8,0,7);ctx.fill();ctx.stroke();ctx.restore();}
+function brain(x,y,s=1){ctx.save();ctx.translate(x,y);ctx.scale(s,s);const B=[[-40,-10,34],[-10,-30,36],[25,-20,34],[38,12,30],[5,20,34],[-30,18,30]];ctx.fillStyle='rgba(0,0,0,.17)';B.forEach(([a,b,r])=>{ctx.beginPath();ctx.arc(a+6,b+6,r,0,7);ctx.fill();});ctx.fillStyle='#f3b5c0';ctx.strokeStyle=INK;ctx.lineWidth=4;B.forEach(([a,b,r])=>{ctx.beginPath();ctx.arc(a,b,r,0,7);ctx.stroke();});B.forEach(([a,b,r])=>{ctx.beginPath();ctx.arc(a,b,r-2,0,7);ctx.fill();});ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(-40,-6);ctx.bezierCurveTo(-20,-20,-10,10,10,-6);ctx.bezierCurveTo(24,-18,30,10,44,0);ctx.stroke();ctx.beginPath();ctx.moveTo(-20,24);ctx.bezierCurveTo(-6,10,10,34,26,18);ctx.stroke();ctx.restore();}
+const PLANE={body:new Path2D('M -110 0 C -110 -16 -80 -20 -40 -20 L 80 -20 C 110 -20 125 -8 132 0 C 125 8 110 14 80 14 L -90 14 C -105 14 -110 8 -110 0 Z'),tail:new Path2D('M -96 -16 L -122 -64 L -92 -64 L -58 -18 Z'),wing:new Path2D('M -12 6 L 42 6 L -18 50 L -52 50 Z')};
+function plane(x,y,s,rot,ghost){ctx.save();ctx.translate(x,y);ctx.rotate(rot);ctx.scale(s,s);if(ghost){ctx.setLineDash([10,8]);ctx.lineWidth=3;ctx.strokeStyle=RED;['tail','body','wing'].forEach(k=>ctx.stroke(PLANE[k]));}else{ctx.save();ctx.translate(6,6);ctx.fillStyle='rgba(0,0,0,.17)';['tail','body','wing'].forEach(k=>ctx.fill(PLANE[k]));ctx.restore();ctx.lineWidth=3.5;ctx.strokeStyle=INK;ctx.fillStyle=BLUE;ctx.fill(PLANE.tail);ctx.stroke(PLANE.tail);ctx.fillStyle='#fff';ctx.fill(PLANE.body);ctx.stroke(PLANE.body);ctx.fillStyle=BLUE;ctx.fill(PLANE.wing);ctx.stroke(PLANE.wing);ctx.fillStyle=INK;for(let k=0;k<6;k++){ctx.beginPath();ctx.arc(-50+k*22,-6,4,0,7);ctx.fill();}}ctx.restore();}
+
+/* labyrinth */
+function spiralPath(){let s='M -40 55 ';const cx=-150,cy=120;for(let i=0;i<=120;i++){const a=-.2*PI+i/120*PI*4.4;const r=70-i/120*56;s+='L '+(cx+Math.cos(a)*r).toFixed(1)+' '+(cy+Math.sin(a)*r).toFixed(1)+' ';}return new Path2D(s);}
+const LAB={ant:new Path2D('M -35 -30 C -130 -60 -120 -210 -25 -205 C 65 -200 70 -110 5 -42'),post:new Path2D('M 35 -35 C 70 -130 170 -200 225 -135 C 270 -80 190 -25 70 -15'),lat:new Path2D('M 60 15 C 150 5 250 45 225 105 C 200 150 110 120 55 40'),coch:spiralPath()};
+function drawLab(cx,cy,s,o={}){if(s<.01)return;ctx.save();ctx.translate(cx,cy);ctx.scale(s,s);const cf=o.canal||[BONE,BONE,BONE];tube(LAB.coch,{fill:o.coch||BONE,w:26});tube(LAB.ant,{fill:cf[0]});tube(LAB.post,{fill:cf[1]});tube(LAB.lat,{fill:cf[2]});[[-62,-40,0],[45,-60,1],[86,12,2]].forEach(([x,y,i])=>{ctx.beginPath();ctx.arc(x,y,15,0,7);ctx.fillStyle=cf[i];ctx.fill();ctx.lineWidth=4;ctx.strokeStyle=INK;ctx.stroke();});ctx.fillStyle=o.oto||BONE;ctx.lineWidth=4;ctx.strokeStyle=INK;ctx.beginPath();ctx.ellipse(10,0,70,40,0,0,7);ctx.fill();ctx.stroke();ctx.beginPath();ctx.ellipse(-15,58,38,28,0,0,7);ctx.fill();ctx.stroke();for(let i=0;i<9;i++){ctx.fillStyle=CR;ctx.beginPath();ctx.arc(-35+i*11,-6+(i%2)*5,4.5,0,7);ctx.fill();}for(let i=0;i<5;i++){ctx.beginPath();ctx.arc(-30+i*10,58+(i%2)*4,4,0,7);ctx.fill();}ctx.restore();}
+
+/* ---------- precomputed simulations ---------- */
+const DT=.01;const look=(a,t)=>a[Math.max(0,Math.min(a.length-1,Math.round(t/DT)))];
+const bump=(t,a,b)=>t>a&&t<b?Math.sin(PI*(t-a)/(b-a)):0;
+function acc3(t){return bump(t,2.5,5.5)-bump(t,8,11)+(t>12.6&&t<15.6?.75*Math.sin(2*PI*(t-12.6)):0);}
+const P3=[];{let v=0,x=0;for(let t=0;t<=16.1;t+=DT){P3.push(x);v+=acc3(t)*DT;x+=v*DT;}}
+function turn6(t){const K=[[2,3.2,0,1.6],[6,7.2,1.6,0],[9,10.2,0,1.6],[12,13.2,1.6,0]];let th=0;for(const[a,b,f,to]of K)if(t>=a)th=f+(to-f)*sm((t-a)/(b-a));return th;}
+const om6=t=>(turn6(t+.005)-turn6(t-.005))/.01;
+const C6=[];{let u=0,w=0;for(let t=0;t<=16.1;t+=DT){u+=(om6(t)-u)*DT/.08;w+=(u-w)*DT/5;C6.push(u-w);}}
+const om7=t=>sm((t-1)/.8)-sm((t-9)/.4);
+const C7=[],TH7=[];{let l=0,w=0,th=0;for(let t=0;t<=14.1;t+=DT){l+=(om7(t)-l)*DT/.05;w+=(l-w)*DT/2.2;C7.push(l-w);TH7.push(th);th+=om7(t)*4.2*DT;}}
+const gyro7=t=>om7(t)+.06+.025*Math.sin(t*37.1)*Math.sin(t*11.3);
+const err7=t=>.06*t+.03*Math.sin(t*1.7);
+function keys(t,K,init){let v=init;for(const[a,b,f,to]of K)if(t>=a)v=f+(to-f)*eio((t-a)/(b-a));return v;}
+const RHO9=[[4,5,0,-1.43],[9.4,10.2,-1.43,-2.4],[11.2,12,-2.4,-3.3],[12.8,13.6,-3.3,-2*PI]];
+const AL9=[[2,3.2,-PI/2,PI/2],[5.6,7.6,PI/2,3.0],[10.2,11,3.0,3.97],[12,12.8,3.97,3*PI/2]];
+const rho9=t=>keys(t,RHO9,0),al9=t=>keys(t,AL9,-PI/2);
+const d9=(f,t)=>(f(t+.01)-f(t-.01))/.02;
+
+/* ---------- scenes ---------- */
+const SC=[
+{name:'귀 속의 IMU',dur:7,cues:[[0,'고개를 돌릴 때, 우리는 어떻게 "돌았다"는 걸 알까요?'],[2.4,'답은 귀 속 깊은 곳, 손톱보다 작은 센서 묶음에 있습니다.'],[4.4,'스마트폰·드론·로봇에 들어가는 IMU(관성 측정 장치)와 놀랄 만큼 닮았어요.']],
+draw(t){const p=eo(seg(t,0,1.2));head(-200+620*p,390,1.6);const z=eo(seg(t,1.3,2.6));if(z>0){const ex=412,ey=382,cx=900,cy=320,R=235*z;ctx.save();ctx.strokeStyle=INK;ctx.lineWidth=3;ctx.setLineDash([8,8]);ctx.beginPath();ctx.moveTo(ex,ey);ctx.lineTo(cx-R*.75,cy+R*.62);ctx.stroke();ctx.restore();ctx.save();ctx.fillStyle='rgba(0,0,0,.17)';ctx.beginPath();ctx.arc(cx+9,cy+9,R,0,7);ctx.fill();ctx.fillStyle=PAPER2;ctx.beginPath();ctx.arc(cx,cy,R,0,7);ctx.fill();ctx.lineWidth=5;ctx.strokeStyle=INK;ctx.stroke();ctx.clip();drawLab(cx+10,cy+35,.8*z);ctx.restore();ctx.save();ctx.strokeStyle=YEL;ctx.lineWidth=6;ctx.beginPath();ctx.arc(ex,ey,30*z,0,7);ctx.stroke();ctx.restore();}
+ hlText('귀 속의 IMU',70,640,78,eo(seg(t,3,4.1)));fade(seg(t,3.8,4.6),()=>text('가속도계 + 자이로스코프, 수억 년 된 설계',78,692,28,{color:INK2,weight:600}));}},
+
+{name:'귀 속 지도',dur:11,cues:[[0,'귀 안쪽(내이)은 크게 세 부분입니다.'],[1,'달팽이관은 소리를 듣는 기관이에요. 균형과는 관계가 없습니다.'],[4,'균형은 전정기관의 몫. 먼저 난형낭·구형낭, 이석이 얹힌 "이석기관"이 직선 움직임과 중력을 느낍니다.'],[7.2,'그리고 세 개의 반고리관이 회전을 느낍니다. 공학 용어로는 가속도계와 자이로스코프죠.']],
+draw(t){const s=1.35*eo(seg(t,0,.8));const coch=t<1?BONE:t<4?'#f6b8a8':'#ddd6c8';const oto=t>=4?YEL:BONE;const canal=[0,1,2].map(i=>t>=7.2+.5*i?TEAL2:BONE);drawLab(520,430,s,{coch,oto,canal});
+ const xp=seg(t,2,2.6);if(xp>0){ctx.save();ctx.strokeStyle=RED;ctx.lineWidth=12;ctx.lineCap='round';const cx=318,cy=592,r=72;ctx.beginPath();ctx.moveTo(cx-r,cy-r);ctx.lineTo(cx-r+2*r*clamp(xp*2),cy-r+2*r*clamp(xp*2));ctx.stroke();if(xp>.5){ctx.beginPath();ctx.moveTo(cx+r,cy-r);ctx.lineTo(cx+r-2*r*clamp(xp*2-1),cy-r+2*r*clamp(xp*2-1));ctx.stroke();}ctx.restore();}
+ tag('달팽이관 = 소리',180,440,24,seg(t,1.1,1.6));stamp('균형과 무관',130,620,seg(t,2.7,3.1));
+ if(t>=4)fade(seg(t,4,4.5),()=>{text('난형낭',533,400,18,{align:'center'});text('구형낭',500,528,18,{align:'center'});});
+ arrow(890,425,690,430,seg(t,4.5,5.1));tag('이석기관 → 직선 · 중력',1040,425,24,seg(t,4.3,4.8));tag('= 가속도계',1040,495,28,seg(t,5.2,5.7),{fill:YEL});
+ arrow(890,170,800,215,seg(t,8,8.6));tag('반고리관 × 3 → 회전',1040,165,24,seg(t,7.8,8.3));tag('= 자이로스코프',1040,235,28,seg(t,8.6,9.1),{fill:TEAL2});}},
+
+{name:'이석기관 = 가속도계',dur:16,cues:[[0,'이석기관과 MEMS 가속도계는 구조부터 닮았습니다. 둘 다 "무거운 덩어리 + 스프링"이에요.'],[2.5,'앞으로 가속하면, 덩어리는 관성 때문에 뒤로 처집니다.'],[5.5,'일정한 속도에서는 원위치. 가속도계는 속도가 아니라 "가속"을 잽니다.'],[8,'멈출 때는 반대로 쏠리죠.'],[11,'귀는 섬모가 휘는 정도로, 칩은 빗살 전극의 간격(정전용량)으로 읽습니다.'],[12.6,'흔들면 그대로 따라 흔들립니다. 이석이 바로 공학에서 말하는 "증명 질량(proof mass)"인 셈이죠.']],
+draw(t){const a=acc3(t),d=-a*30,off=look(P3,t)*160;card(50,100,560,445,PAPER2);card(670,100,560,445,PAPER2);speed(50,100,560,445,off);speed(670,100,560,445,off);
+ // otolith
+ ctx.save();ctx.fillStyle='#e9b8a0';rr(95,470,470,44,8);ctx.fill();ctx.lineWidth=3;ctx.strokeStyle=INK;ctx.stroke();for(let i=0;i<9;i++){const x=130+i*50;ctx.strokeStyle=INK;ctx.lineWidth=3;[[0,360],[-7,368],[-14,376]].forEach(([dx,yt],k)=>{ctx.beginPath();ctx.moveTo(x+dx,442);ctx.quadraticCurveTo(x+dx,400,x+dx+d*(1-k*.05),yt);ctx.stroke();});ctx.fillStyle='#f7dccb';ctx.beginPath();ctx.ellipse(x-5,457,15,17,0,0,7);ctx.fill();ctx.stroke();}
+ ctx.fillStyle='rgba(168,218,220,.92)';rr(95+d,318,470,46,10);ctx.fill();ctx.stroke();for(let i=0;i<18;i++){ctx.save();ctx.translate(110+i*25.5+d,306-(i%3)*7);ctx.rotate(PI/4+i*.3);ctx.fillStyle=CR;ctx.fillRect(-6,-6,12,12);ctx.lineWidth=1.5;ctx.strokeRect(-6,-6,12,12);ctx.restore();}ctx.restore();
+ text('이석 (탄산칼슘 결정)',330,272,21,{align:'center'});text('젤 막',330+d,348,18,{align:'center',color:INK2});text('섬모 → 신경 신호',330,537,18,{align:'center',color:INK2});
+ // MEMS
+ ctx.save();ctx.fillStyle='#dfe6ea';ctx.fillRect(720,165,460,340);ctx.lineWidth=5;ctx.strokeStyle=INK;ctx.strokeRect(720,165,460,340);ctx.fillStyle=INK;ctx.fillRect(735,315,22,40);ctx.fillRect(1143,315,22,40);const mx=865+d;ctx.lineWidth=3;ctx.strokeStyle=INK;spring(757,335,mx,8,12);spring(mx+170,335,1143,8,12);for(let i=0;i<8;i++){ctx.fillStyle='#555';ctx.fillRect(874+i*21,165,6,60);ctx.fillRect(874+i*21,445,6,60);ctx.fillStyle=GRAY;ctx.fillRect(mx+18+i*21,205,6,48);ctx.strokeRect(mx+18+i*21,205,6,48);ctx.fillRect(mx+18+i*21,417,6,48);ctx.strokeRect(mx+18+i*21,417,6,48);}ctx.fillStyle=GRAY;ctx.fillRect(mx,250,170,170);ctx.strokeRect(mx,250,170,170);ctx.fillStyle='#7d8891';for(let i=0;i<4;i++)for(let j=0;j<4;j++)ctx.fillRect(mx+22+i*36,272+j*36,14,14);ctx.restore();
+ card(mx+30,318,110,34,'#fff',{r:6,sh:3});text('증명 질량',mx+85,342,18,{align:'center'});text('스프링',792,300,17,{align:'center',color:INK2});text('빗살 전극 → 간격 변화 = ΔC',950,537,18,{align:'center',color:INK2});
+ tag('귀 · 이석기관',330,100,22,1,{fill:YEL});tag('칩 · MEMS 가속도계',950,100,22,1);
+ if(Math.abs(a)>.06){const L=a*120;arrow(640-L,578,640+L,578,1,{color:RED,w:6,head:18});text(a>0?'가속':'감속',640,566-0,18,{align:'center',color:RED});}
+ graph(50,598,560,108,{t1:16,ymin:-1.1,ymax:1.1,tNow:t,label:'섬모 신호',series:[{f:tt=>-acc3(tt),color:RED}]});graph(670,598,560,108,{t1:16,ymin:-1.1,ymax:1.1,tNow:t,label:'칩 출력',series:[{f:tt=>-acc3(tt),color:BLUE}]});}},
+
+{name:'같은 약점',dur:12,cues:[[0,'그런데 약점도 똑같습니다.'],[.8,'고개를 뒤로 젖혀도, 앞으로 가속해도 덩어리는 똑같이 뒤로 쏠립니다.'],[3,'센서 입장에선 기울기와 가속을 구분할 방법이 없어요. 중력과 가속은 같은 힘처럼 보이니까요.'],[7.2,'그래서 이륙하며 강하게 가속하는 조종사는, 수평인데도 기수가 들린 것처럼 느낍니다.'],[9.6,'이 착각으로 기수를 내려 사고가 난 사례도 있습니다. 칩도 똑같이 속기 때문에 다른 센서로 보정하죠.']],
+draw(t){if(t<7.2){const p=eio(seg(t,.8,2));card(60,100,520,410,PAPER2);card(700,100,520,410,PAPER2);head(320,300,1.25,{rot:-.5*p});tag('고개를 뒤로 젖힘',320,100,22,1,{fill:YEL});const off=t>.8?60*Math.pow(t-.8,2):0;speed(700,100,520,410,off,.3*p);head(960,290,1.25);ctx.save();ctx.fillStyle=RED;ctx.strokeStyle=INK;ctx.lineWidth=3;rr(880,430,170,16,8);ctx.fill();ctx.stroke();ctx.fillStyle=INK;[905,1025].forEach(x=>{ctx.beginPath();ctx.arc(x,456,11,0,7);ctx.fill();});ctx.restore();arrow(1000,480,1000+120*p,480,p,{color:RED,w:6});tag('앞으로 가속',960,100,22,1);
+  [[130,0],[770,1]].forEach(([x])=>{card(x,540,380,150,'#fffaf0');const dd=-30*p;ctx.save();ctx.fillStyle='#e9b8a0';ctx.fillRect(x+30,640,190,18);ctx.strokeStyle=INK;ctx.lineWidth=3;ctx.strokeRect(x+30,640,190,18);for(let i=0;i<5;i++){ctx.beginPath();ctx.moveTo(x+50+i*38,640);ctx.quadraticCurveTo(x+50+i*38,618,x+50+i*38+dd,600);ctx.stroke();}ctx.fillStyle='rgba(168,218,220,.92)';rr(x+30+dd,580,190,24,6);ctx.fill();ctx.stroke();ctx.fillStyle=CR;for(let i=0;i<9;i++){ctx.beginPath();ctx.arc(x+42+i*21+dd,574,5,0,7);ctx.fill();}const gx=x+300,gy=650;ctx.lineWidth=5;ctx.beginPath();ctx.arc(gx,gy,52,PI,2*PI);ctx.stroke();ctx.strokeStyle=RED;ctx.lineWidth=5;const na=-PI/2-p*.9;ctx.beginPath();ctx.moveTo(gx,gy);ctx.lineTo(gx+Math.cos(na)*44,gy+Math.sin(na)*44);ctx.stroke();ctx.restore();text('칩',x+300,682,16,{align:'center',color:INK2});});
+  const q=seg(t,2.6,3.1);if(q>0){ctx.save();ctx.translate(640,615);ctx.scale(back(q),back(q));card(-48,-44,96,88,YEL,{r:12});text('=',0,26,72,{align:'center',weight:900});ctx.restore();}
+  stamp('구분 불가!',640,265,seg(t,3.6,4));}
+ else{const u=t-7.2;ctx.save();ctx.strokeStyle=INK;ctx.lineWidth=4;ctx.beginPath();ctx.moveTo(40,600);ctx.lineTo(1240,600);ctx.stroke();ctx.setLineDash([30,24]);ctx.lineDashOffset=u*u*60;ctx.lineWidth=6;ctx.strokeStyle='#bdb5a3';ctx.beginPath();ctx.moveTo(40,625);ctx.lineTo(1240,625);ctx.stroke();ctx.restore();const px=230+Math.pow(seg(u,.2,4.6),2)*720;speed(0,380,1280,200,u*u*140,.25);plane(px,545,1.15,0,false);fade(seg(u,1.2,1.8),()=>{plane(px,430,1.15,-.38,true);text('느끼는 자세: 기수가 들렸다',px-110,300,22,{color:RED});});fade(seg(u,1.6,2.2),()=>text('실제: 수평으로 가속 중',px-110,680,22,{}));arrow(px+180,545,px+300,545,seg(u,.3,1),{color:RED,w:6});stamp('조종사 착각',1010,170,seg(u,2.4,2.8));tag('체성중력 착각',1010,250,20,seg(u,3,3.4));}}},
+
+{name:'3축 배치',dur:11,cues:[[0,'이제 회전 쪽. 반고리관 세 개는 서로 거의 직각으로 놓여 있습니다.'],[2,'도리도리(요)는 수평반고리관이 맡고,'],[5,'끄덕임(피치)과 갸우뚱(롤)은 대각선으로 놓인 앞·뒤 반고리관 두 개가 나눠 맡습니다.'],[8,'3축 MEMS 자이로와 같은 배치. 게다가 좌우 귀가 짝을 이뤄 차동(push-pull) 신호를 냅니다.']],
+draw(t){const th=.7+.25*t,ph=.42,cx=450,cy=400,S=170;const P=v=>{const[x,y,z]=v;const x1=x*Math.cos(th)-y*Math.sin(th),y1=x*Math.sin(th)+y*Math.cos(th);return[cx+S*y1,cy-S*(z*Math.cos(ph)-x1*Math.sin(ph))];};
+ const act=t<2?-1:t<5?0:t<8?1:2;const COL=[TEAL,RED,BLUE];const rings=[a=>[Math.cos(a),Math.sin(a),0],a=>[Math.cos(a),0,Math.sin(a)],a=>[0,Math.cos(a),Math.sin(a)]];const axes=[[0,0,1.5],[0,1.5,0],[1.5,0,0]];const AXN=['Z','Y','X'];
+ const g=eo(seg(t,0,1.2));axes.forEach((v,i)=>{const o=P([0,0,0]),e=P(v.map(c=>c*g));arrow(o[0],o[1],e[0],e[1],g>0?1:0,{color:COL[i],w:5});if(g>.9)text(AXN[i],e[0]+12,e[1]-8,24,{color:COL[i]});});
+ rings.forEach((f,i)=>{const on=act===-1||act===i||(act===2&&i===1)||(act===1&&i===2);const strong=act===i||(act>=1&&i>=1);const path=new Path2D();for(let k=0;k<=72;k++){const a=k/72*2*PI*g;const q=P(f(a).map(c=>c*.95));k?path.lineTo(q[0],q[1]):path.moveTo(q[0],q[1]);}ctx.save();ctx.lineCap='round';ctx.lineWidth=strong&&act>=0?24:20;ctx.strokeStyle=INK;ctx.stroke(path);ctx.lineWidth=strong&&act>=0?15:11;ctx.strokeStyle=act===-1||strong?COL[i]:'#d8d0bf';ctx.stroke(path);ctx.restore();});
+ hlText('3축 직교 배치',60,140,40,seg(t,.3,1));
+ const cards=[['도리도리','요(yaw) · 수평반고리관'],['끄덕끄덕','피치(pitch) · 앞+뒤 조합'],['갸우뚱','롤(roll) · 앞+뒤 조합']];
+ cards.forEach(([a,b],i)=>{const y=105+i*190,on=(act===0&&i===0)||(act===1&&i===1)||(act===2&&i===2);const pp=seg(t,.6+i*.25,1.1+i*.25);if(pp<=0)return;ctx.save();ctx.globalAlpha=clamp(pp*2);card(820,y,410,165,on?YEL:'#fffaf0');const w=on?Math.sin(2*PI*1.1*t):0;if(i===0)headTop(910,y+92,40,.5*w);if(i===1)head(905,y+92,.42,{rot:.3*w});if(i===2)faceFront(910,y+85,46,{rot:.35*w});text(a,995,y+72,30,{weight:800});text(b,995,y+110,18,{color:INK2});ctx.restore();});
+ if(t>8){const q=seg(t,8,8.5);tag('좌우 귀 → 3쌍 차동 센서',450,665,22,q,{fill:YEL});}}},
+
+{name:'회전 감지 원리',dur:16,cues:[[0,'하지만 회전을 재는 원리는 다릅니다.'],[2,'귀: 고개가 돌면 관은 같이 돌지만, 속의 림프액은 관성으로 뒤처집니다. 그 흐름이 젤리 막(쿠풀라)을 휘게 해요.'],[6,'칩: 질량을 계속 좌우로 떨게 해 두면, 회전할 때 코리올리 힘이 위아래로 밀어냅니다. 궤적이 기울어지는 게 보이죠.'],[10,'방식은 달라도 결과는 같습니다. 둘 다 "각속도"를 출력해요.'],[12.5,'반고리관은 각가속도를 액체가 물리적으로 적분해 각속도로 바꾸는, 일종의 아날로그 적분기입니다.']],
+draw(t){const th=turn6(t),c=look(C6,t),w=om6(t),R=140;
+ ctx.save();ctx.translate(320,305);ctx.lineWidth=42;ctx.strokeStyle=INK;ctx.beginPath();ctx.arc(0,0,R,0,7);ctx.stroke();ctx.lineWidth=32;ctx.strokeStyle=FLUID;ctx.stroke();for(let k=0;k<12;k++){const a=th+k*PI/6;ctx.strokeStyle=INK;ctx.lineWidth=5;ctx.beginPath();ctx.moveTo(Math.cos(a)*(R+21),Math.sin(a)*(R+21));ctx.lineTo(Math.cos(a)*(R+32),Math.sin(a)*(R+32));ctx.stroke();}
+ const lag=c*.55;ctx.fillStyle='#2f6f7a';for(let k=0;k<16;k++){const a=th-lag+k*2*PI/16+.2;ctx.beginPath();ctx.arc(Math.cos(a)*R,Math.sin(a)*R,4.5,0,7);ctx.fill();}
+ const ca=th-PI/2,ux=Math.cos(ca),uy=Math.sin(ca),tx=-uy,ty=ux,b=-c*26;ctx.lineCap='round';ctx.lineWidth=14;ctx.strokeStyle=INK;ctx.beginPath();ctx.moveTo(ux*(R-16),uy*(R-16));ctx.quadraticCurveTo(ux*R+tx*b,uy*R+ty*b,ux*(R+16),uy*(R+16));ctx.stroke();ctx.lineWidth=8;ctx.strokeStyle='#f1d36b';ctx.stroke();
+ headTop(0,0,52,th);ctx.restore();
+ const lx=320+Math.cos(ca)*(R+62),ly=305+Math.sin(ca)*(R+62);text('쿠풀라',lx,ly+6,18,{align:'center'});
+ if(Math.abs(c)>.25)arrow(320+Math.cos(ca+.9)*R,305+Math.sin(ca+.9)*R,320+Math.cos(ca+.9-Math.sign(c)*.6)*R,305+Math.sin(ca+.9-Math.sign(c)*.6)*R,1,{color:RED,w:4});
+ tag('귀 · 반고리관 (위에서 본 모습)',320,100,20,1,{fill:YEL});
+ // gyro
+ ctx.save();ctx.translate(950,305);ctx.rotate(th);ctx.fillStyle='rgba(0,0,0,.17)';rr(-114,-114,240,240,16);ctx.fill();ctx.fillStyle='#dfe6ea';rr(-120,-120,240,240,16);ctx.fill();ctx.lineWidth=5;ctx.strokeStyle=INK;ctx.stroke();ctx.strokeStyle='#b9c3ca';ctx.lineWidth=2;ctx.strokeRect(-95,-70,190,140);
+ const f=2.2,pos=tt=>{const ph=2*PI*f*tt;return[55*Math.sin(ph),-30*(om6(tt)/2)*Math.cos(ph)];};ctx.strokeStyle=ORANGE;ctx.lineWidth=3;ctx.beginPath();for(let k=0;k<=40;k++){const q=pos(t-k*.011);k?ctx.lineTo(q[0],q[1]):ctx.moveTo(q[0],q[1]);}ctx.stroke();const q=pos(t);ctx.strokeStyle=INK;ctx.lineWidth=2.5;spring(-95,q[1],q[0]-26,6,7);spring(q[0]+26,q[1],95,6,7);ctx.fillStyle=GRAY;rr(q[0]-26,q[1]-26,52,52,6);ctx.fill();ctx.lineWidth=3;ctx.stroke();ctx.restore();
+ tag('칩 · MEMS 진동형 자이로',950,100,20,1);text('구동 진동 ↔',1150,250,18,{color:INK2});text('코리올리 ↕',1150,285,18,{color:RED});
+ graph(60,515,1160,190,{t1:16,ymin:-2.4,ymax:2.4,tNow:t,label:'출력 비교',legend:[{name:'실제 각속도',color:INK,dash:[8,6]},{name:'반고리관',color:TEAL},{name:'MEMS 자이로',color:ORANGE}],series:[{f:om6,color:INK,dash:[8,6],w:3},{f:tt=>look(C6,tt),color:TEAL,w:5},{f:tt=>om6(tt)+.04,color:ORANGE,w:2.5}]});
+ stamp('결과는 같다: 각속도',640,440,seg(t,10,10.4),TEAL);}},
+
+{name:'일정한 회전',dur:14,cues:[[0,'차이가 드러나는 순간: 일정한 속도로 계속 돌 때.'],[2,'처음엔 귀가 회전을 잘 느끼지만, 림프액이 관과 함께 돌기 시작하면 쿠풀라가 제자리로 → 신호가 사라집니다.'],[6,'(실제로는 10~20초쯤 걸립니다. 그래프는 시간을 줄였어요.)'],[9,'그리고 멈추는 순간 — 반대로 도는 느낌! 회전의자에서 내린 뒤의 어지럼이 바로 이것입니다.'],[11.5,'MEMS 자이로는 일정한 회전도 잘 재지만, 작은 바이어스가 적분되며 각도 오차가 쌓입니다. 둘 다 "느린 신호"가 약점, 방식은 정반대예요.']],
+draw(t){const Th=look(TH7,t),w=om7(t),c=look(C7,t);ctx.save();ctx.translate(270,370);ctx.fillStyle='rgba(0,0,0,.17)';ctx.beginPath();ctx.arc(8,8,110,0,7);ctx.fill();ctx.fillStyle='#d9d2c4';ctx.beginPath();ctx.arc(0,0,110,0,7);ctx.fill();ctx.lineWidth=4;ctx.strokeStyle=INK;ctx.stroke();if(w>.3){ctx.strokeStyle=`rgba(27,27,27,${.5*w})`;ctx.lineWidth=5;for(let k=0;k<3;k++){const a=Th+k*2*PI/3;ctx.beginPath();ctx.arc(0,0,135,a,a+.9*w);ctx.stroke();}}ctx.rotate(Th);ctx.fillStyle=BLUE;ctx.beginPath();ctx.ellipse(0,8,70,30,0,0,7);ctx.fill();ctx.stroke();ctx.restore();headTop(270,370,34,Th);
+ const sw=Math.abs(c)>.12;if(sw){ctx.save();ctx.translate(270,150);ctx.globalAlpha=clamp(Math.abs(c));ctx.strokeStyle=c>0?TEAL:RED;ctx.lineWidth=6;ctx.lineCap='round';const dir=Math.sign(c),rot=performance.now()/1000*4*dir;ctx.beginPath();for(let k=0;k<=40;k++){const a=rot+k/40*PI*3*dir,r=6+k*1.1;k?ctx.lineTo(Math.cos(a)*r,Math.sin(a)*r):ctx.moveTo(Math.cos(a)*r,Math.sin(a)*r);}ctx.stroke();ctx.restore();}
+ text(c<-.15?'반대로 도는 느낌!':c>.15?'회전 느낌':'',270,232,22,{align:'center',color:c<0?RED:TEAL});
+ tag('회전의자',270,560,20,1);text(w>.5?'계속 같은 속도로 회전 중':t>9.4?'정지':'',270,610,18,{align:'center',color:INK2});
+ graph(520,100,710,300,{t1:14,ymin:-1.2,ymax:1.3,tNow:t,label:'회전 신호',legend:[{name:'실제',color:INK,dash:[8,6]},{name:'반고리관',color:TEAL},{name:'MEMS',color:ORANGE}],series:[{f:om7,color:INK,dash:[8,6],w:3},{f:gyro7,color:ORANGE,w:2.5},{f:tt=>look(C7,tt),color:TEAL,w:5}]});
+ graph(520,440,710,230,{t1:14,ymin:-.1,ymax:1,tNow:t,label:'MEMS 자이로를 적분한 각도 오차',series:[{f:err7,color:ORANGE,w:5}]});
+ stamp('신호 소실',900,250,seg(t,6.5,6.9)*(t<9?1:0),TEAL);stamp('드리프트',1050,560,seg(t,11.6,12));}},
+
+{name:'센서 퓨전',dur:14,cues:[[0,'그래서 뇌는 센서 하나만 믿지 않습니다.'],[1.5,'눈, 귀, 관절 감각을 합쳐 판단하죠. 로봇이 카메라·IMU·엔코더를 칼만 필터로 합치는 것과 같은 "센서 퓨전"입니다.'],[6,'반고리관 신호는 시선 안정에 바로 쓰입니다. 머리가 돌면 눈은 반대로 — 짐벌처럼 시선을 고정해요 (전정안반사, VOR).'],[11,'멀미는 퓨전 충돌입니다. 눈은 "정지", 귀는 "흔들림"이라고 서로 다르게 보고하니까요.']],
+draw(t){card(50,95,570,320,PAPER2);card(660,95,570,320,PAPER2);tag('사람',335,95,22,1,{fill:YEL});tag('로봇',945,95,22,1);
+ const ys=[175,265,355],pop=i=>back(seg(t,.3+i*.2,.8+i*.2));const IH=[eyeIcon,earIcon,jointIcon],IR=[camIcon,chipIcon,gearIcon],LH=['눈 = 카메라','귀 = IMU','관절 = 엔코더'],LR=['카메라','IMU 칩','관절 엔코더'];
+ ys.forEach((y,i)=>{const p=pop(i);if(p<=0)return;ctx.save();ctx.translate(110,y);ctx.scale(p,p);IH[i](0,0);ctx.restore();ctx.save();ctx.translate(720,y);ctx.scale(p*(i===1?.7:1),p*(i===1?.7:1));if(i===1)chipIcon(0,0,1);else IR[i](0,0,t);ctx.restore();text(LH[i],152,y+7,19);text(LR[i],766,y+7,19);
+  const fl=seg(t,1.6,2.4);if(fl>0){ctx.save();ctx.setLineDash([10,8]);ctx.lineDashOffset=-t*40;ctx.strokeStyle=INK;ctx.lineWidth=3;ctx.globalAlpha=fl;ctx.beginPath();ctx.moveTo(300,y);ctx.lineTo(370,265);ctx.stroke();ctx.beginPath();ctx.moveTo(900,y);ctx.lineTo(935,265);ctx.stroke();ctx.restore();}});
+ const bp=back(seg(t,1.2,1.7));if(bp>0){ctx.save();ctx.translate(420,265);ctx.scale(bp,bp);brain(0,0,.75);ctx.restore();ctx.save();ctx.translate(1015,265);ctx.scale(bp,bp);card(-80,-34,160,68,'#fff');text('칼만 필터',0,9,22,{align:'center'});ctx.restore();}
+ arrow(475,265,515,265,seg(t,2.4,2.8));arrow(1097,265,1130,265,seg(t,2.4,2.8));fade(seg(t,2.6,3),()=>{text('균형',560,258,21,{align:'center'});text('시선 안정',560,284,17,{align:'center',color:INK2});text('자세',1178,258,21,{align:'center'});text('추정',1178,284,17,{align:'center',color:INK2});});
+ const q=seg(t,2.9,3.3);if(q>0){ctx.save();ctx.translate(640,255);ctx.scale(back(q),back(q));card(-26,-30,52,60,YEL,{r:10,sh:4});text('≈',0,18,44,{align:'center',weight:900});ctx.restore();}
+ if(t>11){const m=seg(t,11,11.4);tag('정지!',175,140,18,m,{fill:'#fff'});tag('흔들!',175,228,18,seg(t,11.3,11.7),{fill:'#fff',color:RED});stamp('멀미 = 퓨전 충돌',335,390,seg(t,11.9,12.3));}
+ // VOR
+ const v=seg(t,5.6,6.4);if(v>0){ctx.save();ctx.globalAlpha=v;card(50,440,1180,265,'#fffaf0');const psi=t>6.4?.55*Math.sin(2*PI*.7*(t-6.4)):0;const star=(x,y)=>{ctx.save();ctx.translate(x,y);ctx.fillStyle=YEL;ctx.strokeStyle=INK;ctx.lineWidth=3;ctx.beginPath();for(let k=0;k<10;k++){const a=-PI/2+k*PI/5,r=k%2?9:22;ctx.lineTo(Math.cos(a)*r,Math.sin(a)*r);}ctx.closePath();ctx.fill();ctx.stroke();ctx.restore();};
+  star(300,478);const sh=psi*60;ctx.save();ctx.setLineDash([6,6]);ctx.strokeStyle=RED;ctx.lineWidth=2;[-1,1].forEach(sd=>{ctx.beginPath();ctx.moveTo(300+sd*30+sh-sh*.95,602);ctx.lineTo(300,486);ctx.stroke();});ctx.restore();
+  faceFront(300,620,78,{shift:sh,pupil:-sh*.95,pupY:-3});
+  star(720,478);ctx.save();ctx.translate(720,650);ctx.rotate(psi*.8);ctx.fillStyle=INK;rr(-12,-10,24,60,6);ctx.fill();ctx.strokeStyle=INK;ctx.lineWidth=6;ctx.beginPath();ctx.moveTo(0,-10);ctx.lineTo(0,-50);ctx.stroke();ctx.restore();ctx.save();ctx.translate(720+Math.sin(psi*.8)*50,650-Math.cos(psi*.8)*50-38);camIcon(0,0);ctx.restore();text('짐벌',780,560,18,{color:INK2});
+  text('전정안반사 (VOR)',880,540,30,{weight:800});text('머리가 돌면 눈은 반대로',880,582,21,{});text('반응 지연 약 10ms 이내',880,620,19,{color:INK2});ctx.restore();}}},
+
+{name:'이석증 = 센서 고장',dur:14,cues:[[0,'이제 이석증을 센서 고장으로 보면,'],[1.4,'가속도계의 질량 조각(이석)이 떨어져 나가 자이로 방(반고리관)으로 굴러 들어간 상태입니다.'],[4,'고개를 눕히면 진짜 회전은 거기서 끝나는데,'],[5.6,'조각이 중력으로 굴러가며 림프액을 끌고 가서 → 자이로가 "회전 중"이라는 가짜 신호를 냅니다. 빙글빙글의 정체예요.'],[9.4,'에플리 치환술은 머리를 정해진 순서로 돌려, 조각을 원래 방으로 굴려 보내는 작업입니다.']],
+draw(t){const R=160,cx=400,cy=420,rho=rho9(t),al=al9(t);ctx.save();ctx.translate(cx,cy);ctx.rotate(rho);ctx.lineCap='round';ctx.lineWidth=46;ctx.strokeStyle=INK;ctx.beginPath();ctx.arc(0,0,R,0,7);ctx.stroke();ctx.beginPath();ctx.moveTo(0,-R);ctx.lineTo(0,-R-50);ctx.stroke();ctx.lineWidth=36;ctx.strokeStyle=FLUID;ctx.beginPath();ctx.arc(0,0,R,0,7);ctx.stroke();ctx.beginPath();ctx.moveTo(0,-R);ctx.lineTo(0,-R-52);ctx.stroke();ctx.fillStyle='rgba(0,0,0,.17)';ctx.beginPath();ctx.ellipse(6,-R-82,88,42,0,0,7);ctx.fill();ctx.fillStyle=BONE;ctx.lineWidth=4;ctx.strokeStyle=INK;ctx.beginPath();ctx.ellipse(0,-R-88,88,42,0,0,7);ctx.fill();ctx.stroke();ctx.fillStyle=FLUID;ctx.fillRect(-14,-R-50,28,14);
+ ctx.fillStyle=CR;for(let i=0;i<10;i++){ctx.beginPath();ctx.arc(-58+i*13,-R-92+(i%2)*6,6,0,7);ctx.fill();}
+ let fx,fy;if(t<2){const k=eio(seg(t,1.2,2));fx=0;fy=-R-80+80*k;}else if(t>12.8){const k=eio(seg(t,12.8,13.4));fx=0;fy=-R-80*k;}else{fx=Math.cos(al)*R;fy=Math.sin(al)*R;}
+ const da=d9(al9,t);for(let i=0;i<5;i++){ctx.fillStyle=CR;ctx.strokeStyle=INK;ctx.lineWidth=2;ctx.beginPath();ctx.arc(fx+[0,9,-8,4,-3][i],fy+[0,5,6,-8,-2][i],i?5.5:7.5,0,7);ctx.fill();ctx.stroke();}
+ if(Math.abs(da)>.3&&t>2&&t<12.8){ctx.strokeStyle=RED;ctx.lineWidth=4;for(let k=1;k<=2;k++){const a=al+Math.sign(da)*(.35+k*.28);ctx.beginPath();ctx.arc(0,0,R,a-.12*Math.sign(da),a,da<0);ctx.stroke();}}
+ ctx.restore();
+ tag(t<4?'앉은 자세':t<9.4?'누운 자세':'에플리 치환술',130,140,20,1,{fill:t<9.4?'#fff':TEAL2});if(t<9.4)head(130,230,.42,{rot:-1.4*eio(seg(t,4,5))});else{const st=t<10.2?1:t<12?2:t<12.8?3:4;[1,2,3,4].forEach(k=>{card(70+(k-1)*34,200,28,28,k<=st?YEL:'#fff',{r:6,sh:3});text(String(k),84+(k-1)*34,221,16,{align:'center'});});}
+ text('주머니 = 난형낭 (가속도계 방)',730,462,19,{color:INK2});text('고리 = 반고리관 (자이로 방)',730,494,19,{color:INK2});
+ const out=tt=>d9(rho9,tt)*-1+(tt>5&&tt<12.8?Math.abs(d9(al9,tt))*1.1:0);graph(720,120,510,300,{t1:14,ymin:-.6,ymax:4.8,tNow:t,label:'회전 신호',legend:[{name:'진짜 회전',color:INK,dash:[8,6]},{name:'귀가 보고',color:RED}],series:[{f:tt=>-d9(rho9,tt),color:INK,dash:[8,6],w:3},{f:out,color:RED,w:5}]});
+ stamp('가짜 회전!',975,600,seg(t,6.2,6.6)*(t<9.4?1:0));stamp('제자리로!',975,600,seg(t,13.3,13.7),TEAL);}},
+
+{name:'정리',dur:12,cues:[[0,'정리하면,'],[1,'닮은 점: 질량과 스프링, 3축 배치, 기울기·가속 혼동, 그리고 센서 퓨전.'],[5,'다른 점: 회전 감지 원리, 느린 신호에서의 약점, 출력 방식, 고장 모드.'],[9,'결국 우리 귀 한쪽은 3축 가속도계 + 3축 자이로, 6축 IMU입니다.']],
+draw(t){tag('닮은 점',200,110,24,seg(t,.3,.7),{fill:YEL});tag('다른 점',810,110,24,seg(t,4.6,5),{fill:TEAL2});
+ const S=[['질량 + 스프링','이석 = 증명 질량'],['3축 직교 배치','반고리관 3개 = 3축 자이로'],['기울기 ↔ 가속 혼동','중력과 가속은 같은 힘'],['센서 퓨전','뇌 = 칼만 필터']];
+ const D=[['회전 원리','유체 관성 vs 코리올리 힘'],['느린 회전','귀: 신호 소실 / 칩: 드리프트'],['출력','신경 펄스 빈도 vs 디지털 값'],['고장 모드','부품 이탈(이석증) vs 바이어스·충격']];
+ const row=(L,x,t0,col)=>L.forEach(([a,b],i)=>{const p=seg(t,t0+i*.7,t0+.5+i*.7);if(p<=0)return;ctx.save();const y=150+i*104;ctx.translate((1-eo(p))*-40,0);ctx.globalAlpha=clamp(p*2);card(x,y,560,90,'#fffaf0');ctx.fillStyle=col;ctx.beginPath();ctx.arc(x+44,y+45,22,0,7);ctx.fill();ctx.lineWidth=3;ctx.strokeStyle=INK;ctx.stroke();text(String(i+1),x+44,y+54,22,{align:'center'});text(a,x+84,y+40,24,{weight:800});text(b,x+84,y+72,19,{color:INK2});ctx.restore();});
+ row(S,50,1,YEL);row(D,670,5,TEAL2);hlText('당신의 귀는 6축 IMU입니다',640,660,52,eo(seg(t,9,10)),{align:'center'});}}
+];
+
+/* ---------- player ---------- */
+const starts=[];let TOTAL=0;SC.forEach(s=>{starts.push(TOTAL);TOTAL+=s.dur;});
+let T=0,playing=false,last=performance.now(),texPat=null;
+const tex=document.createElement('canvas');tex.width=tex.height=256;{const g=tex.getContext('2d');const im=g.createImageData(256,256);for(let i=0;i<im.data.length;i+=4){const c=Math.random()<.5?0:255;im.data[i]=im.data[i+1]=im.data[i+2]=c;im.data[i+3]=Math.random()*20;}g.putImageData(im,0,0);for(let k=0;k<50;k++){g.strokeStyle='rgba(120,100,70,.09)';g.lineWidth=1;g.beginPath();const x=Math.random()*256,y=Math.random()*256;g.moveTo(x,y);g.lineTo(x+Math.random()*30-15,y+Math.random()*30-15);g.stroke();}}
+function resize(){const r=cv.getBoundingClientRect(),d=Math.min(2,window.devicePixelRatio||1);cv.width=Math.max(320,Math.round(r.width*d));cv.height=Math.round(cv.width*9/16);texPat=ctx.createPattern(tex,'repeat');}
+window.addEventListener('resize',resize);resize();
+function sceneAt(x){for(let k=0;k<SC.length;k++)if(x<starts[k]+SC[k].dur)return k;return SC.length-1;}
+function paper(){ctx.fillStyle=PAPER;ctx.fillRect(0,0,W,H);ctx.save();ctx.translate(jit(91,5),jit(92,5));ctx.fillStyle=texPat;ctx.fillRect(-20,-20,W+40,H+40);ctx.restore();}
+function drawScene(i,t){ctx.save();SC[i].draw(t);ctx.restore();if(i>0){ctx.save();ctx.font=F(20,800);const lab=String(i).padStart(2,'0');const name=SC[i].name;const w=ctx.measureText(name).width;ctx.fillStyle=INK;ctx.fillRect(30,24,w+76,40);ctx.fillStyle=YEL;ctx.fillText(lab,44,51);ctx.fillStyle='#fff';ctx.fillText(name,84,51);ctx.restore();}}
+const capEl=document.getElementById('cap');let lastCap='';
+function render(){BOIL=Math.floor(performance.now()/125);ctx.setTransform(cv.width/W,0,0,cv.height/H,0,0);const i=sceneAt(T),t=T-starts[i];const WIPE=.6;
+ if(i>0&&t<WIPE){const p=eio(t/WIPE),bw=240,bx=-bw+p*(W+bw);ctx.save();ctx.beginPath();ctx.rect(bx+bw,0,W,H);ctx.clip();paper();drawScene(i-1,SC[i-1].dur-.001);ctx.restore();ctx.save();ctx.beginPath();ctx.rect(0,0,Math.max(0,bx),H);ctx.clip();paper();drawScene(i,t);ctx.restore();ctx.fillStyle=YEL;ctx.fillRect(bx,0,bw,H);ctx.fillStyle=INK;ctx.fillRect(bx+bw-14,0,14,H);}
+ else{paper();drawScene(i,t);}
+ const g=ctx.createRadialGradient(W/2,H/2,H*.45,W/2,H/2,H*.95);g.addColorStop(0,'rgba(0,0,0,0)');g.addColorStop(1,'rgba(60,40,10,.16)');ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+ let c='';for(const[ct,s]of SC[i].cues)if(t>=ct)c=s;if(c!==lastCap){capEl.textContent=c;lastCap=c;}
+ prog.value=Math.round(T/TOTAL*1000);timeEl.textContent=fmt(T)+' / '+fmt(TOTAL);[...chap.children].forEach((b,k)=>b.classList.toggle('on',k===i));}
+const fmt=s=>Math.floor(s/60)+':'+String(Math.floor(s%60)).padStart(2,'0');
+function loop(now){const dt=Math.min(.1,(now-last)/1000);last=now;if(playing){T+=dt;if(T>=TOTAL){T=TOTAL-.001;setPlay(false);}}render();requestAnimationFrame(loop);}
+const prog=document.getElementById('prog'),timeEl=document.getElementById('time'),chap=document.getElementById('chap'),playBtn=document.getElementById('play'),big=document.getElementById('bigPlay');
+function setPlay(v){if(v&&T>=TOTAL-.01)T=0;playing=v;playBtn.textContent=v?'❚❚ 일시정지':'▶ 재생';big.style.display=v?'none':'';}
+playBtn.onclick=()=>setPlay(!playing);big.onclick=()=>setPlay(true);cv.onclick=()=>setPlay(!playing);
+prog.oninput=()=>{T=prog.value/1000*TOTAL;};
+SC.forEach((s,k)=>{const b=document.createElement('button');b.type='button';b.textContent=(k?String(k).padStart(2,'0')+' ':'')+s.name;b.onclick=()=>{T=starts[k]+.001;setPlay(true);};chap.appendChild(b);});
+document.addEventListener('keydown',e=>{if(e.code==='Space'&&e.target===document.body){e.preventDefault();setPlay(!playing);}});
+document.getElementById('fs').onclick=()=>{const st=document.getElementById('stage');try{document.fullscreenElement?document.exitFullscreen():st.requestFullscreen();}catch(e){}};
+document.addEventListener('fullscreenchange',()=>setTimeout(resize,50));
+try{const th=localStorage.getItem('bppvTheme');if(th)document.documentElement.dataset.theme=th;}catch(e){}
+window.__seek=s=>{T=s;render();};
+requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>
