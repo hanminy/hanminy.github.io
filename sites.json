@@ -86,6 +86,15 @@
       "category": "건강",
       "label": "MOTION GRAPHIC",
       "order": 7.5
+    },
+    {
+      "id": "ep3-mole-cricket-script",
+      "title": "땅강아지와 자율 굴착기 이야기",
+      "description": "땅강아지의 발톱부터 자율 굴착기의 센서·AI까지, 열두 장면의 공개용 대담 흐름과 말하기 예시를 읽습니다.",
+      "url": "https://hanminy.github.io/assets/ep3-mole-cricket-script/",
+      "category": "연구 자료",
+      "label": "TALK GUIDE",
+      "order": 3.8
     }
   ],
   "exclude": []
