@@ -4,19 +4,20 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>필드로봇에서의 AI활용</title>
-<link rel="stylesheet" href="nst-v2.css">
+<link rel="stylesheet" href="nst-v3.css">
 <link rel="stylesheet" href="parts/v2/part1.css">
-<link rel="stylesheet" href="parts/v2/part2.css">
-<link rel="stylesheet" href="parts/v2/field_demos.css">
-<link rel="stylesheet" href="parts/v2/part3.css">
+<link rel="stylesheet" href="parts/v3/part2.css">
+<link rel="stylesheet" href="parts/v3/field_demos.css">
+<link rel="stylesheet" href="parts/v3/part3.css">
 </head>
 <body>
 <nav class="v2-bar" aria-label="보기 전환">
-  <span class="doc">필드로봇에서의 AI활용 · 수정초안 v2</span>
+  <span class="doc">필드로봇에서의 AI활용 · 수정초안 v3</span>
   <button type="button" data-act="present" title="발표(전체화면) — P 또는 슬라이드 더블클릭, Esc 복귀, ←/→ 이동">발표 P</button>
   <button type="button" data-act="print" title="인쇄·PDF (960x540pt)">인쇄</button>
 </nav>
 <main class="deck">
+<!-- ===== v2/cover.html ===== -->
 <section class="slide cover full" id="v2-cover-01" data-source="구도: FES2026_특별강연_KIMM이한민_EN.pptx#1 / 배경: 생성 이미지 assets/v2/common/cover-excavator-crane-v2.png" data-title="표지">
   <div class="cover-art slowpan"><img src="assets/v2/common/cover-excavator-crane-v2.png" alt="굴착기와 이동식 크레인이 작업하는 공사 현장 개념 일러스트(생성 이미지)"></div>
   <div class="cover-head">한국건설기술연구원 지반연구본부 세미나<br>2026. 11.</div>
@@ -29,7 +30,7 @@
     <p>배경의 느린 움직임은 정지 이미지에 CSS 팬·줌을 준 것이며 AI 생성 영상이 아님. 화면 구도는 FES 2026 특별강연 표지(좌측 그림·우측 흰 여백 글)를 따름.</p>
   </aside>
 </section>
-<!-- ===== part1 ===== -->
+<!-- ===== v2/part1.html ===== -->
 <!-- 1부 v2: FES2026 특별강연 최종 PPTX #2–8, #15–17, #20–21 원본 구성 이식 (국문 원고 HTML 기준). 소유: part1 -->
 
 <section id="v2-part1-01" data-source="FES2026_특별강연_KIMM이한민_EN.pptx#2" data-title="AI, 로봇, 그리고 산업기계" class="slide v2-p1-slide v2-p1-ch1 v2-p1-wide">
@@ -299,29 +300,24 @@
 
 <aside class="speaker-notes"><p>원본: FES 최종 PPTX 21쪽. 근거: 글로벌기계기술포럼 Part2 16·18·25쪽.</p><p>트랙터 영상은 Part2 25쪽 원본 영상 전체(2분 4초)를 원래 화면 구성 그대로 사용 — FES의 실차|트윈 좌우 재구성 클립 대신.</p><p>MANDATE-R2R: Digital Twin Consortium 공식 보도자료(2025-12-18) &#x27;Digital Twin Consortium Expands Innovation with Four New Testbeds&#x27;에 KIMM 주도 테스트베드로 명시. 롤투롤 영상은 실제 설비가 아닌 트윈 화면.</p></aside>
 </section>
-<!-- ===== part2 ===== -->
-<!-- 2부 v2: AI Frontiers Summit 2026 「AI Technologies for Field Robotics」(이한민, 2026.5.22) #2,4,5,6,7,8,9,10,11,12,13,15,17 원본 재현. 소유: part2 -->
+<!-- ===== v3/part2.html ===== -->
+<!-- 2부 v3: AI Frontiers Summit 2026 기술 13장 FES/NST 재디자인. 내용·출처·미디어는 v2 part2와 동일, 디자인만 재구성. 소유: part2 -->
 
-<section class="slide v2-p2" id="v2-part2-01" data-source="AI Technologies for Field Robotics 이한민.pptx#2" data-title="Field Robotics 정의">
-<h2 class="title sm" style="--p2-acc:#2563EB">Field Robotics — 비정형·옥외 환경에서 일하는 모든 로봇</h2>
-<img class="kimmlogo" src="assets/v2/common/kimm-logo.png" alt="KIMM">
-<div class="v2-p2-fields">
-  <div><div class="v2-p2-card c-orange"><span class="v2-p2-eng">Construction</span><h3>건설</h3><p class="d">굴착기 · 휠로더 · 도저</p></div>
-    <div class="ph"><img src="assets/v2/part2/B02_construction_image6.jpeg" alt="건설 무인 덤프·굴착기"></div></div>
-  <div><div class="v2-p2-card c-green"><span class="v2-p2-eng">Agriculture</span><h3>농업</h3><p class="d">트랙터 · 과수 모니터링</p></div>
-    <div class="ph"><img src="assets/v2/part2/B02_agriculture_image7.jpeg" alt="자율 트랙터"></div></div>
-  <div><div class="v2-p2-card c-teal"><span class="v2-p2-eng">Mining</span><h3>광업</h3><p class="d">채굴 · 운반 · 정리</p></div>
-    <div class="ph"><img src="assets/v2/part2/B02_mining_image11.png" alt="광산 자율 운반 트럭"></div></div>
-  <div><div class="v2-p2-card c-purple"><span class="v2-p2-eng">Forestry</span><h3>임업</h3><p class="d">벌채 · 식재 · 운반</p></div>
-    <div class="ph"><img src="assets/v2/part2/B02_forestry_image12.png" alt="임업 포워더"></div></div>
-  <div><div class="v2-p2-card c-red"><span class="v2-p2-eng">Disaster · Defense</span><h3>재난·국방</h3><p class="d">탐색구조 · 정찰</p></div>
-    <div class="ph"><img src="assets/v2/part2/B02_disaster_image8.png" alt="재난 대응 궤도 로봇"></div></div>
-  <div><div class="v2-p2-card c-blue"><span class="v2-p2-eng">Marine</span><h3>해양</h3><p class="d">해저 작업 · 양식</p></div>
-    <div class="ph"><img src="assets/v2/part2/B02_marine_image13.jpeg" alt="수중 작업 로봇"></div></div>
-  <div><div class="v2-p2-card c-gray"><span class="v2-p2-eng">Space</span><h3>우주</h3><p class="d">행성 탐사</p></div>
-    <div class="ph"><img src="assets/v2/part2/B02_space_image9.jpeg" alt="행성 탐사 로버"></div></div>
-  <div><div class="v2-p2-card c-black"><span class="v2-p2-eng">Urban Infra.</span><h3>도시 인프라</h3><p class="d">하수도 · 터널 점검</p></div>
-    <div class="ph"><img src="assets/v2/part2/B02_urban_image10.jpeg" alt="도시 배송 로봇"></div></div>
+<section class="slide v3 v3-p2" id="v2-part2-01" data-source="AI Technologies for Field Robotics 이한민.pptx#2" data-title="Field Robotics 정의">
+<div class="v3-rail"></div><h1 class="v3-title">Field Robotics</h1>
+<img class="v3-logo" src="assets/v2/common/kimm-logo.png" alt="KIMM">
+<div class="v3-keybar"><span><em>비정형·옥외 환경</em>에서 일하는 모든 로봇</span></div>
+<div class="v3-content">
+  <div class="v3-p2-fields">
+    <figure class="v3-fig"><div class="v3-media cover"><img src="assets/v2/part2/B02_construction_image6.jpeg" alt="건설 무인 덤프·굴착기"></div><figcaption class="v3-cap"><b>건설</b> 굴착기 · 휠로더 · 도저</figcaption></figure>
+    <figure class="v3-fig"><div class="v3-media cover"><img src="assets/v2/part2/B02_agriculture_image7.jpeg" alt="자율 트랙터"></div><figcaption class="v3-cap"><b>농업</b> 트랙터 · 과수 모니터링</figcaption></figure>
+    <figure class="v3-fig"><div class="v3-media cover"><img src="assets/v2/part2/B02_mining_image11.png" alt="광산 자율 운반 트럭"></div><figcaption class="v3-cap"><b>광업</b> 채굴 · 운반 · 정리</figcaption></figure>
+    <figure class="v3-fig"><div class="v3-media cover"><img src="assets/v2/part2/B02_forestry_image12.png" alt="임업 포워더"></div><figcaption class="v3-cap"><b>임업</b> 벌채 · 식재 · 운반</figcaption></figure>
+    <figure class="v3-fig"><div class="v3-media cover"><img src="assets/v2/part2/B02_disaster_image8.png" alt="재난 대응 궤도 로봇"></div><figcaption class="v3-cap"><b>재난·국방</b> 탐색구조 · 정찰</figcaption></figure>
+    <figure class="v3-fig"><div class="v3-media cover"><img src="assets/v2/part2/B02_marine_image13.jpeg" alt="수중 작업 로봇"></div><figcaption class="v3-cap"><b>해양</b> 해저 작업 · 양식</figcaption></figure>
+    <figure class="v3-fig"><div class="v3-media cover"><img src="assets/v2/part2/B02_space_image9.jpeg" alt="행성 탐사 로버"></div><figcaption class="v3-cap"><b>우주</b> 행성 탐사</figcaption></figure>
+    <figure class="v3-fig"><div class="v3-media cover"><img src="assets/v2/part2/B02_urban_image10.jpeg" alt="도시 배송 로봇"></div><figcaption class="v3-cap"><b>도시 인프라</b> 하수도 · 터널 점검</figcaption></figure>
+  </div>
 </div>
 <aside class="speaker-notes">
 <p>원본: AI Frontiers Summit 2026 발표 #2. 8분야 카드와 사진 8장을 원본 순서·문구 그대로 사용.</p>
@@ -330,18 +326,21 @@
 </aside>
 </section>
 
-<section class="slide v2-p2" id="v2-part2-02" data-source="AI Technologies for Field Robotics 이한민.pptx#4" data-title="현장의 4대 도전과제">
-<h2 class="title">현장의 4대 도전과제</h2>
-<img class="kimmlogo" src="assets/v2/common/kimm-logo.png" alt="KIMM">
-<div class="v2-p2-ch">
-  <div><div class="v2-p2-card c-blue"><span class="num">01</span><div class="txt"><span class="v2-p2-eng">Uncertainty</span><h3>불확실성</h3><p class="d">토질 · 흙의 밀도 · 식생 · 기상이 매 작업마다 다름</p></div></div>
-    <div class="ph"><img src="assets/v2/part2/B04_uncertainty_image17.jpeg" alt="흙을 쏟는 굴착기 버킷"></div></div>
-  <div><div class="v2-p2-card c-teal"><span class="num">02</span><div class="txt"><span class="v2-p2-eng">Partial Observability</span><h3>부분관측</h3><p class="d">지하 매설물 · 가려진 장애물 · 먼지로 인한 센서 저하</p></div></div>
-    <div class="ph"><img src="assets/v2/part2/B04_partialobs_image18.jpeg" alt="분진 속 해체 작업"></div></div>
-  <div><div class="v2-p2-card c-orange"><span class="num">03</span><div class="txt"><span class="v2-p2-eng">Dynamic World</span><h3>동적 환경</h3><p class="d">작업이 진행될수록 지형 자체가 바뀜 (굴착·운반)</p></div></div>
-    <div class="ph"><img src="assets/v2/part2/B04_dynamic_image19.png" alt="석양 속 굴착 작업"></div></div>
-  <div><div class="v2-p2-card c-red"><span class="num">04</span><div class="txt"><span class="v2-p2-eng">Safety &amp; Trust</span><h3>안전과 신뢰</h3><p class="d">30톤 굴착기가 작업자 옆에서 움직임</p></div></div>
-    <div class="ph"><img src="assets/v2/part2/B04_safety_image20.jpeg" alt="굴착기 옆 작업자"></div></div>
+<section class="slide v3 v3-p2" id="v2-part2-02" data-source="AI Technologies for Field Robotics 이한민.pptx#4" data-title="현장의 4대 도전과제">
+<div class="v3-rail"></div><h1 class="v3-title">현장의 4대 도전과제</h1>
+<img class="v3-logo" src="assets/v2/common/kimm-logo.png" alt="KIMM">
+<div class="v3-keybar"><span><em>불확실성 · 부분관측 · 동적 환경</em>, 그리고 <em>안전과 신뢰</em></span></div>
+<div class="v3-content">
+  <div class="v3-p2-four">
+    <div class="v3-col"><div class="v3-media cover"><img src="assets/v2/part2/B04_uncertainty_image17.jpeg" alt="흙을 쏟는 굴착기 버킷"></div>
+      <div class="v3-h bar">불확실성</div><p class="v3-txt">토질 · 흙의 밀도 · 식생 · 기상이 매 작업마다 다름</p></div>
+    <div class="v3-col"><div class="v3-media cover"><img src="assets/v2/part2/B04_partialobs_image18.jpeg" alt="분진 속 해체 작업"></div>
+      <div class="v3-h bar">부분관측</div><p class="v3-txt">지하 매설물 · 가려진 장애물 · 먼지로 인한 센서 저하</p></div>
+    <div class="v3-col"><div class="v3-media cover"><img src="assets/v2/part2/B04_dynamic_image19.png" alt="석양 속 굴착 작업"></div>
+      <div class="v3-h bar">동적 환경</div><p class="v3-txt">작업이 진행될수록 지형 자체가 바뀜 (굴착·운반)</p></div>
+    <div class="v3-col"><div class="v3-media cover"><img src="assets/v2/part2/B04_safety_image20.jpeg" alt="굴착기 옆 작업자"></div>
+      <div class="v3-h bar">안전과 신뢰</div><p class="v3-txt">30톤 굴착기가 작업자 옆에서 움직임</p></div>
+  </div>
 </div>
 <aside class="speaker-notes">
 <p>원본: AI Frontiers Summit 2026 발표 #4. 네 칸의 번호·영문 라벨·문구·사진을 그대로 사용.</p>
@@ -350,14 +349,25 @@
 </aside>
 </section>
 
-<section class="slide v2-p2" id="v2-part2-03" data-source="AI Technologies for Field Robotics 이한민.pptx#5" data-title="4계층으로 보는 Field Robot AI">
-<h2 class="title">4계층으로 보는 Field Robot AI</h2>
-<img class="kimmlogo" src="assets/v2/common/kimm-logo.png" alt="KIMM">
-<div class="v2-p2-layers">
-  <div class="row c-teal"><span class="lv">L1</span><span class="nm">Perception &amp; World Model<small>환경을 이해</small></span><span class="tech">Multi-Modal Fusion · NeRF · SAM</span><i class="tick"></i></div>
-  <div class="row c-purple"><span class="lv">L2</span><span class="nm">Task Reasoning<small>무엇을 할지 결정</small></span><span class="tech">LLM · VLM · Foundation Models</span><i class="tick"></i></div>
-  <div class="row c-orange"><span class="lv">L3</span><span class="nm">Planning &amp; Decision<small>어디서 · 어떻게 할지</small></span><span class="tech">RL · Imitation Learning · Diffusion Policy</span><i class="tick"></i></div>
-  <div class="row c-green"><span class="lv">L4</span><span class="nm">Control<small>물리 제약 안에서 실행</small></span><span class="tech">MPC · Learned Residuals · Safety Layer</span><i class="tick"></i></div>
+<section class="slide v3 v3-p2" id="v2-part2-03" data-source="AI Technologies for Field Robotics 이한민.pptx#5" data-title="4계층으로 보는 Field Robot AI">
+<div class="v3-rail"></div><h1 class="v3-title">4계층으로 보는 Field Robot AI</h1>
+<img class="v3-logo" src="assets/v2/common/kimm-logo.png" alt="KIMM">
+<div class="v3-keybar"><span><em>환경 이해</em> → 작업 결정 → 계획 → <em>물리 제약 안에서 실행</em></span></div>
+<div class="v3-content">
+  <div class="v3-p2-arch">
+    <div class="v3-node fill lg"><span class="lv">L1</span>환경을 이해<small>Perception &amp; World Model</small></div>
+    <div class="v3-arrow"></div>
+    <div class="v3-node fill lg"><span class="lv">L2</span>무엇을 할지 결정<small>Task Reasoning</small></div>
+    <div class="v3-arrow"></div>
+    <div class="v3-node fill lg"><span class="lv">L3</span>어디서 · 어떻게 할지<small>Planning &amp; Decision</small></div>
+    <div class="v3-arrow"></div>
+    <div class="v3-node fill lg"><span class="lv">L4</span>물리 제약 안에서 실행<small>Control</small></div>
+    <div class="tl"><span class="v3-arrow down"></span></div><i></i><div class="tl"><span class="v3-arrow down"></span></div><i></i><div class="tl"><span class="v3-arrow down"></span></div><i></i><div class="tl"><span class="v3-arrow down"></span></div>
+    <div class="v3-group tint tech"><span class="v3-glabel">대표 기법</span><div class="v3-node in">Multi-Modal Fusion</div><div class="v3-node in">NeRF</div><div class="v3-node in">SAM</div></div><i></i>
+    <div class="v3-group tint tech"><span class="v3-glabel">대표 기법</span><div class="v3-node in">LLM</div><div class="v3-node in">VLM</div><div class="v3-node in">Foundation Models</div></div><i></i>
+    <div class="v3-group tint tech"><span class="v3-glabel">대표 기법</span><div class="v3-node in">RL</div><div class="v3-node in">Imitation Learning</div><div class="v3-node in">Diffusion Policy</div></div><i></i>
+    <div class="v3-group tint tech"><span class="v3-glabel">대표 기법</span><div class="v3-node in">MPC</div><div class="v3-node in">Learned Residuals</div><div class="v3-node in">Safety Layer</div></div>
+  </div>
 </div>
 <aside class="speaker-notes">
 <p>원본: AI Frontiers Summit 2026 발표 #5. 4계층 이름·설명·대표 기법 그대로.</p>
@@ -366,18 +376,38 @@
 </aside>
 </section>
 
-<section class="slide v2-p2" id="v2-part2-04" data-source="AI Technologies for Field Robotics 이한민.pptx#6" data-title="3D 지형 표현">
-<h2 class="title">3D 지형을 어떻게 표현할 것인가</h2>
-<img class="kimmlogo" src="assets/v2/common/kimm-logo.png" alt="KIMM">
-<img class="fig v2-p2-media" src="assets/v2/part2/B06_pointcloud_registration_image21.png" alt="굴착기 점군 정합과 표면 재구성 단계 (a)~(f)">
-<div class="v2-p2-grid2">
-  <div class="v2-p2-card c-teal"><h3>2.5D Height Map</h3><p class="d">격자 셀당 높이의 평균·분산</p><p class="k">실시간 갱신 · 굴착 계획의 기본 입력</p></div>
-  <div class="v2-p2-card c-blue"><h3>Point Cloud</h3><p class="d">LiDAR 원본 데이터</p><p class="k">정밀하지만 계산 비용 ↑</p></div>
-  <div class="v2-p2-card c-purple"><h3>NeRF / 3D Gaussian Splatting</h3><p class="d">미분 가능한 3D 재구성</p><p class="k">시뮬레이션 합성 데이터 생성</p></div>
-  <div class="v2-p2-card c-green"><h3>Occupancy Networks</h3><p class="d">3D 공간의 점유 여부 예측</p></div>
+<section class="slide v3 v3-p2" id="v2-part2-04" data-source="AI Technologies for Field Robotics 이한민.pptx#6" data-title="3D 지형 표현">
+<div class="v3-rail"></div><h1 class="v3-title">3D 지형을 어떻게 표현할 것인가</h1>
+<img class="v3-logo" src="assets/v2/common/kimm-logo.png" alt="KIMM">
+<div class="v3-keybar sm"><span>단일 센서가 아닌 <em>자세추정 + 다중 센서 점군</em>을 한 지도에 누적</span></div>
+<div class="v3-content">
+  <div class="v3-p2-reps">
+    <div class="v3-node soft rep">
+      <svg class="v3-svg" viewBox="0 0 150 46" width="150" height="46" aria-hidden="true">
+        <rect class="bxf" x="18" y="28" width="16" height="12" opacity=".45"/><rect class="bxf" x="36" y="18" width="16" height="22" opacity=".65"/><rect class="bxf" x="54" y="8" width="16" height="32"/><rect class="bxf" x="72" y="14" width="16" height="26" opacity=".8"/><rect class="bxf" x="90" y="22" width="16" height="18" opacity=".6"/><rect class="bxf" x="108" y="30" width="16" height="10" opacity=".45"/>
+        <line class="ln" x1="12" y1="41" x2="130" y2="41"/></svg>
+      2.5D Height Map<small>격자 셀당 높이의 평균·분산</small><b>실시간 갱신 · 굴착 계획의 기본 입력</b></div>
+    <div class="v3-node rep">
+      <svg class="v3-svg" viewBox="0 0 150 46" width="150" height="46" aria-hidden="true"><g fill="#253149">
+        <circle cx="22" cy="34" r="2.6"/><circle cx="31" cy="27" r="2.6"/><circle cx="39" cy="36" r="2.6"/><circle cx="47" cy="19" r="2.6"/><circle cx="56" cy="30" r="2.6"/><circle cx="64" cy="12" r="2.6"/><circle cx="72" cy="24" r="2.6"/><circle cx="79" cy="37" r="2.6"/><circle cx="86" cy="17" r="2.6"/><circle cx="95" cy="28" r="2.6"/><circle cx="103" cy="35" r="2.6"/><circle cx="111" cy="22" r="2.6"/><circle cx="120" cy="33" r="2.6"/><circle cx="43" cy="9" r="2.6"/><circle cx="100" cy="10" r="2.6"/><circle cx="68" cy="39" r="2.6"/></g></svg>
+      Point Cloud<small>LiDAR 원본 데이터</small><b>정밀하지만 계산 비용 ↑</b></div>
+    <div class="v3-node rep">
+      <svg class="v3-svg" viewBox="0 0 150 46" width="150" height="46" aria-hidden="true"><g fill="#253149">
+        <ellipse cx="44" cy="28" rx="24" ry="11" opacity=".22"/><ellipse cx="72" cy="20" rx="28" ry="13" opacity=".38"/><ellipse cx="102" cy="30" rx="24" ry="10" opacity=".22"/><ellipse cx="76" cy="34" rx="18" ry="8" opacity=".5"/><ellipse cx="56" cy="12" rx="12" ry="6" opacity=".3"/></g></svg>
+      NeRF / 3D Gaussian Splatting<small>미분 가능한 3D 재구성</small><b>시뮬레이션 합성 데이터 생성</b></div>
+    <div class="v3-node rep">
+      <svg class="v3-svg" viewBox="0 0 150 46" width="150" height="46" aria-hidden="true"><g class="bx" style="stroke-width:1.2">
+        <rect x="38" y="30" width="14" height="14"/><rect x="66" y="30" width="14" height="14"/><rect x="94" y="30" width="14" height="14"/><rect x="52" y="16" width="14" height="14"/><rect x="80" y="16" width="14" height="14"/><rect x="66" y="2" width="14" height="14"/></g>
+        <g class="bxf"><rect x="52" y="30" width="14" height="14"/><rect x="80" y="30" width="14" height="14"/><rect x="66" y="16" width="14" height="14"/></g></svg>
+      Occupancy Networks<small>3D 공간의 점유 여부 예측</small></div>
+  </div>
+  <div class="v3-p2-evid">
+    <figure class="v3-fig"><div class="v3-media paper ev1"><img src="assets/v2/part2/B06_pointcloud_registration_image21.png" alt="굴착기 점군 정합과 표면 재구성 단계 (a)~(f)"></div></figure>
+    <div class="evcap"><b>점군 정합 → 표면 재구성</b>원 점군에서 정합, 관심영역, 표면 재구성까지<span class="v3-tag g">원본 발표 수록 예시</span></div>
+    <figure class="v3-fig"><div class="v3-media paper ev2"><img src="assets/v2/research/miki22_fig1_gpu_map.png" alt="GPU 고도지도 다층 표현 (Miki et al. 2022, Fig.1)"></div></figure>
+    <div class="evcap"><b>GPU 고도지도 — 다층 격자</b>점군 + 자세 → 셀마다 높이·분산을 칼만 방식으로 갱신, 주행가능성·법선<span class="v3-tag ext">외부 연구 · Miki et al., ETH 2022, Fig. 1</span></div>
+  </div>
 </div>
-<div class="v2-p2-take"><span class="v2-p2-eng">Key Takeaway</span>단일 센서가 아닌 자세추정 + 다중 센서 점군을 한 지도에 누적</div>
-<figure class="ext"><img src="assets/v2/research/miki22_fig1_gpu_map.png" alt="GPU 고도지도 다층 표현 — raw, traversability, normal, inpainting, plane segmentation (Miki et al. 2022, Fig.1)"><figcaption><b>외부 연구 · GPU 고도지도</b><br>점군 + 자세 → 셀마다 높이·분산을 칼만 방식으로 갱신<br>주행가능성·법선 등 다층 격자<span>Miki et al., ETH Zurich, 2022 · Fig. 1</span></figcaption></figure>
 <aside class="speaker-notes">
 <p>원본: AI Frontiers Summit 2026 발표 #6. 네 표현 카드, 우상단 점군 처리 그림, 하단 KEY TAKEAWAY 구성 그대로. 좌상단 빈 자리에 외부 연구 그림 1개 추가.</p>
 <p>2.5D height map(elevation map)은 지면을 수평 격자로 나누고 셀마다 높이 추정값과 분산을 저장. 새 점이 들어오면 h ← (σp²·h + σm²·pz)/(σm² + σp²)처럼 분산 가중 평균(칼만 방식)으로 갱신하고, 점 분산은 센서 거리 제곱에 비례하게 둠. 자세추정 드리프트가 곧 지도 왜곡이 되므로 높이 드리프트 보정, ray casting으로 사라진 물체 정리가 필요(Miki et al. 2022, Sec.III). 이 연구는 보행로봇 대상이며 Jetson Xavier에서 다운샘플 약 50 Hz, raw 16 Hz 갱신을 보고.</p>
@@ -385,22 +415,30 @@
 <p>점군은 LiDAR 측정 그대로의 3D 점 집합, NeRF/3DGS는 영상으로 장면을 재구성(Real-to-Sim 용도), occupancy network는 공간 점유 확률 예측. 두 카드의 하단 문구는 원본 그대로이며, 건설 적용 1차 출처는 이번 조사 범위에서 확인하지 않음.</p>
 <p>그림 출처: 좌상단 Miki, Wellhausen, Grandia et al., "Elevation Mapping for Locomotion and Navigation using GPU", arXiv:2204.12876 (ETH Zurich RSL), Fig.1 원형. 우상단 그림은 원본 덱 내장(image21.png, (a) Raw Point Cloud → (f) After Surface Reconstruction) — 원 논문 미특정, 외부 배포 시 출처 확인 필요.</p>
 <p>변경(최소): 「실시간 5 Hz 업데이트 · 굴착·평탄화 표준」 → 「실시간 갱신 · 굴착 계획의 기본 입력」(5 Hz·표준 근거 미확인), KEY TAKEAWAY 「LiDAR + Stereo + IMU 다중 융합이 디폴트가 됨」 → 「자세추정 + 다중 센서 점군을 한 지도에 누적」.</p>
+<p>v3 화면 배치: 네 표현을 위 행 도식으로, 두 그림은 아래에 나란히 배치(왼쪽 원본 덱 내장 image21, 오른쪽 Miki et al. Fig.1). 출처·한정은 위 문단과 같음.</p>
 </aside>
 </section>
 
-<section class="slide v2-p2" id="v2-part2-05" data-source="AI Technologies for Field Robotics 이한민.pptx#7" data-title="강건 센싱">
-<h2 class="title sm">현장은 깨끗하지 않다 — 눈 · 비 · 분진 · 진흙</h2>
-<img class="kimmlogo" src="assets/v2/common/kimm-logo.png" alt="KIMM">
-<div class="list">
-  <div class="it"><h3>확률 기반 노이즈 제거</h3><p class="d">섹션별 노이즈 점군 밀도를 추정하여 제거</p></div>
-  <div class="it"><h3>다중 모달 융합</h3><p class="d">단일 센서 실패를 다른 센서가 보완</p></div>
-  <div class="it"><h3>자기지도학습</h3><p class="d">라벨 없이 인지 범위 확장</p></div>
-  <div class="it"><h3>센서 클리닝</h3><p class="d">진흙 · 흙탕물 대응 물리적 클리닝</p></div>
-</div>
-<div class="col">
-  <div class="crop"><img src="assets/v2/part2/B07_mud_tractor_image23.jpeg" alt="진흙 속 트랙터"></div>
-  <img src="assets/v2/part2/B07_offroad_ugv_image22.jpeg" alt="비포장 지형 무인 차량">
-  <video src="assets/v2/part2/B07_media1_full16s.mp4" poster="assets/v2/part2/B07_video_poster_image24.png" preload="metadata" playsinline></video>
+<section class="slide v3 v3-p2" id="v2-part2-05" data-source="AI Technologies for Field Robotics 이한민.pptx#7" data-title="강건 센싱">
+<div class="v3-rail"></div><h1 class="v3-title">옥외 강건 센싱</h1>
+<img class="v3-logo" src="assets/v2/common/kimm-logo.png" alt="KIMM">
+<div class="v3-keybar"><span>눈 · 비 · 분진 · 진흙 — <em>현장은 깨끗하지 않다</em></span></div>
+<div class="v3-content">
+  <div class="v3-p2-sense">
+    <div class="ways">
+      <div class="v3-node fill">확률 기반 노이즈 제거<small>섹션별 노이즈 점군 밀도를 추정하여 제거</small></div>
+      <div class="v3-node">다중 모달 융합<small>단일 센서 실패를 다른 센서가 보완</small></div>
+      <div class="v3-node">자기지도학습<small>라벨 없이 인지 범위 확장</small></div>
+      <div class="v3-node">센서 클리닝<small>진흙 · 흙탕물 대응 물리적 클리닝</small></div>
+    </div>
+    <div>
+      <div class="v3-media dark vid"><video src="assets/v2/part2/B07_media1_full16s.mp4" poster="assets/v2/part2/B07_video_poster_image24.png" preload="metadata" playsinline></video></div>
+      <div class="pics">
+        <div class="crop"><img src="assets/v2/part2/B07_mud_tractor_image23.jpeg" alt="진흙 속 트랙터"></div>
+        <div class="v3-media cover ugv"><img src="assets/v2/part2/B07_offroad_ugv_image22.jpeg" alt="비포장 지형 무인 차량"></div>
+      </div>
+    </div>
+  </div>
 </div>
 <aside class="speaker-notes">
 <p>원본: AI Frontiers Summit 2026 발표 #7. 좌측 네 항목, 우측 사진 2장과 영상 1개(원본 내장 media1.mp4, 16.0초 전체, 원본 파일 그대로) 배치 유지.</p>
@@ -409,36 +447,51 @@
 </aside>
 </section>
 
-<section class="slide v2-p2" id="v2-part2-06" data-source="AI Technologies for Field Robotics 이한민.pptx#8" data-title="Vision Foundation Models">
-<h2 class="title">옥외 인지에 들어온 Vision FMs</h2>
-<img class="kimmlogo" src="assets/v2/common/kimm-logo.png" alt="KIMM">
-<img class="fig v2-p2-media" src="assets/v2/part2/B08_excavation_seg_image25.png" alt="굴착 현장 객체 분할 예시">
-<div class="v2-p2-grid2">
-  <div class="v2-p2-card c-purple"><span class="tag">ZERO-SHOT 분할</span><h3>SAM / SAM 2</h3><p class="d">점·박스 프롬프트 → 객체 마스크</p></div>
-  <div class="v2-p2-card c-blue"><span class="tag">사전학습 특징</span><h3>DINOv2 / CLIP</h3><p class="d">사전학습 특징을 활용</p></div>
-  <div class="v2-p2-card c-teal"><span class="tag">단안 깊이 추정</span><h3>Depth Anything</h3><p class="d">단안 상대 깊이 — 실측량엔 스케일 보정</p></div>
-  <div class="v2-p2-card c-green"><span class="tag">자연어 쿼리</span><h3>Open-Vocabulary Det.</h3><p class="d">"흙더미 옆 사람", "노란 안전모"</p></div>
+<section class="slide v3 v3-p2" id="v2-part2-06" data-source="AI Technologies for Field Robotics 이한민.pptx#8" data-title="Vision Foundation Models">
+<div class="v3-rail"></div><h1 class="v3-title">옥외 인지에 들어온 Vision FMs</h1>
+<img class="v3-logo" src="assets/v2/common/kimm-logo.png" alt="KIMM">
+<div class="v3-keybar xs"><span>자동 마스크·박스 제안으로 <em>라벨링 보조</em> — 현장 성능은 별도 검증</span></div>
+<div class="v3-content">
+  <div class="v3-p2-fm">
+    <div class="rows">
+      <div class="v3-flow"><div class="v3-node in io">점·박스 프롬프트</div><div class="v3-arrow"></div><div class="v3-node fill m">SAM / SAM 2<small>Zero-shot 분할</small></div><div class="v3-arrow"></div><div class="v3-node in io">객체 마스크</div></div>
+      <div class="v3-flow"><div class="v3-node fill m">DINOv2 / CLIP<small>사전학습 특징</small></div><div class="v3-arrow"></div><div class="v3-node in one">사전학습 특징을 활용</div></div>
+      <div class="v3-flow"><div class="v3-node in io">단안 영상</div><div class="v3-arrow"></div><div class="v3-node fill m">Depth Anything<small>단안 깊이 추정</small></div><div class="v3-arrow"></div><div class="v3-node in io">상대 깊이<small>실측량엔 스케일 보정</small></div></div>
+      <div class="v3-flow"><div class="v3-node in one">자연어 쿼리<small>"흙더미 옆 사람", "노란 안전모"</small></div><div class="v3-arrow"></div><div class="v3-node fill m">Open-Vocabulary Det.</div></div>
+    </div>
+    <div class="v3-col">
+      <div class="v3-media paper e1"><img src="assets/v2/part2/B08_excavation_seg_image25.png" alt="굴착 현장 객체 분할 예시"></div>
+      <div class="v3-cap" style="text-align:left">굴착 현장 분할 예시 <span class="v3-tag g">원본 발표 수록</span></div>
+      <div class="v3-media paper e2"><img src="assets/v2/research/kirillov23_fig1_sam.png" alt="Segment Anything 구성 — task, model, data (Kirillov et al. 2023, Fig.1)"></div>
+      <div class="v3-cap" style="text-align:left">Segment Anything 구성 <span class="v3-tag ext">외부 연구 · Kirillov et al., Meta AI, 2023, Fig. 1</span></div>
+    </div>
+  </div>
 </div>
-<div class="v2-p2-take">→ 자동 마스크·박스 제안으로 라벨링 보조 — 현장 성능은 별도 검증</div>
-<figure class="ext"><img src="assets/v2/research/kirillov23_fig1_sam.png" alt="Segment Anything 구성 — task, model, data (Kirillov et al. 2023, Fig.1)"><figcaption>외부 연구 · Segment Anything — 프롬프트 기반 분할 모델과 SA-1B 데이터 엔진 (Kirillov et al., Meta AI, 2023 · Fig. 1)</figcaption></figure>
 <aside class="speaker-notes">
 <p>원본: AI Frontiers Summit 2026 발표 #8. 네 모델군 카드, 우상단 굴착 현장 분할 그림, 하단 결론 박스 구성 그대로. 좌상단 빈 자리에 SAM 원 논문 그림 추가.</p>
 <p>SAM(Kirillov et al., Meta AI, arXiv:2304.02643): 이미지 + 프롬프트(점·박스·마스크) → 유효 마스크. 클래스 이름은 출력하지 않으므로 '무엇인지'는 별도 모델이 붙여야 함. 무거운 이미지 인코더를 한 번 돌리고 경량 디코더로 프롬프트마다 마스크를 즉시 생성, SAM이 자동 주석한 SA-1B(1,100만 장, 11억 마스크)로 학습. Depth Anything(Yang et al., CVPR 2024): 단일 RGB → 상대 깊이, 라벨 1.5M장 teacher → 비라벨 약 62M장 pseudo label로 student 학습, 실측(metric) 깊이는 별도 fine-tuning — 토공량 같은 실측량에는 스케일 보정과 현장 검증 필요. Grounding DINO(Liu et al., arXiv:2303.05499): 이미지 + 텍스트 → 박스, COCO zero-shot 52.5 AP(자연영상 벤치마크). DINOv2/CLIP은 이번 조사에서 원문 직접 미확인.</p>
 <p>세 원문 모두 건설현장 데이터 성능은 보고하지 않음. 카드의 "흙더미 옆 사람", "노란 안전모"는 질의 예시이며 현장 성능 미검증. 우상단 그림 원 출처는 원본 덱 미표기.</p>
 <p>변경: SAM 「라벨 없이 객체 마스킹」 → 「점·박스 프롬프트 → 객체 마스크」, Depth Anything 「일반화 성능 급상승」 → 「단안 상대 깊이 — 실측량엔 스케일 보정」, 결론 「라벨 비용이 극단적으로 ↓ · 현장 데이터 수집 병목 해소」 → 「자동 마스크·박스 제안으로 라벨링 보조 — 현장 성능은 별도 검증」.</p>
+<p>v3 화면 배치: 네 모델을 입력 → 모델 → 출력 흐름으로 정리, 굴착 현장 분할 그림(원본 덱 내장)과 SAM Fig.1은 오른쪽 열에 배치. 출처·한정은 위 문단과 같음.</p>
 </aside>
 </section>
 
-<section class="slide v2-p2" id="v2-part2-07" data-source="AI Technologies for Field Robotics 이한민.pptx#9" data-title="Localization &amp; SLAM">
-<h2 class="title">GPS가 안 되는 곳에서 어떻게 위치를 알까</h2>
-<img class="kimmlogo" src="assets/v2/common/kimm-logo.png" alt="KIMM">
-<div class="v2-p2-grid2">
-  <div class="v2-p2-card c-blue"><h3>LIO-SAM / FAST-LIO</h3><p class="k">LiDAR + IMU 융합</p><p class="d">과수원 · 터널 · 실내</p></div>
-  <div class="v2-p2-card c-teal"><h3>Visual-Inertial Odom.</h3><p class="k">카메라 + IMU</p><p class="d">경량 플랫폼용</p></div>
-  <div class="v2-p2-card c-purple"><h3>Learning-based loop closure</h3><p class="k">변화하는 지형에서도 재인식</p><p class="d">계절 변화 대응</p></div>
-  <div class="v2-p2-card c-green"><h3>RTK + IMU Fusion</h3><p class="k">cm급 정밀도</p><p class="d">GPS 단절 시 IMU 보완</p></div>
+<section class="slide v3 v3-p2" id="v2-part2-07" data-source="AI Technologies for Field Robotics 이한민.pptx#9" data-title="Localization &amp; SLAM">
+<div class="v3-rail"></div><h1 class="v3-title">GPS가 안 되는 곳에서 어떻게 위치를 알까</h1>
+<img class="v3-logo" src="assets/v2/common/kimm-logo.png" alt="KIMM">
+<div class="v3-keybar"><span>LiDAR · 카메라 · RTK를 <em>IMU와 융합</em></span></div>
+<div class="v3-content">
+  <table class="v3-table">
+    <thead><tr><th>방법</th><th class="c">LiDAR</th><th class="c">카메라</th><th class="c">IMU</th><th class="c">RTK</th><th>특징</th></tr></thead>
+    <tbody>
+      <tr><td>LIO-SAM / FAST-LIO</td><td class="c"><i class="dot"></i></td><td class="c"></td><td class="c"><i class="dot"></i></td><td class="c"></td><td>과수원 · 터널 · 실내</td></tr>
+      <tr><td>Visual-Inertial Odom.</td><td class="c"></td><td class="c"><i class="dot"></i></td><td class="c"><i class="dot"></i></td><td class="c"></td><td>경량 플랫폼용</td></tr>
+      <tr><td>RTK + IMU Fusion</td><td class="c"></td><td class="c"></td><td class="c"><i class="dot"></i></td><td class="c"><i class="dot"></i></td><td>cm급 정밀도 · GPS 단절 시 IMU 보완</td></tr>
+      <tr><td>Learning-based loop closure</td><td class="c na" colspan="4">변화하는 지형에서도 재인식</td><td>계절 변화 대응</td></tr>
+    </tbody>
+  </table>
+  <div class="map"><div class="v3-media dark"><img src="assets/v2/part2/B09_lidar_map_image26.png" alt="LiDAR 점군 지도"></div><div class="v3-cap">LiDAR 점군 지도<br><span class="v3-tag g">원본 발표 수록 예시</span></div></div>
 </div>
-<img class="fig v2-p2-media" src="assets/v2/part2/B09_lidar_map_image26.png" alt="LiDAR 점군 지도">
 <aside class="speaker-notes">
 <p>원본: AI Frontiers Summit 2026 발표 #9. 네 카드, 하단 문장, 우하단 LiDAR 점군 지도 그대로.</p>
 <p>LIO-SAM/FAST-LIO는 LiDAR 스캔 정합과 IMU 적분을 결합해 위치와 지도를 동시에 추정. VIO는 카메라 특징점과 IMU로 경량 추정. Loop closure는 이전에 지나간 곳을 다시 알아보고 누적 오차를 보정하는 단계로, 학습 기반 장소 인식이 계절·지형 변화에 강해지고 있음. RTK-GNSS는 기준국 보정으로 cm급 위치를 주며, 터널·구조물 아래처럼 위성이 끊기면 IMU·LiDAR로 이어 감. KIMM 과수 예찰 농기계는 LIO-SAM을 사용(별도 KIMM 사례 장).</p>
@@ -446,18 +499,21 @@
 </aside>
 </section>
 
-<section class="slide v2-p2" id="v2-part2-08" data-source="AI Technologies for Field Robotics 이한민.pptx#10" data-title="계획 기법의 흐름">
-<h2 class="title">휴리스틱에서 학습 기반 결정으로</h2>
-<img class="kimmlogo" src="assets/v2/common/kimm-logo.png" alt="KIMM">
-<table>
-  <thead><tr><th></th><th>APPROACH</th><th>EXAMPLES</th><th>LIMITATION</th></tr></thead>
-  <tbody>
-    <tr><td>01</td><td>기하학적 경로계획</td><td>Dubins · A* · RRT</td><td>정적 가정 · 비용함수 수동</td></tr>
-    <tr><td>02</td><td>최적화 기반 제어</td><td>MPC · Trajectory Opt.</td><td>모델 의존 · 비선형 한계</td></tr>
-    <tr><td>03</td><td>학습 기반</td><td>Imitation · RL · Diffusion</td><td>데이터 의존</td></tr>
-    <tr class="hl"><td>04</td><td>LLM-as-planner</td><td>VLA · SayCan · PaLM-E</td><td>자연어 미션 → 행동 시퀀스</td></tr>
-  </tbody>
-</table>
+<section class="slide v3 v3-p2" id="v2-part2-08" data-source="AI Technologies for Field Robotics 이한민.pptx#10" data-title="계획 기법의 흐름">
+<div class="v3-rail"></div><h1 class="v3-title">휴리스틱에서 학습 기반 결정으로</h1>
+<img class="v3-logo" src="assets/v2/common/kimm-logo.png" alt="KIMM">
+<div class="v3-keybar"><span>네 방식은 대체 관계가 아니라 <em>함께 쓰임</em></span></div>
+<div class="v3-content">
+  <table class="v3-table">
+    <thead><tr><th>접근</th><th>예시</th><th>한계</th></tr></thead>
+    <tbody>
+      <tr><td>기하학적 경로계획</td><td>Dubins · A* · RRT</td><td>정적 가정 · 비용함수 수동</td></tr>
+      <tr><td>최적화 기반 제어</td><td>MPC · Trajectory Opt.</td><td>모델 의존 · 비선형 한계</td></tr>
+      <tr><td>학습 기반</td><td>Imitation · RL · Diffusion</td><td>데이터 의존</td></tr>
+      <tr class="hl"><td>LLM-as-planner</td><td>VLA · SayCan · PaLM-E</td><td>자연어 미션 → 행동 시퀀스</td></tr>
+    </tbody>
+  </table>
+</div>
 <aside class="speaker-notes">
 <p>원본: AI Frontiers Summit 2026 발표 #10. 4행 표 구성·문구 그대로, 4행 강조 유지.</p>
 <p>기하학적 계획은 지도와 비용함수가 주어졌을 때 충돌 없는 경로를 탐색. 최적화 기반(MPC)은 동역학 모델로 미래를 예측하며 제약을 지키는 입력을 매 주기 계산. 학습 기반은 시연(모방학습)이나 시행착오(강화학습)로 정책을 얻음. LLM-as-planner는 자연어 미션을 하위 기술 호출 순서로 바꿈. 현장 시스템에서는 네 방식이 대체 관계가 아니라 함께 쓰임(예: 학습 정책 + MPC 안전망).</p>
@@ -465,27 +521,25 @@
 </aside>
 </section>
 
-<section class="slide v2-p2" id="v2-part2-09" data-source="AI Technologies for Field Robotics 이한민.pptx#11" data-title="모방학습">
-<h2 class="title">숙련자에게 배우기 <span class="sub" style="color:#D97706">IMITATION LEARNING</span></h2>
-<img class="kimmlogo" src="assets/v2/common/kimm-logo.png" alt="KIMM">
-<div class="v2-p2-pane2">
-  <div class="v2-p2-card c-orange"><p class="hd">왜 시연인가</p>
-    <ul class="v2-p2-bul">
-      <li>숙련자의 관측·조작 데이터로 학습</li>
-      <li>보상함수 설계가 어려운 작업 (정밀 그레이딩)</li>
-      <li>retrofit 장비로 일반 작업 중 시연 기록 (제안)</li>
-    </ul></div>
-  <div class="v2-p2-card c-purple"><p class="hd">대표 기법</p>
-    <div class="tech">
-      <div><b>Behavior Cloning · DAgger</b><span>기본 시연 모방</span></div>
-      <div><b>Diffusion Policy</b><span>다봉 행동 분포 생성</span></div>
-      <div><b>ACT · VQ-BeT</b><span>Action Chunking, 토큰화</span></div>
-      <div><b>Offline RL + Demos</b><span>시연 + RL 결합</span></div>
-    </div></div>
-</div>
-<div class="ext">
-  <figure><img src="assets/v2/research/chi23_fig1_policy_repr.png" alt="정책 표현 비교 — Explicit, Implicit, Diffusion Policy (Chi et al., Fig.1)"><figcaption>Diffusion Policy — 잡음에서 행동 시퀀스를 생성해 다봉 분포 표현 (Chi et al., Fig. 1)</figcaption></figure>
-  <figure><img src="assets/v2/research/zhao23_fig5_chunking.png" alt="Action chunking과 temporal ensembling (Zhao et al. 2023, Fig.5)"><figcaption>ACT — k스텝 행동 묶음 + 시간 앙상블 (Zhao et al. 2023, Fig. 5)</figcaption></figure>
+<section class="slide v3 v3-p2" id="v2-part2-09" data-source="AI Technologies for Field Robotics 이한민.pptx#11" data-title="모방학습">
+<div class="v3-rail"></div><h1 class="v3-title">숙련자에게 배우기 <span class="sub">Imitation Learning</span></h1>
+<img class="v3-logo" src="assets/v2/common/kimm-logo.png" alt="KIMM">
+<div class="v3-keybar"><span>숙련자의 <em>관측·조작 데이터</em>로 학습</span></div>
+<div class="v3-content">
+  <div class="v3-flow"><div class="v3-node in">숙련자 시연<small>관측 · 조작</small></div><div class="v3-arrow"></div><div class="v3-node fill">정책 학습</div><div class="v3-arrow"></div><div class="v3-node">같은 관측에서 같은 조작</div></div>
+  <div class="v3-row">
+    <div class="v3-col why"><div class="v3-h bar">왜 시연인가</div>
+      <ul class="v3-list"><li>숙련자의 관측·조작 데이터로 학습</li><li>보상함수 설계가 어려운 작업 (정밀 그레이딩)</li><li>retrofit 장비로 일반 작업 중 시연 기록 <span class="v3-tag plan">제안</span></li></ul></div>
+    <div class="v3-grow"><table class="v3-table"><thead><tr><th>대표 기법</th><th>특징</th></tr></thead><tbody>
+      <tr><td>Behavior Cloning · DAgger</td><td>기본 시연 모방</td></tr>
+      <tr><td>Diffusion Policy</td><td>다봉 행동 분포 생성</td></tr>
+      <tr><td>ACT · VQ-BeT</td><td>Action Chunking, 토큰화</td></tr>
+      <tr><td>Offline RL + Demos</td><td>시연 + RL 결합</td></tr></tbody></table></div>
+  </div>
+  <div class="papers">
+    <figure class="v3-fig"><div class="v3-media paper p1"><img src="assets/v2/research/chi23_fig1_policy_repr.png" alt="정책 표현 비교 — Explicit, Implicit, Diffusion Policy (Chi et al., Fig.1)"></div><figcaption class="v3-cap">Diffusion Policy — 잡음에서 행동 시퀀스 생성 <span class="v3-tag ext">Chi et al., Fig. 1</span></figcaption></figure>
+    <figure class="v3-fig"><div class="v3-media paper p2"><img src="assets/v2/research/zhao23_fig5_chunking.png" alt="Action chunking과 temporal ensembling (Zhao et al. 2023, Fig.5)"></div><figcaption class="v3-cap">ACT — k스텝 행동 묶음 <span class="v3-tag ext">Zhao et al. 2023, Fig. 5</span></figcaption></figure>
+  </div>
 </div>
 <aside class="speaker-notes">
 <p>원본: AI Frontiers Summit 2026 발표 #11. 좌우 두 패널, 항목·기법 목록 그대로. 아래 빈 자리에 Diffusion Policy·ACT 원 논문 그림 2개 추가.</p>
@@ -496,17 +550,24 @@
 </aside>
 </section>
 
-<section class="slide v2-p2" id="v2-part2-10" data-source="AI Technologies for Field Robotics 이한민.pptx#12" data-title="강화학습 + Sim-to-Real">
-<h2 class="title">옥외에서 강화학습이 통하려면</h2>
-<img class="kimmlogo" src="assets/v2/common/kimm-logo.png" alt="KIMM">
-<div class="cards">
-  <div class="v2-p2-card c-green"><h3>Massively Parallel Sim</h3><p class="k">Isaac Gym · Isaac Sim · MuJoCo MJX</p><p class="d">수천 개 로봇을 GPU 한 대에서 동시에 학습</p></div>
-  <div class="v2-p2-card c-blue"><h3>Domain Randomization</h3><p class="k">Friction · Push · Noise · Soil</p><p class="d">마찰·외란·센서잡음, 굴착은 토양 물성 범위를 무작위화</p></div>
-  <div class="v2-p2-card c-purple"><h3>Real-to-Sim-to-Real</h3><p class="k">실기 로그 → 유압 모델 학습 · NeRF / GS</p><p class="d">실측으로 시뮬레이터를 보정</p></div>
-</div>
-<div class="gifs">
-  <img src="assets/v2/part2/B12_parallel_sim_left_image28.gif" alt="병렬 시뮬레이션 — 바퀴형 사족로봇 다수 동시 학습">
-  <img src="assets/v2/part2/B12_parallel_sim_right_image27.gif" alt="병렬 시뮬레이션 — 사족로봇 다수 동시 학습">
+<section class="slide v3 v3-p2" id="v2-part2-10" data-source="AI Technologies for Field Robotics 이한민.pptx#12" data-title="강화학습 + Sim-to-Real">
+<div class="v3-rail"></div><h1 class="v3-title">옥외에서 강화학습이 통하려면</h1>
+<img class="v3-logo" src="assets/v2/common/kimm-logo.png" alt="KIMM">
+<div class="v3-keybar"><span><em>병렬 시뮬레이션</em>으로 학습하고 <em>실측으로 보정</em></span></div>
+<div class="v3-content">
+  <div class="v3-flow">
+    <div class="v3-node fill">Massively Parallel Sim<small>수천 개 로봇을 GPU 한 대에서 동시에 학습<br>Isaac Gym · Isaac Sim · MuJoCo MJX</small></div>
+    <div class="v3-arrow"></div>
+    <div class="v3-node">Domain Randomization<small>마찰·외란·센서잡음, 굴착은 토양 물성 범위를 무작위화<br>Friction · Push · Noise · Soil</small></div>
+    <div class="v3-arrow"></div>
+    <div class="v3-node soft" style="flex:0 0 150px">현장 실기<small>Sim-to-Real</small></div>
+  </div>
+  <div class="back"><span class="loop"></span><span class="lb"><b>Real-to-Sim</b>실측으로 시뮬레이터를 보정 · 실기 로그 → 유압 모델 학습 · NeRF / GS</span></div>
+  <div class="gifs">
+    <div class="v3-media dark g1"><img src="assets/v2/part2/B12_parallel_sim_left_image28.gif" alt="병렬 시뮬레이션 — 바퀴형 사족로봇 다수 동시 학습"></div>
+    <div class="v3-media dark g2"><img src="assets/v2/part2/B12_parallel_sim_right_image27.gif" alt="병렬 시뮬레이션 — 사족로봇 다수 동시 학습"></div>
+  </div>
+  <div class="v3-cap">병렬 시뮬레이션 학습 화면 <span class="v3-tag g">원본 발표 수록 GIF</span></div>
 </div>
 <aside class="speaker-notes">
 <p>원본: AI Frontiers Summit 2026 발표 #12. 세 카드와 하단 병렬 시뮬레이션 GIF 2개(원본 내장 image28.gif 6.0초/200프레임, image27.gif 5.0초/167프레임, 원본 파일 그대로·반복 재생) 유지. GIF 원 출처는 원본 덱 미표기.</p>
@@ -518,38 +579,50 @@
 </aside>
 </section>
 
-<section class="slide v2-p2" id="v2-part2-11" data-source="AI Technologies for Field Robotics 이한민.pptx#13" data-title="MPC + Learned Residuals">
-<h2 class="title">학습이 모델 기반을 대체하지 않는다</h2>
-<img class="kimmlogo" src="assets/v2/common/kimm-logo.png" alt="KIMM">
-<p class="hd">MPC가 여전히 핵심인 이유</p>
-<ul class="v2-p2-bul">
-  <li>유압 동력·펌프 유량·실린더 변위 제약을 최적화에 명시</li>
-  <li>Augmented Lagrangian DDP 기반 MPC — 평균 21.7 ms (시뮬레이션)</li>
-  <li>토양 반력·유압 마찰은 외란추정으로 실시간 반영</li>
-  <li>학습은 모델 보완 — 실기 로그로 유압 동역학 학습 (ETH)</li>
-</ul>
-<img class="fig v2-p2-media" src="assets/v2/part2/B13_mpc_excavator_image29.png" alt="굴착기 MPC 시뮬레이션 — 궤적, 활성 제약(Power, Pump Flow Rate), 외란 추정(Swing, Boom, Arm, Bucket Cyl.)">
-<p class="cite">[SNU21] Lee, Jang et al., IROS 2021</p>
-<img class="flow v2-p2-media" src="assets/v2/research/snu21_fig2_flowchart.png" alt="SNU21 알고리즘 흐름도 — Global planner, Local planner(MPC), Disturbance estimation, Motion control (Fig.2)">
+<section class="slide v3 v3-p2" id="v2-part2-11" data-source="AI Technologies for Field Robotics 이한민.pptx#13" data-title="MPC + Learned Residuals">
+<div class="v3-rail"></div><h1 class="v3-title">학습이 모델 기반을 대체하지 않는다</h1>
+<img class="v3-logo" src="assets/v2/common/kimm-logo.png" alt="KIMM">
+<div class="v3-keybar"><span><em>MPC가 여전히 핵심</em> — 유압 제약을 최적화에 명시</span></div>
+<div class="v3-content">
+  <div class="v3-p2-mpc">
+    <div class="dg">
+      <div class="v3-node in">유압 동력 · 펌프 유량 · 실린더 변위 제약</div>
+      <div class="v3-arrow down"></div>
+      <div class="mid"><div class="v3-node fill">MPC<small>Augmented Lagrangian DDP<br>평균 21.7 ms (시뮬레이션)</small></div><div class="v3-arrow back"></div><div class="v3-node">외란추정<small>토양 반력 · 유압 마찰 실시간 반영</small></div></div>
+      <div class="v3-arrow down"></div>
+      <div class="v3-node">굴착기 동작 제어</div>
+      <div class="v3-node dash learn">학습은 모델 보완<small>실기 로그로 유압 동역학 학습</small><span class="v3-tag ext">ETH</span></div>
+    </div>
+    <figure class="v3-fig res"><div class="v3-media paper"><img src="assets/v2/part2/B13_mpc_excavator_image29.png" alt="굴착기 MPC 시뮬레이션 — 궤적, 활성 제약(Power, Pump Flow Rate), 외란 추정(Swing, Boom, Arm, Bucket Cyl.)"></div>
+      <figcaption class="v3-cap">굴착기 MPC 시뮬레이션 — 활성 제약 · 외란 추정 <span class="v3-tag ext">[SNU21] Lee, Jang et al., IROS 2021</span></figcaption></figure>
+  </div>
+</div>
 <aside class="speaker-notes">
 <p>원본: AI Frontiers Summit 2026 발표 #13. 좌측 항목 + 우측 굴착기 MPC 그림(원본 내장 image29.png: 'Simulation scenario 1' 2X 영상 프레임 + Active constraints·Disturbance estimates 그래프) + [SNU21] 구성 유지. 좌하단에 같은 논문의 알고리즘 흐름도(Fig.2) 추가.</p>
 <p>[SNU21] = Dongjae Lee, Inkyu Jang, Jeonghyun Byun, Hoseong Seo, H. Jin Kim, "Real-Time Motion Planning of a Hydraulic Excavator using Trajectory Optimization and Model Predictive Control", IEEE/RSJ IROS 2021, arXiv:2107.02366 (서울대, 현대건설기계 연구비).</p>
 <p>구조: 전역 계획(굴착량·에너지 고려, Bernstein 다항식 궤적) → 국부 계획(MPC, receding horizon) + 외란추정 → 동작 제어. 제약은 구동기 힘, 유압 동력, 실린더 변위, 두 펌프 유량 f1·f2, 굴착 단계 swept volume·버킷 용량. 해법은 augmented Lagrangian을 쓴 DDP, feedback linearization으로 재정식화해 실시간성 확보. 국부 MPC 평균 21.7 ms(약 46 Hz, i7-9750 CPU). 토양–버킷 반력과 유압 마찰은 운동량 기반 외란추정기로 실시간 추정해 반영. 검증은 HX300L 구성 ROS/C++ 시뮬레이션(얕은·깊은 굴착 2 시나리오), 실기 실험과 신경망은 없음.</p>
 <p>학습의 역할: 모델 오차 보완. 예) Spinelli et al.(IROS 2024, ETH)은 실기 로그로 유압 동역학을 신경망으로 학습해 시뮬레이터에 넣음. 원본의 「ML 정책 제안 → MPC가 안전 영역으로 사영」은 safety filter라는 일반 개념이며 SNU21의 구조는 아님.</p>
 <p>변경(심층조사 근거): 「AL iLQR — 실시간(&lt;80ms)」 → 「Augmented Lagrangian DDP 기반 MPC — 평균 21.7 ms (시뮬레이션)」(원문 수치), 「Learned residuals — 모델 오차를 신경망이 보정」 → 외란추정 항목 + 「학습은 모델 보완 — 실기 로그로 유압 동역학 학습 (ETH)」으로 분리(SNU21은 신경망 미사용), 「ML 정책 제안 → MPC 사영」 화면 항목은 노트로 이동, 「…안전 제약 사전 보장 필수」 → 「…제약을 최적화에 명시」. [SNU21] 약식 표기에 저자·학회 추가. 그림 라이선스: arXiv CC BY-NC-SA 4.0 / ©2021 IEEE.</p>
+<p>v3 화면 배치: 좌측 항목을 제약 → MPC ← 외란추정 → 동작 제어 도식과 학습 보완(점선) 노드로 다시 그림. SNU21 Fig.2 흐름도 그림 파일(assets/v2/research/snu21_fig2_flowchart.png)은 화면에서 이 자체 도식으로 대체, 우측 결과 그림(image29)과 [SNU21] 표기는 유지.</p>
 </aside>
 </section>
 
-<section class="slide v2-p2" id="v2-part2-12" data-source="AI Technologies for Field Robotics 이한민.pptx#15" data-title="계층형 AI 구조">
-<h2 class="title sm">한 모델로 모두 풀지 않는다 — 계층 분리</h2>
-<img class="kimmlogo" src="assets/v2/common/kimm-logo.png" alt="KIMM">
-<div class="v2-p2-pane2" style="--ph:310px">
-  <div class="v2-p2-card up"><p class="hd">UPPER · LLM REASONING</p><p class="big">자연어 명령 → 작업 분해</p>
-    <ul class="v2-p2-bul"><li>의존관계 · 선행조건 검증</li><li>원자적 자율 작업 블록 (atomic blocks) 정의</li><li>기계 간 협업 조율 (팀 운용)</li></ul></div>
-  <div class="v2-p2-card lo"><p class="hd">LOWER · E2E POLICY</p><p class="big">Visuomotor 행동 생성</p>
-    <ul class="v2-p2-bul"><li>환경 인식 (점군 · 카메라)</li><li>기계 제어 (굴삭 · 적재 · 이동)</li><li>물리 상호작용 (토질 · 경사 적응)</li></ul></div>
+<section class="slide v3 v3-p2" id="v2-part2-12" data-source="AI Technologies for Field Robotics 이한민.pptx#15" data-title="계층형 AI 구조">
+<div class="v3-rail"></div><h1 class="v3-title sm">한 모델로 모두 풀지 않는다 — 계층 분리</h1>
+<img class="v3-logo" src="assets/v2/common/kimm-logo.png" alt="KIMM">
+<div class="v3-keybar sm"><span>상위(언어)와 하위(운동)는 <em>다른 추론 빈도</em>와 <em>다른 학습 데이터</em>를 요구</span></div>
+<div class="v3-content">
+  <div class="v3-p2-layers">
+    <div class="v3-node in">자연어 명령</div><div class="v3-arrow"></div>
+    <div class="v3-group solid"><span class="v3-glabel">상위 · LLM 추론</span>
+      <div class="v3-node fill">작업 분해</div><div class="v3-arrow"></div><div class="v3-node">선행조건 검증<small>의존관계</small></div><div class="v3-arrow"></div><div class="v3-node">협업 조율<small>기계 간 · 팀 운용</small></div></div>
+    <i></i><i></i>
+    <div class="blk"><span class="v3-arrow down"></span><div class="v3-node y">원자적 자율 작업 블록 (atomic blocks)</div><span class="v3-arrow down"></span></div>
+    <div class="v3-node in">환경 인식<small>점군 · 카메라</small></div><div class="v3-arrow"></div>
+    <div class="v3-group solid"><span class="v3-glabel">하위 · E2E 정책</span>
+      <div class="v3-node fill">Visuomotor 행동 생성</div><div class="v3-arrow"></div><div class="v3-node">기계 제어<small>굴삭 · 적재 · 이동</small></div><div class="v3-arrow"></div><div class="v3-node">물리 상호작용<small>토질 · 경사 적응</small></div></div>
+  </div>
 </div>
-<div class="v2-p2-take">→ 상위(언어)와 하위(운동)는 다른 추론 빈도와 다른 학습 데이터를 요구</div>
 <aside class="speaker-notes">
 <p>원본: AI Frontiers Summit 2026 발표 #15. 상·하위 두 패널(상위 어두운 바탕)과 하단 박스 구성 그대로.</p>
 <p>상위 계층은 언어 모델이 "이 구역을 1 m 깊이로 파서 덤프트럭에 실어라" 같은 명령을 작업 블록 순서로 나누고 선행조건을 확인. 하위 계층은 센서 입력에서 바로 조작 명령을 내는 정책으로, 초당 수십 회 이상 빠르게 동작. 상위는 느리고 일반 지식이 필요하며, 하위는 빠르고 해당 기계의 실측 데이터가 필요해서 두 계층을 나눔. 원본은 Bedrock · Figure · Physical Intelligence를 유사 구조의 예로 들었음(회사별 공개 수준은 다름).</p>
@@ -557,21 +630,30 @@
 </aside>
 </section>
 
-<section class="slide v2-p2" id="v2-part2-13" data-source="AI Technologies for Field Robotics 이한민.pptx#17" data-title="Sim-to-Real Gap">
-<h2 class="title">Sim-to-Real Gap — 여전히 가장 큰 적</h2>
-<img class="kimmlogo" src="assets/v2/common/kimm-logo.png" alt="KIMM">
-<div class="v2-p2-pane2" style="--ph:430px">
-  <div class="v2-p2-card c-red"><p class="hd">PROBLEM</p>
-    <ul class="v2-p2-bul"><li>토양 · 유압의 비선형성은 시뮬레이션이 약함</li><li>조건이 바뀌면 정책 성능 저하 (OOD)</li><li>드물고 위험한 상황은 시뮬만으로 검증 불충분</li></ul>
-    <figure class="ext"><img src="assets/v2/research/ext25_table5_soilparams.png" alt="굴착 RL 토양 파라미터 무작위화 범위 (ExT, Table V)"><figcaption>외부 연구 · 굴착 RL의 토양 물성 무작위화 범위 (ETH ExT 2025, Table V)</figcaption></figure></div>
-  <div class="v2-p2-card c-green"><p class="hd">EMERGING SOLUTIONS</p>
-    <div class="sol"><b>Differentiable Simulation</b><span>Brax · Genesis · MuJoCo MJX (강체 중심)</span></div>
-    <div class="sol"><b>Real-to-Sim</b><span>형상: NeRF · 3DGS 재구성 / 동역학: 실기 로그로 유압 모델 학습</span></div>
-    <div class="sol"><b>Soil Parameter Randomization</b><span>점착력 · 내부마찰각 · 버킷 마찰각 범위로 학습</span></div>
-    <div class="sol"><b>Foundation Pretraining</b><span>사전학습 + 미세조정으로 새 조건 적응 비용 ↓</span></div></div>
+<section class="slide v3 v3-p2" id="v2-part2-13" data-source="AI Technologies for Field Robotics 이한민.pptx#17" data-title="Sim-to-Real Gap">
+<div class="v3-rail"></div><h1 class="v3-title">Sim-to-Real Gap — 여전히 가장 큰 적</h1>
+<img class="v3-logo" src="assets/v2/common/kimm-logo.png" alt="KIMM">
+<div class="v3-keybar"><span><em>토양 · 유압의 비선형성</em>은 시뮬레이션이 약함</span></div>
+<div class="v3-content">
+  <div class="v3-p2-s2r">
+    <div class="v3-col">
+      <div class="v3-h bar">문제</div>
+      <ul class="v3-list"><li>토양 · 유압의 비선형성은 시뮬레이션이 약함</li><li>조건이 바뀌면 정책 성능 저하 (OOD)</li><li>드물고 위험한 상황은 시뮬만으로 검증 불충분</li></ul>
+      <figure class="v3-fig soil"><table class="v3-table v3-p2-soil"><thead><tr><th>Parameters</th><th class="c">Unit</th><th class="c">Min</th><th class="c">Max</th><th class="c ood">OOD Value</th></tr></thead><tbody><tr><td>Terrain RBF length scale</td><td class="c">m</td><td class="c">0</td><td class="c">0.5</td><td class="c ood">Stairs</td></tr></tbody><tbody><tr><td>Cohesion</td><td class="c">kPa</td><td class="c">0</td><td class="c">100</td><td class="c ood">0</td></tr><tr><td>Adhesion</td><td class="c">—</td><td class="c">0</td><td class="c">1</td><td class="c ood">0</td></tr><tr><td>Soil internal friction angle</td><td class="c">rad</td><td class="c">0.3</td><td class="c">0.8</td><td class="c ood">0.77</td></tr><tr><td>Soil–bucket friction angle</td><td class="c">rad</td><td class="c">0.19</td><td class="c">0.38</td><td class="c ood">0.4</td></tr><tr><td>Cavity pressure factor</td><td class="c">—</td><td class="c">0</td><td class="c">300</td><td class="c ood">315</td></tr></tbody><tbody><tr><td>Bucket width</td><td class="c">m</td><td class="c">1.4</td><td class="c">—</td><td class="c ood">1.1</td></tr><tr><td>Bucket radius</td><td class="c">m</td><td class="c">0.375</td><td class="c">—</td><td class="c ood">0.275</td></tr></tbody></table><figcaption class="v3-cap">TABLE V — <i>dig</i> 시연 수집용 파라미터 범위와 RLFT로 적응할 OOD 값 <span class="v3-tag ext">외부 연구 · ETH ExT 2025, Table V</span></figcaption></figure>
+    </div>
+    <div class="v3-col">
+      <div class="v3-h bar">대응 방향</div>
+      <div class="sols">
+        <div class="v3-node">Differentiable Simulation<small>Brax · Genesis · MuJoCo MJX (강체 중심)</small></div>
+        <div class="v3-node">Real-to-Sim<small>형상: NeRF · 3DGS 재구성 / 동역학: 실기 로그로 유압 모델 학습</small></div>
+        <div class="v3-node fill">Soil Parameter Randomization<small>점착력 · 내부마찰각 · 버킷 마찰각 범위로 학습</small></div>
+        <div class="v3-node">Foundation Pretraining<small>사전학습 + 미세조정으로 새 조건 적응 비용 ↓</small></div>
+      </div>
+    </div>
+  </div>
 </div>
 <aside class="speaker-notes">
-<p>원본: AI Frontiers Summit 2026 발표 #17. PROBLEM / EMERGING SOLUTIONS 두 패널 구성 그대로. 왼쪽 패널 아래에 토양 파라미터 표(외부 연구) 추가, 오른쪽에 토양 파라미터 무작위화 항목 추가.</p>
+<p>원본: AI Frontiers Summit 2026 발표 #17. PROBLEM / EMERGING SOLUTIONS 두 패널 구성 그대로. 왼쪽 패널 아래에 토양 파라미터 표(외부 연구 Table V, 원문 표 이미지를 수치·단위·행 구분 그대로 HTML 표로 재작성) 추가, 오른쪽에 토양 파라미터 무작위화 항목 추가.</p>
 <p>유압: Spinelli et al.(IROS 2024, ETH, arXiv:2410.05093)은 선회 유압모터를 MLP로 모델링 — 입력은 상태·명령 이력과 측정 압력, 출력은 다음 스텝 압력·속도. 실기 로그 약 79분으로 학습해 시뮬레이터에 넣고 RL 학습 후 실기에 직접 적용.</p>
 <p>토양: ETH ExT(Zhai, Terenzi et al., arXiv:2509.14992)는 fundamental earth moving equation 기반 굴착저항 모델의 파라미터 — 점착력 0–100 kPa, 부착 0–1, 내부마찰각 0.3–0.8 rad, 토양–버킷 마찰각 0.19–0.38 rad, cavity pressure factor 0–300 — 를 범위로 무작위화(Table V). 범위 밖 토양·계단 지형·다른 버킷(OOD)에서는 성능이 떨어졌다가 RL 미세조정으로 회복(시뮬레이션 결과). 실기 Menzi Muck M545에서 dump·move arm zero-shot 이전, dig–dump–move 연속 작업, 매립 암석 충돌 시 정지·복귀 시연 보고. 사전학습은 시뮬 의존을 없애기보다 새 조건 적응 비용을 낮추는 쪽.</p>
 <p>미분 가능 시뮬레이션: MuJoCo MJX 공식 문서상 JAX판은 GPU/TPU에서 실행되고 미분은 소규모 장면에서 대략 지원, 토양·유압 모델은 문서에서 확인되지 않음 — 강체 중심. Brax·Genesis는 이번 범위에서 미확인.</p>
@@ -579,348 +661,323 @@
 <p>변경: 눈썹 「PART 04 · CHALLENGES AHEAD」 삭제. 「시뮬 → 현장 전이 시 정책이 자주 깨짐」 → 「조건이 바뀌면 정책 성능 저하 (OOD)」(빈도 근거 없음), 「드물고 위험한 상황을 시뮬에서만 학습할 수 없음」 → 「…시뮬만으로 검증 불충분」(ExT는 숨은 장애물 대응을 시뮬에서 학습해 실기 시연), MJX 등에 「(강체 중심)」 표기, Real-to-Sim을 형상/동역학으로 구분, 「Foundation Pretraining — 시뮬 의존도 ↓」 → 「사전학습 + 미세조정으로 새 조건 적응 비용 ↓」, 「Soil Parameter Randomization」 항목 추가.</p>
 </aside>
 </section>
-<!-- ===== field_demos ===== -->
-<!-- v2 v2-fd: 원본 AI Frontiers Summit 2026 「AI Technologies for Field Robotics」 페이지 재현. 경로는 통합 HTML 기준 -->
-<section class="slide v2-fd" id="v2-field-01" data-source="AI Technologies for Field Robotics 이한민.pptx#36" data-title="3. 협업 크레인 교량 구조물 자동운반 기술">
-<h1 class="title">3. 협업 크레인 교량 구조물 자동운반 기술</h1>
-<img class="kimmlogo" src="assets/v2/common/kimm-logo.png" alt="KIMM">
-<div class="v2-fd-stage">
-<div class="sp" data-name="직사각형 29" style="left:26.5px;top:106.3px;width:611.0px;height:122.1px;"><div class="tx" style="padding:3.6px 7.2px 3.6px 7.2px;justify-content:flex-start;"><p style="text-align:left;padding-left:18.0px;text-indent:-18.0px;line-height:1.44;font-size:16.0px;"><img class="bu bimg" src="assets/v2/part3/src_image94.png" alt=""><span style="font-size:16.0px;color:#000000;">기술적 </span><span style="font-size:16.0px;color:#000000;">성과</span></p><p style="text-align:left;padding-left:42.5px;text-indent:-22.5px;line-height:1.44;font-size:14.0px;"><span class="bu">▪</span><span style="font-size:14.0px;">다중 크레인 </span><span style="font-size:14.0px;">자동운반</span><span style="font-size:14.0px;"> 통합제어 시스템 </span><span style="font-size:14.0px;">개발 </span><span style="font-size:14.0px;">(</span><span style="font-size:14.0px;">위치 오차 수평</span><span style="font-size:14.0px;">/</span><span style="font-size:14.0px;">수직</span><span style="font-size:14.0px;"> ±</span><span style="font-size:14.0px;">５</span><span style="font-size:14.0px;">cm)</span></p><p style="text-align:left;padding-left:42.5px;text-indent:-22.5px;line-height:1.44;font-size:14.0px;"><span class="bu">▪</span><span style="font-size:14.0px;">라이다 기반 </span><span style="font-size:14.0px;">충돌방지용</span><span style="font-size:14.0px;"> </span><span style="font-size:14.0px;">환경탐지</span><span style="font-size:14.0px;"> 시스템 개발</span></p><p style="text-align:left;padding-left:42.5px;text-indent:-22.5px;line-height:1.44;font-size:14.0px;"><span class="bu">▪</span><span style="font-size:14.0px;">Multi-RRT </span><span style="font-size:14.0px;">기반 다중 크레인 </span><span style="font-size:14.0px;">거더</span><span style="font-size:14.0px;"> </span><span style="font-size:14.0px;">이송 </span><span style="font-size:14.0px;">경로계획</span><span style="font-size:14.0px;"> 알고리즘 </span><span style="font-size:14.0px;">개발</span></p><p style="text-align:left;padding-left:42.5px;text-indent:-22.5px;line-height:1.44;font-size:14.0px;"><span class="bu">▪</span><span style="font-size:14.0px;">거더</span><span style="font-size:14.0px;"> </span><span style="font-size:14.0px;">자동운반</span><span style="font-size:14.0px;"> 제어 축소 크레인 </span><span style="font-size:14.0px;">실증</span></p></div></div>
-<div class="sp" data-name="TextBox 30" style="left:69.6px;top:488.4px;width:164.6px;height:17.0px;"><div class="tx" style="padding:0.0px 0.0px 0.0px 0.0px;justify-content:flex-start;white-space:nowrap;"><p style="text-align:center;line-height:1.20;margin-top:0.0px;font-size:14.0px;"><span style="font-size:14.0px;color:#000000;">크레인 교량 구조물 이송 사례</span></p></div></div>
-<div class="pic vid" data-name="bandicam 2021-10-21 13-43-02-620" style="left:27.6px;top:335.4px;width:241.5px;height:150.6px;"><video src="assets/v2/part3/src_media5.mp4" poster="assets/v2/part3/src_image95.png" preload="metadata" playsinline style="position:absolute;left:0.000%;top:0.000%;width:100.000%;height:100.000%;object-fit:fill;"></video></div>
-<div class="pic vid" data-name="1. 자세1_카메라 영상" style="left:566.4px;top:112.3px;width:189.0px;height:127.3px;"><video src="assets/v2/part3/src_media6.mp4" poster="assets/v2/part3/src_image96.png" preload="metadata" playsinline style="position:absolute;left:-23.249%;top:-1.607%;width:132.074%;height:110.284%;object-fit:fill;"></video></div>
-<div class="pic vid" data-name="4. 자세2_카메라 영상" style="left:566.6px;top:240.7px;width:188.7px;height:127.1px;"><video src="assets/v2/part3/src_media7.mp4" poster="assets/v2/part3/src_image97.png" preload="metadata" playsinline style="position:absolute;left:-23.461%;top:-9.150%;width:149.350%;height:124.707%;object-fit:fill;"></video></div>
-<div class="pic vid" data-name="DJI_0106(1.5배속)" style="left:566.6px;top:369.8px;width:188.7px;height:114.1px;"><video src="assets/v2/part3/src_media8.mp4" poster="assets/v2/part3/src_image98.png" preload="metadata" playsinline style="position:absolute;left:-0.000%;top:-0.000%;width:107.495%;height:100.000%;object-fit:fill;"></video></div>
-<div class="pic" data-name="그림 35" style="left:280.6px;top:294.5px;width:273.3px;height:191.4px;"><img src="assets/v2/part3/src_image99.png" alt="그림 35" style="position:absolute;left:0.000%;top:0.000%;width:100.000%;height:100.000%;"></div>
-<div class="sp" data-name="TextBox 36" style="left:349.4px;top:491.9px;width:135.8px;height:17.0px;"><div class="tx" style="padding:0.0px 0.0px 0.0px 0.0px;justify-content:flex-start;white-space:nowrap;"><p style="text-align:center;line-height:1.20;margin-top:0.0px;font-size:14.0px;"><span style="font-size:14.0px;color:#000000;">협업 크레인 시스템 구성</span></p></div></div>
-<div class="sp" data-name="TextBox 37" style="left:594.2px;top:491.9px;width:148.2px;height:17.0px;"><div class="tx" style="padding:0.0px 0.0px 0.0px 0.0px;justify-content:flex-start;white-space:nowrap;"><p style="text-align:center;line-height:1.20;margin-top:0.0px;font-size:14.0px;"><span style="font-size:14.0px;color:#000000;">협업 크레인 </span><span style="font-size:14.0px;color:#000000;">자동운반</span><span style="font-size:14.0px;color:#000000;"> 제어</span></p></div></div>
+<!-- ===== v3/field_demos.html ===== -->
+<!-- v3 field_demos: KIMM 필드로봇 사례(원본 AI Frontiers Summit 2026 #36 #37 #38 #40 #42 #47 #51). FES/NST 공통 디자인(nst-v3.css .slide.v3)으로 재구성. 미디어는 assets/v2/part3 재사용(읽기 전용) -->
+
+<section class="slide v3 v3-fd" id="v2-field-01" data-source="AI Technologies for Field Robotics 이한민.pptx#36" data-title="협업 크레인 거더 자동운반">
+<div class="v3-rail"></div>
+<h1 class="v3-title">협업 크레인 거더 자동운반</h1>
+<img class="v3-logo" src="assets/v2/common/kimm-logo.png" alt="KIMM">
+<div class="v3-keybar sm"><span>다중 크레인을 통합 제어해 <em>교량 거더를 자동 운반</em></span></div>
+<div class="v3-content">
+ <div class="v3-fd-crane v3-fd-crane2">
+  <div class="v3-fd-top"><div class="v3-h bar">기술적 성과</div><div class="v3-node">다중 크레인 <b>통합제어</b><small>위치 오차 수평/수직 ±5 cm</small></div><div class="v3-node">라이다 기반 <b>충돌방지</b><small>환경탐지</small></div><div class="v3-node"><b>Multi-RRT</b><small>거더 이송 경로계획</small></div><div class="v3-node">축소 크레인<small>자동운반 실증</small></div></div>
+  <div class="v3-fig v3-fd-sys"><div class="v3-media paper sys"><img src="assets/v2/part3/src_image99.png" alt="협업 크레인 시스템 구성"><svg class="v3-fd-mk" viewBox="0 0 1165 816" preserveAspectRatio="none" aria-hidden="true"><rect class="o" x="632" y="80" width="58" height="58" rx="4"/><rect class="i" x="632" y="80" width="58" height="58" rx="4"/><rect class="o" x="696" y="52" width="58" height="58" rx="4"/><rect class="i" x="696" y="52" width="58" height="58" rx="4"/><rect class="o" x="327" y="394" width="55" height="60" rx="4"/><rect class="i" x="327" y="394" width="55" height="60" rx="4"/><rect class="o" x="389" y="382" width="58" height="59" rx="4"/><rect class="i" x="389" y="382" width="58" height="59" rx="4"/><rect class="o" x="639" y="327" width="60" height="60" rx="4"/><rect class="i" x="639" y="327" width="60" height="60" rx="4"/><rect class="o" x="194" y="437" width="61" height="61" rx="4"/><rect class="i" x="194" y="437" width="61" height="61" rx="4"/><rect class="o" x="303" y="457" width="60" height="60" rx="4"/><rect class="i" x="303" y="457" width="60" height="60" rx="4"/><rect class="o" x="290" y="540" width="61" height="61" rx="4"/><rect class="i" x="290" y="540" width="61" height="61" rx="4"/><rect class="o" x="360" y="555" width="60" height="61" rx="4"/><rect class="i" x="360" y="555" width="60" height="61" rx="4"/></svg><span class="lbl" style="left:44.64%;top:12.75%;min-width:15.45%;min-height:5.39%">환경탐지 센서</span><span class="lbl" style="left:72.36%;top:9.56%;min-width:14.59%;min-height:5.39%">와이어 센서</span><span class="lbl" style="left:39.57%;top:26.96%;min-width:11.85%;min-height:5.39%">크레인 1</span><span class="lbl" style="left:71.16%;top:26.96%;min-width:12.19%;min-height:5.39%">크레인 2</span><span class="lbl" style="left:23.86%;top:44.98%;min-width:13.39%;min-height:5.15%">붐 각도 센서</span><span class="lbl" style="left:41.20%;top:43.50%;min-width:15.11%;min-height:5.39%">붐 길이 센서</span><span class="lbl" style="left:71.85%;top:43.01%;min-width:21.63%;min-height:5.39%">거더 위치자세 센서</span><span class="lbl" style="left:72.10%;top:52.08%;min-width:8.58%;min-height:5.39%">거더</span><span class="lbl" style="left:9.18%;top:56.50%;min-width:15.45%;min-height:5.39%">관제 시스템</span><span class="lbl" style="left:39.31%;top:58.95%;min-width:15.62%;min-height:5.39%">크레인 GPS</span><span class="lbl" style="left:16.05%;top:69.73%;min-width:18.54%;min-height:5.39%">크레인 제어기</span><span class="lbl" style="left:40.00%;top:78.80%;min-width:18.03%;min-height:5.39%">스윙 각도 센서</span></div><div class="v3-cap">협업 크레인 시스템 구성</div></div>
+  <div class="v3-fd-v4">
+   <div class="v3-fig"><div class="v3-media dark"><video src="assets/v2/part3/src_media5.mp4" poster="assets/v2/part3/src_image95.png" preload="metadata" playsinline></video></div><div class="v3-cap">교량 구조물 이송 사례</div></div>
+   <div class="v3-fig"><div class="v3-media dark"><video src="assets/v2/part3/src_media6.mp4" poster="assets/v2/part3/src_image96.png" preload="metadata" playsinline></video></div><div class="v3-cap">자동운반 제어 ①</div></div>
+   <div class="v3-fig"><div class="v3-media dark"><video src="assets/v2/part3/src_media7.mp4" poster="assets/v2/part3/src_image97.png" preload="metadata" playsinline></video></div><div class="v3-cap">자동운반 제어 ②</div></div>
+   <div class="v3-fig"><div class="v3-media dark"><video src="assets/v2/part3/src_media8.mp4" poster="assets/v2/part3/src_image98.png" preload="metadata" playsinline></video><span class="v3-badge">원본 1.5배속</span></div><div class="v3-cap">자동운반 제어 ③</div></div>
+  </div>
+ </div>
 </div>
-<div class="src">AI Frontiers Summit 2026 「AI Technologies for Field Robotics」(KIMM 이한민) #36</div>
-<aside class="speaker-notes"><p>원본 B#36 그대로. 기술적 성과(원본 표기): 다중 크레인 자동운반 통합제어 시스템(위치 오차 수평/수직 ±5cm), 라이다 기반 충돌방지용 환경탐지, Multi-RRT 기반 다중 크레인 거더 이송 경로계획, 거더 자동운반 제어 축소 크레인 실증.</p><p>영상 4개 모두 원본 전체 길이: 크레인 교량 구조물 이송 사례 media5 22.3초, 협업 크레인 시스템 구성 media6 1분 3.5초·media7 1분 10.9초(자세1·자세2 카메라), 자동운반 제어 media8 1분 30.5초(파일명 DJI_0106(1.5배속) — 원본 파일 자체가 1.5배속 표기).</p><p>±5cm는 원본 성과 표기 그대로이며 시험 조건은 원본에 없음. 학습 모듈 적용 여부는 원본에 적혀 있지 않음.</p></aside>
+<aside class="speaker-notes"><p>원본 B#36 「협업 크레인 교량 구조물 자동운반 기술」을 v3 레이아웃으로 재구성. 기술적 성과(원본 표기): 다중 크레인 자동운반 통합제어 시스템 개발(위치 오차 수평/수직 ±5cm), 라이다 기반 충돌방지용 환경탐지 시스템 개발, Multi-RRT 기반 다중 크레인 거더 이송 경로계획 알고리즘 개발, 거더 자동운반 제어 축소 크레인 실증.</p><p>영상 4개 원본 전체 길이: 크레인 교량 구조물 이송 사례 media5 22.3초. 원본 캡션 「협업 크레인 자동운반 제어」 아래 세 영상 — ① media6 1분 3.5초(파일명 자세1_카메라 영상), ② media7 1분 10.9초(자세2_카메라 영상), ③ media8 1분 30.5초(파일명 DJI_0106(1.5배속), 원본 파일 자체가 1.5배속 표기). 시스템 구성 사진은 원본 그림(라벨이 사진에 박혀 있음) 그대로 쓰고, 박힌 라벨 12개·노란 표식 9개 위치에 같은 문구의 네이티브 라벨·표식을 겹쳐 v3 서식으로 표시(사진 픽셀 수정·생성 없음). 성과 4항목은 원본 문구를 줄여 상단에 배치.</p><p>±5cm는 원본 성과 표기 그대로이며 시험 조건은 원본에 없음. 학습 모듈 적용 여부는 원본에 적혀 있지 않음.</p></aside>
 </section>
 
-<section class="slide v2-fd" id="v2-field-02" data-source="AI Technologies for Field Robotics 이한민.pptx#37" data-title="4. 굴착기 및 휠로더 원격제어 기술">
-<h1 class="title">4. 굴착기 및 휠로더 원격제어 기술</h1>
-<img class="kimmlogo" src="assets/v2/common/kimm-logo.png" alt="KIMM">
-<div class="v2-fd-stage">
-<div class="pic" data-name="Picture 0" style="left:21.1px;top:292.2px;width:362.0px;height:203.5px;outline:0.75px solid #000000;outline-offset:-0.75px;"><img src="assets/v2/part3/src_image100.png" alt="Picture 0" style="position:absolute;left:0.000%;top:0.000%;width:100.000%;height:100.000%;"></div>
-<div class="sp" data-name="직사각형 27" style="left:31.8px;top:81.5px;width:329.5px;height:180.1px;"><div class="tx" style="padding:3.6px 7.2px 3.6px 7.2px;justify-content:flex-start;"><p style="text-align:left;padding-left:18.0px;text-indent:-18.0px;line-height:1.44;font-size:16.0px;"><img class="bu bimg" src="assets/v2/part3/src_image94.png" alt=""><span style="font-size:16.0px;color:#000000;">한국기계연구원</span></p><p style="text-align:left;padding-left:42.5px;text-indent:-22.5px;line-height:1.44;font-size:14.0px;"><span class="bu">▪</span><span style="font-size:14.0px;">기계식 굴착기 및 </span><span style="font-size:14.0px;">휠로더</span><span style="font-size:14.0px;"> </span><span style="font-size:14.0px;font-weight:700;color:#0000FF;">전자제어 인터페이스</span><span style="font-size:14.0px;"> 개발 </span><span style="font-size:14.0px;">(</span><span style="font-size:14.0px;font-weight:700;color:#0000FF;">retrofit kit)  - </span><span style="font-size:14.0px;">비례제어밸브 모듈</span><span style="font-size:14.0px;">/</span><span style="font-size:14.0px;">임베디드</span><span style="font-size:14.0px;"> 컨트롤러</span><span style="font-size:14.0px;">/ GNSS/ IMU/ </span><span style="font-size:14.0px;">압력계 포함</span><span style="font-size:14.0px;"> </span></p><p style="text-align:left;padding-left:42.5px;text-indent:-22.5px;line-height:1.44;font-size:14.0px;"><span class="bu">▪</span><span style="font-size:14.0px;">굴착기 및 </span><span style="font-size:14.0px;">휠로더</span><span style="font-size:14.0px;"> </span><span style="font-size:14.0px;font-weight:700;color:#0000FF;">작업 장치 위치 제어 </span><span style="font-size:14.0px;">기술 개발</span></p><p style="text-align:left;padding-left:42.5px;text-indent:-22.5px;line-height:1.44;font-size:14.0px;"><span class="bu">▪</span><span style="font-size:14.0px;">전자식 비례제어 </span><span style="font-size:14.0px;font-weight:700;color:#0000FF;">밸브 정밀 압력 제어 </span><span style="font-size:14.0px;">및 </span><span style="font-size:14.0px;font-weight:700;color:#0000FF;">인공지능 기반 고장 진단 기술 </span><span style="font-size:14.0px;">개발 </span><span style="font-size:14.0px;">-  Pilot </span><span style="font-size:14.0px;">압력 제어 </span><span style="font-size:14.0px;">hysteresis </span><span style="font-size:14.0px;">제거</span><span style="font-size:14.0px;">,  </span><span style="font-size:14.0px;">고장검출</span><span style="font-size:14.0px;"> 정확도 </span><span style="font-size:14.0px;">90% </span><span style="font-size:14.0px;">이상</span></p></div></div>
-<div class="pic" data-name="그림 28" style="left:400.2px;top:291.9px;width:306.2px;height:203.8px;outline:0.75px solid #000000;outline-offset:-0.75px;"><img src="assets/v2/part3/src_image101.jpeg" alt="그림 28" style="position:absolute;left:-7.524%;top:-0.000%;width:116.074%;height:100.000%;"></div>
-<div class="pic" data-name="그림 29" style="left:400.2px;top:81.5px;width:306.2px;height:203.8px;outline:0.75px solid #000000;outline-offset:-0.75px;"><img src="assets/v2/part3/src_image102.jpg" alt="그림 29" style="position:absolute;left:-10.203%;top:-0.000%;width:144.067%;height:100.000%;"></div>
-<div class="sp" data-name="TextBox 30" style="left:695.8px;top:107.2px;width:91.2px;height:21.8px;"><div class="tx" style="padding:3.6px 7.2px 3.6px 7.2px;justify-content:flex-start;"><p style="text-align:center;font-size:12.0px;"><span style="font-size:12.0px;font-weight:700;">Retrofit kit</span></p></div></div>
-<svg class="ln" style="left:637.7px;top:129.0px;width:41.0px;height:39.7px;"><defs><marker id="m2649564505056" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#00B0F0"/></marker></defs><line x1="0.0" y1="39.7" x2="41.0" y2="0.0" stroke="#00B0F0" stroke-width="2.25" marker-start="url(#m2649564505056)"/></svg>
-<svg class="ln" style="left:678.8px;top:129.0px;width:75.1px;height:0.0px;"><defs></defs><line x1="0.0" y1="0.0" x2="75.1" y2="0.0" stroke="#00B0F0" stroke-width="2.25"/></svg>
-<svg class="ln" style="left:582.9px;top:226.9px;width:95.9px;height:92.7px;"><defs><marker id="m2649565328976" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#00B0F0"/></marker></defs><line x1="0.0" y1="92.7" x2="95.9" y2="0.0" stroke="#00B0F0" stroke-width="2.25" marker-start="url(#m2649565328976)"/></svg>
-<svg class="ln" style="left:678.8px;top:129.0px;width:0.0px;height:111.1px;"><defs></defs><line x1="0.0" y1="0.0" x2="0.0" y2="111.1" stroke="#00B0F0" stroke-width="2.25"/></svg>
-<div class="pic" data-name="그림 35" style="left:406.4px;top:209.5px;width:142.2px;height:68.0px;outline:0.75px solid #FFFF00;outline-offset:-0.75px;"><img src="assets/v2/part3/src_image103.jpg" alt="그림 35" style="position:absolute;left:-0.000%;top:-42.330%;width:100.000%;height:208.995%;"></div>
-<div class="sp" data-name="TextBox 36" style="left:21.0px;top:405.5px;width:136.1px;height:83.6px;background:rgba(146,208,80,0.50);"><div class="tx" style="padding:3.6px 7.2px 3.6px 7.2px;justify-content:flex-start;"><p style="text-align:left;font-size:10.5px;"><span style="font-size:10.5px;font-weight:700;color:#0000FF;">공동연구개발기관</span><span style="font-size:10.5px;font-weight:700;color:#0000FF;">: </span></p><p style="text-align:left;padding-left:13.5px;text-indent:-13.5px;font-size:10.5px;"><span class="bu">-</span><span style="font-size:10.5px;color:#0000FF;">다산네트웍스</span><span style="font-size:10.5px;color:#0000FF;"> </span><span style="font-size:10.5px;color:#0000FF;">(</span><span style="font-size:10.5px;color:#0000FF;">주관</span><span style="font-size:10.5px;color:#0000FF;">)</span></p><p style="text-align:left;padding-left:13.5px;text-indent:-13.5px;font-size:10.5px;"><span class="bu">-</span><span style="font-size:10.5px;color:#0000FF;">쿠오핀</span></p><p style="text-align:left;padding-left:13.5px;text-indent:-13.5px;font-size:10.5px;"><span class="bu">-</span><span style="font-size:10.5px;color:#0000FF;">다온링크</span></p><p style="text-align:left;padding-left:13.5px;text-indent:-13.5px;font-size:10.5px;"><span class="bu">-</span><span style="font-size:10.5px;color:#0000FF;">한국생산기술연구원</span></p><p style="text-align:left;padding-left:13.5px;text-indent:-13.5px;font-size:10.5px;"><span class="bu">-</span><span style="font-size:10.5px;color:#0000FF;">한국기계연구원</span></p></div></div>
-<div class="sp" data-name="TextBox 37" style="left:400.2px;top:82.2px;width:130.4px;height:21.8px;"><div class="tx" style="padding:3.6px 7.2px 3.6px 7.2px;justify-content:flex-start;"><p style="text-align:left;font-size:12.0px;"><span style="font-size:12.0px;font-weight:700;">원격제어 굴착기 </span></p></div></div>
-<div class="sp" data-name="TextBox 38" style="left:401.4px;top:294.2px;width:130.4px;height:21.8px;"><div class="tx" style="padding:3.6px 7.2px 3.6px 7.2px;justify-content:flex-start;"><p style="text-align:left;font-size:12.0px;"><span style="font-size:12.0px;font-weight:700;">원격제어 </span><span style="font-size:12.0px;font-weight:700;">휠로더</span><span style="font-size:12.0px;font-weight:700;"> </span></p></div></div>
-<div class="sp" data-name="TextBox 39" style="left:17.2px;top:293.8px;width:130.4px;height:21.8px;"><div class="tx" style="padding:3.6px 7.2px 3.6px 7.2px;justify-content:flex-start;"><p style="text-align:left;font-size:12.0px;"><span style="font-size:12.0px;font-weight:700;">원격제어 스테이션 </span></p></div></div>
-<div class="pic" data-name="그림 40" style="left:617.1px;top:297.6px;width:140.3px;height:79.0px;outline:0.75px solid #FFFF00;outline-offset:-0.75px;"><img src="assets/v2/part3/src_image104.jpg" alt="그림 40" style="position:absolute;left:0.000%;top:0.000%;width:100.000%;height:100.000%;"></div>
-<div class="pic" data-name="그림 41" style="left:533.6px;top:502.7px;width:77.1px;height:28.2px;"><img src="assets/v2/part3/src_image105.png" alt="그림 41" style="position:absolute;left:0.000%;top:0.000%;width:100.000%;height:100.000%;"></div>
-<div class="pic" data-name="그림 42" style="left:472.7px;top:501.4px;width:60.9px;height:33.7px;"><img src="assets/v2/part3/src_image106.png" alt="그림 42" style="position:absolute;left:0.000%;top:0.000%;width:100.000%;height:100.000%;"></div>
-<div class="pic" data-name="그림 44" style="left:617.1px;top:509.8px;width:78.2px;height:14.1px;"><img src="assets/v2/part3/src_image2.png" alt="그림 44" style="position:absolute;left:0.000%;top:0.000%;width:100.000%;height:100.000%;"></div>
+<section class="slide v3 v3-fd" id="v2-field-02" data-source="AI Technologies for Field Robotics 이한민.pptx#37" data-title="굴착기·휠로더 원격제어 retrofit">
+<div class="v3-rail"></div>
+<h1 class="v3-title">굴착기·휠로더 원격제어</h1>
+<img class="v3-logo" src="assets/v2/common/kimm-logo.png" alt="KIMM">
+<div class="v3-keybar sm"><span>기계식 장비에 <em>전자제어 retrofit kit</em>를 달아 원격으로 제어</span></div>
+<div class="v3-content">
+ <div class="v3-fd-rc">
+  <div class="v3-fd-rc-top">
+   <div class="v3-fig"><div class="v3-media cover"><img src="assets/v2/part3/src_image100.png" alt="원격제어 스테이션"></div><div class="v3-cap">원격제어 스테이션</div></div>
+   <span class="v3-arrow"></span>
+   <div class="v3-fig"><div class="v3-media cover"><img src="assets/v2/part3/src_image102.jpg" alt="원격제어 굴착기"><img class="v3-fd-inset" src="assets/v2/part3/src_image103.jpg" alt="굴착기 retrofit kit"></div><div class="v3-cap">원격제어 굴착기 <span class="v3-tag y">Retrofit kit</span></div></div>
+   <div class="v3-fig"><div class="v3-media cover"><img src="assets/v2/part3/src_image101.jpeg" alt="원격제어 휠로더"><img class="v3-fd-inset" src="assets/v2/part3/src_image104.jpg" alt="휠로더 retrofit kit"></div><div class="v3-cap">원격제어 휠로더 <span class="v3-tag y">Retrofit kit</span></div></div>
+  </div>
+  <div class="v3-fd-feat">
+   <div><b>전자제어 인터페이스</b><span>비례제어밸브 모듈 · 임베디드 컨트롤러 · GNSS · IMU · 압력계</span></div>
+   <div><b>작업장치 위치 제어</b><span>굴착기 · 휠로더</span></div>
+   <div><b>정밀 압력 제어 · AI 고장진단</b><span>Pilot 압력 hysteresis 제거<br>고장검출 정확도 90% 이상</span></div>
+  </div>
+  <div class="v3-fd-logos"><span class="lb">공동연구개발 (다산네트웍스 주관)</span><img src="assets/v2/part3/src_image106.png" alt="다산네트웍스"><img src="assets/v2/part3/src_image105.png" alt="KITECH"><img src="assets/v2/part3/src_image2.png" alt="한국기계연구원"></div>
+ </div>
 </div>
-<div class="src">AI Frontiers Summit 2026 「AI Technologies for Field Robotics」(KIMM 이한민) #37</div>
-<aside class="speaker-notes"><p>원본 B#37 그대로(사진 페이지). 기계식 굴착기·휠로더 전자제어 인터페이스(retrofit kit: 비례제어밸브 모듈/임베디드 컨트롤러/GNSS/IMU/압력계), 작업장치 위치 제어, 전자식 비례제어밸브 정밀 압력 제어 및 인공지능 기반 고장 진단(원본 표기: Pilot 압력 제어 hysteresis 제거, 고장검출 정확도 90% 이상).</p><p>공동연구개발기관(원본 표기): 다산네트웍스(주관), 쿠오핀, 다온링크, 한국생산기술연구원, 한국기계연구원. 90% 수치의 시험 조건은 원본에 없음.</p></aside>
+<aside class="speaker-notes"><p>원본 B#37 「굴착기 및 휠로더 원격제어 기술」을 v3에서 스테이션 → 장비(retrofit kit 확대 사진) 흐름과 기능 3칸으로 재구성. 원본 문구: 기계식 굴착기 및 휠로더 전자제어 인터페이스 개발(retrofit kit) — 비례제어밸브 모듈/임베디드 컨트롤러/GNSS/IMU/압력계 포함; 굴착기 및 휠로더 작업 장치 위치 제어 기술 개발; 전자식 비례제어 밸브 정밀 압력 제어 및 인공지능 기반 고장 진단 기술 개발 — Pilot 압력 제어 hysteresis 제거, 고장검출 정확도 90% 이상.</p><p>공동연구개발기관(원본 표기): 다산네트웍스(주관), 쿠오핀, 다온링크, 한국생산기술연구원, 한국기계연구원. 하단 로고 3개는 원본 그대로. 90% 수치의 시험 조건은 원본에 없음. 스테이션→장비 화살표는 원격제어 관계를 나타내며 통신 방식은 원본에 없음.</p></aside>
 </section>
 
-<section class="slide v2-fd" id="v2-field-03" data-source="AI Technologies for Field Robotics 이한민.pptx#38" data-title="4. 굴착기 및 휠로더 원격제어 기술">
-<h1 class="title">4. 굴착기 및 휠로더 원격제어 기술</h1>
-<img class="kimmlogo" src="assets/v2/common/kimm-logo.png" alt="KIMM">
-<div class="v2-fd-stage">
-<div class="pic vid" data-name="20231108_140918" style="left:32.8px;top:88.6px;width:709.1px;height:398.9px;"><video src="assets/v2/part3/src_media9.mp4" poster="assets/v2/part3/src_image107.png" preload="metadata" playsinline style="position:absolute;left:0.000%;top:0.000%;width:100.000%;height:100.000%;object-fit:fill;"></video></div>
+<section class="slide v3 v3-fd" id="v2-field-03" data-source="AI Technologies for Field Robotics 이한민.pptx#38" data-title="원격제어 굴착기 시연">
+<div class="v3-rail"></div>
+<h1 class="v3-title">원격제어 굴착기 시연</h1>
+<img class="v3-logo" src="assets/v2/common/kimm-logo.png" alt="KIMM">
+<div class="v3-keybar sm"><span>retrofit kit을 단 굴착기를 <em>원격으로 조작</em></span></div>
+<div class="v3-content">
+ <div class="v3-media dark v3-fd-big"><video src="assets/v2/part3/src_media9.mp4" poster="assets/v2/part3/src_image107.png" preload="metadata" playsinline></video><span class="v3-badge">원격제어 굴착기</span></div>
 </div>
-<div class="src">AI Frontiers Summit 2026 「AI Technologies for Field Robotics」(KIMM 이한민) #38</div>
-<aside class="speaker-notes"><p>원본 B#38 그대로: 원격제어 굴착기 영상. media9.mp4 전체 1분 11.7초 사용(원본 PPT는 41.2초부터 재생하도록 시작점이 설정돼 있었으나 v2 지시에 따라 전체 길이). H.264 재인코딩만.</p></aside>
+<aside class="speaker-notes"><p>원본 B#38(원격제어 기술 두 번째 장)의 원격제어 굴착기 영상. media9.mp4 전체 1분 11.7초 사용(원본 PPT는 41.2초부터 재생하도록 시작점이 설정돼 있었음 — 발표 때 그 지점부터 보여 줘도 됨). H.264 재인코딩만, 소리 유지.</p></aside>
 </section>
 
-<section class="slide v2-fd" id="v2-field-04" data-source="AI Technologies for Field Robotics 이한민.pptx#40" data-title="5. 과수 농장 작물 모니터링을 위한 자율 농업기계">
-<h1 class="title sm">5. 과수 농장 작물 모니터링을 위한 자율 농업기계</h1>
-<img class="kimmlogo" src="assets/v2/common/kimm-logo.png" alt="KIMM">
-<div class="v2-fd-stage">
-<div class="pic vid" data-name="20250414_151522 - 복사본" style="left:493.0px;top:78.2px;width:231.3px;height:411.2px;outline:0.75px solid #000000;outline-offset:-0.75px;"><video src="assets/v2/part3/src_media10.mp4" poster="assets/v2/part3/src_image111.png" preload="metadata" playsinline style="position:absolute;left:0.000%;top:0.000%;width:100.000%;height:100.000%;object-fit:fill;"></video></div>
-<div class="pic" data-name="그림 37" style="left:51.2px;top:254.7px;width:434.5px;height:234.7px;outline:0.75px solid #000000;outline-offset:-0.75px;"><img src="assets/v2/part3/src_image112.png" alt="그림 37" style="position:absolute;left:-25.326%;top:-50.643%;width:125.326%;height:150.643%;"></div>
-<div class="pic" data-name="그림 41" style="left:59.3px;top:258.9px;width:89.4px;height:86.1px;"><img src="assets/v2/part3/src_image113.png" alt="그림 41" style="position:absolute;left:0.000%;top:0.000%;width:100.000%;height:100.000%;"></div>
-<div class="sp" data-name="직사각형 42" style="left:51.9px;top:338.0px;width:27.7px;height:128.3px;background:#FFFFFF;"></div>
-<div class="sp" data-name="직사각형 43" style="left:385.5px;top:254.7px;width:59.4px;height:26.4px;background:#FFFFFF;"></div>
-<div class="pic" data-name="그림 44" style="left:301.8px;top:77.8px;width:183.9px;height:168.3px;outline:0.75px solid #000000;outline-offset:-0.75px;"><img src="assets/v2/part3/src_image114.jpeg" alt="그림 44" style="position:absolute;left:-12.069%;top:-0.000%;width:117.019%;height:100.000%;"></div>
-<div class="sp" data-name="TextBox 45" style="left:501.6px;top:461.8px;width:215.5px;height:20.6px;"><div class="tx" style="padding:3.6px 7.2px 3.6px 7.2px;justify-content:flex-start;"><p style="text-align:center;font-size:11.0px;"><span style="font-size:11.0px;color:#FFFF00;">병해충</span><span style="font-size:11.0px;color:#FFFF00;"> </span><span style="font-size:11.0px;color:#FFFF00;">탐지기 </span><span style="font-size:11.0px;color:#FFFF00;">(</span><span style="font-size:11.0px;color:#FFFF00;">광학 헤드</span><span style="font-size:11.0px;color:#FFFF00;">) </span><span style="font-size:11.0px;color:#FFFF00;">모형 장착</span></p></div></div>
-<div class="pic" data-name="그림 46" style="left:603.7px;top:81.3px;width:117.3px;height:91.7px;"><img src="assets/v2/part3/src_image115.png" alt="그림 46" style="position:absolute;left:-0.000%;top:-4.862%;width:101.593%;height:109.067%;"></div>
-<div class="pic" data-name="그림 47" style="left:51.4px;top:77.8px;width:244.3px;height:168.3px;outline:0.75px solid #4F81BD;outline-offset:-0.75px;"><img src="assets/v2/part3/src_image116.png" alt="그림 47" style="position:absolute;left:-12.102%;top:-0.000%;width:127.982%;height:100.000%;"></div>
+<section class="slide v3 v3-fd" id="v2-field-04" data-source="AI Technologies for Field Robotics 이한민.pptx#40" data-title="과수 예찰 자율 농업기계">
+<div class="v3-rail"></div>
+<h1 class="v3-title">과수 예찰 자율 농업기계</h1>
+<img class="v3-logo" src="assets/v2/common/kimm-logo.png" alt="KIMM">
+<div class="v3-keybar sm"><span>자율주행 플랫폼에 <em>매니퓰레이터와 병해충 탐지기</em>를 탑재</span></div>
+<div class="v3-content">
+ <div class="v3-fd-orch">
+  <div class="v3-fd-orch-l">
+   <div class="v3-fig"><div class="v3-media paper"><img src="assets/v2/part3/src_image116.png" alt="플랫폼 3D 설계"></div><div class="v3-cap">3D 설계</div></div>
+   <div class="v3-fig"><div class="v3-media cover"><img src="assets/v2/part3/src_image114.jpeg" alt="제작 플랫폼"></div><div class="v3-cap">제작 플랫폼</div></div>
+   <div class="v3-fig"><div class="v3-media paper drw"><img src="assets/v2/part3/src_image112.png" alt="플랫폼 치수 도면"><img class="in3" src="assets/v2/part3/src_image113.png" alt="3D 모델"></div><div class="v3-cap">치수 도면</div></div>
+   <div class="v3-fig"><div class="v3-media paper opt"><img src="assets/v2/part3/src_image115.png" alt="병해충 탐지기 광학 헤드 설계"></div><div class="v3-cap">탐지기 광학 헤드 설계</div></div>
+  </div>
+  <div class="v3-fd-port">
+   <div class="v3-media dark"><video src="assets/v2/part3/src_media10.mp4" poster="assets/v2/part3/src_image111.png" preload="metadata" playsinline></video></div>
+   <div class="v3-cap">병해충 탐지기(광학 헤드) 모형 장착</div>
+  </div>
+ </div>
 </div>
-<div class="src">AI Frontiers Summit 2026 「AI Technologies for Field Robotics」(KIMM 이한민) #40</div>
-<aside class="speaker-notes"><p>원본 B#40 그대로: 과수 농장 작물 모니터링을 위한 자율 농업기계 — 플랫폼 설계도·실물·병해충 탐지기(광학 헤드) 모형 장착. 영상 media10.mp4 전체 35.7초.</p></aside>
+<aside class="speaker-notes"><p>원본 B#40 「과수 농장 작물 모니터링을 위한 자율 농업기계」: 플랫폼 3D 설계·제작 사진·치수 도면, 병해충 탐지기(광학 헤드) 모형 장착 영상(세로 영상) — v3에서 크기·여백만 통일. 영상 media10.mp4 전체 35.7초, 소리 유지.</p><p>B#39 원본 문구(참고): 노지환경 정밀 병해충 예찰을 위한 자율작업 농업기계, 병해충 탐지기(분광카메라) 자세제어, 수소연료전지/배터리 하이브리드 — 이번 장에는 B#40 내용만 표시.</p></aside>
 </section>
 
-<section class="slide v2-fd" id="v2-field-05" data-source="AI Technologies for Field Robotics 이한민.pptx#42" data-title="5. 과수 농장 작물 모니터링을 위한 자율 농업기계">
-<h1 class="title sm">5. 과수 농장 작물 모니터링을 위한 자율 농업기계</h1>
-<img class="kimmlogo" src="assets/v2/common/kimm-logo.png" alt="KIMM">
-<div class="v2-fd-stage">
-<div class="pic" data-name="그림 36" style="left:122.2px;top:296.4px;width:286.9px;height:215.1px;"><img src="assets/v2/part3/src_image122.png" alt="그림 36" style="position:absolute;left:0.000%;top:0.000%;width:100.000%;height:100.000%;"></div>
-<div class="pic" data-name="그림 37" style="left:122.2px;top:81.3px;width:286.9px;height:215.1px;"><img src="assets/v2/part3/src_image123.png" alt="그림 37" style="position:absolute;left:0.000%;top:0.000%;width:100.000%;height:100.000%;"></div>
-<div class="pic" data-name="그림 41" style="left:419.1px;top:81.3px;width:286.9px;height:215.1px;"><img src="assets/v2/part3/src_image124.png" alt="그림 41" style="position:absolute;left:0.000%;top:0.000%;width:100.000%;height:100.000%;"></div>
-<div class="sp" data-name="TextBox 42" style="left:40.3px;top:93.9px;width:91.7px;height:36.4px;"><div class="tx" style="padding:3.6px 7.2px 3.6px 7.2px;justify-content:flex-start;"><p style="text-align:left;font-size:12.0px;"><span style="font-size:12.0px;text-decoration:underline;">주행플랫폼</span><span style="font-size:12.0px;text-decoration:underline;"> 위치 </span><span style="font-size:12.0px;text-decoration:underline;">(Map </span><span style="font-size:12.0px;text-decoration:underline;">좌표</span><span style="font-size:12.0px;text-decoration:underline;">)</span></p></div></div>
-<div class="sp" data-name="TextBox 43" style="left:40.3px;top:309.0px;width:81.9px;height:36.4px;"><div class="tx" style="padding:3.6px 7.2px 3.6px 7.2px;justify-content:flex-start;"><p style="text-align:left;font-size:12.0px;"><span style="font-size:12.0px;text-decoration:underline;">매니퓰레이터</span><span style="font-size:12.0px;text-decoration:underline;"> 자세</span></p></div></div>
-<div class="pic vid" data-name="20250415_152739" style="left:488.1px;top:302.9px;width:183.3px;height:103.1px;outline:1.00px solid #000000;outline-offset:-1.00px;"><video src="assets/v2/part3/src_media11.mp4" poster="assets/v2/part3/src_image125.png" preload="metadata" playsinline style="position:absolute;left:0.000%;top:0.000%;width:100.000%;height:100.000%;object-fit:fill;"></video></div>
-<div class="pic vid" data-name="20250415_140511" style="left:488.1px;top:411.6px;width:183.3px;height:103.1px;outline:1.00px solid #000000;outline-offset:-1.00px;"><video src="assets/v2/part3/src_media12.mp4" poster="assets/v2/part3/src_image126.png" preload="metadata" playsinline style="position:absolute;left:0.000%;top:0.000%;width:100.000%;height:100.000%;object-fit:fill;"></video></div>
-<div class="sp" data-name="직사각형 46" style="left:175.9px;top:125.5px;width:12.6px;height:380.5px;border:1.00px solid #000000;"></div>
-<svg class="ln" style="left:313.5px;top:331.3px;width:43.4px;height:305.9px;transform:rotate(90.00deg);"><defs></defs><polyline points="43.4,305.9 21.7,305.9 21.7,0.0 0.0,0.0" fill="none" stroke="#4F81BD" stroke-width="1.00"/></svg>
-<svg class="ln" style="left:671.5px;top:215.3px;width:4.6px;height:139.2px;"><defs></defs><polyline points="0.0,139.2 2.3,139.2 2.3,0.0 4.6,0.0" fill="none" stroke="#000000" stroke-width="1.00"/></svg>
-<div class="sp" data-name="직사각형 49" style="left:654.7px;top:168.2px;width:21.3px;height:94.0px;border:1.00px solid #000000;"></div>
-<div class="sp" data-name="TextBox 50" style="left:440.1px;top:302.9px;width:44.8px;height:21.8px;"><div class="tx" style="padding:3.6px 7.2px 3.6px 7.2px;justify-content:flex-start;"><p style="text-align:left;font-size:12.0px;"><span style="font-size:12.0px;">Turn</span></p></div></div>
-<div class="sp" data-name="TextBox 51" style="left:440.1px;top:411.6px;width:44.8px;height:36.4px;"><div class="tx" style="padding:3.6px 7.2px 3.6px 7.2px;justify-content:flex-start;"><p style="text-align:left;font-size:12.0px;"><span style="font-size:12.0px;">모의 </span><span style="font-size:12.0px;">예찰</span></p></div></div>
-<div class="sp" data-name="TextBox 52" style="left:451.0px;top:216.0px;width:121.9px;height:32.7px;"><div class="tx" style="padding:3.6px 7.2px 3.6px 7.2px;justify-content:flex-start;"><p style="text-align:center;font-size:10.5px;"><span style="font-size:10.5px;font-weight:700;color:#0000FF;">Origin: Initial position of SLAM </span></p></div></div>
+<section class="slide v3 v3-fd" id="v2-field-05" data-source="AI Technologies for Field Robotics 이한민.pptx#42" data-title="과수 예찰 주행·자세 시험">
+<div class="v3-rail"></div>
+<h1 class="v3-title">과수 예찰 주행·자세 시험</h1>
+<img class="v3-logo" src="assets/v2/common/kimm-logo.png" alt="KIMM">
+<div class="v3-keybar sm"><span>주행 위치와 매니퓰레이터 자세를 <em>목표값과 실제값으로 비교</em></span></div>
+<div class="v3-content">
+ <div class="v3-fd-res">
+  <div class="cell"><div class="v3-h bar">주행플랫폼 위치 <small>Map 좌표</small></div><div class="v3-media plot"><img src="assets/v2/part3/src_image123.png" alt="주행플랫폼 X·Y·Heading 목표 대비 실제 그래프"></div></div>
+  <div class="cell"><div class="v3-h bar">Odometry <small>원점: SLAM 초기 위치</small></div><div class="v3-media plot"><img src="assets/v2/part3/src_image124.png" alt="Odometry XY 궤적 그래프"></div></div>
+  <div class="cell vid"><div class="v3-media dark"><video src="assets/v2/part3/src_media11.mp4" poster="assets/v2/part3/src_image125.png" preload="metadata" playsinline></video></div><div class="v3-cap">Turn</div></div>
+  <div class="cell wide"><div class="v3-h bar">매니퓰레이터 자세 <small>관절각</small></div><div class="v3-media plot"><img src="assets/v2/part3/src_image122.png" alt="매니퓰레이터 관절각 그래프"></div></div>
+  <div class="cell vid"><div class="v3-media dark"><video src="assets/v2/part3/src_media12.mp4" poster="assets/v2/part3/src_image126.png" preload="metadata" playsinline></video></div><div class="v3-cap">모의 예찰</div></div>
+ </div>
 </div>
-<div class="src">AI Frontiers Summit 2026 「AI Technologies for Field Robotics」(KIMM 이한민) #42</div>
-<aside class="speaker-notes"><p>원본 B#42 그대로: 주행플랫폼 위치(Map 좌표)·매니퓰레이터 자세 그래프, Odometry(Origin: Initial position of SLAM), Turn·모의 예찰 영상. 그래프 2개는 원본 EMF를 PNG로 변환.</p><p>영상 2개 원본 전체 길이: media11 53.9초(Turn), media12 1분 25.4초(모의 예찰).</p></aside>
+<aside class="speaker-notes"><p>원본 B#42: 주행플랫폼 위치(Map 좌표, X·Y·Heading Actual/Target), 매니퓰레이터 자세(Manipulator Joint Angle), Odometry(Origin: Initial position of SLAM), Turn·모의 예찰 영상. v3에서는 그래프를 원본 그림 그대로 크게 배치하고 묶음 제목만 붙임. 그래프 2개(위치·Odometry)는 원본 EMF를 PNG로 변환한 것(데이터 변경 없음).</p><p>영상 2개 원본 전체 길이: media11 53.9초(Turn), media12 1분 25.4초(모의 예찰), 소리 유지.</p></aside>
 </section>
 
-<section class="slide v2-fd" id="v2-field-06" data-source="AI Technologies for Field Robotics 이한민.pptx#47" data-title="7. 무인이동체 원천기술개발 － 육해공 자율협력">
-<h1 class="title">7. 무인이동체 원천기술개발 － 육해공 자율협력</h1>
-<img class="kimmlogo" src="assets/v2/common/kimm-logo.png" alt="KIMM">
-<div class="v2-fd-stage">
-<div class="pic vid" data-name="2024_11_08 15_03" style="left:26.1px;top:96.2px;width:730.3px;height:410.8px;"><video src="assets/v2/part3/src_media14.mp4" poster="assets/v2/part3/src_image154.png" preload="metadata" playsinline style="position:absolute;left:0.000%;top:0.000%;width:100.000%;height:100.000%;object-fit:fill;"></video></div>
+<section class="slide v3 v3-fd" id="v2-field-06" data-source="AI Technologies for Field Robotics 이한민.pptx#47" data-title="UAV·UGV 연동 시험">
+<div class="v3-rail"></div>
+<h1 class="v3-title">UAV·UGV 연동 시험</h1>
+<img class="v3-logo" src="assets/v2/common/kimm-logo.png" alt="KIMM">
+<div class="v3-keybar sm"><span>무인이동체 육해공 자율협력 — <em>UAV와 UGV 연동 시험</em></span></div>
+<div class="v3-content">
+ <div class="v3-media dark v3-fd-big"><video src="assets/v2/part3/src_media14.mp4" poster="assets/v2/part3/src_image154.png" preload="metadata" playsinline></video></div>
 </div>
-<div class="src">AI Frontiers Summit 2026 「AI Technologies for Field Robotics」(KIMM 이한민) #47</div>
-<aside class="speaker-notes"><p>원본 B#47 그대로: 무인이동체 원천기술개발 — 육해공 자율협력, UAV/UGV 연동시험 영상(영상 속 기관 로고 포함). media14.mp4 전체 39.8초(원본 PPT는 11.5초부터 재생하도록 설정돼 있었으나 전체 길이 사용).</p></aside>
+<aside class="speaker-notes"><p>원본 B#47 「무인이동체 원천기술개발 — 육해공 자율협력」의 UAV/UGV 연동시험 영상(영상 속 기관 로고 포함). media14.mp4 전체 39.8초(원본 PPT는 11.5초부터 재생하도록 설정돼 있었음). 소리 유지.</p></aside>
 </section>
 
-<section class="slide v2-fd" id="v2-field-07" data-source="AI Technologies for Field Robotics 이한민.pptx#51" data-title="8. 화재현장 실내수색 무인이동체 개발">
-<h1 class="title">8. 화재현장 실내수색 무인이동체 개발</h1>
-<img class="kimmlogo" src="assets/v2/common/kimm-logo.png" alt="KIMM">
-<div class="v2-fd-stage">
-<div class="sp" data-name="사각형: 둥근 위쪽 모서리 8" style="left:45.6px;top:106.8px;width:680.3px;height:56.7px;background:#3A4F6E;border-radius:9.4px 9.4px 0 0;"><div class="tx" style="padding:0.0px 0.0px 0.0px 0.0px;justify-content:center;"><p style="text-align:center;line-height:1.20;margin-top:0.0px;font-size:16.0px;"><span style="font-size:16.0px;color:#FFFFFF;">프로토타입</span><span style="font-size:16.0px;color:#FFFFFF;">-UGV </span><span style="font-size:16.0px;color:#FFFFFF;">플랫폼 간 정책 전이 기술 개발</span></p><p style="text-align:center;line-height:1.20;margin-top:0.0px;font-size:14.0px;"><span style="font-size:14.0px;color:#FFFFFF;">상용 휠 </span><span style="font-size:14.0px;color:#FFFFFF;">레그</span><span style="font-size:14.0px;color:#FFFFFF;"> 로봇에서 통합 </span><span style="font-size:14.0px;color:#FFFFFF;">UGV </span><span style="font-size:14.0px;color:#FFFFFF;">플랫폼으로 도메인간 전환 기술 개발</span></p></div></div>
-<div class="sp" data-name="자유형: 도형 9" style="left:39.9px;top:163.5px;width:691.7px;height:11.3px;"><div class="geo"><svg width="691.7" height="11.3" style="overflow:visible"><path d="M0.0,10.9 L0.0,0.0 L691.7,0.0 L691.7,11.3" style="fill:none;stroke:#3A4F6E;stroke-width:2.50"/></svg></div></div>
-<div class="sp" data-name="사각형: 둥근 위쪽 모서리 215" style="left:216.5px;top:7.5px;width:332.4px;height:671.4px;transform:rotate(90.00deg);background:#F2F2F2;border-radius:55.4px 55.4px 0 0;"></div>
-<div class="sp" data-name="제목 10" style="left:69.1px;top:183.1px;width:160.6px;height:17.0px;"><div class="tx" style="padding:0.0px 0.0px 0.0px 0.0px;justify-content:center;white-space:nowrap;"><p style="text-align:left;line-height:1.20;font-size:14.0px;"><span style="font-size:14.0px;font-weight:700;color:#404040;">도메인 간 이동 기술 전이 개발</span></p></div></div>
-<div class="sp" data-name="갈매기형 수장 24" style="left:53.2px;top:185.9px;width:7.7px;height:11.2px;"><div class="geo"><svg width="7.7" height="11.2" style="overflow:visible"><polygon points="0.0,0.0 3.8,0.0 7.7,5.6 3.8,11.2 0.0,11.2 3.8,5.6" style="fill:#63CADB;stroke:none;stroke-width:0.00"/></svg></div></div>
-<div class="sp" data-name="갈매기형 수장 25" style="left:58.1px;top:185.9px;width:7.7px;height:11.2px;"><div class="geo"><svg width="7.7" height="11.2" style="overflow:visible"><polygon points="0.0,0.0 3.8,0.0 7.7,5.6 3.8,11.2 0.0,11.2 3.8,5.6" style="fill:#63CADB;stroke:none;stroke-width:0.00"/></svg></div></div>
-<svg class="ln" style="left:53.2px;top:200.6px;width:659.0px;height:0.0px;"><defs></defs><line x1="0.0" y1="0.0" x2="659.0" y2="0.0" stroke="#BFBFBF" stroke-width="0.75"/></svg>
-<div class="sp" data-name="TextBox 31" style="left:80.3px;top:453.5px;width:624.7px;height:14.5px;"><div class="tx" style="padding:0.0px 0.0px 0.0px 0.0px;justify-content:flex-start;"><p style="text-align:left;line-height:1.20;font-size:12.0px;"><span style="font-size:12.0px;font-weight:700;color:#404040;">상용 휠 </span><span style="font-size:12.0px;font-weight:700;color:#404040;">레그</span><span style="font-size:12.0px;font-weight:700;color:#404040;"> 로봇을 이용해 학습된 제어 기술을</span><span style="font-size:12.0px;font-weight:700;color:#404040;">,</span><span style="font-size:12.0px;font-weight:700;color:#404040;"> 통합 </span><span style="font-size:12.0px;font-weight:700;color:#404040;">UGV </span><span style="font-size:12.0px;font-weight:700;color:#404040;">플랫폼으로 전이 시킬 수 있는 </span><span style="font-size:12.0px;font-weight:700;color:#FF0000;">도메인간 전환</span><span style="font-size:12.0px;font-weight:700;color:#404040;"> 기술 개발</span></p></div></div>
-<div class="sp" data-name="자유형: 도형 232" style="left:56.7px;top:452.2px;width:16.7px;height:17.0px;"><div class="geo"><svg width="16.7" height="17.0" style="overflow:visible"><path d="M8.2,0.0 C12.9,0.0 16.7,3.8 16.7,8.5 C16.7,13.2 12.9,17.0 8.2,17.0 C4.7,17.0 1.7,14.9 0.4,11.8 L0.0,10.6 L8.7,10.6 L8.7,12.6 L12.9,8.5 L8.7,4.4 L8.7,6.4 L0.0,6.4 L0.4,5.2 C1.7,2.1 4.7,0.0 8.2,0.0 Z" style="fill:#0070C0;stroke:none;stroke-width:0.00"/></svg></div></div>
-<div class="pic" data-name="그림 33" style="left:385.8px;top:209.1px;width:313.5px;height:235.1px;"><img src="assets/v2/part3/src_image27.gif" alt="그림 33" style="position:absolute;left:0.000%;top:0.000%;width:100.000%;height:100.000%;"></div>
-<div class="pic" data-name="그림 34" style="left:65.1px;top:209.0px;width:309.5px;height:235.2px;"><img src="assets/v2/part3/src_image28.gif" alt="그림 34" style="position:absolute;left:0.000%;top:0.000%;width:100.000%;height:100.000%;"></div>
-<div class="sp" data-name="TextBox 36" style="left:80.3px;top:478.6px;width:624.7px;height:14.5px;"><div class="tx" style="padding:0.0px 0.0px 0.0px 0.0px;justify-content:flex-start;"><p style="text-align:left;line-height:1.20;font-size:12.0px;"><span style="font-size:12.0px;font-weight:700;color:#404040;">휠 </span><span style="font-size:12.0px;font-weight:700;color:#404040;">레그</span><span style="font-size:12.0px;font-weight:700;color:#404040;"> 로봇의 형태학적 유사성을 이용해</span><span style="font-size:12.0px;font-weight:700;color:#404040;">,</span><span style="font-size:12.0px;font-weight:700;color:#404040;"> </span><span style="font-size:12.0px;font-weight:700;color:#FF0000;">시뮬레이션 간 정책 전환</span><span style="font-size:12.0px;font-weight:700;color:#404040;"> 및 </span><span style="font-size:12.0px;font-weight:700;color:#FF0000;">시뮬레이션에서 실제 환경으로의 전환 </span><span style="font-size:12.0px;font-weight:700;color:#404040;">추진 </span></p></div></div>
-<div class="sp" data-name="자유형: 도형 13" style="left:56.7px;top:477.3px;width:16.7px;height:17.0px;"><div class="geo"><svg width="16.7" height="17.0" style="overflow:visible"><path d="M8.2,0.0 C12.9,0.0 16.7,3.8 16.7,8.5 C16.7,13.2 12.9,17.0 8.2,17.0 C4.7,17.0 1.7,14.9 0.4,11.8 L0.0,10.6 L8.7,10.6 L8.7,12.6 L12.9,8.5 L8.7,4.4 L8.7,6.4 L0.0,6.4 L0.4,5.2 C1.7,2.1 4.7,0.0 8.2,0.0 Z" style="fill:#0070C0;stroke:none;stroke-width:0.00"/></svg></div></div>
-<div class="sp" data-name="직사각형 38" style="left:114.5px;top:208.3px;width:261.6px;height:24.6px;background:#376092;"><div class="tx" style="padding:3.6px 7.2px 3.6px 7.2px;justify-content:center;"><p style="text-align:center;font-size:12.0px;"><span style="font-size:12.0px;font-weight:700;color:#FFFFFF;">제어기 학습을 위한 병렬 연산 시뮬레이션 환경 </span></p></div></div>
-<div class="sp" data-name="직사각형 39" style="left:478.9px;top:208.4px;width:221.8px;height:24.4px;background:#376092;"><div class="tx" style="padding:3.6px 7.2px 3.6px 7.2px;justify-content:center;"><p style="text-align:center;font-size:12.0px;"><span style="font-size:12.0px;font-weight:700;color:#FFFFFF;">휠 </span><span style="font-size:12.0px;font-weight:700;color:#FFFFFF;">레그</span><span style="font-size:12.0px;font-weight:700;color:#FFFFFF;"> 로봇의 형태학적 유사성 이용</span></p></div></div>
+<section class="slide v3 v3-fd" id="v2-field-07" data-source="AI Technologies for Field Robotics 이한민.pptx#51" data-title="휠-레그 로봇 정책 전이">
+<div class="v3-rail"></div>
+<h1 class="v3-title">휠-레그 로봇 정책 전이 <span class="sub">화재현장 실내수색 무인이동체</span></h1>
+<img class="v3-logo" src="assets/v2/common/kimm-logo.png" alt="KIMM">
+<div class="v3-keybar sm"><span>상용 휠-레그 로봇에서 학습한 제어를 <em>통합 UGV 플랫폼으로 전이</em></span></div>
+<div class="v3-content">
+ <div class="v3-fd-pt">
+  <div class="v3-g2">
+   <div class="v3-fig"><div class="v3-media"><img src="assets/v2/part3/src_image28.gif" alt="제어기 학습을 위한 병렬 연산 시뮬레이션 환경"><span class="v3-badge">시뮬레이션</span></div><div class="v3-cap">제어기 학습을 위한 <b>병렬 연산 시뮬레이션 환경</b></div></div>
+   <div class="v3-fig"><div class="v3-media"><img src="assets/v2/part3/src_image27.gif" alt="휠 레그 로봇의 형태학적 유사성 이용"><span class="v3-badge">시뮬레이션</span></div><div class="v3-cap">휠-레그 로봇의 <b>형태학적 유사성</b> 이용</div></div>
+  </div>
+  <div class="v3-flow">
+   <div class="v3-node">상용 휠-레그 로봇<small>제어 학습</small></div><span class="v3-arrow"></span>
+   <div class="v3-node">시뮬레이션 간<small>정책 전환</small></div><span class="v3-arrow"></span>
+   <div class="v3-node dash">시뮬레이션 → 실제<small>환경 전환 (추진)</small></div><span class="v3-arrow"></span>
+   <div class="v3-node fill">통합 UGV 플랫폼</div>
+  </div>
+ </div>
 </div>
-<div class="src">AI Frontiers Summit 2026 「AI Technologies for Field Robotics」(KIMM 이한민) #51</div>
-<aside class="speaker-notes"><p>원본 B#51 그대로: 화재현장 실내수색 무인이동체 — 프로토타입-UGV 플랫폼 간 정책 전이(상용 휠 레그 로봇 → 통합 UGV, 시뮬레이션 간 정책 전환 및 시뮬레이션→실제 환경 전환 추진).</p><p>GIF 2개 원본 애니메이션 그대로(제어기 학습용 병렬 연산 시뮬레이션 환경 5.0초, 휠 레그 로봇 형태학적 유사성 6.0초). 「추진」은 원본 표현 그대로 — 완료 성과로 말하지 않음.</p><p>GIF의 성격: KIMM 과제 페이지(#51) 원본에 들어 있는 시뮬레이션 애니메이션이며, 영상의 제작 주체·도구는 원본에 적혀 있지 않다. 실기 실증 영상이 아니라 「제어기 학습용 병렬 시뮬레이션 환경」과 「형태학적 유사성」을 보여 주는 학습 환경 화면으로만 설명한다. 같은 GIF가 2부에 쓰였다면 2부는 일반 기법 예시, 여기서는 이 과제의 추진 방향 예시로 구분.</p></aside>
+<aside class="speaker-notes"><p>원본 B#51 「화재현장 실내수색 무인이동체 개발」 — 프로토타입-UGV 플랫폼 간 정책 전이 기술 개발: 상용 휠 레그 로봇을 이용해 학습된 제어 기술을 통합 UGV 플랫폼으로 전이시킬 수 있는 도메인간 전환 기술 개발; 휠 레그 로봇의 형태학적 유사성을 이용해 시뮬레이션 간 정책 전환 및 시뮬레이션에서 실제 환경으로의 전환 추진. v3에서 이 문장을 흐름도로 다시 그림(점선 = 원본 표현 「추진」, 완료 성과 아님).</p><p>GIF 2개 원본 애니메이션 그대로(병렬 연산 시뮬레이션 환경 6.0초, 형태학적 유사성 5.0초). GIF의 성격: KIMM 과제 페이지(#51) 원본에 들어 있는 시뮬레이션 애니메이션이며 제작 주체·도구는 원본에 적혀 있지 않음 — 실기 실증 영상이 아니라 학습 환경 화면으로만 설명. 같은 GIF가 2부에 쓰였다면 2부는 일반 기법 예시, 여기서는 이 과제의 추진 방향 예시로 구분.</p></aside>
 </section>
-<!-- ===== part3 ===== -->
-<!-- v2 v2-p3: 원본 AI Frontiers Summit 2026 「AI Technologies for Field Robotics」 페이지 재현. 경로는 통합 HTML 기준 -->
-<section class="slide v2-p3" id="v2-part3-01" data-source="AI Technologies for Field Robotics 이한민.pptx#28" data-title="1. 숙련자 데이터 및 인공지능 기반 자율작업 굴착기">
-<h1 class="title sm">1. 숙련자 데이터 및 인공지능 기반 자율작업 굴착기</h1>
-<img class="kimmlogo" src="assets/v2/common/kimm-logo.png" alt="KIMM">
-<div class="v2-p3-stage">
-<div class="sp" data-name="직사각형 25" style="left:62.7px;top:106.0px;width:682.4px;height:205.5px;background:#FFFFFF;border:1.00px solid #2A91C4;"></div>
-<div class="pic" data-name="그림 26" style="left:67.9px;top:165.8px;width:164.2px;height:93.0px;"><img src="assets/v2/part3/src_image48.png" alt="그림 26" style="position:absolute;left:-17.427%;top:-28.238%;width:129.006%;height:128.238%;"></div>
-<div class="sp" data-name="순서도: 자기 디스크 27" style="left:608.2px;top:123.3px;width:128.8px;height:146.6px;"><div class="geo"><svg width="128.8" height="146.6" style="overflow:visible"><path d="M0,24.4 A64.4,24.4 0 0 1 128.8,24.4 V122.2 A64.4,24.4 0 0 1 0,122.2 Z" style="fill:#FCD5B5;stroke:#F79646;stroke-width:1.00"/><ellipse cx="64.4" cy="24.4" rx="64.4" ry="24.4" style="fill:#FCD5B5;stroke:#F79646;stroke-width:1.00"/></svg></div></div>
-<div class="sp" data-name="직사각형 28" style="left:252.0px;top:169.6px;width:328.9px;height:117.4px;background:#FFFFFF;border:0.75px solid #000000;"></div>
-<div class="sp" data-name="직사각형 29" style="left:252.0px;top:113.9px;width:328.9px;height:52.2px;background:#FFFFFF;border:0.75px solid #000000;"></div>
-<div class="pic" data-name="그림 30" style="left:185.2px;top:109.3px;width:40.1px;height:27.5px;"><img src="assets/v2/part3/src_image49.jpeg" alt="그림 30" style="position:absolute;left:0.000%;top:0.000%;width:100.000%;height:100.000%;"></div>
-<div class="pic" data-name="그림 31" style="left:141.6px;top:109.3px;width:39.6px;height:27.5px;"><img src="assets/v2/part3/src_image50.jpeg" alt="그림 31" style="position:absolute;left:0.000%;top:0.000%;width:100.000%;height:100.000%;"></div>
-<div class="sp" data-name="직사각형 32" style="left:309.3px;top:255.4px;width:100.4px;height:12.8px;background:#8EB4E3;border:0.75px solid #000000;"><div class="tx" style="padding:3.6px 7.2px 3.6px 7.2px;justify-content:center;"><p style="text-align:center;font-size:9.0px;"><span style="font-size:9.0px;color:#000000;">approach (</span><span style="font-size:9.0px;color:#000000;">x,y,z</span><span style="font-size:9.0px;color:#000000;">)</span></p></div></div>
-<div class="sp" data-name="직사각형 33" style="left:409.7px;top:261.6px;width:80.7px;height:12.8px;background:#8EB4E3;border:0.75px solid #000000;"><div class="tx" style="padding:3.6px 7.2px 3.6px 7.2px;justify-content:center;"><p style="text-align:center;font-size:9.0px;"><span style="font-size:9.0px;color:#000000;">dig (</span><span style="font-size:9.0px;color:#000000;">depth,drag</span><span style="font-size:9.0px;color:#000000;">)</span></p></div></div>
-<div class="sp" data-name="직사각형 34" style="left:490.3px;top:268.3px;width:83.8px;height:12.8px;background:#8EB4E3;border:0.75px solid #000000;"><div class="tx" style="padding:3.6px 7.2px 3.6px 7.2px;justify-content:center;"><p style="text-align:center;font-size:9.0px;"><span style="font-size:9.0px;color:#000000;">dump (</span><span style="font-size:9.0px;color:#000000;">x,y,z</span><span style="font-size:9.0px;color:#000000;">)</span></p></div></div>
-<div class="sp" data-name="TextBox 26" style="left:257.9px;top:180.4px;width:39.4px;height:29.1px;"><div class="tx" style="padding:3.6px 7.2px 3.6px 7.2px;justify-content:flex-start;"><p style="text-align:center;font-size:9.0px;"><span style="font-size:9.0px;color:#000000;">관절각센서</span></p></div></div>
-<div class="sp" data-name="TextBox 29" style="left:256.8px;top:217.9px;width:44.8px;height:18.2px;"><div class="tx" style="padding:3.6px 7.2px 3.6px 7.2px;justify-content:flex-start;"><p style="text-align:center;font-size:9.0px;"><span style="font-size:9.0px;color:#000000;">카메라</span></p></div></div>
-<div class="sp" data-name="TextBox 30" style="left:256.4px;top:257.0px;width:47.9px;height:18.2px;"><div class="tx" style="padding:3.6px 7.2px 3.6px 7.2px;justify-content:flex-start;"><p style="text-align:center;font-size:9.0px;"><span style="font-size:9.0px;color:#000000;">작업매핑</span></p></div></div>
-<div class="sp" data-name="아래쪽 화살표 38" style="left:422.6px;top:242.2px;width:37.6px;height:9.4px;"><div class="geo"><svg width="37.6" height="9.4" style="overflow:visible"><polygon points="9.4,0.0 28.2,0.0 28.2,4.7 37.6,4.7 18.8,9.4 0.0,4.7 9.4,4.7" style="fill:#4F81BD;stroke:none;stroke-width:0.00"/></svg></div></div>
-<div class="pic" data-name="그림 39" style="left:309.3px;top:124.3px;width:34.2px;height:34.0px;"><img src="assets/v2/part3/src_image51.jpeg" alt="그림 39" style="position:absolute;left:0.000%;top:0.000%;width:100.000%;height:100.000%;"></div>
-<div class="pic" data-name="그림 40" style="left:409.7px;top:124.3px;width:33.5px;height:34.0px;"><img src="assets/v2/part3/src_image52.jpeg" alt="그림 40" style="position:absolute;left:0.000%;top:0.000%;width:100.000%;height:100.000%;"></div>
-<div class="pic" data-name="그림 41" style="left:490.6px;top:124.3px;width:34.4px;height:34.0px;"><img src="assets/v2/part3/src_image53.jpeg" alt="그림 41" style="position:absolute;left:0.000%;top:0.000%;width:100.000%;height:100.000%;"></div>
-<div class="sp" data-name="TextBox 37" style="left:253.5px;top:129.2px;width:47.4px;height:29.1px;"><div class="tx" style="padding:3.6px 7.2px 3.6px 7.2px;justify-content:flex-start;"><p style="text-align:center;font-size:9.0px;"><span style="font-size:9.0px;color:#000000;">라이다</span></p><p style="text-align:center;font-size:9.0px;"><span style="font-size:9.0px;color:#000000;">그리드맵</span></p></div></div>
-<div class="sp" data-name="TextBox 43" style="left:358.4px;top:121.7px;width:24.0px;height:29.1px;"><div class="tx" style="padding:3.6px 7.2px 3.6px 7.2px;justify-content:flex-start;"><p style="text-align:left;font-size:18.0px;"><span style="font-size:18.0px;color:#000000;">…</span></p></div></div>
-<div class="sp" data-name="TextBox 46" style="left:452.2px;top:122.8px;width:24.0px;height:29.1px;"><div class="tx" style="padding:3.6px 7.2px 3.6px 7.2px;justify-content:flex-start;"><p style="text-align:left;font-size:18.0px;"><span style="font-size:18.0px;color:#000000;">…</span></p></div></div>
-<div class="sp" data-name="TextBox 47" style="left:530.2px;top:122.3px;width:24.0px;height:29.1px;"><div class="tx" style="padding:3.6px 7.2px 3.6px 7.2px;justify-content:flex-start;"><p style="text-align:left;font-size:18.0px;"><span style="font-size:18.0px;color:#000000;">…</span></p></div></div>
-<svg class="ln" style="left:309.3px;top:122.3px;width:0.0px;height:159.5px;"><defs></defs><line x1="0.0" y1="0.0" x2="0.0" y2="159.5" stroke="#4F81BD" stroke-width="1.00"/></svg>
-<svg class="ln" style="left:409.6px;top:122.8px;width:0.0px;height:159.5px;"><defs></defs><line x1="0.0" y1="0.0" x2="0.0" y2="159.5" stroke="#4F81BD" stroke-width="1.00"/></svg>
-<svg class="ln" style="left:490.4px;top:123.3px;width:0.0px;height:159.5px;"><defs></defs><line x1="0.0" y1="0.0" x2="0.0" y2="159.5" stroke="#4F81BD" stroke-width="1.00"/></svg>
-<svg class="ln" style="left:309.3px;top:158.4px;width:260.7px;height:0.0px;"><defs><marker id="m2649565339120" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#4F81BD"/></marker></defs><line x1="0.0" y1="0.0" x2="260.7" y2="0.0" stroke="#4F81BD" stroke-width="0.75" marker-end="url(#m2649565339120)"/></svg>
-<div class="sp" data-name="아래쪽 화살표 50" style="left:214.0px;top:194.5px;width:50.8px;height:18.8px;transform:rotate(270.00deg);"><div class="geo"><svg width="50.8" height="18.8" style="overflow:visible"><polygon points="12.7,0.0 38.1,0.0 38.1,9.4 50.8,9.4 25.4,18.8 0.0,9.4 12.7,9.4" style="fill:#4F81BD;stroke:none;stroke-width:0.00"/></svg></div></div>
-<div class="sp" data-name="자유형 51" style="left:161.5px;top:150.8px;width:88.2px;height:26.2px;"><div class="geo"><svg width="88.2" height="26.2" style="overflow:visible"><path d="M0.0,26.2 C14.1,18.2 28.2,10.3 42.9,5.9 C57.6,1.5 80.8,0.5 88.2,0.0" style="fill:none;stroke:#000000;stroke-width:0.75"/></svg></div></div>
-<div class="sp" data-name="자유형 52" style="left:125.6px;top:205.9px;width:122.8px;height:34.1px;transform:scaleY(-1);"><div class="geo"><svg width="122.8" height="34.1" style="overflow:visible"><path d="M0.0,34.1 C19.6,23.8 39.2,13.4 59.6,7.7 C80.1,2.0 112.4,0.7 122.8,0.0" style="fill:none;stroke:#000000;stroke-width:0.75"/></svg></div></div>
-<div class="pic" data-name="Picture 2" style="left:307.1px;top:177.0px;width:268.7px;height:33.4px;"><img src="assets/v2/part3/src_image54.jpeg" alt="Picture 2" style="position:absolute;left:-0.000%;top:-0.000%;width:100.000%;height:100.000%;"></div>
-<div class="pic" data-name="그림 55" style="left:309.3px;top:215.6px;width:33.5px;height:22.7px;"><img src="assets/v2/part3/src_image55.jpeg" alt="그림 55" style="position:absolute;left:0.000%;top:0.000%;width:100.000%;height:100.000%;"></div>
-<div class="pic" data-name="그림 56" style="left:342.8px;top:215.6px;width:33.4px;height:22.7px;"><img src="assets/v2/part3/src_image56.jpeg" alt="그림 56" style="position:absolute;left:0.000%;top:0.000%;width:100.000%;height:100.000%;"></div>
-<div class="pic" data-name="그림 57" style="left:376.3px;top:215.6px;width:33.4px;height:22.7px;"><img src="assets/v2/part3/src_image57.jpeg" alt="그림 57" style="position:absolute;left:0.000%;top:0.000%;width:100.000%;height:100.000%;"></div>
-<div class="pic" data-name="그림 58" style="left:409.7px;top:215.6px;width:33.0px;height:22.7px;"><img src="assets/v2/part3/src_image58.jpeg" alt="그림 58" style="position:absolute;left:0.000%;top:0.000%;width:100.000%;height:100.000%;"></div>
-<div class="pic" data-name="그림 59" style="left:442.7px;top:215.6px;width:33.5px;height:22.7px;"><img src="assets/v2/part3/src_image59.jpeg" alt="그림 59" style="position:absolute;left:0.000%;top:0.000%;width:100.000%;height:100.000%;"></div>
-<div class="pic" data-name="그림 60" style="left:475.6px;top:215.6px;width:33.0px;height:22.7px;"><img src="assets/v2/part3/src_image60.jpeg" alt="그림 60" style="position:absolute;left:0.000%;top:0.000%;width:100.000%;height:100.000%;"></div>
-<div class="pic" data-name="그림 61" style="left:508.6px;top:215.6px;width:32.7px;height:22.7px;"><img src="assets/v2/part3/src_image61.jpeg" alt="그림 61" style="position:absolute;left:0.000%;top:0.000%;width:100.000%;height:100.000%;"></div>
-<div class="pic" data-name="그림 62" style="left:541.1px;top:215.6px;width:33.0px;height:22.7px;"><img src="assets/v2/part3/src_image62.jpeg" alt="그림 62" style="position:absolute;left:0.000%;top:0.000%;width:100.000%;height:100.000%;"></div>
-<div class="sp" data-name="직사각형 63" style="left:35.6px;top:106.0px;width:27.0px;height:205.5px;background:#2A91C4;"><div class="tx" style="padding:3.6px 7.2px 3.6px 7.2px;justify-content:center;"><p style="text-align:center;font-size:14.0px;"><span style="font-size:14.0px;color:#FFFFFF;">데이터</span></p><p style="text-align:center;font-size:14.0px;"><span style="font-size:14.0px;color:#FFFFFF;">수집</span></p></div></div>
-<div class="sp" data-name="아래쪽 화살표 64" style="left:574.1px;top:202.9px;width:40.6px;height:15.0px;transform:rotate(270.00deg);"><div class="geo"><svg width="40.6" height="15.0" style="overflow:visible"><polygon points="10.2,0.0 30.5,0.0 30.5,7.5 40.6,7.5 20.3,15.0 0.0,7.5 10.2,7.5" style="fill:#4F81BD;stroke:none;stroke-width:0.00"/></svg></div></div>
-<div class="sp" data-name="TextBox 67" style="left:93.8px;top:287.5px;width:115.6px;height:20.6px;"><div class="tx" style="padding:3.6px 7.2px 3.6px 7.2px;justify-content:flex-start;"><p style="text-align:center;font-size:11.0px;"><span style="font-size:11.0px;color:#000000;">데이터 수집 플랫폼</span></p></div></div>
-<div class="sp" data-name="TextBox 74" style="left:368.3px;top:289.8px;width:115.6px;height:20.6px;"><div class="tx" style="padding:3.6px 7.2px 3.6px 7.2px;justify-content:flex-start;"><p style="text-align:center;font-size:11.0px;"><span style="font-size:11.0px;color:#000000;">데이터 수집 및 가공</span></p></div></div>
-<div class="pic" data-name="그림 67" style="left:630.7px;top:173.5px;width:17.2px;height:17.1px;"><img src="assets/v2/part3/src_image63.jpeg" alt="그림 67" style="position:absolute;left:0.000%;top:0.000%;width:100.000%;height:100.000%;"></div>
-<div class="sp" data-name="TextBox 68" style="left:616.7px;top:165.3px;width:118.0px;height:29.1px;"><div class="tx" style="padding:3.6px 7.2px 3.6px 7.2px;justify-content:flex-start;"><p style="text-align:left;font-size:18.0px;"><span style="font-size:18.0px;color:#000000;">(</span><span style="font-size:18.0px;color:#000000;">    </span><span style="font-size:18.0px;color:#000000;">,</span><span style="font-size:18.0px;color:#000000;"> </span><span style="font-size:9.0px;color:#000000;">approach (..) </span><span style="font-size:18.0px;color:#000000;">)</span></p></div></div>
-<div class="sp" data-name="TextBox 78" style="left:617.8px;top:189.8px;width:118.0px;height:29.1px;"><div class="tx" style="padding:3.6px 7.2px 3.6px 7.2px;justify-content:flex-start;"><p style="text-align:left;font-size:18.0px;"><span style="font-size:18.0px;color:#000000;">(</span><span style="font-size:18.0px;color:#000000;">    </span><span style="font-size:18.0px;color:#000000;">,</span><span style="font-size:18.0px;color:#000000;"> </span><span style="font-size:9.0px;color:#000000;">dig (..)           </span><span style="font-size:18.0px;color:#000000;">)</span></p></div></div>
-<div class="sp" data-name="TextBox 80" style="left:618.9px;top:214.4px;width:118.0px;height:29.1px;"><div class="tx" style="padding:3.6px 7.2px 3.6px 7.2px;justify-content:flex-start;"><p style="text-align:left;font-size:18.0px;"><span style="font-size:18.0px;color:#000000;">(</span><span style="font-size:18.0px;color:#000000;">    </span><span style="font-size:18.0px;color:#000000;">,</span><span style="font-size:18.0px;color:#000000;"> </span><span style="font-size:9.0px;color:#000000;">dump (..)       </span><span style="font-size:18.0px;color:#000000;">)</span></p></div></div>
-<div class="sp" data-name="TextBox 82" style="left:662.8px;top:242.5px;width:32.4px;height:29.1px;transform:rotate(90.00deg);"><div class="tx" style="padding:3.6px 7.2px 3.6px 7.2px;justify-content:flex-start;"><p style="text-align:left;font-size:18.0px;"><span style="font-size:18.0px;color:#000000;">…</span></p></div></div>
-<div class="pic" data-name="그림 72" style="left:631.1px;top:197.0px;width:17.2px;height:17.4px;"><img src="assets/v2/part3/src_image64.jpeg" alt="그림 72" style="position:absolute;left:0.000%;top:0.000%;width:100.000%;height:100.000%;"></div>
-<div class="pic" data-name="그림 73" style="left:630.3px;top:223.0px;width:17.6px;height:17.4px;"><img src="assets/v2/part3/src_image65.png" alt="그림 73" style="position:absolute;left:0.000%;top:0.000%;width:100.000%;height:100.000%;"></div>
-<div class="sp" data-name="TextBox 87" style="left:611.6px;top:289.8px;width:115.6px;height:20.6px;"><div class="tx" style="padding:3.6px 7.2px 3.6px 7.2px;justify-content:flex-start;"><p style="text-align:center;font-size:11.0px;"><span style="font-size:11.0px;color:#000000;">숙련자</span><span style="font-size:11.0px;color:#000000;"> 작업 </span><span style="font-size:11.0px;color:#000000;">DB</span></p></div></div>
-<div class="sp" data-name="직사각형 75" style="left:35.6px;top:316.4px;width:27.0px;height:134.1px;background:#2A91C4;"><div class="tx" style="padding:3.6px 7.2px 3.6px 7.2px;justify-content:center;"><p style="text-align:center;font-size:14.0px;"><span style="font-size:14.0px;color:#FFFFFF;">인공지능</span></p><p style="text-align:center;font-size:14.0px;"><span style="font-size:14.0px;color:#FFFFFF;">학습</span></p></div></div>
-<div class="sp" data-name="직사각형 76" style="left:62.7px;top:316.8px;width:298.0px;height:133.7px;background:#FFFFFF;border:1.00px solid #2A91C4;"></div>
-<div class="sp" data-name="TextBox 90" style="left:119.5px;top:136.5px;width:124.7px;height:18.2px;"><div class="tx" style="padding:3.6px 7.2px 3.6px 7.2px;justify-content:flex-start;"><p style="text-align:center;font-size:9.0px;"><span style="font-size:9.0px;color:#000000;">라이다 </span><span style="font-size:9.0px;color:#000000;">점군</span><span style="font-size:9.0px;color:#000000;"> </span><span style="font-size:9.0px;color:#000000;"></span><span style="font-size:9.0px;color:#000000;"> </span><span style="font-size:9.0px;color:#000000;">2D </span><span style="font-size:9.0px;color:#000000;">그리드</span></p></div></div>
-<div class="pic" data-name="그림 78" style="left:124.9px;top:346.5px;width:126.0px;height:54.8px;outline:0.75px solid #000000;outline-offset:-0.75px;"><img src="assets/v2/part3/src_image66.png" alt="그림 78" style="position:absolute;left:0.000%;top:0.000%;width:100.000%;height:100.000%;"></div>
-<div class="sp" data-name="TextBox 92" style="left:121.0px;top:416.7px;width:115.6px;height:20.6px;"><div class="tx" style="padding:3.6px 7.2px 3.6px 7.2px;justify-content:flex-start;"><p style="text-align:center;font-size:11.0px;"><span style="font-size:11.0px;color:#000000;">인공지능 모델 학습</span></p></div></div>
-<div class="sp" data-name="아래쪽 화살표 80" style="left:108.3px;top:371.4px;width:17.3px;height:6.4px;transform:rotate(270.00deg);"><div class="geo"><svg width="17.3" height="6.4" style="overflow:visible"><polygon points="4.3,0.0 13.0,0.0 13.0,3.2 17.3,3.2 8.7,6.4 0.0,3.2 4.3,3.2" style="fill:#4F81BD;stroke:none;stroke-width:0.00"/></svg></div></div>
-<div class="sp" data-name="아래쪽 화살표 81" style="left:250.0px;top:371.4px;width:17.3px;height:6.4px;transform:rotate(270.00deg);"><div class="geo"><svg width="17.3" height="6.4" style="overflow:visible"><polygon points="4.3,0.0 13.0,0.0 13.0,3.2 17.3,3.2 8.7,6.4 0.0,3.2 4.3,3.2" style="fill:#4F81BD;stroke:none;stroke-width:0.00"/></svg></div></div>
-<div class="pic" data-name="그림 82" style="left:72.3px;top:357.6px;width:33.5px;height:34.0px;"><img src="assets/v2/part3/src_image52.jpeg" alt="그림 82" style="position:absolute;left:0.000%;top:0.000%;width:100.000%;height:100.000%;"></div>
-<div class="sp" data-name="TextBox 85" style="left:263.3px;top:364.9px;width:94.2px;height:20.0px;"><div class="tx" style="padding:3.6px 7.2px 3.6px 7.2px;justify-content:flex-start;"><p style="text-align:left;font-size:10.5px;"><span style="font-size:10.5px;color:#000000;">dig (depth, drag)</span></p></div></div>
-<div class="sp" data-name="직사각형 84" style="left:364.1px;top:316.4px;width:27.0px;height:134.1px;background:#2A91C4;"><div class="tx" style="padding:3.6px 7.2px 3.6px 7.2px;justify-content:center;"><p style="text-align:center;font-size:14.0px;"><span style="font-size:14.0px;color:#FFFFFF;">자율작업</span></p><p style="text-align:center;font-size:14.0px;"><span style="font-size:14.0px;color:#FFFFFF;">실증</span></p></div></div>
-<div class="sp" data-name="직사각형 85" style="left:391.2px;top:316.8px;width:353.9px;height:133.7px;background:#FFFFFF;border:1.00px solid #2A91C4;"></div>
-<div class="sp" data-name="TextBox 147" style="left:450.3px;top:416.9px;width:232.1px;height:20.6px;"><div class="tx" style="padding:3.6px 7.2px 3.6px 7.2px;justify-content:flex-start;"><p style="text-align:center;font-size:11.0px;"><span style="font-size:11.0px;color:#000000;">AI </span><span style="font-size:11.0px;color:#000000;">기반 무인 굴착기 </span><span style="font-size:11.0px;color:#000000;">자율작업</span><span style="font-size:11.0px;color:#000000;"> 계획 및 제어</span></p></div></div>
-<div class="pic" data-name="그림 87" style="left:408.7px;top:349.1px;width:319.8px;height:58.2px;"><img src="assets/v2/part3/src_image67.png" alt="그림 87" style="position:absolute;left:0.000%;top:0.000%;width:100.000%;height:100.000%;"></div>
-<div class="pic" data-name="그림 88" style="left:209.5px;top:501.2px;width:85.0px;height:10.5px;"><img src="assets/v2/part3/src_image68.png" alt="그림 88" style="position:absolute;left:0.000%;top:0.000%;width:100.000%;height:100.000%;"></div>
-<div class="pic" data-name="Picture 20" style="left:397.1px;top:491.0px;width:49.7px;height:28.0px;"><img src="assets/v2/part3/src_image69.jpeg" alt="Picture 20" style="position:absolute;left:-0.000%;top:-0.000%;width:100.000%;height:100.000%;"></div>
-<div class="pic" data-name="Picture 12" style="left:533.1px;top:483.8px;width:59.3px;height:42.3px;"><img src="assets/v2/part3/src_image70.png" alt="Picture 12" style="position:absolute;left:-0.000%;top:-0.000%;width:100.000%;height:100.000%;"></div>
-<div class="pic" data-name="Picture 18" style="left:606.5px;top:497.1px;width:70.0px;height:15.9px;"><img src="assets/v2/part3/src_image71.jpeg" alt="Picture 18" style="position:absolute;left:-0.000%;top:-0.000%;width:100.000%;height:100.000%;"></div>
-<div class="pic" data-name="Picture 22" style="left:690.7px;top:485.2px;width:75.5px;height:39.6px;"><img src="assets/v2/part3/src_image72.jpeg" alt="Picture 22" style="position:absolute;left:-0.000%;top:-0.000%;width:100.000%;height:100.000%;"></div>
-<div class="pic" data-name="그림 2" style="left:461.0px;top:496.4px;width:57.9px;height:17.3px;"><img src="assets/v2/part3/src_image73.png" alt="그림 2" style="position:absolute;left:0.000%;top:0.000%;width:100.000%;height:100.000%;"></div>
-<div class="pic" data-name="그림 93" style="left:307.6px;top:497.8px;width:78.2px;height:14.1px;"><img src="assets/v2/part3/src_image2.png" alt="그림 93" style="position:absolute;left:0.000%;top:0.000%;width:100.000%;height:100.000%;"></div>
+<!-- ===== v3/part3.html ===== -->
+<!-- v3 part3: 자율작업 굴착기(원본 AI Frontiers Summit 2026 #28~#33) + 협업 제안. FES/NST 공통 디자인(nst-v3.css .slide.v3)으로 재구성. 미디어는 assets/v2/part3 재사용(읽기 전용) -->
+
+<section class="slide v3 v3-p3" id="v2-part3-01" data-source="AI Technologies for Field Robotics 이한민.pptx#28" data-title="숙련자 데이터 학습 파이프라인">
+<div class="v3-rail"></div>
+<h1 class="v3-title">숙련자 데이터 학습 파이프라인</h1>
+<img class="v3-logo" src="assets/v2/common/kimm-logo.png" alt="KIMM">
+<div class="v3-keybar sm"><span>숙련자 작업을 <em>데이터로 수집·학습</em>해 무인 굴착기 자율작업으로</span></div>
+<div class="v3-content">
+ <div class="v3-p3-pipe">
+  <div class="v3-group solid v3-p3-acq"><span class="v3-glabel">데이터 수집</span>
+   <div class="v3-p3-box v3-p3-plat"><b>데이터 수집 플랫폼</b>
+    <div class="v3-media"><img src="assets/v2/part3/src_image48.png" alt="데이터 수집 굴착기"></div>
+    <div class="v3-p3-pc"><img src="assets/v2/part3/src_image50.jpeg" alt=""><span>→</span><img src="assets/v2/part3/src_image49.jpeg" alt=""></div>
+    <div class="v3-note">라이다 점군 → 2D 그리드</div>
+   </div>
+   <span class="v3-arrow"></span>
+   <div class="v3-p3-box"><b>데이터 수집 및 가공</b>
+    <div class="v3-p3-rows">
+     <span class="k">라이다<br>그리드맵</span><span class="v3-p3-thumbs v3-p3-grid3"><img src="assets/v2/part3/src_image51.jpeg" alt="">…<img src="assets/v2/part3/src_image52.jpeg" alt="">…<img src="assets/v2/part3/src_image53.jpeg" alt="">…</span>
+     <span class="k">관절각<br>센서</span><span class="v3-p3-thumbs"><img class="v3-p3-ts" src="assets/v2/part3/src_image54.jpeg" alt="관절각 시계열"></span>
+     <span class="k">카메라</span><span class="v3-p3-thumbs v3-p3-cam"><img src="assets/v2/part3/src_image55.jpeg" alt=""><img src="assets/v2/part3/src_image56.jpeg" alt=""><img src="assets/v2/part3/src_image57.jpeg" alt=""><img src="assets/v2/part3/src_image58.jpeg" alt=""><img src="assets/v2/part3/src_image59.jpeg" alt=""><img src="assets/v2/part3/src_image60.jpeg" alt=""><img src="assets/v2/part3/src_image61.jpeg" alt=""><img src="assets/v2/part3/src_image62.jpeg" alt=""></span>
+     <span class="k">작업매핑</span><span class="v3-p3-map"><span>approach (x,y,z)</span><span>dig (depth,drag)</span><span>dump (x,y,z)</span></span>
+    </div>
+   </div>
+   <span class="v3-arrow"></span>
+   <div class="v3-p3-box v3-p3-db"><b>숙련자 작업 DB</b>
+    <div class="r"><img src="assets/v2/part3/src_image63.jpeg" alt="">approach (…)</div>
+    <div class="r"><img src="assets/v2/part3/src_image64.jpeg" alt="">dig (…)</div>
+    <div class="r"><img src="assets/v2/part3/src_image65.png" alt="">dump (…)</div>
+    <div class="dots">⋮</div>
+   </div>
+  </div>
+  <div class="v3-p3-lower">
+   <div class="v3-group solid"><span class="v3-glabel">인공지능 학습</span>
+    <div class="v3-p3-learn"><img class="g" src="assets/v2/part3/src_image52.jpeg" alt="2D 그리드"><span class="v3-arrow"></span><img class="m" src="assets/v2/part3/src_image66.png" alt="인공지능 모델"><span class="v3-arrow"></span><div class="v3-node fill">dig<small>(depth, drag)</small></div></div>
+    <div class="v3-cap" style="margin-top:4px">라이다 2D 그리드 → 인공지능 모델 학습</div>
+   </div>
+   <span class="v3-arrow"></span>
+   <div class="v3-group solid"><span class="v3-glabel">자율작업 실증</span>
+    <div class="v3-p3-auto"><img src="assets/v2/part3/src_image67.png" alt="작업 전후 지형"><div class="v3-cap">AI 기반 무인 굴착기 자율작업 계획 및 제어</div></div>
+   </div>
+  </div>
+  <div class="v3-p3-logos"><span class="lb">참여 기관</span><img src="assets/v2/part3/src_image68.png" alt="SURROMIND"><img src="assets/v2/part3/src_image2.png" alt="한국기계연구원"><img src="assets/v2/part3/src_image73.png" alt="KOCETI"><img src="assets/v2/part3/src_image69.jpeg" alt="HD현대"><img src="assets/v2/part3/src_image70.png" alt="영신디엔씨"><img src="assets/v2/part3/src_image71.jpeg" alt="아주대학교"><img src="assets/v2/part3/src_image72.jpeg" alt="Ontario Tech University"></div>
+ </div>
 </div>
-<div class="src">AI Frontiers Summit 2026 「AI Technologies for Field Robotics」(KIMM 이한민) #28</div>
-<aside class="speaker-notes"><p>원본 B#28 그대로. 데이터 수집(라이다 점군→2D 그리드, 관절각·카메라·작업매핑) → 숙련자 작업 DB(지형, approach/dig/dump 변수) → 인공지능 모델 학습(dig(depth, drag) 출력) → AI 기반 무인 굴착기 자율작업 계획 및 제어.</p><p>용어: 관측=지형 그리드, 행동=approach(x,y,z)·dig(depth,drag)·dump(x,y,z) 작업 변수.</p><p>한정: 숙련자 DB와 B#30 PPO의 구체적 결합 방식, 데이터 양은 원본에 적혀 있지 않음. 하단 기관 로고는 원본 그대로이며 기관별 역할은 원본 미기재.</p></aside>
+<aside class="speaker-notes"><p>원본 B#28(데이터 수집 → 인공지능 학습 → 자율작업 실증)을 v3에서 HTML 도식으로 다시 그림. 데이터 수집: 플랫폼(라이다 점군→2D 그리드), 수집·가공(라이다 그리드맵·관절각 센서·카메라·작업매핑 approach(x,y,z)/dig(depth,drag)/dump(x,y,z)), 숙련자 작업 DB(지형, 작업 변수 쌍). 학습: 2D 그리드 → 모델 → dig(depth, drag). 실증: AI 기반 무인 굴착기 자율작업 계획 및 제어.</p><p>용어: 관측=지형 그리드, 행동=approach·dig·dump 작업 변수.</p><p>한정: 숙련자 DB와 B#30 PPO의 구체적 결합 방식, 데이터 양은 원본에 적혀 있지 않음. 하단 기관 로고는 원본 그대로이며 기관별 역할은 원본 미기재. 관절각 그래프는 원본에서 가로로 늘여 배치돼 있었으나 v3는 원본 비율로 표시.</p></aside>
 </section>
 
-<section class="slide v2-p3" id="v2-part3-02" data-source="AI Technologies for Field Robotics 이한민.pptx#29" data-title="1. 숙련자 데이터 및 인공지능 기반 자율작업 굴착기">
-<h1 class="title sm">1. 숙련자 데이터 및 인공지능 기반 자율작업 굴착기</h1>
-<img class="kimmlogo" src="assets/v2/common/kimm-logo.png" alt="KIMM">
-<div class="v2-p3-stage">
-<div class="sp" data-name="모서리가 둥근 직사각형 78" style="left:29.0px;top:91.1px;width:455.8px;height:28.3px;background:linear-gradient(135deg,#00B0F0 0%,#215968 100%);border:1.50px solid #FFFFFF;border-radius:14.2px;"></div>
-<div class="sp" data-name="TextBox 90" style="left:39.4px;top:89.4px;width:432.2px;height:31.5px;"><div class="tx" style="padding:3.6px 7.2px 3.6px 7.2px;justify-content:flex-start;"><p style="text-align:center;font-size:20.0px;"><span style="font-size:20.0px;font-weight:700;color:#FFFFFF;">MC </span><span style="font-size:20.0px;font-weight:700;color:#FFFFFF;">굴착기 플랫폼 구축</span></p></div></div>
-<div class="pic" data-name="그림 91" style="left:198.7px;top:259.7px;width:382.6px;height:242.8px;"><img src="assets/v2/part3/src_image74.jpg" alt="그림 91" style="position:absolute;left:-0.000%;top:-18.185%;width:100.000%;height:118.185%;"></div>
-<div class="sp" data-name="타원 92" style="left:300.5px;top:316.9px;width:23.8px;height:22.5px;border:0.75px solid #FF0000;border-radius:50%;"></div>
-<svg class="ln" style="left:176.5px;top:297.5px;width:124.0px;height:27.3px;"><defs><marker id="m2649564804208" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#FF0000"/></marker></defs><line x1="124.0" y1="27.3" x2="0.0" y2="0.0" stroke="#FF0000" stroke-width="0.75" marker-end="url(#m2649564804208)"/></svg>
-<div class="pic" data-name="그림 95" style="left:34.9px;top:240.1px;width:126.0px;height:105.5px;"><img src="assets/v2/part3/src_image75.png" alt="그림 95" style="position:absolute;left:0.000%;top:0.000%;width:100.000%;height:100.000%;"></div>
-<div class="sp" data-name="직사각형 96" style="left:22.6px;top:345.6px;width:150.7px;height:20.6px;"><div class="tx" style="padding:3.6px 7.2px 3.6px 7.2px;justify-content:flex-start;"><p style="text-align:center;font-size:11.0px;"><span style="font-size:11.0px;font-weight:700;">LiDAR &amp; Stereo Camera #1 </span></p></div></div>
-<div class="sp" data-name="타원 97" style="left:250.7px;top:347.7px;width:23.8px;height:22.5px;border:0.75px solid #FF0000;border-radius:50%;"></div>
-<svg class="ln" style="left:169.5px;top:367.0px;width:84.7px;height:66.6px;"><defs><marker id="m2649565274224" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#FF0000"/></marker></defs><line x1="84.7" y1="0.0" x2="0.0" y2="66.6" stroke="#FF0000" stroke-width="0.75" marker-end="url(#m2649565274224)"/></svg>
-<div class="pic" data-name="그림 100" style="left:35.5px;top:376.5px;width:125.7px;height:114.0px;"><img src="assets/v2/part3/src_image76.png" alt="그림 100" style="position:absolute;left:0.000%;top:0.000%;width:100.000%;height:100.000%;"></div>
-<div class="sp" data-name="직사각형 101" style="left:35.5px;top:494.5px;width:125.1px;height:20.6px;"><div class="tx" style="padding:3.6px 7.2px 3.6px 7.2px;justify-content:flex-start;"><p style="text-align:center;font-size:11.0px;"><span style="font-size:11.0px;font-weight:700;">Tilt Sensor </span></p></div></div>
-<div class="sp" data-name="타원 102" style="left:373.5px;top:372.0px;width:32.6px;height:30.9px;border:0.75px solid #FF0000;border-radius:50%;"></div>
-<svg class="ln" style="left:274.5px;top:249.1px;width:103.8px;height:127.5px;"><defs><marker id="m2649565711392" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#FF0000"/></marker></defs><line x1="103.8" y1="127.5" x2="0.0" y2="0.0" stroke="#FF0000" stroke-width="0.75" marker-end="url(#m2649565711392)"/></svg>
-<div class="pic" data-name="그림 105" style="left:152.2px;top:129.7px;width:117.7px;height:101.2px;"><img src="assets/v2/part3/src_image77.png" alt="그림 105" style="position:absolute;left:0.000%;top:0.000%;width:100.000%;height:100.000%;"></div>
-<div class="sp" data-name="직사각형 106" style="left:152.2px;top:232.5px;width:117.7px;height:20.6px;"><div class="tx" style="padding:3.6px 7.2px 3.6px 7.2px;justify-content:flex-start;"><p style="text-align:center;font-size:11.0px;"><span style="font-size:11.0px;font-weight:700;">Pressure Sensor </span></p></div></div>
-<div class="sp" data-name="타원 107" style="left:410.8px;top:372.0px;width:32.6px;height:30.9px;border:0.75px solid #FF0000;border-radius:50%;"></div>
-<svg class="ln" style="left:353.9px;top:252.6px;width:61.7px;height:123.9px;"><defs><marker id="m2649565722592" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#FF0000"/></marker></defs><line x1="61.7" y1="123.9" x2="0.0" y2="0.0" stroke="#FF0000" stroke-width="0.75" marker-end="url(#m2649565722592)"/></svg>
-<div class="pic" data-name="그림 110" style="left:300.3px;top:127.6px;width:107.2px;height:50.3px;"><img src="assets/v2/part3/src_image78.png" alt="그림 110" style="position:absolute;left:0.000%;top:0.000%;width:100.000%;height:100.000%;"></div>
-<div class="pic" data-name="그림 111" style="left:300.3px;top:183.2px;width:107.2px;height:48.4px;"><img src="assets/v2/part3/src_image79.png" alt="그림 111" style="position:absolute;left:0.000%;top:0.000%;width:100.000%;height:100.000%;"></div>
-<div class="sp" data-name="직사각형 112" style="left:286.0px;top:232.0px;width:135.7px;height:20.6px;"><div class="tx" style="padding:3.6px 7.2px 3.6px 7.2px;justify-content:flex-start;"><p style="text-align:center;font-size:11.0px;"><span style="font-size:11.0px;font-weight:700;">Input Switch for Logging</span></p></div></div>
-<div class="sp" data-name="타원 113" style="left:415.0px;top:272.7px;width:23.8px;height:22.5px;border:0.75px solid #FF0000;border-radius:50%;"></div>
-<svg class="ln" style="left:435.3px;top:253.2px;width:56.6px;height:22.8px;"><defs><marker id="m2649565680544" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#FF0000"/></marker></defs><line x1="0.0" y1="22.8" x2="56.6" y2="0.0" stroke="#FF0000" stroke-width="0.75" marker-end="url(#m2649565680544)"/></svg>
-<div class="pic" data-name="그림 116" style="left:446.8px;top:128.2px;width:90.2px;height:104.4px;"><img src="assets/v2/part3/src_image80.png" alt="그림 116" style="position:absolute;left:0.000%;top:0.000%;width:100.000%;height:100.000%;"></div>
-<div class="sp" data-name="직사각형 117" style="left:415.0px;top:232.6px;width:153.8px;height:20.6px;"><div class="tx" style="padding:3.6px 7.2px 3.6px 7.2px;justify-content:flex-start;"><p style="text-align:center;font-size:11.0px;"><span style="font-size:11.0px;font-weight:700;">LiDAR &amp; Stereo Camera #2</span></p></div></div>
-<div class="sp" data-name="타원 118" style="left:446.6px;top:277.6px;width:47.9px;height:22.1px;border:0.75px solid #FF0000;border-radius:50%;"></div>
-<svg class="ln" style="left:494.5px;top:253.7px;width:116.0px;height:33.6px;"><defs><marker id="m2649565648496" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#FF0000"/></marker></defs><line x1="0.0" y1="33.6" x2="116.0" y2="0.0" stroke="#FF0000" stroke-width="0.75" marker-end="url(#m2649565648496)"/></svg>
-<div class="pic" data-name="그림 121" style="left:569.9px;top:126.1px;width:159.5px;height:105.5px;"><img src="assets/v2/part3/src_image81.png" alt="그림 121" style="position:absolute;left:0.000%;top:0.000%;width:100.000%;height:100.000%;"></div>
-<div class="sp" data-name="직사각형 122" style="left:568.8px;top:233.8px;width:159.5px;height:20.6px;"><div class="tx" style="padding:3.6px 7.2px 3.6px 7.2px;justify-content:flex-start;"><p style="text-align:center;font-size:11.0px;"><span style="font-size:11.0px;font-weight:700;">GNSS-RTK</span></p></div></div>
-<div class="sp" data-name="타원 123" style="left:499.9px;top:298.6px;width:40.0px;height:65.2px;border:0.75px solid #FF0000;border-radius:50%;"></div>
-<svg class="ln" style="left:539.9px;top:324.8px;width:78.6px;height:6.4px;"><defs><marker id="m2649565610528" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#FF0000"/></marker></defs><line x1="0.0" y1="6.4" x2="78.6" y2="0.0" stroke="#FF0000" stroke-width="0.75" marker-end="url(#m2649565610528)"/></svg>
-<div class="sp" data-name="타원 125" style="left:453.9px;top:417.0px;width:61.9px;height:33.6px;border:0.75px solid #FF0000;border-radius:50%;"></div>
-<svg class="ln" style="left:515.8px;top:433.8px;width:111.8px;height:16.8px;"><defs><marker id="m2649565616208" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#FF0000"/></marker></defs><line x1="0.0" y1="0.0" x2="111.8" y2="16.8" stroke="#FF0000" stroke-width="0.75" marker-end="url(#m2649565616208)"/></svg>
-<div class="pic" data-name="그림 128" style="left:625.3px;top:272.0px;width:123.1px;height:102.3px;"><img src="assets/v2/part3/src_image82.png" alt="그림 128" style="position:absolute;left:-3.901%;top:-9.328%;width:109.304%;height:109.328%;"></div>
-<div class="sp" data-name="직사각형 129" style="left:610.5px;top:377.2px;width:154.3px;height:20.6px;"><div class="tx" style="padding:3.6px 7.2px 3.6px 7.2px;justify-content:flex-start;"><p style="text-align:center;font-size:11.0px;"><span style="font-size:11.0px;font-weight:700;">Main</span><span style="font-size:11.0px;font-weight:700;"> </span><span style="font-size:11.0px;font-weight:700;">Control</span><span style="font-size:11.0px;font-weight:700;"> </span><span style="font-size:11.0px;font-weight:700;">Box &amp; IMU</span></p></div></div>
-<div class="pic" data-name="그림 131" style="left:650.4px;top:405.7px;width:78.0px;height:89.9px;"><img src="assets/v2/part3/src_image83.png" alt="그림 131" style="position:absolute;left:0.000%;top:0.000%;width:100.000%;height:100.000%;"></div>
-<div class="sp" data-name="직사각형 132" style="left:626.2px;top:498.4px;width:126.6px;height:20.6px;"><div class="tx" style="padding:3.6px 7.2px 3.6px 7.2px;justify-content:flex-start;"><p style="text-align:left;font-size:11.0px;"><span style="font-size:11.0px;font-weight:700;">Swing angle Estimator </span></p></div></div>
+<section class="slide v3 v3-p3" id="v2-part3-02" data-source="AI Technologies for Field Robotics 이한민.pptx#29" data-title="MC 굴착기 센서 구성">
+<div class="v3-rail"></div>
+<h1 class="v3-title">MC 굴착기 센서 구성</h1>
+<img class="v3-logo" src="assets/v2/common/kimm-logo.png" alt="KIMM">
+<div class="v3-keybar sm"><span>기존 굴착기에 <em>인지·자세·유압 센서</em>를 더한 데이터 수집 플랫폼</span></div>
+<div class="v3-content">
+ <div class="v3-p3-sens">
+  <div class="v3-p3-scol">
+   <div class="v3-p3-tile" data-k="LiDAR1"><div class="ph"><img src="assets/v2/part3/src_image75.png" alt=""></div><b>LiDAR &amp; Stereo Camera #1</b></div>
+   <div class="v3-p3-tile" data-k="Tilt"><div class="ph"><img src="assets/v2/part3/src_image76.png" alt=""></div><b>Tilt Sensor</b></div>
+   <div class="v3-p3-tile" data-k="Pressure"><div class="ph"><img src="assets/v2/part3/src_image77.png" alt=""></div><b>Pressure Sensor</b></div>
+   <div class="v3-p3-tile" data-k="Switch"><div class="ph"><img src="assets/v2/part3/src_image78.png" alt=""><img src="assets/v2/part3/src_image79.png" alt=""></div><b>Input Switch for Logging</b></div>
+  </div>
+  <div class="v3-p3-main"><img src="assets/v2/part3/src_image74.jpg" alt="센서를 장착한 KIMM 굴착기"></div>
+  <div class="v3-p3-scol">
+   <div class="v3-p3-tile" data-k="LiDAR2"><div class="ph"><img src="assets/v2/part3/src_image80.png" alt=""></div><b>LiDAR &amp; Stereo Camera #2</b></div>
+   <div class="v3-p3-tile" data-k="GNSS"><div class="ph"><img src="assets/v2/part3/src_image81.png" alt=""></div><b>GNSS-RTK</b></div>
+   <div class="v3-p3-tile" data-k="Box"><div class="ph"><img src="assets/v2/part3/src_image82.png" alt=""></div><b>Main Control Box &amp; IMU</b></div>
+   <div class="v3-p3-tile" data-k="Swing"><div class="ph"><img src="assets/v2/part3/src_image83.png" alt=""></div><b>Swing Angle Estimator</b></div>
+  </div>
+  <svg class="v3-p3-lead" viewBox="0 0 782 373" aria-hidden="true"><line x1="182.0" y1="42.0" x2="312.6" y2="133.1"/><circle class="d" cx="182.0" cy="42.0" r="3"/><circle class="o" cx="312.6" cy="133.1" r="9"/><line x1="182.0" y1="138.3" x2="262.5" y2="164.2"/><circle class="d" cx="182.0" cy="138.3" r="3"/><circle class="o" cx="262.5" cy="164.2" r="9"/><line x1="182.0" y1="234.7" x2="390.6" y2="192.9"/><circle class="d" cx="182.0" cy="234.7" r="3"/><circle class="o" cx="390.6" cy="192.9" r="9"/><line x1="182.0" y1="331.0" x2="428.4" y2="192.9"/><circle class="d" cx="182.0" cy="331.0" r="3"/><circle class="o" cx="428.4" cy="192.9" r="9"/><line x1="600.0" y1="42.0" x2="428.1" y2="88.5"/><circle class="d" cx="600.0" cy="42.0" r="3"/><circle class="o" cx="428.1" cy="88.5" r="9"/><line x1="600.0" y1="138.3" x2="472.1" y2="93.2"/><circle class="d" cx="600.0" cy="138.3" r="3"/><circle class="o" cx="472.1" cy="93.2" r="9"/><line x1="600.0" y1="234.7" x2="522.2" y2="136.0"/><circle class="d" cx="600.0" cy="234.7" r="3"/><circle class="o" cx="522.2" cy="136.0" r="9"/><line x1="600.0" y1="331.0" x2="486.7" y2="239.7"/><circle class="d" cx="600.0" cy="331.0" r="3"/><circle class="o" cx="486.7" cy="239.7" r="9"/></svg>
+ </div>
 </div>
-<div class="src">AI Frontiers Summit 2026 「AI Technologies for Field Robotics」(KIMM 이한민) #29</div>
-<aside class="speaker-notes"><p>원본 B#29 그대로. MC(Machine Control) 굴착기 플랫폼 센서: LiDAR & Stereo Camera #1/#2, Tilt Sensor, Pressure Sensor, Input Switch for Logging, GNSS-RTK, Main Control Box & IMU, Swing angle Estimator.</p><p>설명 포인트: 밖을 보는 센서(LiDAR·카메라) + 몸 상태 센서(기울기·선회각·GNSS·IMU·유압 압력) + 숙련자 작업 구간 기록 스위치.</p><p>센서 사양·설치 위치 세부값은 원본에 없음.</p></aside>
+<aside class="speaker-notes"><p>원본 B#29 「MC 굴착기 플랫폼 구축」을 v3에서 센서 타일 + 지시선으로 다시 배치. 지시선이 가리키는 위치는 원본 슬라이드의 빨간 원·화살표 위치를 사진 기준 비율로 옮긴 것.</p><p>MC(Machine Control). 센서: LiDAR &amp; Stereo Camera #1/#2, Tilt Sensor, Pressure Sensor, Input Switch for Logging(원본 사진 2장), GNSS-RTK, Main Control Box &amp; IMU, Swing angle Estimator.</p><p>설명 포인트: 밖을 보는 센서(LiDAR·카메라) + 몸 상태 센서(기울기·선회각·GNSS·IMU·유압 압력) + 숙련자 작업 구간 기록 스위치. 센서 사양·설치 위치 세부값은 원본에 없음.</p></aside>
 </section>
 
-<section class="slide v2-p3" id="v2-part3-03" data-source="AI Technologies for Field Robotics 이한민.pptx#30" data-title="1. 숙련자 데이터 및 인공지능 기반 자율작업 굴착기">
-<h1 class="title sm">1. 숙련자 데이터 및 인공지능 기반 자율작업 굴착기</h1>
-<img class="kimmlogo" src="assets/v2/common/kimm-logo.png" alt="KIMM">
-<div class="v2-p3-stage">
-<div class="sp" data-name="모서리가 둥근 직사각형 76" style="left:23.1px;top:110.2px;width:737.3px;height:77.2px;background:linear-gradient(180deg,#F0F0F0 0%,#F8F8F8 100%);border:0.75px solid #969696;border-radius:6.5px;"><div class="tx" style="padding:3.6px 7.2px 3.6px 7.2px;justify-content:center;"><p style="text-align:left;padding-left:22.5px;text-indent:-22.5px;line-height:1.44;font-size:16.0px;"><span class="bu">•</span><span style="font-size:16.0px;color:#000000;">2D </span><span style="font-size:16.0px;color:#000000;">그리드 맵</span><span style="font-size:16.0px;color:#000000;"> </span><span style="font-size:16.0px;color:#000000;">기반의 작업계획</span><span style="font-size:16.0px;color:#000000;">(Dig/Dump/Leveling) </span><span style="font-size:16.0px;color:#000000;">강화학습</span><span style="font-size:16.0px;color:#000000;"> 모델</span><span style="font-size:16.0px;color:#000000;">(PPO)</span><span style="font-size:16.0px;color:#000000;"> 개발</span></p><p style="text-align:left;padding-left:22.5px;text-indent:-22.5px;line-height:1.44;font-size:16.0px;"><span class="bu">•</span><span style="font-size:16.0px;color:#000000;">보상 함수 </span><span style="font-size:16.0px;color:#000000;">: 1</span><span style="font-size:16.0px;color:#000000;">회 </span><span style="font-size:16.0px;color:#000000;">굴착량</span><span style="font-size:16.0px;color:#000000;"> 최대화</span><span style="font-size:16.0px;color:#000000;">, </span><span style="font-size:16.0px;color:#000000;">평균 높이 목표 도달 여부</span><span style="font-size:16.0px;color:#000000;">, </span><span style="font-size:16.0px;color:#000000;">이동거리 최소화</span></p></div></div>
-<div class="sp" data-name="모서리가 둥근 직사각형 78" style="left:29.0px;top:91.1px;width:455.8px;height:28.3px;background:linear-gradient(135deg,#00B0F0 0%,#215968 100%);border:1.50px solid #FFFFFF;border-radius:14.2px;"></div>
-<div class="sp" data-name="TextBox 50" style="left:39.4px;top:89.4px;width:432.2px;height:31.5px;"><div class="tx" style="padding:3.6px 7.2px 3.6px 7.2px;justify-content:flex-start;"><p style="text-align:center;font-size:20.0px;"><span style="font-size:20.0px;font-weight:700;color:#FFFFFF;">2D </span><span style="font-size:20.0px;font-weight:700;color:#FFFFFF;">그리드 맵 기반 작업계획 </span><span style="font-size:20.0px;font-weight:700;color:#FFFFFF;">강화학습</span><span style="font-size:20.0px;font-weight:700;color:#FFFFFF;"> 기술 개발</span></p></div></div>
-<div class="pic" data-name="그림 51" style="left:23.1px;top:192.4px;width:442.8px;height:203.7px;"><img src="assets/v2/part3/src_image84.png" alt="그림 51" style="position:absolute;left:0.000%;top:0.000%;width:100.000%;height:100.000%;"></div>
-<div class="pic" data-name="그림 52" style="left:195.6px;top:380.0px;width:262.1px;height:133.5px;"><img src="assets/v2/part3/src_image85.png" alt="그림 52" style="position:absolute;left:-17.275%;top:-29.686%;width:156.774%;height:153.920%;"></div>
-<div class="pic" data-name="그림 53" style="left:471.7px;top:189.6px;width:283.7px;height:148.4px;"><img src="assets/v2/part3/src_image86.gif" alt="그림 53" style="position:absolute;left:-17.118%;top:-25.139%;width:155.335%;height:148.524%;"></div>
-<div class="sp" data-name="직사각형 54" style="left:479.5px;top:340.3px;width:268.0px;height:21.8px;"><div class="tx" style="padding:3.6px 7.2px 3.6px 7.2px;justify-content:flex-start;"><p style="text-align:center;font-size:12.0px;"><span style="font-size:12.0px;color:#1F497D;">&lt;</span><span style="font-size:12.0px;color:#1F497D;">강화학습</span><span style="font-size:12.0px;color:#1F497D;"> 기반 평탄화 </span><span style="font-size:12.0px;color:#1F497D;">Dumping </span><span style="font-size:12.0px;color:#1F497D;">작업 시퀀스 </span><span style="font-size:12.0px;color:#1F497D;">&gt;</span></p></div></div>
-<div class="sp" data-name="직사각형 55" style="left:479.5px;top:516.4px;width:268.0px;height:21.8px;"><div class="tx" style="padding:3.6px 7.2px 3.6px 7.2px;justify-content:flex-start;"><p style="text-align:center;font-size:12.0px;"><span style="font-size:12.0px;color:#1F497D;">&lt;</span><span style="font-size:12.0px;color:#1F497D;">강화학습</span><span style="font-size:12.0px;color:#1F497D;"> 기반 평탄화 </span><span style="font-size:12.0px;color:#1F497D;">Leveling </span><span style="font-size:12.0px;color:#1F497D;">작업 시퀀스 </span><span style="font-size:12.0px;color:#1F497D;">&gt;</span></p></div></div>
-<div class="pic" data-name="그림 56" style="left:461.9px;top:359.7px;width:299.8px;height:158.5px;"><img src="assets/v2/part3/src_image87.gif" alt="그림 56" style="position:absolute;left:-14.286%;top:-21.623%;width:149.510%;height:141.431%;"></div>
-<div class="sp" data-name="직사각형 57" style="left:269.9px;top:513.5px;width:126.6px;height:19.4px;"><div class="tx" style="padding:3.6px 7.2px 3.6px 7.2px;justify-content:flex-start;"><p style="text-align:center;font-size:10.0px;"><span style="font-size:10.0px;">&lt;</span><span style="font-size:10.0px;">작업 종료</span><span style="font-size:10.0px;">&gt;</span></p></div></div>
+<section class="slide v3 v3-p3" id="v2-part3-03" data-source="AI Technologies for Field Robotics 이한민.pptx#30" data-title="2D 그리드 작업계획 강화학습">
+<div class="v3-rail"></div>
+<h1 class="v3-title">2D 그리드 작업계획 강화학습</h1>
+<img class="v3-logo" src="assets/v2/common/kimm-logo.png" alt="KIMM">
+<div class="v3-keybar sm"><span>2D 그리드 맵에서 <em>Dig·Dump·Leveling 작업계획</em>을 강화학습(PPO)으로</span></div>
+<div class="v3-content">
+ <div class="v3-p3-rl">
+  <div class="v3-p3-def">
+   <div class="v3-h">문제 정의</div>
+   <div class="row"><b>작업 환경</b><span>20×40 그리드 맵 (실제 10 m×20 m)<br>한 그리드 0.5 m · 높이 −3 ~ 3 m</span></div>
+   <div class="row"><b>행동</b><span>작업 시작 지점 (x 0~40, y 0~20)<br>Dig · Dump별 action space</span></div>
+   <div class="row y"><b>보상 함수</b><span>1회 굴착량 최대화<br>평균 높이 목표 도달 여부<br>이동거리 최소화</span></div>
+   <div class="v3-tag" style="align-self:flex-start">PPO</div>
+  </div>
+  <div class="v3-p3-seq">
+   <div class="v3-fig"><div class="v3-media"><img src="assets/v3/part3/p3_rl_env_grid.png" alt="학습 환경 그리드"></div><div class="v3-cap">학습 환경</div></div>
+   <span class="v3-arrow"></span>
+   <div class="v3-fig"><div class="v3-media"><img src="assets/v2/part3/src_image86.gif" alt="강화학습 기반 평탄화 Dumping 작업 시퀀스"></div><div class="v3-cap"><b>Dumping</b> 작업 시퀀스</div></div>
+   <span></span><span></span><span class="v3-arrow down"></span>
+   <div class="v3-fig"><div class="v3-media"><img src="assets/v2/part3/src_image85.png" alt="작업 종료"></div><div class="v3-cap">작업 종료</div></div>
+   <span class="v3-arrow back"></span>
+   <div class="v3-fig"><div class="v3-media"><img src="assets/v2/part3/src_image87.gif" alt="강화학습 기반 평탄화 Leveling 작업 시퀀스"></div><div class="v3-cap"><b>Leveling</b> 작업 시퀀스</div></div>
+  </div>
+ </div>
 </div>
-<div class="src">AI Frontiers Summit 2026 「AI Technologies for Field Robotics」(KIMM 이한민) #30</div>
-<aside class="speaker-notes"><p>원본 B#30 그대로. 2D 그리드 맵 기반 작업계획(Dig/Dump/Leveling) 강화학습 모델(PPO), 보상: 1회 굴착량 최대화·평균 높이 목표 도달 여부·이동거리 최소화. 두 GIF(Dumping·Leveling 시퀀스)는 원본 애니메이션 그대로.</p><p>쉬운 풀이: PPO = 시행착오로 보상을 키우되 정책을 한 번에 크게 바꾸지 않도록 갱신 폭을 제한하는 강화학습 기법(일반 개념).</p><p>한정: 학습 환경(20x40 그리드) 결과. 신경망 구조·학습 횟수·성능 통계는 원본에 없음. 이 정책이 B#33 실기에 그대로 실행됐는지는 원자료로 확인되지 않음.</p></aside>
+<aside class="speaker-notes"><p>원본 B#30을 v3에서 「문제 정의」 HTML 목록 + 학습 시퀀스 도식으로 재배치. 원본 문제 정의 그림 속 문구(작업 환경 20 x 40 그리드, 실제 10m x 20m, 한 그리드 0.5m, Min −30/Max 30 = 실제 −3m~3m, 버켓 최대 2m³, 굴착 가능 범위 0 &lt; soil &lt; 80, 작업 시작 지점 x 0~40·y 0~20, Dig·Dump에 따른 action space)를 옮김. 버켓·굴착 가능 범위는 노트에만 둠. 학습 환경 그림은 원본 image84의 그리드 부분 크롭(assets/v3/part3).</p><p>두 GIF(Dumping·Leveling 시퀀스, 원본 캡션 「강화학습 기반 평탄화 … 작업 시퀀스」)는 원본 애니메이션 그대로. 화살표 순서(학습 환경 → Dumping → Leveling → 작업 종료)는 원본 네 그림의 캡션 의미에 맞춘 배치.</p><p>쉬운 풀이: PPO = 시행착오로 보상을 키우되 정책을 한 번에 크게 바꾸지 않도록 갱신 폭을 제한하는 강화학습 기법(일반 개념).</p><p>한정: 학습 환경(20x40 그리드) 결과. 신경망 구조·학습 횟수·성능 통계는 원본에 없음. 이 정책이 B#33 실기에 그대로 실행됐는지는 원자료로 확인되지 않음.</p></aside>
 </section>
 
-<section class="slide v2-p3" id="v2-part3-04" data-source="AI Technologies for Field Robotics 이한민.pptx#31" data-title="1. 숙련자 데이터 및 인공지능 기반 자율작업 굴착기">
-<h1 class="title sm">1. 숙련자 데이터 및 인공지능 기반 자율작업 굴착기</h1>
-<img class="kimmlogo" src="assets/v2/common/kimm-logo.png" alt="KIMM">
-<div class="v2-p3-stage">
-<div class="sp" data-name="모서리가 둥근 직사각형 76" style="left:23.1px;top:110.2px;width:737.3px;height:96.6px;background:linear-gradient(180deg,#F0F0F0 0%,#F8F8F8 100%);border:0.75px solid #969696;border-radius:8.1px;"><div class="tx" style="padding:3.6px 7.2px 3.6px 7.2px;justify-content:center;"><p style="text-align:left;padding-left:22.5px;text-indent:-22.5px;line-height:1.44;font-size:16.0px;"><span class="bu">•</span><span style="font-size:16.0px;color:#000000;">Vortex Studio </span><span style="font-size:16.0px;color:#000000;">및 </span><span style="font-size:16.0px;color:#000000;">ROS2 </span><span style="font-size:16.0px;color:#000000;">기반의 </span><span style="font-size:16.0px;color:#000000;">토공작업</span><span style="font-size:16.0px;color:#000000;"> 가상환경 구축</span></p><p style="text-align:left;padding-left:22.5px;text-indent:-22.5px;line-height:1.44;font-size:16.0px;"><span class="bu">•</span><span style="font-size:16.0px;color:#000000;">환경 인식 모듈</span><span style="font-size:16.0px;color:#000000;">, </span><span style="font-size:16.0px;color:#000000;">상위 계획 모듈 </span><span style="font-size:16.0px;color:#000000;">(2D </span><span style="font-size:16.0px;color:#000000;">그리드 생성</span><span style="font-size:16.0px;color:#000000;">/</span><span style="font-size:16.0px;color:#000000;">강화학습</span><span style="font-size:16.0px;color:#000000;">/</span><span style="font-size:16.0px;color:#000000;">작업 관리</span><span style="font-size:16.0px;color:#000000;">/</span><span style="font-size:16.0px;color:#000000;">경로생성</span><span style="font-size:16.0px;color:#000000;">), </span><br><span style="font-size:16.0px;color:#000000;">하위 제어 모듈</span><span style="font-size:16.0px;color:#000000;">(</span><span style="font-size:16.0px;color:#000000;">역기구학</span><span style="font-size:16.0px;color:#000000;">, PID</span><span style="font-size:16.0px;color:#000000;">제어</span><span style="font-size:16.0px;color:#000000;">)</span><span style="font-size:16.0px;color:#000000;">로 구성</span></p></div></div>
-<div class="sp" data-name="모서리가 둥근 직사각형 78" style="left:29.0px;top:91.1px;width:455.8px;height:28.3px;background:linear-gradient(135deg,#00B0F0 0%,#215968 100%);border:1.50px solid #FFFFFF;border-radius:14.2px;"></div>
-<div class="sp" data-name="TextBox 50" style="left:39.4px;top:89.4px;width:432.2px;height:31.5px;"><div class="tx" style="padding:3.6px 7.2px 3.6px 7.2px;justify-content:flex-start;"><p style="text-align:center;font-size:20.0px;"><span style="font-size:20.0px;font-weight:700;color:#FFFFFF;">가상환경 내 굴착기 </span><span style="font-size:20.0px;font-weight:700;color:#FFFFFF;">자율작업</span><span style="font-size:20.0px;font-weight:700;color:#FFFFFF;"> 프로세스 구현</span></p></div></div>
-<div class="pic" data-name="그림 51" style="left:108.3px;top:210.9px;width:567.6px;height:317.6px;"><img src="assets/v2/part3/src_image88.png" alt="그림 51" style="position:absolute;left:0.000%;top:0.000%;width:100.000%;height:100.000%;"></div>
+<section class="slide v3 v3-p3" id="v2-part3-04" data-source="AI Technologies for Field Robotics 이한민.pptx#31" data-title="가상환경 자율작업 시스템 구조">
+<div class="v3-rail"></div>
+<h1 class="v3-title">가상환경 자율작업 시스템 구조</h1>
+<img class="v3-logo" src="assets/v2/common/kimm-logo.png" alt="KIMM">
+<div class="v3-keybar sm"><span>Vortex Studio·ROS2 가상환경에서 <em>인식 → 상위 계획 → 하위 제어</em></span></div>
+<div class="v3-content">
+ <div class="v3-p3-arch">
+  <div class="v3-p3-tier in"><span class="lb">환경 인식</span>
+   <div class="v3-node in"><b>Environment Perception</b><small>LiDAR · Camera</small></div>
+   <div class="v3-node in"><b>State Estimation</b><small>경사계 · IMU · RTK-GPS · Encoder · 압력계 · TF</small></div>
+  </div>
+  <span class="v3-arrow down"></span>
+  <div class="v3-p3-tier"><span class="lb">상위 계획<small>High-level Planner</small></span>
+   <div class="v3-p3-mod"><b>Grid Mapper</b><span>Grid Map Generator</span><span>Grid Map Interpolation</span><span>ROI Extraction</span></div>
+   <div class="v3-p3-mod"><b>RL Module</b><span>Dig Model</span><span>Dump Model</span><span>Leveling Model</span></div>
+   <div class="v3-p3-mod"><b>Task Manager</b><span>Task Combination Planner</span><span>Task Scheduler</span></div>
+   <div class="v3-p3-mod"><b>Trajectory Generator</b><span>Dig · Dump Module</span><span>Swing Module</span><span>Swing-less Module</span></div>
+  </div>
+  <span class="v3-arrow down"></span>
+  <div class="v3-p3-tier"><span class="lb">하위 제어<small>Low-level Controller</small></span>
+   <div class="v3-p3-low"><b>Motion Control</b><div class="v3-flow"><div class="v3-node">AI-to-World<small>Coordinate Transformation</small></div><span class="v3-arrow"></span><div class="v3-node">Inverse Kinematics<small>Solver</small></div></div></div>
+   <span class="v3-arrow"></span>
+   <div class="v3-p3-low"><b>Actuator Control</b><div class="v3-p3-pids"><div class="v3-node fill">Bucket<small>PID</small></div><div class="v3-node fill">Boom<small>PID</small></div><div class="v3-node fill">Arm<small>PID</small></div><div class="v3-node fill">Swing<small>PID</small></div></div></div>
+  </div>
+ </div>
 </div>
-<div class="src">AI Frontiers Summit 2026 「AI Technologies for Field Robotics」(KIMM 이한민) #31</div>
-<aside class="speaker-notes"><p>원본 B#31 그대로: 「가상환경 내 굴착기 자율작업 프로세스 구현」 — Vortex Studio 및 ROS2 기반 토공작업 가상환경, 환경 인식·상위 계획(2D 그리드 생성/강화학습/작업 관리/경로생성)·하위 제어(역기구학, PID제어).</p><p>쉬운 풀이: 역기구학 = 버킷 목표 위치를 붐·암·버킷·선회 관절각으로 바꾸는 계산. PID = 목표와 실제의 차이를 줄이도록 명령을 조절하는 피드백 제어.</p><p>한정: 이 구성은 가상환경 구축 슬라이드의 내용. B#33 실기에 같은 제어 구성이 쓰였는지는 원자료만으로 단정하지 않음. B#13의 MPC는 일반 기술 소개로 KIMM 구현과 구분.</p></aside>
+<aside class="speaker-notes"><p>원본 B#31 「가상환경 내 굴착기 자율작업 프로세스 구현」의 시스템 구성도(image88)를 v3에서 위→아래 3계층 HTML 블록도로 다시 그림. 모듈명은 원본 영문 그대로(Trajectory Generator의 Dig Module·Dump Module은 한 칸에 묶어 표기). 원본 본문: Vortex Studio 및 ROS2 기반의 토공작업 가상환경 구축 / 환경 인식 모듈, 상위 계획 모듈(2D 그리드 생성/강화학습/작업 관리/경로생성), 하위 제어 모듈(역기구학, PID제어)로 구성.</p><p>쉬운 풀이: 역기구학 = 버킷 목표 위치를 붐·암·버킷·선회 관절각으로 바꾸는 계산. PID = 목표와 실제의 차이를 줄이도록 명령을 조절하는 피드백 제어.</p><p>한정: 이 구성은 가상환경 구축 슬라이드의 내용. B#33 실기에 같은 제어 구성이 쓰였는지는 원자료만으로 단정하지 않음. B#13의 MPC는 일반 기술 소개로 KIMM 구현과 구분.</p></aside>
 </section>
 
-<section class="slide v2-p3" id="v2-part3-05" data-source="AI Technologies for Field Robotics 이한민.pptx#32" data-title="1. 숙련자 데이터 및 인공지능 기반 자율작업 굴착기">
-<h1 class="title sm">1. 숙련자 데이터 및 인공지능 기반 자율작업 굴착기</h1>
-<img class="kimmlogo" src="assets/v2/common/kimm-logo.png" alt="KIMM">
-<div class="v2-p3-stage">
-<div class="sp" data-name="모서리가 둥근 직사각형 78" style="left:29.0px;top:91.1px;width:455.8px;height:28.3px;background:linear-gradient(135deg,#00B0F0 0%,#215968 100%);border:1.50px solid #FFFFFF;border-radius:14.2px;"></div>
-<div class="sp" data-name="TextBox 9" style="left:39.4px;top:89.4px;width:432.2px;height:31.5px;"><div class="tx" style="padding:3.6px 7.2px 3.6px 7.2px;justify-content:flex-start;"><p style="text-align:center;font-size:20.0px;"><span style="font-size:20.0px;font-weight:700;color:#FFFFFF;">가상환경 내 굴착기 </span><span style="font-size:20.0px;font-weight:700;color:#FFFFFF;">자율작업</span><span style="font-size:20.0px;font-weight:700;color:#FFFFFF;"> 프로세스 구현</span></p></div></div>
-<div class="pic vid" data-name="전체작업설명_개선2" style="left:120.4px;top:186.7px;width:561.3px;height:315.7px;"><video src="assets/v2/part3/src_media2.mp4" poster="assets/v2/part3/src_image89.png" preload="metadata" playsinline style="position:absolute;left:0.000%;top:0.000%;width:100.000%;height:100.000%;object-fit:fill;"></video></div>
-<div class="sp" data-name="직사각형 11" style="left:257.7px;top:502.4px;width:305.1px;height:21.8px;"><div class="tx" style="padding:3.6px 7.2px 3.6px 7.2px;justify-content:flex-start;"><p style="text-align:center;font-size:12.0px;"><span style="font-size:12.0px;color:#1F497D;">&lt; </span><span style="font-size:12.0px;color:#1F497D;">가상환경 내 굴착기 </span><span style="font-size:12.0px;color:#1F497D;">자율작업</span><span style="font-size:12.0px;color:#1F497D;"> </span><span style="font-size:12.0px;color:#1F497D;">1-cycle </span><span style="font-size:12.0px;color:#1F497D;">프로세스 구현 </span><span style="font-size:12.0px;color:#1F497D;">&gt;</span></p></div></div>
-<div class="sp" data-name="직사각형 13" style="left:39.4px;top:125.3px;width:127.7px;height:56.1px;background:#F2DCDB;border:1.50px solid #632523;"><div class="tx" style="padding:3.6px 7.2px 3.6px 7.2px;justify-content:center;"><p style="text-align:center;font-size:14.0px;"><span style="font-size:14.0px;color:#000000;">Point Cloud </span><br><span style="font-size:14.0px;color:#000000;">환경 인식</span></p></div></div>
-<div class="sp" data-name="직사각형 14" style="left:182.4px;top:125.3px;width:127.7px;height:56.1px;background:#F2DCDB;border:1.50px solid #632523;"><div class="tx" style="padding:3.6px 7.2px 3.6px 7.2px;justify-content:center;"><p style="text-align:center;font-size:14.0px;"><span style="font-size:14.0px;color:#000000;">GridMap</span><span style="font-size:14.0px;color:#000000;"> </span><span style="font-size:14.0px;color:#000000;"></span><br><span style="font-size:14.0px;color:#000000;">생성 및 추출</span></p></div></div>
-<div class="sp" data-name="직사각형 15" style="left:325.4px;top:125.3px;width:127.7px;height:56.1px;background:#F2DCDB;border:1.50px solid #632523;"><div class="tx" style="padding:3.6px 7.2px 3.6px 7.2px;justify-content:center;"><p style="text-align:center;font-size:14.0px;"><span style="font-size:14.0px;color:#000000;">인공지능 기반</span><span style="font-size:14.0px;color:#000000;"></span><br><span style="font-size:14.0px;color:#000000;">목표작업</span><span style="font-size:14.0px;color:#000000;"> 영역 설정 </span></p></div></div>
-<div class="sp" data-name="직사각형 16" style="left:468.3px;top:125.3px;width:127.7px;height:56.1px;background:#F2DCDB;border:1.50px solid #632523;"><div class="tx" style="padding:3.6px 7.2px 3.6px 7.2px;justify-content:center;"><p style="text-align:center;font-size:14.0px;"><span style="font-size:14.0px;color:#000000;">궤적 생성</span></p></div></div>
-<div class="sp" data-name="직사각형 17" style="left:611.3px;top:125.3px;width:127.7px;height:56.1px;background:#F2DCDB;border:1.50px solid #632523;"><div class="tx" style="padding:3.6px 7.2px 3.6px 7.2px;justify-content:center;"><p style="text-align:center;font-size:14.0px;"><span style="font-size:14.0px;color:#000000;">자율 작업 제어</span></p></div></div>
-<svg class="ln" style="left:167.1px;top:153.4px;width:15.2px;height:0.0px;"><defs><marker id="m2649565621248" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#632523"/></marker></defs><line x1="0.0" y1="0.0" x2="15.2" y2="0.0" stroke="#632523" stroke-width="1.50" marker-end="url(#m2649565621248)"/></svg>
-<svg class="ln" style="left:310.1px;top:153.4px;width:15.2px;height:0.0px;"><defs><marker id="m2649565624048" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#632523"/></marker></defs><line x1="0.0" y1="0.0" x2="15.2" y2="0.0" stroke="#632523" stroke-width="1.50" marker-end="url(#m2649565624048)"/></svg>
-<svg class="ln" style="left:453.1px;top:153.4px;width:15.2px;height:0.0px;"><defs><marker id="m2649565659360" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#632523"/></marker></defs><line x1="0.0" y1="0.0" x2="15.2" y2="0.0" stroke="#632523" stroke-width="1.50" marker-end="url(#m2649565659360)"/></svg>
-<svg class="ln" style="left:596.1px;top:153.4px;width:15.2px;height:0.0px;"><defs><marker id="m2649565662000" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#632523"/></marker></defs><line x1="0.0" y1="0.0" x2="15.2" y2="0.0" stroke="#632523" stroke-width="1.50" marker-end="url(#m2649565662000)"/></svg>
+<section class="slide v3 v3-p3" id="v2-part3-05" data-source="AI Technologies for Field Robotics 이한민.pptx#32" data-title="가상환경 자율작업 1사이클">
+<div class="v3-rail"></div>
+<h1 class="v3-title">가상환경 자율작업 1사이클</h1>
+<img class="v3-logo" src="assets/v2/common/kimm-logo.png" alt="KIMM">
+<div class="v3-keybar sm"><span>점군 인식부터 제어까지 <em>가상환경에서 한 사이클 자율 수행</em></span></div>
+<div class="v3-content">
+ <div class="v3-flow v3-p3-cyc">
+  <div class="v3-node">Point Cloud<small>환경 인식</small></div><span class="v3-arrow"></span>
+  <div class="v3-node">GridMap<small>생성 및 추출</small></div><span class="v3-arrow"></span>
+  <div class="v3-node fill">목표작업 영역<small>인공지능 기반 설정</small></div><span class="v3-arrow"></span>
+  <div class="v3-node">궤적 생성</div><span class="v3-arrow"></span>
+  <div class="v3-node">자율 작업 제어</div>
+ </div>
+ <div class="v3-media dark v3-p3-vid"><video src="assets/v2/part3/src_media2.mp4" poster="assets/v2/part3/src_image89.png" preload="metadata" playsinline></video><span class="v3-badge">가상환경 · 1-cycle</span></div>
 </div>
-<div class="src">AI Frontiers Summit 2026 「AI Technologies for Field Robotics」(KIMM 이한민) #32</div>
-<aside class="speaker-notes"><p>원본 B#32 그대로. 5단계: Point Cloud 환경 인식 → GridMap 생성 및 추출 → 인공지능 기반 목표작업 영역 설정 → 궤적 생성 → 자율 작업 제어.</p><p>영상: 원본 media2.mp4 전체 28.1초(원본 PPT에도 트림 없음), H.264 재인코딩만. 가상환경(시뮬레이터) 영상.</p></aside>
+<aside class="speaker-notes"><p>원본 B#32: 5단계 Point Cloud 환경 인식 → GridMap 생성 및 추출 → 인공지능 기반 목표작업 영역 설정 → 궤적 생성 → 자율 작업 제어, 영상 캡션 「가상환경 내 굴착기 자율작업 1-cycle 프로세스 구현」. v3에서 단계 도식과 영상 크기만 재배치.</p><p>영상: 원본 media2.mp4 전체 28.1초(원본 PPT에도 트림 없음), H.264 재인코딩만. 가상환경(시뮬레이터) 영상.</p></aside>
 </section>
 
-<section class="slide v2-p3" id="v2-part3-06" data-source="AI Technologies for Field Robotics 이한민.pptx#33" data-title="1. 숙련자 데이터 및 인공지능 기반 자율작업 굴착기">
-<h1 class="title sm">1. 숙련자 데이터 및 인공지능 기반 자율작업 굴착기</h1>
-<img class="kimmlogo" src="assets/v2/common/kimm-logo.png" alt="KIMM">
-<div class="v2-p3-stage">
-<div class="pic vid" data-name="GX010031" style="left:195.1px;top:79.1px;width:560.0px;height:315.0px;"><video src="assets/v2/part3/src_media3.mp4" poster="assets/v2/part3/src_image90.png" preload="metadata" playsinline style="position:absolute;left:0.000%;top:0.000%;width:100.000%;height:100.000%;object-fit:fill;"></video></div>
-<div class="pic vid" data-name="화면 녹화 중 2025-11-04 141830" style="left:21.6px;top:267.6px;width:416.2px;height:224.8px;"><video src="assets/v2/part3/src_media4.mp4" poster="assets/v2/part3/src_image91.png" preload="metadata" playsinline style="position:absolute;left:0.000%;top:0.000%;width:100.000%;height:100.000%;object-fit:fill;"></video></div>
-<div class="sp" data-name="직사각형 24" style="left:514.1px;top:395.5px;width:193.8px;height:21.8px;"><div class="tx" style="padding:3.6px 7.2px 3.6px 7.2px;justify-content:flex-start;"><p style="text-align:center;font-size:12.0px;"><span style="font-size:12.0px;">&lt;</span><span style="font-size:12.0px;">관로파기</span><span style="font-size:12.0px;"> </span><span style="font-size:12.0px;">자율작업</span><span style="font-size:12.0px;"> 영상</span><span style="font-size:12.0px;">, </span><span style="font-size:12.0px;">실제 배속</span><span style="font-size:12.0px;">&gt;</span></p></div></div>
-<div class="sp" data-name="직사각형 25" style="left:113.6px;top:492.5px;width:193.8px;height:21.8px;"><div class="tx" style="padding:3.6px 7.2px 3.6px 7.2px;justify-content:flex-start;"><p style="text-align:center;font-size:12.0px;"><span style="font-size:12.0px;">&lt;</span><span style="font-size:12.0px;">굴착기 </span><span style="font-size:12.0px;">자율작업</span><span style="font-size:12.0px;"> 관제 </span><span style="font-size:12.0px;">UI&gt;</span></p></div></div>
-<div class="sp" data-name="직사각형 26" style="left:33.2px;top:217.2px;width:108.3px;height:19.4px;"><div class="tx" style="padding:3.6px 7.2px 3.6px 7.2px;justify-content:flex-start;"><p style="text-align:center;font-size:10.0px;"><span style="font-size:10.0px;color:#1F497D;">2D </span><span style="font-size:10.0px;color:#1F497D;">그리드맵</span></p></div></div>
-<svg class="ln" style="left:87.4px;top:236.6px;width:0.0px;height:54.7px;"><defs><marker id="m2649564502816" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#4F81BD"/></marker></defs><line x1="0.0" y1="0.0" x2="0.0" y2="54.7" stroke="#4F81BD" stroke-width="0.75" marker-end="url(#m2649564502816)"/></svg>
-<div class="sp" data-name="직사각형 28" style="left:11.9px;top:499.2px;width:127.8px;height:19.4px;"><div class="tx" style="padding:3.6px 7.2px 3.6px 7.2px;justify-content:flex-start;"><p style="text-align:center;font-size:10.0px;"><span style="font-size:10.0px;color:#1F497D;">현재</span><span style="font-size:10.0px;color:#1F497D;">/</span><span style="font-size:10.0px;color:#1F497D;">목표</span><span style="font-size:10.0px;color:#1F497D;">/</span><span style="font-size:10.0px;color:#1F497D;">차이 지형 맵 </span></p></div></div>
-<svg class="ln" style="left:57.9px;top:482.5px;width:17.9px;height:16.7px;"><defs><marker id="m2649565667600" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#4F81BD"/></marker></defs><line x1="17.9" y1="16.7" x2="0.0" y2="0.0" stroke="#4F81BD" stroke-width="0.75" marker-end="url(#m2649565667600)"/></svg>
-<svg class="ln" style="left:75.8px;top:482.5px;width:23.2px;height:16.7px;"><defs><marker id="m2649565667120" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#4F81BD"/></marker></defs><line x1="0.0" y1="16.7" x2="23.2" y2="0.0" stroke="#4F81BD" stroke-width="0.75" marker-end="url(#m2649565667120)"/></svg>
-<svg class="ln" style="left:75.8px;top:482.5px;width:63.9px;height:16.7px;"><defs><marker id="m2649565665840" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#4F81BD"/></marker></defs><line x1="0.0" y1="16.7" x2="63.9" y2="0.0" stroke="#4F81BD" stroke-width="0.75" marker-end="url(#m2649565665840)"/></svg>
-<div class="sp" data-name="직사각형 32" style="left:446.1px;top:473.9px;width:108.3px;height:19.4px;"><div class="tx" style="padding:3.6px 7.2px 3.6px 7.2px;justify-content:flex-start;"><p style="text-align:center;font-size:10.0px;"><span style="font-size:10.0px;color:#1F497D;">버켓</span><span style="font-size:10.0px;color:#1F497D;"> 궤적 </span><span style="font-size:10.0px;color:#1F497D;">(</span><span style="font-size:10.0px;color:#1F497D;">목표</span><span style="font-size:10.0px;color:#1F497D;">/</span><span style="font-size:10.0px;color:#1F497D;">실제</span><span style="font-size:10.0px;color:#1F497D;">)</span></p></div></div>
-<svg class="ln" style="left:432.7px;top:436.6px;width:67.6px;height:37.2px;"><defs><marker id="m2649565315536" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#4F81BD"/></marker></defs><line x1="67.6" y1="37.2" x2="0.0" y2="0.0" stroke="#4F81BD" stroke-width="0.75" marker-end="url(#m2649565315536)"/></svg>
+<section class="slide v3 v3-p3" id="v2-part3-06" data-source="AI Technologies for Field Robotics 이한민.pptx#33" data-title="관로파기 현장 실증과 관제 UI">
+<div class="v3-rail"></div>
+<h1 class="v3-title">관로파기 현장 실증과 관제 UI</h1>
+<img class="v3-logo" src="assets/v2/common/kimm-logo.png" alt="KIMM">
+<div class="v3-keybar sm"><span>실제 굴착기의 <em>관로파기 자율작업</em>과 관제 화면</span></div>
+<div class="v3-content">
+ <div class="v3-p3-two">
+  <div class="v3-fig">
+   <div class="v3-media dark" style="aspect-ratio:16/9"><video src="assets/v2/part3/src_media3.mp4" poster="assets/v2/part3/src_image90.png" preload="metadata" playsinline></video><span class="v3-badge">실제 배속</span></div>
+   <div class="v3-cap">관로파기 자율작업 영상</div>
+  </div>
+  <div class="v3-fig">
+   <div class="v3-media dark" style="aspect-ratio:1280/688"><video src="assets/v2/part3/src_media4.mp4" poster="assets/v2/part3/src_image91.png" preload="metadata" playsinline></video>
+    <span class="v3-p3-pin" style="left:4%;top:7%">1</span><span class="v3-p3-pin" style="left:4%;top:53%">2</span><span class="v3-p3-pin" style="left:70%;top:46%">3</span></div>
+   <div class="v3-cap">굴착기 자율작업 관제 UI</div>
+   <div class="v3-p3-legend"><div><i>1</i>2D 그리드맵</div><div><i>2</i>현재 / 목표 / 차이 지형 맵</div><div><i>3</i>버킷 궤적 (목표 / 실제)</div></div>
+  </div>
+ </div>
 </div>
-<div class="src">AI Frontiers Summit 2026 「AI Technologies for Field Robotics」(KIMM 이한민) #33</div>
-<aside class="speaker-notes"><p>원본 B#33 그대로: 관로파기 자율작업 영상(실제 배속)과 굴착기 자율작업 관제 UI(2D 그리드맵, 현재/목표/차이 지형 맵, 버켓 궤적 목표/실제).</p><p>영상: 실기 media3.mp4 전체 1분 53.9초, 관제 UI media4.mp4 전체 1분 49.2초. 원본 PPT는 각각 93.9초·89.2초에서 끝나도록 재생 구간이 설정돼 있었으나 v2 지시에 따라 원본 파일 전체 길이를 사용(재인코딩만).</p><p>관련 수치(FES2026 #18): 관로파기 목표 깊이 0.60 m, 측정 평균 0.63 m — 제시된 관로파기 실증의 평균값이며 시험 횟수·측정 방법·편차는 원자료 미기재(정확도 통계로 바꾸지 않음).</p><p>한정: 원본은 실기에 쓰인 계획·제어 알고리즘 이름(PPO, PID 등)을 적지 않음 → 추측해서 말하지 않음.</p></aside>
+<aside class="speaker-notes"><p>원본 B#33: 관로파기 자율작업 영상(실제 배속)과 굴착기 자율작업 관제 UI(2D 그리드맵, 현재/목표/차이 지형 맵, 버켓 궤적 목표/실제). v3에서는 두 영상을 같은 크기로 나란히 두고, 원본의 UI 지시선을 번호 표시로 바꿈.</p><p>영상: 실기 media3.mp4 전체 1분 53.9초, 관제 UI media4.mp4 전체 1분 49.2초. 원본 PPT는 각각 93.9초·89.2초에서 끝나도록 재생 구간이 설정돼 있었으나 원본 파일 전체 길이를 사용(재인코딩만).</p><p>관련 수치(FES2026 #18): 관로파기 목표 깊이 0.60 m, 측정 평균 0.63 m — 제시된 관로파기 실증의 평균값이며 시험 횟수·측정 방법·편차는 원자료 미기재(정확도 통계로 바꾸지 않음).</p><p>한정: 원본은 실기에 쓰인 계획·제어 알고리즘 이름(PPO, PID 등)을 적지 않음 → 추측해서 말하지 않음.</p></aside>
 </section>
 
-<section class="slide v2-p3 v2-p3-close" id="v2-part3-07" data-source="발표자 제안(원본 없음) · 근거 AI Technologies for Field Robotics 이한민.pptx#29,#33" data-title="건설연 협업 제안">
-<h1 class="title">지반 특성 이해를 위한 협업 제안</h1>
-<img class="kimmlogo" src="assets/v2/common/kimm-logo.png" alt="KIMM">
-<div class="v2-p3-cl">
-  <div class="v2-p3-cl-box pre"><b>지반 사전정보</b><span>지반조사 · 시추 · 토질 물성</span><span class="who">KICT 지반연구본부</span></div>
-  <div class="v2-p3-cl-mid"><img src="assets/v2/part3/src_image90.png" alt="KIMM 관로파기 자율작업 시험장"><b>굴착 작업계획</b><span>그리드 지도 · 작업 순서 · 궤적</span></div>
-  <div class="v2-p3-cl-box obs"><b>작업 중 관측</b><span>점군 지형 변화 · 유압 압력 · 자세</span><span class="who">KIMM 자율작업 굴착기</span></div>
+<section class="slide v3 v3-p3" id="v2-part3-07" data-source="발표자 제안(원본 없음) · 근거 AI Technologies for Field Robotics 이한민.pptx#29,#33" data-title="건설연 협업 제안">
+<div class="v3-rail"></div>
+<h1 class="v3-title">지반 특성 이해를 위한 협업 제안</h1>
+<img class="v3-logo" src="assets/v2/common/kimm-logo.png" alt="KIMM">
+<div class="v3-keybar sm"><span>땅을 <em>미리 아는 정보</em>와 <em>파면서 아는 정보</em>를 함께 쓰는 굴착</span></div>
+<div class="v3-content">
+ <div class="v3-p3-col3">
+  <div class="v3-p3-side pre"><b>지반 사전정보</b><span>지반조사 · 시추<br>토질 물성</span><span class="v3-tag ln">KICT 지반연구본부</span></div>
+  <span class="v3-arrow"></span>
+  <div class="v3-p3-hub"><div class="v3-media cover"><img src="assets/v2/part3/src_image90.png" alt="KIMM 관로파기 자율작업 시험장"></div><b>굴착 작업계획</b><span>그리드 지도 · 작업 순서 · 궤적</span></div>
+  <span class="v3-arrow back"></span>
+  <div class="v3-p3-side"><b>작업 중 관측</b><span>점군 지형 변화<br>유압 압력 · 자세</span><span class="v3-tag kimm">KIMM 자율작업 굴착기</span></div>
+ </div>
 </div>
-<p class="v2-p3-cl-msg">땅을 <em>미리 아는 정보</em>와 <em>파면서 아는 정보</em>를 함께 쓰는 굴착 — 공동연구 제안</p>
-<div class="src">발표자 제안(협의 전) · 관측 항목 근거: 원본 #29 센서 구성, #33 관제 UI</div>
-<aside class="speaker-notes"><p>제안이며 합의·수행된 공동연구가 아니다. 사전정보와 작업 중 관측은 서로 보완하는 관계로 설명한다 — "지반을 미리 완벽히 알아야만 로봇이 작업할 수 있다"는 뜻이 아니다.</p><p>제공된 KIMM 자료에서 확인되는 계획 입력은 점군→그리드 표면 지도이며, 사전 지반정보 활용 여부는 자료에 적혀 있지 않다(미사용이라고 말하지 않음). 압력 데이터로 지반 특성을 추정한 결과도 제공 자료에는 없다.</p><p>협업 예시(질의응답용): 사전 지반정보를 반영한 굴착 계획, 작업 데이터와 지반 시험값 비교, 시뮬레이터 토양 모델 보정.</p></aside>
+<div class="v3-closer"><span>공동연구 <em>제안</em> — 협의 전</span></div>
+<aside class="speaker-notes"><p>제안이며 합의·수행된 공동연구가 아니다. 사전정보와 작업 중 관측은 서로 보완하는 관계로 설명한다 — "지반을 미리 완벽히 알아야만 로봇이 작업할 수 있다"는 뜻이 아니다.</p><p>제공된 KIMM 자료에서 확인되는 계획 입력은 점군→그리드 표면 지도이며, 사전 지반정보 활용 여부는 자료에 적혀 있지 않다(미사용이라고 말하지 않음). 압력 데이터로 지반 특성을 추정한 결과도 제공 자료에는 없다. 관측 항목 근거: 원본 #29 센서 구성, #33 관제 UI.</p><p>협업 예시(질의응답용): 사전 지반정보를 반영한 굴착 계획, 작업 데이터와 지반 시험값 비교, 시뮬레이터 토양 모델 보정.</p></aside>
 </section>
 </main>
 <script>

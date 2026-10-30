@@ -1,0 +1,145 @@
+/* =====================================================================
+   v3 part2 — AI Frontiers 기술 13장을 FES/NST 공통 부품(nst-v3.css)으로 재디자인
+   공통 틀·노드·화살표·표·미디어는 nst-v3.css(.slide.v3) 그대로 사용.
+   여기는 장별 배치만. 선택자는 .v3-p2- 또는 #v2-part2-NN 범위. 소유: part2
+   ===================================================================== */
+
+/* ── 01 Field Robotics 8분야: 사진 격자 + 캡션 ─────────────────────── */
+#v2-part2-01 .v3-p2-fields{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px 16px;margin-top:4px}
+#v2-part2-01 .v3-media{height:122px}
+#v2-part2-01 .v3-cap{text-align:left;font-weight:500;color:var(--sub)}
+#v2-part2-01 .v3-cap b{margin-right:6px;font-size:16px}
+
+/* ── 02 4대 도전과제: 4열 사진 + 소제목 + 설명 ─────────────────────── */
+#v2-part2-02 .v3-p2-four{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin-top:8px}
+#v2-part2-02 .v3-media{height:172px}
+#v2-part2-02 .v3-h{margin-top:8px}
+#v2-part2-02 .v3-txt{font-size:15px}
+
+/* ── 03 4계층: 좌→우 처리 흐름(노드) + 아래 계층별 기법 묶음 ──────── */
+#v2-part2-03 .v3-p2-arch{display:grid;grid-template-columns:1fr 30px 1fr 30px 1fr 30px 1fr;grid-template-rows:auto 34px auto;align-items:stretch;margin-top:10px}
+#v2-part2-03 .v3-node.fill{min-height:118px;align-items:flex-start;text-align:left;justify-content:flex-start;padding:12px 14px;gap:6px}
+#v2-part2-03 .v3-node.fill .lv{font-size:26px;font-weight:800;color:var(--accent);line-height:1;margin-bottom:4px;letter-spacing:-.5px}
+#v2-part2-03 .v3-node.fill small{font-size:14px}
+#v2-part2-03 .v3-arrow{align-self:center;font-size:22px}
+#v2-part2-03 .tl{display:grid;place-items:center}
+#v2-part2-03 .tl .v3-arrow{font-size:20px}
+#v2-part2-03 .tech{display:flex;flex-direction:column;gap:4px;padding-top:30px}
+#v2-part2-03 .tech .v3-node.in{min-height:38px;font-size:15.5px;color:var(--navy-ink);font-weight:600;background:#fff}
+
+/* ── 04 지형 표현: 표현 4종(노드) + 증거 그림 2장 ─────────────────── */
+#v2-part2-04 .v3-p2-reps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+#v2-part2-04 .rep{min-height:158px;justify-content:flex-start;padding:8px 10px 10px;gap:4px}
+#v2-part2-04 .rep svg{margin:0 auto 4px}
+#v2-part2-04 .rep small{font-size:14px}
+#v2-part2-04 .rep b{display:block;font-size:14px;font-weight:700;color:var(--navy);margin-top:3px;line-height:1.25}
+#v2-part2-04 .v3-p2-evid{display:flex;gap:14px;align-items:flex-end;margin-top:6px}
+#v2-part2-04 .ev1{width:236px;height:165px}
+#v2-part2-04 .ev2{width:147px;height:165px}
+#v2-part2-04 .evcap{width:178px;font-size:14px;color:var(--sub);line-height:1.35;display:flex;flex-direction:column;gap:5px;align-items:flex-start}
+#v2-part2-04 .evcap b{font-size:15.5px;color:var(--navy-ink);font-weight:800}
+#v2-part2-04 .evcap .v3-tag{white-space:normal;line-height:1.3}
+
+/* ── 05 강건 센싱: 대응 기법 노드 + 영상·사진 ───────────────────────── */
+#v2-part2-05 .v3-p2-sense{display:grid;grid-template-columns:minmax(0,1fr) 372px;gap:22px}
+#v2-part2-05 .ways{display:flex;flex-direction:column;gap:9px}
+#v2-part2-05 .ways .v3-node{align-items:flex-start;text-align:left;min-height:68px;padding:9px 16px;font-size:17px}
+#v2-part2-05 .ways .v3-node small{font-size:14.5px;margin-top:3px}
+#v2-part2-05 .ways .v3-node.in{min-height:40px;font-size:15px;justify-content:center}
+#v2-part2-05 .vid{width:372px;height:223px}
+#v2-part2-05 .pics{display:flex;gap:12px;margin-top:8px}
+#v2-part2-05 .crop{width:180px;height:140px;position:relative;overflow:hidden;border-radius:6px}
+/* 원본 srcRect r=13.547% b=11.729% 그대로 */
+#v2-part2-05 .crop img{position:absolute;left:0;top:0;width:calc(180px / (1 - .13547));height:calc(140px / (1 - .11729));max-width:none}
+#v2-part2-05 .ugv{width:180px;height:140px}
+
+/* ── 06 Vision FMs: 모델별 입력→출력 + 증거 그림 ─────────────────── */
+#v2-part2-06 .v3-p2-fm{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:20px}
+#v2-part2-06 .rows{display:flex;flex-direction:column;gap:10px}
+#v2-part2-06 .rows .v3-flow > .v3-node{min-height:58px}
+#v2-part2-06 .rows .m{flex:0 0 150px}
+#v2-part2-06 .rows .io{flex:1 1 0}
+#v2-part2-06 .rows .v3-node.in{font-size:15px;color:var(--navy-ink)}
+#v2-part2-06 .rows .one{flex:1 1 0}
+#v2-part2-06 .e1{width:300px;height:210px}
+#v2-part2-06 .e2{width:300px;height:86px}
+
+/* ── 07 SLAM: 센서 조합 표 + 점군 지도 ─────────────────────────────── */
+#v2-part2-07 table.v3-table td,#v2-part2-07 table.v3-table th{padding:7px 10px}
+#v2-part2-07 .dot{display:inline-block;width:13px;height:13px;border-radius:50%;background:var(--navy)}
+#v2-part2-07 .na{color:var(--muted)}
+#v2-part2-07 .map{display:flex;gap:16px;align-items:flex-end;margin-top:4px}
+#v2-part2-07 .map .v3-media{width:520px;height:153px}
+#v2-part2-07 .map .v3-cap{text-align:left;font-weight:500;color:var(--sub)}
+
+/* ── 08 계획 기법 표 ──────────────────────────────────────────────── */
+#v2-part2-08 table.v3-table{margin-top:8px}
+#v2-part2-08 table.v3-table th{font-size:15px;padding:10px 14px}
+#v2-part2-08 table.v3-table td{font-size:17.5px;padding:24px 16px}
+#v2-part2-08 table.v3-table td:nth-child(2){font-weight:600}
+#v2-part2-08 table.v3-table td:last-child{color:var(--sub)}
+
+/* ── 09 모방학습: 학습 흐름 + 이유·기법 + 논문 그림 ───────────────── */
+#v2-part2-09 .v3-flow > .v3-node{min-height:54px}
+#v2-part2-09 .why{flex:0 0 300px}
+#v2-part2-09 .why .v3-list > li{font-size:15.5px}
+#v2-part2-09 table.v3-table td{padding:4px 10px}
+#v2-part2-09 table.v3-table th{padding:5px 10px}
+#v2-part2-09 .papers{display:flex;gap:20px;justify-content:center}
+#v2-part2-09 .papers .v3-media{height:122px}
+#v2-part2-09 .papers .p1{width:481px}
+#v2-part2-09 .papers .p2{width:228px}
+/* 원 논문 그림의 영문 본문 캡션·여백만 잘라 도식 확대(그림 자체는 원형) */
+#v2-part2-09 .papers .p1 img{object-fit:cover;object-position:0 0}
+#v2-part2-09 .papers .p2 img{object-fit:cover;object-position:0 0}
+
+/* ── 10 강화학습: 시뮬→실기 흐름 + 되먹임 + GIF ───────────────────── */
+#v2-part2-10 .v3-flow > .v3-node{min-height:78px}
+#v2-part2-10 .back{position:relative;height:46px;margin-top:-10px}
+#v2-part2-10 .back .loop{position:absolute;left:14%;right:9%;top:0;height:18px;border:1.75px solid var(--navy);border-top:0;border-radius:0 0 8px 8px}
+#v2-part2-10 .back .loop::after{content:"";position:absolute;left:-6px;top:-9px;border-bottom:10px solid var(--navy);border-left:5.5px solid transparent;border-right:5.5px solid transparent}
+#v2-part2-10 .back .lb{position:absolute;left:0;right:0;top:23px;text-align:center;font-size:14.5px;color:var(--sub);white-space:nowrap}
+#v2-part2-10 .back .lb b{color:var(--navy-ink);font-weight:800;margin-right:6px}
+#v2-part2-10 .gifs{display:flex;gap:16px;justify-content:center}
+#v2-part2-10 .gifs .v3-media{height:186px}
+#v2-part2-10 .gifs .g1{width:248px}
+#v2-part2-10 .gifs .g2{width:248px}
+
+/* ── 11 MPC: 제약·외란 → MPC → 굴착기, 학습 보완 + 결과 그림 ────────── */
+#v2-part2-11 .v3-p2-mpc{display:grid;grid-template-columns:330px minmax(0,1fr);gap:22px}
+#v2-part2-11 .dg .v3-node{min-height:52px}
+#v2-part2-11 .dg .mid{display:grid;grid-template-columns:1fr 26px 128px;align-items:center}
+#v2-part2-11 .dg .mid .v3-node.fill{min-height:84px}
+#v2-part2-11 .dg .v3-arrow.down{height:22px}
+#v2-part2-11 .learn{margin-top:14px}
+#v2-part2-11 .res .v3-media{width:430px;height:242px}
+#v2-part2-11 .res .v3-cap{text-align:left;font-weight:500;color:var(--sub);margin-top:4px}
+
+/* ── 12 계층 분리: 상·하위 층 + 원자 작업 블록 ───────────────────── */
+#v2-part2-12 .v3-p2-layers{display:grid;grid-template-columns:150px 30px minmax(0,1fr);align-items:center;margin-top:14px}
+#v2-part2-12 .v3-group{display:flex;gap:0;align-items:center;padding:18px 12px 12px}
+#v2-part2-12 .v3-group .v3-node{flex:1 1 0;min-height:56px}
+#v2-part2-12 .v3-group .v3-arrow{flex:0 0 24px}
+#v2-part2-12 .blk{grid-column:3;display:flex;flex-direction:column;align-items:center}
+#v2-part2-12 .blk .v3-node.y{width:70%;min-height:40px}
+#v2-part2-12 .blk .v3-arrow.down{height:20px}
+
+/* ── 13 Sim-to-Real: 문제 / 대응 방향 + 토양 파라미터 표 ─────────── */
+#v2-part2-13 .v3-p2-s2r{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:24px}
+#v2-part2-13 .v3-list > li{font-size:16px}
+#v2-part2-13 .sols{display:flex;flex-direction:column;gap:9px;margin-top:4px}
+#v2-part2-13 .sols .v3-node{align-items:flex-start;text-align:left;min-height:58px;padding:8px 14px}
+#v2-part2-13 .sols .v3-node small{font-size:14px}
+#v2-part2-13 .soil{gap:4px}
+#v2-part2-13 table.v3-p2-soil{font-size:14px;line-height:1.15}
+#v2-part2-13 table.v3-p2-soil th{font-size:14px;padding:4px 8px}
+#v2-part2-13 table.v3-p2-soil td{padding:2px 8px;border-bottom:0}
+#v2-part2-13 table.v3-p2-soil td:first-child{font-weight:600}
+#v2-part2-13 table.v3-p2-soil tbody + tbody tr:first-child td{border-top:1.5px solid var(--navy)}
+#v2-part2-13 table.v3-p2-soil tbody:last-child tr:last-child td{border-bottom:1.5px solid var(--navy)}
+#v2-part2-13 table.v3-p2-soil .ood{border-left:1.5px solid var(--navy);background:var(--tint2)}
+#v2-part2-13 table.v3-p2-soil th.ood{background:var(--navy)}
+#v2-part2-13 .soil .v3-cap{text-align:left;font-weight:500;color:var(--sub);font-size:13px}
+
+/* 노드 보조설명 14px(공통 13.5px → 이 구간 가독 기준 14px), 슬라이드 id로 한정 */
+#v2-part2-05 .v3-node small,#v2-part2-06 .v3-node small,#v2-part2-09 .v3-node small,#v2-part2-10 .v3-node small,#v2-part2-11 .v3-node small,#v2-part2-12 .v3-node small{font-size:14px}

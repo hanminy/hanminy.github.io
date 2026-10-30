@@ -1,0 +1,260 @@
+/* =====================================================================
+   KICT 세미나 v3 「필드로봇에서의 AI활용」 — FES 기준 단일 디자인 (v2 기반부 그대로 + v3 공통 부품)
+   원본(FES 2026 / AI Frontiers Summit 2026) 구도를 그대로 살리고
+   공통으로는 960x540 캔버스, 글꼴, 색, 상단 제목, 진짜 KIMM 로고만 제공.
+   사이드바·부 번호·시간·core·한 줄 요약 강제 없음. 소유: 통합 담당.
+   부별 서식은 parts/v2/partN.css 에 담당 prefix(.v2-p1- 등)로 범위 한정.
+   ===================================================================== */
+
+/* ── 글꼴 (v1과 같은 로컬 woff2) ─────────────────────────────────── */
+@font-face{font-family:'Freesentation';font-weight:400;font-display:block;src:url('assets/fonts/Freesentation-4Regular.woff2') format('woff2')}
+@font-face{font-family:'Freesentation';font-weight:500;font-display:block;src:url('assets/fonts/Freesentation-5Medium.woff2') format('woff2')}
+@font-face{font-family:'Freesentation';font-weight:600;font-display:block;src:url('assets/fonts/Freesentation-6SemiBold.woff2') format('woff2')}
+@font-face{font-family:'Freesentation';font-weight:700;font-display:block;src:url('assets/fonts/Freesentation-7Bold.woff2') format('woff2')}
+@font-face{font-family:'Freesentation';font-weight:800;font-display:block;src:url('assets/fonts/Freesentation-8ExtraBold.woff2') format('woff2')}
+@font-face{font-family:'RomanNum';src:local('Malgun Gothic');unicode-range:U+2160-217F}
+
+:root{
+  --navy-bar:#253149; --navy-deep:#0D204A; --accent:#FFFF6C;
+  --ink:#1A1A1A; --ink-sub:#595959; --gray-line:#D9DDE3; --gray-fill:#F2F2F2; --gray-label:#7B7B7B;
+  --blue:#3D52AD; --teal:#31A17E; --burgundy:#6A1B3E; --olive:#54833D; --red:#E8352E;
+  --font:'RomanNum','Freesentation','Pretendard','Malgun Gothic',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;word-break:keep-all;overflow-wrap:break-word}
+html,body{font-family:var(--font);-webkit-font-smoothing:antialiased;letter-spacing:-.2px}
+body{background:#5A5F68;color:var(--ink)}
+
+/* ── 캔버스 ─────────────────────────────────────────────────────── */
+.slide{position:relative;width:960px;height:540px;background:#fff;overflow:hidden;flex:0 0 auto;
+  color:var(--ink);font-size:15px;font-weight:500;line-height:1.38}
+.slide .speaker-notes{display:none}
+.slide em{font-style:normal}
+
+/* ── 공통 포장 (모두 선택 사항, FES 원고 실측값) ─────────────────── */
+/* 제목: 좌상단 x38 y22, 29px. 길면 .sm(25px) */
+.slide > .title{position:absolute;left:38px;top:22px;right:210px;font-size:29px;font-weight:700;
+  letter-spacing:-1px;line-height:1.2;white-space:nowrap}
+/* 말줄임으로 내용을 가리지 않음: 넘치면 QA가 잡고 작성자에게 간결화 요청 */
+.slide > .title.sm{font-size:25px;top:25px}
+.slide > .title .sub{font-size:.68em;font-weight:600;color:var(--ink-sub);margin-left:6px}
+/* 진짜 KIMM 로고: <img class="kimmlogo" src="assets/v2/common/kimm-logo.png" alt="KIMM"> */
+.kimmlogo{position:absolute;right:24px;top:22px;height:30px;width:auto;z-index:5}
+.slide.dark .kimmlogo{content:url('assets/v2/common/kimm-logo-50th-white.png');height:26px;top:24px}
+/* 키바: 원본에 있을 때만. 전폭 y73 h43 네이비, 강조 노랑 */
+.keybar{position:absolute;left:0;right:0;top:73px;height:43px;background:var(--navy-bar);
+  display:flex;align-items:center;justify-content:center;padding:0 24px;color:#fff;
+  font-size:22px;font-weight:700;letter-spacing:-.6px;text-align:center;white-space:nowrap}
+.keybar > span{display:block}
+.keybar em{color:var(--accent)}
+.keybar.sm{font-size:20px} .keybar.xs{font-size:18px}
+/* 본문 영역 권장값(강제 아님): 키바 있으면 y130, 없으면 y76부터 */
+.content{position:absolute;left:38px;top:130px;width:884px;height:385px}
+.slide:not(:has(.keybar)) > .content{top:76px;height:439px}
+/* 출처 한 줄(좌하단)과 쪽번호(우하단, 뷰어가 채움) */
+.src{position:absolute;left:38px;right:70px;bottom:8px;font-size:10px;font-weight:500;color:#888;
+  white-space:nowrap}
+.pno{position:absolute;right:14px;bottom:9px;font-size:9.5px;color:var(--gray-label)}
+.slide.dark{background:var(--navy-deep);color:#fff}
+.slide.dark .src,.slide.dark .pno{color:rgba(255,255,255,.55)}
+
+/* ── 미디어: 비율 유지, GIF는 <img>로 그대로 ─────────────────────── */
+.slide img,.slide video{max-width:100%}
+.fit{width:100%;height:100%;object-fit:contain;display:block}
+.fill{width:100%;height:100%;object-fit:cover;display:block}
+.slide video{background:#111;display:block}
+.vtag{position:absolute;font-size:10px;font-weight:700;color:#fff;background:#C0392B;border-radius:3px;
+  padding:1px 6px;pointer-events:none;z-index:2}
+.ext-link{outline:1px dashed var(--gray-label)}
+
+/* ── 표지 (.cover): FES 2026 구도 — 좌 55% 그림 → 흰색 페이드, 우측 글 ── */
+.cover .cover-art{position:absolute;left:0;top:0;width:540px;height:540px;overflow:hidden}
+.cover .cover-art > img,.cover .cover-art > video{width:100%;height:100%;object-fit:cover;display:block}
+.cover .cover-art::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(90deg,transparent 70%,rgba(255,255,255,.75) 90%,#fff 100%)}
+/* 느린 카메라 이동(정지 이미지에 CSS 팬·줌). AI 생성 영상이 아님 */
+.cover .cover-art.slowpan > img{animation:v2-slowpan 40s ease-in-out infinite alternate;transform-origin:35% 55%}
+@keyframes v2-slowpan{from{transform:scale(1.01) translate(0,0)}to{transform:scale(1.06) translate(-8px,-4px)}}
+@media (prefers-reduced-motion:reduce){.cover .cover-art.slowpan > img{animation:none}}
+/* .cover.full: 그림 자체에 흰 페이드가 들어 있는 16:9 전폭 배경(v2 표지). 글은 x590부터 */
+.cover.full .cover-art{width:960px}
+.cover.full .cover-art::after{content:none}
+.cover.full .cover-art.slowpan > img{transform-origin:20% 60%}
+.cover.full .cover-pill,.cover.full h1{left:590px}
+.cover.full .cover-meta,.cover.full .cover-logo{left:592px}
+.cover .cover-head{position:absolute;right:38px;top:26px;text-align:right;font-size:13px;font-weight:500;color:#3A3A3A;line-height:1.55}
+.cover .cover-pill{position:absolute;left:520px;top:150px;background:var(--navy-bar);color:#fff;border-radius:999px;
+  padding:7px 20px;font-size:15px;font-weight:600;letter-spacing:-.4px;white-space:nowrap}
+.cover h1{position:absolute;left:520px;right:30px;top:198px;font-size:44px;font-weight:800;line-height:1.16;
+  letter-spacing:-2px;color:#1B2440}
+.cover h1 .l2{display:block;font-size:21px;font-weight:600;letter-spacing:-.6px;color:#2B3A63;margin-top:12px;line-height:1.3}
+.cover .cover-meta{position:absolute;left:522px;top:384px;font-size:13.5px;font-weight:500;color:#3A3A3A;line-height:1.65}
+.cover .cover-meta b{font-weight:700;color:#1B2440}
+.cover .cover-logo{position:absolute;left:522px;top:466px;height:34px;width:auto}
+
+/* =====================================================================
+   뷰어 (parts/v2/shell-tail.html 과 짝) — 기본: 세로 스크롤 검토
+   ===================================================================== */
+.v2-bar{position:fixed;left:0;right:0;top:0;z-index:50;height:36px;display:flex;align-items:center;gap:6px;
+  padding:0 14px;background:#20242C;color:#E8EAED;font:500 13px var(--font)}
+.v2-bar .doc{font-weight:700;margin-right:auto;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.v2-bar button{font:inherit;font-size:12.5px;color:#E8EAED;background:transparent;border:1px solid #4A505B;border-radius:4px;padding:3px 9px;cursor:pointer}
+.deck{display:flex;flex-direction:column;align-items:center;gap:26px;padding:56px 16px 70px}
+.deck > .slide{zoom:var(--zoom,1);box-shadow:0 2px 14px rgba(0,0,0,.35)}
+.deck > .slide:target{outline:3px solid var(--accent);outline-offset:3px}
+/* 발표: 현재 1장만, 검정 배경, 화면 맞춤 */
+body.present{background:#000;overflow:hidden}
+body.present .v2-bar{display:none}
+body.present .deck{padding:0;gap:0;height:100vh;justify-content:center}
+body.present .deck > .slide{display:none;box-shadow:none;outline:none}
+body.present .deck > .slide.is-current{display:block}
+
+/* 인쇄: 1장 = 960x540pt */
+@media print{
+  @page{size:1280px 720px;margin:0}
+  html,body{background:#fff!important}
+  .v2-bar{display:none!important}
+  .deck{display:block!important;padding:0!important}
+  .deck > .slide{display:block!important;zoom:1.333333!important;box-shadow:none!important;outline:none!important;break-after:page}
+  .cover .cover-art.slowpan > img{animation:none!important}
+}
+
+/* =====================================================================
+   v3 공통 부품 — FES(part1) 실측 좌표·색·글꼴을 그대로 표준화
+   사용: <section class="slide v3 [v3-wide]" id="…"> 안에서만 적용 (.slide.v3 범위)
+   계약 문서: parts/v3/STYLE_CONTRACT.txt
+   ===================================================================== */
+.slide.v3{--navy:#253149;--navy-deep:#0D204A;--navy-mid:#2B3A63;--navy-ink:#1B2440;--link:#3461A2;
+  --tint:#EEF1F6;--tint2:#F6F7FA;--line:#D9DDE3;--line2:#B9C0CC;--sub:#595959;--muted:#7B7B7B;
+  --accent:#FFFF6C;--accent-soft:#FFFF99;--hl:#FFF6B0;--warn:#E8352E;
+  font-family:'Freesentation','Pretendard','Malgun Gothic',sans-serif;font-size:15px;font-weight:500;line-height:1.38;
+  color:var(--ink);letter-spacing:-.2px}
+.slide.v3 :where(*){box-sizing:border-box}
+
+/* ── 틀: FES와 같은 좌표 ── */
+.slide.v3 > .v3-rail{position:absolute;left:0;top:0;width:104px;height:540px;
+  background:radial-gradient(120px 180px at 78% 18%,rgba(255,255,255,.16),transparent 70%),
+             radial-gradient(150px 220px at 8% 84%,rgba(0,0,0,.20),transparent 72%),
+             linear-gradient(168deg,#2B3A63 0%,#253149 36%,#1B2440 100%)}
+.slide.v3 > .v3-title{position:absolute;left:123px;top:22px;right:230px;margin:0;font-size:29px;font-weight:700;
+  letter-spacing:-1px;line-height:1.2;white-space:nowrap;color:var(--ink)}
+.slide.v3 > .v3-title.sm{font-size:26px;top:24px}
+.slide.v3 > .v3-title .sub{font-size:17px;font-weight:600;color:var(--sub);margin-left:8px;letter-spacing:-.3px}
+.slide.v3 > .v3-logo{position:absolute;right:24px;top:22px;height:30px;width:auto}
+.slide.v3 > .v3-keybar{position:absolute;left:104px;right:0;top:73px;height:43px;background:#253149;
+  background-image:radial-gradient(420px 60px at 12% 130%,rgba(93,140,214,.22),transparent 70%),
+                   radial-gradient(360px 55px at 88% -30%,rgba(93,140,214,.18),transparent 70%);
+  display:flex;align-items:center;justify-content:center;padding:0 16px;color:#fff;font-size:24px;font-weight:700;
+  letter-spacing:-.7px;white-space:nowrap}
+.slide.v3 > .v3-keybar em{color:var(--accent);font-style:normal}
+.slide.v3 > .v3-keybar.sm{font-size:20.5px} .slide.v3 > .v3-keybar.xs{font-size:19px}
+.slide.v3 > .v3-content{position:absolute;left:139.5px;top:137px;width:782.5px;height:373px;display:flex;flex-direction:column;gap:10px}
+.slide.v3:not(:has(> .v3-keybar)) > .v3-content{top:86px;height:424px}
+.slide.v3:has(> .v3-closer) > .v3-content{height:325px}
+.slide.v3 > .v3-closer{position:absolute;left:104px;right:0;bottom:0;height:52px;background:var(--navy-deep);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:21px;font-weight:700;letter-spacing:-.6px;white-space:nowrap}
+.slide.v3 > .v3-closer em{color:var(--accent-soft);font-style:normal}
+.slide.v3 > .v3-src{position:absolute;left:139.5px;right:60px;bottom:8px;font-size:10px;font-weight:500;color:#888;white-space:nowrap}
+.slide.v3:has(> .v3-closer) > .v3-src{bottom:58px}
+/* 레일 없는 전폭(FES 연표형) — 예외로만 */
+.slide.v3.v3-wide > .v3-title{left:38px}
+.slide.v3.v3-wide > .v3-keybar,.slide.v3.v3-wide > .v3-closer{left:0}
+.slide.v3.v3-wide > .v3-content{left:38px;width:884px}
+.slide.v3.v3-wide > .v3-src{left:38px}
+
+/* ── 글자 위계 ── */
+.slide.v3 .v3-h{display:flex;align-items:center;gap:7px;font-size:19px;font-weight:800;color:var(--navy-ink);letter-spacing:-.5px;line-height:1.2;white-space:nowrap}
+.slide.v3 .v3-h small{font-size:14px;font-weight:600;color:var(--sub);letter-spacing:-.2px}
+.slide.v3 .v3-h.bar{border-left:4px solid var(--navy);padding-left:8px;font-size:17px}
+.slide.v3 .v3-n{width:24px;height:24px;border-radius:50%;background:var(--navy);color:#fff;display:inline-grid;place-items:center;
+  font-size:14px;font-weight:800;flex:0 0 auto;line-height:1}
+.slide.v3 .v3-txt{font-size:15px;line-height:1.42;color:#2B2B2B}
+.slide.v3 .v3-cap{font-size:14px;font-weight:600;color:#333;line-height:1.3;text-align:center}
+.slide.v3 .v3-cap b{color:var(--navy-ink);font-weight:800}
+.slide.v3 .v3-note{font-size:13px;color:var(--sub);line-height:1.3}
+.slide.v3 .v3-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.slide.v3 .v3-list > li{position:relative;padding-left:14px;font-size:15px;line-height:1.38}
+.slide.v3 .v3-list > li::before{content:"";position:absolute;left:2px;top:.55em;width:5px;height:5px;border-radius:50%;background:var(--navy)}
+.slide.v3 .v3-list > li b{color:var(--navy-ink)}
+.slide.v3 .v3-hl{background:linear-gradient(transparent 58%,var(--accent) 58%)}
+
+/* ── 태그 ── */
+.slide.v3 .v3-tag{display:inline-block;font-size:12.5px;font-weight:700;color:#fff;background:var(--navy);border-radius:4px;padding:2px 8px;line-height:1.25;white-space:nowrap}
+.slide.v3 .v3-tag.ln{background:#fff;color:var(--navy);box-shadow:inset 0 0 0 1.2px var(--navy)}
+.slide.v3 .v3-tag.y{background:var(--accent);color:var(--navy-ink)}
+.slide.v3 .v3-tag.g{background:var(--muted)}
+.slide.v3 .v3-tag.kimm{background:var(--navy-deep)}
+.slide.v3 .v3-tag.ext{background:#fff;color:var(--sub);box-shadow:inset 0 0 0 1.2px var(--line2)}
+.slide.v3 .v3-tag.plan{background:#fff;color:var(--navy);outline:1.2px dashed var(--navy);outline-offset:-1.2px}
+
+/* ── 도식: 노드·화살표·흐름·묶음 (HTML로 직접 그림) ── */
+.slide.v3 .v3-node{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:2px;
+  min-height:52px;padding:7px 10px;border:1.5px solid var(--navy);border-radius:6px;background:#fff;
+  font-size:16px;font-weight:700;color:var(--navy-ink);line-height:1.2;letter-spacing:-.3px}
+.slide.v3 .v3-node small{display:block;font-size:13.5px;font-weight:500;color:var(--sub);letter-spacing:-.2px;line-height:1.25}
+.slide.v3 .v3-node.fill{background:var(--navy);border-color:var(--navy);color:#fff}
+.slide.v3 .v3-node.fill small{color:rgba(255,255,255,.82)}
+.slide.v3 .v3-node.soft{background:var(--tint);border-color:transparent}
+.slide.v3 .v3-node.in{border-width:1px 0;border-color:var(--line);border-radius:0;color:var(--sub);font-size:14.5px}
+.slide.v3 .v3-node.y{background:var(--accent);border-color:var(--accent)}
+.slide.v3 .v3-node.dash{border-style:dashed}
+.slide.v3 .v3-node.lg{font-size:18px;min-height:60px}
+.slide.v3 .v3-flow{display:flex;align-items:center;gap:0}
+.slide.v3 .v3-flow.col{flex-direction:column;align-items:stretch}
+.slide.v3 .v3-flow > .v3-node{flex:1 1 0}
+.slide.v3 .v3-arrow{flex:0 0 26px;display:grid;place-items:center;color:var(--navy);font-size:18px;font-weight:700;line-height:1;position:relative}
+.slide.v3 .v3-arrow::before{content:"→"}
+.slide.v3 .v3-arrow.down::before{content:"↓"} .slide.v3 .v3-arrow.up::before{content:"↑"}
+.slide.v3 .v3-arrow.back::before{content:"←"} .slide.v3 .v3-arrow.both::before{content:"⇄"}
+.slide.v3 .v3-flow.col > .v3-arrow{flex-basis:22px}
+.slide.v3 .v3-arrow[data-l]::after{content:attr(data-l);position:absolute;bottom:100%;left:50%;transform:translateX(-50%);font-size:12px;font-weight:600;color:var(--sub);white-space:nowrap}
+.slide.v3 .v3-group{position:relative;border:1.5px dashed var(--line2);border-radius:8px;padding:20px 10px 10px}
+.slide.v3 .v3-group > .v3-glabel{position:absolute;left:10px;top:-11px;background:#fff;padding:0 6px;font-size:14.5px;font-weight:800;color:var(--navy-ink);white-space:nowrap}
+.slide.v3 .v3-group.solid{border-style:solid;border-color:var(--navy)}
+.slide.v3 .v3-group.tint{background:var(--tint2);border-color:transparent}
+.slide.v3 .v3-group.tint > .v3-glabel{background:transparent;top:4px}
+/* SVG: viewBox를 실제 px로, 선 navy 1.75 / 보조선 #B9C0CC dash, 글자 16~18px(.t) 14px(.ts) */
+.slide.v3 svg.v3-svg{display:block;overflow:visible;font-family:inherit}
+.slide.v3 svg.v3-svg .ln{stroke:var(--navy);stroke-width:1.75;fill:none}
+.slide.v3 svg.v3-svg .ln2{stroke:var(--line2);stroke-width:1.25;fill:none;stroke-dasharray:4 3}
+.slide.v3 svg.v3-svg .bx{fill:#fff;stroke:var(--navy);stroke-width:1.5}
+.slide.v3 svg.v3-svg .bxf{fill:var(--navy);stroke:none}
+.slide.v3 svg.v3-svg .bxs{fill:var(--tint);stroke:none}
+.slide.v3 svg.v3-svg .t{font-size:16px;font-weight:700;fill:var(--navy-ink)}
+.slide.v3 svg.v3-svg .tw{font-size:16px;font-weight:700;fill:#fff}
+.slide.v3 svg.v3-svg .ts{font-size:14px;font-weight:500;fill:var(--sub)}
+
+/* ── 표 ── */
+.slide.v3 table.v3-table{width:100%;border-collapse:collapse;font-size:15px;line-height:1.3}
+.slide.v3 table.v3-table th{background:var(--navy);color:#fff;font-size:14.5px;font-weight:700;padding:7px 10px;text-align:left;letter-spacing:-.2px}
+.slide.v3 table.v3-table td{padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:middle}
+.slide.v3 table.v3-table td:first-child{font-weight:700;color:var(--navy-ink)}
+.slide.v3 table.v3-table tr.hl td{background:var(--hl)}
+.slide.v3 table.v3-table .c{text-align:center}
+
+/* ── 미디어 ── */
+.slide.v3 .v3-media{position:relative;overflow:hidden;border-radius:6px;background:#E9ECF1;flex:0 0 auto}
+.slide.v3 .v3-media > img,.slide.v3 .v3-media > video{display:block;width:100%;height:100%;object-fit:contain;max-width:none}
+.slide.v3 .v3-media.cover > img,.slide.v3 .v3-media.cover > video{object-fit:cover}
+.slide.v3 .v3-media.dark{background:#121a29}
+.slide.v3 .v3-media.paper{background:#fff;box-shadow:inset 0 0 0 1px var(--line)}
+.slide.v3 .v3-badge{position:absolute;left:8px;top:8px;z-index:2;background:rgba(13,21,38,.78);color:#fff;font-size:12.5px;font-weight:700;
+  border-radius:4px;padding:3px 8px;letter-spacing:-.2px;pointer-events:none;white-space:nowrap}
+.slide.v3 .v3-badge.r{left:auto;right:8px}
+.slide.v3 .v3-badge em{font-style:normal;color:#FFD54A}
+.slide.v3 .v3-credit{position:absolute;right:6px;bottom:6px;z-index:2;font-size:10px;font-weight:600;color:#fff;background:rgba(0,0,0,.5);border-radius:3px;padding:1px 5px;pointer-events:none}
+.slide.v3 .v3-fig{display:flex;flex-direction:column;gap:5px;min-width:0}
+
+/* ── 수치·비교 ── */
+.slide.v3 .v3-metric{display:flex;flex-direction:column;align-items:center;gap:4px}
+.slide.v3 .v3-metric .num{font-size:40px;font-weight:800;letter-spacing:-1.2px;line-height:1;color:var(--navy-ink)}
+.slide.v3 .v3-metric .num small{font-size:20px;font-weight:700;margin-left:2px}
+.slide.v3 .v3-metric .lb{font-size:14px;font-weight:600;color:#444}
+.slide.v3 .v3-vs{align-self:center;font-size:16px;font-weight:800;color:var(--muted)}
+
+/* ── 배치 도우미 ── */
+.slide.v3 .v3-row{display:flex;gap:16px;min-height:0}
+.slide.v3 .v3-col{display:flex;flex-direction:column;gap:8px;min-width:0;min-height:0}
+.slide.v3 .v3-grow{flex:1 1 0;min-width:0;min-height:0}
+.slide.v3 .v3-g2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;min-height:0}
+.slide.v3 .v3-g3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;min-height:0}
+.slide.v3 .v3-rule{border-top:1px solid var(--line);margin:4px 0}

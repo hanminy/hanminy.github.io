@@ -1,0 +1,69 @@
+/* v3 field_demos — KIMM 필드로봇 사례 7장. 공통 nst-v3.css(.slide.v3) 위에 .v3-fd- 접두어로만 범위 한정 */
+
+/* 공통: 큰 단일 영상 */
+.v3-fd-big{align-self:center;width:663px;height:373px}
+
+/* field-01 협업 크레인 */
+.v3-fd-crane{display:grid;grid-template-columns:286px 1fr;gap:22px;height:100%}
+.v3-fd-crane .v3-list > li{font-size:15px}
+.v3-fd-crane .sys{width:100%;aspect-ratio:1165/816;background:#fff}
+.v3-fd-v4{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:10px 14px;align-content:center}
+.slide.v3 .v3-fd-v4 .v3-media{width:100%;aspect-ratio:16/9}
+
+/* field-02 원격제어 retrofit */
+.v3-fd-rc{display:flex;flex-direction:column;gap:12px;height:100%}
+.v3-fd-rc-top{display:grid;grid-template-columns:250px 30px 1fr 1fr;gap:0 14px;align-items:start}
+.v3-fd-rc-top > .v3-arrow{align-self:center;margin-top:-16px}
+.slide.v3 .v3-fd-rc-top .v3-media{width:100%;height:158px}
+.slide.v3 .v3-media > img.v3-fd-inset{position:absolute;right:6px;bottom:6px;width:42%;height:46%;object-fit:cover;border:2px solid #FFFF6C;border-radius:4px;z-index:2;box-shadow:0 1px 4px rgba(0,0,0,.4)}
+.v3-fd-feat{display:grid;grid-template-columns:1.3fr 1fr 1.2fr;gap:12px;flex:1;min-height:0}
+.v3-fd-feat > div{background:var(--tint2);border-top:3px solid var(--navy);border-radius:0 0 6px 6px;padding:9px 12px;display:flex;flex-direction:column;gap:4px}
+.v3-fd-feat b{font-size:16.5px;font-weight:800;color:var(--navy-ink)}
+.v3-fd-feat span{font-size:14.5px;color:#333;line-height:1.38}
+.v3-fd-logos{display:flex;align-items:center;justify-content:flex-end;gap:16px;height:22px}
+.v3-fd-logos .lb{font-size:13px;font-weight:600;color:var(--muted);margin-right:auto}
+.v3-fd-logos img{height:20px;width:auto}
+
+/* field-04 과수 플랫폼 */
+.v3-fd-orch{display:grid;grid-template-columns:1fr 196px;gap:18px;height:100%}
+.v3-fd-orch-l{display:grid;grid-template-columns:1.25fr 1fr;grid-template-rows:146px 1fr;gap:6px 12px;min-height:0}
+.v3-fd-orch-l .v3-fig{min-height:0}
+.slide.v3 .v3-fd-orch-l .v3-media{width:100%;flex:1 1 0;min-height:0}
+.slide.v3 .v3-fd-orch-l .drw > img.in3{position:absolute;left:6px;top:6px;width:84px;height:auto;background:#fff;border:1px solid var(--line);border-radius:3px;z-index:2}
+/* 원본 B#40과 같은 크롭(위아래 회색 띠 제외) */
+.slide.v3 .v3-fd-orch-l .opt > img{position:absolute;left:0;top:-4.862%;width:101.593%;height:109.067%;object-fit:fill}
+.v3-fd-orch-l .opt{aspect-ratio:117.3/91.7;flex:0 0 auto!important;margin-top:auto;margin-bottom:auto}
+.v3-fd-port{display:flex;flex-direction:column;gap:5px}
+.slide.v3 .v3-fd-port .v3-media{width:196px;height:348px}
+
+/* field-05 과수 시험 결과 */
+.v3-fd-res{display:grid;grid-template-columns:1fr 1fr 250px;grid-template-rows:181px 181px;gap:10px 16px;height:100%}
+.v3-fd-res .cell{display:flex;flex-direction:column;gap:4px;min-height:0}
+.v3-fd-res .cell .v3-h.bar{font-size:15px}
+.slide.v3 .v3-fd-res .plot{flex:1 1 0;min-height:0;background:#fff;box-shadow:inset 0 0 0 1px var(--line)}
+.v3-fd-res .wide{grid-column:1 / span 2}
+.v3-fd-res .vid{justify-content:center}
+.slide.v3 .v3-fd-res .vid .v3-media{width:250px;height:140.6px}
+
+/* field-07 정책 전이 */
+.v3-fd-pt{display:flex;flex-direction:column;gap:12px;height:100%}
+.slide.v3 .v3-fd-pt .v3-g2 .v3-media{width:100%;aspect-ratio:4/3;max-height:268px;background:#fff}
+.v3-fd-pt .v3-g2{gap:22px}
+.v3-fd-pt .v3-flow .v3-node{font-size:15px;min-height:48px}
+
+/* field-01 보완(2026-10-30, 팀장 지시): 성과 4항목 상단 한 줄 + 시스템 사진 확대·네이티브 라벨 */
+.v3-fd-crane.v3-fd-crane2{display:grid;grid-template-columns:420px 1fr;grid-template-rows:auto 1fr;gap:10px 18px}
+.v3-fd-crane2 .v3-fd-top{grid-column:1 / -1;display:grid;grid-template-columns:92px repeat(4,minmax(0,1fr));gap:10px;align-items:stretch}
+.v3-fd-crane2 .v3-fd-top .v3-h{align-self:center;font-size:17px}
+.slide.v3 .v3-fd-crane2 .v3-fd-top .v3-node{min-height:46px;padding:3px 8px;font-size:15px;font-weight:600;line-height:1.15;gap:1px}
+.slide.v3 .v3-fd-crane2 .v3-fd-top .v3-node b{font-weight:800}
+.slide.v3 .v3-fd-crane2 .v3-fd-top .v3-node small{font-size:14px}
+.v3-fd-crane2 .v3-fd-sys .sys{width:420px;height:auto;aspect-ratio:1165/816;background:#fff}
+.v3-fd-crane2 .v3-fd-v4{align-content:start}
+.v3-fd-crane2 .v3-fd-sys{gap:3px}
+.slide.v3 .v3-fd-sys .v3-media > svg.v3-fd-mk{position:absolute;inset:0;width:100%;height:100%}
+.v3-fd-mk .o{fill:none;stroke:#253149;stroke-width:9}
+.v3-fd-mk .i{fill:none;stroke:#FFFF6C;stroke-width:5}
+.slide.v3 .v3-fd-sys .lbl{position:absolute;transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;
+  box-sizing:border-box;padding:1px 6px;background:#253149;color:#fff;font-size:13px;font-weight:700;line-height:1.1;letter-spacing:-.3px;
+  white-space:nowrap;border-radius:3px;box-shadow:0 0 0 1px rgba(255,255,255,.85)}

@@ -1,0 +1,114 @@
+/* v3 part3 — 자율작업 굴착기 + 협업 제안. 공통 nst-v3.css(.slide.v3) 위에 .v3-p3- 접두어로만 범위 한정 */
+
+/* ── part3-01 데이터 파이프라인 ── */
+.v3-p3-pipe{display:flex;flex-direction:column;gap:6px;height:100%}
+.v3-p3-pipe .v3-group{padding-bottom:8px}
+.v3-p3-lower .v3-group{padding-top:16px}
+.v3-p3-acq{display:grid;grid-template-columns:168px 22px 1fr 22px 176px;align-items:stretch;padding:18px 8px 8px}
+.v3-p3-acq > .v3-arrow{align-self:center}
+.v3-p3-box{display:flex;flex-direction:column;gap:6px;border:1.5px solid var(--navy);border-radius:6px;padding:8px 10px;background:#fff;min-width:0}
+.v3-p3-box > b{font-size:15.5px;font-weight:800;color:var(--navy-ink);letter-spacing:-.3px}
+.slide.v3 .v3-p3-plat .v3-media{width:140px;height:76px}
+.v3-p3-plat .v3-note{font-size:14px}
+.slide.v3 .v3-p3-plat .v3-media > img{position:absolute;left:-17.427%;top:-28.238%;width:129.006%;height:128.238%;object-fit:fill}
+.v3-p3-pc{display:flex;align-items:center;gap:4px;font-size:14px;color:var(--sub);font-weight:600}
+.v3-p3-pc img{width:44px;height:30px;border-radius:3px;object-fit:cover}
+.v3-p3-rows{display:grid;grid-template-columns:66px 1fr;row-gap:3px;column-gap:8px;align-items:center}
+.v3-p3-rows > .k{font-size:14px;font-weight:700;color:var(--navy-ink);line-height:1.15}
+.v3-p3-thumbs{display:flex;align-items:center;gap:5px;font-size:14px;color:var(--muted)}
+.v3-p3-thumbs img{display:block;border-radius:2px}
+.v3-p3-grid3 img{width:27px;height:27px}
+.v3-p3-ts{width:126px;height:61px;border:1px solid var(--line)}
+.v3-p3-cam img{width:29px;height:20px}
+.v3-p3-map{display:flex;gap:3px}
+.v3-p3-map span{font-size:14px;letter-spacing:-.5px;font-weight:700;color:var(--navy-ink);background:var(--tint);border-radius:3px;padding:2px 4px;white-space:nowrap}
+.v3-p3-db{gap:7px}
+.v3-p3-db .r{display:flex;align-items:center;gap:6px;font-size:14.5px;font-weight:700;color:var(--navy-ink);background:var(--tint2);border-radius:4px;padding:4px 6px}
+.v3-p3-db .r img{width:22px;height:22px;border-radius:2px}
+.v3-p3-db .dots{text-align:center;color:var(--muted);font-weight:800;line-height:.8}
+.v3-p3-lower{display:grid;grid-template-columns:1fr 26px 1.08fr;gap:0;align-items:stretch;padding-top:8px}
+.v3-p3-lower > .v3-arrow{align-self:center}
+.v3-p3-learn{display:flex;align-items:center;justify-content:center;gap:4px}
+.v3-p3-learn .g{width:42px;height:42px;border-radius:3px}
+.v3-p3-learn .m{width:150px;height:65px;border:1px solid var(--line);border-radius:4px;background:#fff;object-fit:contain}
+.v3-p3-learn .v3-node{min-height:44px;padding:5px 8px;font-size:15px}
+.v3-p3-auto{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px}
+.v3-p3-auto img{width:330px;height:60px;object-fit:contain}
+.v3-p3-pipe{position:relative}
+.v3-p3-logos{position:absolute;left:0;right:0;bottom:-26px;display:flex;align-items:center;justify-content:flex-end;gap:14px;height:18px}
+.v3-p3-logos img{height:16px;width:auto;object-fit:contain}
+.v3-p3-logos .lb{font-size:12px;color:var(--muted);font-weight:600;margin-right:auto}
+
+/* ── part3-02 센서 구성 ── */
+.v3-p3-sens{position:relative;display:grid;grid-template-columns:182px 1fr 182px;gap:16px;height:100%}
+.v3-p3-scol{display:flex;flex-direction:column;gap:8px;justify-content:space-between;z-index:2}
+.v3-p3-tile{display:flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:6px;padding:5px;height:84px}
+.v3-p3-tile .ph{flex:0 0 92px;height:72px;display:flex;flex-direction:column;gap:2px}
+.v3-p3-tile .ph img{flex:1;min-height:0;width:100%;object-fit:cover;border-radius:3px}
+.v3-p3-tile b{font-size:14.5px;font-weight:700;color:var(--navy-ink);line-height:1.2;letter-spacing:-.3px}
+.v3-p3-main{align-self:center;position:relative;width:100%;aspect-ratio:382.6/242.8;overflow:hidden;border-radius:6px}
+.v3-p3-main > img{position:absolute;left:0;top:-18.185%;width:100%;height:118.185%;max-width:none}
+.v3-p3-lead{position:absolute;inset:0;pointer-events:none;z-index:3;overflow:visible}
+.v3-p3-lead line{stroke:#FFFF6C;stroke-width:2;filter:drop-shadow(0 0 1.2px #0D204A)}
+.v3-p3-lead circle.o{fill:none;stroke:#FFFF6C;stroke-width:2.2;filter:drop-shadow(0 0 1.5px #0D204A)}
+.v3-p3-lead circle.d{fill:#253149}
+
+/* ── part3-03 강화학습 ── */
+.v3-p3-rl{display:grid;grid-template-columns:236px 1fr;gap:22px;height:100%}
+.v3-p3-def{display:flex;flex-direction:column;gap:8px}
+.v3-p3-def .row{border-left:4px solid var(--navy);padding:4px 0 4px 10px}
+.v3-p3-def .row b{display:block;font-size:16px;font-weight:800;color:var(--navy-ink)}
+.v3-p3-def .row span{display:block;font-size:14.5px;color:#333;line-height:1.35}
+.v3-p3-def .row.y{border-left-color:#C9B800;background:var(--hl)}
+.v3-p3-seq{display:grid;grid-template-columns:1fr 30px 1fr;grid-template-rows:1fr 26px 1fr;align-items:center}
+.v3-p3-seq .v3-fig{align-self:stretch;justify-content:center}
+.slide.v3 .v3-p3-seq .v3-media{width:100%;aspect-ratio:2/1;background:#fff;box-shadow:inset 0 0 0 1px var(--line)}
+.v3-p3-seq .v3-arrow.down{grid-column:3}
+
+/* ── part3-04 시스템 구조 (위→아래 3계층) ── */
+.v3-p3-arch{display:flex;flex-direction:column;gap:0;height:100%}
+.v3-p3-arch > .v3-arrow{flex:0 0 18px;font-size:16px}
+.v3-p3-tier{position:relative;display:flex;gap:10px;align-items:stretch;padding:7px 8px 8px 112px;border:1.5px solid var(--navy);border-radius:8px}
+.v3-p3-tier.in{border-color:var(--line2);background:var(--tint2)}
+.v3-p3-tier > .lb{position:absolute;left:0;top:0;bottom:0;width:100px;border-radius:6px 0 0 6px;background:var(--navy);color:#fff;
+  display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;font-size:17px;font-weight:800;line-height:1.15}
+.v3-p3-tier > .lb small{font-size:12.5px;font-weight:600;opacity:.82;margin-top:3px}
+.v3-p3-tier.in > .lb{background:var(--muted)}
+.v3-p3-tier > .v3-node.in{flex:1;min-height:40px;align-items:flex-start;text-align:left;padding:3px 8px;border-width:0;background:#fff;border-radius:4px}
+.v3-p3-tier > .v3-node.in b{font-size:16px;color:var(--navy-ink)}
+.v3-p3-tier > .v3-node.in small{font-size:14px}
+.v3-p3-mod{flex:1 1 0;display:flex;flex-direction:column;gap:4px;min-width:0}
+.v3-p3-mod > b{font-size:16px;font-weight:800;color:var(--navy-ink);text-align:center;border-bottom:2px solid var(--navy);padding-bottom:2px;white-space:nowrap}
+.v3-p3-mod > span{display:flex;align-items:center;justify-content:center;text-align:center;background:var(--tint);border-radius:4px;
+  font-size:14.5px;font-weight:600;color:var(--ink);line-height:1.15;min-height:27px;padding:2px 4px}
+.v3-p3-low{display:flex;flex-direction:column;gap:4px}
+.v3-p3-low > b{font-size:16px;font-weight:800;color:var(--navy-ink)}
+.v3-p3-low .v3-node{min-height:46px;font-size:15.5px;padding:4px 8px}
+.v3-p3-low .v3-node small{font-size:13.5px}
+.v3-p3-tier > .v3-arrow{align-self:center}
+.v3-p3-pids{display:flex;gap:6px}
+.v3-p3-pids .v3-node{width:74px}
+
+/* ── part3-05 가상환경 1사이클 ── */
+.v3-p3-cyc .v3-node{font-size:15px;min-height:48px;padding:5px 6px}
+.v3-p3-vid{align-self:center;width:552px;height:310.5px}
+
+/* ── part3-06 실증 ── */
+.v3-p3-two{display:grid;grid-template-columns:1fr 1fr;gap:18px;height:100%}
+.slide.v3 .v3-p3-two .v3-media{width:100%}
+.v3-p3-pin{position:absolute;z-index:3;width:24px;height:24px;border-radius:50%;background:#FFFF6C;color:#1B2440;border:2px solid #253149;
+  display:grid;place-items:center;font-size:13.5px;font-weight:800;pointer-events:none;box-shadow:0 1px 3px rgba(0,0,0,.4)}
+.v3-p3-legend{display:flex;flex-direction:column;gap:6px}
+.v3-p3-legend div{display:flex;align-items:center;gap:8px;font-size:15px;font-weight:600;color:var(--ink)}
+.v3-p3-legend i{font-style:normal;width:22px;height:22px;flex:0 0 22px;border-radius:50%;background:#FFFF6C;border:2px solid #253149;display:grid;place-items:center;font-size:12.5px;font-weight:800;color:#1B2440}
+
+/* ── part3-07 협업 제안 ── */
+.v3-p3-col3{display:grid;grid-template-columns:1fr 34px 1.25fr 34px 1fr;align-items:center;height:100%}
+.v3-p3-side{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;padding:18px 12px;border-radius:8px;border:1.5px solid var(--navy);background:#fff;height:226px;justify-content:center}
+.v3-p3-side.pre{background:var(--tint2);border-style:dashed}
+.v3-p3-side b{font-size:22px;font-weight:800;color:var(--navy-ink)}
+.v3-p3-side span{font-size:16px;color:#333;line-height:1.35}
+.v3-p3-hub{display:flex;flex-direction:column;align-items:center;gap:7px;text-align:center}
+.slide.v3 .v3-p3-hub .v3-media{width:100%;aspect-ratio:16/9}
+.v3-p3-hub b{font-size:21px;font-weight:800;color:var(--navy-ink)}
+.v3-p3-hub span{font-size:15.5px;color:#444}
