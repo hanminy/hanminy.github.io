@@ -1,0 +1,68 @@
+/* v4 학습·제어 6장(v4-ctl-08~13). nst-v3.css(.slide.v3) 위에 .v4-ctl- 접두어로만 범위 한정 */
+.slide.v3 .v3-content a{color:var(--link);font-weight:700;text-decoration:none;white-space:nowrap}
+.slide.v3 .v3-content a:hover{text-decoration:underline}
+
+/* G08 학습 정책의 자리 */
+.v4-ctl-08{display:grid;grid-template-columns:440px 1fr;gap:22px;height:100%}
+.slide.v3 .v4-ctl-08 .ph{width:440px;height:330px}
+.v4-ctl-08 .stack{display:flex;flex-direction:column;gap:0;justify-content:center}
+.v4-ctl-08 .stack > .v3-arrow{flex:0 0 20px}
+.slide.v3 .v4-ctl-08 .stack > .v3-node{min-height:58px}
+.slide.v3 .v4-ctl-08 .stack > .v3-node small{font-size:14px}
+.v4-ctl-08 .mpc{margin-top:14px;font-size:14px;line-height:1.42;color:#333;border-top:1px solid var(--line);padding-top:9px}
+
+/* G09 시연 학습 */
+.v4-ctl-09{display:flex;flex-direction:column;gap:6px;height:100%}
+.v4-ctl-09 svg{width:782px;height:300px}
+.v4-ctl-09 .foot{font-size:14px;color:#333}
+
+/* G10 시뮬레이션 학습 */
+.v4-ctl-10{display:grid;grid-template-columns:1fr 330px;gap:20px;height:100%}
+.v4-ctl-10 .gifs{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:6px 10px;align-content:center}
+.slide.v3 .v4-ctl-10 .gifs .v3-media{width:100%;aspect-ratio:4/3}
+.v4-ctl-10 .gifs > figcaption{grid-column:1 / -1}
+.v4-ctl-10 .right{display:flex;flex-direction:column;gap:10px;justify-content:center}
+.slide.v3 .v4-ctl-10 .right .v3-node{min-height:44px;padding:5px 8px}
+.v4-ctl-10 .right .v3-arrow{flex:0 0 16px}
+.slide.v3 .v4-ctl-10 .real{width:330px;height:128px}
+
+/* G11 토질 조건 */
+.v4-ctl-11{display:grid;grid-template-columns:250px 1fr;gap:20px;height:100%}
+.v4-ctl-11 .model{display:flex;flex-direction:column;gap:10px;justify-content:center}
+.v4-ctl-11 .vars{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:5px}
+.v4-ctl-11 .vars li{font-size:16px;font-weight:600;color:var(--ink);line-height:1.25}
+.v4-ctl-11 .vars li b{display:inline-block;min-width:22px;color:var(--navy-ink);font-weight:800}
+.v4-ctl-11 .vars li small{font-size:14px;color:var(--sub);font-weight:500;margin-left:4px}
+.slide.v3 .v4-ctl-11 .model .v3-node{min-height:40px;padding:4px 8px;font-size:15.5px}
+.slide.v3 .v4-ctl-11 .model .v3-node small{font-size:14px}
+.v4-ctl-11 .model .v3-arrow{flex:0 0 16px}
+.v4-ctl-11 .plot{justify-content:center}
+.slide.v3 .v4-ctl-11 .plot .v3-media{width:100%;aspect-ratio:1000/600}
+
+/* G12 격차 측정 */
+.v4-ctl-12{display:grid;grid-template-columns:400px 1fr;gap:20px;height:100%}
+.v4-ctl-12 .ladder{display:flex;flex-direction:column;gap:16px;justify-content:center;padding-top:8px}
+.slide.v3 .v4-ctl-12 .ladder .v3-node{min-height:48px;padding:5px 8px;font-size:15.5px}
+.slide.v3 .v4-ctl-12 .ladder .v3-node small{font-size:14px}
+.v4-ctl-12 .ladder .v3-group{padding:16px 8px 8px}
+.v4-ctl-12 .plot{justify-content:center}
+.slide.v3 .v4-ctl-12 .plot .v3-media{width:100%;aspect-ratio:989/543}
+
+/* G13 언어 지시 */
+.v4-ctl-13{display:flex;flex-direction:column;gap:18px;height:100%;justify-content:center}
+.slide.v3 .v4-ctl-13 .quote{font-size:19px;color:var(--navy-ink);align-self:flex-start;padding:8px 14px;min-height:0}
+.v4-ctl-13 .mid{display:grid;grid-template-columns:190px 30px 1fr;align-items:center}
+.slide.v3 .v4-ctl-13 .mid > .v3-node{min-height:120px;font-size:17px}
+.v4-ctl-13 .bt{display:flex;flex-direction:column;gap:10px;padding-top:22px}
+.v4-ctl-13 .lane{display:grid;grid-template-columns:76px repeat(3,1fr);gap:6px;align-items:center}
+.v4-ctl-13 .lane b{font-size:16px;color:var(--navy-ink)}
+.v4-ctl-13 .lane span{font-size:15.5px;font-weight:600;text-align:center;background:var(--tint);border-radius:4px;padding:11px 4px;color:var(--ink)}
+.v4-ctl-13 .lane span.w{background:#fff;box-shadow:inset 0 0 0 1.2px var(--navy);color:var(--navy-ink)}
+.v4-ctl-13 .flag{font-size:14px;color:var(--sub);border-top:1px dashed var(--line2);padding-top:6px}
+.v4-ctl-13 .bottom{display:grid;grid-template-columns:300px 1fr;gap:16px;align-items:center}
+.v4-ctl-13 .bottom .note{font-size:14px;color:#333;line-height:1.4}
+.slide.v3 .v4-ctl-10 .right .v3-node small,.slide.v3 .v4-ctl-13 .v3-node small{font-size:14px}
+
+/* 검수 R02(2026-10-30): 실기 Action Sequence ④⑤ 반영 — 두 장비 4단계, 글자 크기 유지 */
+.v4-ctl-13 .lane{grid-template-columns:76px repeat(4,1fr);gap:5px}
+.v4-ctl-13 .lane span{padding:9px 3px;line-height:1.25;align-self:stretch;display:flex;align-items:center;justify-content:center}
