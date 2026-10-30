@@ -1,0 +1,36 @@
+/* v2-p3: 원본 AI Frontiers 슬라이드(780x540pt)를 960x540 가운데에 1:1 배치. 요소 좌표는 원본 XML 값 */
+.v2-p3-stage{position:absolute;left:90px;top:0;width:780px;height:540px;font-family:'Freesentation','Malgun Gothic','맑은 고딕',sans-serif;color:#000;letter-spacing:-.2px}
+.v2-p3-stage .sp,.v2-p3-stage .pic,.v2-p3-stage svg.ln{position:absolute;box-sizing:border-box}
+.v2-p3-stage svg.ln{overflow:visible}
+.v2-p3-stage .pic{overflow:hidden}
+.v2-p3-stage .pic img,.v2-p3-stage .pic video{display:block;max-width:none;background:transparent}
+.v2-p3-stage .pic video{background:#111}
+.v2-p3-stage .geo{position:absolute;inset:0}
+.v2-p3-stage .geo svg{position:absolute;left:0;top:0;overflow:visible}
+.v2-p3-stage .tx{position:relative;display:flex;flex-direction:column;width:100%;height:100%;box-sizing:border-box;line-height:1.2;font-weight:500}
+.v2-p3-stage .tx p{margin:0}
+.v2-p3-stage .tx .bu{display:inline-block;width:1.1em;text-indent:0}
+.v2-p3-stage .tx .bu.bimg{width:1em;height:1em;vertical-align:-.12em;margin-right:.35em;object-fit:contain}
+.v2-p3-stage .tx{line-height:1.2}
+/* 출처줄은 원본 구도와 겹치지 않게 왼쪽 여백(0~90px)에 */
+.v2-p3 > .src{left:8px;right:auto;width:80px;bottom:10px;white-space:normal;overflow:visible;text-overflow:clip;font-size:8.5px;line-height:1.3}
+.v2-p3.v2-p3-close > .src{left:38px;width:auto;right:70px;white-space:nowrap}
+.v2-p3 .title{z-index:6}
+/* v2-part3-07 협업 제안(네이티브) */
+.v2-p3-cl{position:absolute;left:38px;top:96px;width:884px;height:330px;display:grid;grid-template-columns:1fr 1.25fr 1fr;gap:34px;align-items:center}
+.v2-p3-cl-box{position:relative;height:190px;border-radius:10px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:10px;text-align:center;padding:14px}
+.v2-p3-cl-box.pre{background:#EEF2EA;border:2px solid #54833D}
+.v2-p3-cl-box.obs{background:#EEF1F8;border:2px solid #253149}
+.v2-p3-cl-box b{font-size:24px;font-weight:800;color:#1B2440}
+.v2-p3-cl-box span{font-size:16px;font-weight:500;color:#333}
+.v2-p3-cl-box .who{font-size:13.5px;font-weight:700;color:#fff;background:#54833D;border-radius:999px;padding:3px 12px}
+.v2-p3-cl-box.obs .who{background:#253149}
+.v2-p3-cl-box.pre::after,.v2-p3-cl-box.obs::before{content:"";position:absolute;top:50%;margin-top:-9px;border-top:9px solid transparent;border-bottom:9px solid transparent}
+.v2-p3-cl-box.pre::after{right:-26px;border-left:14px solid #404040}
+.v2-p3-cl-box.obs::before{left:-26px;border-right:14px solid #404040}
+.v2-p3-cl-mid{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center}
+.v2-p3-cl-mid img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:8px;display:block}
+.v2-p3-cl-mid b{font-size:22px;font-weight:800;color:#1B2440;margin-top:4px}
+.v2-p3-cl-mid span{font-size:15px;color:#444}
+.v2-p3-cl-msg{position:absolute;left:0;right:0;top:450px;text-align:center;font-size:22px;font-weight:700;color:#fff;background:#253149;padding:12px 0;margin:0}
+.v2-p3-cl-msg em{color:#FFFF6C}

@@ -1,0 +1,173 @@
+/* =====================================================================
+   v2 part2 — AI Frontiers Summit 2026 「AI Technologies for Field Robotics」 #2–17 원본 재현
+   원본 덱(780x540pt)의 카드·표·그림 배치를 960x540 캔버스로 옮기고, NST는 제목·로고·글꼴만.
+   모든 선택자는 .v2-p2 범위. 소유: part2
+   ===================================================================== */
+.v2-p2{
+  --p2-ink:#0F172A; --p2-sub:#64748B; --p2-line:#E2E8F0;
+  --p2-teal:#0891B2; --p2-blue:#2563EB; --p2-purple:#7C3AED; --p2-green:#059669;
+  --p2-orange:#D97706; --p2-red:#DC2626; --p2-gray:#64748B; --p2-black:#0B1220;
+}
+.v2-p2 > .title .sub{letter-spacing:1.6px;font-size:.5em;font-weight:700;color:var(--p2-acc,#0891B2);margin-left:10px;vertical-align:3px}
+.v2-p2 .v2-p2-abs{position:absolute}
+.v2-p2 .v2-p2-eng{font-size:11px;font-weight:700;letter-spacing:2.2px;text-transform:uppercase}
+
+/* ── 카드(원본: 상단 3pt 색 띠 + 흰 바탕 + 연회색 테두리) ───────────── */
+.v2-p2 .v2-p2-card{position:relative;background:#fff;border:1px solid var(--p2-line);border-top:4px solid var(--c,#0891B2)}
+.v2-p2 .v2-p2-card h3{font-size:20px;font-weight:700;color:var(--p2-ink);letter-spacing:-.4px;line-height:1.2}
+.v2-p2 .v2-p2-card .d{font-size:14px;color:var(--p2-sub);font-weight:500;line-height:1.35}
+.v2-p2 .v2-p2-card .k{font-size:14px;color:var(--c);font-weight:700;line-height:1.3}
+.v2-p2 .v2-p2-card .tag{position:absolute;right:16px;top:14px;font-size:13px;font-weight:700;letter-spacing:1.5px;color:var(--c)}
+.v2-p2 .c-teal{--c:var(--p2-teal)} .v2-p2 .c-blue{--c:var(--p2-blue)} .v2-p2 .c-purple{--c:var(--p2-purple)}
+.v2-p2 .c-green{--c:var(--p2-green)} .v2-p2 .c-orange{--c:var(--p2-orange)} .v2-p2 .c-red{--c:var(--p2-red)}
+.v2-p2 .c-gray{--c:#64748B} .v2-p2 .c-black{--c:#0F172A}
+.v2-p2 .v2-p2-grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px 14px}
+.v2-p2 .v2-p2-grid2 .v2-p2-card{padding:12px 18px 12px}
+.v2-p2 .v2-p2-grid2 .v2-p2-card .d{margin-top:4px}
+.v2-p2 .v2-p2-grid2 .v2-p2-card .k{margin-top:8px;padding-top:7px;border-top:2px solid #F1F3F6}
+/* 원본 하단 강조 박스 */
+.v2-p2 .v2-p2-take{border:1.5px solid var(--c);background:var(--bg,#DBEAFE);padding:10px 18px;font-size:17px;font-weight:700;color:var(--p2-ink)}
+.v2-p2 .v2-p2-take .v2-p2-eng{display:block;color:var(--c);font-size:12px;margin-bottom:3px}
+.v2-p2 .v2-p2-bul{list-style:none}
+.v2-p2 .v2-p2-bul li{position:relative;padding-left:26px;font-size:17px;line-height:1.4;color:var(--p2-ink);margin:0 0 20px}
+.v2-p2 .v2-p2-bul li::before{content:"";position:absolute;left:2px;top:7px;width:11px;height:11px;border-radius:50%;background:var(--dot,#0F172A)}
+.v2-p2 .v2-p2-cap{font-size:10.5px;color:#8A94A6;font-weight:500}
+.v2-p2 img.v2-p2-media{display:block;object-fit:contain}
+
+/* ── 01 Field Robotics 8분야 (B#2) ─────────────────────────────────── */
+#v2-part2-01 .v2-p2-fields{position:absolute;left:38px;top:80px;width:884px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px 14px}
+#v2-part2-01 .v2-p2-card{border-left:1px solid var(--p2-line);padding:8px 14px 8px;height:86px}
+#v2-part2-01 .v2-p2-card h3{font-size:21px;margin-top:2px}
+#v2-part2-01 .v2-p2-card .d{font-size:13px;margin-top:2px}
+#v2-part2-01 .v2-p2-card .v2-p2-eng{color:var(--c);font-size:12px;font-weight:600}
+#v2-part2-01 .ph{height:116px;margin-top:5px;display:flex;justify-content:center;align-items:flex-start}
+#v2-part2-01 .ph img{height:116px;width:auto;max-width:100%;object-fit:contain}
+
+/* ── 02 현장의 4대 도전과제 (B#4) ─────────────────────────────────── */
+#v2-part2-02 .v2-p2-ch{position:absolute;left:38px;top:78px;width:884px;display:grid;grid-template-columns:1fr 1fr;gap:12px 16px}
+#v2-part2-02 .v2-p2-card{height:84px;padding:0}
+#v2-part2-02 .num{position:absolute;left:16px;top:16px;font-size:44px;font-weight:800;color:var(--c);letter-spacing:-1px;line-height:1}
+#v2-part2-02 .txt{position:absolute;left:106px;top:9px;right:12px}
+#v2-part2-02 .txt .v2-p2-eng{color:var(--c);font-size:12px}
+#v2-part2-02 .txt h3{font-size:22px;margin-top:1px}
+#v2-part2-02 .txt .d{font-size:13.5px;margin-top:3px}
+#v2-part2-02 .ph{height:116px;margin-top:6px;padding-left:106px}
+#v2-part2-02 .ph img{height:116px;width:auto;object-fit:contain}
+
+/* ── 03 4계층 (B#5) ───────────────────────────────────────────────── */
+#v2-part2-03 .v2-p2-layers{position:absolute;left:38px;top:96px;width:884px;display:flex;flex-direction:column;gap:26px}
+#v2-part2-03 .row{position:relative;height:78px;border:1px solid #D6DCE5;background:#fff}
+#v2-part2-03 .lv{position:absolute;left:26px;top:15px;font-size:40px;font-weight:800;color:var(--c);line-height:1}
+#v2-part2-03 .nm{position:absolute;left:130px;top:15px;font-size:21px;font-weight:700;color:var(--p2-ink);line-height:1.15}
+#v2-part2-03 .nm small{display:block;font-size:15px;font-weight:500;color:var(--p2-sub);margin-top:3px}
+#v2-part2-03 .tech{position:absolute;left:430px;top:27px;font-size:16.5px;color:#475569;font-weight:500}
+#v2-part2-03 .tick{position:absolute;right:20px;bottom:12px;width:30px;height:6px;background:var(--c)}
+
+/* ── 04 3D 지형 표현 (B#6) ─────────────────────────────────────────── */
+#v2-part2-04 .fig{position:absolute;right:38px;top:62px;width:262px;height:183px;border:1px solid #333}
+#v2-part2-04 .lead{position:absolute;left:38px;top:96px;width:560px}
+#v2-part2-04 .v2-p2-grid2{position:absolute;left:38px;top:258px;width:884px}
+#v2-part2-04 .v2-p2-card{height:90px}
+#v2-part2-04 .v2-p2-grid2 .v2-p2-card .k{margin-top:6px;padding-top:5px}
+#v2-part2-04 .v2-p2-take{position:absolute;left:38px;top:458px;width:884px;--c:var(--p2-blue)}
+
+/* ── 05 Robust sensing (B#7) ───────────────────────────────────────── */
+#v2-part2-05 > .title{right:300px}
+#v2-part2-05 .list{position:absolute;left:38px;top:110px;width:600px;display:flex;flex-direction:column;gap:12px}
+#v2-part2-05 .it{border:1px solid var(--p2-line);border-left:5px solid var(--p2-teal);padding:10px 18px 10px}
+#v2-part2-05 .it h3{font-size:20px;font-weight:700;color:var(--p2-ink)}
+#v2-part2-05 .it .d{font-size:15px;color:var(--p2-sub);margin-top:2px}
+#v2-part2-05 .col{position:absolute;right:38px;top:62px;width:206px;display:flex;flex-direction:column;gap:8px}
+#v2-part2-05 .crop{width:206px;height:160.8px;overflow:hidden;position:relative}
+/* 원본 srcRect r=13.547% b=11.729% 그대로 */
+#v2-part2-05 .crop img{position:absolute;left:0;top:0;width:calc(206px / (1 - .13547));height:calc(160.8px / (1 - .11729));max-width:none}
+#v2-part2-05 .col > img{width:206px;height:154.6px}
+#v2-part2-05 .col video{width:206px;height:123.6px;object-fit:contain}
+
+/* ── 06 Vision FMs (B#8) ──────────────────────────────────────────── */
+#v2-part2-06 .fig{position:absolute;right:38px;top:62px;width:254px;height:178px}
+#v2-part2-06 .v2-p2-grid2{position:absolute;left:38px;top:258px;width:884px}
+#v2-part2-06 .v2-p2-card{height:90px}
+#v2-part2-06 .v2-p2-card .d{margin-top:12px}
+#v2-part2-06 .v2-p2-take{position:absolute;left:38px;top:460px;width:884px;--c:var(--p2-teal);--bg:#CFFAFE}
+
+/* ── 07 SLAM (B#9) ─────────────────────────────────────────────────── */
+#v2-part2-07 .v2-p2-grid2{position:absolute;left:38px;top:84px;width:884px}
+#v2-part2-07 .v2-p2-card{height:96px}
+#v2-part2-07 .v2-p2-card .k{border:0;padding:0;margin-top:2px}
+#v2-part2-07 .v2-p2-card .d{margin-top:6px}
+#v2-part2-07 .line{position:absolute;left:38px;top:310px;width:300px;font-size:16px;color:#475569;line-height:1.5}
+#v2-part2-07 .fig{position:absolute;right:38px;top:302px;width:560px;height:164.7px}
+
+/* ── 08 계획 기법 흐름 (B#10) ─────────────────────────────────────── */
+#v2-part2-08 table{position:absolute;left:38px;top:110px;width:884px;border-collapse:collapse}
+#v2-part2-08 th{background:var(--p2-black);color:#F8FAFC;font-size:13px;letter-spacing:2.4px;text-align:left;padding:13px 16px;font-weight:700}
+#v2-part2-08 td{padding:22px 16px;font-size:17px;color:var(--p2-ink);border-bottom:3px solid #F1F3F6}
+#v2-part2-08 td:first-child{color:var(--p2-orange);font-weight:800;font-size:19px;width:70px}
+#v2-part2-08 td:nth-child(3){font-size:16px}
+#v2-part2-08 td:last-child{color:var(--p2-sub)}
+#v2-part2-08 tr.hl td{background:#FEF3C7;border-bottom:0}
+
+/* ── 09 모방학습 (B#11) / 13 Sim-to-Real (B#17) — 좌우 패널 ─────────── */
+.v2-p2 .v2-p2-pane2{position:absolute;left:38px;top:96px;width:884px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.v2-p2 .v2-p2-pane2 > .v2-p2-card{padding:16px 22px 14px;height:var(--ph,300px)}
+.v2-p2 .v2-p2-pane2 .hd{font-size:13px;font-weight:700;letter-spacing:2.4px;color:var(--c);margin-bottom:18px}
+#v2-part2-09 .tech{display:flex;flex-direction:column}
+#v2-part2-09 .tech div{display:flex;justify-content:space-between;align-items:baseline;padding:11px 0 11px;border-bottom:3px solid #F1F3F6}
+#v2-part2-09 .tech b{font-size:17px;color:var(--p2-ink)}
+#v2-part2-09 .tech span{font-size:15.5px;color:var(--p2-sub)}
+
+/* ── 10 RL + Sim-to-Real (B#12) ───────────────────────────────────── */
+#v2-part2-10 .cards{position:absolute;left:38px;top:76px;width:884px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+#v2-part2-10 .v2-p2-card{height:112px;padding:10px 16px}
+#v2-part2-10 .v2-p2-card .k{font-size:13px;margin-top:6px}
+#v2-part2-10 .v2-p2-card .d{font-size:14.5px;margin-top:8px}
+#v2-part2-10 .gifs{position:absolute;left:38px;top:200px;width:884px;display:flex;justify-content:center;gap:14px}
+#v2-part2-10 .gifs img{height:302px;width:auto}
+
+/* ── 11 MPC + learned residuals (B#13) ────────────────────────────── */
+#v2-part2-11 .hd{position:absolute;left:38px;top:88px;font-size:21px;font-weight:700;color:var(--p2-green);letter-spacing:.5px}
+#v2-part2-11 .v2-p2-bul{position:absolute;left:38px;top:132px;width:390px}
+#v2-part2-11 .v2-p2-bul li{font-size:16px;margin-bottom:14px}
+#v2-part2-11 .fig{position:absolute;right:38px;top:96px;width:480px;height:270px}
+#v2-part2-11 .cite{position:absolute;right:40px;top:372px;font-size:15px;color:#333}
+
+/* ── 12 계층형 구조 (B#15) ────────────────────────────────────────── */
+#v2-part2-12 .v2-p2-pane2{top:96px}
+#v2-part2-12 .up{background:var(--p2-black);border:0;color:#fff}
+#v2-part2-12 .up .hd{color:#7DD3FC}
+#v2-part2-12 .lo{--c:var(--p2-green)}
+#v2-part2-12 .big{font-size:25px;font-weight:700;letter-spacing:-.5px;margin-bottom:30px}
+#v2-part2-12 .up .v2-p2-bul li{color:#E2E8F0;--dot:#E2E8F0}
+#v2-part2-12 .lo .v2-p2-bul li{color:#475569;--dot:#64748B}
+#v2-part2-12 .v2-p2-bul li{font-size:16.5px;margin-bottom:16px}
+#v2-part2-12 .v2-p2-take{position:absolute;left:38px;top:424px;width:884px;--c:var(--p2-purple);--bg:#EDE9FE;font-weight:500;font-size:16.5px}
+
+/* ── 13 Sim-to-Real gap (B#17) ────────────────────────────────────── */
+#v2-part2-13 .sol{border-left:5px solid var(--p2-green);padding:4px 0 6px 14px;margin-bottom:14px}
+#v2-part2-13 .sol b{display:block;font-size:17.5px;color:var(--p2-ink)}
+#v2-part2-13 .sol span{font-size:15px;color:var(--p2-sub)}
+
+/* ── 심층조사 보완 그림(외부 연구, 작게) ──────────────────────────── */
+#v2-part2-04 .ext{position:absolute;left:38px;top:66px;height:180px;display:flex;gap:12px;align-items:flex-start}
+#v2-part2-04 .ext img{height:180px;width:auto;border:1px solid var(--p2-line)}
+#v2-part2-04 .ext figcaption{font-size:13px;line-height:1.45;color:#475569;width:300px;padding-top:4px}
+#v2-part2-04 .ext figcaption b{color:var(--p2-ink);font-size:14px}
+#v2-part2-04 .ext figcaption span{display:block;margin-top:6px;font-size:12px;color:#8A94A6}
+#v2-part2-11 .flow{position:absolute;left:38px;top:412px;width:390px;height:auto;border:1px solid var(--p2-line)}
+#v2-part2-11 .cite{font-size:13px}
+#v2-part2-06 .ext{position:absolute;left:38px;top:66px;width:600px}
+#v2-part2-06 .ext img{width:540px;height:auto;display:block;border:1px solid var(--p2-line)}
+#v2-part2-06 .ext figcaption{font-size:12px;color:#64748B;margin-top:4px}
+#v2-part2-09 .v2-p2-pane2{--ph:255px}
+#v2-part2-09 .v2-p2-bul li{margin-bottom:14px}
+#v2-part2-09 .tech div{padding:8px 0}
+#v2-part2-09 .ext{position:absolute;left:38px;top:362px;width:884px;display:flex;gap:18px;justify-content:center}
+#v2-part2-09 .ext figure{display:flex;flex-direction:column;align-items:center}
+#v2-part2-09 .ext img{height:130px;width:auto;display:block}
+#v2-part2-09 .ext figcaption{font-size:12.5px;color:#64748B;margin-top:4px}
+#v2-part2-13 .v2-p2-pane2{top:84px}
+#v2-part2-13 .v2-p2-bul li{margin-bottom:12px;font-size:16.5px}
+#v2-part2-13 .ext img{width:370px;height:auto;display:block;margin-top:6px}
+#v2-part2-13 .ext figcaption{font-size:12.5px;color:#64748B;margin-top:3px}
+#v2-part2-13 .sol{margin-bottom:12px}
