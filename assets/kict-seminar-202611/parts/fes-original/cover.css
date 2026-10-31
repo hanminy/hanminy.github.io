@@ -1,0 +1,2 @@
+/* parts/fes-original/cover.css — 담당 C. FES 표지 규칙(.cover …)은 fes.css 원본 그대로 쓰고, 여기서는 배경 그림 초점만 지정 */
+#fo-cover .art.photo img{object-position:38% 50%}

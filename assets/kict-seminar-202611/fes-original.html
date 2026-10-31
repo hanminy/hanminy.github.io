@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>필드로봇에서의 AI활용 — FES 원본 기반 비교초안</title>
+<!-- FES 원본 기반 비교본(2026-10-31). 기존 v4와 별개 파일. 통합: .claude/tmp/kict-seminar-20261031/fes-original/editor/build_fes.py -->
+<link rel="stylesheet" href="parts/fes-original/fes.css">
+<link rel="stylesheet" href="parts/fes-original/cover.css">
+<link rel="stylesheet" href="parts/fes-original/technology.css">
+<link rel="stylesheet" href="parts/fes-original/kimm.css">
+</head>
+<body>
+<!-- ===== parts/fes-original/cover.html (담당 C) ===== -->
+<section class="slide cover" id="fo-cover" data-source="배치: FES2026_특별강연_슬라이드_v2_claude.html §1 · 문구: 기존 표지(v2-cover-01) · 배경: assets/v2/common/cover-excavator-crane-v2.png(기존 생성 일러스트 재사용)" data-title="표지">
+  <div class="art photo"><img src="assets/v2/common/cover-excavator-crane-v2.png" alt="굴착기와 이동식 크레인이 작업하는 공사 현장 개념 일러스트(생성 이미지)"></div>
+  <div class="head">한국건설기술연구원 지반연구본부 세미나<br>2026. 11.</div>
+  <div class="pill">KICT Seminar</div>
+  <h1>필드로봇에서의<br>AI활용</h1>
+  <div class="meta"><b>이한민</b> 산업기계DX연구실장<br>한국기계연구원</div>
+  <img class="clogo" src="assets/v2/common/kimm-logo.png" alt="한국기계연구원">
+  <div class="pno">1</div>
+  <aside class="speaker-notes"><p>표지 배경은 기존 표지에서 쓰던 개념 일러스트(생성 이미지)를 재사용. KIMM 실물 사진이 아님. 배치는 FES 2026 특별강연 표지와 같음.</p></aside>
+</section>
+<!-- ===== parts/fes-original/fes_pages.html (담당 C) ===== -->
+<section class="slide ch1 wide" id="fes-s02" data-source="FES2026_특별강연_슬라이드_v2_claude.html §2 (국문, 원본 그대로) · 대조 FES2026_특별강연_KIMM이한민_EN.pptx#2" data-title="1. AI, 로봇, 그리고 산업기계">
+<h1 class="title">1. AI, 로봇, 그리고 산업기계</h1>
+<img class="kimmlogo" src="assets/v2/common/kimm-logo.png" alt="한국기계연구원">
+<div class="keybar sm"><span>산업마다 <em>무인화와 자율화 요구</em>가 먼저 있었고, ChatGPT 모멘트가 그것을 <em>가속</em></span></div>
+<div class="content ">
+<svg viewBox="0 0 884 392" width="884" height="392" style="display:block;font-family:inherit;margin-top:10px"><rect x="801.5" y="22" width="76.5" height="302" fill="#F3F4F7"/><text x="839.7" y="33" text-anchor="middle" font-size="12" font-weight="700" fill="#8A93A3">전망</text><rect x="0" y="62" width="108" height="64" rx="7" fill="#3D52AD"/><text x="54.0" y="92" text-anchor="middle" font-size="19" font-weight="800" fill="#fff">AI</text><text x="54.0" y="111" text-anchor="middle" font-size="10.5" font-weight="500" fill="rgba(255,255,255,.9)">젠슨 황의 4단계</text><line x1="114" y1="94" x2="878" y2="94" stroke="#D9DDE3" stroke-width="2"/><rect x="0" y="164" width="108" height="64" rx="7" fill="#1F7A73"/><text x="54.0" y="188" text-anchor="middle" font-size="19" font-weight="800" fill="#fff">로봇</text><text x="54.0" y="207" text-anchor="middle" font-size="10.5" font-weight="500" fill="rgba(255,255,255,.9)">모델 → 학습</text><text x="54.0" y="219" text-anchor="middle" font-size="10.5" font-weight="500" fill="rgba(255,255,255,.9)">→ 파운데이션</text><line x1="114" y1="196" x2="878" y2="196" stroke="#D9DDE3" stroke-width="2"/><rect x="0" y="258" width="108" height="64" rx="7" fill="#A44E5C"/><text x="54.0" y="282" text-anchor="middle" font-size="19" font-weight="800" fill="#fff">산업기계</text><text x="54.0" y="301" text-anchor="middle" font-size="10.5" font-weight="500" fill="rgba(255,255,255,.9)">자동화 → 자율화</text><text x="54.0" y="313" text-anchor="middle" font-size="10.5" font-weight="500" fill="rgba(255,255,255,.9)">→ 피지컬 AI</text><line x1="114" y1="290" x2="878" y2="290" stroke="#D9DDE3" stroke-width="2"/><line x1="124.0" y1="32" x2="124.0" y2="322" stroke="#EEF0F3" stroke-width="1"/><text x="124.0" y="16" text-anchor="middle" font-size="12" font-weight="600" fill="#888">2010</text><line x1="204.6" y1="32" x2="204.6" y2="322" stroke="#EEF0F3" stroke-width="1"/><text x="204.6" y="16" text-anchor="middle" font-size="12" font-weight="600" fill="#888">2012</text><line x1="285.3" y1="32" x2="285.3" y2="322" stroke="#EEF0F3" stroke-width="1"/><text x="285.3" y="16" text-anchor="middle" font-size="12" font-weight="600" fill="#888">2014</text><line x1="365.9" y1="32" x2="365.9" y2="322" stroke="#EEF0F3" stroke-width="1"/><text x="365.9" y="16" text-anchor="middle" font-size="12" font-weight="600" fill="#888">2016</text><line x1="446.6" y1="32" x2="446.6" y2="322" stroke="#EEF0F3" stroke-width="1"/><text x="446.6" y="16" text-anchor="middle" font-size="12" font-weight="600" fill="#888">2018</text><line x1="527.2" y1="32" x2="527.2" y2="322" stroke="#EEF0F3" stroke-width="1"/><text x="527.2" y="16" text-anchor="middle" font-size="12" font-weight="600" fill="#888">2020</text><line x1="607.9" y1="32" x2="607.9" y2="322" stroke="#EEF0F3" stroke-width="1"/><text x="607.9" y="16" text-anchor="middle" font-size="12" font-weight="600" fill="#888">2022</text><line x1="688.5" y1="32" x2="688.5" y2="322" stroke="#EEF0F3" stroke-width="1"/><text x="688.5" y="16" text-anchor="middle" font-size="12" font-weight="600" fill="#888">2024</text><line x1="769.2" y1="32" x2="769.2" y2="322" stroke="#EEF0F3" stroke-width="1"/><text x="769.2" y="16" text-anchor="middle" font-size="12" font-weight="600" fill="#888">2026</text><line x1="849.8" y1="32" x2="849.8" y2="322" stroke="#EEF0F3" stroke-width="1"/><text x="849.8" y="16" text-anchor="middle" font-size="12" font-weight="600" fill="#888">2028</text><line x1="644.2" y1="32" x2="644.2" y2="362" stroke="#E8352E" stroke-width="1.6" stroke-dasharray="4 3"/><rect x="574.2" y="364" width="140" height="24" rx="12" fill="#E8352E"/><text x="644.2" y="381" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">ChatGPT 모멘트 → 가속</text><rect x="124.0" y="78" width="516.2" height="32" rx="5" fill="#ECEFFA" stroke="#3D52AD" stroke-width="1.2"/><text x="382.1" y="99" text-anchor="middle" font-size="13.5" font-weight="600" fill="#3D52AD">Perception AI</text><text x="382.1" y="127" text-anchor="middle" font-size="11.5" font-weight="500" fill="#555">보고 듣고 인식</text><rect x="644.2" y="78" width="60.5" height="32" rx="5" fill="#B9C3EC" stroke="#3D52AD" stroke-width="1.2"/><text x="674.4" y="99" text-anchor="middle" font-size="11.5" font-weight="600" fill="#3D52AD">Generative</text><text x="674.4" y="127" text-anchor="middle" font-size="11.5" font-weight="500" fill="#555">글, 그림</text><text x="674.4" y="141" text-anchor="middle" font-size="11.5" font-weight="500" fill="#555">코드 생성</text><rect x="708.7" y="78" width="56.5" height="32" rx="5" fill="#7B8AD0" stroke="#3D52AD" stroke-width="1.2"/><text x="736.9" y="99" text-anchor="middle" font-size="11.5" font-weight="600" fill="#fff">Agentic</text><text x="736.9" y="127" text-anchor="middle" font-size="11.5" font-weight="500" fill="#555">스스로 계획</text><text x="736.9" y="141" text-anchor="middle" font-size="11.5" font-weight="500" fill="#555">도구 실행</text><rect x="769.2" y="78" width="100.8" height="32" rx="5" fill="#3D52AD" stroke="#3D52AD" stroke-width="1.2"/><text x="819.6" y="99" text-anchor="middle" font-size="13.5" font-weight="700" fill="#fff">Physical AI</text><text x="819.6" y="127" text-anchor="middle" font-size="11.5" font-weight="500" fill="#555">현실에서 보고</text><text x="819.6" y="141" text-anchor="middle" font-size="11.5" font-weight="500" fill="#555">몸으로 행동</text><line x1="232.9" y1="46" x2="232.9" y2="78" stroke="#3D52AD" stroke-width="1" stroke-dasharray="2 2"/><circle cx="232.9" cy="46" r="5.5" fill="#3D52AD"/><text x="241.9" y="51" text-anchor="start" font-size="12.5" font-weight="700" fill="#3D52AD">AlexNet</text><line x1="374.0" y1="46" x2="374.0" y2="78" stroke="#3D52AD" stroke-width="1" stroke-dasharray="2 2"/><circle cx="374.0" cy="46" r="5.5" fill="#3D52AD"/><text x="383.0" y="51" text-anchor="start" font-size="12.5" font-weight="700" fill="#3D52AD">AlphaGo</text><line x1="644.2" y1="46" x2="644.2" y2="78" stroke="#3D52AD" stroke-width="1" stroke-dasharray="2 2"/><circle cx="644.2" cy="46" r="5.5" fill="#3D52AD"/><text x="653.2" y="51" text-anchor="start" font-size="12.5" font-weight="700" fill="#3D52AD">ChatGPT</text><!-- CES 2025 기조연설(2025-01-06)에서 피지컬 AI 제시: https://blogs.nvidia.com/blog/ces-2025-jensen-huang/ --><line x1="728.9" y1="46" x2="728.9" y2="66" stroke="#3D52AD" stroke-width="1" stroke-dasharray="2 2"/><circle cx="728.9" cy="46" r="5.5" fill="#3D52AD"/><text x="737.9" y="51" text-anchor="start" font-size="12.5" font-weight="700" fill="#3D52AD">CES 피지컬 AI</text><rect x="124.0" y="180" width="225.8" height="32" rx="5" fill="#EAF6F5" stroke="#1F7A73" stroke-width="1.2"/><text x="236.9" y="201" text-anchor="middle" font-size="13.5" font-weight="600" fill="#1F7A73">모델 기반 제어</text><text x="236.9" y="229" text-anchor="middle" font-size="11.5" font-weight="500" fill="#555">고전 비전과 제어</text><text x="236.9" y="243" text-anchor="middle" font-size="11.5" font-weight="500" fill="#555">정해진 동작의 정확한 반복</text><rect x="365.9" y="180" width="266.1" height="32" rx="5" fill="#EAF6F5" stroke="#1F7A73" stroke-width="1.2"/><text x="499.0" y="201" text-anchor="middle" font-size="13.5" font-weight="600" fill="#1F7A73">학습 기반 제어</text><text x="499.0" y="229" text-anchor="middle" font-size="11.5" font-weight="500" fill="#555">시뮬레이션 강화학습과 모방학습</text><text x="499.0" y="243" text-anchor="middle" font-size="11.5" font-weight="500" fill="#555">보행부터</text><rect x="648.2" y="180" width="221.8" height="32" rx="5" fill="#3EAE83" stroke="#1F7A73" stroke-width="1.2"/><text x="759.1" y="201" text-anchor="middle" font-size="13.5" font-weight="700" fill="#fff">파운데이션 모델</text><text x="759.1" y="229" text-anchor="middle" font-size="11.5" font-weight="500" fill="#555">VLA, RFM에 월드 액션 모델 추가</text><text x="759.1" y="243" text-anchor="middle" font-size="11.5" font-weight="500" fill="#555">언어로 이해하고, 예측하며 행동</text><rect x="769.2" y="152" width="100.8" height="22" rx="11" fill="#1F7A73"/><text x="819.6" y="167" text-anchor="middle" font-size="11.5" font-weight="700" fill="#fff">+ 월드 액션 모델</text><line x1="819.6" y1="174" x2="819.6" y2="180" stroke="#1F7A73" stroke-width="1.5"/><rect x="124.0" y="274" width="306.5" height="32" rx="5" fill="#F4E8E8" stroke="#A44E5C" stroke-width="1.2"/><text x="277.2" y="295" text-anchor="middle" font-size="13.5" font-weight="600" fill="#A44E5C">패턴 자동화</text><text x="277.2" y="323" text-anchor="middle" font-size="11.5" font-weight="500" fill="#555">정형 반복 작업</text><text x="277.2" y="337" text-anchor="middle" font-size="11.5" font-weight="500" fill="#555">머신 컨트롤과 가이던스</text><rect x="446.6" y="274" width="185.5" height="32" rx="5" fill="#F4E8E8" stroke="#A44E5C" stroke-width="1.2"/><text x="539.3" y="288" text-anchor="middle" font-size="12" font-weight="600" fill="#A44E5C">스마트건설기계, 스마트농기계</text><text x="539.3" y="301" text-anchor="middle" font-size="12" font-weight="600" fill="#A44E5C">자율화</text><text x="539.3" y="323" text-anchor="middle" font-size="11.5" font-weight="500" fill="#555">센서 융합, 경로 계획</text><text x="539.3" y="337" text-anchor="middle" font-size="11.5" font-weight="500" fill="#555">원격과 반자율</text><rect x="648.2" y="274" width="221.8" height="32" rx="5" fill="#A44E5C" stroke="#A44E5C" stroke-width="1.2"/><text x="759.1" y="295" text-anchor="middle" font-size="13.5" font-weight="700" fill="#fff">필드로봇 피지컬 AI</text><text x="759.1" y="323" text-anchor="middle" font-size="11.5" font-weight="500" fill="#555">학습 기반 자율작업</text><text x="759.1" y="337" text-anchor="middle" font-size="11.5" font-weight="500" fill="#555">굴착기와 농기계</text></svg>
+</div>
+<div class="pno">2</div>
+</section>
+<section class="slide ch1" id="fes-s03" data-source="FES2026_특별강연_슬라이드_v2_claude.html §3 (국문, 원본 그대로) · 대조 FES2026_특별강연_KIMM이한민_EN.pptx#3" data-title="2. 프로그래밍에서 학습으로의 전환">
+<aside class="sidebar"><div class="cnum">01</div><div class="cname sm">피지컬 AI<br>기술현황</div><div class="rule"></div><div class="cq">뇌, 데이터,<br>현장 적용의<br>과제</div></aside><h1 class="title">2. 프로그래밍에서 학습으로의 전환</h1>
+<img class="kimmlogo" src="assets/v2/common/kimm-logo.png" alt="한국기계연구원">
+<div class="keybar sm"><span>데이터와 경험으로 학습해, <em>더 다양한 작업과 환경에 대응</em></span></div>
+<div class="content ">
+
+    <div class="s03">
+      <div class="pane a"><div class="nm">프로그래밍 중심</div><div class="fl"><span class="chip">사람이 동작 설계</span><span class="ar">→</span><span class="chip">실행</span></div><div class="mw"><div class="mbox " style="width:372px;height:279px;"><video class="fit" src="assets/v2/part1/fanuc_design_execute.mp4" poster="assets/v2/part1/fanuc_design_execute.jpg" muted loop playsinline autoplay data-id="fanuc_design_execute"></video></div><span class="tag2">FANUC 태블릿 티치 펜던트</span></div></div>
+      <div class="mid">→</div>
+      <div class="pane b"><div class="nm">학습 중심</div><div class="fl"><span class="chip">시연·경험</span><span class="ar">→</span><span class="chip">학습</span><span class="ar">→</span><span class="chip">실행</span></div><div class="mw"><div class="mbox " style="width:372px;height:279px;"><video class="fit" src="assets/v2/part1/helix25_seq.mp4" poster="assets/v2/part1/helix25_seq.jpg" muted loop playsinline autoplay data-id="helix25_seq"></video></div><span class="tag2">Figure Helix 2.5 (2026.09)</span></div></div>
+    </div>
+</div>
+<div class="pno">3</div>
+</section>
+<section class="slide ch1" id="fes-s04" data-source="FES2026_특별강연_슬라이드_v2_claude.html §4 (국문, 원본 그대로) · 대조 FES2026_특별강연_KIMM이한민_EN.pptx#4" data-title="3. 행동 생성의 두 접근: VLA와 WAM">
+<aside class="sidebar"><div class="cnum">01</div><div class="cname sm">피지컬 AI<br>기술현황</div><div class="rule"></div><div class="cq">뇌, 데이터,<br>현장 적용의<br>과제</div></aside><h1 class="title">3. 행동 생성의 두 접근: VLA와 WAM</h1>
+<img class="kimmlogo" src="assets/v2/common/kimm-logo.png" alt="한국기계연구원">
+<div class="keybar sm"><span><em>이해를 행동으로 연결</em>하는 VLA · <em>미래를 예측해 행동</em>하는 WAM</span></div>
+<div class="content s04">
+  <!-- VLA: conceptual explanation, not a claim about the undisclosed Pi API architecture.
+       Pi API beta (2026-10-13): https://www.pi.website/blog/api-beta
+       Video: https://website.pi-asset.com/api/chef-robotics.mp4 (42–62 s, 1x). -->
+  <div class="pane a">
+    <h2 class="nm">VLA<span>Vision-Language-Action</span></h2>
+    <div class="flow" role="img" aria-label="VLA의 일반 원리: 장면·언어 지시·로봇 상태를 입력으로 시각·언어 이해를 통해 행동 생성">
+      <div class="node input">장면·언어 지시<br>로봇 상태</div><span class="arrow" aria-hidden="true">→</span>
+      <div class="node focus">시각·언어<br>이해</div><span class="arrow" aria-hidden="true">→</span>
+      <div class="node action">행동 생성</div>
+    </div>
+    <figure class="demo">
+      <div class="mbox"><video class="fit" src="assets/v2/part1/chef_burger.mp4" poster="assets/v2/part1/chef_burger.jpg" muted loop playsinline autoplay preload="auto" data-id="chef_burger" aria-label="햄버거 조립 영상"></video></div>
+      <figcaption>Chef Robotics · Physical Intelligence Pi API</figcaption>
+      <div class="demo-detail"><span>햄버거 조립</span></div>
+    </figure>
+  </div>
+  <!-- 1XWM: official paired prediction/execution of the SAME pull-tissue task.
+       https://www.1x.tech/discover/world-model-self-learning (2026-01-12)
+       Official desktop comparison: WM on the left, REAL on the right.
+       https://stream.mux.com/Z1K5cbFhyXGNVGDU2fWC2f7401yLIhgcMJPpmJ47yuQo.m3u8
+       Remuxed without changing the frames, order or playback speed.
+       The model generates future video from a starting frame and text; an IDM extracts actions.
+       This is 1XWM / NEO, not a Long-WAM or G1 internal visualization.
+       Diagrams summarize two approaches, not exclusive categories or exact input interfaces. -->
+  <div class="pane b">
+    <h2 class="nm">WAM<span>World Action Model</span></h2>
+    <div class="flow" role="img" aria-label="WAM의 원리: 장면·언어 지시·로봇 상태를 입력으로 미래 예측을 활용해 행동 생성">
+      <div class="node input">장면·언어 지시<br>로봇 상태</div><span class="arrow" aria-hidden="true">→</span>
+      <div class="node focus">미래 예측<br>활용</div><span class="arrow" aria-hidden="true">→</span>
+      <div class="node action">행동 생성</div>
+    </div>
+    <figure class="demo">
+      <div class="mbox"><video class="fit" src="assets/v2/part1/1xwm_pull_tissue_pair.mp4" poster="assets/v2/part1/1xwm_pull_tissue_pair.jpg" muted loop playsinline autoplay preload="auto" data-id="1xwm_pull_tissue_pair" aria-label="1X World Model과 NEO의 같은 티슈 뽑기 작업 비교: 왼쪽 미래 예측, 오른쪽 실제 수행"></video><div class="pair-labels" aria-hidden="true"><span>미래 예측</span><span>실제 수행</span></div></div>
+      <figcaption class="wam-caption">1X World Model · NEO</figcaption>
+      <div class="demo-detail"><span class="wam-task">티슈 뽑기</span></div>
+    </figure>
+  </div>
+</div>
+<div class="pno">4</div>
+</section>
+<section class="slide ch1" id="fes-s05" data-source="FES2026_특별강연_슬라이드_v2_claude.html §5 (국문, 원본 그대로) · 대조 FES2026_특별강연_KIMM이한민_EN.pptx#5" data-title="4. 로봇 두뇌의 구성 방식">
+<aside class="sidebar"><div class="cnum">01</div><div class="cname sm">피지컬 AI<br>기술현황</div><div class="rule"></div><div class="cq">뇌, 데이터,<br>현장 적용의<br>과제</div></aside><h1 class="title">4. 로봇 두뇌의 구성 방식</h1>
+<img class="kimmlogo" src="assets/v2/common/kimm-logo.png" alt="한국기계연구원">
+<div class="keybar sm"><span><em>하나의 모델이 행동을 직접 출력</em>하거나, <em>이해와 제어를 나누어</em> 처리</span></div>
+<div class="content ">
+
+    <div class="s05">
+      <!-- 좌: RT-2 논문 Figure 1 가운데 패널 / 우: figure.ai/news/helix(2025.02) 초기 Helix S2-S1 공식 구성도(모바일판 Lottie 프레임) -->
+      <div class="pane a"><div class="nm">행동 직접 출력<span>Google DeepMind RT-2 (2023)</span></div><div class="fig"><img class="rt2" src="assets/v2/part1/rt2_vla_panel.png" alt="RT-2 Vision-Language-Action 모델 구성도" data-id="rt2_vla_panel"><div class="rl" style="left:22px;top:204px;font-size:13.5px"><i>↑</i>지시와 영상 입력</div><div class="rl" style="left:150px;top:282px;font-size:13.5px"><i>↑</i>행동 토큰을 로봇 동작으로</div></div><div class="cap5">영상과 지시를 받아 하나의 VLA 모델이 행동 토큰을 직접 출력</div></div>
+      <div class="pane b"><div class="nm">이해와 제어 역할 분담<span>Figure Helix (2025.02)</span></div><div class="fig"><img class="hx" src="assets/v2/part1/helix_s1s2_panel.png" alt="Figure Helix System 2, System 1 구성도" data-id="helix_s1s2_panel"><div class="rl" style="top:101px">이해·계획<i>→</i></div><div class="rl" style="top:229px">연속 제어<i>→</i></div></div><div class="cap5">System 2가 장면과 지시를 이해, System 1이 연속 동작으로 변환</div></div>
+    </div>
+</div>
+<div class="pno">5</div>
+</section>
+<section class="slide ch1" id="fes-s06" data-source="FES2026_특별강연_슬라이드_v2_claude.html §6 (국문, 원본 그대로) · 대조 FES2026_특별강연_KIMM이한민_EN.pptx#6" data-title="5. 로봇 학습의 데이터 격차">
+<aside class="sidebar"><div class="cnum">01</div><div class="cname sm">피지컬 AI<br>기술현황</div><div class="rule"></div><div class="cq">뇌, 데이터,<br>현장 적용의<br>과제</div></aside><!-- S06 수치 출처: Ken Goldberg, "Good old-fashioned engineering can close the 100,000-year data gap in robotics",
+     Science Robotics, 2025-08-27. https://autolab.berkeley.edu/assets/publications/media/GOFE-Can-Close-the-100000-Year-Robot-Data-Gap-Science-Robotics-Aug-2025-scirobotics.aea7390.pdf
+     p.1: 현대 VLM 학습용 텍스트와 이미지를 사람이 읽고 보는 시간으로 환산하면 약 100,000년, 당시 최대 원격조작 데이터셋의 누적 시간은 약 1년(여러 시스템 병렬 수집 누적).
+     2026년 현재 로봇 데이터 총량이나 최신 최대치가 아님. 데이터셋 이름은 원문에 없음.
+     왼쪽 그림: LAION 블로그 "LAION-400-Million Open Dataset"의 clip-retrieval 검색 화면(https://laion.ai/images/blog/500m.png), 웹 이미지-설명 글 쌍 예시. 결과 격자만 크롭.
+     오른쪽 그림: DROID 공식 페이지 Dataset Visualizer 영상(https://droid-dataset.github.io/videos/dataset-visualizer.mp4) 5초 프레임, 원격조작 수집 로봇 관찰 프레임 격자만 크롭.
+     두 그림은 데이터 성격을 보여주는 대표 예시이며 위 1년 데이터셋 자체라는 뜻이 아님. -->
+<h1 class="title">5. 로봇 학습의 데이터 격차</h1>
+<img class="kimmlogo" src="assets/v2/common/kimm-logo.png" alt="한국기계연구원">
+<div class="keybar sm"><span>인터넷에 축적된 지식에 비해, <em>로봇의 행동 경험은 부족</em></span></div>
+<div class="content short">
+    <!-- 수정(2026-10-19, Codex 검토 반영): 그림은 데이터 성격의 예시, 수치는 Goldberg의 당시 비교로 분리.
+         DROID 공식(https://droid-dataset.github.io/): 76k 궤적, 350시간, 12개월에 걸쳐 수집. 12개월은 수집 기간이며 Goldberg의 약 1년과 같은 수치가 아님.
+         10만 년은 글과 그림을 사람이 읽고 보는 시간으로 환산한 추정, 1년은 원격조작 기록의 누적 시간. 산정 방식이 다름.
+         왼쪽 그림: 웹 문서, 코드, 이미지를 보여주는 예시 구성(위키백과 Robot 서두 문장, 예시 코드, 덱의 기존 사진 4장으로 제작) -->
+    <div class="s06">
+      <div class="cols"><div class="pn a"><div class="hd">인터넷의 글과 그림</div><div class="pic"><img src="assets/v2/part1/s06_web_data_example.jpg" alt="웹 문서, 코드, 이미지 예시"><span class="org">웹 데이터 예시</span></div></div><div class="vs">vs</div><div class="pn b"><div class="hd">로봇의 원격조작 경험</div><div class="pic"><img src="assets/v2/part1/droid_frames.jpg" alt="DROID"><span class="org">로봇 시연 데이터 예시</span></div></div></div>
+      <div class="gb">Goldberg (2025)의 당시 비교</div>
+      <div class="nums"><div class="nb a"><div class="num">약 10만 년</div><div class="lb">학습용 글과 그림을 사람이 읽고 보는 시간</div></div><div class="nb b"><div class="num">약 1년</div><div class="lb">당시 최대 원격조작 데이터셋의 누적 기록 시간</div></div></div>
+    </div>
+</div>
+<div class="closer"><span>로봇에는 <em>관찰, 행동, 결과가 연결된 경험</em>이 필요</span></div>
+<div class="pno">6</div>
+</section>
+<section class="slide ch1" id="fes-s07" data-source="FES2026_특별강연_슬라이드_v2_claude.html §7 (국문, 원본 그대로) · 대조 FES2026_특별강연_KIMM이한민_EN.pptx#7" data-title="6. 학습 데이터의 확보와 확장">
+<aside class="sidebar"><div class="cnum">01</div><div class="cname sm">피지컬 AI<br>기술현황</div><div class="rule"></div><div class="cq">뇌, 데이터,<br>현장 적용의<br>과제</div></aside><h1 class="title">6. 학습 데이터의 확보와 확장</h1>
+<img class="kimmlogo" src="assets/v2/common/kimm-logo.png" alt="한국기계연구원">
+<div class="keybar sm"><span>로봇으로 수집하고, <em>사람에게서 배우고, 합성 데이터로 확장</em></span></div>
+<div class="content short">
+
+    <!-- 수정(2026-10-19): 증강 영상 s07r4 — 위 칸은 원본 1.6-6.0s(소수 시연이 실제로 움직이는 구간) 반복, 아래 칸은 6.0s-끝(생성 결과). 하단에 보정과 검증 연결 문장 -->
+    <!-- 세 칸은 순차 단계가 아니라 서로 보완하는 대표 경로(배타적 전체 분류 아님)
+         ① 텔레오퍼레이션: Stanford Mobile ALOHA(2024.01) https://mobile-aloha.github.io/resources/teleop/teleop_restroom_10x_speed.mp4 — 사람이 리더 암으로 로봇을 조작해 관찰과 행동 기록, 원본 0-18s, 원본 표기 10x speed 유지
+         ② 사람 영상 기반 학습: Figure Project Go-Big(2025.09.18) https://www.figure.ai/news/project-go-big
+            위 = Video 2(Helix 학습용 사람 1인칭 영상 모자이크) 0-11.8s 반복, 아래 = Video 1 Humans_to_Robots_v3.mp4 7.0s-끝(같은 공간 로봇 이동)
+            공식 설명: Brookfield 실제 가정에서 수동 수집한 100% 1인칭 사람 영상만으로 Helix 이동(navigation) 학습, 이 사례에 한해 로봇 시연 없음. 유튜브 사용 언급 없음 → 슬라이드에 유튜브 표기하지 않음
+         ③ 합성 데이터 생성(시뮬레이션 증강): NVIDIA 외 DexMimicGen(arXiv 2024.10, ICRA 2025) https://dexmimicgen.github.io/resources/method-overview.mp4
+            위 = '5 source demos' 패널, 아래 = '1000 generated demos' 패널(3.0s-끝, 영문 라벨 행 제외). 공식 영상상 씨앗 시연은 Apple Vision Pro 원격조작으로 수집해 시뮬레이션에서 재생되는 형태
+            범위 표시: 시뮬레이션 증강(영상)과 월드 모델 생성. NVIDIA 블로그(2025.06.16) https://developer.nvidia.com/blog/enhance-robot-learning-with-synthetic-trajectory-data-generated-by-world-foundation-models/
+            — GR00T-Mimic은 기존 과제 시연 확장(Omniverse, Cosmos Transfer-1), GR00T-Dreams는 새 과제와 환경 데이터 생성(Cosmos Predict-2, Cosmos Reason) -->
+    <div class="s07">
+      <div class="col7"><div class="hd"><b>1</b>텔레오퍼레이션</div><div class="mbox " style="width:221px;height:228px;"><video class="fit" style="object-position:0 50%" src="assets/v2/part1/s07_teleop_aloha.mp4" poster="assets/v2/part1/s07_teleop_aloha.jpg" muted loop playsinline autoplay data-id="s07_teleop_aloha"></video></div><div class="org">Stanford, Mobile ALOHA (2024)</div><div class="d7">사람 조작으로 관찰과 행동 기록</div></div>
+      <div class="plus">+</div>
+      <div class="col7"><div class="hd"><b>2</b>사람 영상 기반 학습</div><div class="mbox " style="width:221px;height:228px;"><video class="fit" src="assets/v2/part1/s07r2_human_video_gobig.mp4" poster="assets/v2/part1/s07r2_human_video_gobig.jpg" muted loop playsinline autoplay data-id="s07r2_human_video_gobig"></video><span class="lb" style="top:6px">사람 1인칭 영상</span><div class="ab">▼ 학습에 활용</div><span class="lb" style="top:136px">로봇 이동</span></div><div class="org">Figure, Project Go-Big (2025.09)</div><div class="d7">1인칭 영상으로 로봇 이동 학습</div></div>
+      <div class="plus">+</div>
+      <div class="col7"><div class="hd"><b>3</b>합성 데이터 생성</div><div class="mbox " style="width:221px;height:228px;"><video class="fit" src="assets/v2/part1/s07r4_sim_aug_dexmimicgen.mp4" poster="assets/v2/part1/s07r4_sim_aug_dexmimicgen.jpg" muted loop playsinline autoplay data-id="s07r4_sim_aug_dexmimicgen"></video><span class="lb" style="top:6px">소수 시연</span><div class="ab">▼ 배치를 바꿔 증강</div><span class="lb" style="top:136px">다수 변형 궤적</span></div><div class="org">NVIDIA, DexMimicGen (2024)</div><div class="d7">소수 시연을 시뮬레이션에서 증강</div><div class="tg"><span class="on">시뮬레이션 증강</span><span>월드 모델 생성</span></div></div>
+    </div>
+</div>
+<div class="closer"><span>다양한 경험으로 확장하고, <em>실제 작업으로 보정하고 검증</em></span></div>
+<div class="pno">7</div>
+</section>
+<section class="slide ch1" id="fes-s08" data-source="FES2026_특별강연_슬라이드_v2_claude.html §8 (국문, 원본 그대로) · 대조 FES2026_특별강연_KIMM이한민_EN.pptx#8" data-title="7. 현장 적용의 조건">
+<aside class="sidebar"><div class="cnum">01</div><div class="cname sm">피지컬 AI<br>기술현황</div><div class="rule"></div><div class="cq">뇌, 데이터,<br>현장 적용의<br>과제</div></aside><h1 class="title">7. 현장 적용의 조건</h1>
+<img class="kimmlogo" src="assets/v2/common/kimm-logo.png" alt="한국기계연구원">
+<div class="keybar sm"><span>현장의 기준은 <em>안정적인 작업 완수, 지속적인 가동, 비용 대비 생산성</em></span></div>
+<div class="content short">
+
+    <!-- S08 근거(검증일 2026-10-19). 순서는 사용자 승인: 작업 신뢰도 → 운영 지속성 → 경제성
+         ① Telexistence TX SCARA, 일본 편의점 백룸 음료 진열. 이미지: https://tx-inc.com/wp-content/uploads/2022/02/IMG_0563-1-2048x1536.jpg (공식 Technology 페이지)
+            공식: "combining automatic control by artificial intelligence and remote control technology by human intelligence" https://tx-inc.com/en/technology/
+            취재: Rest of World 2025-10-20 https://restofworld.org/2025/philippines-offshoring-automation-tech-jobs/ — FamilyMart, Lawson 300여 점포, 마닐라 Astro Robotics 운영자가 24시간 원격 감시,
+            운영자 1명이 약 50대 감시, 오작동(약 4%) 시 VR 헤드셋과 조이스틱으로 직접 조작해 떨어진 물건 복구. 50대는 회사 공식 수치가 아니라 취재 기록
+         ② Figure 02 × BMW Group Plant Spartanburg, 판금 부품 적재. 영상: https://videos.ctfassets.net/qx5k8y1u9drj/2fhO8Txwv7qK3hSxtyANqe/e6b814d2e72dcb12d4d9219b4d672247/BMW_Clip_Wide.mp4 (0-11.8s 전체)
+            회사 발표 2025-11-19 https://www.figure.ai/news/production-at-bmw — 11개월 배치, 월-금 10시간 교대, 90,000+ 부품 적재, 1,250+ 가동시간(전체 로봇 누적, 연속 시간 아님),
+            "forearm, our top hardware failure point at BMW", Figure 03에서 손목 전장 재설계(분배 보드와 동적 케이블 제거). 고장 빈도는 "minimal hardware failures"로 표현됨
+         ③ Rosendin × ULC Technologies, 텍사스 Danevang 태양광 현장시험. 이미지: https://www.rosendin.com/wp-content/uploads/2025/12/Solar-Robots_2022-10_013_wordpress.jpg
+            회사 발표 2025-04-07 https://www.rosendin.com/news-updates/rosendin-to-demonstrate-robotic-solar-installers-at-texas-job-site/ — 2인 작업조 8시간 350-400장, 표준 3-4인 수작업조 대비 3배
+            생산성 자료이며 TCO나 투자회수 입증 아님 -->
+    <div class="s08">
+      <div class="cl"><div class="hd"><b>1</b>작업 신뢰도</div><div class="mbox " style="width:242px;height:200px;"><img class="fit" src="assets/v2/part1/s08_telexistence_store.jpg" alt="Telexistence TX SCARA" data-id="s08_telexistence_store"></div><div class="org">Telexistence, 일본 편의점 음료 진열</div><div class="n8">운영자 1명이 약 50대 감시</div><div class="d8">물건을 떨어뜨리는 등 예외 상황은<br>원격 운영자가 복구</div></div>
+      <div class="ar">→</div>
+      <div class="cl"><div class="hd"><b>2</b>운영 지속성</div><div class="mbox " style="width:242px;height:200px;"><video class="fit" src="assets/v2/part1/s08_figure02_bmw.mp4" poster="assets/v2/part1/s08_figure02_bmw.jpg" muted loop playsinline autoplay data-id="s08_figure02_bmw"></video></div><div class="org">Figure 02, BMW 스파턴버그 공장</div><div class="n8">누적 1,250시간+, 부품 9만 개+</div><div class="d8">가동률이 아닌 11개월 누적 실적<br>주요 고장 지점인 전완부 재설계</div></div>
+      <div class="ar">→</div>
+      <div class="cl"><div class="hd"><b>3</b>경제성</div><div class="mbox " style="width:242px;height:200px;"><img class="fit" src="assets/v2/part1/s08_rosendin_solar.jpg" alt="Rosendin 태양광 설치 로봇" data-id="s08_rosendin_solar"></div><div class="org">Rosendin, 미국 태양광 현장시험</div><div class="n8">2인 작업조, 8시간 350–400장</div><div class="d8">3–4인 수작업조 대비 3배 속도<br>생산성 개선 사례, 투자회수는 별도</div></div>
+    </div>
+</div>
+<div class="closer"><span>작업 성공뿐 아니라, <em>실패해도 복구하고 계속 운영</em>할 수 있어야 현장 적용</span></div>
+<div class="pno">8</div>
+</section>
+<section class="slide ch2" id="fes-s15" data-source="FES2026_특별강연_슬라이드_v2_claude.html §15 (국문, 원본 그대로) · 대조 FES2026_특별강연_KIMM이한민_EN.pptx#15" data-title="14. 기계연 로봇 연구의 발전">
+<style>
+/* Claude 3 전용: S15~S17 (.kimm3-*) */
+.kimm3-map{display:flex;justify-content:space-between;margin-top:2px}
+.kimm3-map .ax{width:250px;display:flex;flex-direction:column;align-items:center;gap:6px}
+.kimm3-map .nm{font-size:20px;font-weight:800;color:var(--deep);letter-spacing:-.6px;line-height:1}
+.kimm3-map .ds{font-size:15px;font-weight:700;color:#333;letter-spacing:-.4px}
+.kimm3-hist{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:12px;padding-top:9px;border-top:1px solid var(--bd);font-size:13px;color:#555;font-weight:600}
+.kimm3-hist .it{display:flex;align-items:center;gap:6px}
+.kimm3-hist .it b{color:var(--deep)}
+.kimm3-hist .ar{color:var(--main);font-size:11px}
+.kimm3-cap{font-size:14px;font-weight:700;color:#333;text-align:center;line-height:1.25;letter-spacing:-.3px}
+.kimm3-cap b{color:var(--deep)}
+.kimm3-cell{display:flex;flex-direction:column;align-items:center;gap:4px}
+.kimm3-k2{display:flex;gap:16px;align-items:flex-start}
+.kimm3-k2 .lf{width:470px;display:flex;flex-direction:column;gap:6px}
+.kimm3-k2 .badge{position:absolute;left:8px;top:8px;background:rgba(13,21,38,.78);color:#fff;font-size:12px;font-weight:700;border-radius:4px;padding:3px 8px;letter-spacing:-.2px}
+.kimm3-k2 .badge em{font-style:normal;color:#FFD54A}
+.kimm3-road2{display:flex;align-items:center;gap:8px;border:1px solid var(--bd);border-radius:8px;padding:8px 10px;margin-top:6px}
+.kimm3-road2 .lb{font-size:11.5px;font-weight:700;color:var(--gray-label);white-space:nowrap}
+.kimm3-road2 .st{font-size:12.5px;font-weight:700;color:#333;white-space:nowrap}
+.kimm3-road2 .st b{color:var(--main);font-weight:800;margin-right:3px}
+.kimm3-road2 .ar{color:var(--main);font-size:10px}
+.kimm3-k2 .rt{flex:1;display:flex;flex-direction:column;gap:8px}
+.kimm3-part{display:flex;gap:10px;align-items:center;border:1px solid var(--bd);border-radius:8px;padding:6px;height:114px;box-sizing:border-box}
+.kimm3-part .tx{display:flex;flex-direction:column;gap:3px;min-width:0}
+.kimm3-part .k{font-size:11.5px;font-weight:700;color:var(--gray-label);display:flex;align-items:center;gap:5px}
+.kimm3-part .h{font-size:15.5px;font-weight:800;color:var(--deep);letter-spacing:-.5px;line-height:1.22}
+.kimm3-part .d{font-size:12px;font-weight:600;color:#555;line-height:1.3;letter-spacing:-.2px}
+.kimm3-flow{display:grid;grid-template-columns:232px 20px 128px 20px 354px;grid-template-rows:26px 306px auto;column-gap:6px;row-gap:6px}
+.kimm3-flow .hd{display:flex;align-items:center;gap:6px;font-size:17px;font-weight:800;color:var(--deep);letter-spacing:-.5px;white-space:nowrap}
+.kimm3-flow .hd b{width:22px;height:22px;border-radius:50%;background:var(--main);color:#fff;display:grid;place-items:center;font-size:13px}
+.kimm3-flow .arr{grid-row:2;align-self:center;justify-self:center;color:var(--main);font-size:20px;font-weight:800}
+.kimm3-flow .body{grid-row:2;display:flex;flex-direction:column;justify-content:center;gap:12px}
+.kimm3-flow .vids{grid-row:2;display:flex;gap:10px}
+.kimm3-flow .caps{grid-row:3;display:flex;gap:10px}
+.kimm3-flow .caps .kimm3-cap{width:172px}
+.kimm3-chip{width:128px;border:1px solid var(--bd);border-left:4px solid var(--main);border-radius:6px;padding:9px 8px;box-sizing:border-box;font-size:14px;font-weight:700;color:#333;line-height:1.25}
+.kimm3-chip small{display:block;font-size:11.5px;font-weight:600;color:var(--gray-label);margin-top:2px}
+.kimm3-df{width:232px;border:1px dashed var(--bd);border-radius:6px;padding:7px 9px;box-sizing:border-box;font-size:12.5px;font-weight:600;color:#555;line-height:1.35}
+.kimm3-df b{color:var(--deep)}
+</style>
+<!-- S15 근거: Part1.pptx 파일순서 6(로봇 1.0→3.0: 1986 국내 최초 산업용 6축 다관절 로봇, 2010 산업용 양팔로봇 아미로, 카이로스 V0.7 현재), 8(세 연구축: 사람과 함께 / 사람이 가기 어려운 곳 / 사람의 능력을 넘어).
+     사진: 카이로스 실물 = Part1 image47.jpg(→ media/claude_kimm/claude-3/s16_kairos_v07.jpg), 굴착기 = media/img/kimm_excavator.jpg, 수술실 = media/img/kimm_medical_or.jpg(Part1 image20). 디지털트윈은 핵심 연구축에서 제외(승인안). -->
+<aside class="sidebar"><div class="cnum">03</div><div class="cname">KIMM</div><div class="rule"></div><div class="cq">기계연의<br>피지컬 AI 연구</div></aside><h1 class="title">14. 기계연 로봇 연구의 발전</h1>
+<img class="kimmlogo" src="assets/v2/common/kimm-logo.png" alt="한국기계연구원">
+<div class="keybar sm"><span>휴머노이드, 필드로봇, 의료로봇으로 <em>확장되는 기계 지능</em></span></div>
+<div class="content ">
+    <div class="kimm3-map">
+      <div class="ax"><div class="nm">휴머노이드</div><div class="mbox " style="width:250px;height:232px;"><img class="fit" src="assets/v2/part1/s16_kairos_v07.jpg" alt="휴머노이드 카이로스" style="object-position:50% 30%" data-id="kimm3_kairos"></div><div class="ds">사람의 환경에서 작업</div></div>
+      <div class="ax"><div class="nm">필드로봇</div><div class="mbox " style="width:250px;height:232px;"><img class="fit" src="assets/v2/part1/kimm_excavator.jpg" alt="KIMM 자율작업 굴착기" data-id="kimm_excavator"></div><div class="ds">산업·재난 현장의 작업</div></div>
+      <div class="ax"><div class="nm">의료로봇</div><div class="mbox " style="width:250px;height:232px;"><img class="fit" src="assets/v2/part1/kimm_medical_or.jpg" alt="수술실의 KIMM 의료로봇" data-id="kimm_medical_or"></div><div class="ds">정밀한 의료 작업</div></div>
+    </div>
+    <div class="kimm3-hist">
+      <div class="it"><div class="mbox " style="width:58px;height:36px;"><img class="fit" src="assets/v2/part1/kimm_robot1.jpg" alt="6축 산업로봇"></div><span><b>1986</b> 국내 최초 6축 산업로봇</span></div><span class="ar">▶</span>
+      <div class="it"><div class="mbox " style="width:58px;height:36px;"><img class="fit" src="assets/v2/part1/kimm_robot2.jpg" alt="양팔로봇 아미로" style="object-position:50% 25%"></div><span><b>2010</b> 양팔로봇 아미로</span></div><span class="ar">▶</span>
+      <div class="it"><span><b>현재</b> 휴머노이드 카이로스 V0.7</span></div>
+    </div>
+</div>
+<div class="pno">9</div>
+</section>
+<section class="slide ch2" id="fes-s16" data-source="FES2026_특별강연_슬라이드_v2_claude.html §16 (국문, 원본 그대로) · 대조 FES2026_특별강연_KIMM이한민_EN.pptx#16" data-title="15. 휴머노이드 카이로스">
+<!-- S16 근거(검증일 2026-10-19)
+     메인 영상: KIMM LIVE「2026 글로벌 기계기술 포럼」풀 영상 https://www.youtube.com/watch?v=FG5cxvooFqs (업로드 2026-09-16) 의 50:45~51:11(26초) 카이로스 V0.7 탈춤 시연, 무음 1280x720 → media/claude_kimm/claude-3/s16_kairos_talchum_forum20260907.mp4
+       행사: 2026-09-07 서울 한국과학기술회관, 한국기계연구원·국회 공동 주최 (파이낸셜뉴스 https://www.fnnews.com/news/202609071408550855 , 헬로디디 https://www.hellodd.com/news/articleView.html?idxno=113086 ; 원장 발표 PPT 표지 2026.09.07)
+     구동기: Part1.pptx 파일순서 13(휴머노이드 전용 양산형 경량 구동모듈, 기존 대비 20% 성능향상, 듀얼 와인딩 인버터), 14(모듈 Ф127.5x67, 2.1kg, 64 N·m / Peak 192 N·m, 1:16), 원장 포럼 발언(1:36 부근) "구동기 다섯 종류 설계 완료, 제작", "구동기가 하드웨어 플랫폼 가격의 60%"
+     핸드: Part1 16 + 원장 발언 "오래 전부터 인간 조작 능력에 필적하는 핸드 개발 노력이 축적되어 카이로스 핸드 개발에 사용". 영상 media/clips/kairos_hand.mp4(핀셋 소형 부품 조작)
+     촉각: Part1 17(피부형 3축 분리 감지, 대면적 몸통 10X16 Array "쓰다듬는 수준의 민감한 촉각 입력 인지 가능", 자가회복 피부층) + 원장 발언 "다른 휴머노이드와 차별된 게 촉각"
+     로드맵: Part1 20 (계획) -->
+<aside class="sidebar"><div class="cnum">03</div><div class="cname">KIMM</div><div class="rule"></div><div class="cq">기계연의<br>피지컬 AI 연구</div></aside><h1 class="title">15. 휴머노이드 카이로스</h1>
+<img class="kimmlogo" src="assets/v2/common/kimm-logo.png" alt="한국기계연구원">
+<div class="keybar sm"><span>이동과 조작을 위한 <em>로봇 플랫폼과 핵심부품</em> 개발</span></div>
+<div class="content ">
+    <div class="kimm3-k2">
+      <div class="lf">
+        <div class="mbox " style="width:470px;height:264px;"><video class="fit" src="assets/v2/part1/kairos_talchum_forum20260907.mp4" poster="assets/v2/part1/kairos_talchum_forum20260907.jpg" muted loop playsinline autoplay data-id="kimm3_kairos_talchum" style="object-position:62% 50%"></video><span class="badge">2026 글로벌 기계기술 포럼 <em>2026. 9. 7.</em></span></div>
+        <div class="kimm3-cap">카이로스 <b>V0.7</b> 탈춤 시연</div>
+        <div class="kimm3-road2"><span class="lb">로드맵</span><span class="st"><b>2027.4</b>V1</span><span class="ar">▶</span><span class="st"><b>2030.4</b>V2 초감각, 전신감각</span><span class="ar">▶</span><span class="st"><b>2035</b>실용화</span></div>
+      </div>
+      <div class="rt">
+        <div class="kimm3-part"><div class="mbox " style="width:132px;height:100px;"><video class="fit" src="assets/part1/kairos_actuator.mp4" poster="assets/part1/kairos_actuator.jpg" muted loop playsinline autoplay data-id="kairos_actuator"></video></div><div class="tx"><div class="k">구동기</div><div class="h">2.1kg으로<br>최대 192 N·m</div><div class="d">전용 구동기 5종 자체 설계, 성능 20% 향상</div></div></div>
+        <div class="kimm3-part"><div class="mbox " style="width:132px;height:100px;"><video class="fit" src="assets/part1/kairos_hand.mp4" poster="assets/part1/kairos_hand.jpg" muted loop playsinline autoplay data-id="kairos_hand" style="object-position:70% 50%"></video></div><div class="tx"><div class="k">로봇 핸드</div><div class="h">핀셋을 쥐고<br>작은 부품까지</div><div class="d">오랜 핸드 연구의 축적</div></div></div>
+        <div class="kimm3-part"><div class="mbox " style="width:132px;height:100px;"><img class="fit" src="assets/v2/part1/s16_torso_tactile.jpg" alt="대면적 몸통 촉각센서" data-id="kimm3_tactile"></div><div class="tx"><div class="k">촉각 피부 <span class="tag">차별점</span></div><div class="h">쓰다듬는 손길까지<br>감지</div><div class="d">3축 촉각, 자가회복 피부</div></div></div>
+      </div>
+    </div>
+</div>
+<div class="pno">10</div>
+</section>
+<section class="slide ch2" id="fes-s17" data-source="FES2026_특별강연_슬라이드_v2_claude.html §17 (국문, 원본 그대로) · 대조 FES2026_특별강연_KIMM이한민_EN.pptx#17" data-title="16. 로봇 작업지능과 학습 데이터">
+<!-- S17 근거: NRC_KIMM_RoGeTA_10p.pptx. RoGeTA(Robotic General Task AI, 2024-2029, 김정중 박사) = 카이로스와 별도의 KIMM 작업지능 연구. 카이로스 탑재/통합 표현 금지.
+     5(시연 수집: VR 컨트롤러 + 관절 매칭 양팔 마스터 장치, media4.avi [mix]tele → s17_rogeta_teleop.mp4, 0-16s),
+     7(계층형 작업 수행: 명령 이해, 계획·검증(VLM, LLM), 기본 동작 Pick/Place/Recovery, Motion Selector),
+     8(미학습 물체, 위치, 종류 변화 대응. [Table Clearing and Organization - Complex Task] = media16.avi → s17_rogeta_table_clearing.mp4 전체 6.25s;
+       [Waste Sorting and Object Handover] = media17.mp4(세로 영상, 좌우 검은 여백 crop 608:1080:656:0) → s17_rogeta_sorting_handover.mp4 전체 47s, 1배속),
+     9(1단계 2024-2026 작업별 모델, 2단계 2027-2029 단일 통합 모델 = 계획 → 화면에 단일 모델 주장 없음).
+     데이터 팩토리: Part1.pptx 파일순서 19(카이로스 사업의 개방형 데이터 팩토리, 25대 이상 동시운영 환경 "구축" = 계획/추진, 가동 실적 아님). -->
+<aside class="sidebar"><div class="cnum">03</div><div class="cname">KIMM</div><div class="rule"></div><div class="cq">기계연의<br>피지컬 AI 연구</div></aside><h1 class="title">16. 로봇 작업지능과 학습 데이터</h1>
+<img class="kimmlogo" src="assets/v2/common/kimm-logo.png" alt="한국기계연구원">
+<div class="keybar sm"><span>사람의 시연을 학습해 <em>다양한 작업으로 확장</em></span></div>
+<div class="content ">
+    <div class="kimm3-flow">
+      <div class="hd" style="grid-column:1"><b>1</b>시연 수집</div>
+      <div class="hd" style="grid-column:3"><b>2</b>이해와 계획</div>
+      <div class="hd" style="grid-column:5"><b>3</b>작업 수행 <span class="tag">RoGeTA</span></div>
+      <div class="body" style="grid-column:1">
+        <div class="kimm3-cell"><div class="mbox " style="width:232px;height:130px;"><video class="fit" src="assets/part1/s17_rogeta_teleop.mp4" poster="assets/part1/s17_rogeta_teleop.jpg" muted loop playsinline autoplay data-id="kimm3_rogeta_teleop"></video></div><div class="kimm3-cap"><b>RoGeTA</b> 교시 장치로<br>사람의 시연 수집</div></div>
+        <div class="kimm3-df"><b>데이터 팩토리</b><br>휴머노이드 여러 대의 동시 시연 수집 환경</div>
+      </div>
+      <div class="arr" style="grid-column:2">▶</div>
+      <div class="body" style="grid-column:3">
+        <div class="kimm3-chip">명령 이해<small>언어·시각 모델</small></div>
+        <div class="kimm3-chip">작업 계획<small>순서 수립과 검증</small></div>
+        <div class="kimm3-chip">동작 조합<small>집기, 놓기, 복구</small></div>
+      </div>
+      <div class="arr" style="grid-column:4">▶</div>
+      <div class="vids" style="grid-column:5">
+        <div class="mbox " style="width:172px;height:306px;"><video class="fit" src="assets/part1/s17_rogeta_table_clearing.mp4" poster="assets/part1/s17_rogeta_table_clearing.jpg" muted loop playsinline autoplay data-id="kimm3_rogeta_table"></video></div>
+        <div class="mbox " style="width:172px;height:306px;"><video class="fit" src="assets/part1/s17_rogeta_sorting_handover.mp4" poster="assets/part1/s17_rogeta_sorting_handover.jpg" muted loop playsinline autoplay data-id="kimm3_rogeta_sorting"></video></div>
+      </div>
+      <div class="caps" style="grid-column:5"><div class="kimm3-cap">테이블 정리</div><div class="kimm3-cap">분리수거와 물건 전달</div></div>
+    </div>
+</div>
+<div class="pno">11</div>
+</section>
+<section class="slide ch2" id="fes-s20" data-source="FES2026_특별강연_슬라이드_v2_claude.html §20 (국문, 원본 그대로) · 대조 FES2026_특별강연_KIMM이한민_EN.pptx#20" data-title="19. 의료로봇">
+<aside class="sidebar"><div class="cnum">03</div><div class="cname">KIMM</div><div class="rule"></div><div class="cq">기계연의<br>피지컬 AI 연구</div></aside><h1 class="title">19. 의료로봇</h1>
+<img class="kimmlogo" src="assets/v2/common/kimm-logo.png" alt="한국기계연구원">
+<div class="keybar sm"><span><em>정밀조작</em>과 <em>원격제어</em>로 의료 역량 확장</span></div>
+<!-- S20 근거(Claude 4, 2026-10-19 개정): Part2 파일순서 3·9(최소 침습 카테터/내시경 수술로봇, 영상 media1),
+     11(마스터/슬레이브 원격제어: 울릉도-대구, "US image acquisition for liver phantom", 지도 295 km, "~40 ms RTT", 영상 media12 master·media13 slave).
+     간 팬텀 실험이므로 환자 진료·임상 상용화 표현 금지. 자율 AI로 주장하지 않음. 마스터·슬레이브의 소재지는 원자료상 모호해 장소 대신 역할로 표기. -->
+<div class="content kimm4-med">
+  <div class="col">
+    <div class="kimm4-hd"><span class="chip">정밀조작</span>최소침습 카테터 수술로봇</div>
+    <div class="mbox" style="width:383px;height:262px;"><video class="fit" src="assets/part1/catheter.mp4" poster="assets/part1/catheter.jpg" muted loop playsinline autoplay data-id="k4_catheter"></video><span class="kimm4-label">심장 모형 속 카테터</span></div>
+    <div class="kimm4-cap">가는 관 끝을 <b>떨림 없이 원하는 방향으로</b> 조향</div>
+  </div>
+  <div class="col">
+    <div class="kimm4-hd"><span class="chip">원격제어</span>울릉도–대구 원격 초음파</div>
+    <div class="pair">
+      <div class="mbox" style="width:184px;height:262px;"><video class="fit" src="assets/part1/us_master_p.mp4" poster="assets/part1/us_master_p.jpg" muted loop playsinline autoplay data-id="k4_us_master_p"></video><span class="kimm4-label">의사 · 조작</span></div>
+      <div class="link"><i>⇄</i><b>295 km</b><span>왕복 지연<br>약 40 ms</span></div>
+      <div class="mbox" style="width:184px;height:262px;"><video class="fit" src="assets/part1/us_slave_p.mp4" poster="assets/part1/us_slave_p.jpg" muted loop playsinline autoplay data-id="k4_us_slave_p"></video><span class="kimm4-label tr">로봇 · 초음파</span></div>
+    </div>
+    <div class="kimm4-cap">의사의 손 조작을 먼 곳의 로봇이 따라 <b>초음파 영상 획득</b></div>
+  </div>
+</div>
+<div class="pno">12</div>
+</section>
+<section class="slide ch2" id="fes-s21" data-source="FES2026_특별강연_슬라이드_v2_claude.html §21 (국문, 원본 그대로) · 대조 FES2026_특별강연_KIMM이한민_EN.pptx#21" data-title="20. 디지털트윈">
+<aside class="sidebar"><div class="cnum">03</div><div class="cname">KIMM</div><div class="rule"></div><div class="cq">기계연의<br>피지컬 AI 연구</div></aside><h1 class="title">20. 디지털트윈</h1>
+<img class="kimmlogo" src="assets/v2/common/kimm-logo.png" alt="한국기계연구원">
+<div class="keybar sm"><span>실제 장비와 가상 트윈을 <em>실시간 연동</em>해 학습·최적화</span></div>
+<!-- S21 근거(Claude 4, 2026-10-19 개정): Part2 파일순서 25(자율주행/자율작업 디지털트윈: "무인 장비의 실시간 모니터링 및 통합 관제", 트랙터 영상 ppt/media/media33 70~100 s의 실차 화면과 트윈 화면을 나란히 재구성),
+     18(공작기계 디지털트윈 솔루션: 공정/장비/시스템 SDF, OPC-UA 연동, 영상 media15 38~56 s — 트윈 화면과 실제 설비가 한 장면).
+     DTC: 美 Digital Twin Consortium 테스트베드 프로그램에 KIMM 주도 'MANDATE-R2R Manufacturing'(이차전지 전극 롤투롤 자율제조, 다중 AI 에이전트 디지털트윈) 등록.
+     출처: iotinsider.com "Digital Twin Consortium adds four testbeds to programme"(2025-12-19), 머니투데이·쿠키뉴스 2026-01-28(이택민 책임연구원팀, 이차전지장비연구실).
+     롤투롤 실제 설비 영상은 원자료에 없어 트윈 영상만 작게 사용. -->
+<div class="content kimm4-dt">
+  <div class="row2">
+    <div class="pane" style="width:372px">
+      <div class="mbox" style="width:372px;height:200px;"><video class="fit" src="assets/part1/tractor_pair.mp4" poster="assets/part1/tractor_pair.jpg" muted loop playsinline autoplay data-id="k4_tractor_pair"></video><span class="kimm4-label real">실제 장비</span><span class="kimm4-label" style="left:194px">디지털트윈</span></div>
+      <div class="kimm4-cap">자율주행 트랙터 — <b>실차 작업을 트윈에서 실시간 관제</b></div>
+    </div>
+    <div class="pane" style="width:398px">
+      <div class="mbox" style="width:398px;height:200px;"><video class="fit" src="assets/part1/mt_twin.mp4" poster="assets/part1/mt_twin.jpg" muted loop playsinline autoplay data-id="k4_mt_twin"></video><span class="kimm4-label">디지털트윈</span><span class="kimm4-label tr real">실제 설비</span></div>
+      <div class="kimm4-cap">공작기계 자율제조 셀 — <b>설비·로봇 동작을 트윈과 연동</b></div>
+    </div>
+  </div>
+  <div class="kimm4-dtc">
+    <div class="badge"><small>美 Digital Twin Consortium</small><b>공식 테스트베드</b></div>
+    <div class="tx"><b>MANDATE-R2R</b> 이차전지 롤투롤 자율제조<br><span>실제 설비와 트윈을 실시간 연동, 다중 AI 에이전트가 공정을 스스로 최적화 · 2025.12 등록</span></div>
+    <div class="mbox" style="width:204px;height:115px;"><video class="fit" src="assets/part1/r2r_twin.mp4" poster="assets/part1/r2r_twin.jpg" muted loop playsinline autoplay data-id="k4_r2r_twin"></video></div>
+  </div>
+</div>
+<div class="pno">13</div>
+</section>
+<!-- ===== parts/fes-original/technology.html (담당 A) ===== -->
+<section class="slide ch3 ft-slide" id="fo-tech-01" data-source="AI Technologies for Field Robotics 이한민.pptx#2" data-title="Field Robotics">
+<aside class="sidebar"><div class="cname sm">필드로봇<br>AI 기술</div><div class="rule"></div></aside><h1 class="title">Field Robotics</h1>
+<img class="kimmlogo" src="assets/v2/common/kimm-logo.png" alt="한국기계연구원">
+<div class="keybar"><span><em>비정형·옥외 환경</em>에서 일하는 모든 로봇</span></div>
+<div class="content">
+  <div class="ft-fields">
+    <figure><div class="mbox"><img class="ft-cover" src="assets/v2/part2/B02_construction_image6.jpeg" alt="건설"></div><figcaption><b>건설</b>굴착기 · 휠로더 · 도저</figcaption></figure>
+    <figure><div class="mbox"><img class="ft-cover" src="assets/v2/part2/B02_agriculture_image7.jpeg" alt="농업"></div><figcaption><b>농업</b>트랙터 · 과수 모니터링</figcaption></figure>
+    <figure><div class="mbox"><img class="ft-cover" src="assets/v2/part2/B02_mining_image11.png" alt="광업"></div><figcaption><b>광업</b>채굴 · 운반 · 정리</figcaption></figure>
+    <figure><div class="mbox"><img class="ft-cover" src="assets/v2/part2/B02_forestry_image12.png" alt="임업"></div><figcaption><b>임업</b>벌채 · 식재 · 운반</figcaption></figure>
+    <figure><div class="mbox"><img class="ft-cover" src="assets/v2/part2/B02_disaster_image8.png" alt="재난·국방"></div><figcaption><b>재난·국방</b>탐색구조 · 정찰</figcaption></figure>
+    <figure><div class="mbox"><img class="ft-cover" src="assets/v2/part2/B02_marine_image13.jpeg" alt="해양"></div><figcaption><b>해양</b>해저 작업 · 양식</figcaption></figure>
+    <figure><div class="mbox"><img class="ft-cover" src="assets/v2/part2/B02_space_image9.jpeg" alt="우주"></div><figcaption><b>우주</b>행성 탐사</figcaption></figure>
+    <figure><div class="mbox"><img class="ft-cover" src="assets/v2/part2/B02_urban_image10.jpeg" alt="도시 인프라"></div><figcaption><b>도시 인프라</b>하수도 · 터널 점검</figcaption></figure>
+  </div>
+</div>
+<div class="pno">14</div>
+<aside class="speaker-notes"><p>원본: AI Technologies for Field Robotics(AI Frontiers Summit 2026) 2쪽. 원 제목 「Field Robotics — 비정형·옥외 환경에서 일하는 모든 로봇」을 제목과 키바로 나눔. 8분야 이름·예시와 사진 8장은 원본 그대로(영문 분야 라벨은 화면에서 생략). 사진의 원 출처는 원본에 표기되어 있지 않음.</p></aside>
+</section>
+<section class="slide ch3 ft-slide" id="fo-tech-02" data-source="AI Technologies for Field Robotics 이한민.pptx#4" data-title="현장의 4대 도전과제">
+<aside class="sidebar"><div class="cname sm">필드로봇<br>AI 기술</div><div class="rule"></div></aside><h1 class="title">현장의 4대 도전과제</h1>
+<img class="kimmlogo" src="assets/v2/common/kimm-logo.png" alt="한국기계연구원">
+<div class="keybar"><span><em>불확실성 · 부분관측 · 동적 환경</em>, 그리고 <em>안전과 신뢰</em></span></div>
+<div class="content">
+  <div class="ft-four">
+    <div class="ft-it"><div class="mbox"><img class="ft-cover" src="assets/v2/part2/B04_uncertainty_image17.jpeg" alt="불확실성"></div><div class="ft-hd"><b>01</b>불확실성</div><p>토질 · 흙의 밀도 · 식생 · 기상이<br>매 작업마다 다름</p></div>
+    <div class="ft-it"><div class="mbox"><img class="ft-cover" src="assets/v2/part2/B04_partialobs_image18.jpeg" alt="부분관측"></div><div class="ft-hd"><b>02</b>부분관측</div><p>지하 매설물 · 가려진 장애물<br>먼지로 인한 센서 저하</p></div>
+    <div class="ft-it"><div class="mbox"><img class="ft-cover" src="assets/v2/part2/B04_dynamic_image19.png" alt="동적 환경"></div><div class="ft-hd"><b>03</b>동적 환경</div><p>작업이 진행될수록<br>지형 자체가 바뀜 (굴착·운반)</p></div>
+    <div class="ft-it"><div class="mbox"><img class="ft-cover" src="assets/v2/part2/B04_safety_image20.jpeg" alt="안전과 신뢰"></div><div class="ft-hd"><b>04</b>안전과 신뢰</div><p>30톤 굴착기가<br>작업자 옆에서 움직임</p></div>
+  </div>
+</div>
+<div class="pno">15</div>
+<aside class="speaker-notes"><p>원본: 4쪽 「THE FOUR CHALLENGES · 현장의 4대 도전과제」. 01~04 번호, 항목명, 두 줄 설명, 사진 4장 원본 그대로. 키바는 원본 항목명을 이어 쓴 것. 영문 라벨(UNCERTAINTY 등)은 화면에서 생략.</p></aside>
+</section>
+<section class="slide ch3 ft-slide" id="fo-tech-03" data-source="AI Technologies for Field Robotics 이한민.pptx#5" data-title="4계층으로 보는 Field Robot AI">
+<aside class="sidebar"><div class="cname sm">필드로봇<br>AI 기술</div><div class="rule"></div></aside><h1 class="title">4계층으로 보는 Field Robot AI</h1>
+<img class="kimmlogo" src="assets/v2/common/kimm-logo.png" alt="한국기계연구원">
+<div class="keybar"><span><em>환경을 이해</em> → 무엇을 할지 결정 → 어디서 · 어떻게 할지 → <em>물리 제약 안에서 실행</em></span></div>
+<div class="content">
+  <div class="ft-stack">
+    <div class="ft-lv"><b>L1</b><div><strong>Perception &amp; World Model</strong><span>환경을 이해</span></div><p>Multi-Modal Fusion · NeRF · SAM</p></div>
+    <div class="ft-lv"><b>L2</b><div><strong>Task Reasoning</strong><span>무엇을 할지 결정</span></div><p>LLM · VLM · Foundation Models</p></div>
+    <div class="ft-lv"><b>L3</b><div><strong>Planning &amp; Decision</strong><span>어디서 · 어떻게 할지</span></div><p>RL · Imitation Learning · Diffusion Policy</p></div>
+    <div class="ft-lv"><b>L4</b><div><strong>Control</strong><span>물리 제약 안에서 실행</span></div><p>MPC · Learned Residuals · Safety Layer</p></div>
+  </div>
+</div>
+<div class="pno">16</div>
+<aside class="speaker-notes"><p>원본: 5쪽 「PART 02 · THE AI TECH STACK · 4계층으로 보는 Field Robot AI」. L1~L4 이름·설명·대표 기법 원본 그대로. 부 번호 「PART 02」는 화면에서 생략. 키바는 네 계층의 한국어 설명을 순서대로 이은 것.</p></aside>
+</section>
+<section class="slide ch3 ft-slide" id="fo-tech-04" data-source="AI Technologies for Field Robotics 이한민.pptx#6" data-title="3D 지형 표현">
+<aside class="sidebar"><div class="cname sm">필드로봇<br>AI 기술</div><div class="rule"></div></aside><h1 class="title">3D 지형을 어떻게 표현할 것인가</h1>
+<img class="kimmlogo" src="assets/v2/common/kimm-logo.png" alt="한국기계연구원">
+<div class="keybar sm"><span>단일 센서가 아닌 <em>LiDAR + Stereo + IMU 다중 융합</em>이 디폴트가 됨.</span></div>
+<div class="content">
+  <div class="ft-rep">
+    <div class="ft-grid">
+      <div class="ft-cell"><div class="ft-nm">2.5D Height Map</div><p>격자 셀당 높이의 평균·분산</p><p class="ft-k">실시간 5 Hz 업데이트 · 굴착·평탄화 표준</p></div>
+      <div class="ft-cell"><div class="ft-nm">Point Cloud</div><p>LiDAR 원본 데이터</p><p class="ft-k">정밀하지만 계산 비용 ↑</p></div>
+      <div class="ft-cell"><div class="ft-nm">NeRF / 3D Gaussian Splatting</div><p>미분 가능한 3D 재구성</p><p class="ft-k">시뮬레이션 합성 데이터 생성</p></div>
+      <div class="ft-cell"><div class="ft-nm">Occupancy Networks</div><p>자율주행에서 검증된 표현</p><p class="ft-k">건설·농업으로 확산 중</p></div>
+    </div>
+    <figure class="ft-fig"><div class="mbox ft-paper"><img class="ft-contain" src="assets/v2/part2/B06_pointcloud_registration_image21.png" alt="점군 정합과 표면 재구성 (a)~(f)"></div><figcaption>점군 정합 → 표면 재구성</figcaption></figure>
+  </div>
+</div>
+<div class="pno">17</div>
+<aside class="speaker-notes"><p>원본: 6쪽 「PERCEPTION · 3D REPRESENTATION」. 네 표현과 설명, 「KEY TAKEAWAY: 단일 센서가 아닌 LiDAR + Stereo + IMU 다중 융합이 디폴트가 됨.」은 원본 문구 그대로(KEY TAKEAWAY를 키바로 옮김). 그림은 원본 내장 image21(출처 미표기).</p></aside>
+</section>
+<section class="slide ch3 ft-slide" id="fo-tech-05" data-source="AI Technologies for Field Robotics 이한민.pptx#7 · 영상 ppt/media/media1.mp4(#7 rId1)" data-title="현장은 깨끗하지 않다">
+<aside class="sidebar"><div class="cname sm">필드로봇<br>AI 기술</div><div class="rule"></div></aside><h1 class="title">현장은 깨끗하지 않다</h1>
+<img class="kimmlogo" src="assets/v2/common/kimm-logo.png" alt="한국기계연구원">
+<div class="keybar"><span><em>눈 · 비 · 분진 · 진흙</em></span></div>
+<div class="content">
+  <div class="ft-sense">
+    <div class="ft-list">
+      <div class="ft-row"><div class="ft-nm">확률 기반 노이즈 제거</div><p>섹션별 노이즈 점군 밀도를 추정하여 제거</p></div>
+      <div class="ft-row"><div class="ft-nm">다중 모달 융합</div><p>단일 센서 실패를 다른 센서가 보완</p></div>
+      <div class="ft-row"><div class="ft-nm">자기지도학습</div><p>라벨 없이 인지 범위 확장</p></div>
+      <div class="ft-row"><div class="ft-nm">센서 클리닝</div><p>진흙 · 흙탕물 대응 물리적 클리닝</p></div>
+    </div>
+    <div class="ft-media">
+      <div class="mbox ft-vid"><video class="ft-contain" src="assets/v2/part2/B07_media1_full16s.mp4" poster="assets/v2/part2/B07_video_poster_image24.png" muted loop playsinline autoplay data-id="ft_b07_media1"></video></div>
+      <div class="ft-two">
+        <div class="mbox ft-crop"><img src="assets/v2/part2/B07_mud_tractor_image23.jpeg" alt="진흙 속 트랙터"></div>
+        <div class="mbox"><img class="ft-cover" src="assets/v2/part2/B07_offroad_ugv_image22.jpeg" alt="비포장 지형 무인 차량"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="pno">18</div>
+<aside class="speaker-notes"><p>원본: 7쪽 「PERCEPTION · ROBUST SENSING · 현장은 깨끗하지 않다 — 눈 · 비 · 분진 · 진흙」. 원 제목을 제목과 키바로 나눔. 네 항목 원본 그대로. 영상(원본 내장 media1.mp4, 16.0초, 소리 포함)과 사진 2장 원본 그대로, 트랙터 사진은 원본 자르기 비율 유지. 영상·사진 원 출처는 원본 미표기.</p></aside>
+</section>
+<section class="slide ch3 ft-slide" id="fo-tech-06" data-source="AI Technologies for Field Robotics 이한민.pptx#8" data-title="옥외 인지에 들어온 Vision FMs">
+<aside class="sidebar"><div class="cname sm">필드로봇<br>AI 기술</div><div class="rule"></div></aside><h1 class="title">옥외 인지에 들어온 Vision FMs</h1>
+<img class="kimmlogo" src="assets/v2/common/kimm-logo.png" alt="한국기계연구원">
+<div class="keybar sm"><span>→ <em>라벨 비용이 극단적으로 ↓</em> · 현장 데이터 수집 병목 해소</span></div>
+<div class="content">
+  <div class="ft-fm">
+    <div class="ft-grid">
+      <div class="ft-cell"><div class="ft-nm">SAM / SAM 2</div><span class="ft-chip">ZERO-SHOT 분할</span><p>라벨 없이 객체 마스킹</p></div>
+      <div class="ft-cell"><div class="ft-nm">DINOv2 / CLIP</div><span class="ft-chip">사전학습 특징</span><p>적은 데이터로 일반화</p></div>
+      <div class="ft-cell"><div class="ft-nm">Depth Anything</div><span class="ft-chip">단안 깊이 추정</span><p>일반화 성능 급상승</p></div>
+      <div class="ft-cell"><div class="ft-nm">Open-Vocabulary Det.</div><span class="ft-chip">자연어 쿼리</span><p>“흙더미 옆 사람”, “노란 안전모”</p></div>
+    </div>
+    <figure class="ft-fig"><div class="mbox ft-paper"><img class="ft-contain" src="assets/v2/part2/B08_excavation_seg_image25.png" alt="굴착 현장 객체 분할 예시"></div></figure>
+  </div>
+</div>
+<div class="pno">19</div>
+<aside class="speaker-notes"><p>원본: 8쪽 「PERCEPTION · VISION FOUNDATION MODELS」. 네 모델군·태그·설명과 하단 결론 「→ 라벨 비용이 극단적으로 ↓ · 현장 데이터 수집 병목 해소」 원본 그대로(결론을 키바로 옮김). 그림은 원본 내장 image25(출처 미표기).</p></aside>
+</section>
+<section class="slide ch3 ft-slide" id="fo-tech-07" data-source="AI Technologies for Field Robotics 이한민.pptx#9" data-title="GPS가 안 되는 곳에서 위치 추정">
+<aside class="sidebar"><div class="cname sm">필드로봇<br>AI 기술</div><div class="rule"></div></aside><h1 class="title">GPS가 안 되는 곳에서 어떻게 위치를 알까</h1>
+<img class="kimmlogo" src="assets/v2/common/kimm-logo.png" alt="한국기계연구원">
+<div class="keybar xs"><span>옥외 SLAM은 풀린 문제는 아니지만, <em>5년 전 대비 양상이 완전히 바뀌었다.</em></span></div>
+<div class="content">
+  <div class="ft-slam">
+    <div class="ft-grid">
+      <div class="ft-cell"><div class="ft-nm">LIO-SAM / FAST-LIO</div><p class="ft-k">LiDAR + IMU 융합</p><p>과수원 · 터널 · 실내 표준</p></div>
+      <div class="ft-cell"><div class="ft-nm">Visual-Inertial Odom.</div><p class="ft-k">카메라 + IMU</p><p>경량 플랫폼용</p></div>
+      <div class="ft-cell"><div class="ft-nm">Learning-based loop closure</div><p class="ft-k">변화하는 지형에서도 재인식</p><p>계절 변화 대응</p></div>
+      <div class="ft-cell"><div class="ft-nm">RTK + IMU Fusion</div><p class="ft-k">cm급 정밀도</p><p>GPS 단절 시 IMU 보완</p></div>
+    </div>
+    <div class="mbox ft-map"><img class="ft-contain" src="assets/v2/part2/B09_lidar_map_image26.png" alt="LiDAR 점군 지도"></div>
+  </div>
+</div>
+<div class="pno">20</div>
+<aside class="speaker-notes"><p>원본: 9쪽 「LOCALIZATION &amp; SLAM」. 네 카드와 하단 문장 원본 그대로(하단 문장을 키바로 옮김). 점군 지도는 원본 내장 image26(출처 미표기).</p></aside>
+</section>
+<section class="slide ch3 ft-slide" id="fo-tech-08" data-source="AI Technologies for Field Robotics 이한민.pptx#10" data-title="휴리스틱에서 학습 기반 결정으로">
+<aside class="sidebar"><div class="cname sm">필드로봇<br>AI 기술</div><div class="rule"></div></aside><h1 class="title">휴리스틱에서 학습 기반 결정으로</h1>
+<img class="kimmlogo" src="assets/v2/common/kimm-logo.png" alt="한국기계연구원">
+<div class="keybar xs"><span>→ 학습 기반은 데이터 의존적이지만, <em>같은 양의 데이터로 점점 더 많은 작업을 푼다.</em></span></div>
+<div class="content">
+  <table class="ft-table">
+    <thead><tr><th>GEN.</th><th>APPROACH</th><th>EXAMPLES</th><th>LIMITATION</th></tr></thead>
+    <tbody>
+      <tr><td>1세대</td><td>기하학적 경로계획</td><td>Dubins · A* · RRT</td><td>정적 가정 · 비용함수 수동</td></tr>
+      <tr><td>2세대</td><td>최적화 기반 제어</td><td>MPC · Trajectory Opt.</td><td>모델 의존 · 비선형 한계</td></tr>
+      <tr><td>3세대</td><td>학습 기반</td><td>Imitation · RL · Diffusion</td><td>데이터 의존 · 효율 폭발</td></tr>
+      <tr class="ft-hl"><td>4세대</td><td>LLM-as-planner</td><td>VLA · SayCan · PaLM-E</td><td>자연어 미션 → 행동 시퀀스</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="pno">21</div>
+<aside class="speaker-notes"><p>원본: 10쪽 「PLANNING EVOLUTION」. 표의 머리행·1~4세대·문구와 하단 문장 원본 그대로(하단 문장을 키바로 옮김), 4세대 강조 행 유지.</p></aside>
+</section>
+<section class="slide ch3 ft-slide" id="fo-tech-09" data-source="AI Technologies for Field Robotics 이한민.pptx#11" data-title="숙련자에게 배우기">
+<aside class="sidebar"><div class="cname sm">필드로봇<br>AI 기술</div><div class="rule"></div></aside><h1 class="title">숙련자에게 배우기</h1>
+<img class="kimmlogo" src="assets/v2/common/kimm-logo.png" alt="한국기계연구원">
+<div class="keybar"><span>굴착기 운전 숙련까지 4–5년 — <em>암묵 지식이 절대다수</em></span></div>
+<div class="content">
+  <div class="ft-il">
+    <div class="ft-pane"><div class="ft-nm">왜 시연인가</div>
+      <ul><li>굴착기 운전 숙련까지 4–5년 — 암묵 지식이 절대다수</li><li>보상함수 설계가 어려운 작업 (정밀 그레이딩)</li><li>대량 시연 수집은 retrofit + 일반 작업 중에도 가능</li></ul></div>
+    <div class="ft-pane"><div class="ft-nm">대표 기법</div>
+      <table class="ft-table ft-sm"><tbody>
+        <tr><td>Behavior Cloning · DAgger</td><td>기본 시연 모방</td></tr>
+        <tr><td>Diffusion Policy</td><td>다봉 행동 분포 생성</td></tr>
+        <tr><td>ACT · VQ-BeT</td><td>Action Chunking, 토큰화</td></tr>
+        <tr><td>Offline RL + Demos</td><td>시연 + RL 결합</td></tr></tbody></table></div>
+  </div>
+</div>
+<div class="pno">22</div>
+<aside class="speaker-notes"><p>원본: 11쪽 「IMITATION LEARNING · 숙련자에게 배우기」. 「왜 시연인가」 세 항목과 「대표 기법」 네 행 원본 그대로. 키바는 첫 항목 문구를 옮긴 것.</p></aside>
+</section>
+<section class="slide ch3 ft-slide" id="fo-tech-10" data-source="AI Technologies for Field Robotics 이한민.pptx#12 · GIF ppt/media/image28.gif, image27.gif(#12)" data-title="옥외에서 강화학습이 통하려면">
+<aside class="sidebar"><div class="cname sm">필드로봇<br>AI 기술</div><div class="rule"></div></aside><h1 class="title">옥외에서 강화학습이 통하려면</h1>
+<img class="kimmlogo" src="assets/v2/common/kimm-logo.png" alt="한국기계연구원">
+<div class="keybar sm"><span><em>Massively Parallel Sim</em> · Domain Randomization · <em>Real-to-Sim-to-Real</em></span></div>
+<div class="content">
+  <div class="ft-rl">
+    <div class="ft-grid">
+      <div class="ft-cell"><div class="ft-nm">Massively Parallel Sim</div><p class="ft-k">Isaac Sim · MuJoCo MJX · Vortex Studio</p><p>수천 개 로봇을 GPU 한 대에서 동시에 학습</p></div>
+      <div class="ft-cell"><div class="ft-nm">Domain Randomization</div><p class="ft-k">Texture · Friction · Lighting</p><p>토질 · 마찰 · 조명을 무작위화하여 일반화</p></div>
+      <div class="ft-cell"><div class="ft-nm">Real-to-Sim-to-Real</div><p class="ft-k">NeRF / GS reconstruction</p><p>실측으로 시뮬레이터를 보정</p></div>
+    </div>
+    <div class="ft-gifs">
+      <div class="mbox"><img class="ft-contain" src="assets/v2/part2/B12_parallel_sim_left_image28.gif" alt="병렬 시뮬레이션 GIF (왼쪽)"></div>
+      <div class="mbox"><img class="ft-contain" src="assets/v2/part2/B12_parallel_sim_right_image27.gif" alt="병렬 시뮬레이션 GIF (오른쪽)"></div>
+    </div>
+  </div>
+</div>
+<div class="pno">23</div>
+<aside class="speaker-notes"><p>원본: 12쪽 「REINFORCEMENT LEARNING + SIM-TO-REAL」. 세 카드 문구 원본 그대로, 키바는 세 카드 이름. GIF 2개 원본 그대로(image28 6.0초·image27 5.0초, 반복 재생, 원 출처 미표기).</p></aside>
+</section>
+<section class="slide ch3 ft-slide" id="fo-tech-11" data-source="AI Technologies for Field Robotics 이한민.pptx#13" data-title="학습이 모델 기반을 대체하지 않는다">
+<aside class="sidebar"><div class="cname sm">필드로봇<br>AI 기술</div><div class="rule"></div></aside><h1 class="title">학습이 모델 기반을 대체하지 않는다</h1>
+<img class="kimmlogo" src="assets/v2/common/kimm-logo.png" alt="한국기계연구원">
+<div class="keybar"><span><em>MPC가 여전히 핵심인 이유</em></span></div>
+<div class="content">
+  <div class="ft-mpc">
+    <ul>
+      <li>유압 펌프 파워 한계, 실린더 변위, 안전 제약은 사전 보장 필수</li>
+      <li>ML 정책 제안 → MPC가 안전 영역으로 사영 (projection)</li>
+      <li>Augmented Lagrangian iLQR — 실시간 (&lt;80ms) 제약 최적화</li>
+      <li>Learned residuals — 모델 오차를 신경망이 보정</li>
+    </ul>
+    <figure class="ft-fig"><div class="mbox ft-paper"><img class="ft-contain" src="assets/v2/part2/B13_mpc_excavator_image29.png" alt="굴착기 MPC 시뮬레이션 — 궤적, 활성 제약, 외란 추정"></div><figcaption>[SNU21]</figcaption></figure>
+  </div>
+</div>
+<div class="pno">24</div>
+<aside class="speaker-notes"><p>원본: 13쪽 「CONTROL · MPC + LEARNED RESIDUALS」. 네 항목과 [SNU21] 표기, 그림(원본 내장 image29) 원본 그대로. 키바는 원본 소제목 「MPC가 여전히 핵심인 이유」.</p></aside>
+</section>
+<section class="slide ch3 ft-slide" id="fo-tech-12" data-source="AI Technologies for Field Robotics 이한민.pptx#15" data-title="한 모델로 모두 풀지 않는다">
+<aside class="sidebar"><div class="cname sm">필드로봇<br>AI 기술</div><div class="rule"></div></aside><h1 class="title">한 모델로 모두 풀지 않는다</h1>
+<img class="kimmlogo" src="assets/v2/common/kimm-logo.png" alt="한국기계연구원">
+<div class="keybar"><span><em>계층 분리가 실용 정답</em></span></div>
+<div class="content">
+  <div class="ft-hier">
+    <div class="ft-layer ft-up"><div class="ft-tag">UPPER · LLM REASONING</div><div class="ft-nm">자연어 명령 → 작업 분해</div>
+      <div class="ft-items"><span>의존관계 · 선행조건 검증</span><span>원자적 자율 작업 블록 (atomic blocks) 정의</span><span>기계 간 협업 조율 (팀 운용)</span></div></div>
+    <div class="ft-link">↓ ↑</div>
+    <div class="ft-layer ft-lo"><div class="ft-tag">LOWER · E2E POLICY</div><div class="ft-nm">Visuomotor 행동 생성</div>
+      <div class="ft-items"><span>환경 인식 (점군 · 카메라)</span><span>기계 제어 (굴삭 · 적재 · 이동)</span><span>물리 상호작용 (토질 · 경사 적응)</span></div></div>
+    <p class="ft-foot">→ Bedrock · Figure · Physical Intelligence 모두 유사 구조. 상위(언어)와 하위(운동)는 다른 추론 빈도와 다른 학습 데이터를 요구.</p>
+  </div>
+</div>
+<div class="pno">25</div>
+<aside class="speaker-notes"><p>원본: 15쪽 「HIERARCHICAL AI ARCHITECTURE · 한 모델로 모두 풀지 않는다 — 계층 분리가 실용 정답」. 원 제목을 제목과 키바로 나눔. 상·하위 두 층의 문구와 하단 문장 원본 그대로. 좌우 두 패널을 위아래 두 층으로 배치만 바꿈.</p></aside>
+</section>
+<section class="slide ch3 ft-slide" id="fo-tech-13" data-source="AI Technologies for Field Robotics 이한민.pptx#17" data-title="Sim-to-Real Gap">
+<aside class="sidebar"><div class="cname sm">필드로봇<br>AI 기술</div><div class="rule"></div></aside><h1 class="title">Sim-to-Real Gap</h1>
+<img class="kimmlogo" src="assets/v2/common/kimm-logo.png" alt="한국기계연구원">
+<div class="keybar"><span><em>여전히 가장 큰 적</em></span></div>
+<div class="content">
+  <div class="ft-s2r">
+    <div class="ft-pane"><div class="ft-nm">PROBLEM</div>
+      <ul><li>토양 · 유압의 비선형성은 시뮬레이션이 약함</li><li>시뮬 → 현장 전이 시 정책이 자주 깨짐</li><li>드물고 위험한 상황을 시뮬에서만 학습할 수 없음</li></ul></div>
+    <div class="ft-mid">→</div>
+    <div class="ft-pane"><div class="ft-nm">EMERGING SOLUTIONS</div>
+      <div class="ft-sol"><b>Differentiable Simulation</b><span>Brax · Genesis · MuJoCo MJX</span></div>
+      <div class="ft-sol"><b>Real-to-Sim</b><span>NeRF · 3D Gaussian Splatting로 재구성 후 학습</span></div>
+      <div class="ft-sol"><b>Foundation Pretraining</b><span>시뮬 의존도 ↓, 적은 현장 데이터로 적응</span></div></div>
+  </div>
+</div>
+<div class="pno">26</div>
+<aside class="speaker-notes"><p>원본: 17쪽 「PART 04 · CHALLENGES AHEAD · Sim-to-Real Gap — 여전히 가장 큰 적」. 원 제목을 제목과 키바로 나눔. PROBLEM 세 항목과 EMERGING SOLUTIONS 세 항목 원본 그대로. 부 번호 「PART 04」는 화면에서 생략.</p></aside>
+</section>
+<!-- ===== parts/fes-original/kimm.html (담당 B) ===== -->
+<section class="slide ch2 fk-slide" id="fo-kimm-01" data-source="AI Technologies for Field Robotics 이한민.pptx#36" data-title="협업 크레인 거더 자동운반" data-prev-id="v2-field-01">
+<aside class="sidebar"><div class="cnum">03</div><div class="cname">KIMM</div><div class="rule"></div><div class="cq">기계연의<br>피지컬 AI 연구</div></aside><h1 class="title">협업 크레인 거더 자동운반</h1>
+<img class="kimmlogo" src="assets/v2/common/kimm-logo.png" alt="한국기계연구원">
+<div class="keybar sm"><span>다중 크레인을 통합 제어해 <em>교량 거더를 자동 운반</em></span></div>
+<div class="content fk-content">
+ <div class="fk-fd-crane fk-fd-crane2">
+  <div class="fk-fd-top"><div class="fk-h bar">기술적 성과</div><div class="fk-node">다중 크레인 <b>통합제어</b><small>위치 오차 수평/수직 ±5 cm</small></div><div class="fk-node">라이다 기반 <b>충돌방지</b><small>환경탐지</small></div><div class="fk-node"><b>Multi-RRT</b><small>거더 이송 경로계획</small></div><div class="fk-node">축소 크레인<small>자동운반 실증</small></div></div>
+  <div class="fk-fig fk-fd-sys"><div class="fk-media paper sys"><img src="assets/v2/part3/src_image99.png" alt="협업 크레인 시스템 구성"><svg class="fk-fd-mk" viewBox="0 0 1165 816" preserveAspectRatio="none" aria-hidden="true"><rect class="o" x="632" y="80" width="58" height="58" rx="4"/><rect class="i" x="632" y="80" width="58" height="58" rx="4"/><rect class="o" x="696" y="52" width="58" height="58" rx="4"/><rect class="i" x="696" y="52" width="58" height="58" rx="4"/><rect class="o" x="327" y="394" width="55" height="60" rx="4"/><rect class="i" x="327" y="394" width="55" height="60" rx="4"/><rect class="o" x="389" y="382" width="58" height="59" rx="4"/><rect class="i" x="389" y="382" width="58" height="59" rx="4"/><rect class="o" x="639" y="327" width="60" height="60" rx="4"/><rect class="i" x="639" y="327" width="60" height="60" rx="4"/><rect class="o" x="194" y="437" width="61" height="61" rx="4"/><rect class="i" x="194" y="437" width="61" height="61" rx="4"/><rect class="o" x="303" y="457" width="60" height="60" rx="4"/><rect class="i" x="303" y="457" width="60" height="60" rx="4"/><rect class="o" x="290" y="540" width="61" height="61" rx="4"/><rect class="i" x="290" y="540" width="61" height="61" rx="4"/><rect class="o" x="360" y="555" width="60" height="61" rx="4"/><rect class="i" x="360" y="555" width="60" height="61" rx="4"/></svg><span class="lbl" style="left:44.64%;top:12.75%;min-width:15.45%;min-height:5.39%">환경탐지 센서</span><span class="lbl" style="left:72.36%;top:9.56%;min-width:14.59%;min-height:5.39%">와이어 센서</span><span class="lbl" style="left:39.57%;top:26.96%;min-width:11.85%;min-height:5.39%">크레인 1</span><span class="lbl" style="left:71.16%;top:26.96%;min-width:12.19%;min-height:5.39%">크레인 2</span><span class="lbl" style="left:23.86%;top:44.98%;min-width:13.39%;min-height:5.15%">붐 각도 센서</span><span class="lbl" style="left:41.20%;top:43.50%;min-width:15.11%;min-height:5.39%">붐 길이 센서</span><span class="lbl" style="left:71.85%;top:43.01%;min-width:21.63%;min-height:5.39%">거더 위치자세 센서</span><span class="lbl" style="left:72.10%;top:52.08%;min-width:8.58%;min-height:5.39%">거더</span><span class="lbl" style="left:9.18%;top:56.50%;min-width:15.45%;min-height:5.39%">관제 시스템</span><span class="lbl" style="left:39.31%;top:58.95%;min-width:15.62%;min-height:5.39%">크레인 GPS</span><span class="lbl" style="left:16.05%;top:69.73%;min-width:18.54%;min-height:5.39%">크레인 제어기</span><span class="lbl" style="left:40.00%;top:78.80%;min-width:18.03%;min-height:5.39%">스윙 각도 센서</span></div><div class="fk-cap">협업 크레인 시스템 구성</div></div>
+  <div class="fk-fd-v4">
+   <div class="fk-fig"><div class="fk-media dark"><video src="assets/v2/part3/src_media5.mp4" poster="assets/v2/part3/src_image95.png" preload="metadata" playsinline></video></div><div class="fk-cap">교량 구조물 이송 사례</div></div>
+   <div class="fk-fig"><div class="fk-media dark"><video src="assets/v2/part3/src_media6.mp4" poster="assets/v2/part3/src_image96.png" preload="metadata" playsinline></video></div><div class="fk-cap">자동운반 제어 ①</div></div>
+   <div class="fk-fig"><div class="fk-media dark"><video src="assets/v2/part3/src_media7.mp4" poster="assets/v2/part3/src_image97.png" preload="metadata" playsinline></video></div><div class="fk-cap">자동운반 제어 ②</div></div>
+   <div class="fk-fig"><div class="fk-media dark"><video src="assets/v2/part3/src_media8.mp4" poster="assets/v2/part3/src_image98.png" preload="metadata" playsinline></video><span class="fk-badge">원본 1.5배속</span></div><div class="fk-cap">자동운반 제어 ③</div></div>
+  </div>
+ </div>
+</div>
+<div class="pno">27</div>
+<aside class="speaker-notes"><p>원본 B#36 「협업 크레인 교량 구조물 자동운반 기술」. 기술적 성과(원본 표기): 다중 크레인 자동운반 통합제어 시스템 개발(위치 오차 수평/수직 ±5cm), 라이다 기반 충돌방지용 환경탐지 시스템 개발, Multi-RRT 기반 다중 크레인 거더 이송 경로계획 알고리즘 개발, 거더 자동운반 제어 축소 크레인 실증.</p><p>영상 4개 원본 전체 길이: 크레인 교량 구조물 이송 사례 media5 22.3초. 원본 캡션 「협업 크레인 자동운반 제어」 아래 세 영상 — ① media6 1분 3.5초(파일명 자세1_카메라 영상), ② media7 1분 10.9초(자세2_카메라 영상), ③ media8 1분 30.5초(파일명 DJI_0106(1.5배속), 원본 파일 자체가 1.5배속 표기). 시스템 구성 사진은 원본 그림(라벨이 사진에 박혀 있음) 그대로 쓰고, 박힌 라벨 12개·노란 표식 9개 위치에 같은 문구의 네이티브 라벨·표식을 겹쳐 FES 서식으로 표시(사진 픽셀 수정·생성 없음). 성과 4항목은 원본 문구를 줄여 상단에 배치.</p><p>±5cm는 원본 성과 표기 그대로이며 시험 조건은 원본에 없음. 학습 모듈 적용 여부는 원본에 적혀 있지 않음.</p></aside>
+</section>
+<section class="slide ch2 fk-slide" id="fo-kimm-02" data-source="AI Technologies for Field Robotics 이한민.pptx#37" data-title="굴착기·휠로더 원격제어 retrofit" data-prev-id="v2-field-02">
+<aside class="sidebar"><div class="cnum">03</div><div class="cname">KIMM</div><div class="rule"></div><div class="cq">기계연의<br>피지컬 AI 연구</div></aside><h1 class="title">굴착기·휠로더 원격제어</h1>
+<img class="kimmlogo" src="assets/v2/common/kimm-logo.png" alt="한국기계연구원">
+<div class="keybar sm"><span>기계식 장비에 <em>전자제어 retrofit kit</em>를 달아 원격으로 제어</span></div>
+<div class="content fk-content">
+ <div class="fk-fd-rc">
+  <div class="fk-fd-rc-top">
+   <div class="fk-fig"><div class="fk-media cover"><img src="assets/v2/part3/src_image100.png" alt="원격제어 스테이션"></div><div class="fk-cap">원격제어 스테이션</div></div>
+   <span class="fk-arrow"></span>
+   <div class="fk-fig"><div class="fk-media cover"><img src="assets/v2/part3/src_image102.jpg" alt="원격제어 굴착기"><img class="fk-fd-inset" src="assets/v2/part3/src_image103.jpg" alt="굴착기 retrofit kit"></div><div class="fk-cap">원격제어 굴착기 <span class="fk-tag y">Retrofit kit</span></div></div>
+   <div class="fk-fig"><div class="fk-media cover"><img src="assets/v2/part3/src_image101.jpeg" alt="원격제어 휠로더"><img class="fk-fd-inset" src="assets/v2/part3/src_image104.jpg" alt="휠로더 retrofit kit"></div><div class="fk-cap">원격제어 휠로더 <span class="fk-tag y">Retrofit kit</span></div></div>
+  </div>
+  <div class="fk-fd-feat">
+   <div><b>전자제어 인터페이스</b><span>비례제어밸브 모듈 · 임베디드 컨트롤러 · GNSS · IMU · 압력계</span></div>
+   <div><b>작업장치 위치 제어</b><span>굴착기 · 휠로더</span></div>
+   <div><b>정밀 압력 제어 · AI 고장진단</b><span>Pilot 압력 hysteresis 제거<br>고장검출 정확도 90% 이상</span></div>
+  </div>
+  <div class="fk-fd-logos"><span class="lb">공동연구개발 (다산네트웍스 주관)</span><img src="assets/v2/part3/src_image106.png" alt="다산네트웍스"><img src="assets/v2/part3/src_image105.png" alt="KITECH"><img src="assets/v2/part3/src_image2.png" alt="한국기계연구원"></div>
+ </div>
+</div>
+<div class="pno">28</div>
+<aside class="speaker-notes"><p>원본 B#37 「굴착기 및 휠로더 원격제어 기술」을 스테이션 → 장비(retrofit kit 확대 사진) 흐름과 기능 3칸으로 재구성. 원본 문구: 기계식 굴착기 및 휠로더 전자제어 인터페이스 개발(retrofit kit) — 비례제어밸브 모듈/임베디드 컨트롤러/GNSS/IMU/압력계 포함; 굴착기 및 휠로더 작업 장치 위치 제어 기술 개발; 전자식 비례제어 밸브 정밀 압력 제어 및 인공지능 기반 고장 진단 기술 개발 — Pilot 압력 제어 hysteresis 제거, 고장검출 정확도 90% 이상.</p><p>공동연구개발기관(원본 표기): 다산네트웍스(주관), 쿠오핀, 다온링크, 한국생산기술연구원, 한국기계연구원. 하단 로고 3개는 원본 그대로. 90% 수치의 시험 조건은 원본에 없음. 스테이션→장비 화살표는 원격제어 관계를 나타내며 통신 방식은 원본에 없음.</p></aside>
+</section>
+<section class="slide ch2 fk-slide" id="fo-kimm-03" data-source="AI Technologies for Field Robotics 이한민.pptx#38" data-title="원격제어 굴착기 시연" data-prev-id="v2-field-03">
+<aside class="sidebar"><div class="cnum">03</div><div class="cname">KIMM</div><div class="rule"></div><div class="cq">기계연의<br>피지컬 AI 연구</div></aside><h1 class="title">원격제어 굴착기 시연</h1>
+<img class="kimmlogo" src="assets/v2/common/kimm-logo.png" alt="한국기계연구원">
+<div class="keybar sm"><span>retrofit kit을 단 굴착기를 <em>원격으로 조작</em></span></div>
+<div class="content fk-content">
+ <div class="fk-media dark fk-fd-big"><video src="assets/v2/part3/src_media9.mp4" poster="assets/v2/part3/src_image107.png" preload="metadata" playsinline></video><span class="fk-badge">원격제어 굴착기</span></div>
+</div>
+<div class="pno">29</div>
+<aside class="speaker-notes"><p>원본 B#38(원격제어 기술 두 번째 장)의 원격제어 굴착기 영상. media9.mp4 전체 1분 11.7초 사용(원본 PPT는 41.2초부터 재생하도록 시작점이 설정돼 있었음 — 발표 때 그 지점부터 보여 줘도 됨). H.264 재인코딩만, 소리 유지.</p></aside>
+</section>
+<section class="slide ch2 fk-slide" id="fo-kimm-04" data-source="AI Technologies for Field Robotics 이한민.pptx#40" data-title="과수 예찰 자율 농업기계" data-prev-id="v2-field-04">
+<aside class="sidebar"><div class="cnum">03</div><div class="cname">KIMM</div><div class="rule"></div><div class="cq">기계연의<br>피지컬 AI 연구</div></aside><h1 class="title">과수 예찰 자율 농업기계</h1>
+<img class="kimmlogo" src="assets/v2/common/kimm-logo.png" alt="한국기계연구원">
+<div class="keybar sm"><span>자율주행 플랫폼에 <em>매니퓰레이터와 병해충 탐지기</em>를 탑재</span></div>
+<div class="content fk-content">
+ <div class="fk-fd-orch">
+  <div class="fk-fd-orch-l">
+   <div class="fk-fig"><div class="fk-media paper"><img src="assets/v2/part3/src_image116.png" alt="플랫폼 3D 설계"></div><div class="fk-cap">3D 설계</div></div>
+   <div class="fk-fig"><div class="fk-media cover"><img src="assets/v2/part3/src_image114.jpeg" alt="제작 플랫폼"></div><div class="fk-cap">제작 플랫폼</div></div>
+   <div class="fk-fig"><div class="fk-media paper drw"><img src="assets/v2/part3/src_image112.png" alt="플랫폼 치수 도면"><img class="in3" src="assets/v2/part3/src_image113.png" alt="3D 모델"></div><div class="fk-cap">치수 도면</div></div>
+   <div class="fk-fig"><div class="fk-media paper opt"><img src="assets/v2/part3/src_image115.png" alt="병해충 탐지기 광학 헤드 설계"></div><div class="fk-cap">탐지기 광학 헤드 설계</div></div>
+  </div>
+  <div class="fk-fd-port">
+   <div class="fk-media dark"><video src="assets/v2/part3/src_media10.mp4" poster="assets/v2/part3/src_image111.png" preload="metadata" playsinline></video></div>
+   <div class="fk-cap">병해충 탐지기(광학 헤드) 모형 장착</div>
+  </div>
+ </div>
+</div>
+<div class="pno">30</div>
+<aside class="speaker-notes"><p>원본 B#40 「과수 농장 작물 모니터링을 위한 자율 농업기계」: 플랫폼 3D 설계·제작 사진·치수 도면, 병해충 탐지기(광학 헤드) 모형 장착 영상(세로 영상) — 크기·여백만 통일. 영상 media10.mp4 전체 35.7초, 소리 유지.</p><p>B#39 원본 문구(참고): 노지환경 정밀 병해충 예찰을 위한 자율작업 농업기계, 병해충 탐지기(분광카메라) 자세제어, 수소연료전지/배터리 하이브리드 — 이번 장에는 B#40 내용만 표시.</p></aside>
+</section>
+<section class="slide ch2 fk-slide" id="fo-kimm-05" data-source="AI Technologies for Field Robotics 이한민.pptx#42" data-title="과수 예찰 주행·자세 시험" data-prev-id="v2-field-05">
+<aside class="sidebar"><div class="cnum">03</div><div class="cname">KIMM</div><div class="rule"></div><div class="cq">기계연의<br>피지컬 AI 연구</div></aside><h1 class="title">과수 예찰 주행·자세 시험</h1>
+<img class="kimmlogo" src="assets/v2/common/kimm-logo.png" alt="한국기계연구원">
+<div class="keybar sm"><span>주행 위치와 매니퓰레이터 자세를 <em>목표값과 실제값으로 비교</em></span></div>
+<div class="content fk-content">
+ <div class="fk-fd-res">
+  <div class="cell"><div class="fk-h bar">주행플랫폼 위치 <small>Map 좌표</small></div><div class="fk-media plot"><img src="assets/v2/part3/src_image123.png" alt="주행플랫폼 X·Y·Heading 목표 대비 실제 그래프"></div></div>
+  <div class="cell"><div class="fk-h bar">Odometry <small>원점: SLAM 초기 위치</small></div><div class="fk-media plot"><img src="assets/v2/part3/src_image124.png" alt="Odometry XY 궤적 그래프"></div></div>
+  <div class="cell vid"><div class="fk-media dark"><video src="assets/v2/part3/src_media11.mp4" poster="assets/v2/part3/src_image125.png" preload="metadata" playsinline></video></div><div class="fk-cap">Turn</div></div>
+  <div class="cell wide"><div class="fk-h bar">매니퓰레이터 자세 <small>관절각</small></div><div class="fk-media plot"><img src="assets/v2/part3/src_image122.png" alt="매니퓰레이터 관절각 그래프"></div></div>
+  <div class="cell vid"><div class="fk-media dark"><video src="assets/v2/part3/src_media12.mp4" poster="assets/v2/part3/src_image126.png" preload="metadata" playsinline></video></div><div class="fk-cap">모의 예찰</div></div>
+ </div>
+</div>
+<div class="pno">31</div>
+<aside class="speaker-notes"><p>원본 B#42: 주행플랫폼 위치(Map 좌표, X·Y·Heading Actual/Target), 매니퓰레이터 자세(Manipulator Joint Angle), Odometry(Origin: Initial position of SLAM), Turn·모의 예찰 영상. 는 그래프를 원본 그림 그대로 크게 배치하고 묶음 제목만 붙임. 그래프 2개(위치·Odometry)는 원본 EMF를 PNG로 변환한 것(데이터 변경 없음).</p><p>영상 2개 원본 전체 길이: media11 53.9초(Turn), media12 1분 25.4초(모의 예찰), 소리 유지.</p></aside>
+</section>
+<section class="slide ch2 fk-slide" id="fo-kimm-06" data-source="AI Technologies for Field Robotics 이한민.pptx#47" data-title="UAV·UGV 연동 시험" data-prev-id="v2-field-06">
+<aside class="sidebar"><div class="cnum">03</div><div class="cname">KIMM</div><div class="rule"></div><div class="cq">기계연의<br>피지컬 AI 연구</div></aside><h1 class="title">UAV·UGV 연동 시험</h1>
+<img class="kimmlogo" src="assets/v2/common/kimm-logo.png" alt="한국기계연구원">
+<div class="keybar sm"><span>무인이동체 육해공 자율협력 — <em>UAV와 UGV 연동 시험</em></span></div>
+<div class="content fk-content">
+ <div class="fk-media dark fk-fd-big"><video src="assets/v2/part3/src_media14.mp4" poster="assets/v2/part3/src_image154.png" preload="metadata" playsinline></video></div>
+</div>
+<div class="pno">32</div>
+<aside class="speaker-notes"><p>원본 B#47 「무인이동체 원천기술개발 — 육해공 자율협력」의 UAV/UGV 연동시험 영상(영상 속 기관 로고 포함). media14.mp4 전체 39.8초(원본 PPT는 11.5초부터 재생하도록 설정돼 있었음). 소리 유지.</p></aside>
+</section>
+<section class="slide ch2 fk-slide" id="fo-kimm-07" data-source="AI Technologies for Field Robotics 이한민.pptx#51" data-title="휠-레그 로봇 정책 전이" data-prev-id="v2-field-07">
+<aside class="sidebar"><div class="cnum">03</div><div class="cname">KIMM</div><div class="rule"></div><div class="cq">기계연의<br>피지컬 AI 연구</div></aside><h1 class="title fk-tsm">휠-레그 로봇 정책 전이 <span class="fk-sub">화재현장 실내수색 무인이동체</span></h1>
+<img class="kimmlogo" src="assets/v2/common/kimm-logo.png" alt="한국기계연구원">
+<div class="keybar sm"><span>상용 휠-레그 로봇에서 학습한 제어를 <em>통합 UGV 플랫폼으로 전이</em></span></div>
+<div class="content fk-content">
+ <div class="fk-fd-pt">
+  <div class="fk-g2">
+   <div class="fk-fig"><div class="fk-media"><img src="assets/v2/part3/src_image28.gif" alt="제어기 학습을 위한 병렬 연산 시뮬레이션 환경"><span class="fk-badge">시뮬레이션</span></div><div class="fk-cap">제어기 학습을 위한 <b>병렬 연산 시뮬레이션 환경</b></div></div>
+   <div class="fk-fig"><div class="fk-media"><img src="assets/v2/part3/src_image27.gif" alt="휠 레그 로봇의 형태학적 유사성 이용"><span class="fk-badge">시뮬레이션</span></div><div class="fk-cap">휠-레그 로봇의 <b>형태학적 유사성</b> 이용</div></div>
+  </div>
+  <div class="fk-flow">
+   <div class="fk-node">상용 휠-레그 로봇<small>제어 학습</small></div><span class="fk-arrow"></span>
+   <div class="fk-node">시뮬레이션 간<small>정책 전환</small></div><span class="fk-arrow"></span>
+   <div class="fk-node dash">시뮬레이션 → 실제<small>환경 전환 (추진)</small></div><span class="fk-arrow"></span>
+   <div class="fk-node fill">통합 UGV 플랫폼</div>
+  </div>
+ </div>
+</div>
+<div class="pno">33</div>
+<aside class="speaker-notes"><p>원본 B#51 「화재현장 실내수색 무인이동체 개발」 — 프로토타입-UGV 플랫폼 간 정책 전이 기술 개발: 상용 휠 레그 로봇을 이용해 학습된 제어 기술을 통합 UGV 플랫폼으로 전이시킬 수 있는 도메인간 전환 기술 개발; 휠 레그 로봇의 형태학적 유사성을 이용해 시뮬레이션 간 정책 전환 및 시뮬레이션에서 실제 환경으로의 전환 추진. 이 문장을 흐름도로 다시 그림(점선 = 원본 표현 「추진」, 완료 성과 아님).</p><p>GIF 2개 원본 애니메이션 그대로(병렬 연산 시뮬레이션 환경 6.0초, 형태학적 유사성 5.0초). GIF의 성격: KIMM 과제 페이지(#51) 원본에 들어 있는 시뮬레이션 애니메이션이며 제작 주체·도구는 원본에 적혀 있지 않음 — 실기 실증 영상이 아니라 학습 환경 화면으로만 설명. 같은 GIF가 2부에 쓰였다면 2부는 일반 기법 예시, 여기서는 이 과제의 추진 방향 예시로 구분.</p></aside>
+</section>
+<section class="slide ch2 fk-slide" id="fo-kimm-08" data-source="AI Technologies for Field Robotics 이한민.pptx#28" data-title="숙련자 데이터 학습 파이프라인" data-prev-id="v2-part3-01">
+<aside class="sidebar"><div class="cnum">03</div><div class="cname">KIMM</div><div class="rule"></div><div class="cq">기계연의<br>피지컬 AI 연구</div></aside><h1 class="title">숙련자 데이터 학습 파이프라인</h1>
+<img class="kimmlogo" src="assets/v2/common/kimm-logo.png" alt="한국기계연구원">
+<div class="keybar sm"><span>숙련자 작업을 <em>데이터로 수집·학습</em>해 무인 굴착기 자율작업으로</span></div>
+<div class="content fk-content">
+ <div class="fk-p3-pipe">
+  <div class="fk-group solid fk-p3-acq"><span class="fk-glabel">데이터 수집</span>
+   <div class="fk-p3-box fk-p3-plat"><b>데이터 수집 플랫폼</b>
+    <div class="fk-media"><img src="assets/v2/part3/src_image48.png" alt="데이터 수집 굴착기"></div>
+    <div class="fk-p3-pc"><img src="assets/v2/part3/src_image50.jpeg" alt=""><span>→</span><img src="assets/v2/part3/src_image49.jpeg" alt=""></div>
+    <div class="fk-note">라이다 점군 → 2D 그리드</div>
+   </div>
+   <span class="fk-arrow"></span>
+   <div class="fk-p3-box"><b>데이터 수집 및 가공</b>
+    <div class="fk-p3-rows">
+     <span class="k">라이다<br>그리드맵</span><span class="fk-p3-thumbs fk-p3-grid3"><img src="assets/v2/part3/src_image51.jpeg" alt="">…<img src="assets/v2/part3/src_image52.jpeg" alt="">…<img src="assets/v2/part3/src_image53.jpeg" alt="">…</span>
+     <span class="k">관절각<br>센서</span><span class="fk-p3-thumbs"><img class="fk-p3-ts" src="assets/v2/part3/src_image54.jpeg" alt="관절각 시계열"></span>
+     <span class="k">카메라</span><span class="fk-p3-thumbs fk-p3-cam"><img src="assets/v2/part3/src_image55.jpeg" alt=""><img src="assets/v2/part3/src_image56.jpeg" alt=""><img src="assets/v2/part3/src_image57.jpeg" alt=""><img src="assets/v2/part3/src_image58.jpeg" alt=""><img src="assets/v2/part3/src_image59.jpeg" alt=""><img src="assets/v2/part3/src_image60.jpeg" alt=""><img src="assets/v2/part3/src_image61.jpeg" alt=""><img src="assets/v2/part3/src_image62.jpeg" alt=""></span>
+     <span class="k">작업매핑</span><span class="fk-p3-map"><span>approach (x,y,z)</span><span>dig (depth,drag)</span><span>dump (x,y,z)</span></span>
+    </div>
+   </div>
+   <span class="fk-arrow"></span>
+   <div class="fk-p3-box fk-p3-db"><b>숙련자 작업 DB</b>
+    <div class="r"><img src="assets/v2/part3/src_image63.jpeg" alt="">approach (…)</div>
+    <div class="r"><img src="assets/v2/part3/src_image64.jpeg" alt="">dig (…)</div>
+    <div class="r"><img src="assets/v2/part3/src_image65.png" alt="">dump (…)</div>
+    <div class="dots">⋮</div>
+   </div>
+  </div>
+  <div class="fk-p3-lower">
+   <div class="fk-group solid"><span class="fk-glabel">인공지능 학습</span>
+    <div class="fk-p3-learn"><img class="g" src="assets/v2/part3/src_image52.jpeg" alt="2D 그리드"><span class="fk-arrow"></span><img class="m" src="assets/v2/part3/src_image66.png" alt="인공지능 모델"><span class="fk-arrow"></span><div class="fk-node fill">dig<small>(depth, drag)</small></div></div>
+    <div class="fk-cap" style="margin-top:4px">라이다 2D 그리드 → 인공지능 모델 학습</div>
+   </div>
+   <span class="fk-arrow"></span>
+   <div class="fk-group solid"><span class="fk-glabel">자율작업 실증</span>
+    <div class="fk-p3-auto"><img src="assets/v2/part3/src_image67.png" alt="작업 전후 지형"><div class="fk-cap">AI 기반 무인 굴착기 자율작업 계획 및 제어</div></div>
+   </div>
+  </div>
+  <div class="fk-p3-logos"><span class="lb">참여 기관</span><img src="assets/v2/part3/src_image68.png" alt="SURROMIND"><img src="assets/v2/part3/src_image2.png" alt="한국기계연구원"><img src="assets/v2/part3/src_image73.png" alt="KOCETI"><img src="assets/v2/part3/src_image69.jpeg" alt="HD현대"><img src="assets/v2/part3/src_image70.png" alt="영신디엔씨"><img src="assets/v2/part3/src_image71.jpeg" alt="아주대학교"><img src="assets/v2/part3/src_image72.jpeg" alt="Ontario Tech University"></div>
+ </div>
+</div>
+<div class="pno">34</div>
+<aside class="speaker-notes"><p>원본 B#28(데이터 수집 → 인공지능 학습 → 자율작업 실증)을 HTML 도식으로 다시 그림. 데이터 수집: 플랫폼(라이다 점군→2D 그리드), 수집·가공(라이다 그리드맵·관절각 센서·카메라·작업매핑 approach(x,y,z)/dig(depth,drag)/dump(x,y,z)), 숙련자 작업 DB(지형, 작업 변수 쌍). 학습: 2D 그리드 → 모델 → dig(depth, drag). 실증: AI 기반 무인 굴착기 자율작업 계획 및 제어.</p><p>용어: 관측=지형 그리드, 행동=approach·dig·dump 작업 변수.</p><p>한정: 숙련자 DB와 B#30 PPO의 구체적 결합 방식, 데이터 양은 원본에 적혀 있지 않음. 하단 기관 로고는 원본 그대로이며 기관별 역할은 원본 미기재. 관절각 그래프는 원본에서 가로로 늘여 배치돼 있었으나 v3는 원본 비율로 표시.</p></aside>
+</section>
+<section class="slide ch2 fk-slide" id="fo-kimm-09" data-source="AI Technologies for Field Robotics 이한민.pptx#29" data-title="MC 굴착기 센서 구성" data-prev-id="v2-part3-02">
+<aside class="sidebar"><div class="cnum">03</div><div class="cname">KIMM</div><div class="rule"></div><div class="cq">기계연의<br>피지컬 AI 연구</div></aside><h1 class="title">MC 굴착기 센서 구성</h1>
+<img class="kimmlogo" src="assets/v2/common/kimm-logo.png" alt="한국기계연구원">
+<div class="keybar sm"><span>기존 굴착기에 <em>인지·자세·유압 센서</em>를 더한 데이터 수집 플랫폼</span></div>
+<div class="content fk-content">
+ <div class="fk-p3-sens">
+  <div class="fk-p3-scol">
+   <div class="fk-p3-tile" data-k="LiDAR1"><div class="ph"><img src="assets/v2/part3/src_image75.png" alt=""></div><b>LiDAR &amp; Stereo Camera #1</b></div>
+   <div class="fk-p3-tile" data-k="Tilt"><div class="ph"><img src="assets/v2/part3/src_image76.png" alt=""></div><b>Tilt Sensor</b></div>
+   <div class="fk-p3-tile" data-k="Pressure"><div class="ph"><img src="assets/v2/part3/src_image77.png" alt=""></div><b>Pressure Sensor</b></div>
+   <div class="fk-p3-tile" data-k="Switch"><div class="ph"><img src="assets/v2/part3/src_image78.png" alt=""><img src="assets/v2/part3/src_image79.png" alt=""></div><b>Input Switch for Logging</b></div>
+  </div>
+  <div class="fk-p3-main"><img src="assets/v2/part3/src_image74.jpg" alt="센서를 장착한 KIMM 굴착기"></div>
+  <div class="fk-p3-scol">
+   <div class="fk-p3-tile" data-k="LiDAR2"><div class="ph"><img src="assets/v2/part3/src_image80.png" alt=""></div><b>LiDAR &amp; Stereo Camera #2</b></div>
+   <div class="fk-p3-tile" data-k="GNSS"><div class="ph"><img src="assets/v2/part3/src_image81.png" alt=""></div><b>GNSS-RTK</b></div>
+   <div class="fk-p3-tile" data-k="Box"><div class="ph"><img src="assets/v2/part3/src_image82.png" alt=""></div><b>Main Control Box &amp; IMU</b></div>
+   <div class="fk-p3-tile" data-k="Swing"><div class="ph"><img src="assets/v2/part3/src_image83.png" alt=""></div><b>Swing Angle Estimator</b></div>
+  </div>
+  <svg class="fk-p3-lead" viewBox="0 0 782 373" aria-hidden="true"><line x1="182.0" y1="42.0" x2="312.6" y2="133.1"/><circle class="d" cx="182.0" cy="42.0" r="3"/><circle class="o" cx="312.6" cy="133.1" r="9"/><line x1="182.0" y1="138.3" x2="262.5" y2="164.2"/><circle class="d" cx="182.0" cy="138.3" r="3"/><circle class="o" cx="262.5" cy="164.2" r="9"/><line x1="182.0" y1="234.7" x2="390.6" y2="192.9"/><circle class="d" cx="182.0" cy="234.7" r="3"/><circle class="o" cx="390.6" cy="192.9" r="9"/><line x1="182.0" y1="331.0" x2="428.4" y2="192.9"/><circle class="d" cx="182.0" cy="331.0" r="3"/><circle class="o" cx="428.4" cy="192.9" r="9"/><line x1="600.0" y1="42.0" x2="428.1" y2="88.5"/><circle class="d" cx="600.0" cy="42.0" r="3"/><circle class="o" cx="428.1" cy="88.5" r="9"/><line x1="600.0" y1="138.3" x2="472.1" y2="93.2"/><circle class="d" cx="600.0" cy="138.3" r="3"/><circle class="o" cx="472.1" cy="93.2" r="9"/><line x1="600.0" y1="234.7" x2="522.2" y2="136.0"/><circle class="d" cx="600.0" cy="234.7" r="3"/><circle class="o" cx="522.2" cy="136.0" r="9"/><line x1="600.0" y1="331.0" x2="486.7" y2="239.7"/><circle class="d" cx="600.0" cy="331.0" r="3"/><circle class="o" cx="486.7" cy="239.7" r="9"/></svg>
+ </div>
+</div>
+<div class="pno">35</div>
+<aside class="speaker-notes"><p>원본 B#29 「MC 굴착기 플랫폼 구축」을 센서 타일 + 지시선으로 다시 배치. 지시선이 가리키는 위치는 원본 슬라이드의 빨간 원·화살표 위치를 사진 기준 비율로 옮긴 것.</p><p>MC(Machine Control). 센서: LiDAR &amp; Stereo Camera #1/#2, Tilt Sensor, Pressure Sensor, Input Switch for Logging(원본 사진 2장), GNSS-RTK, Main Control Box &amp; IMU, Swing angle Estimator.</p><p>설명 포인트: 밖을 보는 센서(LiDAR·카메라) + 몸 상태 센서(기울기·선회각·GNSS·IMU·유압 압력) + 숙련자 작업 구간 기록 스위치. 센서 사양·설치 위치 세부값은 원본에 없음.</p></aside>
+</section>
+<section class="slide ch2 fk-slide" id="fo-kimm-10" data-source="AI Technologies for Field Robotics 이한민.pptx#30" data-title="2D 그리드 작업계획 강화학습" data-prev-id="v2-part3-03">
+<aside class="sidebar"><div class="cnum">03</div><div class="cname">KIMM</div><div class="rule"></div><div class="cq">기계연의<br>피지컬 AI 연구</div></aside><h1 class="title">2D 그리드 작업계획 강화학습</h1>
+<img class="kimmlogo" src="assets/v2/common/kimm-logo.png" alt="한국기계연구원">
+<div class="keybar sm"><span>2D 그리드 맵에서 <em>Dig·Dump·Leveling 작업계획</em>을 강화학습(PPO)으로</span></div>
+<div class="content fk-content">
+ <div class="fk-p3-rl">
+  <div class="fk-p3-def">
+   <div class="fk-h">문제 정의</div>
+   <div class="row"><b>작업 환경</b><span>20×40 그리드 맵 (실제 10 m×20 m)<br>한 그리드 0.5 m · 높이 −3 ~ 3 m</span></div>
+   <div class="row"><b>행동</b><span>작업 시작 지점 (x 0~40, y 0~20)<br>Dig · Dump별 action space</span></div>
+   <div class="row y"><b>보상 함수</b><span>1회 굴착량 최대화<br>평균 높이 목표 도달 여부<br>이동거리 최소화</span></div>
+   <div class="fk-tag" style="align-self:flex-start">PPO</div>
+  </div>
+  <div class="fk-p3-seq">
+   <div class="fk-fig"><div class="fk-media"><img src="assets/v3/part3/p3_rl_env_grid.png" alt="학습 환경 그리드"></div><div class="fk-cap">학습 환경</div></div>
+   <span class="fk-arrow"></span>
+   <div class="fk-fig"><div class="fk-media"><img src="assets/v2/part3/src_image86.gif" alt="강화학습 기반 평탄화 Dumping 작업 시퀀스"></div><div class="fk-cap"><b>Dumping</b> 작업 시퀀스</div></div>
+   <span></span><span></span><span class="fk-arrow down"></span>
+   <div class="fk-fig"><div class="fk-media"><img src="assets/v2/part3/src_image85.png" alt="작업 종료"></div><div class="fk-cap">작업 종료</div></div>
+   <span class="fk-arrow back"></span>
+   <div class="fk-fig"><div class="fk-media"><img src="assets/v2/part3/src_image87.gif" alt="강화학습 기반 평탄화 Leveling 작업 시퀀스"></div><div class="fk-cap"><b>Leveling</b> 작업 시퀀스</div></div>
+  </div>
+ </div>
+</div>
+<div class="pno">36</div>
+<aside class="speaker-notes"><p>원본 B#30을 「문제 정의」 HTML 목록 + 학습 시퀀스 도식으로 재배치. 원본 문제 정의 그림 속 문구(작업 환경 20 x 40 그리드, 실제 10m x 20m, 한 그리드 0.5m, Min −30/Max 30 = 실제 −3m~3m, 버켓 최대 2m³, 굴착 가능 범위 0 &lt; soil &lt; 80, 작업 시작 지점 x 0~40·y 0~20, Dig·Dump에 따른 action space)를 옮김. 버켓·굴착 가능 범위는 노트에만 둠. 학습 환경 그림은 원본 image84의 그리드 부분 크롭(assets/v3/part3).</p><p>두 GIF(Dumping·Leveling 시퀀스, 원본 캡션 「강화학습 기반 평탄화 … 작업 시퀀스」)는 원본 애니메이션 그대로. 화살표 순서(학습 환경 → Dumping → Leveling → 작업 종료)는 원본 네 그림의 캡션 의미에 맞춘 배치.</p><p>쉬운 풀이: PPO = 시행착오로 보상을 키우되 정책을 한 번에 크게 바꾸지 않도록 갱신 폭을 제한하는 강화학습 기법(일반 개념).</p><p>한정: 학습 환경(20x40 그리드) 결과. 신경망 구조·학습 횟수·성능 통계는 원본에 없음. 이 정책이 B#33 실기에 그대로 실행됐는지는 원자료로 확인되지 않음.</p></aside>
+</section>
+<section class="slide ch2 fk-slide" id="fo-kimm-11" data-source="AI Technologies for Field Robotics 이한민.pptx#31" data-title="가상환경 자율작업 시스템 구조" data-prev-id="v2-part3-04">
+<aside class="sidebar"><div class="cnum">03</div><div class="cname">KIMM</div><div class="rule"></div><div class="cq">기계연의<br>피지컬 AI 연구</div></aside><h1 class="title">가상환경 자율작업 시스템 구조</h1>
+<img class="kimmlogo" src="assets/v2/common/kimm-logo.png" alt="한국기계연구원">
+<div class="keybar sm"><span>Vortex Studio·ROS2 가상환경에서 <em>인식 → 상위 계획 → 하위 제어</em></span></div>
+<div class="content fk-content">
+ <div class="fk-p3-arch">
+  <div class="fk-p3-tier in"><span class="lb">환경 인식</span>
+   <div class="fk-node in"><b>Environment Perception</b><small>LiDAR · Camera</small></div>
+   <div class="fk-node in"><b>State Estimation</b><small>경사계 · IMU · RTK-GPS · Encoder · 압력계 · TF</small></div>
+  </div>
+  <span class="fk-arrow down"></span>
+  <div class="fk-p3-tier"><span class="lb">상위 계획<small>High-level Planner</small></span>
+   <div class="fk-p3-mod"><b>Grid Mapper</b><span>Grid Map Generator</span><span>Grid Map Interpolation</span><span>ROI Extraction</span></div>
+   <div class="fk-p3-mod"><b>RL Module</b><span>Dig Model</span><span>Dump Model</span><span>Leveling Model</span></div>
+   <div class="fk-p3-mod"><b>Task Manager</b><span>Task Combination Planner</span><span>Task Scheduler</span></div>
+   <div class="fk-p3-mod"><b>Trajectory Generator</b><span>Dig · Dump Module</span><span>Swing Module</span><span>Swing-less Module</span></div>
+  </div>
+  <span class="fk-arrow down"></span>
+  <div class="fk-p3-tier"><span class="lb">하위 제어<small>Low-level Controller</small></span>
+   <div class="fk-p3-low"><b>Motion Control</b><div class="fk-flow"><div class="fk-node">AI-to-World<small>Coordinate Transformation</small></div><span class="fk-arrow"></span><div class="fk-node">Inverse Kinematics<small>Solver</small></div></div></div>
+   <span class="fk-arrow"></span>
+   <div class="fk-p3-low"><b>Actuator Control</b><div class="fk-p3-pids"><div class="fk-node fill">Bucket<small>PID</small></div><div class="fk-node fill">Boom<small>PID</small></div><div class="fk-node fill">Arm<small>PID</small></div><div class="fk-node fill">Swing<small>PID</small></div></div></div>
+  </div>
+ </div>
+</div>
+<div class="pno">37</div>
+<aside class="speaker-notes"><p>원본 B#31 「가상환경 내 굴착기 자율작업 프로세스 구현」의 시스템 구성도(image88)를 위→아래 3계층 HTML 블록도로 다시 그림. 모듈명은 원본 영문 그대로(Trajectory Generator의 Dig Module·Dump Module은 한 칸에 묶어 표기). 원본 본문: Vortex Studio 및 ROS2 기반의 토공작업 가상환경 구축 / 환경 인식 모듈, 상위 계획 모듈(2D 그리드 생성/강화학습/작업 관리/경로생성), 하위 제어 모듈(역기구학, PID제어)로 구성.</p><p>쉬운 풀이: 역기구학 = 버킷 목표 위치를 붐·암·버킷·선회 관절각으로 바꾸는 계산. PID = 목표와 실제의 차이를 줄이도록 명령을 조절하는 피드백 제어.</p><p>한정: 이 구성은 가상환경 구축 슬라이드의 내용. B#33 실기에 같은 제어 구성이 쓰였는지는 원자료만으로 단정하지 않음. B#13의 MPC는 일반 기술 소개로 KIMM 구현과 구분.</p></aside>
+</section>
+<section class="slide ch2 fk-slide" id="fo-kimm-12" data-source="AI Technologies for Field Robotics 이한민.pptx#32" data-title="가상환경 자율작업 1사이클" data-prev-id="v2-part3-05">
+<aside class="sidebar"><div class="cnum">03</div><div class="cname">KIMM</div><div class="rule"></div><div class="cq">기계연의<br>피지컬 AI 연구</div></aside><h1 class="title">가상환경 자율작업 1사이클</h1>
+<img class="kimmlogo" src="assets/v2/common/kimm-logo.png" alt="한국기계연구원">
+<div class="keybar sm"><span>점군 인식부터 제어까지 <em>가상환경에서 한 사이클 자율 수행</em></span></div>
+<div class="content fk-content">
+ <div class="fk-flow fk-p3-cyc">
+  <div class="fk-node">Point Cloud<small>환경 인식</small></div><span class="fk-arrow"></span>
+  <div class="fk-node">GridMap<small>생성 및 추출</small></div><span class="fk-arrow"></span>
+  <div class="fk-node fill">목표작업 영역<small>인공지능 기반 설정</small></div><span class="fk-arrow"></span>
+  <div class="fk-node">궤적 생성</div><span class="fk-arrow"></span>
+  <div class="fk-node">자율 작업 제어</div>
+ </div>
+ <div class="fk-media dark fk-p3-vid"><video src="assets/v2/part3/src_media2.mp4" poster="assets/v2/part3/src_image89.png" preload="metadata" playsinline></video><span class="fk-badge">가상환경 · 1-cycle</span></div>
+</div>
+<div class="pno">38</div>
+<aside class="speaker-notes"><p>원본 B#32: 5단계 Point Cloud 환경 인식 → GridMap 생성 및 추출 → 인공지능 기반 목표작업 영역 설정 → 궤적 생성 → 자율 작업 제어, 영상 캡션 「가상환경 내 굴착기 자율작업 1-cycle 프로세스 구현」. 단계 도식과 영상 크기만 재배치.</p><p>영상: 원본 media2.mp4 전체 28.1초(원본 PPT에도 트림 없음), H.264 재인코딩만. 가상환경(시뮬레이터) 영상.</p></aside>
+</section>
+<section class="slide ch2 fk-slide" id="fo-kimm-13" data-source="AI Technologies for Field Robotics 이한민.pptx#33" data-title="관로파기 현장 실증과 관제 UI" data-prev-id="v2-part3-06">
+<aside class="sidebar"><div class="cnum">03</div><div class="cname">KIMM</div><div class="rule"></div><div class="cq">기계연의<br>피지컬 AI 연구</div></aside><h1 class="title">관로파기 현장 실증과 관제 UI</h1>
+<img class="kimmlogo" src="assets/v2/common/kimm-logo.png" alt="한국기계연구원">
+<div class="keybar sm"><span>실제 굴착기의 <em>관로파기 자율작업</em>과 관제 화면</span></div>
+<div class="content fk-content">
+ <div class="fk-p3-two">
+  <div class="fk-fig">
+   <div class="fk-media dark" style="aspect-ratio:16/9"><video src="assets/v2/part3/src_media3.mp4" poster="assets/v2/part3/src_image90.png" preload="metadata" playsinline></video><span class="fk-badge">실제 배속</span></div>
+   <div class="fk-cap">관로파기 자율작업 영상</div>
+  </div>
+  <div class="fk-fig">
+   <div class="fk-media dark" style="aspect-ratio:1280/688"><video src="assets/v2/part3/src_media4.mp4" poster="assets/v2/part3/src_image91.png" preload="metadata" playsinline></video>
+    <span class="fk-p3-pin" style="left:4%;top:7%">1</span><span class="fk-p3-pin" style="left:4%;top:53%">2</span><span class="fk-p3-pin" style="left:70%;top:46%">3</span></div>
+   <div class="fk-cap">굴착기 자율작업 관제 UI</div>
+   <div class="fk-p3-legend"><div><i>1</i>2D 그리드맵</div><div><i>2</i>현재 / 목표 / 차이 지형 맵</div><div><i>3</i>버킷 궤적 (목표 / 실제)</div></div>
+  </div>
+ </div>
+</div>
+<div class="pno">39</div>
+<aside class="speaker-notes"><p>원본 B#33: 관로파기 자율작업 영상(실제 배속)과 굴착기 자율작업 관제 UI(2D 그리드맵, 현재/목표/차이 지형 맵, 버켓 궤적 목표/실제). 는 두 영상을 같은 크기로 나란히 두고, 원본의 UI 지시선을 번호 표시로 바꿈.</p><p>영상: 실기 media3.mp4 전체 1분 53.9초, 관제 UI media4.mp4 전체 1분 49.2초. 원본 PPT는 각각 93.9초·89.2초에서 끝나도록 재생 구간이 설정돼 있었으나 원본 파일 전체 길이를 사용(재인코딩만).</p><p>관련 수치(FES2026 #18): 관로파기 목표 깊이 0.60 m, 측정 평균 0.63 m — 제시된 관로파기 실증의 평균값이며 시험 횟수·측정 방법·편차는 원자료 미기재(정확도 통계로 바꾸지 않음).</p><p>한정: 원본은 실기에 쓰인 계획·제어 알고리즘 이름(PPO, PID 등)을 적지 않음 → 추측해서 말하지 않음.</p></aside>
+</section>
+<!-- ===== parts/fes-original/closing.html (담당 C) ===== -->
+<section class="slide ch2" id="fes-s19" data-source="FES2026_특별강연_슬라이드_v2_claude.html §19 (국문, 원본 그대로) · 대조 FES2026_특별강연_KIMM이한민_EN.pptx#19 · 마무리 장" data-title="18. 필드로봇 피지컬 AI">
+<aside class="sidebar"><div class="cnum">03</div><div class="cname">KIMM</div><div class="rule"></div><div class="cq">기계연의<br>피지컬 AI 연구</div></aside><h1 class="title">18. 필드로봇 피지컬 AI</h1>
+<img class="kimmlogo" src="assets/v2/common/kimm-logo.png" alt="한국기계연구원">
+<div class="keybar sm"><span><em>공통 인지 모델</em> 하나로 건설·농업·재난 장비를 자율화</span></div>
+<!-- S19 근거(Claude 4, 2026-10-19 신규): 사용자 요청 — 앞으로 진행할 필드로봇 피지컬 AI 연구의 전체 그림.
+     그림: 01_project/2027_전략연구사업_필드로봇피지컬AI/계획서_보고서_발표자료/전략연구사업 워크샵_이한민.pptx 4번("AI 모델": [세부1] 필드환경 인지 공통 파운데이션 모델 → [세부2] 확장 가능한 장비/작업별 전문가 모델, 건설·농업·재난),
+     장비 사진: 같은 파일 3번("HW 5종": 재난 4족 보행 / 농업(노지) 트랙터 / 농업(과수) 과수 예찰 로봇 / 건설(굴착) 굴착기 / 건설(운송) 자재 이송 로봇). 제안서용 개념 이미지이므로 '구상도'로 표기.
+     과제명·기간·목표는 27년 전략연구사업 제안서 고정 표현: 인구절벽·위험환경 대응 AI 필드로봇 기술 개발, '27~'31, 3대 분야 재난·농업·건설, 이기종 장비 5종 이상, Level4 자율화. 기획(미선정) 단계. -->
+<div class="content kimm4-frpai">
+  <!-- 그림 교체(2026-10-19 사용자 요청): 2026 글로벌기계기술포럼_KIMM발표자료(안)_이한민.pptx 3페이지 그림 9(crop_top 14.9% 반영) -->
+  <div class="fig"><img src="assets/fes-original/fes/s19_frpai_pptx_p3.png" alt="필드로봇 피지컬 AI 세부기술 구성" data-id="s19_frpai_pptx_p3"></div>
+  <div class="side">
+    <div class="pj"><div class="n">인구절벽·위험환경 대응<br>AI 필드로봇 기술 개발</div></div>
+    <div class="kimm4-hw">
+      <div class="it"><div class="ph"><img src="assets/fes-original/fes/frpai_hw1.jpg" alt="4족 보행 로봇" data-id="k4_hw1"></div><div class="t"><em>재난</em> 4족 보행</div></div>
+      <div class="it"><div class="ph"><img src="assets/fes-original/fes/frpai_hw2.jpg" alt="트랙터" data-id="k4_hw2"></div><div class="t"><em>농업</em> 트랙터</div></div>
+      <div class="it"><div class="ph"><img src="assets/fes-original/fes/frpai_hw3.jpg" alt="과수 예찰 로봇" data-id="k4_hw3"></div><div class="t"><em>농업</em> 과수 예찰</div></div>
+      <div class="it"><div class="ph"><img src="assets/fes-original/fes/frpai_hw4.jpg" alt="굴착기" data-id="k4_hw4"></div><div class="t"><em>건설</em> 굴착기</div></div>
+      <div class="it"><div class="ph"><img src="assets/fes-original/fes/frpai_hw5.jpg" alt="자재 이송 로봇" data-id="k4_hw5"></div><div class="t"><em>건설</em> 자재 이송</div></div>
+      <div class="goal">이기종 장비 5종<b>Level 4</b>자율화</div>
+    </div>
+  </div>
+</div>
+<div class="pno">40</div>
+</section>
+<script>
+/* 비교본 추가(담당 C) — FES 원본 뷰어보다 먼저 실행해야 함(?slide=N 직접 진입 시 첫 show()가 바로 play()를 부르므로).
+   KIMM 사례(fo-kimm-*)·재난(fo-disaster-*) 영상은 자동 play() 호출을 무시: 클릭·재생 막대로만 재생, 소리 보존. */
+document.querySelectorAll('section[id^="fo-kimm-"] video,section[id^="fo-disaster-"] video').forEach(v=>{v.autoplay=false;v.play=()=>Promise.resolve()});
+</script>
+<script>
+(()=>{const slides=[...document.querySelectorAll('.slide')];let i=0,on=false;
+function fit(){const s=Math.min(innerWidth/960,innerHeight/540);document.documentElement.style.setProperty('--fit',s)}
+/* data-seq="2" 영상은 슬라이드 진입 시 멈춰 두고, 다음 키를 누르면 앞 영상을 멈추고 재생 (발표자 순서 제어) */
+function show(){slides.forEach((el,k)=>{el.classList.toggle('on',k===i);el.querySelectorAll('video').forEach(v=>{v.dataset.started='';if(k===i){v.currentTime=0;if((+v.dataset.seq||1)>1)v.pause();else v.play().catch(()=>{})}else v.pause()})})}
+function nextSeq(){const vs=[...slides[i].querySelectorAll('video[data-seq]')].filter(v=>+v.dataset.seq>1&&!v.dataset.started).sort((a,b)=>a.dataset.seq-b.dataset.seq);if(!vs.length)return false;slides[i].querySelectorAll('video').forEach(v=>v.pause());vs[0].dataset.started='1';vs[0].currentTime=0;vs[0].play().catch(()=>{});return true}
+const q=new URLSearchParams(location.search).get('slide');
+if(q){i=Math.max(0,Math.min(slides.length-1,parseInt(q,10)-1));on=true;document.body.classList.add('present');fit();show()}
+/* ?bare=1 → 표지의 글자·사진·로고를 숨김 (PPTX 변환 시 곡면 배경만 잘라 쓰기 위해) */
+if(new URLSearchParams(location.search).get('bare')){document.querySelectorAll('.cover .head,.cover .pill,.cover h1,.cover .meta,.cover .clogo,.cover .mbox,.cover .ph,.cover .pno').forEach(e=>e.style.visibility='hidden')}
+addEventListener('keydown',e=>{
+  if(e.key==='f'||e.key==='F'){on=!on;document.body.classList.toggle('present',on);fit();show();return}
+  if(!on)return;
+  if(['ArrowRight','PageDown',' '].includes(e.key)){if(!nextSeq()){i=Math.min(slides.length-1,i+1);show()}e.preventDefault()}
+  if(['ArrowLeft','PageUp'].includes(e.key)){i=Math.max(0,i-1);show();e.preventDefault()}
+  if(e.key==='Escape'){on=false;document.body.classList.remove('present')}
+});
+addEventListener('resize',fit);
+/* ?layout=1 → 모든 슬라이드의 요소 좌표·스타일을 JSON으로 덤프 (PPTX 변환용, headless --dump-dom) */
+if(new URLSearchParams(location.search).get('layout')){
+  const out=[];
+  const cs=e=>getComputedStyle(e);
+  const col=c=>{const m=c&&c.match(/rgba?\(([^)]+)\)/);if(!m)return null;const p=m[1].split(',').map(Number);if(p.length>3&&p[3]===0)return null;return p.slice(0,3).map(v=>v.toString(16).padStart(2,'0')).join('')};
+  const isInline=n=>n.nodeType===3||['B','EM','I','BR'].includes(n.tagName)||(n.tagName==='SPAN'&&cs(n).display==='inline');
+  slides.forEach((sl,si)=>{
+    const R=sl.getBoundingClientRect();const items=[];
+    const walk=(el)=>{
+      if(el.nodeType!==1)return;
+      const tag=(el.tagName||'').toUpperCase();
+      if(['SCRIPT','STYLE'].includes(tag))return;
+      const s=cs(el);if(s.display==='none'||s.visibility==='hidden')return;
+      const r=el.getBoundingClientRect();const b={x:r.left-R.left,y:r.top-R.top,w:r.width,h:r.height};
+      const cls=el.className&&typeof el.className==='string'?el.className:'';
+      if(tag==='SVG'){items.push({t:'svg',cls,...b});return}
+      if(tag==='IMG'){items.push({t:'img',cls,src:el.getAttribute('src'),id:el.dataset.id||'',...b});return}
+      if(tag==='VIDEO'){items.push({t:'video',cls,src:el.getAttribute('src'),poster:el.getAttribute('poster'),id:el.dataset.id||'',...b});return}
+      const bg=col(s.backgroundColor),bc=col(s.borderTopColor),bw=parseFloat(s.borderTopWidth)||0,bl=parseFloat(s.borderLeftWidth)||0;
+      const grad=s.backgroundImage&&s.backgroundImage.includes('gradient');
+      if(b.w>0&&b.h>0&&(bg||(bw>0&&bc)||(bl>0&&col(s.borderLeftColor))||grad)){
+        items.push({t:'box',cls,...b,bg,bc,bw,bl,blc:col(s.borderLeftColor),bs:s.borderTopStyle,rad:parseFloat(s.borderTopLeftRadius)||0,grad:grad?1:0,sh:(s.boxShadow&&s.boxShadow!=='none')?1:0});
+      }
+      const kids=[...el.childNodes].filter(n=>n.nodeType===1||(n.nodeType===3&&n.textContent.trim()));
+      const mkRuns=(nodes)=>{const runs=[];
+        const push=(n,st)=>{if(n.nodeType===3){const tx=n.textContent.replace(/\s+/g,' ');if(tx.trim()||runs.length)runs.push({tx,...st});return}
+          if(n.tagName==='BR'){runs.push({br:1});return}
+          const ss=cs(n);const blk=ss.display!=='inline';if(blk&&runs.length)runs.push({br:1});
+          const st2={c:col(ss.color),fw:parseInt(ss.fontWeight)||400,fs:parseFloat(ss.fontSize),bg:col(ss.backgroundColor)};[...n.childNodes].forEach(k=>push(k,st2));if(blk)runs.push({br:1})};
+        const st={c:col(s.color),fw:parseInt(s.fontWeight)||400,fs:parseFloat(s.fontSize)};nodes.forEach(k=>push(k,st));
+        while(runs.length&&runs[runs.length-1].br)runs.pop();while(runs.length&&runs[0].br)runs.shift();return runs};
+      const emitText=(runs,bb,padL,padT,padR)=>{if(runs.some(x=>x.tx&&x.tx.trim()))items.push({t:'text',tag,cls,...bb,runs,fs:parseFloat(s.fontSize),fw:parseInt(s.fontWeight)||400,c:col(s.color),al:s.textAlign,lh:parseFloat(s.lineHeight)||0,ls:parseFloat(s.letterSpacing)||0,pl:padL,pt:padT,pr:padR,va:s.alignItems||'',jc:s.justifyContent||'',disp:s.display})};
+      if(kids.length&&kids.every(isInline)){
+        emitText(mkRuns(kids),b,parseFloat(s.paddingLeft)||0,parseFloat(s.paddingTop)||0,parseFloat(s.paddingRight)||0);return;
+      }
+      /* mixed container: recurse into block children; consecutive inline nodes become one text item with a Range rect */
+      let seg=[];
+      const flush=()=>{if(!seg.length)return;const rg=document.createRange();rg.setStartBefore(seg[0]);rg.setEndAfter(seg[seg.length-1]);const rr=rg.getBoundingClientRect();
+        if(rr.width>0&&rr.height>0)emitText(mkRuns(seg),{x:rr.left-R.left,y:rr.top-R.top,w:rr.width,h:rr.height},0,0,0);seg=[]};
+      kids.forEach(n=>{if(isInline(n))seg.push(n);else{flush();walk(n)}});flush();
+    };
+    walk(sl);
+    out.push({n:si+1,cls:sl.className,items});
+  });
+  document.body.innerHTML='<pre id="layout">'+JSON.stringify(out).replace(/</g,'&lt;')+'</pre>';
+}
+})();
+</script>
+<script>
+/* 비교본 추가(담당 C). FES 원본 뷰어 규칙은 위 그대로.
+   1) autoplay 속성이 없는 영상(원본 PPTX 클릭 재생형)은 클릭으로 재생.
+   2) 발표 모드가 아닐 때 화면 밖 영상은 멈추고, 화면 안에서는 autoplay 영상만 다시 재생.
+   3) 재생 정책(2026-10-31): KIMM 사례(fo-kimm-*)·재난(fo-disaster-*) 영상은 소리 보존 + 클릭 재생만.
+      슬라이드 진입 시 FES 뷰어의 자동 play() 호출을 이 영상들에 한해 무시하고, 이탈 시 정지는 그대로.
+      FES 원본 채택 장·일반기술 장의 재생 방식은 원본 그대로. */
+(()=>{const B=document.body,pr=B.classList.contains('present');if(pr)B.classList.remove('present');
+  const vs=[...document.querySelectorAll('video:not([autoplay])')],w=vs.map(v=>v.offsetWidth);if(pr)B.classList.add('present');
+  /* 폭 320px 이상은 기본 재생 막대, 그보다 작은 영상은 Chrome 기본 컨트롤이 클릭을 받지 않으므로 화면 클릭으로 재생/정지 */
+  const P0=HTMLMediaElement.prototype.play;
+  vs.forEach((v,k)=>{if(w[k]>=320)v.controls=true;else{v.style.cursor='pointer';v.title='클릭하여 재생/정지';v.addEventListener('click',()=>{v.paused?P0.call(v).catch(()=>{}):v.pause()})}});
+if(!('IntersectionObserver' in window))return;const io=new IntersectionObserver(es=>{if(document.body.classList.contains('present'))return;
+es.forEach(e=>e.target.querySelectorAll('video').forEach(v=>{if(e.isIntersecting){if(v.autoplay&&(+v.dataset.seq||1)<=1)v.play().catch(()=>{})}else v.pause()}))},{threshold:.35});
+document.querySelectorAll('.slide').forEach(s=>{if(s.querySelector('video'))io.observe(s)})})();
+</script>
+</body>
+</html>

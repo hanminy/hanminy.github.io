@@ -1,0 +1,129 @@
+/* FES 원본 기반 비교본 · 일반 필드로봇 AI 기술 13장 (fo-tech-01~13)
+   틀(.sidebar/.title/.kimmlogo/.keybar/.content)과 장 색(.ch3 --main/--deep/--tint/--bd)은 FES 국문 HTML 그대로.
+   여기는 본문 배치만, 모든 선택자 .ft-slide/.ft-*/#fo-tech-NN 범위. 소유: 담당 A */
+
+.ft-slide figure{margin:0}
+.ft-slide .mbox{position:relative;overflow:hidden;border-radius:6px;background:#E9ECF1}
+.ft-slide .mbox.ft-paper{background:#fff;border:1px solid var(--gray-line)}
+.ft-slide .mbox > img,.ft-slide .mbox > video{display:block;width:100%;height:100%;max-width:none}
+.ft-slide .mbox > .ft-contain{object-fit:contain}
+.ft-slide .mbox > .ft-cover{object-fit:cover}
+.ft-slide .mbox > video{background:#121a29}
+/* FES 소제목·본문 공통 */
+.ft-slide .content .ft-nm{font-size:18px;font-weight:800;color:var(--deep);letter-spacing:-.4px;line-height:1.2}
+.ft-slide .content p{margin:0;font-size:14.5px;font-weight:500;color:#333;line-height:1.35}
+.ft-slide .content p.ft-k{font-weight:700;color:var(--main)}
+.ft-slide .content .ft-chip{display:inline-block;align-self:flex-start;font-size:13px;font-weight:800;color:#fff;background:var(--main);border-radius:999px;padding:2px 11px;letter-spacing:-.3px}
+.ft-slide .content ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:12px}
+.ft-slide .content ul li{position:relative;padding-left:14px;font-size:17px;font-weight:600;color:var(--ink);line-height:1.35}
+.ft-slide .content ul li::before{content:"•";position:absolute;left:0;top:0;color:var(--main);font-weight:800}
+/* 카드 격자(원본 2x2/1x3 카드) — FES 상자: 흰 바탕, 장 색 옅은 테두리, 위 3px 장 색 */
+.ft-slide .ft-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 14px}
+.ft-slide .ft-cell{display:flex;flex-direction:column;gap:5px;background:#fff;border:1px solid var(--bd);border-top:3px solid var(--main);border-radius:6px;padding:10px 14px 11px;box-shadow:0 2px 6px rgba(0,0,0,.06)}
+.ft-slide figcaption{font-size:13.5px;font-weight:600;color:#333;text-align:center;margin-top:5px;line-height:1.3}
+.ft-slide figcaption b{color:var(--deep);font-weight:800;margin-right:6px}
+
+/* tech-01 8분야 사진 격자 */
+#fo-tech-01 .ft-fields{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px 16px;margin-top:2px}
+#fo-tech-01 .mbox{height:126px}
+#fo-tech-01 figcaption{text-align:left;font-weight:500;color:var(--ink-sub)}
+#fo-tech-01 figcaption b{font-size:16px}
+
+/* tech-02 4대 도전과제 */
+#fo-tech-02 .ft-four{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:6px}
+#fo-tech-02 .ft-it{display:flex;flex-direction:column;gap:8px}
+#fo-tech-02 .mbox{height:196px}
+#fo-tech-02 .ft-hd{display:flex;align-items:center;gap:8px;font-size:19px;font-weight:800;color:var(--deep);letter-spacing:-.5px}
+#fo-tech-02 .ft-hd b{display:inline-grid;place-items:center;width:30px;height:24px;border-radius:12px;background:var(--main);color:#fff;font-size:13px;font-weight:800}
+#fo-tech-02 .ft-it p{font-size:15px}
+
+/* tech-03 4계층 — 위→아래 계층 띠 */
+#fo-tech-03 .ft-stack{display:flex;flex-direction:column;gap:12px;margin-top:6px}
+#fo-tech-03 .ft-lv{display:grid;grid-template-columns:76px 270px minmax(0,1fr);align-items:center;height:76px;background:var(--tint);border:1px solid var(--bd);border-radius:8px;overflow:hidden}
+#fo-tech-03 .ft-lv > b{height:100%;display:grid;place-items:center;background:var(--main);color:#fff;font-size:28px;font-weight:800;letter-spacing:-.5px}
+#fo-tech-03 .ft-lv:nth-child(2) > b{background:var(--alt)}
+#fo-tech-03 .ft-lv:nth-child(3) > b{background:var(--mid)}
+#fo-tech-03 .ft-lv:nth-child(4) > b{background:var(--deep)}
+#fo-tech-03 .ft-lv > div{padding-left:18px;display:flex;flex-direction:column;gap:3px}
+#fo-tech-03 .ft-lv strong{font-size:19px;font-weight:800;color:var(--deep);letter-spacing:-.4px}
+#fo-tech-03 .ft-lv span{font-size:15px;font-weight:600;color:var(--ink-sub)}
+#fo-tech-03 .ft-lv p{font-size:16.5px;font-weight:700;color:var(--main)}
+
+/* tech-04 3D 표현 */
+#fo-tech-04 .ft-rep{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:18px;align-items:center;margin-top:4px}
+#fo-tech-04 .ft-cell{min-height:110px}
+#fo-tech-04 .mbox{height:210px}
+
+/* tech-05 강건 센싱 */
+#fo-tech-05 .ft-sense{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:20px}
+#fo-tech-05 .ft-list{display:flex;flex-direction:column;gap:10px}
+#fo-tech-05 .ft-row{border-left:4px solid var(--main);background:var(--tint);border-radius:0 6px 6px 0;padding:9px 14px;display:flex;flex-direction:column;gap:3px}
+#fo-tech-05 .ft-vid{width:380px;height:228px}
+#fo-tech-05 .ft-two{display:flex;gap:10px;margin-top:10px}
+#fo-tech-05 .ft-two .mbox{width:185px;height:128px}
+/* 원본 srcRect r=13.547% b=11.729% 유지 */
+#fo-tech-05 .ft-crop img{position:absolute;left:0;top:0;width:calc(185px / (1 - .13547));height:calc(128px / (1 - .11729))}
+
+/* tech-06 Vision FMs */
+#fo-tech-06 .ft-fm{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:18px;align-items:center;margin-top:4px}
+#fo-tech-06 .ft-cell{min-height:118px}
+#fo-tech-06 .mbox{height:210px}
+
+/* tech-07 SLAM */
+#fo-tech-07 .ft-slam{display:flex;flex-direction:column;gap:12px;margin-top:2px}
+#fo-tech-07 .ft-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+#fo-tech-07 .ft-cell{min-height:108px}
+#fo-tech-07 .ft-map{height:200px;background:#121a29}
+
+/* 표 (tech-08, tech-09) — FES 표: 장 색 머리행, 회색 구분선 */
+.ft-slide table.ft-table{width:100%;border-collapse:collapse}
+.ft-slide table.ft-table th{background:var(--main);color:#fff;font-size:14.5px;font-weight:800;letter-spacing:1px;text-align:left;padding:10px 14px}
+.ft-slide table.ft-table td{font-size:17px;font-weight:600;color:var(--ink);padding:20px 14px;border-bottom:1px solid var(--gray-line)}
+.ft-slide table.ft-table td:first-child{color:var(--deep);font-weight:800}
+.ft-slide table.ft-table td:last-child{color:var(--ink-sub);font-weight:500}
+.ft-slide table.ft-table tr.ft-hl td{background:var(--tint)}
+#fo-tech-08 .ft-table{margin-top:14px}
+
+/* tech-09 모방학습 */
+#fo-tech-09 .ft-il{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:22px;margin-top:10px}
+#fo-tech-09 .ft-pane{display:flex;flex-direction:column;gap:18px;background:#fff;border:1px solid var(--bd);border-top:3px solid var(--main);border-radius:6px;padding:20px 22px;min-height:330px}
+#fo-tech-09 table.ft-table td{padding:18px 4px;font-size:16.5px}
+
+/* tech-10 강화학습 */
+#fo-tech-10 .ft-rl{display:flex;flex-direction:column;gap:12px}
+#fo-tech-10 .ft-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+#fo-tech-10 .ft-cell{min-height:104px}
+#fo-tech-10 .ft-gifs{display:flex;justify-content:center;gap:16px}
+#fo-tech-10 .ft-gifs .mbox{width:300px;height:226px;background:#121a29}
+
+/* tech-11 MPC */
+#fo-tech-11 .ft-mpc{display:grid;grid-template-columns:330px minmax(0,1fr);gap:22px;align-items:center;margin-top:6px}
+#fo-tech-11 ul{gap:18px}
+#fo-tech-11 .mbox{height:268px}
+#fo-tech-11 figcaption{text-align:right;color:var(--ink-sub)}
+
+/* tech-12 계층 분리 */
+#fo-tech-12 .ft-hier{display:flex;flex-direction:column;gap:6px;margin-top:2px}
+#fo-tech-12 .ft-layer{display:grid;grid-template-columns:190px 240px minmax(0,1fr);align-items:center;gap:14px;border-radius:8px;padding:14px 16px;min-height:104px}
+#fo-tech-12 .ft-layer.ft-up{background:var(--navy-bar);color:#fff}
+#fo-tech-12 .ft-layer.ft-lo{background:var(--tint);border:1px solid var(--bd)}
+#fo-tech-12 .ft-tag{font-size:13px;font-weight:800;letter-spacing:1.2px}
+#fo-tech-12 .ft-up .ft-tag{color:var(--accent-soft)}
+#fo-tech-12 .ft-lo .ft-tag{color:var(--main)}
+#fo-tech-12 .ft-layer .ft-nm{font-size:20px}
+#fo-tech-12 .ft-up .ft-nm{color:#fff}
+#fo-tech-12 .ft-items{display:flex;flex-direction:column;gap:5px;font-size:15px;font-weight:600}
+#fo-tech-12 .ft-items span::before{content:"• ";color:var(--main);font-weight:800}
+#fo-tech-12 .ft-up .ft-items span::before{color:var(--accent)}
+#fo-tech-12 .ft-link{text-align:center;font-size:20px;font-weight:800;color:var(--main);line-height:1}
+#fo-tech-12 p.ft-foot{margin-top:8px;font-size:15px;font-weight:600;color:#333;border-top:1px solid var(--gray-line);padding-top:10px}
+
+/* tech-13 Sim-to-Real */
+#fo-tech-13 .ft-s2r{display:grid;grid-template-columns:minmax(0,1fr) 40px minmax(0,1fr);align-items:stretch;margin-top:10px}
+#fo-tech-13 .ft-pane{display:flex;flex-direction:column;gap:20px;background:#fff;border:1px solid var(--bd);border-top:3px solid var(--main);border-radius:6px;padding:20px 22px;min-height:330px}
+#fo-tech-13 .ft-pane:first-child{border-top-color:var(--red-tag)}
+#fo-tech-13 .ft-pane:first-child .ft-nm{color:var(--red-tag)}
+#fo-tech-13 .ft-mid{display:grid;place-items:center;font-size:26px;font-weight:800;color:var(--main)}
+#fo-tech-13 .ft-sol{display:flex;flex-direction:column;gap:2px;border-left:4px solid var(--main);padding-left:12px}
+#fo-tech-13 .ft-sol b{font-size:18px;font-weight:800;color:var(--deep)}
+#fo-tech-13 .ft-sol span{font-size:15.5px;color:var(--ink-sub)}

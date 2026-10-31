@@ -1,0 +1,300 @@
+/* =====================================================================
+   담당 B — KIMM 필드로봇 실증·자율작업 굴착기 (fo-kimm-01~13)
+   틀(sidebar/title/kimmlogo/keybar/content/pno)은 공통 fes.css(FES 국문 원본 CSS). 이 파일은 내용 부품만 .fk-* 범위로 정의.
+   색: FES ch2 변수(--deep/--main/--tint/--bd) + FES 공통 변수만
+   ===================================================================== */
+.fk-slide{--navy:var(--deep);--navy-deep:var(--navy-deep);--navy-mid:var(--main);--navy-ink:var(--deep);--link:var(--main);
+  --tint2:var(--tint);--line:var(--gray-line);--line2:var(--bd);--sub:var(--ink-sub);--muted:var(--gray-label);--hl:var(--tint);--warn:var(--red-tag);}
+.fk-slide .fk-content{gap:10px;font-size:15px;font-weight:500;line-height:1.38}
+.fk-slide .fk-content :where(*){box-sizing:border-box}
+.fk-slide .title.fk-tsm{font-size:26px;top:24px}
+.fk-slide .title .fk-sub{font-size:17px;font-weight:600;color:var(--ink-sub);margin-left:8px;letter-spacing:-.3px}
+.fk-slide .speaker-notes{display:none}
+/* FES 전역 .ph(점선 자리표시)·.row(flex) 규칙이 내용 부품에 걸리지 않게 되돌림 */
+.fk-slide .fk-content .ph{border:0;border-radius:0;background:none;display:flex;flex-direction:column}
+.fk-slide .fk-content .ph::before{content:none}
+.fk-slide .fk-p3-def .row{display:block;gap:0}
+
+/* -- 이식: nst-v3 부품(.fk-*) -- */
+.fk-slide .fk-h{display:flex;align-items:center;gap:7px;font-size:19px;font-weight:800;color:var(--navy-ink);letter-spacing:-.5px;line-height:1.2;white-space:nowrap}
+.fk-slide .fk-h small{font-size:14px;font-weight:600;color:var(--sub);letter-spacing:-.2px}
+.fk-slide .fk-h.bar{border-left:4px solid var(--navy);padding-left:8px;font-size:17px}
+.fk-slide .fk-n{width:24px;height:24px;border-radius:50%;background:var(--navy);color:#fff;display:inline-grid;place-items:center;
+  font-size:14px;font-weight:800;flex:0 0 auto;line-height:1}
+.fk-slide .fk-txt{font-size:15px;line-height:1.42;color:var(--ink)}
+.fk-slide .fk-cap{font-size:14px;font-weight:600;color:#333;line-height:1.3;text-align:center}
+.fk-slide .fk-cap b{color:var(--navy-ink);font-weight:800}
+.fk-slide .fk-note{font-size:13px;color:var(--sub);line-height:1.3}
+.fk-slide .fk-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.fk-slide .fk-list > li{position:relative;padding-left:14px;font-size:15px;line-height:1.38}
+.fk-slide .fk-list > li::before{content:"";position:absolute;left:2px;top:.55em;width:5px;height:5px;border-radius:50%;background:var(--navy)}
+.fk-slide .fk-list > li b{color:var(--navy-ink)}
+.fk-slide .fk-hl{background:linear-gradient(transparent 58%,var(--accent) 58%)}
+
+/* ── 태그 ── */
+.fk-slide .fk-tag{display:inline-block;font-size:12.5px;font-weight:700;color:#fff;background:var(--navy);border-radius:4px;padding:2px 8px;line-height:1.25;white-space:nowrap}
+.fk-slide .fk-tag.ln{background:#fff;color:var(--navy);box-shadow:inset 0 0 0 1.2px var(--navy)}
+.fk-slide .fk-tag.y{background:var(--accent);color:var(--navy-ink)}
+.fk-slide .fk-tag.g{background:var(--muted)}
+.fk-slide .fk-tag.kimm{background:var(--navy-deep)}
+.fk-slide .fk-tag.ext{background:#fff;color:var(--sub);box-shadow:inset 0 0 0 1.2px var(--line2)}
+.fk-slide .fk-tag.plan{background:#fff;color:var(--navy);outline:1.2px dashed var(--navy);outline-offset:-1.2px}
+
+/* ── 도식: 노드·화살표·흐름·묶음 (HTML로 직접 그림) ── */
+.fk-slide .fk-node{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:2px;
+  min-height:52px;padding:7px 10px;border:1.5px solid var(--navy);border-radius:6px;background:#fff;
+  font-size:16px;font-weight:700;color:var(--navy-ink);line-height:1.2;letter-spacing:-.3px}
+.fk-slide .fk-node small{display:block;font-size:13.5px;font-weight:500;color:var(--sub);letter-spacing:-.2px;line-height:1.25}
+.fk-slide .fk-node.fill{background:var(--navy);border-color:var(--navy);color:#fff}
+.fk-slide .fk-node.fill small{color:rgba(255,255,255,.82)}
+.fk-slide .fk-node.soft{background:var(--tint);border-color:transparent}
+.fk-slide .fk-node.in{border-width:1px 0;border-color:var(--line);border-radius:0;color:var(--sub);font-size:14.5px}
+.fk-slide .fk-node.y{background:var(--accent);border-color:var(--accent)}
+.fk-slide .fk-node.dash{border-style:dashed}
+.fk-slide .fk-node.lg{font-size:18px;min-height:60px}
+.fk-slide .fk-flow{display:flex;align-items:center;gap:0}
+.fk-slide .fk-flow.col{flex-direction:column;align-items:stretch}
+.fk-slide .fk-flow > .fk-node{flex:1 1 0}
+.fk-slide .fk-arrow{flex:0 0 26px;display:grid;place-items:center;color:var(--navy);font-size:18px;font-weight:700;line-height:1;position:relative}
+.fk-slide .fk-arrow::before{content:"→"}
+.fk-slide .fk-arrow.down::before{content:"↓"} .fk-slide .fk-arrow.up::before{content:"↑"}
+.fk-slide .fk-arrow.back::before{content:"←"} .fk-slide .fk-arrow.both::before{content:"⇄"}
+.fk-slide .fk-flow.col > .fk-arrow{flex-basis:22px}
+.fk-slide .fk-arrow[data-l]::after{content:attr(data-l);position:absolute;bottom:100%;left:50%;transform:translateX(-50%);font-size:12px;font-weight:600;color:var(--sub);white-space:nowrap}
+.fk-slide .fk-group{position:relative;border:1.5px dashed var(--line2);border-radius:8px;padding:20px 10px 10px}
+.fk-slide .fk-group > .fk-glabel{position:absolute;left:10px;top:-11px;background:#fff;padding:0 6px;font-size:14.5px;font-weight:800;color:var(--navy-ink);white-space:nowrap}
+.fk-slide .fk-group.solid{border-style:solid;border-color:var(--navy)}
+.fk-slide .fk-group.tint{background:var(--tint2);border-color:transparent}
+.fk-slide .fk-group.tint > .fk-glabel{background:transparent;top:4px}
+/* SVG: viewBox를 실제 px로, 선 navy 1.75 / 보조선 var(--gray-label2) dash, 글자 16~18px(.t) 14px(.ts) */
+.fk-slide svg.fk-svg{display:block;overflow:visible;font-family:inherit}
+.fk-slide svg.fk-svg .ln{stroke:var(--navy);stroke-width:1.75;fill:none}
+.fk-slide svg.fk-svg .ln2{stroke:var(--line2);stroke-width:1.25;fill:none;stroke-dasharray:4 3}
+.fk-slide svg.fk-svg .bx{fill:#fff;stroke:var(--navy);stroke-width:1.5}
+.fk-slide svg.fk-svg .bxf{fill:var(--navy);stroke:none}
+.fk-slide svg.fk-svg .bxs{fill:var(--tint);stroke:none}
+.fk-slide svg.fk-svg .t{font-size:16px;font-weight:700;fill:var(--navy-ink)}
+.fk-slide svg.fk-svg .tw{font-size:16px;font-weight:700;fill:#fff}
+.fk-slide svg.fk-svg .ts{font-size:14px;font-weight:500;fill:var(--sub)}
+
+/* ── 표 ── */
+.fk-slide table.fk-table{width:100%;border-collapse:collapse;font-size:15px;line-height:1.3}
+.fk-slide table.fk-table th{background:var(--navy);color:#fff;font-size:14.5px;font-weight:700;padding:7px 10px;text-align:left;letter-spacing:-.2px}
+.fk-slide table.fk-table td{padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:middle}
+.fk-slide table.fk-table td:first-child{font-weight:700;color:var(--navy-ink)}
+.fk-slide table.fk-table tr.hl td{background:var(--hl)}
+.fk-slide table.fk-table .c{text-align:center}
+
+/* ── 미디어 ── */
+.fk-slide .fk-media{position:relative;overflow:hidden;border-radius:6px;background:var(--gray-fill);flex:0 0 auto}
+.fk-slide .fk-media > img,.fk-slide .fk-media > video{display:block;width:100%;height:100%;object-fit:contain;max-width:none}
+.fk-slide .fk-media.cover > img,.fk-slide .fk-media.cover > video{object-fit:cover}
+.fk-slide .fk-media.dark{background:var(--navy-deep)}
+.fk-slide .fk-media.paper{background:#fff;box-shadow:inset 0 0 0 1px var(--line)}
+.fk-slide .fk-badge{position:absolute;left:8px;top:8px;z-index:2;background:rgba(13,21,38,.78);color:#fff;font-size:12.5px;font-weight:700;
+  border-radius:4px;padding:3px 8px;letter-spacing:-.2px;pointer-events:none;white-space:nowrap}
+.fk-slide .fk-badge.r{left:auto;right:8px}
+.fk-slide .fk-badge em{font-style:normal;color:var(--accent)}
+.fk-slide .fk-credit{position:absolute;right:6px;bottom:6px;z-index:2;font-size:10px;font-weight:600;color:#fff;background:rgba(0,0,0,.5);border-radius:3px;padding:1px 5px;pointer-events:none}
+.fk-slide .fk-fig{display:flex;flex-direction:column;gap:5px;min-width:0}
+
+/* ── 수치·비교 ── */
+.fk-slide .fk-metric{display:flex;flex-direction:column;align-items:center;gap:4px}
+.fk-slide .fk-metric .num{font-size:40px;font-weight:800;letter-spacing:-1.2px;line-height:1;color:var(--navy-ink)}
+.fk-slide .fk-metric .num small{font-size:20px;font-weight:700;margin-left:2px}
+.fk-slide .fk-metric .lb{font-size:14px;font-weight:600;color:#444}
+.fk-slide .fk-vs{align-self:center;font-size:16px;font-weight:800;color:var(--muted)}
+
+/* ── 배치 도우미 ── */
+.fk-slide .fk-row{display:flex;gap:16px;min-height:0}
+.fk-slide .fk-col{display:flex;flex-direction:column;gap:8px;min-width:0;min-height:0}
+.fk-slide .fk-grow{flex:1 1 0;min-width:0;min-height:0}
+.fk-slide .fk-g2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;min-height:0}
+.fk-slide .fk-g3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;min-height:0}
+.fk-slide .fk-rule{border-top:1px solid var(--line);margin:4px 0}
+
+/* -- 이식: 장별 배치(field_demos·part3) -- */
+/* v3 field_demos — KIMM 필드로봇 사례 7장. 공통 nst-v3.css(.fk-slide) 위에 .fk-fd- 접두어로만 범위 한정 */
+
+/* 공통: 큰 단일 영상 */
+.fk-slide .fk-fd-big{align-self:center;width:663px;height:373px}
+
+/* field-01 협업 크레인 */
+.fk-slide .fk-fd-crane{display:grid;grid-template-columns:286px 1fr;gap:22px;height:100%}
+.fk-slide .fk-fd-crane .fk-list > li{font-size:15px}
+.fk-slide .fk-fd-crane .sys{width:100%;aspect-ratio:1165/816;background:#fff}
+.fk-slide .fk-fd-v4{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:10px 14px;align-content:center}
+.fk-slide .fk-fd-v4 .fk-media{width:100%;aspect-ratio:16/9}
+
+/* field-02 원격제어 retrofit */
+.fk-slide .fk-fd-rc{display:flex;flex-direction:column;gap:12px;height:100%}
+.fk-slide .fk-fd-rc-top{display:grid;grid-template-columns:250px 30px 1fr 1fr;gap:0 14px;align-items:start}
+.fk-slide .fk-fd-rc-top > .fk-arrow{align-self:center;margin-top:-16px}
+.fk-slide .fk-fd-rc-top .fk-media{width:100%;height:158px}
+.fk-slide .fk-media > img.fk-fd-inset{position:absolute;right:6px;bottom:6px;width:42%;height:46%;object-fit:cover;border:2px solid var(--accent);border-radius:4px;z-index:2;box-shadow:0 1px 4px rgba(0,0,0,.4)}
+.fk-slide .fk-fd-feat{display:grid;grid-template-columns:1.3fr 1fr 1.2fr;gap:12px;flex:1;min-height:0}
+.fk-slide .fk-fd-feat > div{background:var(--tint2);border-top:3px solid var(--navy);border-radius:0 0 6px 6px;padding:9px 12px;display:flex;flex-direction:column;gap:4px}
+.fk-slide .fk-fd-feat b{font-size:16.5px;font-weight:800;color:var(--navy-ink)}
+.fk-slide .fk-fd-feat span{font-size:14.5px;color:#333;line-height:1.38}
+.fk-slide .fk-fd-logos{display:flex;align-items:center;justify-content:flex-end;gap:16px;height:22px}
+.fk-slide .fk-fd-logos .lb{font-size:13px;font-weight:600;color:var(--muted);margin-right:auto}
+.fk-slide .fk-fd-logos img{height:20px;width:auto}
+
+/* field-04 과수 플랫폼 */
+.fk-slide .fk-fd-orch{display:grid;grid-template-columns:1fr 196px;gap:18px;height:100%}
+.fk-slide .fk-fd-orch-l{display:grid;grid-template-columns:1.25fr 1fr;grid-template-rows:146px 1fr;gap:6px 12px;min-height:0}
+.fk-slide .fk-fd-orch-l .fk-fig{min-height:0}
+.fk-slide .fk-fd-orch-l .fk-media{width:100%;flex:1 1 0;min-height:0}
+.fk-slide .fk-fd-orch-l .drw > img.in3{position:absolute;left:6px;top:6px;width:84px;height:auto;background:#fff;border:1px solid var(--line);border-radius:3px;z-index:2}
+/* 원본 B#40과 같은 크롭(위아래 회색 띠 제외) */
+.fk-slide .fk-fd-orch-l .opt > img{position:absolute;left:0;top:-4.862%;width:101.593%;height:109.067%;object-fit:fill}
+.fk-slide .fk-fd-orch-l .opt{aspect-ratio:117.3/91.7;flex:0 0 auto!important;margin-top:auto;margin-bottom:auto}
+.fk-slide .fk-fd-port{display:flex;flex-direction:column;gap:5px}
+.fk-slide .fk-fd-port .fk-media{width:196px;height:348px}
+
+/* field-05 과수 시험 결과 */
+.fk-slide .fk-fd-res{display:grid;grid-template-columns:1fr 1fr 250px;grid-template-rows:181px 181px;gap:10px 16px;height:100%}
+.fk-slide .fk-fd-res .cell{display:flex;flex-direction:column;gap:4px;min-height:0}
+.fk-slide .fk-fd-res .cell .fk-h.bar{font-size:15px}
+.fk-slide .fk-fd-res .plot{flex:1 1 0;min-height:0;background:#fff;box-shadow:inset 0 0 0 1px var(--line)}
+.fk-slide .fk-fd-res .wide{grid-column:1 / span 2}
+.fk-slide .fk-fd-res .vid{justify-content:center}
+.fk-slide .fk-fd-res .vid .fk-media{width:250px;height:140.6px}
+
+/* field-07 정책 전이 */
+.fk-slide .fk-fd-pt{display:flex;flex-direction:column;gap:12px;height:100%}
+.fk-slide .fk-fd-pt .fk-g2 .fk-media{width:100%;aspect-ratio:4/3;max-height:268px;background:#fff}
+.fk-slide .fk-fd-pt .fk-g2{gap:22px}
+.fk-slide .fk-fd-pt .fk-flow .fk-node{font-size:15px;min-height:48px}
+
+/* field-01 보완(2026-10-30, 팀장 지시): 성과 4항목 상단 한 줄 + 시스템 사진 확대·네이티브 라벨 */
+.fk-slide .fk-fd-crane.fk-fd-crane2{display:grid;grid-template-columns:420px 1fr;grid-template-rows:auto 1fr;gap:10px 18px}
+.fk-slide .fk-fd-crane2 .fk-fd-top{grid-column:1 / -1;display:grid;grid-template-columns:92px repeat(4,minmax(0,1fr));gap:10px;align-items:stretch}
+.fk-slide .fk-fd-crane2 .fk-fd-top .fk-h{align-self:center;font-size:17px}
+.fk-slide .fk-fd-crane2 .fk-fd-top .fk-node{min-height:46px;padding:3px 8px;font-size:15px;font-weight:600;line-height:1.15;gap:1px}
+.fk-slide .fk-fd-crane2 .fk-fd-top .fk-node b{font-weight:800}
+.fk-slide .fk-fd-crane2 .fk-fd-top .fk-node small{font-size:14px}
+.fk-slide .fk-fd-crane2 .fk-fd-sys .sys{width:420px;height:auto;aspect-ratio:1165/816;background:#fff}
+.fk-slide .fk-fd-crane2 .fk-fd-v4{align-content:start}
+.fk-slide .fk-fd-crane2 .fk-fd-sys{gap:3px}
+.fk-slide .fk-fd-sys .fk-media > svg.fk-fd-mk{position:absolute;inset:0;width:100%;height:100%}
+.fk-slide .fk-fd-mk .o{fill:none;stroke:var(--navy-bar);stroke-width:9}
+.fk-slide .fk-fd-mk .i{fill:none;stroke:var(--accent);stroke-width:5}
+.fk-slide .fk-fd-sys .lbl{position:absolute;transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;
+  box-sizing:border-box;padding:1px 6px;background:var(--navy-bar);color:#fff;font-size:13px;font-weight:700;line-height:1.1;letter-spacing:-.3px;
+  white-space:nowrap;border-radius:3px;box-shadow:0 0 0 1px rgba(255,255,255,.85)}
+
+/* v3 part3 — 자율작업 굴착기 + 협업 제안. 공통 nst-v3.css(.fk-slide) 위에 .fk-p3- 접두어로만 범위 한정 */
+
+/* ── part3-01 데이터 파이프라인 ── */
+.fk-slide .fk-p3-pipe{display:flex;flex-direction:column;gap:6px;height:100%}
+.fk-slide .fk-p3-pipe .fk-group{padding-bottom:8px}
+.fk-slide .fk-p3-lower .fk-group{padding-top:16px}
+.fk-slide .fk-p3-acq{display:grid;grid-template-columns:168px 22px 1fr 22px 176px;align-items:stretch;padding:18px 8px 8px}
+.fk-slide .fk-p3-acq > .fk-arrow{align-self:center}
+.fk-slide .fk-p3-box{display:flex;flex-direction:column;gap:6px;border:1.5px solid var(--navy);border-radius:6px;padding:8px 10px;background:#fff;min-width:0}
+.fk-slide .fk-p3-box > b{font-size:15.5px;font-weight:800;color:var(--navy-ink);letter-spacing:-.3px}
+.fk-slide .fk-p3-plat .fk-media{width:140px;height:76px}
+.fk-slide .fk-p3-plat .fk-note{font-size:14px}
+.fk-slide .fk-p3-plat .fk-media > img{position:absolute;left:-17.427%;top:-28.238%;width:129.006%;height:128.238%;object-fit:fill}
+.fk-slide .fk-p3-pc{display:flex;align-items:center;gap:4px;font-size:14px;color:var(--sub);font-weight:600}
+.fk-slide .fk-p3-pc img{width:44px;height:30px;border-radius:3px;object-fit:cover}
+.fk-slide .fk-p3-rows{display:grid;grid-template-columns:66px 1fr;row-gap:3px;column-gap:8px;align-items:center}
+.fk-slide .fk-p3-rows > .k{font-size:14px;font-weight:700;color:var(--navy-ink);line-height:1.15}
+.fk-slide .fk-p3-thumbs{display:flex;align-items:center;gap:5px;font-size:14px;color:var(--muted)}
+.fk-slide .fk-p3-thumbs img{display:block;border-radius:2px}
+.fk-slide .fk-p3-grid3 img{width:27px;height:27px}
+.fk-slide .fk-p3-ts{width:126px;height:61px;border:1px solid var(--line)}
+.fk-slide .fk-p3-cam img{width:29px;height:20px}
+.fk-slide .fk-p3-map{display:flex;gap:3px}
+.fk-slide .fk-p3-map span{font-size:14px;letter-spacing:-.5px;font-weight:700;color:var(--navy-ink);background:var(--tint);border-radius:3px;padding:2px 4px;white-space:nowrap}
+.fk-slide .fk-p3-db{gap:7px}
+.fk-slide .fk-p3-db .r{display:flex;align-items:center;gap:6px;font-size:14.5px;font-weight:700;color:var(--navy-ink);background:var(--tint2);border-radius:4px;padding:4px 6px}
+.fk-slide .fk-p3-db .r img{width:22px;height:22px;border-radius:2px}
+.fk-slide .fk-p3-db .dots{text-align:center;color:var(--muted);font-weight:800;line-height:.8}
+.fk-slide .fk-p3-lower{display:grid;grid-template-columns:1fr 26px 1.08fr;gap:0;align-items:stretch;padding-top:8px}
+.fk-slide .fk-p3-lower > .fk-arrow{align-self:center}
+.fk-slide .fk-p3-learn{display:flex;align-items:center;justify-content:center;gap:4px}
+.fk-slide .fk-p3-learn .g{width:42px;height:42px;border-radius:3px}
+.fk-slide .fk-p3-learn .m{width:150px;height:65px;border:1px solid var(--line);border-radius:4px;background:#fff;object-fit:contain}
+.fk-slide .fk-p3-learn .fk-node{min-height:44px;padding:5px 8px;font-size:15px}
+.fk-slide .fk-p3-auto{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px}
+.fk-slide .fk-p3-auto img{width:330px;height:60px;object-fit:contain}
+.fk-slide .fk-p3-pipe{position:relative}
+.fk-slide .fk-p3-logos{position:absolute;left:0;right:0;bottom:-26px;display:flex;align-items:center;justify-content:flex-end;gap:14px;height:18px}
+.fk-slide .fk-p3-logos img{height:16px;width:auto;object-fit:contain}
+.fk-slide .fk-p3-logos .lb{font-size:12px;color:var(--muted);font-weight:600;margin-right:auto}
+
+/* ── part3-02 센서 구성 ── */
+.fk-slide .fk-p3-sens{position:relative;display:grid;grid-template-columns:182px 1fr 182px;gap:16px;height:100%}
+.fk-slide .fk-p3-scol{display:flex;flex-direction:column;gap:8px;justify-content:space-between;z-index:2}
+.fk-slide .fk-p3-tile{display:flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:6px;padding:5px;height:84px}
+.fk-slide .fk-p3-tile .ph{flex:0 0 92px;height:72px;display:flex;flex-direction:column;gap:2px}
+.fk-slide .fk-p3-tile .ph img{flex:1;min-height:0;width:100%;object-fit:cover;border-radius:3px}
+.fk-slide .fk-p3-tile b{font-size:14.5px;font-weight:700;color:var(--navy-ink);line-height:1.2;letter-spacing:-.3px}
+.fk-slide .fk-p3-main{align-self:center;position:relative;width:100%;aspect-ratio:382.6/242.8;overflow:hidden;border-radius:6px}
+.fk-slide .fk-p3-main > img{position:absolute;left:0;top:-18.185%;width:100%;height:118.185%;max-width:none}
+.fk-slide .fk-p3-lead{position:absolute;inset:0;pointer-events:none;z-index:3;overflow:visible}
+.fk-slide .fk-p3-lead line{stroke:var(--accent);stroke-width:2;filter:drop-shadow(0 0 1.2px var(--navy-deep))}
+.fk-slide .fk-p3-lead circle.o{fill:none;stroke:var(--accent);stroke-width:2.2;filter:drop-shadow(0 0 1.5px var(--navy-deep))}
+.fk-slide .fk-p3-lead circle.d{fill:var(--navy-bar)}
+
+/* ── part3-03 강화학습 ── */
+.fk-slide .fk-p3-rl{display:grid;grid-template-columns:236px 1fr;gap:22px;height:100%}
+.fk-slide .fk-p3-def{display:flex;flex-direction:column;gap:8px}
+.fk-slide .fk-p3-def .row{border-left:4px solid var(--navy);padding:4px 0 4px 10px}
+.fk-slide .fk-p3-def .row b{display:block;font-size:16px;font-weight:800;color:var(--navy-ink)}
+.fk-slide .fk-p3-def .row span{display:block;font-size:14.5px;color:#333;line-height:1.35}
+.fk-slide .fk-p3-def .row.y{border-left-color:var(--deep);background:var(--hl)}
+.fk-slide .fk-p3-seq{display:grid;grid-template-columns:1fr 30px 1fr;grid-template-rows:1fr 26px 1fr;align-items:center}
+.fk-slide .fk-p3-seq .fk-fig{align-self:stretch;justify-content:center}
+.fk-slide .fk-p3-seq .fk-media{width:100%;aspect-ratio:2/1;background:#fff;box-shadow:inset 0 0 0 1px var(--line)}
+.fk-slide .fk-p3-seq .fk-arrow.down{grid-column:3}
+
+/* ── part3-04 시스템 구조 (위→아래 3계층) ── */
+.fk-slide .fk-p3-arch{display:flex;flex-direction:column;gap:0;height:100%}
+.fk-slide .fk-p3-arch > .fk-arrow{flex:0 0 18px;font-size:16px}
+.fk-slide .fk-p3-tier{position:relative;display:flex;gap:10px;align-items:stretch;padding:7px 8px 8px 112px;border:1.5px solid var(--navy);border-radius:8px}
+.fk-slide .fk-p3-tier.in{border-color:var(--line2);background:var(--tint2)}
+.fk-slide .fk-p3-tier > .lb{position:absolute;left:0;top:0;bottom:0;width:100px;border-radius:6px 0 0 6px;background:var(--navy);color:#fff;
+  display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;font-size:17px;font-weight:800;line-height:1.15}
+.fk-slide .fk-p3-tier > .lb small{font-size:12.5px;font-weight:600;opacity:.82;margin-top:3px}
+.fk-slide .fk-p3-tier.in > .lb{background:var(--muted)}
+.fk-slide .fk-p3-tier > .fk-node.in{flex:1;min-height:40px;align-items:flex-start;text-align:left;padding:3px 8px;border-width:0;background:#fff;border-radius:4px}
+.fk-slide .fk-p3-tier > .fk-node.in b{font-size:16px;color:var(--navy-ink)}
+.fk-slide .fk-p3-tier > .fk-node.in small{font-size:14px}
+.fk-slide .fk-p3-mod{flex:1 1 0;display:flex;flex-direction:column;gap:4px;min-width:0}
+.fk-slide .fk-p3-mod > b{font-size:16px;font-weight:800;color:var(--navy-ink);text-align:center;border-bottom:2px solid var(--navy);padding-bottom:2px;white-space:nowrap}
+.fk-slide .fk-p3-mod > span{display:flex;align-items:center;justify-content:center;text-align:center;background:var(--tint);border-radius:4px;
+  font-size:14.5px;font-weight:600;color:var(--ink);line-height:1.15;min-height:27px;padding:2px 4px}
+.fk-slide .fk-p3-low{display:flex;flex-direction:column;gap:4px}
+.fk-slide .fk-p3-low > b{font-size:16px;font-weight:800;color:var(--navy-ink)}
+.fk-slide .fk-p3-low .fk-node{min-height:46px;font-size:15.5px;padding:4px 8px}
+.fk-slide .fk-p3-low .fk-node small{font-size:13.5px}
+.fk-slide .fk-p3-tier > .fk-arrow{align-self:center}
+.fk-slide .fk-p3-pids{display:flex;gap:6px}
+.fk-slide .fk-p3-pids .fk-node{width:74px}
+
+/* ── part3-05 가상환경 1사이클 ── */
+.fk-slide .fk-p3-cyc .fk-node{font-size:15px;min-height:48px;padding:5px 6px}
+.fk-slide .fk-p3-vid{align-self:center;width:552px;height:310.5px}
+
+/* ── part3-06 실증 ── */
+.fk-slide .fk-p3-two{display:grid;grid-template-columns:1fr 1fr;gap:18px;height:100%}
+.fk-slide .fk-p3-two .fk-media{width:100%}
+.fk-slide .fk-p3-pin{position:absolute;z-index:3;width:24px;height:24px;border-radius:50%;background:var(--accent);color:var(--deep);border:2px solid var(--navy-bar);
+  display:grid;place-items:center;font-size:13.5px;font-weight:800;pointer-events:none;box-shadow:0 1px 3px rgba(0,0,0,.4)}
+.fk-slide .fk-p3-legend{display:flex;flex-direction:column;gap:6px}
+.fk-slide .fk-p3-legend div{display:flex;align-items:center;gap:8px;font-size:15px;font-weight:600;color:var(--ink)}
+.fk-slide .fk-p3-legend i{font-style:normal;width:22px;height:22px;flex:0 0 22px;border-radius:50%;background:var(--accent);border:2px solid var(--navy-bar);display:grid;place-items:center;font-size:12.5px;font-weight:800;color:var(--deep)}
+
+/* ── part3-07 협업 제안 ── */
+.fk-slide .fk-p3-col3{display:grid;grid-template-columns:1fr 34px 1.25fr 34px 1fr;align-items:center;height:100%}
+.fk-slide .fk-p3-side{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;padding:18px 12px;border-radius:8px;border:1.5px solid var(--navy);background:#fff;height:226px;justify-content:center}
+.fk-slide .fk-p3-side.pre{background:var(--tint2);border-style:dashed}
+.fk-slide .fk-p3-side b{font-size:22px;font-weight:800;color:var(--navy-ink)}
+.fk-slide .fk-p3-side span{font-size:16px;color:#333;line-height:1.35}
+.fk-slide .fk-p3-hub{display:flex;flex-direction:column;align-items:center;gap:7px;text-align:center}
+.fk-slide .fk-p3-hub .fk-media{width:100%;aspect-ratio:16/9}
+.fk-slide .fk-p3-hub b{font-size:21px;font-weight:800;color:var(--navy-ink)}
+.fk-slide .fk-p3-hub span{font-size:15.5px;color:#444}
