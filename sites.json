@@ -43,6 +43,15 @@
   },
   "extra_sites": [
     {
+      "id": "slides",
+      "title": "자작 슬라이드",
+      "description": "세미나·강연에서 발표한 덱과 스스로 보려고 정리한 슬라이드를 날짜·행사·제목순으로 모았습니다.",
+      "url": "https://hanminy.github.io/assets/slides/",
+      "category": "연구 자료",
+      "label": "SLIDES",
+      "order": 3.2
+    },
+    {
       "id": "hr35-ui-guide",
       "title": "HR35 관제 화면 사용법",
       "description": "10월 2일판 관제 화면의 스캔, 작업 설정, 정지 방법을 쉽게 설명합니다. 현재 자동 스캔은 점검 중입니다.",
