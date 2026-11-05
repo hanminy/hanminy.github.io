@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="hanminy의 자작 슬라이드 모음. 세미나·강연에서 발표한 덱과 스스로 보려고 정리한 슬라이드를 날짜순으로 모았습니다.">
+  <meta name="theme-color" content="#f7f8f5">
+  <title>자작 슬라이드 — hanminy</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .intro{padding:58px 0 40px}
+    .intro h1{font-size:50px;letter-spacing:-3px}
+    .back{display:flex;gap:10px;font-size:13px;color:var(--muted)}.back:hover{color:var(--green)}
+    .toolbar{margin:0 0 6px;padding-bottom:18px;border-bottom:1px solid var(--line)}
+    .year{display:grid;grid-template-columns:118px minmax(0,1fr);gap:0 24px;padding-top:26px}
+    .year>h2{font-family:ui-monospace,monospace;font-size:15px;font-weight:600;letter-spacing:0;color:var(--green);padding-top:22px}
+    .deck-list{list-style:none;margin:0;padding:0}
+    .deck{border-bottom:1px solid var(--line);padding:22px 0}
+    .deck:last-child{border-bottom:0}
+    .deck-main{display:grid;grid-template-columns:64px 224px minmax(0,1fr) 28px;gap:24px;align-items:center;border-radius:9px}
+    .deck-date{font-family:ui-monospace,monospace;line-height:1.25}
+    .deck-date time{display:block;font-size:19px;font-weight:600;letter-spacing:-.5px}
+    .deck-date span{font-size:11px;color:var(--muted)}
+    .thumb{display:block;width:224px;aspect-ratio:16/9;height:auto;border-radius:6px;border:1px solid var(--line);background:var(--wash);object-fit:cover;transition:transform .18s,box-shadow .18s}
+    .kind{display:inline-block;border-radius:3px;padding:2px 7px;font-size:10px;margin-bottom:9px;color:var(--green);background:#eef3eb}
+    .kind.self{color:#6a5a2c;background:#f3efe1}
+    .venue{margin:0 0 3px;font-size:12px;color:var(--muted);word-break:keep-all}
+    .deck h3{font-size:20px;line-height:1.4;letter-spacing:-.8px;word-break:keep-all}
+    .meta{margin:7px 0 0;font-size:11px;color:#8a938c}
+    .deck-main .arrow{justify-self:end;transition:transform .18s}
+    .deck-main:hover h3{color:var(--green)}
+    .deck-main:hover .thumb{transform:translateY(-2px);box-shadow:0 10px 22px #233f2d14}
+    .deck-main:hover .arrow{transform:translate(2px,-2px)}
+    .extra{display:flex;flex-wrap:wrap;gap:6px 8px;align-items:center;margin:14px 0 0 312px;font-size:11px;color:#8a938c}
+    .extra a{border:1px solid var(--line);border-radius:5px;padding:4px 10px;color:var(--muted);background:var(--white)}
+    .extra a:hover{border-color:#8ba48d;color:var(--green)}
+    .howto{display:flex;align-items:center;gap:17px;padding:22px 28px;background:var(--wash);border-radius:7px;margin-top:34px;font-size:12px;color:var(--muted)}
+    .howto strong{color:var(--ink);font-weight:600;font-size:13px}
+    .howto p{margin:3px 0 0}
+    kbd{font-family:ui-monospace,monospace;font-size:11px;border:1px solid #c9d1c6;border-bottom-width:2px;border-radius:4px;padding:0 5px;background:var(--white);color:var(--ink)}
+    @media(max-width:950px){.year{grid-template-columns:minmax(0,1fr)}.year>h2{padding-top:0}.deck-main{grid-template-columns:56px 180px minmax(0,1fr) 22px;gap:18px}.thumb{width:180px}.extra{margin-left:254px}}
+    @media(max-width:640px){.intro h1{font-size:40px;letter-spacing:-2.4px}.deck-main{grid-template-columns:minmax(0,1fr) 22px;gap:12px 14px}.thumb{grid-column:1/-1;grid-row:2;width:100%}.deck-date{grid-column:1/-1;grid-row:1;display:flex;gap:8px;align-items:baseline}.deck-date time{display:inline;font-size:15px}.deck-text{grid-row:3}.deck-main .arrow{grid-row:3;align-self:start}.extra{margin-left:0}.howto{flex-wrap:wrap;padding:20px;gap:12px}}
+  </style>
+</head>
+<body>
+  <a class="skip" href="#list">슬라이드 목록으로 건너뛰기</a>
+  <div class="page">
+    <header class="masthead">
+      <a class="brand" href="/" aria-label="hanminy 홈"><span class="monogram" aria-hidden="true">h.</span><span>hanminy<span class="brand-caption">RESEARCH & NOTES</span></span></a>
+      <a class="back" href="/"><span aria-hidden="true">←</span> 전체 사이트</a>
+    </header>
+    <main>
+      <section class="intro" aria-labelledby="intro-title">
+        <div><p class="eyebrow"><span></span> SLIDES · SELF-MADE</p><h1 id="intro-title">자작 슬라이드</h1><p class="intro-copy">세미나·강연에서 발표한 덱과, 스스로 보기 편하게 정리한 슬라이드를 날짜순으로 모았습니다.<br class="desktop-break"> 제목을 누르면 덱이 열립니다.</p></div>
+      </section>
+      <div class="toolbar">
+        <div class="filters" role="group" aria-label="슬라이드 구분">
+          <button type="button" class="filter active" data-kind="all" aria-pressed="true">전체 <span>3</span></button>
+          <button type="button" class="filter" data-kind="talk" aria-pressed="false">발표용 <span>2</span></button>
+          <button type="button" class="filter" data-kind="self" aria-pressed="false">개인 정리 <span>1</span></button>
+        </div>
+        <p id="result-count" role="status" aria-live="polite">3개의 슬라이드</p>
+      </div>
+
+      <div id="list">
+        <section class="year" aria-labelledby="y2026">
+          <h2 id="y2026">2026</h2>
+          <ol class="deck-list">
+            <li class="deck" data-kind="talk">
+              <a class="deck-main" href="../kict-seminar-202611/final.html">
+                <div class="deck-date"><time datetime="2026-11-02">11.02</time><span>월</span></div>
+                <img class="thumb" src="covers/kict-final.jpg" alt="" width="480" height="270" loading="lazy">
+                <div class="deck-text"><span class="kind">발표용</span><p class="venue">한국건설기술연구원 지반연구본부 세미나</p><h3>필드로봇에서의 AI활용</h3><p class="meta">51장 · 영상 58개 · 최종본</p></div>
+                <span class="arrow" aria-hidden="true">↗</span>
+              </a>
+              <p class="extra">이전 판 <a href="../kict-seminar-202611/index.html">수정초안 v4 · 40장</a><a href="../kict-seminar-202611/fes-original.html">FES 원본 기반 비교초안 · 40장</a></p>
+            </li>
+            <li class="deck" data-kind="talk">
+              <a class="deck-main" href="../fes2026-physical-ai/FES2026_%ED%8A%B9%EB%B3%84%EA%B0%95%EC%97%B0_%EC%8A%AC%EB%9D%BC%EC%9D%B4%EB%93%9C_v1.html">
+                <div class="deck-date"><time datetime="2026-10-29">10.29</time><span>목</span></div>
+                <img class="thumb" src="covers/fes-v1.jpg" alt="" width="480" height="270" loading="lazy">
+                <div class="deck-text"><span class="kind">발표용</span><p class="venue">FES 2026 특별강연 1 · 전북대학교 국제컨벤션센터</p><h3>피지컬 AI와 산업 대전환의 미래</h3><p class="meta">21장 · 슬라이드 초안 v1</p></div>
+                <span class="arrow" aria-hidden="true">↗</span>
+              </a>
+              <p class="extra">함께 보기 <a href="../fes2026-physical-ai/">강연 준비 자료실</a></p>
+            </li>
+            <li class="deck" data-kind="self">
+              <a class="deck-main" href="https://hanminy.github.io/hr35-common-testbench-guide/">
+                <div class="deck-date"><time datetime="2026-09-26">09.26</time><span>토</span></div>
+                <img class="thumb" src="covers/hr35-guide.jpg" alt="" width="480" height="270" loading="lazy">
+                <div class="deck-text"><span class="kind self">개인 정리</span><p class="venue">APEX · HR35 디지털 트윈</p><h3>HR35 공통 시험장 — 기능과 사용 안내</h3><p class="meta">14장 · 간소화 버전 퀵 가이드</p></div>
+                <span class="arrow" aria-hidden="true">↗</span>
+              </a>
+            </li>
+          </ol>
+        </section>
+      </div>
+      <div id="empty" hidden><h3>이 구분의 슬라이드가 없습니다.</h3></div>
+
+      <aside class="howto"><span class="note-symbol" aria-hidden="true">▶</span><div><strong>덱 보는 법</strong><p>덱을 연 뒤 <kbd>F</kbd> 키를 누르면 발표 화면으로 바뀌고, <kbd>←</kbd> <kbd>→</kbd> 키로 넘깁니다. <kbd>Esc</kbd> 키를 누르면 발표 화면이 닫힙니다.</p></div></aside>
+    </main>
+    <footer><span>hanminy<span class="footer-dot">·</span>자작 슬라이드</span><span><a href="/">hanminy.github.io</a></span></footer>
+  </div>
+  <script>
+  (() => {
+    const decks = [...document.querySelectorAll('.deck')];
+    const filters = [...document.querySelectorAll('.filter')];
+    filters.forEach(button => button.addEventListener('click', () => {
+      const kind = button.dataset.kind;
+      let count = 0;
+      decks.forEach(d => { d.hidden = !(kind === 'all' || d.dataset.kind === kind); if (!d.hidden) count++; });
+      document.querySelectorAll('.year').forEach(y => { y.hidden = !y.querySelector('.deck:not([hidden])'); });
+      filters.forEach(b => { const on = b === button; b.classList.toggle('active', on); b.setAttribute('aria-pressed', String(on)); });
+      document.querySelector('#result-count').textContent = `${count}개의 슬라이드`;
+      document.querySelector('#empty').hidden = count > 0;
+    }));
+  })();
+  </script>
+</body>
+</html>

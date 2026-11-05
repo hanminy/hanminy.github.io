@@ -14,6 +14,14 @@ GitHub Pages가 켜진 공개 저장소만 조회한다. 비공개 저장소, �
 
 MarkTL의 실제 진입점은 `/marktl-blog/marktl/`이다. KMM 스터디는 같은 저장소의 별도 경로 `/marktl-blog/kmm/`로 등록했다. 사이트 단위 목록이며 MarkTL의 개별 게시물까지 펼치지는 않는다.
 
+## 자작 슬라이드 목록
+
+[자작 슬라이드](https://hanminy.github.io/assets/slides/)는 슬라이드 형식으로 만든 HTML 덱만 날짜순으로 모은 페이지다. 세미나·강연 발표용 덱과 스스로 보려고 정리한 슬라이드를 함께 싣는다. 조사 자료, 보고서, AI 에이전트 작업 보고용 HTML은 넣지 않는다.
+
+- 새 덱을 공개하면 `assets/slides/index.html`의 해당 연도 `<ol class="deck-list">`에 `<li class="deck">` 하나를 날짜 내림차순으로 추가한다. `data-kind`는 `talk`(발표용) 또는 `self`(개인 정리)로 쓴다.
+- 표지 썸네일은 `assets/slides/covers/`에 480×270 JPEG로 둔다.
+- 필터 버튼의 개수(전체·발표용·개인 정리)를 항목 수에 맞게 고친다. `tests/test_slides.py`가 개수와 링크·이미지 경로를 검사한다.
+
 ## 구조와 검증
 
 - `sites.json`: 표시 이름과 하위 경로 설정
