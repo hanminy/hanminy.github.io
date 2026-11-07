@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 410" width="960" height="410" role="img" aria-labelledby="t d" font-family="'Malgun Gothic','맑은 고딕','HCR Dotum','Freesentation','Pretendard','Noto Sans CJK KR',sans-serif">
+<title id="t">1,000 에피소드 데이터 분할 설계(설계안)</title>
+<desc id="d">Isaac 1,000 = 학습 720, 검증 80, 같은 도메인 시험 100, 미관측 도메인 시험 100. APEX 100 = 퓨샷 풀 20, 평가 80. 수집 실적이 아닌 설계안.</desc>
+<rect width="960" height="410" fill="#FFFFFF"/>
+<rect class="tag" x="606" y="16" width="314" height="26" rx="4" fill="#FFFFFF" stroke="#595959"/><text x="763.0" y="34" font-size="14" fill="#595959" text-anchor="middle">설계 분할안 · 데이터 수집 실적 아님</text>
+<text x="40" y="34" font-size="18" fill="#253149" text-anchor="start" font-weight="700">Isaac Sim + FEE 1,000 에피소드 분할(그룹 단위 사전 정의)</text>
+<rect x="40.0" y="104" width="633.6" height="60" fill="#253149" stroke="#FFFFFF" stroke-width="2"/>
+<text x="356.8" y="131" font-size="20" fill="#FFFFFF" text-anchor="middle" font-weight="700">720</text>
+<text x="356.8" y="153" font-size="14" fill="#FFFFFF" text-anchor="middle" font-weight="400">72%</text>
+<rect x="673.6" y="104" width="70.4" height="60" fill="#3D52AD" stroke="#FFFFFF" stroke-width="2"/>
+<text x="708.8" y="131" font-size="20" fill="#FFFFFF" text-anchor="middle" font-weight="700">80</text>
+<text x="708.8" y="153" font-size="14" fill="#FFFFFF" text-anchor="middle" font-weight="400">8%</text>
+<rect x="744.0" y="104" width="88.0" height="60" fill="#7F8FD3" stroke="#FFFFFF" stroke-width="2"/>
+<text x="788.0" y="131" font-size="20" fill="#FFFFFF" text-anchor="middle" font-weight="700">100</text>
+<text x="788.0" y="153" font-size="14" fill="#FFFFFF" text-anchor="middle" font-weight="400">10%</text>
+<rect x="832.0" y="104" width="88.0" height="60" fill="#2F7D57" stroke="#FFFFFF" stroke-width="2"/>
+<text x="876.0" y="131" font-size="20" fill="#FFFFFF" text-anchor="middle" font-weight="700">100</text>
+<text x="876.0" y="153" font-size="14" fill="#FFFFFF" text-anchor="middle" font-weight="400">10%</text>
+<path d="M40 96 v-10 H829.0 v10" fill="none" stroke="#595959"/><text x="436.0" y="78" font-size="15" fill="#595959" text-anchor="middle" font-weight="400">학습 도메인 900 (그룹 분리)</text>
+<path d="M835.0 96 v-10 H920 v10" fill="none" stroke="#595959"/><text x="876.0" y="78" font-size="15" fill="#595959" text-anchor="middle" font-weight="400">미관측 도메인 100</text>
+<text x="356.8" y="192" font-size="15" fill="#1A1A1A" text-anchor="middle" font-weight="700">학습 720</text>
+<text x="356.8" y="214" font-size="14" fill="#595959" text-anchor="middle" font-weight="400">isaac_train · 학습 전용</text>
+<path d="M708.8 166 V181" stroke="#595959" fill="none"/><circle cx="708.8" cy="181" r="2.5" fill="#595959"/><path d="M788.0 166 V221" stroke="#595959" fill="none"/><circle cx="788.0" cy="221" r="2.5" fill="#595959"/><path d="M876.0 166 V261" stroke="#595959" fill="none"/><circle cx="876.0" cy="261" r="2.5" fill="#595959"/><path d="M708.8 181 H694.8" stroke="#595959"/><text x="688.8" y="186" font-size="15" fill="#1A1A1A" text-anchor="end" font-weight="700">검증 80</text>
+<text x="688.8" y="204" font-size="13" fill="#595959" text-anchor="end" font-weight="400">isaac_val · 튜닝 전용</text>
+<path d="M788.0 221 H774.0" stroke="#595959"/><text x="768.0" y="226" font-size="15" fill="#1A1A1A" text-anchor="end" font-weight="700">같은 도메인 시험 100</text>
+<text x="768.0" y="244" font-size="13" fill="#595959" text-anchor="end" font-weight="400">isaac_test_same · 학습·튜닝 금지</text>
+<path d="M876.0 261 H862.0" stroke="#595959"/><text x="856.0" y="266" font-size="15" fill="#1A1A1A" text-anchor="end" font-weight="700">미관측 도메인 시험 100</text>
+<text x="856.0" y="284" font-size="13" fill="#595959" text-anchor="end" font-weight="400">isaac_test_unseen · 요인 5×20</text>
+<text x="40" y="286" font-size="16" fill="#253149" text-anchor="start" font-weight="700">APEX(Unity + AGX) 목표 ≥100 에피소드 분할</text>
+<rect x="40.0" y="300" width="105.6" height="44" fill="#5A6FC4" stroke="#FFFFFF" stroke-width="2"/>
+<text x="92.8" y="328" font-size="15" fill="#FFFFFF" text-anchor="middle" font-weight="700">퓨샷 풀 20</text>
+<rect x="145.6" y="300" width="422.4" height="44" fill="#34446A" stroke="#FFFFFF" stroke-width="2"/>
+<text x="356.8" y="328" font-size="15" fill="#FFFFFF" text-anchor="middle" font-weight="700">평가 봉인셋 80</text>
+<text x="584.0" y="318" font-size="14" fill="#595959" text-anchor="start" font-weight="400">퓨샷 표본 5 ⊂ 10 ⊂ 20</text>
+<text x="584.0" y="338" font-size="14" fill="#595959" text-anchor="start" font-weight="400">(고정 시드 중첩 부분집합)</text>
+<text x="40" y="370" font-size="14" fill="#595959" text-anchor="start" font-weight="400">평가 80은 봉인셋 — 퓨샷 풀과 에피소드·지형 시드·그룹 비중첩</text>
+<text x="40" y="396" font-size="13" fill="#595959" text-anchor="start" font-weight="400">※ APEX 막대는 Isaac 막대의 6배 축척(가독성). 비율 비교는 각 행 안에서만 유효.</text>
+</svg>

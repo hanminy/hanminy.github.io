@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 410" width="960" height="410" role="img" aria-labelledby="t d" font-family="'Malgun Gothic','맑은 고딕','HCR Dotum','Freesentation','Pretendard','Noto Sans CJK KR',sans-serif">
+<title id="t">AO-v0.1 프레임당 숫자 페이로드와 10 Hz 데이터율(설계 계산)</title>
+<desc id="d">상태 55D와 행동 4D를 float32로 저장하면 프레임당 236 B, 10 Hz에서 2360 B/s, 1시간 8496000 B. 비교로 비압축 640x480 RGB는 프레임당 921600 B. 실측 파일 크기가 아닌 설계 계산.</desc>
+<rect width="960" height="410" fill="#FFFFFF"/>
+<rect class="tag" x="718" y="16" width="202" height="26" rx="4" fill="#FFFFFF" stroke="#595959"/><text x="819.0" y="34" font-size="14" fill="#595959" text-anchor="middle">설계 계산 · 실측 아님</text>
+<text x="40" y="34" font-size="18" fill="#253149" text-anchor="start" font-weight="700">한 프레임 숫자 페이로드 = 상태 55D + 행동 4D, float32 → 236 B</text>
+<rect x="40.0" y="70" width="119.3" height="54" fill="#253149" stroke="#FFFFFF" stroke-width="2"/>
+<text x="99.7" y="103" font-size="15" fill="#FFFFFF" text-anchor="middle" font-weight="700">32 B</text>
+<rect x="159.3" y="70" width="134.2" height="54" fill="#34446A" stroke="#FFFFFF" stroke-width="2"/>
+<text x="226.4" y="103" font-size="15" fill="#FFFFFF" text-anchor="middle" font-weight="700">36 B</text>
+<rect x="293.6" y="70" width="59.7" height="54" fill="#3D52AD" stroke="#FFFFFF" stroke-width="2"/>
+<text x="323.4" y="103" font-size="15" fill="#FFFFFF" text-anchor="middle" font-weight="700">16 B</text>
+<rect x="353.2" y="70" width="134.2" height="54" fill="#5A6FC4" stroke="#FFFFFF" stroke-width="2"/>
+<text x="420.3" y="103" font-size="15" fill="#FFFFFF" text-anchor="middle" font-weight="700">36 B</text>
+<rect x="487.5" y="70" width="104.4" height="54" fill="#7F8FD3" stroke="#FFFFFF" stroke-width="2"/>
+<text x="539.7" y="103" font-size="15" fill="#FFFFFF" text-anchor="middle" font-weight="700">28 B</text>
+<rect x="591.9" y="70" width="179.0" height="54" fill="#A4B0E1" stroke="#FFFFFF" stroke-width="2"/>
+<text x="681.4" y="103" font-size="15" fill="#1A1A1A" text-anchor="middle" font-weight="700">48 B</text>
+<rect x="770.8" y="70" width="89.5" height="54" fill="#C8CFEC" stroke="#FFFFFF" stroke-width="2"/>
+<text x="815.6" y="103" font-size="15" fill="#1A1A1A" text-anchor="middle" font-weight="700">24 B</text>
+<rect x="860.3" y="70" width="59.7" height="54" fill="#2F7D57" stroke="#FFFFFF" stroke-width="2"/>
+<text x="890.2" y="103" font-size="15" fill="#FFFFFF" text-anchor="middle" font-weight="700">16 B</text>
+<path d="M40 134 v8 H857.3 v-8" fill="none" stroke="#595959"/><text x="450.2" y="162" font-size="15" fill="#595959" text-anchor="middle" font-weight="400">상태 observation.state 55D = 220 B</text>
+<path d="M863.3 134 v8 H920 v-8" fill="none" stroke="#595959"/><text x="890.2" y="162" font-size="15" fill="#595959" text-anchor="middle" font-weight="400">행동 4D = 16 B</text>
+<rect x="40" y="179" width="14" height="14" fill="#253149"/><text x="62" y="192" font-size="15" fill="#1A1A1A" text-anchor="start" font-weight="400">관절 상태 8D</text>
+<rect x="265" y="179" width="14" height="14" fill="#34446A"/><text x="287" y="192" font-size="15" fill="#1A1A1A" text-anchor="start" font-weight="400">부하 9D</text>
+<rect x="490" y="179" width="14" height="14" fill="#3D52AD"/><text x="512" y="192" font-size="15" fill="#1A1A1A" text-anchor="start" font-weight="400">직전 행동 4D</text>
+<rect x="715" y="179" width="14" height="14" fill="#5A6FC4"/><text x="737" y="192" font-size="15" fill="#1A1A1A" text-anchor="start" font-weight="400">버킷·차체 자세 9D</text>
+<rect x="40" y="209" width="14" height="14" fill="#7F8FD3"/><text x="62" y="222" font-size="15" fill="#1A1A1A" text-anchor="start" font-weight="400">지형·충진 7D</text>
+<rect x="265" y="209" width="14" height="14" fill="#A4B0E1"/><text x="287" y="222" font-size="15" fill="#1A1A1A" text-anchor="start" font-weight="400">태스크 12D</text>
+<rect x="490" y="209" width="14" height="14" fill="#C8CFEC"/><text x="512" y="222" font-size="15" fill="#1A1A1A" text-anchor="start" font-weight="400">유효 마스크 6D</text>
+<rect x="715" y="209" width="14" height="14" fill="#2F7D57"/><text x="737" y="222" font-size="15" fill="#1A1A1A" text-anchor="start" font-weight="400">행동 4D</text>
+<rect x="40" y="262" width="205" height="104" rx="6" fill="#F2F2F2" stroke="#3D52AD"/>
+<text x="54" y="290" font-size="15" fill="#595959" text-anchor="start" font-weight="400">숫자 · 10 Hz</text>
+<text x="54" y="324" font-size="24" fill="#253149" text-anchor="start" font-weight="700">2,360 B/s</text>
+<text x="54" y="352" font-size="13" fill="#595959" text-anchor="start" font-weight="400">영상·메타데이터 제외</text>
+<rect x="265" y="262" width="205" height="104" rx="6" fill="#F2F2F2" stroke="#3D52AD"/>
+<text x="279" y="290" font-size="15" fill="#595959" text-anchor="start" font-weight="400">숫자 · 1시간</text>
+<text x="279" y="324" font-size="24" fill="#253149" text-anchor="start" font-weight="700">8.496 MB</text>
+<text x="279" y="352" font-size="13" fill="#595959" text-anchor="start" font-weight="400">8,496,000 B</text>
+<rect x="490" y="262" width="205" height="104" rx="6" fill="#F2F2F2" stroke="#595959"/>
+<text x="504" y="290" font-size="15" fill="#595959" text-anchor="start" font-weight="400">비압축 RGB · 10 Hz</text>
+<text x="504" y="324" font-size="24" fill="#1A1A1A" text-anchor="start" font-weight="700">9.216 MB/s</text>
+<text x="504" y="352" font-size="13" fill="#595959" text-anchor="start" font-weight="400">640×480×3 = 921,600 B/프레임</text>
+<rect x="715" y="262" width="205" height="104" rx="6" fill="#F2F2F2" stroke="#595959"/>
+<text x="729" y="290" font-size="15" fill="#595959" text-anchor="start" font-weight="400">비압축 RGB · 1시간</text>
+<text x="729" y="324" font-size="24" fill="#1A1A1A" text-anchor="start" font-weight="700">33.18 GB</text>
+<text x="729" y="352" font-size="13" fill="#595959" text-anchor="start" font-weight="400">MP4 압축 파일 크기 아님</text>
+<text x="40" y="396" font-size="15" fill="#1A1A1A" text-anchor="start" font-weight="400">비압축 RGB 1프레임은 숫자 페이로드의 약 3,905배 — 저장·전송 설계의 지배 항은 영상</text>
+</svg>

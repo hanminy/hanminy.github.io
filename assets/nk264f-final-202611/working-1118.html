@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NK264F 최종발표 11/18 완성용 작업본 — 필드로봇 피지컬 AI 파운데이션 모델 탐색 연구</title>
+<link rel="stylesheet" href="assets/slides/nst_slides.css">
+<style>
+/* 이 덱 전용 보조 스타일 */
+.chips{display:flex;gap:6px;flex-wrap:wrap;justify-content:center}
+.chip{font-size:12px;font-weight:600;border-radius:999px;padding:2px 10px;background:var(--tint);color:var(--deep);border:1px solid var(--bd)}
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.tile{border:1px solid var(--bd);border-radius:8px;background:#fff;overflow:hidden;display:flex;flex-direction:column}
+.tile>header{background:var(--main);color:#fff;font-size:15px;font-weight:700;padding:6px 10px;display:flex;align-items:center;gap:6px}
+.tile>header .n{width:20px;height:20px;border-radius:50%;background:rgba(255,255,255,.28);display:grid;place-items:center;font-size:12px}
+.tile .tb{flex:1;padding:7px 10px 8px;display:flex;flex-direction:column;gap:5px}
+.tile .m{font-size:13px;font-weight:700;color:#1B2440;line-height:1.3}
+.tile .x{font-size:12px;font-weight:500;color:#333;line-height:1.35;border-top:1px dashed var(--gray-line);padding-top:5px}
+.tile .x b{color:var(--deep);font-weight:700}
+.tile .ft{display:flex;justify-content:flex-end;margin-top:auto}
+.tile.sum{background:var(--tint);border-style:dashed}
+.tile.sum .tb{justify-content:center;gap:7px}
+.tile.sum .m{color:var(--deep)}
+.exc{position:relative;width:340px;height:255px;border-radius:6px;overflow:hidden;border:1px solid var(--gray-line)}
+.exc img{width:100%;height:100%;object-fit:cover;display:block}
+.exc .jt{position:absolute;font-size:12px;font-weight:700;color:#fff;background:var(--deep);border-radius:4px;padding:2px 7px;box-shadow:0 1px 4px rgba(0,0,0,.35)}
+.exc .jt::before{content:"";position:absolute;width:8px;height:8px;border-radius:50%;background:#FFD43B;border:2px solid var(--deep);left:-6px;top:50%;transform:translateY(-50%)}
+.exc .kind{position:absolute;left:6px;top:6px;font-size:10px;font-weight:700;color:#fff;background:rgba(13,32,74,.82);border-radius:3px;padding:1.5px 6px}
+.spec{flex:1;display:flex;flex-direction:column;gap:8px}
+.spec .blk{border:1px solid var(--bd);border-radius:8px;overflow:hidden;background:#fff}
+.spec .blk>header{background:var(--main);color:#fff;font-size:14.5px;font-weight:700;padding:5px 10px;display:flex;justify-content:space-between;align-items:center}
+.spec .blk>header.a{background:var(--alt)}
+.spec .blk .bb{padding:7px 10px;font-size:13px;font-weight:500;line-height:1.35}
+.dims{display:flex;flex-wrap:wrap;gap:5px;margin-top:5px}
+.dims span{font-size:11.5px;font-weight:600;background:var(--tint);color:var(--deep);border-radius:4px;padding:2px 7px}
+.dims span b{font-weight:800}
+.pipe{display:flex;align-items:stretch;gap:0}
+.pstep{flex:1;border:1px solid var(--bd);border-radius:8px;background:#fff;display:flex;flex-direction:column;overflow:hidden}
+.pstep>header{font-size:13.5px;font-weight:700;padding:6px 6px;text-align:center;background:var(--tint);color:var(--deep);line-height:1.2}
+.pstep .pb{flex:1;padding:7px 8px;font-size:11.8px;font-weight:500;color:#444;line-height:1.35;display:flex;flex-direction:column;gap:5px;align-items:center;justify-content:space-between;text-align:center}
+.pstep.ok{border:2px solid var(--st-syn)}
+.pstep.ok>header{background:var(--st-syn);color:#fff}
+.pstep.impl{border:2px solid var(--st-impl)}
+.pstep.impl>header{background:var(--st-impl);color:#fff}
+.parr{flex:0 0 18px;display:grid;place-items:center;color:var(--main);font-size:14px;font-weight:800}
+.stage{border-radius:8px;padding:8px 10px 10px;position:relative}
+.stage.s1{background:var(--tint);border:1px solid var(--bd)}
+.stage.s2{background:#F4F5F7;border:1px solid var(--gray-line)}
+.stage>.lb{font-size:14.5px;font-weight:800;color:var(--deep);margin-bottom:6px;display:flex;align-items:center;gap:8px}
+.ex{display:flex;gap:6px}
+.exb{flex:1;background:#fff;border:1px solid var(--bd);border-radius:6px;padding:6px 5px;text-align:center}
+.exb .k{font-size:15px;font-weight:800;color:var(--main);line-height:1.1}
+.exb .t{font-size:11.5px;font-weight:600;color:#333;line-height:1.25;margin-top:3px}
+.exb.proxy{border:1.5px dashed #7B49D6;background:#F6F1FD}
+.exb.proxy .k{color:#6A3FC0}
+.stage.s2 .exb .k{color:var(--deep)}
+.road{display:flex;align-items:stretch;gap:0}
+.rstep{flex:1;border-radius:8px;padding:8px 10px;display:flex;flex-direction:column;gap:4px}
+.rstep .y{font-size:11.5px;font-weight:700;opacity:.85}
+.rstep .t{font-size:15px;font-weight:800;line-height:1.2}
+.rstep .d{font-size:11.5px;font-weight:500;line-height:1.35}
+.rstep.now{background:var(--main);color:#fff}
+.rstep.nx{background:var(--tint);color:#1B2440;border:1px solid var(--bd)}
+.rarr{flex:0 0 18px;display:grid;place-items:center;color:var(--main);font-size:15px;font-weight:800}
+.svgfig{display:flex;flex-direction:column;align-items:center}
+.svgfig img{display:block;border:1px solid var(--gray-line);border-radius:6px;background:#fff}
+.svgfig .kind{align-self:flex-start;font-size:10px;font-weight:700;color:#fff;background:rgba(13,32,74,.82);border-radius:3px;padding:1.5px 6px;margin-bottom:3px}
+.lim{border:1.5px solid #C9CED8;border-radius:8px;background:#F7F8FA;padding:8px 12px;display:flex;gap:12px;align-items:flex-start}
+.lim .h{flex:0 0 92px;font-size:14px;font-weight:800;color:#3A4253;line-height:1.3}
+.lim ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:3px}
+.lim li{font-size:12.5px;font-weight:500;color:#333;line-height:1.38;padding-left:11px;position:relative}
+.lim li::before{content:"";position:absolute;left:0;top:7px;width:5px;height:5px;border-radius:50%;background:#7B7B7B}
+.lim li b{font-weight:700;color:#1B2440}
+.ktab td{font-size:12.5px}
+.big14 td{font-size:14px !important;padding:6px 9px !important;line-height:1.32}
+.big14 th{font-size:14px !important}
+.big135 td{font-size:13.5px !important;line-height:1.35}
+.slot{display:flex;flex-direction:column;gap:4px;flex:1}
+.need{font-size:11px;font-weight:500;color:#444;line-height:1.35;background:#FFF8EE;border:1px solid #F3D9B1;border-radius:6px;padding:5px 8px}
+.need b{color:#7A4300;font-weight:700}
+.br{flex:1;border-radius:8px;border:1px solid var(--bd);background:#fff;display:flex;flex-direction:column;overflow:hidden}
+.br>header{font-size:14.5px;font-weight:800;color:#fff;padding:6px 10px;background:var(--main)}
+.br.b>header{background:var(--alt)}
+.br.c>header{background:#6B7280}
+.br .bd{padding:8px 10px;display:flex;flex-direction:column;gap:6px;font-size:12.5px;line-height:1.38}
+.br .bd .k{font-size:11px;font-weight:700;color:var(--deep)}
+.br .bd .claim{font-weight:700;color:#1B2440}
+</style>
+</head>
+<body>
+<div class="viewhint"><b>NK264F 최종발표 11/18 완성용 작업본 (2026-10-26 기준, 내부용)</b> — 실측 결과를 수록할 작업본이며 1차 제출본은 <code>발표자료.html</code>. 일정은 모두 팀장 권고 <b>(안)</b>. <b>F</b> 발표 모드, <b>← →</b> 이동, <b>Esc</b> 종료. 작성 근거: <code>발표자료_v2_작성기록.md</code> §6</div>
+
+<!-- ═════════ 1. 표지 ═════════ -->
+<section class="slide cover">
+  <div class="art"><img src="assets/slides/kimm_excavator.jpg" alt="KIMM 3.5톤 전기굴착기"></div>
+  <div class="head">2026년도 기본사업 최종발표<br>2026. 11. 18, R1동 대회의실</div>
+  <div class="stamp">11/18 완성용 작업본 (10/26 기준)</div>
+  <div class="pill">2026 기본사업 창의도전형 NK264F</div>
+  <h1 style="font-size:38px">필드로봇 피지컬 AI<br>파운데이션 모델 탐색 연구<span class="l2">모델 비교, 데이터 규격, 실측 검증 결과</span></h1>
+  <div class="meta"><b>이한민</b> 책임연구원(실장), 한국기계연구원<br>가상공학플랫폼연구본부 산업기계DX연구실</div>
+  <img class="clogo" src="assets/slides/kimm_logo.png" alt="한국기계연구원">
+  <div class="pno">1</div>
+</section>
+
+<!-- ═════════ 2. 연구 필요성 ═════════ -->
+<section class="slide ch1">
+  <aside class="sidebar"><div class="cnum">01</div><div class="cname">연구<br>개요</div><div class="rule"></div><div class="cq">왜 굴착에서 VLA를 따로 분석하나?</div></aside>
+  <h1 class="title">1. 연구 필요성</h1>
+  <img class="kimmlogo" src="assets/slides/kimm_logo.png" alt="한국기계연구원">
+  <div class="keybar sm"><span>실내 조작에서 검증된 VLA, <em>야외 굴착 조건은 별도 분석 필요</em></span></div>
+  <div class="content">
+    <div class="row" style="gap:16px;align-items:stretch">
+      <div class="fig" style="width:250px;flex:0 0 250px">
+        <div class="frame" style="height:250px"><img src="assets/slides/kimm_testbed_trench.jpg" alt="KIMM 굴착 테스트베드"><span class="kind">기존 사진</span></div>
+        <div class="cap">KIMM 굴착 테스트베드</div>
+      </div>
+      <div class="col" style="flex:1;gap:5px">
+        <div class="tcap">표 1. 실내 조작과 야외 굴착의 작업 조건 비교</div>
+        <table class="mtab tight big135">
+          <tr><th style="width:92px">구분</th><th>실내 조작(공개 VLA 대표 시연)</th><th>야외 굴착(본 연구 대상)</th></tr>
+          <tr><td>환경</td><td>정형 실내, 테이블 위 물체</td><td><b>비정형 지형</b>, 토양 접촉과 굴착 부하</td></tr>
+          <tr><td>구동</td><td>전동 팔과 그리퍼</td><td><b>유압 실린더</b>, 명령 지연 0.11~0.16 s(HR35 현장 로그)</td></tr>
+          <tr><td>관측</td><td>일정 조명, 근접 카메라</td><td>조명 변화, 분진과 역광, 캐빈 시점</td></tr>
+          <tr><td>핵심 상태</td><td>관절각, 그리퍼 개폐</td><td>실린더 압력, 버킷 자세, 전방 지형 높이</td></tr>
+          <tr><td>공개 데이터</td><td>Open X-Embodiment 22종 로봇, 100만+ 궤적</td><td>굴착 특화 ExT — 범용 VLA와 별도 계열</td></tr>
+        </table>
+        <div class="lrow" style="margin-top:4px"><div class="k a">본 연구</div><div class="v">굴착 1종, <b>Level 1 통제 필드</b> 범위에서 범용 VLA 2종의 적용성 분석</div></div>
+      </div>
+    </div>
+    <div class="note">※ Open X-Embodiment(arXiv 2310.08864), ExT(arXiv 2509.14992) 원문 확인 2026-10-22. 유압 지연은 연구실 내부 개발기록(260911 HR35 현장 식별). 사진: FES2026 발표 원본 자료</div>
+  </div>
+  <div class="draft">11/18 완성용 작업본 — 실측 결과 미수록</div>
+  <div class="pno">2</div>
+</section>
+
+<!-- ═════════ 3. 목표와 완성 조건 ═════════ -->
+<section class="slide ch1">
+  <aside class="sidebar"><div class="cnum">01</div><div class="cname">연구<br>개요</div><div class="rule"></div><div class="cq">무엇을 확보했고 무엇을 채우나?</div></aside>
+  <h1 class="title">2. 연구 목표와 완성 조건</h1>
+  <img class="kimmlogo" src="assets/slides/kimm_logo.png" alt="한국기계연구원">
+  <div class="keybar sm"><span>설계와 도구 기반 확보 — <em>필드 적합성 판정은 실측 결과 확보 후</em></span></div>
+  <div class="content">
+    <table class="mtab tight big135">
+      <tr><th style="width:120px">계획서 목표</th><th>10/26 확보</th><th>11/18 완성 조건</th><th style="width:96px">상태</th></tr>
+      <tr><td>① 모델 서베이</td><td>공식 문서 비교표, 개방성 7항목, 7축 평가체계</td><td>S1 공식 예제 지연, VRAM 실측 연결</td><td class="c"><span class="st impl">설계</span> <span class="st none">미측정</span></td></tr>
+      <tr><td>② 데이터셋 설계</td><td>AO-v0.1 규격, 분할 설계, 변환·검사 도구(합성 시험 70건)</td><td>실제 표본 5~20건 변환→검사→로더 연결</td><td class="c"><span class="st syn">합성 시험</span><br><span class="st none" style="margin-top:3px">데이터 0건</span></td></tr>
+      <tr><td>③ 모델 적용 실험</td><td>S1~S7, R1~R4 설계, 지표와 기준선 정의</td><td>짧은 학습 + 기준선 비교, 결과 마감 11/11(안)</td><td class="c"><span class="st plan">계획</span></td></tr>
+      <tr><td>④ 로드맵 기획</td><td>전략사업 제안서, 국과심 발표, 계획서 초안 v0.4</td><td>기획 문서 작성 완료, 실험 결과 반영 예정</td><td class="c"><span class="st done">기획 문서</span></td></tr>
+      <tr class="hl"><td>정량 성과</td><td>논문, 기술보고서 초안 작성 중 — 투고, 완성, 신청 0건</td><td>투고 접수, 기술보고서 완성 11/17(안), SW 대상 결정</td><td class="c"><span class="st plan">0 / 3건</span></td></tr>
+    </table>
+    <div class="legend"><span><i class="st done">기획 문서</i> 근거 문서 있음</span><span><i class="st impl">설계</i> 정의, 분석</span><span><i class="st syn">합성 시험</i> 합성 데이터 도구 시험</span><span><i class="st none">미측정</i> 실측 없음</span><span><i class="st plan">계획</i> 11월 수행(안)</span></div>
+    <div class="note">※ 날짜는 팀장 공통 일정안(검수/팀장_수정권고안.md §3)이며 사용자 승인 전 확정 아님. 결과가 기대와 달라도 그대로 기재. 출처: 본문/1_개요.md 목표표, 연구현황_근거표.md §1, §3</div>
+  </div>
+  <div class="draft">11/18 완성용 작업본 — 실측 결과 미수록</div>
+  <div class="pno">3</div>
+</section>
+
+<!-- ═════════ 4. 모델 2종 비교 ═════════ -->
+<section class="slide ch3">
+  <aside class="sidebar"><div class="cnum">02</div><div class="cname">모델<br>분석</div><div class="rule"></div><div class="cq">두 모델은 굴착에 어떻게 맞물리나?</div></aside>
+  <h1 class="title">3. VLA 모델 2종 구조 비교</h1>
+  <img class="kimmlogo" src="assets/slides/kimm_logo.png" alt="한국기계연구원">
+  <div class="keybar sm"><span>두 모델 모두 <em>신규 로봇 파인튜닝 공식 절차</em> 확인 — 굴착 규격 적용과 성능은 미검증</span></div>
+  <div class="content">
+    <div class="tcap">표 2. π0.5와 GR00T N1.7 비교(개발사 공식 문서 기준, 확인일 2026-10-22)</div>
+    <table class="mtab big14" style="font-size:13.5px">
+      <tr><th style="width:128px">구분</th><th>π0.5 (Physical Intelligence, openpi)</th><th>GR00T N1.7 (NVIDIA)</th></tr>
+      <tr><td>모델 구조</td><td>PaliGemma VLM + 행동 전문가, flow matching</td><td>Cosmos-Reason2-2B VLM + DiT 행동 헤드, 약 3B</td></tr>
+      <tr><td>로봇 상태 입력</td><td>기본 설정은 <b>이산 언어 토큰</b>(연속 입력 설정 가능)</td><td>embodiment별 MLP <b>연속 인코딩</b></td></tr>
+      <tr><td>행동 출력</td><td>연속 행동 chunk, 32차원 패딩</td><td>연속 행동 chunk, 최대 132차원, 40 step</td></tr>
+      <tr><td>새 로봇 적용</td><td>입출력 변환 + 학습 설정 작성</td><td><b>NEW_EMBODIMENT</b> + modality.json</td></tr>
+      <tr><td>학습 자원 [공식]</td><td>LoRA 22.5 GB 이상(JAX 경로만)</td><td>GPU당 최대 약 35 GB, 40 GB 이상 권장</td></tr>
+      <tr><td>추론 지연 [공식]</td><td class="unk">공식 수치 미확인(추론 8 GB 이상)</td><td>H100 85.8 ms(eager), 27.9 ms(TensorRT)</td></tr>
+      <tr class="hl"><td>본 과제 S1 실측</td><td class="unk">결과 슬롯 — 예열 10회 후 유효 100회 p50/p95</td><td class="unk">결과 슬롯 — 예열 10회 후 유효 100회 p50/p95</td></tr>
+    </table>
+    <div class="note">※ openpi 커밋 215abfb, Isaac-GR00T 커밋 dac54b3, HF GR00T-N1.7-3B 리비전 2fc962b9. [공식] 값은 개발사 조건(GPU, 백엔드)의 공개 수치이며 본 연구 측정값이 아님. 접근 조건과 라이선스는 7축 평가체계의 개방성, 굴착 적용 사례는 부록 A5. 계획서의 GR00T N1.6은 정식 출시 N1.7로 변경(부록 A1)</div>
+  </div>
+  <div class="draft">11/18 완성용 작업본 — 실측 결과 미수록</div>
+  <div class="pno">4</div>
+</section>
+
+<!-- ═════════ 5. 7축 평가체계와 분석 ═════════ -->
+<section class="slide ch3">
+  <aside class="sidebar"><div class="cnum">02</div><div class="cname">모델<br>분석</div><div class="rule"></div><div class="cq">두 모델은 굴착에 어떻게 맞물리나?</div></aside>
+  <h1 class="title">4. 필드 적합성 7축 평가체계</h1>
+  <img class="kimmlogo" src="assets/slides/kimm_logo.png" alt="한국기계연구원">
+  <div class="keybar sm"><span>7개 축의 지표와 분모 정의 — <em>공식 문서로 분석 가능한 축</em>부터 1차 분석</span></div>
+  <div class="content">
+    <div class="tiles" style="flex:1">
+      <div class="tile"><header><span class="n">1</span>실시간성</header><div class="tb"><div class="m">E2E 추론 지연 p50/p95 (ms), 재계획 Hz</div><div class="x">GR00T [공식] H100 <b>27.9~85.8 ms</b> — 10 Hz 주기(100 ms) 안. π0.5 공식 수치 없음</div><div class="ft"><span class="st o impl">공식 문서 분석</span></div></div></div>
+      <div class="tile"><header><span class="n">2</span>자원</header><div class="tb"><div class="m">추론, 학습 최대 VRAM (GB)</div><div class="x">학습 [공식] π0.5 LoRA 22.5 GB 이상, GR00T <b>40 GB급 GPU 권장</b></div><div class="ft"><span class="st o impl">공식 문서 분석</span></div></div></div>
+      <div class="tile"><header><span class="n">3</span>행동공간</header><div class="tb"><div class="m">M1 첫 예측 행동 MAE, 버킷 끝 오차 (cm)</div><div class="x">굴착 4D를 두 모델 모두 <b>패딩으로 수용</b>(32D, 132D)</div><div class="ft"><span class="st o impl">공식 문서 분석</span></div></div></div>
+      <div class="tile"><header><span class="n">4</span>관측</header><div class="tb"><div class="m">상태, 영상 가림 시 오차 증가율 (%)</div><div class="x">55D 연속 상태 — GR00T는 <b>연속 MLP</b>, π0.5 기본은 이산 토큰(분해능 검토 대상)</div><div class="ft"><span class="st o impl">공식 문서 분석</span></div></div></div>
+      <div class="tile"><header><span class="n">5</span>데이터 효율</header><div class="tb"><div class="m">에피소드 수–오차 곡선, N<sub>90</sub></div><div class="x">학습점 0~<b>720 에피소드</b>, 고정 시드 표본으로 분모 정의</div><div class="ft"><span class="st impl">지표 정의</span></div></div></div>
+      <div class="tile"><header><span class="n">6</span>강건성</header><div class="tb"><div class="m">도메인 갭 (%), 충실도 간 전이 갭</div><div class="x">미관측 도메인 시험 <b>100 = 요인 5 × 20</b>으로 분모 정의</div><div class="ft"><span class="st impl">지표 정의</span></div></div></div>
+      <div class="tile"><header><span class="n">7</span>개방성</header><div class="tb"><div class="m">코드, 가중치, 이용 조건 등 7항목</div><div class="x">코드와 가중치 모두 공개. GR00T <b>백본 승인제</b>, 라이선스 표기 불일치. π0.5 Gemma 약관 병기</div><div class="ft"><span class="st o impl">공식 문서 분석</span></div></div></div>
+      <div class="tile sum"><div class="tb"><div class="m">실측 반영 위치</div><div class="x" style="border:0;padding:0">축 1, 2 → <b>S1 결과</b>(8번)<br>축 3~5 → <b>짧은 학습 M1</b>(8번)<br>축 6 → S4, S6 확보 시만<br>판정 합격선은 전문가 리뷰로 확정</div></div></div>
+    </div>
+    <div class="note">※ 계획서 분석 항목(입출력, 데이터 요구량, 제로샷/퓨샷, 지형, 조명, 통신 지연)을 7축에 대응. 출처: 설계/평가프레임워크.md v1 §2~§4, 본문/2-가_모델서베이.md 표 2-가-1, 2-가-2(확인일 2026-10-22)</div>
+  </div>
+  <div class="draft">11/18 완성용 작업본 — 실측 결과 미수록</div>
+  <div class="pno">5</div>
+</section>
+
+<!-- ═════════ 6. A-O Pair 공통 규격 ═════════ -->
+<section class="slide ch2">
+  <aside class="sidebar"><div class="cnum">03</div><div class="cname">데이터와<br>도구</div><div class="rule"></div><div class="cq">굴착 데이터를 어떤 형식으로 담나?</div></aside>
+  <h1 class="title">5. 굴착 관측–행동 공통 규격</h1>
+  <img class="kimmlogo" src="assets/slides/kimm_logo.png" alt="한국기계연구원">
+  <div class="keybar sm"><span>두 시뮬레이터와 실차를 <em>하나의 규격</em>으로 — 관측 55D, 행동 4D, 10 Hz</span></div>
+  <div class="content">
+    <div class="row" style="gap:18px;flex:1">
+      <div class="fig" style="width:340px">
+        <div class="exc">
+          <img src="assets/slides/kimm_excavator.jpg" alt="굴착기 관절 명칭 표시">
+          <span class="kind">기존 사진 + 개념 표시</span>
+          <span class="jt" style="left:46px;top:196px">버킷</span>
+          <span class="jt" style="left:40px;top:96px">암</span>
+          <span class="jt" style="left:96px;top:92px">붐</span>
+          <span class="jt" style="left:196px;top:150px">선회</span>
+        </div>
+        <div class="cap">행동 4D — 선회, 붐, 암, 버킷 관절 속도 명령(rad/s)</div>
+        <div class="src">사진: KIMM 3.5톤 전기굴착기(FES2026 발표 원본). 관절 위치 표시는 개념</div>
+      </div>
+      <div class="spec">
+        <div class="blk"><header><span>관측 o<sub>t</sub></span> <span class="badge">설계 AO-v0.1</span></header>
+          <div class="bb">캐빈 RGB 1대(640×480) + 상태 벡터 <b>55D</b>
+            <div class="dims"><span>관절 <b>8</b></span><span>부하 <b>9</b></span><span>직전 행동 <b>4</b></span><span>버킷 자세 <b>7</b></span><span>차체 기울기 <b>2</b></span><span>지형 <b>7</b></span><span>태스크 <b>12</b></span><span>유효 마스크 <b>6</b></span></div>
+          </div></div>
+        <div class="blk"><header class="a">동기화와 저장</header>
+          <div class="bb">10 Hz 격자, 모델 입력은 <b>과거 샘플만</b>(인과), 행동은 영차 유지<br>LeRobot v2.1 + modality.json(GR00T 형식)</div></div>
+        <div class="blk"><header class="a">부하 채널 구분</header>
+          <div class="bb">Isaac은 관절 토크, APEX와 실차는 실린더 압력 — <b>환산 없이 별도 필드</b> + 마스크</div></div>
+      </div>
+    </div>
+    <div class="note">※ 출처: 설계/데이터셋_정의서.md AO-v0.1-r2-draft §0, §3, §4, 설계/modality.json(2026-10-22). 구성은 확정, 차원 배치는 잠정 설계값. 상태 55D는 ExT 논문의 관측 55D와 내역이 다름</div>
+  </div>
+  <div class="draft">11/18 완성용 작업본 — 실측 결과 미수록</div>
+  <div class="pno">6</div>
+</section>
+
+<!-- ═════════ 7. 변환·품질검사 파이프라인 ═════════ -->
+<section class="slide ch2">
+  <aside class="sidebar"><div class="cnum">03</div><div class="cname">데이터와<br>도구</div><div class="rule"></div><div class="cq">굴착 데이터를 어떤 형식으로 담나?</div></aside>
+  <h1 class="title">6. 데이터 변환과 품질검사 파이프라인</h1>
+  <img class="kimmlogo" src="assets/slides/kimm_logo.png" alt="한국기계연구원">
+  <div class="keybar sm"><span>변환부터 공식 로더 적재까지 구현 — <em>합성 데이터 CPU 시험 70건 통과</em></span></div>
+  <div class="content">
+    <div class="tcap">그림 1. 데이터 파이프라인 구현 범위(개념도) — 파랑 설계, 초록 구현과 합성 데이터 시험</div>
+    <div class="pipe" style="height:132px">
+      <div class="pstep impl"><header>시뮬레이터<br>실차 로그</header><div class="pb">Isaac+FEE, APEX, 실차 필드 매핑표<span class="st impl">설계</span></div></div>
+      <div class="parr">▶</div>
+      <div class="pstep impl"><header>플랫폼<br>어댑터</header><div class="pb">원명령 → rad/s 매핑 규칙<span class="st impl">설계</span></div></div>
+      <div class="parr">▶</div>
+      <div class="pstep ok"><header>LeRobot v2.1<br>작성기</header><div class="pb">parquet, mp4, 분할 파일<span class="st syn">구현</span></div></div>
+      <div class="parr">▶</div>
+      <div class="pstep ok"><header>품질검사<br>Q1~Q13</header><div class="pb">13항목 중 11항목(부분 5)<span class="st syn">구현</span></div></div>
+      <div class="parr">▶</div>
+      <div class="pstep ok"><header>공식 로더<br>적재</header><div class="pb">LeRobot, GR00T 로더<span class="st syn">합성 시험</span></div></div>
+      <div class="parr">▶</div>
+      <div class="pstep ok"><header>학습 실행<br>스크립트</header><div class="pb">RunPod 8종, DRY-RUN<span class="st syn">구문 시험</span></div></div>
+    </div>
+    <div class="cols" style="gap:16px;flex:1">
+      <div class="card"><header style="background:var(--st-syn)">시험 결과 [시험] 2026-10-22 기록</header>
+        <div class="body"><ul class="ul sm">
+          <li>전체 회귀 <b>70건 통과, skip 0</b>(8.35 s, 팀장 재실행 8.43 s)</li>
+          <li>공식 LeRobot v2.1 로더 — 상태 55D, 행동 (16, 4), 영상 (3, 480, 640) 적재</li>
+          <li>GR00T 정규화 — 속도 명령 정규화 후 원값 복원(허용오차 1e-4)</li>
+          <li>시간 규약 — 2,559프레임(255.8 s) 간격 검사</li>
+        </ul></div></div>
+      <div class="card"><header>결함 검출 시험 — 주입한 결함 모두 검출</header>
+        <div class="body" style="justify-content:center">
+          <div class="chips"><span class="chip">NaN</span><span class="chip">타임스탬프 지터</span><span class="chip">영상 프레임 누락</span><span class="chip">길이 불일치</span><span class="chip">라벨 누락</span><span class="chip">modality 구간 중복</span><span class="chip">그룹, 도메인 누수(Q11)</span><span class="chip">미래 샘플 사용(Q6)</span><span class="chip">진단열 입력(Q13)</span></div>
+        </div></div>
+    </div>
+    <div class="note">※ 70건은 <b>합성 데이터로 한 도구 동작 시험</b>이며 VLA 학습 성능이나 데이터셋 구축 실적이 아님. 모델 가중치 로딩, GPU 실행 없음. 출처: 설계/T5_구현보고.md §2 V2~V9, §6.4, 작업인덱스 2026-10-22 23:11</div>
+  </div>
+  <div class="draft">11/18 완성용 작업본 — 실측 결과 미수록</div>
+  <div class="pno">7</div>
+</section>
+
+<!-- ═════════ 8. 2단계 검증 실험 설계 ═════════ -->
+<section class="slide ch4">
+  <aside class="sidebar"><div class="cnum">03</div><div class="cname">검증과<br>완성</div><div class="rule"></div><div class="cq">무엇을 재고 어떻게 결론 내나?</div></aside>
+  <h1 class="title">7. 2단계 검증 실험 설계</h1>
+  <img class="kimmlogo" src="assets/slides/kimm_logo.png" alt="한국기계연구원">
+  <div class="keybar sm"><span>시뮬레이션 사전 검증 S1~S7 → <em>실환경 검증 R1~R4</em></span></div>
+  <div class="content" style="gap:6px">
+    <div class="tcap">그림 1. 실험 구성(개념도) — 필수 경로 S1, 표본 연결, 짧은 학습. 나머지는 전제 확보 시</div>
+    <div class="stage s1">
+      <div class="lb">1단계 시뮬레이션 사전 검증</div>
+      <div class="ex">
+        <div class="exb"><div class="k">S1</div><div class="t">공식 예제<br>추론 재현</div></div>
+        <div class="exb"><div class="k">S2</div><div class="t">시뮬레이션<br>파인튜닝</div></div>
+        <div class="exb"><div class="k">S3</div><div class="t">제로샷<br>vs 퓨샷</div></div>
+        <div class="exb"><div class="k">S4</div><div class="t">보류 도메인<br>강건성</div></div>
+        <div class="exb"><div class="k">S5</div><div class="t">폐루프<br>(도전)</div></div>
+        <div class="exb proxy"><div class="k">S6</div><div class="t">저→고충실도<br>시뮬 간 전이</div></div>
+        <div class="exb proxy"><div class="k">S7</div><div class="t">시뮬 혼합<br>비율</div></div>
+      </div>
+    </div>
+    <div style="text-align:center;color:var(--main);font-size:16px;font-weight:800;line-height:1">▼</div>
+    <div class="stage s2">
+      <div class="lb">2단계 실환경 검증</div>
+      <div class="ex">
+        <div class="exb"><div class="k">R1</div><div class="t">실차 로그 제로샷</div></div>
+        <div class="exb"><div class="k">R2</div><div class="t">실차 퓨샷</div></div>
+        <div class="exb"><div class="k">R3</div><div class="t">sim:real 혼합</div></div>
+        <div class="exb"><div class="k">R4</div><div class="t">섀도 모드(명령 미전송)</div></div>
+      </div>
+    </div>
+    <div class="row" style="gap:10px"><div class="lrow" style="flex:1"><div class="k">지표</div><div class="v">M1 첫 예측 행동 MAE, M1-H 구간 오차(별도), 지연 p50/p95, VRAM</div></div><div class="lrow" style="flex:0 0 250px"><div class="k g">기준선</div><div class="v">원본 제어기, MLP 행동복제</div></div></div>
+    <div class="tcap" style="margin:2px 0 0">sim-to-sim 대리 실험(S6, S7)의 해석 한계</div>
+    <div class="chips" style="justify-content:flex-start;margin-top:-4px">
+      <span class="chip">유압 실물 부재</span><span class="chip">센서 분진, 역광 미반영</span><span class="chip">토양 실물 부재</span><span class="chip">시연자가 사람 아닌 제어기</span><span class="chip">부하 채널 구성 차이</span><span class="chip">APEX 평가 80건 규모</span>
+    </div>
+    <div class="note">※ 보라 점선 S6, S7은 Isaac+FEE → AGX(APEX) <b>sim-to-sim 대리 실험</b> — 실차 전이 갭의 예측값이 아니라 절차와 경향 확인용. 출처: 설계/실험설계서.md EXP-v0.1-r2 §0~§3</div>
+  </div>
+  <div class="draft">11/18 완성용 작업본 — 실측 결과 미수록</div>
+  <div class="pno">8</div>
+</section>
+
+<!-- ═════════ 9. 측정 결과 슬롯 ═════════ -->
+<section class="slide ch4">
+  <aside class="sidebar"><div class="cnum">03</div><div class="cname">검증과<br>완성</div><div class="rule"></div><div class="cq">무엇을 재고 어떻게 결론 내나?</div></aside>
+  <h1 class="title">8. 측정 결과</h1>
+  <img class="kimmlogo" src="assets/slides/kimm_logo.png" alt="한국기계연구원">
+  <div class="keybar sm"><span>결과 수록 자리 — <em>11/11(안) 결과 마감</em> 후 실측값으로 교체, 미확보 항목은 미수행 기재</span></div>
+  <div class="content">
+    <div class="row" style="gap:12px;flex:1">
+      <div class="slot">
+        <div class="ph res" style="width:100%;height:118px"><span class="id">S09-RES-1</span><span class="desc">표 — S1 공식 예제 추론 지연 p50/p95(ms), 최대 VRAM(GB)<br>GR00T N1.7, π0.5</span><span class="size">표 · 250×118</span></div>
+        <div class="cap">결과 1. 공식 예제 추론 재현(S1)</div>
+        <div class="need"><b>데이터</b> 개발사 공식 예제 입력<br><b>측정</b> 예열 10회 후 유효 100회, 배치 1<br><b>로그</b> GPU, 드라이버, 정밀도, 백엔드, 커밋<br><b>대조</b> 부록 A5 지연 예산(100 ms)<br><b>별도</b> 굴착 체크포인트 지연은 다른 표</div>
+      </div>
+      <div class="slot">
+        <div class="ph res" style="width:100%;height:118px"><span class="id">S09-RES-2</span><span class="desc">표 — 실제 표본 품질검사 합격, 로더 적재<br>짧은 학습 M1 대 기준선(MLP 행동복제)</span><span class="size">표 · 250×118</span></div>
+        <div class="cap">결과 2. 표본 연결과 짧은 학습(S2 축소)</div>
+        <div class="need"><b>데이터</b> 실제 표본 5~20건, splits.json 해시<br><b>지표</b> M1 = 첫 예측 행동 관절별 MAE, 분모 유효 평가 프레임 수<br><b>로그</b> 학습 설정, step, 체크포인트 해시<br><b>주의</b> 짧은 시험 1회를 S2 완료로 계산 금지</div>
+      </div>
+      <div class="slot">
+        <div class="ph res" style="width:100%;height:118px"><span class="id">S09-RES-3</span><span class="desc">표 — 도메인 갭(S4), sim-to-sim 전이 갭(S6)<br>전제 미확보 시 이 칸은 "미수행"</span><span class="size">표 · 250×118</span></div>
+        <div class="cap">결과 3. 강건성과 전이(조건부)</div>
+        <div class="need"><b>데이터</b> 같은 도메인 시험 100, 미관측 100<br><b>지표</b> 도메인 갭(%), 충실도 간 전이 갭<br><b>표기</b> 제목에 sim-to-sim 명시<br><b>한계</b> 요인별 n = 20, 단일 시드</div>
+      </div>
+    </div>
+    <div class="note">※ M1-H(chunk 구간 오차)는 M1과 섞지 않고 별도 보고. 정책 간 차이는 같은 평가 에피소드에서 차이의 불확실성으로 판단(고정 5~6 % 판정선 미사용). 지표 정의 확정 전 결과표 입력 금지. 출처: 검수/팀장_수정권고안.md C01, C07, C08, 설계/실험설계서.md</div>
+  </div>
+  <div class="draft">11/18 완성용 작업본 — 실측 결과 미수록</div>
+  <div class="pno">9</div>
+</section>
+
+<!-- ═════════ 10. 결과별 결론 분기 ═════════ -->
+<section class="slide ch4">
+  <aside class="sidebar"><div class="cnum">03</div><div class="cname">검증과<br>완성</div><div class="rule"></div><div class="cq">무엇을 재고 어떻게 결론 내나?</div></aside>
+  <h1 class="title">9. 결과별 결론 분기</h1>
+  <img class="kimmlogo" src="assets/slides/kimm_logo.png" alt="한국기계연구원">
+  <div class="keybar sm"><span>11/11(안) 확보 수준에 따라 <em>주장 범위를 미리 정한 세 가지 결론</em></span></div>
+  <div class="content">
+    <div class="row" style="gap:12px;flex:1">
+      <div class="br"><header>A. S1 + 짧은 학습 + 기준선</header><div class="bd">
+        <div><div class="k">결론 문장</div><div class="claim">시뮬레이션 굴착 데이터에서 VLA 적용 가능성과 데이터 요구량 1차 비교</div></div>
+        <div><div class="k">주장 범위</div>Isaac 시뮬레이션 안, 단일 시드, 기준선 대비 M1</div>
+        <div><div class="k">교체 장</div>목표 표, 모델 비교 실측 행, 7축 값, 측정 결과 1~3, 결론 바</div>
+      </div></div>
+      <div class="br b"><header>B. S1 + 표본 연결만</header><div class="bd">
+        <div><div class="k">결론 문장</div><div class="claim">두 모델의 실행 조건(지연, 자원)과 실데이터 파이프라인 검증</div></div>
+        <div><div class="k">주장 범위</div>학습 성능 주장 없음, 축 3~6 미측정 유지</div>
+        <div><div class="k">교체 장</div>모델 비교 실측 행, 측정 결과 1, 2(표본만)</div>
+      </div></div>
+      <div class="br c"><header>C. 실측 미확보</header><div class="bd">
+        <div><div class="k">결론 문장</div><div class="claim">비교 기준, 데이터 규격, 도구 확보 — 1차 제출본 결론 유지</div></div>
+        <div><div class="k">주장 범위</div>문서, 설계 분석과 합성 도구 시험까지</div>
+        <div><div class="k">교체 장</div>측정 결과 장에 미수행 사유와 원인 기록, 2027 후속 과제 연결</div>
+      </div></div>
+    </div>
+    <div class="lrow"><div class="k a">공통</div><div class="v">결과가 기대와 달라도 그대로 기재, 축소 또는 실패 결과도 수록. 결과 부족 시 논문 제목과 기여를 근거 수준으로 축소</div></div>
+    <div class="note">※ 분기 판단 시점은 11/8(짧은 학습과 기준선 확보 상태)과 11/11(결과 마감, 안). 출처: 검수/팀장_수정권고안.md §3, 계획.md §4~§6</div>
+  </div>
+  <div class="draft">11/18 완성용 작업본 — 실측 결과 미수록</div>
+  <div class="pno">10</div>
+</section>
+
+<!-- ═════════ 11. 완성 기준과 일정 ═════════ -->
+<section class="slide ch4">
+  <aside class="sidebar"><div class="cnum">03</div><div class="cname">검증과<br>완성</div><div class="rule"></div><div class="cq">무엇을 재고 어떻게 결론 내나?</div></aside>
+  <h1 class="title">10. 완성 기준과 일정(안)</h1>
+  <img class="kimmlogo" src="assets/slides/kimm_logo.png" alt="한국기계연구원">
+  <div class="keybar sm"><span>날짜는 결과 보장이 아닌 <em>범위를 고르는 판단 시점</em> — 모두 팀장 권고(안)</span></div>
+  <div class="content short">
+    <table class="mtab tight">
+      <tr><th style="width:96px">기한(안)</th><th>할 일</th><th>완료 증거</th></tr>
+      <tr><td>10/28~11/4</td><td>원시 신호, 시간축, 실행 환경 확인 + S1 추론 재현</td><td>환경 기록, S1 측정 로그</td></tr>
+      <tr><td>11/6</td><td>실제 표본 5~20건 변환→검사→로더 연결 점검</td><td>표본, 품질검사, 적재 로그</td></tr>
+      <tr><td>11/8</td><td>짧은 학습과 기준선 확보 상태 확인, 논문 범위 선택</td><td>학습 로그, 분기 A/B/C 결정</td></tr>
+      <tr><td>11/10, 11/11</td><td>논문용 결과 조기 동결, 발표, 보고서 결과 마감</td><td>분할, 설정, 체크포인트 해시</td></tr>
+      <tr><td>11/16</td><td>투고 패키지, 기술보고서 완성본, 발표 리허설</td><td>학회 양식, 최종 파일</td></tr>
+      <tr class="hl"><td>11/17</td><td>투고 접수, 기술보고서 완성 확인, 내용 동결</td><td>접수 확인 자료, 발표본 해시</td></tr>
+    </table>
+    <div class="note">※ R2~R4와 두 시뮬레이터 간 전이는 전제(신호, 실차 데이터 위치와 보안) 확인 전 필수 경로에 넣지 않음. 출처: 검수/팀장_수정권고안.md §3 공통 일정안, C09</div>
+  </div>
+  <div class="closer sm"><span>설계와 도구 기반 확보 — <em>필드 적합성 판정은 실측 결과 확보 후</em></span></div>
+  <div class="pno">11</div>
+</section>
+
+<!-- ═════════ 12. 마무리 ═════════ -->
+<section class="slide thanks">
+  <img class="bg" src="assets/slides/kimm_thanks.jpg" alt="감사합니다. 한국기계연구원">
+  <img class="ci" src="assets/slides/kimm_thanks_logo.png" alt="KIMM">
+</section>
+
+<!-- ═════════ 부록 간지 ═════════ -->
+<section class="slide toc divider ch2">
+  <div class="edge"></div>
+  <div class="art"><img src="assets/slides/kimm_testbed_trench.jpg" alt=""></div>
+  <div class="ttl"><div class="k">질의 대비</div><div class="e">APPENDIX</div></div>
+  <div class="items" style="top:70px;gap:14px">
+    <div class="it on"><div class="rn">A1</div><div><div class="tx">계획 대비 변경 사항</div><div class="sx">GR00T 버전, 시뮬레이터, 2단계 방식</div></div></div>
+    <div class="it on"><div class="rn">A2</div><div><div class="tx">위험과 대안(안)</div><div class="sx">판단 시점별 대안과 분기</div></div></div>
+    <div class="it on"><div class="rn">A3</div><div><div class="tx">데이터 분할과 품질 기준</div><div class="sx">720 / 80 / 100 / 100, Q1~Q13</div></div></div>
+    <div class="it on"><div class="rn">A4</div><div><div class="tx">실험 정의와 지표</div><div class="sx">S1~S7, R1~R4, M1 정의</div></div></div>
+    <div class="it on"><div class="rn">A5</div><div><div class="tx">10 Hz 지연 예산</div><div class="sx">S1 결과 대조 기준</div></div></div>
+  </div>
+  <div class="veil"></div>
+  <div class="pno">A0</div>
+</section>
+
+<!-- ═════════ A1 변경 사항 ═════════ -->
+<section class="slide ch2">
+  <aside class="sidebar"><div class="cnum">A</div><div class="cname">부록</div><div class="rule"></div><div class="cq">질의 대비 자료</div></aside>
+  <h1 class="title">A1. 계획 대비 변경 사항</h1>
+  <img class="kimmlogo" src="assets/slides/kimm_logo.png" alt="한국기계연구원">
+  <div class="keybar sm"><span>목표는 그대로, <em>수단만 최신 공개 자원과 안전 원칙</em>에 맞춰 조정</span></div>
+  <div class="content">
+    <table class="mtab">
+      <tr><th style="width:130px">항목</th><th style="width:190px">계획서</th><th style="width:190px">변경</th><th>사유</th></tr>
+      <tr><td>분석 모델</td><td>GR00T N1.6</td><td><b>GR00T N1.7</b></td><td>정식 출시(GA)와 주 개발선 이동, 다중 데이터셋 혼합 학습 지원, TensorRT와 Jetson 배포 경로 문서화 — N1.6도 여전히 이용 가능</td></tr>
+      <tr><td>시뮬레이션 환경</td><td>Isaac Sim 가상 필드(Level 1)</td><td>Isaac Sim + <b>APEX(AGX) 추가</b></td><td>심의의견 "토양 상호작용 고려" 반영, 고충실도 검증 환경으로 설계</td></tr>
+      <tr><td>2단계 실환경</td><td>테스트베드 실굴착기 탑재</td><td><b>섀도 모드</b> + 실차 로그 오프라인 평가</td><td>미검증 정책의 실차 폐루프 구동 배제, 밸브 명령 미전송 원칙</td></tr>
+      <tr><td>Isaac 분할</td><td>학습 800 / 보류 200(재계획)</td><td>720 / 80 / 100 / 100</td><td>튜닝 전용 검증셋과 같은 도메인 최종 시험셋 분리 — 누수 차단</td></tr>
+    </table>
+    <div class="note">※ 출처: 본문/1_개요.md 계획 대비 변경, 본문/2-가_모델서베이.md 4), 설계/데이터셋_정의서.md §8.2. 모두 설계 단계의 변경</div>
+  </div>
+  <div class="draft">11/18 완성용 작업본 — 실측 결과 미수록</div>
+  <div class="pno">A1</div>
+</section>
+
+<!-- ═════════ A2 위험과 대안 ═════════ -->
+<section class="slide ch2">
+  <aside class="sidebar"><div class="cnum">A</div><div class="cname">부록</div><div class="rule"></div><div class="cq">질의 대비 자료</div></aside>
+  <h1 class="title">A2. 위험과 대안(안)</h1>
+  <img class="kimmlogo" src="assets/slides/kimm_logo.png" alt="한국기계연구원">
+  <div class="keybar sm"><span>판단 시점을 미리 정해 <em>결과 유무와 무관하게 정직한 최종본</em></span></div>
+  <div class="content">
+    <table class="mtab tight">
+      <tr><th style="width:200px">위험</th><th style="width:96px">판단 시점(안)</th><th>대안</th></tr>
+      <tr><td>RunPod, HF 승인 지연</td><td class="c">11/3</td><td>로컬 RTX 5080에서 S1 추론</td></tr>
+      <tr><td>시뮬레이터 신호 미확인 지속</td><td class="c">11/4</td><td>APEX 기존 로그 변환으로 소수 표본, 불가 시 "규격과 도구 확보, 수집 미수행" 기재</td></tr>
+      <tr><td>π0.5 상태 차원 불일치</td><td class="c">11/4</td><td>π0.5는 S1 추론 재현까지, 굴착 학습은 GR00T만</td></tr>
+      <tr><td>실제 표본 연결 실패</td><td class="c">11/6</td><td>합성 시험 범위로 기재, 실패 원인 기록 → 분기 C</td></tr>
+      <tr><td>짧은 학습, 기준선 부족</td><td class="c">11/8</td><td>논문을 주장 제한 기술논문으로 전환, 발표는 분기 B</td></tr>
+      <tr><td>GR00T 학습 실패</td><td class="c">11/8</td><td>경량 모델(SmolVLA) 대체 시험, GR00T는 추론 실측과 파이프라인으로 기재</td></tr>
+      <tr><td>결과 마감까지 결과 없음</td><td class="c">11/11</td><td>분기 C — 설계, 도구 중심 최종본 + 미수행 사유와 2027 후속 과제</td></tr>
+    </table>
+    <div class="note">※ 날짜는 팀장 공통 일정안 기준 권고(안). 출처: 계획.md §6, 검수/팀장_수정권고안.md §3, 설계/실험설계서.md §3</div>
+  </div>
+  <div class="draft">11/18 완성용 작업본 — 실측 결과 미수록</div>
+  <div class="pno">A2</div>
+</section>
+
+<!-- ═════════ A3 분할과 품질 기준 ═════════ -->
+<section class="slide ch2">
+  <aside class="sidebar"><div class="cnum">A</div><div class="cname">부록</div><div class="rule"></div><div class="cq">질의 대비 자료</div></aside>
+  <h1 class="title">A3. 데이터 분할과 품질 기준</h1>
+  <img class="kimmlogo" src="assets/slides/kimm_logo.png" alt="한국기계연구원">
+  <div class="keybar sm"><span>분할은 생성 전에 고정, <em>보류셋은 학습과 튜닝에 사용 금지</em></span></div>
+  <div class="content">
+    <div class="cols" style="gap:20px;flex:1">
+      <div class="col" style="flex:1.15">
+        <div class="tcap">표 A3-1. 분할 설계(설계안)</div>
+        <table class="mtab tight">
+          <tr><th>분할</th><th style="width:60px">건수</th><th>용도</th></tr>
+          <tr><td>Isaac 학습</td><td class="c">720</td><td>S2, S3 최대점</td></tr>
+          <tr><td>Isaac 검증</td><td class="c">80</td><td>튜닝 전용, 최종 보고 제외</td></tr>
+          <tr><td>같은 도메인 시험</td><td class="c">100</td><td>S2, S3 최종 지표</td></tr>
+          <tr><td>미관측 도메인 시험</td><td class="c">100</td><td>S4 강건성(요인 5 × 20)</td></tr>
+          <tr><td>APEX 퓨샷 풀</td><td class="c">20</td><td>S6 퓨샷(5⊂10⊂20)</td></tr>
+          <tr><td>APEX 평가</td><td class="c">80</td><td>S6, S7 봉인셋</td></tr>
+        </table>
+      </div>
+      <div class="col" style="flex:1">
+        <div class="tcap">표 A3-2. 품질검사 항목 구현 범위</div>
+        <table class="mtab tight">
+          <tr><th style="width:110px">구현</th><th>항목</th></tr>
+          <tr><td>검사</td><td>Q1 형식, Q2 수치, Q3 시간, Q6 샘플 나이, Q7 길이, Q11 분할 누수</td></tr>
+          <tr><td>부분</td><td>Q4 필수 결측, Q8 물리 범위, Q9 라벨, Q12 행동 분포, Q13 진단열 격리</td></tr>
+          <tr><td>미구현</td><td>Q5 선택 필드 결측, Q10 중복</td></tr>
+        </table>
+        <div class="note" style="margin-top:6px">Q8은 관절 한계 제원 미확정으로 부분 구현</div>
+      </div>
+    </div>
+    <div class="note">※ 출처: 설계/데이터셋_정의서.md §6, §8, 설계/T5_구현보고.md §6.5, 연구현황_근거표 E06, E07</div>
+  </div>
+  <div class="draft">11/18 완성용 작업본 — 실측 결과 미수록</div>
+  <div class="pno">A3</div>
+</section>
+
+<!-- ═════════ A4 실험 정의 ═════════ -->
+<section class="slide ch2">
+  <aside class="sidebar"><div class="cnum">A</div><div class="cname">부록</div><div class="rule"></div><div class="cq">질의 대비 자료</div></aside>
+  <h1 class="title">A4. 실험 정의와 지표</h1>
+  <img class="kimmlogo" src="assets/slides/kimm_logo.png" alt="한국기계연구원">
+  <div class="keybar sm"><span>계획서 연구내용마다 <em>대응 실험과 지표</em>를 1:1로 연결</span></div>
+  <div class="content">
+    <table class="mtab tight" style="font-size:12px">
+      <tr><th style="width:60px">실험</th><th style="width:220px">계획서 대응</th><th>방법</th><th style="width:150px">지표</th></tr>
+      <tr><td>S1</td><td>공개 실험 재현</td><td>2종 공식 체크포인트 예제, 예열 10회 후 유효 100회</td><td>지연 p50/p95, VRAM</td></tr>
+      <tr><td>S2</td><td>Level 1 모델 탑재, 파인튜닝</td><td>GR00T N1.7 NEW_EMBODIMENT, Isaac 학습 분할</td><td>M1(첫 예측 행동 MAE)</td></tr>
+      <tr><td>S3</td><td>제로샷, 퓨샷 효과</td><td>0 / 소수 / 최대 n 에피소드 학습</td><td>에피소드 수–오차</td></tr>
+      <tr><td>S4</td><td>조명, 토양 강건성</td><td>S2 모델을 미관측 도메인에서 평가</td><td>도메인 갭(%)</td></tr>
+      <tr><td>S5</td><td>Level 1 가상필드 검증</td><td>로컬 추론 폐루프(도전 목표)</td><td>성공률, 사이클 시간</td></tr>
+      <tr><td>S6</td><td>제로샷 전이(대리)</td><td>Isaac 학습 모델을 APEX에 적용, 0/5/10/20 퓨샷</td><td>충실도 간 전이 갭</td></tr>
+      <tr><td>S7</td><td>Co-training 비율(대리)</td><td>Isaac:AGX 100:0 / 90:10 / 70:30 / 0:100</td><td>비율별 오차</td></tr>
+      <tr><td>R1~R3</td><td>Sim-to-Real 갭 원인 분석</td><td>실차 로그 제로샷, 실차 퓨샷, sim:real 혼합</td><td>관절별, 국면별 오차</td></tr>
+      <tr><td>R4</td><td>테스트베드 탑재</td><td>섀도 모드, 추론만 하고 명령 미전송</td><td>지연, 행동 일치도</td></tr>
+    </table>
+    <div class="lrow"><div class="k">M1</div><div class="v">첫 예측 행동의 관절별 MAE, 분모는 유효 평가 프레임 수, 평균 M1은 4관절 평균. chunk 구간 오차 M1-H는 별도 지표</div></div>
+    <div class="note">※ 굴착 체크포인트 지연 벤치는 S1과 별도 표. 출처: 설계/실험설계서.md §1~§2, §5, 검수/팀장_수정권고안.md C01, C08</div>
+  </div>
+  <div class="draft">11/18 완성용 작업본 — 실측 결과 미수록</div>
+  <div class="pno">A4</div>
+</section>
+
+<!-- ═════════ A5 지연 예산 ═════════ -->
+<section class="slide ch2">
+  <aside class="sidebar"><div class="cnum">A</div><div class="cname">부록</div><div class="rule"></div><div class="cq">질의 대비 자료</div></aside>
+  <h1 class="title">A5. 10 Hz 제어주기 지연 예산</h1>
+  <img class="kimmlogo" src="assets/slides/kimm_logo.png" alt="한국기계연구원">
+  <div class="keybar sm"><span>GR00T [공식] 지연 27.9~85.8 ms는 <em>100 ms 주기 안</em> — L40 128.3 ms는 동기 실행 시 초과</span></div>
+  <div class="content" style="gap:4px">
+    <div class="svgfig">
+      <img src="assets/analysis_v2/fig3_latency_budget.svg" alt="10 Hz 제어주기 지연 예산" style="width:660px;height:294.3px">
+    </div>
+    <div class="cap">그림 4. 10 Hz 동기 실행의 지연 예산 — <b>가정 지연 20~120 ms 계산, GPU 실측 아님</b><br>[공식] GR00T N1.7 지연 대입: H100 TensorRT 27.9 ms → 점유 28 %, H100 eager 85.8 ms → 86 %, L40 eager 128.3 ms → <b style="color:var(--red-tag)">128 %</b></div>
+    <div class="src">산식: 점유율 = L / 100 ms, 여유 = 100 ms − L. [공식] 값은 4 denoising step, 카메라 1대 조건의 개발사 공개값(본 연구 측정 아님). π0.5는 공식 지연 미확인으로 대입 제외. 센서, 통신, 유압 응답 지연 미포함<br>주기를 넘는 조건은 행동 chunk(H = 16 → 1.6 s, H = 40 → 4.0 s)의 비동기 실행 전제. 출처: 작성지원/정량설계_분석.md(D), 본문/2-가_모델서베이.md 표 2-가-1</div>
+  </div>
+  <div class="draft">11/18 완성용 작업본 — 실측 결과 미수록</div>
+  <div class="pno">A5</div>
+</section>
+
+<script src="assets/slides/nst_slides.js"></script>
+</body>
+</html>

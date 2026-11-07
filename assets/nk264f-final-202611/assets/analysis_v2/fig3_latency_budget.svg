@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 428" width="960" height="428" role="img" aria-labelledby="t d" font-family="'Malgun Gothic','맑은 고딕','HCR Dotum','Freesentation','Pretendard','Noto Sans CJK KR',sans-serif">
+<title id="t">10 Hz 제어주기 지연 예산(가상 가정 계산)</title>
+<desc id="d">추론 지연 20~120 ms를 가정했을 때 100 ms 주기 대비 점유율과 여유. 실제 GPU 측정값이 아님.</desc>
+<rect width="960" height="428" fill="#FFFFFF"/>
+<rect class="tag" x="620" y="16" width="300" height="26" rx="4" fill="#FFFFFF" stroke="#595959"/><text x="770.0" y="34" font-size="14" fill="#595959" text-anchor="middle">가상 지연 가정 · GPU 실측 아님</text>
+<text x="40" y="34" font-size="18" fill="#253149" text-anchor="start" font-weight="700">10 Hz 동기 실행 — 가정 지연 L의 주기 점유율과 여유</text>
+<line x1="150.0" y1="66" x2="150.0" y2="316" stroke="#D9DDE3"/><text x="150.0" y="336" font-size="13" fill="#595959" text-anchor="middle" font-weight="400">0</text>
+<line x1="250.0" y1="66" x2="250.0" y2="316" stroke="#D9DDE3"/><text x="250.0" y="336" font-size="13" fill="#595959" text-anchor="middle" font-weight="400">25</text>
+<line x1="350.0" y1="66" x2="350.0" y2="316" stroke="#D9DDE3"/><text x="350.0" y="336" font-size="13" fill="#595959" text-anchor="middle" font-weight="400">50</text>
+<line x1="450.0" y1="66" x2="450.0" y2="316" stroke="#D9DDE3"/><text x="450.0" y="336" font-size="13" fill="#595959" text-anchor="middle" font-weight="400">75</text>
+<line x1="550.0" y1="66" x2="550.0" y2="316" stroke="#D9DDE3"/><text x="550.0" y="336" font-size="13" fill="#595959" text-anchor="middle" font-weight="400">100</text>
+<line x1="650.0" y1="66" x2="650.0" y2="316" stroke="#D9DDE3"/><text x="650.0" y="336" font-size="13" fill="#595959" text-anchor="middle" font-weight="400">125</text>
+<line x1="750.0" y1="66" x2="750.0" y2="316" stroke="#D9DDE3"/><text x="750.0" y="336" font-size="13" fill="#595959" text-anchor="middle" font-weight="400">150</text>
+<text x="450.0" y="358" font-size="14" fill="#595959" text-anchor="middle" font-weight="400">시간 (ms)</text>
+<text x="40" y="82" font-size="14" fill="#595959" text-anchor="start" font-weight="400">가정 지연 L</text>
+<text x="136" y="108" font-size="15" fill="#1A1A1A" text-anchor="end" font-weight="700">20 ms</text>
+<rect x="150" y="90" width="80.0" height="26" fill="#3D52AD"/><rect x="230.0" y="90" width="320.0" height="26" fill="#FFFFFF" stroke="#3D52AD" stroke-dasharray="4 3"/><text x="764" y="108" font-size="15" fill="#1A1A1A" text-anchor="start" font-weight="400">점유 20% · 여유 80 ms</text>
+<text x="136" y="148" font-size="15" fill="#1A1A1A" text-anchor="end" font-weight="700">40 ms</text>
+<rect x="150" y="130" width="160.0" height="26" fill="#3D52AD"/><rect x="310.0" y="130" width="240.0" height="26" fill="#FFFFFF" stroke="#3D52AD" stroke-dasharray="4 3"/><text x="764" y="148" font-size="15" fill="#1A1A1A" text-anchor="start" font-weight="400">점유 40% · 여유 60 ms</text>
+<text x="136" y="188" font-size="15" fill="#1A1A1A" text-anchor="end" font-weight="700">60 ms</text>
+<rect x="150" y="170" width="240.0" height="26" fill="#3D52AD"/><rect x="390.0" y="170" width="160.0" height="26" fill="#FFFFFF" stroke="#3D52AD" stroke-dasharray="4 3"/><text x="764" y="188" font-size="15" fill="#1A1A1A" text-anchor="start" font-weight="400">점유 60% · 여유 40 ms</text>
+<text x="136" y="228" font-size="15" fill="#1A1A1A" text-anchor="end" font-weight="700">80 ms</text>
+<rect x="150" y="210" width="320.0" height="26" fill="#3D52AD"/><rect x="470.0" y="210" width="80.0" height="26" fill="#FFFFFF" stroke="#3D52AD" stroke-dasharray="4 3"/><text x="764" y="228" font-size="15" fill="#1A1A1A" text-anchor="start" font-weight="400">점유 80% · 여유 20 ms</text>
+<text x="136" y="268" font-size="15" fill="#1A1A1A" text-anchor="end" font-weight="700">100 ms</text>
+<rect x="150" y="250" width="400.0" height="26" fill="#3D52AD"/><rect x="550.0" y="250" width="0.0" height="26" fill="#FFFFFF" stroke="#3D52AD" stroke-dasharray="4 3"/><text x="764" y="268" font-size="15" fill="#1A1A1A" text-anchor="start" font-weight="400">점유 100% · 여유 0 ms</text>
+<text x="136" y="308" font-size="15" fill="#1A1A1A" text-anchor="end" font-weight="700">120 ms</text>
+<rect x="150" y="290" width="400.0" height="26" fill="#3D52AD"/><rect x="550.0" y="290" width="80.0" height="26" fill="#E8352E"/><text x="764" y="308" font-size="15" fill="#E8352E" text-anchor="start" font-weight="700">점유 120% · 20 ms 초과</text>
+<line x1="550.0" y1="62" x2="550.0" y2="318" stroke="#253149" stroke-width="2.5"/><text x="550.0" y="58" font-size="14" fill="#253149" text-anchor="middle" font-weight="700">주기 100 ms</text>
+<text x="40" y="388" font-size="14" fill="#595959" text-anchor="start" font-weight="400">행동 청크 길이(참고): H=16 → 1.6 s(16주기), H=40 → 4.0 s(40주기). 청크를 여러 주기에 걸쳐 실행하면 위 예산은 달라짐.</text>
+<text x="40" y="410" font-size="14" fill="#595959" text-anchor="start" font-weight="400">점유율 = L / 100 ms, 여유 = 100 ms − L. 센서 지연·유압 응답 지연은 포함하지 않음.</text>
+</svg>

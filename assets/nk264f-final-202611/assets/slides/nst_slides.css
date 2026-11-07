@@ -1,0 +1,251 @@
+/* NK264F 발표자료 — NST 정책발표 스타일 공통 CSS
+   근거: 03_administrative/PPT 템플릿/NST_정책발표_스타일/design.md (원본 PDF 실측)
+         + 04_achievements/세미나/2610 FES2026/FES2026_특별강연_슬라이드_v2_claude.html (사용자 최신 수정 반영본)
+   재현 차이는 양식/발표자료_NST_재현기록.md 참조 */
+
+/* 글꼴: 로컬 woff2 우선(오프라인 검토), 없으면 눈누 CDN */
+@font-face{font-family:'Freesentation';font-weight:400;font-display:block;
+  src:url('fonts/Freesentation-4Regular.woff2') format('woff2'),url('https://cdn.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-4Regular.woff2') format('woff2');}
+@font-face{font-family:'Freesentation';font-weight:500;font-display:block;
+  src:url('fonts/Freesentation-5Medium.woff2') format('woff2'),url('https://cdn.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-5Medium.woff2') format('woff2');}
+@font-face{font-family:'Freesentation';font-weight:600;font-display:block;
+  src:url('fonts/Freesentation-6SemiBold.woff2') format('woff2'),url('https://cdn.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-6SemiBold.woff2') format('woff2');}
+@font-face{font-family:'Freesentation';font-weight:700;font-display:block;
+  src:url('fonts/Freesentation-7Bold.woff2') format('woff2'),url('https://cdn.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-7Bold.woff2') format('woff2');}
+@font-face{font-family:'Freesentation';font-weight:800;font-display:block;
+  src:url('fonts/Freesentation-8ExtraBold.woff2') format('woff2'),url('https://cdn.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-8ExtraBold.woff2') format('woff2');}
+
+:root{
+  --navy-bar:#253149; --navy-deep:#0D204A;
+  --accent:#FFFF6C; --accent-soft:#FFFF99;
+  --ink:#1A1A1A; --ink-sub:#595959;
+  --gray-line:#D9DDE3; --gray-fill:#F2F2F2; --gray-label:#7B7B7B; --gray-label2:#A6A6A6;
+  --red-tag:#E8352E;
+  /* 상태 표시(이 과제 전용 추가 토큰) */
+  --st-done:#2F7D57; --st-impl:#3D52AD; --st-syn:#6F4FB0; --st-none:#8C8C8C; --st-plan:#C9730A;
+}
+/* 장 팔레트 — design.md §3.2 (예시 덱과 같은 값) */
+.ch1{--deep:#3461A2;--main:#3D52AD;--alt:#5895DE;--mid:#455A9B;--tint:#E8EEF8;--bd:rgba(88,149,222,.45)}
+.ch2{--deep:#6A1B3E;--main:#A44E5C;--alt:#824F83;--mid:#B2577A;--tint:#F4E8E8;--bd:rgba(164,78,92,.42)}
+.ch3{--deep:#2E624F;--main:#31A17E;--alt:#1F7A73;--mid:#3C887B;--tint:#EAF6F5;--bd:rgba(49,161,126,.45)}
+.ch4{--deep:#3F6630;--main:#54833D;--alt:#A3A141;--mid:#75944E;--tint:#F2F5EB;--bd:rgba(84,131,61,.42)}
+
+*{box-sizing:border-box;margin:0;padding:0}
+*{word-break:keep-all;overflow-wrap:break-word}
+html,body{margin:0;background:#4a4a4a;font-family:'Freesentation','Pretendard','Malgun Gothic',sans-serif;
+  -webkit-font-smoothing:antialiased;letter-spacing:-.2px;color:var(--ink)}
+.slide{position:relative;width:960px;height:540px;background:#fff;overflow:hidden;margin:18px auto;color:var(--ink)}
+.viewhint{width:960px;margin:14px auto 0;color:#ddd;font-size:12px;line-height:1.5}
+.viewhint b{color:#fff}
+
+/* ── 사이드바 (D형) ── */
+.sidebar{position:absolute;left:0;top:0;width:104px;height:540px;color:#fff;
+  background:radial-gradient(120px 180px at 78% 18%,rgba(255,255,255,.16),transparent 70%),
+             radial-gradient(150px 220px at 8% 84%,rgba(0,0,0,.20),transparent 72%),
+             linear-gradient(168deg,var(--mid) 0%,var(--main) 36%,var(--deep) 100%)}
+.sidebar .cnum{position:absolute;top:22px;left:12px;font-size:20px;font-weight:600;color:rgba(255,255,255,.62);line-height:1}
+.sidebar .cname{position:absolute;top:46px;left:12px;right:10px;font-size:23px;font-weight:700;line-height:1.16;letter-spacing:-.8px}
+.sidebar .cname.sm{font-size:19px;letter-spacing:-.6px}
+.sidebar .rule{position:absolute;top:122px;left:12px;width:24px;height:1px;background:rgba(255,255,255,.55)}
+.sidebar .cq{position:absolute;top:136px;left:12px;right:11px;font-size:12.5px;font-weight:500;line-height:1.26;color:rgba(255,255,255,.92)}
+
+/* ── 제목·로고 (FES v2: 머리말 삭제, 제목 29px, 부제 삭제) ── */
+.title{position:absolute;left:123px;top:22px;right:220px;font-size:29px;font-weight:700;letter-spacing:-1px;line-height:1.2;white-space:nowrap}
+.wide .title{left:38px}
+.kimmlogo{position:absolute;right:24px;top:22px;height:30px;width:auto}
+
+/* ── 키메시지 바 ── */
+.keybar{position:absolute;left:104px;right:0;top:73px;height:43px;background:var(--navy-bar);
+  background-image:radial-gradient(420px 60px at 12% 130%,rgba(93,140,214,.22),transparent 70%),
+                   radial-gradient(360px 55px at 88% -30%,rgba(93,140,214,.18),transparent 70%);
+  display:flex;align-items:center;justify-content:center;padding:0 16px;color:#fff;font-size:24px;font-weight:700;letter-spacing:-.7px;white-space:nowrap}
+.keybar em{color:var(--accent);font-style:normal}
+.keybar.sm{font-size:21px}
+.keybar.xs{font-size:19px}
+.wide .keybar{left:0}
+
+/* ── 콘텐츠 영역 x139.5~922, y137~510 ── */
+.content{position:absolute;left:139.5px;top:137px;width:782.5px;height:373px;display:flex;flex-direction:column;gap:10px}
+.content.short{height:318px}
+.wide .content{left:38px;width:884px}
+.pno{position:absolute;right:12px;bottom:10px;font-size:9px;color:var(--gray-label)}
+.draft{position:absolute;left:123px;bottom:9px;font-size:9px;font-weight:600;color:#B03A2E;letter-spacing:-.1px}
+.wide .draft{left:38px}
+
+/* 결론 바 (F형) */
+.closer{position:absolute;left:0;right:0;bottom:0;height:52px;background:var(--navy-deep);display:flex;align-items:center;justify-content:center;
+  color:#fff;font-size:22px;font-weight:700;letter-spacing:-.6px}
+.closer em{color:var(--accent-soft);font-style:normal}
+.closer.sm{font-size:19px}
+.closer~.pno{color:rgba(255,255,255,.6)}
+.closer~.draft{display:none}
+
+/* ── 공통 컴포넌트 ── */
+.row{display:flex;gap:20px;align-items:stretch}
+.col{display:flex;flex-direction:column;gap:8px}
+.lead{display:flex;align-items:center;gap:7px;font-size:17px;font-weight:700;line-height:1.25}
+.chk{width:16px;height:16px;border-radius:4px;background:var(--main);flex:0 0 auto;position:relative}
+.chk::after{content:"";position:absolute;left:5px;top:2.5px;width:4.5px;height:8px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(42deg)}
+.cap{font-size:12.5px;font-weight:600;color:#333;text-align:center;margin-top:5px;line-height:1.3}
+.cap b{color:var(--deep)}
+.src{font-size:9.5px;font-weight:400;color:#7A7A7A;text-align:center;line-height:1.3;margin-top:1px}
+.note{font-size:10px;font-weight:400;color:var(--ink-sub);line-height:1.4}
+.note b{font-weight:700;color:#444}
+.cols{display:flex;gap:37px}
+.card{flex:1;background:#fff;border:1px solid var(--bd);border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,.06);overflow:hidden;display:flex;flex-direction:column}
+.card>header{height:33px;flex:0 0 33px;display:flex;align-items:center;justify-content:center;gap:8px;background:var(--main);color:#fff;font-size:18px;font-weight:700;letter-spacing:-.5px}
+.card>header.g{background:var(--gray-label)}
+.card>header.d{background:var(--deep)}
+.card>header.a{background:var(--alt)}
+.card .sub{background:var(--tint);text-align:center;font-size:14px;font-weight:700;padding:6px 8px;line-height:1.25}
+.card .body{flex:1;padding:10px 12px;display:flex;flex-direction:column;gap:7px}
+.badge{font-size:11px;font-weight:700;color:#fff;background:rgba(0,0,0,.24);border-radius:9px;padding:1.5px 7px}
+.ul{display:flex;flex-direction:column;gap:6px}
+.ul li{list-style:none;position:relative;padding-left:12px;font-size:15px;font-weight:500;line-height:1.33}
+.ul li::before{content:"•";position:absolute;left:0;top:-.5px;color:var(--main);font-weight:700}
+.ul li b{font-weight:700}
+.ul li .dash{display:block;font-size:12.5px;font-weight:400;color:#4A4A4A;margin-top:2px}
+.ul li .dash::before{content:"- "}
+.ul.sm li{font-size:13.5px;line-height:1.32}
+.lrow{display:grid;grid-template-columns:68px 1fr;align-items:center;border:1px solid var(--gray-line);border-radius:4px;overflow:hidden;min-height:38px;background:#fff}
+.lrow>.k{align-self:stretch;background:var(--deep);color:#fff;font-size:13.5px;font-weight:700;display:grid;place-items:center;text-align:center;line-height:1.15;padding:3px}
+.lrow>.k.g{background:var(--gray-label)}
+.lrow>.k.a{background:var(--alt)}
+.lrow>.v{display:block;align-self:center;padding:5px 10px;font-size:14px;font-weight:500;line-height:1.3}
+.lrow>.v b{font-weight:700}
+.tag{display:inline-block;font-size:11px;font-weight:700;color:#fff;background:var(--red-tag);border-radius:8px;padding:1px 7px;vertical-align:1px}
+
+/* 상태 칩 — 확인된 수행과 예정·미측정을 구분 (이 과제 전용) */
+.st{display:inline-block;font-size:11px;font-weight:700;color:#fff;border-radius:4px;padding:1.5px 6px;line-height:1.25;white-space:nowrap;vertical-align:1px}
+.st.done{background:var(--st-done)}
+.st.impl{background:var(--st-impl)}
+.st.syn{background:var(--st-syn)}
+.st.none{background:var(--st-none)}
+.st.plan{background:var(--st-plan)}
+.st.o{background:#fff;border:1px solid currentColor}
+.st.o.done{color:var(--st-done)}.st.o.impl{color:var(--st-impl)}.st.o.syn{color:var(--st-syn)}.st.o.none{color:var(--st-none)}.st.o.plan{color:var(--st-plan)}
+.legend{display:flex;gap:10px;align-items:center;font-size:10.5px;color:#555;flex-wrap:wrap}
+.legend span{display:flex;align-items:center;gap:4px}
+
+/* ── 표 (D형 표 슬라이드) — 표 제목은 위 ── */
+.tcap{font-size:13px;font-weight:700;color:var(--deep);margin-bottom:5px}
+.mtab{width:100%;border-collapse:separate;border-spacing:0;font-size:13px}
+.mtab th{background:var(--main);color:#fff;font-size:13.5px;font-weight:700;padding:6px 8px;border-right:1px solid rgba(255,255,255,.25);text-align:center}
+.mtab th:last-child{border-right:0}
+.mtab th:first-child{border-top-left-radius:6px}
+.mtab th:last-child{border-top-right-radius:6px}
+.mtab td{background:#fff;padding:6px 9px;border-bottom:1px solid var(--gray-line);border-right:1px solid var(--gray-line);line-height:1.3;font-weight:500;vertical-align:middle}
+.mtab td:first-child{border-left:1px solid var(--gray-line);font-weight:700;text-align:center;background:var(--tint)}
+.mtab td b{font-weight:700}
+.mtab td.c{text-align:center}
+.mtab .unk{color:#8C8C8C;font-weight:600}
+.mtab.tight td{padding:4.5px 8px;font-size:12.5px}
+.mtab.tight th{padding:5px 8px;font-size:13px}
+.mtab tr.hl td{background:#FFF8E6}
+.mtab tr.hl td:first-child{background:#FBE9C4}
+
+/* ── 그림 (그림 제목은 아래 + 출처·성격 표시) ── */
+.fig{display:flex;flex-direction:column;align-items:stretch}
+.fig .frame{position:relative;border-radius:6px;overflow:hidden;background:#E9ECF1;border:1px solid var(--gray-line)}
+.fig .frame img{width:100%;height:100%;object-fit:cover;display:block}
+.fig .frame img.contain{object-fit:contain;background:#fff}
+.fig .kind{position:absolute;left:6px;top:6px;font-size:10px;font-weight:700;color:#fff;background:rgba(13,32,74,.82);border-radius:3px;padding:1.5px 6px}
+
+/* ── 미디어 플레이스홀더 (design.md §5.8) ── */
+.ph{position:relative;border:1.5px dashed var(--main);border-radius:6px;background:var(--tint);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;overflow:hidden;text-align:center;flex:0 0 auto}
+.ph::before{content:"";position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(45deg,transparent 0 9px,rgba(0,0,0,.028) 9px 18px)}
+.ph>*{position:relative}
+.ph .id{font-size:9.5px;font-weight:700;color:#fff;background:var(--main);border-radius:3px;padding:1px 6px;letter-spacing:.2px}
+.ph .desc{font-size:11px;font-weight:600;color:var(--deep);line-height:1.34;padding:0 8px}
+.ph .size{font-size:9px;font-weight:400;color:#7A8A85}
+/* 11/18 실측 교체 슬롯 — 결과 자리(가짜 그래프 대신) */
+.ph.res{border-color:var(--st-plan);background:#FFF7EC}
+.ph.res .id{background:var(--st-plan)}
+.ph.res .desc{color:#7A4300}
+.ph.dark{border-color:rgba(255,255,255,.72);background:rgba(255,255,255,.12)}
+.ph.dark .id{background:rgba(255,255,255,.92);color:#1B2440}
+.ph.dark .desc{color:#fff}
+.ph.dark .size{color:rgba(255,255,255,.8)}
+
+/* ── 흐름 박스 ── */
+.flow{display:flex;align-items:stretch}
+.fstep{flex:1;border:1px solid var(--bd);border-radius:8px;overflow:hidden;background:#fff;display:flex;flex-direction:column}
+.fstep>header{height:30px;flex:0 0 30px;display:grid;place-items:center;background:var(--tint);color:var(--deep);font-size:14.5px;font-weight:700}
+.fstep .fb{flex:1;padding:8px 10px;display:flex;flex-direction:column;gap:5px}
+.fstep .ft{font-size:14px;font-weight:700;line-height:1.28;color:#1B2440}
+.fstep .fl{font-size:12px;font-weight:500;color:#4A4A4A;line-height:1.35}
+.fstep.now{border:2px solid var(--main)}
+.fstep.now>header{background:var(--main);color:#fff}
+.farr{flex:0 0 24px;display:grid;place-items:center;color:var(--main);font-size:16px;font-weight:800}
+
+/* ── 간트 ── */
+.gantt{width:100%;border-collapse:collapse;font-size:12px}
+.gantt th{font-size:11.5px;font-weight:600;color:#3A3A3A;padding:4px 0;border-bottom:1px solid var(--gray-line);text-align:center}
+.gantt th.lb{width:220px;text-align:left;padding-left:8px}
+.gantt td{padding:0;border-bottom:1px solid #EDEFF2;height:31px}
+.gantt td.lb{font-size:12.5px;font-weight:600;padding-left:8px;text-align:left;line-height:1.2}
+.gantt .cell{position:relative;border-left:1px dashed #E3E6EA}
+.gantt .bar{position:absolute;left:2px;right:2px;top:9px;height:13px;border-radius:3px;background:var(--main)}
+.gantt .bar.p{background:var(--st-plan)}
+.gantt .bar.d{background:var(--st-done)}
+.gantt .bar.l{border-radius:3px 0 0 3px;right:0}
+.gantt .bar.r{border-radius:0 3px 3px 0;left:0}
+.gantt .bar.m{border-radius:0;left:0;right:0}
+.gantt .ms{position:absolute;top:6px;left:50%;transform:translateX(-50%) rotate(45deg);width:13px;height:13px;background:var(--red-tag)}
+
+/* ── A 표지 ── */
+.cover .art{position:absolute;left:0;top:0;width:520px;height:540px;overflow:hidden}
+.cover .art img{width:100%;height:100%;object-fit:cover;display:block}
+.cover .art::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 78%,rgba(255,255,255,.7) 92%,#fff 100%)}
+.cover .head{position:absolute;right:38px;top:26px;font-size:11.5px;font-weight:500;color:#3A3A3A;text-align:right;line-height:1.5}
+.cover .pill{position:absolute;left:520px;top:150px;background:var(--navy-bar);color:#fff;border-radius:999px;padding:7px 20px;font-size:14px;font-weight:600;letter-spacing:-.4px}
+.cover h1{position:absolute;left:520px;top:196px;font-size:42px;font-weight:800;line-height:1.16;letter-spacing:-2.2px;color:#1B2440}
+.cover h1 .l2{display:block;font-size:22px;font-weight:600;letter-spacing:-.8px;color:#2B3A63;margin-top:10px;line-height:1.3}
+.cover .meta{position:absolute;left:522px;top:378px;font-size:12.5px;font-weight:500;color:#3A3A3A;line-height:1.65}
+.cover .meta b{font-weight:700;color:#1B2440}
+.cover .clogo{position:absolute;left:522px;top:468px;height:34px}
+.cover .stamp{position:absolute;right:38px;top:68px;font-size:11px;font-weight:700;color:#B03A2E;border:1.5px solid #B03A2E;border-radius:4px;padding:2px 8px;background:#fff}
+
+/* ── B 목차 / E 간지 ── */
+.toc .art{position:absolute;left:0;top:0;width:436px;height:540px;clip-path:ellipse(362px 640px at 0% 50%);overflow:hidden;background:#1B2E5E}
+.toc .art img{width:100%;height:100%;object-fit:cover;display:block;opacity:.82}
+.toc .art::after{content:"";position:absolute;inset:0;background:linear-gradient(160deg,rgba(27,72,181,.55),rgba(13,32,74,.35) 60%,rgba(13,32,74,.65))}
+.toc .edge{position:absolute;left:0;top:0;width:441px;height:540px;clip-path:ellipse(367px 645px at 0% 50%);
+  background:linear-gradient(158deg,#35C6F0 0%,#2E7BE8 30%,#7B49D6 62%,#E8357F 100%)}
+.toc .ttl{position:absolute;left:66px;top:206px;width:250px;color:#fff;z-index:2}
+.toc .ttl .k{font-size:14px;font-weight:700;letter-spacing:-.4px;opacity:.9}
+.toc .ttl .e{font-size:44px;font-weight:800;letter-spacing:2px;margin-top:2px}
+.toc .items{position:absolute;left:478px;top:108px;width:440px;display:flex;flex-direction:column;gap:20px}
+.toc .it{display:flex;align-items:center;gap:16px;height:62px;border:1.5px solid #C9D8F0;border-radius:31px;padding-left:12px;background:#fff;position:relative}
+.toc .rn{width:40px;height:40px;border-radius:50%;background:#1B48B5;color:#fff;flex:0 0 auto;display:grid;place-items:center;font-size:17px;font-weight:700}
+.toc .it .tx{font-size:22px;font-weight:700;letter-spacing:-.8px}
+.toc .it .sx{font-size:12.5px;font-weight:500;color:#666;letter-spacing:-.3px;margin-top:1px}
+/* E 간지: 목차 위를 어둡게 덮고 해당 장만 장 색으로 */
+.divider .veil{position:absolute;inset:0;background:rgba(10,20,45,.72);z-index:3}
+.divider .it.on{z-index:4;border-color:var(--main);background:var(--main);color:#fff;box-shadow:0 6px 22px rgba(0,0,0,.35);transform:scale(1.04)}
+.divider .it.on .rn{background:#fff;color:var(--main)}
+.divider .it.on .sx{color:rgba(255,255,255,.88)}
+
+/* ── G 마무리 (FES v2 사용자 확정본과 같은 KIMM 감사 이미지) ── */
+.slide.thanks{background:#fff}
+.thanks .bg{position:absolute;left:1.93px;top:0;width:956.14px;height:540px;display:block}
+.thanks .ci{position:absolute;left:10.11px;top:509.87px;width:34.02px;height:23.6px;display:block}
+
+/* ── 발표 모드 (F키) ── */
+body.present{background:#000;overflow:hidden}
+body.present .viewhint{display:none}
+body.present .slide{display:none}
+body.present .slide.on{display:block;position:fixed;left:50%;top:50%;margin:0;transform:translate(-50%,-50%) scale(var(--fit,1));transform-origin:center center}
+.navbadge{position:fixed;right:10px;bottom:8px;color:#888;font-size:11px;display:none;z-index:9}
+body.present .navbadge{display:block}
+
+/* ── 인쇄 (16:9 한 쪽에 한 장) ── */
+@media print{
+  @page{size:960px 540px;margin:0}
+  html,body{background:#fff}
+  .viewhint,.navbadge{display:none}
+  .slide{margin:0;box-shadow:none;page-break-after:always;break-after:page}
+  .slide:last-of-type{page-break-after:auto;break-after:auto}
+  body.present .slide{display:block;position:relative;transform:none}
+}
