@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="hanminy의 공개 사이트 모음. 필드로봇 연구, MarkTL 노트, ICRA 논문과 개발 기록을 한곳에서 찾아보세요.">
+  <meta name="theme-color" content="#f7f8f5">
+  <title>hanminy — 연구와 기록</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/style.css">
+  <script src="assets/app.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#sites">사이트 목록으로 건너뛰기</a>
+  <div class="page">
+    <header class="masthead">
+      <a class="brand" href="/" aria-label="hanminy 홈"><span class="monogram" aria-hidden="true">h.</span><span>hanminy<span class="brand-caption">RESEARCH & NOTES</span></span></a>
+      <a class="github" href="https://github.com/hanminy">GitHub <span aria-hidden="true">↗</span></a>
+    </header>
+    <main>
+      <section class="intro" aria-labelledby="intro-title">
+        <div><p class="eyebrow"><span></span> THE PUBLIC COLLECTION</p><h1 id="intro-title">연구와 기록,<br><em>한곳에서.</em></h1><p class="intro-copy">논문을 탐색하고, 연구 노트를 읽고, 실험을 살펴보세요.<br class="desktop-break"> 공개해 둔 사이트로 이어지는 작은 출발점입니다.</p></div>
+        <div class="index-mark" aria-hidden="true"><svg viewBox="0 0 240 180"><path d="M35 150V30h135v120M75 150V60h135v90M35 105h175M120 30v120"/><circle cx="120" cy="105" r="24"/><path class="accent-path" d="M107 117l26-26m-24 0h24v24"/></svg><span>OPEN INDEX / {{COUNT}} SITES</span></div>
+      </section>
+      <section id="sites" aria-labelledby="sites-title">
+        <div class="section-top"><h2 id="sites-title">사이트 모음 <span>{{COUNT}}</span></h2><label class="search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><span class="sr-only">사이트 검색</span><input id="search" type="search" placeholder="이름이나 키워드로 찾기" autocomplete="off"></label></div>
+        <div class="toolbar"><div class="filters" role="group" aria-label="사이트 분류">{{FILTERS}}</div><p id="result-count" role="status" aria-live="polite">{{COUNT}}개의 사이트</p></div>
+        <div class="site-grid">{{CARDS}}</div>
+        <div id="empty" hidden><h3>일치하는 사이트가 없습니다.</h3><p>다른 검색어나 분류로 찾아보세요.</p><button id="reset" type="button">전체 사이트 보기</button></div>
+      </section>
+      <aside class="collection-note"><span class="note-symbol" aria-hidden="true">＋</span><div><strong>기록은 계속 쌓입니다.</strong><p>새로 공개하는 사이트도 이곳에서 만나볼 수 있습니다.</p></div><a href="https://github.com/hanminy">더 많은 프로젝트 <span aria-hidden="true">↗</span></a></aside>
+    </main>
+    <footer><span>hanminy<span class="footer-dot">·</span>연구와 기록의 연결점</span><span>목록 확인 {{UPDATED}}</span></footer>
+  </div>
+</body>
+</html>
