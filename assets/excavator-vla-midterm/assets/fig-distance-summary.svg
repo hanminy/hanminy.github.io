@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" width="1440" height="900" font-family="Freesentation, 'Noto Sans CJK KR', 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif" role="img" aria-label="등록 폐루프 시험의 최종 거리: 버킷 날 중앙에서 주황 구까지">
+<title>등록 폐루프 시험의 최종 거리: 버킷 날 중앙에서 주황 구까지</title>
+<rect width="1440" height="900" fill="#ffffff"/>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#59616f"/></marker></defs>
+<rect x="410.0" y="70" width="380.7692307692307" height="746" fill="#eef3ea"/>
+<line x1="790.7692307692307" y1="70" x2="790.7692307692307" y2="816" stroke="#1a1a1a" stroke-width="2" stroke-dasharray="8 6"/>
+<line x1="1134.9846153846152" y1="70" x2="1134.9846153846152" y2="816" stroke="#c9ced6" stroke-width="2"/>
+<text x="386" y="112.0" text-anchor="end" font-size="30" font-weight="700" fill="#1a1a1a">π0.5 · 보이는 표적</text>
+<text x="386" y="144.0" text-anchor="end" font-size="26" fill="#59616f">10회 · 도달 0</text>
+<line x1="410" y1="116.0" x2="1400" y2="116.0" stroke="#e6e9ee" stroke-width="1"/>
+<circle cx="1068.7" cy="116.0" r="9" fill="#3d52ad" stroke="#ffffff" stroke-width="2"><title>C4 ep2: 0.865 m</title></circle>
+<circle cx="1069.5" cy="95.0" r="9" fill="#3d52ad" stroke="#ffffff" stroke-width="2"><title>C4 ep1: 0.866 m</title></circle>
+<circle cx="1092.3" cy="116.0" r="9" fill="#3d52ad" stroke="#ffffff" stroke-width="2"><title>pilot: 0.896 m</title></circle>
+<circle cx="1092.3" cy="95.0" r="9" fill="#3d52ad" stroke="#ffffff" stroke-width="2"><title>C1 ep0: 0.896 m</title></circle>
+<circle cx="1093.9" cy="137.0" r="9" fill="#3d52ad" stroke="#ffffff" stroke-width="2"><title>C4 ep0: 0.898 m</title></circle>
+<circle cx="1096.9" cy="74.0" r="9" fill="#3d52ad" stroke="#ffffff" stroke-width="2"><title>C1 ep1: 0.902 m</title></circle>
+<circle cx="1113.7" cy="116.0" r="9" fill="#3d52ad" stroke="#ffffff" stroke-width="2"><title>C1 ep2: 0.924 m</title></circle>
+<circle cx="1144.9" cy="116.0" r="9" fill="#3d52ad" stroke="#ffffff" stroke-width="2"><title>C3 ep0: 0.965 m</title></circle>
+<circle cx="1151.0" cy="95.0" r="9" fill="#3d52ad" stroke="#ffffff" stroke-width="2"><title>C3 ep1: 0.973 m</title></circle>
+<circle cx="1157.1" cy="137.0" r="9" fill="#3d52ad" stroke="#ffffff" stroke-width="2"><title>C3 ep2: 0.981 m</title></circle>
+<text x="386" y="204.0" text-anchor="end" font-size="30" font-weight="700" fill="#1a1a1a">π0.5 좌우 반전·줌인</text>
+<text x="386" y="236.0" text-anchor="end" font-size="26" fill="#59616f">보이는 표적 12회 · 도달 0</text>
+<line x1="410" y1="208.0" x2="1400" y2="208.0" stroke="#e6e9ee" stroke-width="1"/>
+<circle cx="994.2" cy="208.0" r="9" fill="#3d52ad" stroke="#ffffff" stroke-width="2"><title>R1 D1 ep0: 0.767 m</title></circle>
+<circle cx="998.5" cy="187.0" r="9" fill="#3d52ad" stroke="#ffffff" stroke-width="2"><title>R1 D1 ep1: 0.773 m</title></circle>
+<circle cx="1013.2" cy="229.0" r="9" fill="#3d52ad" stroke="#ffffff" stroke-width="2"><title>D1 ep0: 0.792 m</title></circle>
+<circle cx="1025.2" cy="208.0" r="9" fill="#3d52ad" stroke="#ffffff" stroke-width="2"><title>R1 D1 ep2: 0.808 m</title></circle>
+<circle cx="1045.9" cy="208.0" r="9" fill="#3d52ad" stroke="#ffffff" stroke-width="2"><title>D1 ep1: 0.835 m</title></circle>
+<circle cx="1051.4" cy="187.0" r="9" fill="#3d52ad" stroke="#ffffff" stroke-width="2"><title>D1 ep2: 0.842 m</title></circle>
+<circle cx="1144.4" cy="208.0" r="9" fill="#3d52ad" stroke="#ffffff" stroke-width="2"><title>R1 D3 ep0: 0.964 m</title></circle>
+<circle cx="1145.3" cy="187.0" r="9" fill="#3d52ad" stroke="#ffffff" stroke-width="2"><title>D3 ep2: 0.966 m</title></circle>
+<circle cx="1148.8" cy="229.0" r="9" fill="#3d52ad" stroke="#ffffff" stroke-width="2"><title>R1 D3 ep2: 0.970 m</title></circle>
+<circle cx="1151.4" cy="166.0" r="9" fill="#3d52ad" stroke="#ffffff" stroke-width="2"><title>D3 ep1: 0.974 m</title></circle>
+<circle cx="1152.0" cy="250.0" r="9" fill="#3d52ad" stroke="#ffffff" stroke-width="2"><title>R1 D3 ep1: 0.974 m</title></circle>
+<circle cx="1167.1" cy="208.0" r="9" fill="#3d52ad" stroke="#ffffff" stroke-width="2"><title>D3 ep0: 0.994 m</title></circle>
+<text x="386" y="296.0" text-anchor="end" font-size="30" font-weight="700" fill="#1a1a1a">π0.5 행동 묶음 5개</text>
+<text x="386" y="328.0" text-anchor="end" font-size="26" fill="#59616f">보이는 표적 6회 · 도달 0</text>
+<line x1="410" y1="300.0" x2="1400" y2="300.0" stroke="#e6e9ee" stroke-width="1"/>
+<circle cx="962.1" cy="300.0" r="9" fill="#3d52ad" stroke="#ffffff" stroke-width="2"><title>H5 D1 ep2: 0.725 m</title></circle>
+<circle cx="998.8" cy="300.0" r="9" fill="#3d52ad" stroke="#ffffff" stroke-width="2"><title>H5 D1 ep1: 0.773 m</title></circle>
+<circle cx="1100.0" cy="300.0" r="9" fill="#3d52ad" stroke="#ffffff" stroke-width="2"><title>H5 D3 ep2: 0.906 m</title></circle>
+<circle cx="1118.4" cy="279.0" r="9" fill="#3d52ad" stroke="#ffffff" stroke-width="2"><title>H5 D3 ep0: 0.930 m</title></circle>
+<circle cx="1129.3" cy="300.0" r="9" fill="#3d52ad" stroke="#ffffff" stroke-width="2"><title>H5 D3 ep1: 0.945 m</title></circle>
+<circle cx="1134.8" cy="321.0" r="9" fill="#3d52ad" stroke="#ffffff" stroke-width="2"><title>H5 D1 ep0: 0.952 m</title></circle>
+<text x="386" y="388.0" text-anchor="end" font-size="30" font-weight="700" fill="#1a1a1a">π0.5 명령 2배·관절 반응</text>
+<text x="386" y="420.0" text-anchor="end" font-size="26" fill="#59616f">보이는 표적 12회 · 도달 0</text>
+<line x1="410" y1="392.0" x2="1400" y2="392.0" stroke="#e6e9ee" stroke-width="1"/>
+<circle cx="853.7" cy="392.0" r="9" fill="#3d52ad" stroke="#ffffff" stroke-width="2"><title>gain2 D1 ep0: 0.583 m</title></circle>
+<circle cx="891.9" cy="392.0" r="9" fill="#3d52ad" stroke="#ffffff" stroke-width="2"><title>gain2 D1 ep1: 0.633 m</title></circle>
+<circle cx="893.7" cy="371.0" r="9" fill="#3d52ad" stroke="#ffffff" stroke-width="2"><title>servo4 D1 ep0: 0.635 m</title></circle>
+<circle cx="922.2" cy="392.0" r="9" fill="#3d52ad" stroke="#ffffff" stroke-width="2"><title>gain2 D1 ep2: 0.673 m</title></circle>
+<circle cx="948.3" cy="392.0" r="9" fill="#3d52ad" stroke="#ffffff" stroke-width="2"><title>servo4 D1 ep1: 0.707 m</title></circle>
+<circle cx="961.4" cy="371.0" r="9" fill="#3d52ad" stroke="#ffffff" stroke-width="2"><title>servo4 D1 ep2: 0.724 m</title></circle>
+<circle cx="1137.4" cy="392.0" r="9" fill="#3d52ad" stroke="#ffffff" stroke-width="2"><title>gain2 D3 ep2: 0.955 m</title></circle>
+<circle cx="1141.4" cy="371.0" r="9" fill="#3d52ad" stroke="#ffffff" stroke-width="2"><title>servo4 D3 ep1: 0.960 m</title></circle>
+<circle cx="1141.8" cy="413.0" r="9" fill="#3d52ad" stroke="#ffffff" stroke-width="2"><title>servo4 D3 ep2: 0.961 m</title></circle>
+<circle cx="1162.8" cy="392.0" r="9" fill="#3d52ad" stroke="#ffffff" stroke-width="2"><title>gain2 D3 ep1: 0.989 m</title></circle>
+<circle cx="1184.3" cy="392.0" r="9" fill="#3d52ad" stroke="#ffffff" stroke-width="2"><title>gain2 D3 ep0: 1.017 m</title></circle>
+<circle cx="1195.8" cy="371.0" r="9" fill="#3d52ad" stroke="#ffffff" stroke-width="2"><title>servo4 D3 ep0: 1.032 m</title></circle>
+<text x="386" y="480.0" text-anchor="end" font-size="30" font-weight="700" fill="#1a1a1a">GR00T · 4조건</text>
+<text x="386" y="512.0" text-anchor="end" font-size="26" fill="#59616f">4회 · 도달 0</text>
+<line x1="410" y1="484.0" x2="1400" y2="484.0" stroke="#e6e9ee" stroke-width="1"/>
+<circle cx="1029.8" cy="484.0" r="9" fill="#3d52ad" stroke="#ffffff" stroke-width="2"><title>aligned·target02: 0.814 m</title></circle>
+<circle cx="1076.3" cy="484.0" r="9" fill="#3d52ad" stroke="#ffffff" stroke-width="2"><title>physical·target02: 0.875 m</title></circle>
+<circle cx="1107.3" cy="484.0" r="9" fill="#3d52ad" stroke="#ffffff" stroke-width="2"><title>physical·target01: 0.916 m</title></circle>
+<circle cx="1118.2" cy="463.0" r="9" fill="#3d52ad" stroke="#ffffff" stroke-width="2"><title>aligned·target01: 0.930 m</title></circle>
+<text x="386" y="572.0" text-anchor="end" font-size="30" font-weight="700" fill="#1a1a1a">GR00T 누적·줌인·주기</text>
+<text x="386" y="604.0" text-anchor="end" font-size="26" fill="#59616f">6회 · 도달 0</text>
+<line x1="410" y1="576.0" x2="1400" y2="576.0" stroke="#e6e9ee" stroke-width="1"/>
+<circle cx="1027.6" cy="576.0" r="9" fill="#3d52ad" stroke="#ffffff" stroke-width="2"><title>reference+dt0.2·target02: 0.811 m</title></circle>
+<circle cx="1068.0" cy="576.0" r="9" fill="#3d52ad" stroke="#ffffff" stroke-width="2"><title>reference·target02: 0.864 m</title></circle>
+<circle cx="1072.5" cy="555.0" r="9" fill="#3d52ad" stroke="#ffffff" stroke-width="2"><title>reference+fov34.2·target02: 0.870 m</title></circle>
+<circle cx="1149.9" cy="576.0" r="9" fill="#3d52ad" stroke="#ffffff" stroke-width="2"><title>reference+dt0.2·target01: 0.972 m</title></circle>
+<circle cx="1183.1" cy="576.0" r="9" fill="#3d52ad" stroke="#ffffff" stroke-width="2"><title>reference·target01: 1.015 m</title></circle>
+<circle cx="1207.6" cy="576.0" r="9" fill="#3d52ad" stroke="#ffffff" stroke-width="2"><title>reference+fov34.2·target01: 1.047 m</title></circle>
+<text x="386" y="664.0" text-anchor="end" font-size="30" font-weight="700" fill="#1a1a1a">GR00T 명령 2배·관절 반응</text>
+<text x="386" y="696.0" text-anchor="end" font-size="26" fill="#59616f">4회 · 도달 0</text>
+<line x1="410" y1="668.0" x2="1400" y2="668.0" stroke="#e6e9ee" stroke-width="1"/>
+<circle cx="1026.8" cy="668.0" r="9" fill="#3d52ad" stroke="#ffffff" stroke-width="2"><title>gain2·target02: 0.810 m</title></circle>
+<circle cx="1127.7" cy="668.0" r="9" fill="#3d52ad" stroke="#ffffff" stroke-width="2"><title>gain2·target01: 0.942 m</title></circle>
+<circle cx="1172.9" cy="668.0" r="9" fill="#3d52ad" stroke="#ffffff" stroke-width="2"><title>servo4·target02: 1.002 m</title></circle>
+<circle cx="1361.6" cy="668.0" r="9" fill="#3d52ad" stroke="#ffffff" stroke-width="2"><title>servo4·target01: 1.250 m</title></circle>
+<text x="386" y="756.0" text-anchor="end" font-size="30" font-weight="700" fill="#1a1a1a">기구 대조 oracle</text>
+<text x="386" y="788.0" text-anchor="end" font-size="26" fill="#59616f">2회 · VLA 아님</text>
+<line x1="410" y1="760.0" x2="1400" y2="760.0" stroke="#e6e9ee" stroke-width="1"/>
+<circle cx="418.1" cy="760.0" r="9" fill="#54833d" stroke="#ffffff" stroke-width="2"><title>oracle target01: 0.011 m</title></circle>
+<circle cx="420.7" cy="739.0" r="9" fill="#54833d" stroke="#ffffff" stroke-width="2"><title>oracle target02: 0.014 m</title></circle>
+<line x1="410" y1="816" x2="1400" y2="816" stroke="#59616f" stroke-width="2"/>
+<line x1="410.0" y1="816" x2="410.0" y2="824" stroke="#59616f" stroke-width="2"/>
+<text x="410.0" y="852" text-anchor="middle" font-size="26" fill="#59616f">0</text>
+<line x1="600.3846153846154" y1="816" x2="600.3846153846154" y2="824" stroke="#59616f" stroke-width="2"/>
+<text x="600.3846153846154" y="852" text-anchor="middle" font-size="26" fill="#59616f">0.25</text>
+<line x1="790.7692307692307" y1="816" x2="790.7692307692307" y2="824" stroke="#59616f" stroke-width="2"/>
+<text x="790.7692307692307" y="852" text-anchor="middle" font-size="26" fill="#59616f">0.5</text>
+<line x1="981.1538461538462" y1="816" x2="981.1538461538462" y2="824" stroke="#59616f" stroke-width="2"/>
+<text x="981.1538461538462" y="852" text-anchor="middle" font-size="26" fill="#59616f">0.75</text>
+<line x1="1171.5384615384614" y1="816" x2="1171.5384615384614" y2="824" stroke="#59616f" stroke-width="2"/>
+<text x="1171.5384615384614" y="852" text-anchor="middle" font-size="26" fill="#59616f">1</text>
+<line x1="1361.923076923077" y1="816" x2="1361.923076923077" y2="824" stroke="#59616f" stroke-width="2"/>
+<text x="1361.923076923077" y="852" text-anchor="middle" font-size="26" fill="#59616f">1.25</text>
+<text x="905.0" y="890" text-anchor="middle" font-size="26" fill="#1a1a1a">최종 거리 (m) · 버킷 날 중앙 → 주황 구 중심</text>
+<text x="780.7692307692307" y="56" text-anchor="end" font-size="26" font-weight="700" fill="#54833d">성공 0.5 m 이내</text>
+<text x="1126.9846153846152" y="56" text-anchor="end" font-size="26" fill="#59616f">시작 ≈0.95</text>
+</svg>

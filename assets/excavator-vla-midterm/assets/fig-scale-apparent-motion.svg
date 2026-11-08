@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560" role="img"><title>fig-scale-apparent-motion: 5 cm axis-paired projected motion</title><desc>CPU pinhole projection calculation; not a recorded frame or policy performance result.</desc><rect width="100%" height="100%" fill="white"/>
+<text x="30" y="40" font-family="Freesentation, Noto Sans CJK KR, sans-serif" font-size="28" fill="#253149" text-anchor="start">5 cm 이동 / 224 × 224 입력 환산 / px</text>
+<text x="500" y="90" font-family="Freesentation, Noto Sans CJK KR, sans-serif" font-size="30" fill="#253149" text-anchor="start">+x</text>
+<text x="730" y="90" font-family="Freesentation, Noto Sans CJK KR, sans-serif" font-size="30" fill="#253149" text-anchor="start">+y</text>
+<text x="960" y="90" font-family="Freesentation, Noto Sans CJK KR, sans-serif" font-size="30" fill="#253149" text-anchor="start">+z</text>
+<text x="30" y="155" font-family="Freesentation, Noto Sans CJK KR, sans-serif" font-size="30" fill="#a5620b" text-anchor="start">LIBERO 45° 가정</text>
+<text x="500" y="155" font-family="Freesentation, Noto Sans CJK KR, sans-serif" font-size="32" fill="#a5620b" text-anchor="start">6.83</text>
+<path d="M500.000,178.000 L581.970,178.000" stroke="#a5620b" stroke-width="10" fill="none"/>
+<text x="730" y="155" font-family="Freesentation, Noto Sans CJK KR, sans-serif" font-size="32" fill="#a5620b" text-anchor="start">14.37</text>
+<path d="M730.000,178.000 L902.451,178.000" stroke="#a5620b" stroke-width="10" fill="none"/>
+<text x="960" y="155" font-family="Freesentation, Noto Sans CJK KR, sans-serif" font-size="32" fill="#a5620b" text-anchor="start">13.64</text>
+<path d="M960.000,178.000 L1123.669,178.000" stroke="#a5620b" stroke-width="10" fill="none"/>
+<text x="30" y="250" font-family="Freesentation, Noto Sans CJK KR, sans-serif" font-size="30" fill="#3d52ad" text-anchor="start">HR35 45°</text>
+<text x="500" y="250" font-family="Freesentation, Noto Sans CJK KR, sans-serif" font-size="32" fill="#3d52ad" text-anchor="start">0.95</text>
+<path d="M500.000,273.000 L511.355,273.000" stroke="#3d52ad" stroke-width="10" fill="none"/>
+<text x="730" y="250" font-family="Freesentation, Noto Sans CJK KR, sans-serif" font-size="32" fill="#3d52ad" text-anchor="start">1.29</text>
+<path d="M730.000,273.000 L745.440,273.000" stroke="#3d52ad" stroke-width="10" fill="none"/>
+<text x="960" y="250" font-family="Freesentation, Noto Sans CJK KR, sans-serif" font-size="32" fill="#3d52ad" text-anchor="start">0.92</text>
+<path d="M960.000,273.000 L971.007,273.000" stroke="#3d52ad" stroke-width="10" fill="none"/>
+<text x="30" y="345" font-family="Freesentation, Noto Sans CJK KR, sans-serif" font-size="30" fill="#54833d" text-anchor="start">HR35 34.2° 후보</text>
+<text x="500" y="345" font-family="Freesentation, Noto Sans CJK KR, sans-serif" font-size="32" fill="#54833d" text-anchor="start">1.27</text>
+<path d="M500.000,368.000 L515.289,368.000" stroke="#54833d" stroke-width="10" fill="none"/>
+<text x="730" y="345" font-family="Freesentation, Noto Sans CJK KR, sans-serif" font-size="32" fill="#54833d" text-anchor="start">1.73</text>
+<path d="M730.000,368.000 L750.789,368.000" stroke="#54833d" stroke-width="10" fill="none"/>
+<text x="960" y="345" font-family="Freesentation, Noto Sans CJK KR, sans-serif" font-size="32" fill="#54833d" text-anchor="start">1.24</text>
+<path d="M960.000,368.000 L974.820,368.000" stroke="#54833d" stroke-width="10" fill="none"/>
+<text x="30" y="430" font-family="Freesentation, Noto Sans CJK KR, sans-serif" font-size="26" fill="#59616f" text-anchor="start">LIBERO: z≈0.94 m · 256²→224² (×0.875)</text>
+<text x="30" y="468" font-family="Freesentation, Noto Sans CJK KR, sans-serif" font-size="26" fill="#59616f" text-anchor="start">HR35: z≈7.88 m · 640×480→224×168 (×0.35)</text>
+<text x="30" y="508" font-family="Freesentation, Noto Sans CJK KR, sans-serif" font-size="26" fill="#59616f" text-anchor="start">초기점 추정 · 축별 맵 대응 / 같은 world 방향 아님</text>
+<text x="30" y="547" font-family="Freesentation, Noto Sans CJK KR, sans-serif" font-size="26" fill="#59616f" text-anchor="start">깊이비 약8.4배 · 가림 미포함 · 정책 효과/원인 미확정</text>
+</svg>

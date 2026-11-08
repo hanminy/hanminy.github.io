@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" width="1200" height="560" font-family="Freesentation, 'Noto Sans CJK KR', 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif" role="img" aria-label="기존 VLA 출력을 HR35 4관절 목표로 바꾸는 연결">
+<title>기존 VLA 출력을 HR35 4관절 목표로 바꾸는 연결</title>
+<rect width="1200" height="560" fill="#ffffff"/>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#59616f"/></marker></defs>
+<text x="20" y="40" font-size="26" font-weight="700" fill="#59616f">모델 (가중치 그대로)</text>
+<rect x="20" y="62" width="330" height="150" rx="10" fill="#f2f4f8" stroke="#c9ced6" stroke-width="3"/>
+<text x="185.0" y="122.05" text-anchor="middle" font-size="30" font-weight="700" fill="#1a1a1a">카메라 2대 + 지시문</text>
+<text x="185.0" y="156.55" text-anchor="middle" font-size="23" fill="#59616f">전체 시점 · 붐 카메라</text>
+<line x1="352" y1="137" x2="412" y2="137" stroke="#59616f" stroke-width="3" marker-end="url(#ar)"/>
+<rect x="415" y="62" width="340" height="150" rx="10" fill="#253149" stroke="#253149" stroke-width="3"/>
+<text x="585.0" y="122.05" text-anchor="middle" font-size="34" font-weight="700" fill="#ffffff">π0.5 · GR00T</text>
+<text x="585.0" y="156.55" text-anchor="middle" font-size="23" fill="#d6dce6">공식 LIBERO 가중치</text>
+<line x1="757" y1="137" x2="817" y2="137" stroke="#59616f" stroke-width="3" marker-end="url(#ar)"/>
+<rect x="820" y="62" width="360" height="150" rx="10" fill="#f2f4f8" stroke="#c9ced6" stroke-width="3"/>
+<text x="1000.0" y="122.05" text-anchor="middle" font-size="30" font-weight="700" fill="#1a1a1a">말단 이동 7D</text>
+<text x="1000.0" y="156.55" text-anchor="middle" font-size="23" fill="#59616f">xyz · 회전 · 그리퍼</text>
+<text x="180" y="300" font-size="26" font-weight="700" fill="#3d52ad">굴착기 연결 (새로 만든 부분)</text>
+<path d="M1000,214 L1000,250 L150,250 L150,318" fill="none" stroke="#59616f" stroke-width="3" marker-end="url(#ar)"/>
+<rect x="20" y="322" width="260" height="140" rx="10" fill="#ffffff" stroke="#3d52ad" stroke-width="3"/>
+<text x="150.0" y="377.05" text-anchor="middle" font-size="30" font-weight="700" fill="#253149">xyz 3개만</text>
+<text x="150.0" y="411.55" text-anchor="middle" font-size="23" fill="#59616f">회전·그리퍼는 기록만</text>
+<line x1="282" y1="392" x2="317" y2="392" stroke="#59616f" stroke-width="3" marker-end="url(#ar)"/>
+<rect x="320" y="322" width="260" height="140" rx="10" fill="#ffffff" stroke="#3d52ad" stroke-width="3"/>
+<text x="450.0" y="377.05" text-anchor="middle" font-size="30" font-weight="700" fill="#253149">축 대응 M</text>
+<text x="450.0" y="411.55" text-anchor="middle" font-size="23" fill="#59616f">× 0.05 m / step</text>
+<line x1="582" y1="392" x2="617" y2="392" stroke="#59616f" stroke-width="3" marker-end="url(#ar)"/>
+<rect x="620" y="322" width="260" height="140" rx="10" fill="#ffffff" stroke="#3d52ad" stroke-width="3"/>
+<text x="750.0" y="377.05" text-anchor="middle" font-size="30" font-weight="700" fill="#253149">버킷 날 IK</text>
+<text x="750.0" y="411.55" text-anchor="middle" font-size="23" fill="#59616f">Jacobian</text>
+<line x1="882" y1="392" x2="917" y2="392" stroke="#59616f" stroke-width="3" marker-end="url(#ar)"/>
+<rect x="920" y="322" width="260" height="140" rx="10" fill="#ffffff" stroke="#3d52ad" stroke-width="3"/>
+<text x="1050.0" y="377.05" text-anchor="middle" font-size="30" font-weight="700" fill="#253149">4관절 목표</text>
+<text x="1050.0" y="411.55" text-anchor="middle" font-size="23" fill="#59616f">이상 위치 서보</text>
+<text x="600" y="526" text-anchor="middle" font-size="25" fill="#59616f">MuJoCo HR35 · 선회·붐·암·버킷 · 굴착기용 학습 없음 · 유압·토양 미반영</text>
+</svg>
