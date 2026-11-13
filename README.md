@@ -8,6 +8,7 @@
 - **이름·설명·분류·순서 변경**: `sites.json`의 `overrides`에 저장소 이름을 키로 등록한다.
 - **같은 저장소의 다른 하위 페이지**: `extra_sites`에 고유 `id`, `title`, `description`, `url`, `category`, `label`, `order`를 추가한다.
 - **제외할 저장소**: `exclude` 배열에 저장소 이름을 넣는다.
+- **묶음 페이지**: 메인에는 주요 사이트와 묶음 카드만 둔다. 작업 중간 자료는 `assets/working-notes/`, 개인 자료는 `assets/personal/`, 완성된 발표 덱은 `assets/slides/`의 목록에 링크를 추가한다. 묶음 안에 넣은 별도 저장소(`hr35-common-testbench-guide`, `bohol-trip-2026`)는 메인에 다시 나오지 않도록 `exclude`에 둔다.
 - **즉시 갱신**: Actions → Refresh site directory and deploy → Run workflow. 설정을 main에 push해도 배포한다.
 
 GitHub Pages가 켜진 공개 저장소만 조회한다. 비공개 저장소, 일반 코드 저장소, 이 홈페이지 자체는 목록에 넣지 않는다. 새 사이트의 주소가 아직 404면 다음 실행에서 다시 확인한다. 기존에 설정한 주요 링크가 깨지거나 API 요청이 실패하면 배포를 중단하고 기존 공개본을 유지한다.

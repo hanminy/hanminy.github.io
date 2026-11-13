@@ -25,86 +25,48 @@
       "label": "CONFERENCE PAPERS",
       "featured": true,
       "order": 3
-    },
-    "hr35-common-testbench-guide": {
-      "title": "HR35 공통 시험장 가이드",
-      "description": "굴착기 제어와 디지털 트윈 시험 환경의 구성, 기능, 사용법을 소개합니다.",
-      "category": "개발·실험",
-      "label": "ENGINEERING",
-      "order": 4
-    },
-    "bohol-trip-2026": {
-      "title": "보홀 여행 2026",
-      "description": "보홀 가족여행을 위한 일정과 여행 정보를 모아 둔 페이지입니다.",
-      "category": "일상",
-      "label": "TRAVEL NOTES",
-      "order": 6
     }
   },
   "extra_sites": [
     {
       "id": "slides",
-      "title": "자작 슬라이드",
-      "description": "세미나·강연에서 발표한 덱과 스스로 보려고 정리한 슬라이드를 날짜·행사·제목순으로 모았습니다.",
+      "title": "발표 슬라이드",
+      "description": "세미나·강연·보고에서 쓴 덱과 공부하며 정리한 덱의 완성본을 날짜순으로 모았습니다.",
       "url": "https://hanminy.github.io/assets/slides/",
       "category": "연구 자료",
-      "label": "SLIDES",
+      "label": "TALKS & SLIDES",
       "order": 3.2
-    },
-    {
-      "id": "hr35-ui-guide",
-      "title": "HR35 관제 화면 사용법",
-      "description": "10월 2일판 관제 화면의 스캔, 작업 설정, 정지 방법을 쉽게 설명합니다. 현재 자동 스캔은 점검 중입니다.",
-      "url": "https://hanminy.github.io/assets/hr35-ui-guide/",
-      "category": "개발·실험",
-      "label": "UI GUIDE",
-      "order": 5.5
-    },
-    {
-      "id": "kmm-study",
-      "title": "굴착기 동적 모델·제어 스터디",
-      "description": "KMM/KIMM 굴착기 동적 모델과 제어를 살펴보는 인터랙티브 스터디 가이드입니다.",
-      "url": "https://hanminy.github.io/marktl-blog/kmm/",
-      "category": "개발·실험",
-      "label": "INTERACTIVE STUDY",
-      "order": 5
     },
     {
       "id": "fes2026-physical-ai",
       "title": "FES 2026 피지컬 AI 자료실",
-      "description": "FES 2026 특별강연 준비 자료입니다. 국내 전문가 10인의 발언, 피지컬 AI 시각 조사 123개 항목, 강연 슬라이드 초안을 모았습니다.",
+      "description": "FES 2026 특별강연 준비 자료입니다. 국내 전문가 10인의 발언, 피지컬 AI 시각 조사 123개 항목, 강연 슬라이드 최종본을 모았습니다.",
       "url": "https://hanminy.github.io/assets/fes2026-physical-ai/",
       "category": "연구 자료",
       "label": "PHYSICAL AI",
       "order": 3.5
     },
     {
-      "id": "bppv-guide",
-      "title": "이석증 완전 가이드",
-      "description": "이석증의 원리, 증상, 진단, 치료, 위험 신호, 재발 예방을 움직이는 그림과 인터랙티브로 쉽게 정리했습니다.",
-      "url": "https://hanminy.github.io/assets/bppv-guide/",
-      "category": "건강",
-      "label": "HEALTH GUIDE",
-      "order": 7
+      "id": "working-notes",
+      "title": "작업 자료",
+      "description": "개발·실험 가이드, 스터디, 발표 준비 중간본처럼 작업하는 동안 보려고 만든 자료를 모았습니다.",
+      "url": "https://hanminy.github.io/assets/working-notes/",
+      "category": "그 밖의 자료",
+      "label": "WORKING NOTES",
+      "order": 5
     },
     {
-      "id": "inner-ear-imu",
-      "title": "귀 속의 IMU",
-      "description": "귀 속 전정기관과 MEMS 가속도계·자이로를 비교하는 Vox 스타일 모션그래픽. 닮은 점, 다른 점, 이석증을 센서 고장으로 풀어 봅니다.",
-      "url": "https://hanminy.github.io/assets/inner-ear-imu/",
-      "category": "건강",
-      "label": "MOTION GRAPHIC",
-      "order": 7.5
-    },
-    {
-      "id": "ep3-mole-cricket-script",
-      "title": "땅강아지와 자율 굴착기 이야기",
-      "description": "땅강아지의 발톱부터 자율 굴착기의 센서·AI까지, 열두 장면의 공개용 대담 흐름과 말하기 예시를 읽습니다.",
-      "url": "https://hanminy.github.io/assets/ep3-mole-cricket-script/",
-      "category": "연구 자료",
-      "label": "TALK GUIDE",
-      "order": 3.8
+      "id": "personal",
+      "title": "개인 자료",
+      "description": "건강, 여행처럼 연구와 별개로 개인적으로 정리한 자료입니다.",
+      "url": "https://hanminy.github.io/assets/personal/",
+      "category": "그 밖의 자료",
+      "label": "PERSONAL",
+      "order": 6
     }
   ],
-  "exclude": []
+  "exclude": [
+    "hr35-common-testbench-guide",
+    "bohol-trip-2026"
+  ]
 }
