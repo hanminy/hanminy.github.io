@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="hanminy의 작업 자료 모음. 개발·실험 가이드, 스터디, 발표 준비 중간본처럼 작업하는 동안 보려고 만든 자료입니다.">
+  <meta name="theme-color" content="#f7f8f5">
+  <title>작업 자료 — hanminy</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .intro{padding:58px 0 40px}
+    .intro h1{font-size:50px;letter-spacing:-3px}
+    .back{display:flex;gap:10px;font-size:13px;color:var(--muted)}.back:hover{color:var(--green)}
+    .group{display:grid;grid-template-columns:150px minmax(0,1fr);gap:0 24px;padding-top:8px;border-top:1px solid var(--line)}
+    .group>h2{font-size:15px;font-weight:600;letter-spacing:-.3px;color:var(--green);padding-top:25px}
+    .group>h2 small{display:block;margin-top:5px;font-size:11px;font-weight:400;letter-spacing:0;line-height:1.6;color:var(--muted);word-break:keep-all}
+    .item-list{list-style:none;margin:0;padding:0}
+    .item{border-bottom:1px solid var(--line)}
+    .item:last-child{border-bottom:0}
+    .item a{display:grid;grid-template-columns:minmax(0,1fr) 28px;gap:24px;align-items:center;padding:22px 0}
+    .kind{display:inline-block;border-radius:3px;padding:2px 7px;font-size:10px;margin-bottom:9px;color:var(--green);background:#eef3eb}
+    .item h3{font-size:19px;line-height:1.4;letter-spacing:-.8px;word-break:keep-all}
+    .item p{margin:6px 0 0;font-size:12px;line-height:1.8;color:var(--muted);word-break:keep-all}
+    .item .arrow{justify-self:end;transition:transform .18s}
+    .item a:hover h3{color:var(--green)}
+    .item a:hover .arrow{transform:translate(2px,-2px)}
+    .aside{display:flex;align-items:center;gap:17px;padding:22px 28px;background:var(--wash);border-radius:7px;margin-top:34px;font-size:12px;color:var(--muted)}
+    .aside strong{color:var(--ink);font-weight:600;font-size:13px}
+    .aside p{margin:3px 0 0}
+    .aside a{color:var(--green)}
+    @media(max-width:950px){.group{grid-template-columns:minmax(0,1fr)}.group>h2{padding-top:22px}}
+    @media(max-width:640px){.intro h1{font-size:40px;letter-spacing:-2.4px}.item a{gap:14px;padding:18px 0}.item h3{font-size:17px}.aside{flex-wrap:wrap;padding:20px;gap:12px}}
+  </style>
+</head>
+<body>
+  <a class="skip" href="#list">자료 목록으로 건너뛰기</a>
+  <div class="page">
+    <header class="masthead">
+      <a class="brand" href="/" aria-label="hanminy 홈"><span class="monogram" aria-hidden="true">h.</span><span>hanminy<span class="brand-caption">RESEARCH & NOTES</span></span></a>
+      <a class="back" href="/"><span aria-hidden="true">←</span> 전체 사이트</a>
+    </header>
+    <main>
+      <section class="intro" aria-labelledby="intro-title">
+        <div><p class="eyebrow"><span></span> WORKING NOTES</p><h1 id="intro-title">작업 자료</h1><p class="intro-copy">개발·실험 가이드, 스터디, 발표 준비 중간본처럼 작업하는 동안 보려고 만든 자료입니다.<br class="desktop-break"> 완성본이 아니어서 내용이 바뀌거나 비어 있는 곳이 있습니다.</p></div>
+      </section>
+      <div id="list">
+        <section class="group" aria-labelledby="g1">
+          <h2 id="g1">개발·실험<small>굴착기 시험 환경과 제어 스터디</small></h2>
+          <ul class="item-list">
+            <li class="item"><a href="https://hanminy.github.io/hr35-common-testbench-guide/">
+              <div><span class="kind">가이드</span><h3>HR35 공통 시험장 가이드</h3><p>굴착기 제어와 디지털 트윈 시험 환경의 구성, 기능, 사용법을 14장으로 간추린 퀵 가이드입니다.</p></div>
+              <span class="arrow" aria-hidden="true">↗</span>
+            </a></li>
+            <li class="item"><a href="../hr35-ui-guide/">
+              <div><span class="kind">가이드</span><h3>HR35 관제 화면 사용법</h3><p>10월 2일판 관제 화면의 스캔, 작업 설정, 정지 방법을 쉽게 설명합니다. 현재 자동 스캔은 점검 중입니다.</p></div>
+              <span class="arrow" aria-hidden="true">↗</span>
+            </a></li>
+            <li class="item"><a href="https://hanminy.github.io/marktl-blog/kmm/">
+              <div><span class="kind">스터디</span><h3>굴착기 동적 모델·제어 스터디</h3><p>KMM/KIMM 굴착기 동적 모델과 제어를 살펴보는 인터랙티브 스터디 가이드입니다.</p></div>
+              <span class="arrow" aria-hidden="true">↗</span>
+            </a></li>
+          </ul>
+        </section>
+        <section class="group" aria-labelledby="g2">
+          <h2 id="g2">발표 준비 중간본<small>최종본은 발표 슬라이드에 있습니다</small></h2>
+          <ul class="item-list">
+            <li class="item"><a href="../kict-seminar-202611/index.html">
+              <div><span class="kind">초안</span><h3>건설연 세미나 — 수정초안 v4</h3><p>「필드로봇에서의 AI활용」 11월 2일 최종본 이전 판, 40장입니다.</p></div>
+              <span class="arrow" aria-hidden="true">↗</span>
+            </a></li>
+            <li class="item"><a href="../kict-seminar-202611/fes-original.html">
+              <div><span class="kind">초안</span><h3>건설연 세미나 — FES 원본 기반 비교초안</h3><p>FES 2026 강연 덱을 바탕으로 다시 짠 비교용 초안, 40장입니다.</p></div>
+              <span class="arrow" aria-hidden="true">↗</span>
+            </a></li>
+            <li class="item"><a href="../nk264f-final-202611/working-1118.html">
+              <div><span class="kind">작업본</span><h3>기본사업 최종발표 — 11/18 완성용 작업본</h3><p>「필드로봇 피지컬 AI 파운데이션 모델 탐색 연구」 18장. 실측 결과 자리는 비워 두었습니다.</p></div>
+              <span class="arrow" aria-hidden="true">↗</span>
+            </a></li>
+          </ul>
+        </section>
+        <section class="group" aria-labelledby="g3">
+          <h2 id="g3">대담 준비<small>공개 대담용 흐름 정리</small></h2>
+          <ul class="item-list">
+            <li class="item"><a href="../ep3-mole-cricket-script/">
+              <div><span class="kind">대담 가이드</span><h3>땅강아지와 자율 굴착기 이야기</h3><p>땅강아지의 발톱부터 자율 굴착기의 센서·AI까지, 열두 장면의 공개용 대담 흐름과 말하기 예시입니다.</p></div>
+              <span class="arrow" aria-hidden="true">↗</span>
+            </a></li>
+          </ul>
+        </section>
+      </div>
+      <aside class="aside"><span class="note-symbol" aria-hidden="true">▶</span><div><strong>완성본을 찾는다면</strong><p>세미나·강연·보고에서 쓴 덱의 완성본은 <a href="../slides/">발표 슬라이드</a>에 모았습니다.</p></div></aside>
+    </main>
+    <footer><span>hanminy<span class="footer-dot">·</span>작업 자료</span><span><a href="/">hanminy.github.io</a></span></footer>
+  </div>
+</body>
+</html>
