@@ -1134,5 +1134,5 @@ if(new URLSearchParams(location.search).get('layout')){
 es.forEach(e=>e.target.querySelectorAll('video').forEach(v=>{if(e.isIntersecting){if((+v.dataset.seq||1)<=1)v.play().catch(()=>{})}else v.pause()}))},{threshold:.35});
 document.querySelectorAll('.slide').forEach(s=>{if(s.querySelector('video'))io.observe(s)})})();
 </script>
-</body>
+<script src="../deck-touch.js"></script></body>
 </html>

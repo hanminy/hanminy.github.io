@@ -346,4 +346,4 @@ addEventListener('resize',resize);addEventListener('keydown',e=>{if(['ArrowRight
 let scrollFrame;addEventListener('scroll',()=>{if(document.body.classList.contains('present')||window.__renderStatic)return;cancelAnimationFrame(scrollFrame);scrollFrame=requestAnimationFrame(()=>{let best=current,area=0;slides.forEach((s,i)=>{const r=s.getBoundingClientRect();const visible=Math.max(0,Math.min(r.bottom,innerHeight)-Math.max(r.top,60));if(visible>area){area=visible;best=i}});if(best!==current&&area>200)setCurrent(best)})},{passive:true});
 document.querySelectorAll('video').forEach(v=>{v.addEventListener('click',()=>v.paused?v.play():v.pause());v.addEventListener('play',()=>{if(!slides[current].contains(v)&&!window.__renderStatic)v.pause()})});
 const n=parseInt(location.hash.split('-').pop());show(Number.isFinite(n)?n-1:0);
-</script></html>
+</script><script src="../deck-touch.js"></script></html>

@@ -218,5 +218,5 @@ srcs=[('GR00T N1.7','NVIDIA, Hugging Face 블로그 (2026.4) · github.com/NVIDI
 sheet(1,'출처','대화에서 확인한 자료 · <em>기억에 기댄 수치는 원문 확인 필요</em>','<div class="srcs">'+''.join(f'<p><b>{a}</b><br>{c}</p>' for a,c in srcs)+'</div>',wide=True,foot='OpenVLA 약 6 Hz, π0 추론 시간, GR00T 16스텝 청크 등은 검색 없이 말한 값')
 head='<!doctype html><html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>VLA, 구조에서 굴착기 적용까지 — NST</title>'
 body='<body><header class="toolbar"><b>VLA 대화 정리</b><button onclick="show(current-1)">←</button><span id="count"></span><button onclick="show(current+1)">→</button><button onclick="present()">발표 F</button><button onclick="print()">PDF 인쇄</button></header>'
-open(OUT,'w',encoding='utf-8').write(head+style+extra+'</style>'+body+''.join(slides)+script+'</body></html>')
+open(OUT,'w',encoding='utf-8').write(head+style+extra+'</style>'+body+''.join(slides)+script+'<script src="../deck-touch.js"></script></body></html>')
 print(len(slides),'slides')
