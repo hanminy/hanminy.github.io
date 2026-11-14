@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><title>굴착기에 VLA를 올리려면</title>
+<style>html,body{margin:0;background:#000;width:1920px;height:1080px;overflow:hidden}#stage{position:relative;width:1920px;height:1080px}.scene{position:absolute;inset:0}.scene svg{position:absolute;inset:0;width:1920px;height:1080px}</style></head>
+<body><div id="stage"></div>
+<script src="engine.js"></script><script src="fonts/gamja-flower.js"></script><script src="fonts/schoolbell.js"></script><script src="pen_fixes.js"></script>
+<script src="tts/narr.cues.js"></script>
+<script>window.STROKE_SCALE=1.15;</script>
+<script src="ep1_parts.js"></script>
+<script src="images/tori_strokes.js"></script><script src="tori.js"></script>
+<script>
+for(const k in window.PEN_DATA) PEN.fonts[k]=window.PEN_DATA[k];
+const stage=document.getElementById('stage');
+const CU=window.CUES.units, TOTAL=window.CUES.total; const U=id=>CU[id];
+const P=(id,i,frac)=>{ const u=U(id); return (u.p && u.p[i]!==undefined) ? u.p[i] : u.s+u.d*(frac??0.5); };
+const F=(id,frac)=>U(id).s+U(id).d*frac;
+// text helper: K(parent, text, x, y, size, color, start, dur)
+const K=(p,txt,x,y,size,color,start,dur,o={})=>T(p,txt,Object.assign({x,y,size,color,width:Math.max(2.6,size/17),start,dur:dur??Math.min(2.4,Math.max(0.35,txt.length/9))},o));
+const E=(p,txt,x,y,size,color,start,dur,o={})=>TE(p,txt,Object.assign({x,y,size,color,width:Math.max(2.6,size/17),start,dur:dur??Math.min(2.0,Math.max(0.3,txt.length/10))},o));
+const D=(p,d,start,dur,stroke=COL.white,width=4,o={})=>draw(p,d,Object.assign({start,dur,stroke,width},o));
+function coverAll(svg,start,dur=0.35){ const C=g(svg); el(C,'rect',{x:0,y:0,width:1920,height:1080,fill:'#000'}); C.style.opacity=0; fade(C,start,dur); return C; }
+function dot(parent,r,fill){ const c=el(parent,'circle',{cx:0,cy:0,r,fill}); c.style.visibility='hidden'; return c; }
+const vis=(e,on)=>{ e.style.visibility=on?'visible':'hidden'; };
+
+const LEAD=0.5;
+const B=[ ['b1',0,U('s4').s-LEAD], ['b2',U('s4').s-LEAD,U('s5').s-LEAD], ['b3',U('s5').s-LEAD,U('s8').s-LEAD], ['b4',U('s8').s-LEAD,U('s12').s-LEAD],
+  ['b5',U('s12').s-LEAD,U('s17').s-LEAD], ['b6',U('s17').s-LEAD,U('s21').s-LEAD], ['b7',U('s21').s-LEAD,U('s25').s-LEAD], ['b8',U('s25').s-LEAD,TOTAL+1] ];
+const SC={}; for(const [k,a,b] of B){ SC[k]=scene(stage,a,b); if(k!=='b2') watermark(SC[k]); }
+window.BLOCKS=B;
+
+// ===================== B1 훅 =====================
+{ const S=SC.b1, svg=S.svg; const a=U('s1').s, p1=P('s1',0);
+  // 로봇 팔과 컵
+  const AR=g(svg,'translate(200,330)');
+  D(AR,HBox(0,380,240,60,10),a+0.2,0.4);
+  D(AR,HL(120,380,160,200,{bow:0.02}),a+0.6,0.25,COL.white,9);
+  D(AR,HL(160,200,350,160,{bow:0.02}),a+0.85,0.25,COL.white,9);
+  D(AR,HCirc(120,380,15),a+1.05,0.15); D(AR,HCirc(160,200,15),a+1.15,0.15);
+  D(AR,HL(350,160,395,205),a+1.3,0.12,COL.white,6); D(AR,HL(395,205,370,240),a+1.4,0.1,COL.white,6); D(AR,HL(395,205,425,225),a+1.48,0.1,COL.white,6);
+  D(AR,HBox(430,330,90,110,10),a+1.7,0.35,COL.orange,5);
+  D(svg,HBox(250,210,400,110,30),a+2.0,0.4,COL.gray,3);
+  K(svg,'컵을 집어 줘',285,285,60,COL.white,a+2.2,0.8);
+  E(svg,'VLA',1010,560,280,COL.yellow,p1+0.1,1.0,{width:10});
+  E(svg,'Vision  Language  Action',1010,680,56,COL.cyan,p1+1.2,1.2);
+  // s2: 굴착기에 올리면?
+  const b=U('s2').s; const Q=coverAll(svg,b-0.1,0.3);
+  const EX=excavator(Q,{x:240,y:300,s:1,t0:b+0.3,speed:1.6});
+  D(Q,HL(140,672,1000,672,{bow:0.01}),b+0.5,0.6,COL.gray,3);
+  K(Q,'바로 땅을 팔 수 있을까',1020,330,76,COL.white,P('s2',0)+0.1,1.4);
+  tori(Q,{pose:'think',x:1380,y:470,w:270,start:P('s2',0)+0.2,bob:true});
+  E(Q,'?',1310,540,150,COL.yellow,P('s2',0)+1.5,0.4,{width:7});
+  // s3: 오늘 볼 것 두 가지
+  K(Q,'1  모델의 구조',300,850,72,COL.cyan,U('s3').s+0.6,1.0);
+  K(Q,'2  굴착기에 맞추는 방법',300,960,72,COL.green,P('s3',0)+0.2,1.4);
+}
+// ===================== B2 타이틀 =====================
+{ const S=SC.b2, svg=S.svg; const a=U('s4').s;
+  tori(svg,{pose:'hardhat',x:300,y:290,w:430,start:a-0.2,draw:0.8,fill:0.3});
+  K(svg,'토리',900,350,96,COL.orange,a-0.1,0.6,{width:4.5});
+  K(svg,'테크톡',865,570,200,COL.white,a+0.5,0.9,{width:8});
+  K(svg,'굴착기에 VLA를 올리려면',870,720,64,COL.cyan,a+0.9,1.0);
+}
+// ===================== B3 두 부분 =====================
+{ const S=SC.b3, svg=S.svg; header(svg,'두 부분으로 된 모델',U('s5').s+0.1);
+  const a=U('s6').s, pa=P('s6',0);
+  D(svg,HBox(130,330,160,105,12),a+0.2,0.35); D(svg,HCirc(210,382,30),a+0.5,0.2);
+  K(svg,'카메라',150,490,44,COL.gray,a+0.6,0.4);
+  D(svg,HBox(110,580,250,95,34),a+1.3,0.35,COL.gray,3); K(svg,'흙을 파 줘',135,645,48,COL.white,a+1.5,0.5);
+  K(svg,'지시문',150,730,44,COL.gray,a+1.9,0.4);
+  D(svg,HArrow(310,390,470,450),a+0.9,0.25); D(svg,HArrow(380,620,470,540),a+2.0,0.25);
+  D(svg,HBox(480,320,450,350,26),a+2.4,0.6,COL.cyan,5);
+  K(svg,'큰 언어 모델',530,460,72,COL.cyan,a+2.8,0.9);
+  K(svg,'이해',640,590,72,COL.white,a+3.7,0.5);
+  D(svg,HArrow(950,495,1090,495),pa-0.1,0.3);
+  D(svg,HBox(1100,320,450,350,26),pa+0.2,0.6,COL.green,5);
+  K(svg,'액션 모델',1190,460,72,COL.green,pa+1.9,0.8);
+  K(svg,'움직임',1230,590,72,COL.white,pa+0.9,0.6);
+  D(svg,HArrow(1570,495,1740,495),pa+3.0,0.3);
+  // s7: 하나씩이 아니라 묶음(청크)
+  const b=U('s7').s, pb=P('s7',0);
+  D(svg,HL(380,800,380,860,{over:0}),b+0.6,0.15,COL.orange,7);
+  strike(svg,345,850,420,805,b+1.6);
+  D(svg,HCurveArrow(1325,680,1380,740,1300,790,{head:16}),b+2.0,0.3,COL.green,4);
+  for(let i=0;i<24;i++) D(svg,HL(560+i*40,800,560+i*40,860,{over:0}),b+2.6+i*0.07,0.08,COL.orange,7);
+  D(svg,HBox(535,775,965,110,22),pb-0.5,0.5,COL.yellow,4);
+  K(svg,'청크 = 동작 묶음',760,975,76,COL.yellow,pb+0.3,1.0);
+}
+// ===================== B4 두 가지 박자 =====================
+{ const S=SC.b4, svg=S.svg; header(svg,'두 가지 박자',U('s8').s+0.1);
+  D(svg,HL(960,230,960,1010,{bow:0.02}),U('s8').s+0.7,0.5,COL.gray,3);
+  // 왼쪽: 한 박자
+  const a=U('s9').s, pa=P('s9',0);
+  K(svg,'1  한 박자로',120,310,68,COL.cyan,a+0.3,0.8);
+  D(svg,HCirc(230,540,95),a+1.6,0.5,COL.cyan,5); K(svg,'생각',175,562,60,COL.cyan,a+2.1,0.4);
+  K(svg,'천천히',165,700,46,COL.gray,pa+0.2,0.4);
+  D(svg,HArrow(345,540,440,540),pa+1.6,0.25);
+  const ticks=[]; for(let i=0;i<14;i++){ ticks.push(470+i*30); D(svg,HL(470+i*30,500,470+i*30,580,{over:0}),pa+2.0+i*0.05,0.07,COL.orange,7); }
+  K(svg,'빠르게 실행',530,700,46,COL.gray,pa+2.7,0.5);
+  const run=dot(svg,13,COL.yellow); const r0=pa+2.9;
+  add(0,1e9,(p,t)=>{ const on=t>=r0; vis(run,on); if(!on) return; const u=((t-r0)%1.3)/1.3; run.setAttribute('cx',470+390*u); run.setAttribute('cy',470); });
+  const c=P('s10',0);
+  D(svg,'M540 400 Q665 465 790 400',c,0.3,COL.red,6);
+  [[580,428,568,458],[640,446,634,478],[700,446,708,478],[755,426,770,455]].forEach((l,i)=>D(svg,HL(...l,{over:0}),c+0.3+i*0.05,0.06,COL.red,5));
+  K(svg,'눈 감고 실행',470,850,68,COL.red,c+0.5,0.8);
+  // 오른쪽: 생각과 반사 분리
+  const d=U('s11').s, pd=P('s11',0), w0=F('s11',0.56);
+  K(svg,'2  생각과 반사를 분리',1030,310,68,COL.green,d+0.3,1.2);
+  D(svg,HBox(1090,390,330,150,20),pd+0.1,0.5,COL.cyan,5); K(svg,'감독',1190,490,68,COL.cyan,pd+0.5,0.4);
+  K(svg,'천천히',1450,480,46,COL.gray,pd+1.8,0.4);
+  D(svg,HBox(1090,720,330,150,20),w0,0.5,COL.green,5); K(svg,'실무자',1165,820,68,COL.green,w0+0.4,0.5);
+  D(svg,HArrow(1255,550,1255,708),w0+0.9,0.3);
+  const slow=dot(svg,12,COL.pink); add(0,1e9,(p,t)=>{ const on=t>=w0+1.2; vis(slow,on); if(!on) return; const u=((t-w0-1.2)%2.2)/2.2; slow.setAttribute('cx',1255); slow.setAttribute('cy',550+150*Math.min(1,u*1.4)); slow.style.opacity=u>0.72?0:1; });
+  const e0=F('s11',0.72);
+  D(svg,'M1590 700 Q1665 635 1740 700 Q1665 765 1590 700',e0,0.4,COL.yellow,5); D(svg,HCirc(1665,700,22),e0+0.35,0.15,COL.yellow,5);
+  K(svg,'최신 영상',1575,610,46,COL.yellow,e0+0.5,0.5);
+  D(svg,HArrow(1580,730,1440,775),e0+0.9,0.25,COL.yellow,4);
+  const f0=F('s11',0.88);
+  flow(svg,'M1255 880 L1255 1000',{start:f0,stroke:COL.green,width:8,dash:'10 12',speed:420});
+  K(svg,'빠르게',1300,960,46,COL.gray,f0+0.2,0.4);
+}
+// ===================== B5 굴착기는 어느 쪽 =====================
+{ const S=SC.b5, svg=S.svg; const a=U('s12').s; header(svg,'굴착기에는 어느 쪽',a+0.1);
+  E(svg,'?',650,140,80,COL.yellow,a+1.2,0.3,{width:5});
+  const EX=excavator(svg,{x:140,y:300,s:1,t0:a+0.4,speed:1.6}); EX.driven=true;
+  D(svg,HL(80,672,1010,672,{bow:0.01}),a+0.8,0.6,COL.gray,3);
+  const REST=[-0.15,0.35,-0.45], DIG=[0.25,0.55,0.15];
+  EX.setPose(...DIG,1e6); const tip=[140+EX.bucketTip[0], 300+EX.bucketTip[1]]; window.TIP=tip;
+  const b=U('s13').s;
+  K(svg,'유압은 느리다',1090,330,72,COL.white,b+0.4,0.9);
+  E(svg,'20 - 50 Hz',1090,490,120,COL.pink,F('s13',0.52),1.2,{width:6});
+  K(svg,'명령이면 충분',1090,580,56,COL.white,F('s13',0.82),0.7);
+  const c=U('s14').s; K(svg,'한 박자 + 짧은 청크',1090,700,64,COL.cyan,c+0.6,1.2); check(svg,1680,690,P('s14',0)+1.6,COL.green,1.6);
+  // s15: 단단한 흙 -> 박힘, 튐
+  const d=U('s15').s, pd=P('s15',0);
+  D(svg,smoothQ(HPolyPts([[tip[0]-70,tip[1]+15],[tip[0]-10,tip[1]-20],[tip[0]+80,tip[1]-10],[tip[0]+110,tip[1]+50],[tip[0]+30,tip[1]+85],[tip[0]-60,tip[1]+70]],{closed:true,bow:0.05,amp:1.2,jit:3,overlap:6})),d+0.6,0.6,COL.orange,5);
+  K(svg,'단단한 흙',tip[0]+135,tip[1]+75,48,COL.orange,d+1.2,0.5);
+  const hit=pd+1.2, fix=U('s16').s+3.2;
+  add(0,1e9,(p,t)=>{ let q;
+    if(t<d+1.4) q=REST;
+    else if(t<hit){ const e=ease((t-d-1.4)/(hit-d-1.4)); q=REST.map((v,i)=>v+(DIG[i]-v)*e*0.93); }
+    else if(t<fix){ const k=t-hit; const sh=Math.sin(k*38)*0.035*Math.exp(-k*1.6); const up=0.16*Math.exp(-Math.pow((k-1.1)/0.35,2)); q=[DIG[0]*0.93+sh-up, DIG[1]*0.93+sh*0.6, DIG[2]*0.93-up*1.5]; }
+    else { const k=t-fix; const w=0.5-0.5*Math.cos(k*1.5); q=[DIG[0]*0.93-0.10*w, DIG[1]*0.93+0.10*w, DIG[2]*0.93+0.30*w]; }
+    EX.setPose(q[0],q[1],q[2],t); });
+  [[95,-55,140,-90],[115,-5,170,-8],[70,-95,85,-150]].forEach((l,i)=>D(svg,HL(tip[0]+l[0],tip[1]+l[1],tip[0]+l[2],tip[1]+l[3],{over:0}),hit+0.05+i*0.06,0.1,COL.red,6,{end:fix}));
+  K(svg,'박힘',tip[0]+190,tip[1]-30,64,COL.red,hit+0.2,0.4,{end:fix});
+  K(svg,'튐',tip[0]+190,tip[1]-120,64,COL.red,hit+1.2,0.3,{end:fix});
+  tori(svg,{pose:'surprise',x:1560,y:760,w:210,start:d+0.3,end:U('s16').s-0.2});
+  // s16: 압력을 느끼는 빠른 모델
+  const e0=U('s16').s, pe=P('s16',0);
+  D(svg,HBox(100,840,320,120,18),e0+1.6,0.5,COL.green,5); K(svg,'빠른 모델',135,922,60,COL.green,e0+2.0,0.6);
+  D(svg,HCurveArrow(300,835,330,740,400,585,{head:16}),e0+2.8,0.3,COL.green,4);
+  const gx=560,gy=900; D(svg,HCirc(gx,gy,62,{irr:0.05}),e0+0.4,0.4,COL.pink,5); K(svg,'압력',gx+80,gy+18,48,COL.pink,e0+0.8,0.4);
+  const nd=path(svg,'',{stroke:COL.pink,width:6}); vis(nd,false);
+  add(0,1e9,(p,t)=>{ const on=t>=e0+0.8; vis(nd,on); if(!on) return; const an=Math.PI*1.25+0.9*(0.5+0.5*Math.sin(t*3.1))+Math.sin(t*17)*0.05; nd.setAttribute('d',`M${gx} ${gy} L${gx+46*Math.cos(an)} ${gy+46*Math.sin(an)}`); });
+  D(svg,HArrow(492,900,432,900,{head:14}),e0+1.2,0.2,COL.pink,4);
+  K(svg,'단순한 구조 먼저',860,880,62,COL.yellow,pe+0.1,0.9);
+  K(svg,'떼어 놓기는 그 다음',860,975,62,COL.gray,pe+1.0,1.0);
+}
+// ===================== B6 땅의 높낮이 =====================
+{ const S=SC.b6, svg=S.svg; const a=U('s17').s; header(svg,'땅의 높낮이',a+0.1);
+  const TP=[[90,740],[210,735],[320,712],[420,640],[510,600],[600,640],[690,715],[790,735],[900,740]];
+  const ty=x=>{ for(let i=0;i<TP.length-1;i++){ if(x<=TP[i+1][0]){ const u=(x-TP[i][0])/(TP[i+1][0]-TP[i][0]); const s=u*u*(3-2*u); return TP[i][1]+(TP[i+1][1]-TP[i][1])*s; } } return 740; };
+  const prof=[]; for(let x=90;x<=900;x+=15) prof.push([x,ty(x)+(Math.sin(x*0.37)*2)]);
+  D(svg,smoothQ(prof),P('s17',0)-0.4,1.2,COL.orange,6);
+  for(let i=0;i<9;i++) D(svg,HL(140+i*90,790+((i*37)%30),170+i*90,830+((i*37)%30),{over:0}),P('s17',0)+0.8+i*0.04,0.06,COL.orange,3);
+  // s18: 라이다 -> 점 -> 격자
+  const b=U('s18').s, pb=P('s18',0);
+  D(svg,HBox(150,330,95,62,8),b+0.1,0.3); D(svg,HL(197,392,197,735,{bow:0.01}),b+0.35,0.3,COL.white,5); K(svg,'라이다',135,300,46,COL.gray,b+0.3,0.4);
+  const beam=path(svg,'',{stroke:COL.yellow,width:3}); vis(beam,false);
+  const s0=b+0.7, s1=pb-0.1; const dots=[];
+  for(let i=0;i<17;i++){ const x=280+i*37; const c=el(svg,'circle',{cx:x,cy:ty(x)-4,r:8,fill:COL.cyan}); vis(c,false); dots.push([c,x]); }
+  add(0,1e9,(p,t)=>{ const on=t>=s0&&t<s1+0.2; vis(beam,on); const u=Math.min(1,Math.max(0,(t-s0)/(s1-s0))); const bx=280+620*u; if(on) beam.setAttribute('d',`M245 362 L${bx} ${ty(bx)}`); dots.forEach(([c,x])=>vis(c,t>=s0&&x<=bx+1)); });
+  const GX=1090,GY=330,CS=86,NC=8,NR=5;
+  const hgt=(c,r)=>Math.exp(-(Math.pow(c-3.6,2)/5+Math.pow(r-2.0,2)/3));
+  const cells=[];
+  for(let r=0;r<NR;r++) for(let c=0;c<NC;c++){ const h=hgt(c,r); const rc=el(svg,'rect',{x:GX+c*CS+4,y:GY+r*CS+4,width:CS-8,height:CS-8,rx:6,fill:COL.orange}); rc.style.opacity=0; const rd=el(svg,'rect',{x:GX+c*CS+4,y:GY+r*CS+4,width:CS-8,height:CS-8,rx:6,fill:COL.red}); rd.style.opacity=0; cells.push({rc,rd,h,c,r}); }
+  for(let c=0;c<=NC;c++) D(svg,HL(GX+c*CS,GY,GX+c*CS,GY+NR*CS,{bow:0.006,amp:0.8}),pb+0.1+c*0.05,0.1,COL.white,3);
+  for(let r=0;r<=NR;r++) D(svg,HL(GX,GY+r*CS,GX+NC*CS,GY+r*CS,{bow:0.006,amp:0.8}),pb+0.6+r*0.05,0.1,COL.white,3);
+  const f0=pb+1.0, d0=P('s19',0);
+  add(0,1e9,(p,t)=>{ cells.forEach(o=>{ const k=Math.min(1,Math.max(0,(t-f0-o.c*0.07)/0.4)); const dk=Math.min(1,Math.max(0,(t-d0-o.c*0.05)/0.5)); const need=Math.max(0,o.h-0.42)/0.58; o.rc.style.opacity=k*(0.12+0.8*o.h)*(1-0.85*dk); o.rd.style.opacity=dk*need*0.95; }); });
+  K(svg,'높이 지도',1100,850,64,COL.orange,F('s18',0.78),0.6);
+  const c0=U('s19').s;
+  K(svg,'- 목표 지형',1370,850,64,COL.white,c0+0.5,0.8);
+  K(svg,'= 더 팔 곳',1100,950,76,COL.red,d0+0.5,0.8);
+  // s20: 감독에게는 지도, 실무자에게는 점
+  const e0=U('s20').s, pe=P('s20',0);
+  K(svg,'감독에게',1400,275,60,COL.cyan,e0+1.0,0.6); D(svg,HArrow(1350,300,1300,322,{head:14}),e0+1.5,0.2,COL.cyan,4);
+  D(svg,HCirc(505,640,135,{irr:0.05}),pe+1.6,0.6,COL.yellow,5);
+  K(svg,'실무자에게는 점 그대로',300,930,60,COL.green,pe+2.6,1.3);
+  D(svg,HArrow(520,870,515,790,{head:16}),pe+3.6,0.25,COL.green,4);
+}
+// ===================== B7 미리 내다보기 =====================
+{ const S=SC.b7, svg=S.svg; const a0=U('s21').s; header(svg,'미리 내다보기',a0+0.1);
+  const a=U('s22').s, pa=P('s22',0);
+  const grid=(ox,oy,t0,hf)=>{ const cs=70,nc=5,nr=4; for(let c=0;c<=nc;c++) D(svg,HL(ox+c*cs,oy,ox+c*cs,oy+nr*cs,{bow:0.006,amp:0.8}),t0+c*0.04,0.08,COL.white,3); for(let r=0;r<=nr;r++) D(svg,HL(ox,oy+r*cs,ox+nc*cs,oy+r*cs,{bow:0.006,amp:0.8}),t0+0.25+r*0.04,0.08,COL.white,3);
+    for(let r=0;r<nr;r++) for(let c=0;c<nc;c++){ const rc=el(svg,'rect',{x:ox+c*cs+4,y:oy+r*cs+4,width:cs-8,height:cs-8,rx:5,fill:COL.orange}); rc.style.opacity=0; fade(rc,t0+0.5+c*0.05,0.3,0,hf(c,r)); } };
+  const h0=(c,r)=>0.25+0.6*Math.exp(-(Math.pow(c-2,2)/3+Math.pow(r-1.5,2)/2));
+  grid(140,270,a+0.2,h0);
+  D(svg,HArrow(150,410,480,410,{head:24,bow:0.01}),pa-1.6,0.5,COL.yellow,9);
+  K(svg,'버킷이 지나갈 길',130,620,46,COL.yellow,pa-1.2,0.7);
+  D(svg,HArrow(520,410,640,410),pa-0.2,0.25);
+  D(svg,HBox(660,320,330,180,22),pa+0.6,0.5,COL.pink,5); K(svg,'예측 모델',705,435,62,COL.pink,pa+2.2,0.6);
+  D(svg,HArrow(1010,410,1130,410),pa+1.1,0.25);
+  grid(1160,270,pa+0.9,(c,r)=> r===2 ? (c===4?0.95:0.06) : h0(c,r));
+  K(svg,'파고 난 뒤',1540,425,60,COL.white,pa+0.3,0.6);
+  // s23: 후보 중 최고만
+  const b=U('s23').s, pb=P('s23',0);
+  D(svg,HBlobD(330,850,150,85,{irr:0.08}),b+0.1,0.5,COL.orange,5);
+  const cand=[[90,720,225,790],[70,850,180,850],[95,985,225,915]];
+  cand.forEach((l,i)=>D(svg,HArrow(...l,{head:18}),b+0.6+i*0.2,0.25,i===1?COL.gray:COL.gray,5));
+  const bw=[130,280,190], by=[735,835,935]; const bars=bw.map((w,i)=>{ const r=el(svg,'rect',{x:560,y:by[i],width:0,height:44,rx:8,fill:COL.gray}); return r; });
+  D(svg,HL(555,710,555,1000,{bow:0.01}),pb-1.2,0.2,COL.white,3);
+  add(0,1e9,(p,t)=>{ bars.forEach((r,i)=>{ const k=ease(Math.min(1,Math.max(0,(t-(pb-1.0)-i*0.2)/0.5))); r.setAttribute('width',bw[i]*k); r.setAttribute('fill',(i===1&&t>=pb+0.3)?COL.green:COL.gray); }); });
+  D(svg,HArrow(70,850,180,850,{head:18}),pb+0.3,0.25,COL.green,7);
+  check(svg,870,860,pb+0.5,COL.green,1.6);
+  // s24: 계획대로 간다는 가정 -> 힘의 한계
+  const c=U('s24').s, pc=P('s24',0);
+  D(svg,HL(1060,750,1840,750,{bow:0.01}),c+0.2,0.4,COL.gray,3);
+  const plan=path(svg,'M1110 750 Q1420 1030 1760 750',{stroke:COL.cyan,width:5}); plan.setAttribute('stroke-dasharray','16 14'); plan.style.opacity=0; fade(plan,c+0.8,0.5);
+  K(svg,'계획',1390,985,48,COL.cyan,c+1.3,0.3);
+  D(svg,'M1110 750 Q1220 850 1330 840 Q1480 820 1560 770 Q1660 740 1760 750',pc+0.4,1.0,COL.orange,6);
+  K(svg,'실제',1580,735,48,COL.orange,pc+1.3,0.3);
+  const gx=1760,gy=640; D(svg,HCirc(gx,gy,58,{irr:0.05}),pc+0.2,0.35,COL.pink,5);
+  const nd=path(svg,'',{stroke:COL.red,width:6}); vis(nd,false);
+  add(0,1e9,(p,t)=>{ const on=t>=pc+0.5; vis(nd,on); if(!on) return; const k=ease(Math.min(1,(t-pc-0.5)/0.8)); const an=Math.PI*1.2+1.45*k+(k>=1?Math.sin(t*24)*0.03:0); nd.setAttribute('d',`M${gx} ${gy} L${gx+44*Math.cos(an)} ${gy+44*Math.sin(an)}`); });
+  K(svg,'힘의 한계까지 예측',1080,665,62,COL.red,pc+1.8,1.0);
+}
+// ===================== B8 정리 =====================
+{ const S=SC.b8, svg=S.svg; const a=U('s25').s, pp=U('s25').p||[]; header(svg,'정리',a+0.1);
+  const t1=pp[0]??F('s25',0.15), t2=pp[1]??F('s25',0.42), t3=F('s25',0.66), t4=F('s25',0.82);
+  K(svg,'1  단순한 구조로 기준 만들기',200,350,76,COL.cyan,t1+0.1,1.6);
+  K(svg,'2  지형 넣는 방법 비교',200,510,76,COL.orange,t2+0.1,1.4);
+  K(svg,'3  빠른 반사 더하기',200,670,76,COL.green,t3,1.0);
+  K(svg,'4  미리 내다보기',200,830,76,COL.pink,t4,0.9);
+  tori(svg,{pose:'happy',x:1400,y:520,w:280,start:t2+0.6,end:U('s26').s-0.3,bob:true});
+  const b=U('s26').s; const LG=coverAll(svg,b-0.2,0.3);
+  tori(LG,{pose:'bye',x:330,y:440,w:440,start:b,draw:0.8,fill:0.3});
+  K(LG,'토리',900,400,96,COL.orange,b+0.1,0.5,{width:4.5});
+  K(LG,'테크톡',865,620,200,COL.white,b+0.5,0.8,{width:8});
+  K(LG,'감사합니다',900,760,60,COL.gray,b+1.4,0.6);
+}
+window.seek(0); window.__ready=true;
+</script></body></html>
