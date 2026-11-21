@@ -2,18 +2,25 @@
 
 [공개 메인 페이지](https://hanminy.github.io/) — 연구 자료, 개발·실험, 일상 사이트로 연결하는 정적 홈페이지.
 
+## 분류
+
+홈 화면의 카드는 종류에 따라 네 묶음으로 나눈다. `sites.json`의 `category`에 아래 이름 중 하나를 그대로 쓴다.
+
+- **연구 아카이브**: 계속 갱신되는 사이트(대시보드, MarkTL, 스터디, 논문 뷰어)
+- **발표**: 발표 슬라이드. 비공개 저장소 `hanminy-slides`에 있고 로그인해야 열린다.
+- **설명 자료**: 혼자 읽어도 이해되는 완성된 페이지(이 저장소의 `assets/` 아래)
+- **개인**: 여행 등 개인 자료
+
+주제(굴착기, 피지컬 AI 등)로는 나누지 않는다. 묶음용 중간 페이지는 두지 않고 카드가 바로 자료를 가리킨다.
+
 ## 새 사이트 추가
 
-- **새 공개 저장소의 GitHub Pages**: 별도 등록 없이 다음 자동 배포에서 발견한다. 매시간 17분에 공개 저장소 목록을 확인한다. GitHub의 실행 대기 때문에 실제 시각은 지연될 수 있다.
-- **이름·설명·분류·순서 변경**: `sites.json`의 `overrides`에 저장소 이름을 키로 등록한다.
-- **같은 저장소의 다른 하위 페이지**: `extra_sites`에 고유 `id`, `title`, `description`, `url`, `category`, `label`, `order`를 추가한다.
+- **새 공개 저장소의 GitHub Pages**: 다음 자동 배포에서 발견한다(매시간 17분). 분류를 정해 주지 않으면 `기타`로 뜨므로, `sites.json`의 `overrides`에 저장소 이름을 키로 `category`, `title`, `description`, `order`를 적는다.
+- **이 저장소 안의 페이지나 다른 저장소의 하위 경로**: `extra_sites`에 고유 `id`, `title`, `description`, `url`, `category`, `label`, `order`를 추가한다.
 - **제외할 저장소**: `exclude` 배열에 저장소 이름을 넣는다.
-- **묶음 페이지**: 메인에는 주요 사이트와 묶음 카드만 둔다. 작업 중간 자료는 `assets/working-notes/`, 개인 자료는 `assets/personal/`, 완성된 발표 덱은 `assets/slides/`의 목록에 링크를 추가한다. 묶음 안에 넣은 별도 저장소(`hr35-common-testbench-guide`, `bohol-trip-2026`)는 메인에 다시 나오지 않도록 `exclude`에 둔다.
 - **즉시 갱신**: Actions → Refresh site directory and deploy → Run workflow. 설정을 main에 push해도 배포한다.
 
 GitHub Pages가 켜진 공개 저장소만 조회한다. 비공개 저장소, 일반 코드 저장소, 이 홈페이지 자체는 자동으로는 목록에 넣지 않는다. 새 사이트의 주소가 아직 404면 다음 실행에서 다시 확인한다. 기존에 설정한 주요 링크가 깨지거나 API 요청이 실패하면 배포를 중단하고 기존 공개본을 유지한다.
-
-MarkTL의 실제 진입점은 `/marktl-blog/marktl/`이다. KMM 스터디는 같은 저장소의 별도 경로 `/marktl-blog/kmm/`로 등록했다. 사이트 단위 목록이며 MarkTL의 개별 게시물까지 펼치지는 않는다.
 
 ## 발표 자료는 여기에 올리지 않는다
 
@@ -21,7 +28,7 @@ MarkTL의 실제 진입점은 `/marktl-blog/marktl/`이다. KMM 스터디는 같
 
 - 새 덱과 초안은 `hanminy-slides`에 올린다. 이 저장소의 `assets/`에 덱을 두면 누구나 볼 수 있게 된다. `tests/test_pages.py`가 옮긴 폴더가 다시 생기는지 검사한다.
 - 홈 화면에는 "로그인 필요"로 표시된 카드가 그쪽을 가리킨다. 이런 사이트는 `sites.json`의 `extra_sites`에 `"private": true`로 적고, 주소의 호스트를 `private_hosts`에 넣는다. 로그인 화면으로 넘어가므로 배포 때 주소 확인은 하지 않는다.
-- `assets/`에는 홈 화면용 파일과 공개로 두는 개인 자료(`personal/`, `bppv-guide/`, `inner-ear-imu/`)만 남긴다.
+- `assets/`에는 홈 화면용 파일과 공개로 두는 설명 자료(`bppv-guide/`, `inner-ear-imu/`)만 남긴다.
 
 ## 구조와 검증
 

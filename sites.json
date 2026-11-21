@@ -4,7 +4,7 @@
     "field-robot-dashboard": {
       "title": "필드로봇 연구 대시보드",
       "description": "자율굴착과 필드로봇 논문을 한눈에. 기관·기술별로 연구를 찾고 상세 요약과 그림을 살펴봅니다.",
-      "category": "연구 자료",
+      "category": "연구 아카이브",
       "label": "FIELD ROBOTICS",
       "featured": true,
       "order": 1
@@ -13,7 +13,7 @@
       "title": "MarkTL · 연구와 기록",
       "description": "Obsidian에서 정리한 논문, 영상, 연구 노트를 웹에서 읽는 공개 아카이브입니다.",
       "url": "https://hanminy.github.io/marktl-blog/marktl/",
-      "category": "연구 자료",
+      "category": "연구 아카이브",
       "label": "NOTES & ARTICLES",
       "featured": true,
       "order": 2
@@ -21,56 +21,61 @@
     "icra2026-viewer": {
       "title": "ICRA 2026 논문 뷰어",
       "description": "ICRA 2026의 관심 논문과 추천 연구를 모아, 분야별 목록과 상세 내용을 탐색합니다.",
-      "category": "연구 자료",
+      "category": "연구 아카이브",
       "label": "CONFERENCE PAPERS",
       "featured": true,
-      "order": 3
+      "order": 4
+    },
+    "bohol-trip-2026": {
+      "title": "보홀 여행 2026",
+      "description": "보홀 가족여행을 위한 일정과 여행 정보를 모아 둔 페이지입니다.",
+      "category": "개인",
+      "label": "TRAVEL NOTES",
+      "order": 8
     }
   },
   "extra_sites": [
     {
+      "id": "kmm-study",
+      "title": "굴착기 동적 모델·제어 스터디",
+      "description": "KMM/KIMM 굴착기 동적 모델과 제어를 살펴보는 인터랙티브 스터디 가이드입니다.",
+      "url": "https://hanminy.github.io/marktl-blog/kmm/",
+      "category": "연구 아카이브",
+      "label": "STUDY GUIDE",
+      "order": 3,
+      "featured": true
+    },
+    {
       "id": "slides",
       "title": "발표 슬라이드",
-      "description": "세미나·강연·보고에서 쓴 덱과 공부하며 정리한 덱의 완성본을 날짜순으로 모았습니다.",
+      "description": "밖에서 한 강연·세미나, 과제 보고, 공부하며 정리한 덱을 날짜순으로 모았습니다. 준비 중인 덱과 이전 판도 함께 있습니다.",
       "url": "https://hanminy-slides.pages.dev/slides/",
-      "category": "연구 자료",
+      "category": "발표",
       "label": "TALKS & SLIDES",
-      "order": 3.2,
-      "private": true
-    },
-    {
-      "id": "fes2026-physical-ai",
-      "title": "FES 2026 피지컬 AI 자료실",
-      "description": "FES 2026 특별강연 준비 자료입니다. 국내 전문가 10인의 발언, 피지컬 AI 시각 조사 123개 항목, 강연 슬라이드 최종본을 모았습니다.",
-      "url": "https://hanminy-slides.pages.dev/fes2026-physical-ai/",
-      "category": "연구 자료",
-      "label": "PHYSICAL AI",
-      "order": 3.5,
-      "private": true
-    },
-    {
-      "id": "working-notes",
-      "title": "작업 자료",
-      "description": "개발·실험 가이드, 스터디, 발표 준비 중간본처럼 작업하는 동안 보려고 만든 자료를 모았습니다.",
-      "url": "https://hanminy-slides.pages.dev/working-notes/",
-      "category": "그 밖의 자료",
-      "label": "WORKING NOTES",
       "order": 5,
       "private": true
     },
     {
-      "id": "personal",
-      "title": "개인 자료",
-      "description": "건강, 여행처럼 연구와 별개로 개인적으로 정리한 자료입니다.",
-      "url": "https://hanminy.github.io/assets/personal/",
-      "category": "그 밖의 자료",
-      "label": "PERSONAL",
+      "id": "bppv-guide",
+      "title": "이석증 완전 가이드",
+      "description": "이석증의 원리, 증상, 진단, 치료, 위험 신호, 재발 예방을 움직이는 그림과 인터랙티브로 쉽게 정리했습니다.",
+      "url": "https://hanminy.github.io/assets/bppv-guide/",
+      "category": "설명 자료",
+      "label": "GUIDE",
       "order": 6
+    },
+    {
+      "id": "inner-ear-imu",
+      "title": "귀 속의 IMU",
+      "description": "귀 속 전정기관과 MEMS 가속도계·자이로를 비교합니다. 닮은 점, 다른 점, 이석증을 센서 고장으로 풀어 봅니다.",
+      "url": "https://hanminy.github.io/assets/inner-ear-imu/",
+      "category": "설명 자료",
+      "label": "MOTION GRAPHIC",
+      "order": 7
     }
   ],
   "exclude": [
-    "hr35-common-testbench-guide",
-    "bohol-trip-2026"
+    "hr35-common-testbench-guide"
   ],
   "private_hosts": [
     "hanminy-slides.pages.dev"
