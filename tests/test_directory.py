@@ -33,6 +33,15 @@ class DirectoryTests(unittest.TestCase):
         self.assertNotIn('<script>', rendered)
         self.assertIn('&lt;script&gt;', rendered)
 
+    def test_private_site_needs_a_listed_host_and_shows_login_note(self):
+        site = {'id': 'slides', 'title': 'Slides', 'description': 'd', 'category': 'x', 'url': 'https://slides.example.dev/slides/', 'private': True}
+        with self.assertRaises(ValueError):
+            collect([], {'owner': 'hanminy', 'extra_sites': [dict(site)]})
+        with self.assertRaises(ValueError):  # private 표시가 없으면 다른 주소는 받지 않는다
+            collect([], {'owner': 'hanminy', 'private_hosts': ['slides.example.dev'], 'extra_sites': [{k: v for k, v in site.items() if k != 'private'}]})
+        result = collect([], {'owner': 'hanminy', 'private_hosts': ['slides.example.dev'], 'extra_sites': [dict(site)]})
+        self.assertIn('로그인 필요', card(result[0], 1))
+
 
 if __name__ == '__main__':
     unittest.main()

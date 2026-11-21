@@ -32,28 +32,31 @@
       "id": "slides",
       "title": "발표 슬라이드",
       "description": "세미나·강연·보고에서 쓴 덱과 공부하며 정리한 덱의 완성본을 날짜순으로 모았습니다.",
-      "url": "https://hanminy.github.io/assets/slides/",
+      "url": "https://hanminy-slides.pages.dev/slides/",
       "category": "연구 자료",
       "label": "TALKS & SLIDES",
-      "order": 3.2
+      "order": 3.2,
+      "private": true
     },
     {
       "id": "fes2026-physical-ai",
       "title": "FES 2026 피지컬 AI 자료실",
       "description": "FES 2026 특별강연 준비 자료입니다. 국내 전문가 10인의 발언, 피지컬 AI 시각 조사 123개 항목, 강연 슬라이드 최종본을 모았습니다.",
-      "url": "https://hanminy.github.io/assets/fes2026-physical-ai/",
+      "url": "https://hanminy-slides.pages.dev/fes2026-physical-ai/",
       "category": "연구 자료",
       "label": "PHYSICAL AI",
-      "order": 3.5
+      "order": 3.5,
+      "private": true
     },
     {
       "id": "working-notes",
       "title": "작업 자료",
       "description": "개발·실험 가이드, 스터디, 발표 준비 중간본처럼 작업하는 동안 보려고 만든 자료를 모았습니다.",
-      "url": "https://hanminy.github.io/assets/working-notes/",
+      "url": "https://hanminy-slides.pages.dev/working-notes/",
       "category": "그 밖의 자료",
       "label": "WORKING NOTES",
-      "order": 5
+      "order": 5,
+      "private": true
     },
     {
       "id": "personal",
@@ -68,5 +71,8 @@
   "exclude": [
     "hr35-common-testbench-guide",
     "bohol-trip-2026"
+  ],
+  "private_hosts": [
+    "hanminy-slides.pages.dev"
   ]
 }

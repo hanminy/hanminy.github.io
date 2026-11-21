@@ -1,4 +1,4 @@
-"""Build a static directory from public GitHub Pages repositories only."""
+"""Build a static directory from public GitHub Pages repositories, plus listed login-only sites."""
 import argparse
 import html
 import json
@@ -47,8 +47,10 @@ def collect(repositories, config):
     seen = set()
     for site in sites:
         url = urlsplit(site['url'])
-        if url.scheme != 'https' or url.hostname != f'{owner}.github.io' or url.username:
-            raise ValueError(f'Unexpected public site URL: {site["url"]}')
+        # 로그인해야 열리는 사이트는 sites.json의 private_hosts에 적어 둔 주소만 허용한다.
+        allowed = config.get('private_hosts', []) if site.get('private') else [f'{owner}.github.io']
+        if url.scheme != 'https' or url.hostname not in allowed or url.username:
+            raise ValueError(f'Unexpected site URL: {site["url"]}')
         if site['id'] in seen:
             raise ValueError('Duplicate site id')
         seen.add(site['id'])
@@ -56,6 +58,8 @@ def collect(repositories, config):
 
 
 def reachable(site):
+    if site.get('private'):
+        return True  # 로그인 화면으로 넘어가므로 열리는지 확인할 수 없다
     try:
         request = Request(site['url'], headers={'User-Agent': 'hanminy-site-directory'}, method='HEAD')
         with urlopen(request, timeout=30) as response:
@@ -76,10 +80,11 @@ def esc(value):
 def card(site, index):
     classes = 'site-card featured' if site.get('featured') else 'site-card'
     text = ' '.join(str(site.get(k, '')) for k in ('title', 'description', 'category', 'label', 'id'))
+    where = '로그인 필요 · ' + urlsplit(site['url']).hostname if site.get('private') else urlsplit(site['url']).path.strip('/')
     return f'''<a class="{classes}" href="{esc(site['url'])}" data-category="{esc(site['category'])}" data-search="{esc(text)}">
   <div class="card-top"><span class="card-label">{esc(site.get('label', 'WEBSITE'))}</span><span class="card-number">{index:02d}</span></div>
   <div class="card-body"><span class="category">{esc(site['category'])}</span><h3>{esc(site['title'])}</h3><p>{esc(site['description'])}</p></div>
-  <div class="card-bottom"><span>{esc(urlsplit(site['url']).path.strip('/'))}</span><span class="arrow" aria-hidden="true">↗</span></div>
+  <div class="card-bottom"><span>{esc(where)}</span><span class="arrow" aria-hidden="true">↗</span></div>
 </a>'''
 
 

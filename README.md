@@ -11,21 +11,17 @@
 - **묶음 페이지**: 메인에는 주요 사이트와 묶음 카드만 둔다. 작업 중간 자료는 `assets/working-notes/`, 개인 자료는 `assets/personal/`, 완성된 발표 덱은 `assets/slides/`의 목록에 링크를 추가한다. 묶음 안에 넣은 별도 저장소(`hr35-common-testbench-guide`, `bohol-trip-2026`)는 메인에 다시 나오지 않도록 `exclude`에 둔다.
 - **즉시 갱신**: Actions → Refresh site directory and deploy → Run workflow. 설정을 main에 push해도 배포한다.
 
-GitHub Pages가 켜진 공개 저장소만 조회한다. 비공개 저장소, 일반 코드 저장소, 이 홈페이지 자체는 목록에 넣지 않는다. 새 사이트의 주소가 아직 404면 다음 실행에서 다시 확인한다. 기존에 설정한 주요 링크가 깨지거나 API 요청이 실패하면 배포를 중단하고 기존 공개본을 유지한다.
+GitHub Pages가 켜진 공개 저장소만 조회한다. 비공개 저장소, 일반 코드 저장소, 이 홈페이지 자체는 자동으로는 목록에 넣지 않는다. 새 사이트의 주소가 아직 404면 다음 실행에서 다시 확인한다. 기존에 설정한 주요 링크가 깨지거나 API 요청이 실패하면 배포를 중단하고 기존 공개본을 유지한다.
 
 MarkTL의 실제 진입점은 `/marktl-blog/marktl/`이다. KMM 스터디는 같은 저장소의 별도 경로 `/marktl-blog/kmm/`로 등록했다. 사이트 단위 목록이며 MarkTL의 개별 게시물까지 펼치지는 않는다.
 
-## 자작 슬라이드 목록
+## 발표 자료는 여기에 올리지 않는다
 
-[자작 슬라이드](https://hanminy.github.io/assets/slides/)는 슬라이드 형식으로 만든 HTML 덱만 날짜순으로 모은 페이지다. 세미나·강연 발표용 덱과 스스로 보려고 정리한 슬라이드를 함께 싣는다. 조사 자료, 보고서, AI 에이전트 작업 보고용 HTML은 넣지 않는다.
+발표 슬라이드, 작업 중간본, FES 자료실은 비공개 저장소 [hanminy-slides](https://github.com/hanminy/hanminy-slides)로 옮겼다. 그 저장소는 `https://hanminy-slides.pages.dev/`로 배포되고, 로그인한 사람만 볼 수 있다.
 
-- 새 덱을 공개하면 `assets/slides/index.html`의 해당 연도 `<ol class="deck-list">`에 `<li class="deck">` 하나를 날짜 내림차순으로 추가한다. `data-kind`는 `talk`(발표용) 또는 `self`(개인 정리)로 쓴다.
-- 표지 썸네일은 `assets/slides/covers/`에 480×270 JPEG로 둔다.
-- 필터 버튼의 개수(전체·발표용·개인 정리)를 항목 수에 맞게 고친다. `tests/test_slides.py`가 개수와 링크·이미지 경로를 검사한다.
-
-## 모바일에서 덱 넘기기
-
-발표 화면이 있는 덱은 끝에서 `assets/deck-touch.js`를 불러온다. 터치 기기에서만 오른쪽 아래에 "발표 화면" 버튼이 뜨고, 발표 화면에서는 오른쪽 탭·왼쪽으로 밀기로 다음 장, 왼쪽 탭·오른쪽으로 밀기로 이전 장, 오른쪽 위 "닫기"로 나온다. 각 덱의 키보드 처리(←, →, Esc, F)를 그대로 불러 쓰므로 덱마다 다른 넘김 로직은 건드리지 않는다. 새 덱을 만들면 `</body>` 앞에 `<script src="../deck-touch.js"></script>`를 넣는다.
+- 새 덱과 초안은 `hanminy-slides`에 올린다. 이 저장소의 `assets/`에 덱을 두면 누구나 볼 수 있게 된다. `tests/test_pages.py`가 옮긴 폴더가 다시 생기는지 검사한다.
+- 홈 화면에는 "로그인 필요"로 표시된 카드가 그쪽을 가리킨다. 이런 사이트는 `sites.json`의 `extra_sites`에 `"private": true`로 적고, 주소의 호스트를 `private_hosts`에 넣는다. 로그인 화면으로 넘어가므로 배포 때 주소 확인은 하지 않는다.
+- `assets/`에는 홈 화면용 파일과 공개로 두는 개인 자료(`personal/`, `bppv-guide/`, `inner-ear-imu/`)만 남긴다.
 
 ## 구조와 검증
 
@@ -33,7 +29,7 @@ MarkTL의 실제 진입점은 `/marktl-blog/marktl/`이다. KMM 스터디는 같
 - `src/build.py`: 공개 저장소 발견, 주소 확인, HTML 생성 (Python 표준 라이브러리)
 - `src/template.html`, `assets/`: 반응형 화면, 검색·분류
 - `.github/workflows/pages.yml`: push·매시간·수동 갱신과 Pages 배포
-- `tests/`: 새 사이트 자동 발견, 공개 범위, 하위 경로, 링크·HTML 안전성 검사
+- `tests/`: 새 사이트 자동 발견, 공개 범위, 로그인 필요 사이트, 하위 경로, 링크·HTML 안전성 검사
 
 ```bash
 python3 -m unittest discover -s tests -v
