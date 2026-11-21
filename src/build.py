@@ -80,10 +80,14 @@ def esc(value):
 def card(site, index):
     classes = 'site-card featured' if site.get('featured') else 'site-card'
     text = ' '.join(str(site.get(k, '')) for k in ('title', 'description', 'category', 'label', 'id'))
-    where = '로그인 필요 · ' + urlsplit(site['url']).hostname if site.get('private') else urlsplit(site['url']).path.strip('/')
-    return f'''<a class="{classes}" href="{esc(site['url'])}" data-category="{esc(site['category'])}" data-search="{esc(text)}">
+    private = bool(site.get('private'))
+    where = '로그인 필요 · ' + urlsplit(site['url']).hostname if private else urlsplit(site['url']).path.strip('/')
+    lock = '<span class="lock"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="3" y="7" width="10" height="7" rx="1.5"/><path d="M5.2 7V5a2.8 2.8 0 0 1 5.6 0v2"/></svg>비공개</span>' if private else ''
+    if private:
+        classes += ' private'
+    return f'''<a class="{classes}" href="{esc(site['url'])}"{' title="로그인한 사람만 볼 수 있습니다"' if private else ''} data-category="{esc(site['category'])}" data-search="{esc(text)}">
   <div class="card-top"><span class="card-label">{esc(site.get('label', 'WEBSITE'))}</span><span class="card-number">{index:02d}</span></div>
-  <div class="card-body"><span class="category">{esc(site['category'])}</span><h3>{esc(site['title'])}</h3><p>{esc(site['description'])}</p></div>
+  <div class="card-body"><span class="category">{esc(site['category'])}</span>{lock}<h3>{esc(site['title'])}</h3><p>{esc(site['description'])}</p></div>
   <div class="card-bottom"><span>{esc(where)}</span><span class="arrow" aria-hidden="true">↗</span></div>
 </a>'''
 

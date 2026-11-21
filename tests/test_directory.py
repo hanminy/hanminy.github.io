@@ -40,7 +40,11 @@ class DirectoryTests(unittest.TestCase):
         with self.assertRaises(ValueError):  # private 표시가 없으면 다른 주소는 받지 않는다
             collect([], {'owner': 'hanminy', 'private_hosts': ['slides.example.dev'], 'extra_sites': [{k: v for k, v in site.items() if k != 'private'}]})
         result = collect([], {'owner': 'hanminy', 'private_hosts': ['slides.example.dev'], 'extra_sites': [dict(site)]})
-        self.assertIn('로그인 필요', card(result[0], 1))
+        rendered = card(result[0], 1)
+        self.assertIn('로그인 필요', rendered)
+        self.assertIn('class="lock"', rendered)
+        public = collect([{'name': 'open', 'has_pages': True}], {'owner': 'hanminy'})[0]
+        self.assertNotIn('class="lock"', card(public, 1))
 
 
 if __name__ == '__main__':
