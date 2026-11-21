@@ -3,7 +3,7 @@ import unittest
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'src'))
-from build import collect, card
+from build import collect, card, grouped, sections
 
 
 class DirectoryTests(unittest.TestCase):
@@ -45,6 +45,17 @@ class DirectoryTests(unittest.TestCase):
         self.assertIn('class="lock"', rendered)
         public = collect([{'name': 'open', 'has_pages': True}], {'owner': 'hanminy'})[0]
         self.assertNotIn('class="lock"', card(public, 1))
+
+    def test_cards_are_grouped_in_configured_order_and_unknown_categories_go_last(self):
+        sites = [{'id': i, 'title': i, 'description': 'd', 'url': 'https://hanminy.github.io/' + i + '/', 'category': c} for i, c in (('a', '개인'), ('b', '기타'), ('c', '연구 아카이브'), ('d', '연구 아카이브'))]
+        config = {'groups': [{'name': '연구 아카이브', 'note': 'n'}, {'name': '발표'}, {'name': '개인'}]}
+        groups = grouped(sites, config)
+        self.assertEqual([(name, len(members)) for name, _, members in groups], [('연구 아카이브', 2), ('개인', 1), ('기타', 1)])
+        rendered = sections(groups)
+        self.assertEqual(rendered.count('class="group"'), 3)
+        self.assertEqual(rendered.count('class="site-card'), 4)
+        self.assertLess(rendered.index('>01<'), rendered.index('>04<'))
+
 
 
 if __name__ == '__main__':

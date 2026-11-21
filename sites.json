@@ -53,7 +53,13 @@
       "category": "발표",
       "label": "TALKS & SLIDES",
       "order": 5,
-      "private": true
+      "private": true,
+      "wide": true,
+      "tags": [
+        "강연·세미나",
+        "과제 보고",
+        "공부 정리"
+      ]
     },
     {
       "id": "bppv-guide",
@@ -79,5 +85,23 @@
   ],
   "private_hosts": [
     "hanminy-slides.pages.dev"
+  ],
+  "groups": [
+    {
+      "name": "연구 아카이브",
+      "note": "계속 갱신되는 연구 사이트"
+    },
+    {
+      "name": "발표",
+      "note": "로그인한 사람만 볼 수 있습니다"
+    },
+    {
+      "name": "설명 자료",
+      "note": "혼자 읽어도 이해되는 완성된 페이지"
+    },
+    {
+      "name": "개인",
+      "note": "연구와 별개로 정리한 자료"
+    }
   ]
 }

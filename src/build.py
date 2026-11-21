@@ -79,17 +79,46 @@ def esc(value):
 
 def card(site, index):
     classes = 'site-card featured' if site.get('featured') else 'site-card'
-    text = ' '.join(str(site.get(k, '')) for k in ('title', 'description', 'category', 'label', 'id'))
+    text = ' '.join(str(site.get(k, '')) for k in ('title', 'description', 'category', 'label', 'id')) + ' ' + ' '.join(site.get('tags', []))
     private = bool(site.get('private'))
     where = '로그인 필요 · ' + urlsplit(site['url']).hostname if private else urlsplit(site['url']).path.strip('/')
     lock = '<span class="lock"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="3" y="7" width="10" height="7" rx="1.5"/><path d="M5.2 7V5a2.8 2.8 0 0 1 5.6 0v2"/></svg>비공개</span>' if private else ''
+    tags = ''.join(f'<li>{esc(t)}</li>' for t in site.get('tags', []))
+    tags = f'<ul class="card-tags">{tags}</ul>' if tags else ''
     if private:
         classes += ' private'
+    if site.get('wide'):
+        classes += ' wide'
     return f'''<a class="{classes}" href="{esc(site['url'])}"{' title="로그인한 사람만 볼 수 있습니다"' if private else ''} data-category="{esc(site['category'])}" data-search="{esc(text)}">
   <div class="card-top"><span class="card-label">{esc(site.get('label', 'WEBSITE'))}</span><span class="card-number">{index:02d}</span></div>
-  <div class="card-body"><span class="category">{esc(site['category'])}</span>{lock}<h3>{esc(site['title'])}</h3><p>{esc(site['description'])}</p></div>
+  <div class="card-body">{lock}<h4>{esc(site['title'])}</h4><p>{esc(site['description'])}</p>{tags}</div>
   <div class="card-bottom"><span>{esc(where)}</span><span class="arrow" aria-hidden="true">↗</span></div>
 </a>'''
+
+
+def grouped(sites, config):
+    """분류별로 묶는다. sites.json의 groups 순서를 따르고, 거기 없는 분류는 뒤에 붙인다."""
+    notes = {g['name']: g.get('note', '') for g in config.get('groups', [])}
+    names = [n for n in notes if any(s['category'] == n for s in sites)]
+    names += [n for n in dict.fromkeys(s['category'] for s in sites) if n not in notes]
+    return [(n, notes.get(n, ''), [s for s in sites if s['category'] == n]) for n in names]
+
+
+def sections(groups):
+    parts, index = [], 0
+    for number, (name, note, members) in enumerate(groups, 1):
+        cards = []
+        for site in members:
+            index += 1
+            cards.append(card(site, index))
+        note_html = f'<p>{esc(note)}</p>' if note else ''
+        parts.append(f'''<section class="group" id="g{number}" aria-labelledby="g{number}-title">
+<div class="group-head"><h3 class="group-title" id="g{number}-title">{esc(name)}</h3>{note_html}<span class="group-count">{len(members)}</span></div>
+<div class="site-grid{' four' if len(members) == 4 else ''}">
+{chr(10).join(cards)}
+</div>
+</section>''')
+    return '\n'.join(parts)
 
 
 def build(repositories, config, output, check_urls=True):
@@ -98,12 +127,12 @@ def build(repositories, config, output, check_urls=True):
         sites = [s for s in sites if reachable(s)]
     if not sites:
         raise ValueError('Refusing to deploy an empty directory')
-    categories = list(dict.fromkeys(s['category'] for s in sites))
-    buttons = '<button type="button" class="filter active" data-category="all" aria-pressed="true">전체 <span>' + str(len(sites)) + '</span></button>'
-    buttons += ''.join(f'<button type="button" class="filter" data-category="{esc(c)}" aria-pressed="false">{esc(c)}</button>' for c in categories)
+    groups = grouped(sites, config)
+    categories = [name for name, _, _ in groups]
+    buttons = ''.join(f'<a class="filter" href="#g{number}">{esc(name)} <span>{len(members)}</span></a>' for number, (name, _, members) in enumerate(groups, 1))
     template = (ROOT / 'src/template.html').read_text()
     replacements = {
-        '{{CARDS}}': '\n'.join(card(s, i) for i, s in enumerate(sites, 1)),
+        '{{CARDS}}': sections(groups),
         '{{FILTERS}}': buttons, '{{COUNT}}': str(len(sites)),
         '{{UPDATED}}': datetime.now(timezone.utc).strftime('%Y.%m.%d'),
     }
