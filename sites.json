@@ -24,7 +24,7 @@
       "category": "연구 아카이브",
       "label": "CONFERENCE PAPERS",
       "featured": true,
-      "order": 4
+      "order": 3
     },
     "bohol-trip-2026": {
       "title": "보홀 여행 2026",
@@ -35,16 +35,6 @@
     }
   },
   "extra_sites": [
-    {
-      "id": "kmm-study",
-      "title": "굴착기 동적 모델·제어 스터디",
-      "description": "KMM/KIMM 굴착기 동적 모델과 제어를 살펴보는 인터랙티브 스터디 가이드입니다.",
-      "url": "https://hanminy.github.io/marktl-blog/kmm/",
-      "category": "연구 아카이브",
-      "label": "STUDY GUIDE",
-      "order": 3,
-      "featured": true
-    },
     {
       "id": "slides",
       "title": "발표 슬라이드",
